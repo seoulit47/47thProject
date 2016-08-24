@@ -13,11 +13,11 @@ public class LoggerAspect {
         String name = joinPoint.getSignature().getName();
         String type = joinPoint.getSignature().getDeclaringTypeName();
         
-        log.debug("{}.{}() ½ÃÀÛ", type, name);
-        
+        log.debug("{}.{}() ï¿½ï¿½ï¿½ï¿½", type, name);
+       
         Object returnValue = joinPoint.proceed();
         
-        log.debug("{}.{}() ³¡", type, name);
+        log.debug("{}.{}() ï¿½ï¿½", type, name);
         
         return returnValue;
         
