@@ -27,6 +27,10 @@
 			<id>codelds</id>
 			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
 		</repository>
+		<repository>
+			<id>releases</id>
+			<url>http://192.168.1.135:8282/nexus/content/repositories/releases</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -42,6 +46,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- 에러처리 -->
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-interpolation</artifactId>
+			<version>1.13</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -95,7 +107,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
-			<version>4.2.6.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- Log4j -->
@@ -152,15 +164,20 @@
 			<version>1.2.5</version>
 		</dependency>
 
-<!-- 		넥사크로
+		<!-- nexacro -->
 		<dependency>
 			<groupId>com.tobesoft</groupId>
 			<artifactId>nexacro-xapi</artifactId>
 			<version>1.0</version>
 		</dependency>
 
- -->
- 		<!-- Apache Common Library -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>2.4.3</version>
+		</dependency>
+
+		<!-- Apache Common Library -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
