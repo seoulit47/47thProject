@@ -13,15 +13,8 @@ import com.nexacro.xapi.tx.HttpPlatformResponse;
 import com.nexacro.xapi.tx.PlatformType;
 import com.seoulit.erp47.common.util.NexacroLogger;
 
-
 /**
- * @Package  com.seoulit.erp47.common.interceptor
- * @Class    NexacroInterceptor.java
- * @Create   2016. 8. 24.
- * @Author   
- * @Description ≥ÿªÁ≈©∑Œ PlatformData √≥∏Æ ¿Œ≈Õº¡≈Õ Class
- *
- * @LastUpdated 
+
  */
 
 public class NexacroInterceptor extends HandlerInterceptorAdapter {

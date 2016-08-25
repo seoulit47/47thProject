@@ -10,15 +10,15 @@
   <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java-version>1.7</java-version>
+        <java-version>1.6</java-version>
         <spring.version>4.2.6.RELEASE</spring.version>
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <org.aspectj-version>1.8.9</org.aspectj-version>
     </properties>
 
-	<repositories>
+	<repositories> 
 		<repository>
-			<id>thirdparty</id>
+			<id>thirdparty</id> 
 			<url>http://192.168.1.135:8282/nexus/content/repositories/thirdparty</url>
 		</repository>
 		<repository>
