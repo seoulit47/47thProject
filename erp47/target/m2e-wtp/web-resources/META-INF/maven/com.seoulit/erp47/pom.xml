@@ -21,7 +21,7 @@
 	<repositories>
 		<repository>
 			<id>thirdparty</id>
-			<url>http://192.168.1.135:8282/nexus/content/repositories/thirdparty</url>
+			<url>http://106.242.162.222:8282/nexus/content/repositories/thirdparty</url>
 		</repository>
 		<repository>
 			<id>codelds</id>
@@ -29,7 +29,7 @@
 		</repository>
 		<repository>
 			<id>releases</id>
-			<url>http://192.168.1.135:8282/nexus/content/repositories/releases</url>
+			<url>http://106.242.162.222:8282/nexus/content/repositories/releases</url>
 		</repository>
 	</repositories>
 
