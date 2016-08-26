@@ -16,13 +16,13 @@
    <typeAliases>
 
     <!-- 시스템공통 -->
-      
+	<package name="com.seoulit.post.to" />
 
     <!-- 물류 -->
       
       
     <!-- 인사 -->
-     
+	<package name="com.seoulit.erp47.hrs.emp.to" />		<!-- 인사관리 -->
       
     <!-- 회계 -->
       

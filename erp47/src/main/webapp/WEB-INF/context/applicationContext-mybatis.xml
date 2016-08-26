@@ -14,13 +14,13 @@
         p:mapperLocations="classpath:com/seoulit/erp47/**/dao/sqlMap/*.xml"
         p:configLocation="/WEB-INF/config/mybatisConfig.xml" />
   
-<!--    
+
     <bean id="postSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
         p:dataSource-ref="postSource" 
         p:mapperLocations="classpath:com/seoulit/post/dao/sqlMap/*.xml"
         p:configLocation="/WEB-INF/config/mybatisConfig.xml" />
 
-    interface로 Impl객체 생성
+   <!--  interface로 Impl객체 생성 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.seoulit.erp47.**.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
@@ -30,6 +30,6 @@
         <property name="sqlSessionFactoryBeanName" value="postSessionFactory" /> 
         <property name="basePackage" value="com.seoulit.post.dao" />
     </bean>
--->
+
 
 </beans>
