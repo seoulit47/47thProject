@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test" classname="test" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Edit id="Edit00" taborder="0" left="10.35%" top="71" right="65.82%" height="82"/>
+        <Radio id="Radio00" taborder="1" left="43.16%" top="94" right="50.29%" height="26"/>
+        <ProgressBar id="ProgressBar00" taborder="2" text="ProgressBar00" left="20.21%" top="220" right="62.99%" height="44"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>
