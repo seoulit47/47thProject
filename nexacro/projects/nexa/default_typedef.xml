@@ -33,6 +33,8 @@
   <Services>
     <Service prefixid="frame" type="form" url="./frame/" version="0" communicationversion="0"/>
     <Service prefixid="hrs" type="form" url="./hrs/" version="0" communicationversion="0"/>
+    <Service prefixid="img" type="file" url="./img/" version="0" communicationversion="0"/>
+    <Service prefixid="base" type="form" url="./Base/" version="0" communicationversion="0"/>
   </Services>
   <Update/>
 </TypeDefinition>

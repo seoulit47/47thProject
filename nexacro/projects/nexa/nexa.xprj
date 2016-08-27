@@ -3,4 +3,7 @@
   <TypeDefinition url="default_typedef.xml"/>
   <GlobalVariables url="globalvars.xml"/>
   <ADL id="nexa" url="nexa.xadl"/>
+  <Services>
+    <Service id="img" file_ext="" include_subdir="false"/>
+  </Services>
 </Project>
