@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COM_Code" classname="COM_Code" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="-62.99%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="코드관리" left="2.78%" top="-4" right="83.63%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc01" taborder="1" text="그룹코드" onclick="subCodeStc_onclick" left="1.95%" top="67" right="91.02%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="Combo00" taborder="2" text="Combo00" left="9.96%" top="66" right="78.03%" height="30"/>
+        <Static id="subCodeStc02" taborder="3" text="코드" onclick="subCodeStc_onclick" left="23.34%" top="67" right="69.63%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="Combo01" taborder="4" text="Combo00" left="31.05%" top="66" right="56.93%" height="30"/>
+        <Static id="subCodeStc03" taborder="5" text="코드명" onclick="subCodeStc_onclick" left="45.31%" top="67" right="47.66%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="Edit00" taborder="6" left="52.93%" top="68" right="35.84%" height="30"/>
+        <Static id="subCodeStc04" taborder="7" text="사용여부" onclick="subCodeStc_onclick" left="66.02%" top="67" right="26.95%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Button id="DelBtn07" taborder="8" onclick="DelBtn_onclick" cssclass="DelBtn" left="89.06%" top="64" right="2.15%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="Grid00" taborder="9" useinputpanel="false" left="2.25%" top="103" right="2.64%" height="628" autofittype="col" binddataset="dsCode">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="75"/>
+                <Column size="60"/>
+                <Column size="79"/>
+                <Column size="206"/>
+                <Column size="224"/>
+                <Column size="153"/>
+                <Column size="147"/>
+                <Column size="170"/>
+                <Column size="199"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="그룹코드"/>
+                <Cell col="1" text="코드"/>
+                <Cell col="2" text="상세코드"/>
+                <Cell col="3" text="코드명"/>
+                <Cell col="4" text="상세코드명"/>
+                <Cell col="5" text="등록자ID"/>
+                <Cell col="6" text="등록자IP"/>
+                <Cell col="7" text="수정가능여부"/>
+                <Cell col="8" text="사용가능여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:subCode"/>
+                <Cell col="1" text="bind:code"/>
+                <Cell col="2" text="bind:detailCode"/>
+                <Cell col="3" text="bind:codeName"/>
+                <Cell col="4" text="bind:detailCodeName"/>
+                <Cell col="5" text="bind:regId"/>
+                <Cell col="6" text="bind:regIp"/>
+                <Cell col="7" text="bind:modiyn"/>
+                <Cell col="8" text="bind:useYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="detailCode" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="subCode" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="editId" type="STRING" size="256"/>
+          <Column id="editIp" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regIp" type="STRING" size="256"/>
+          <Column id="detailCodeName" type="STRING" size="256"/>
+          <Column id="modiyn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
