@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CM_LoginForm" classname="CM_LoginForm" left="0" top="0" width="515" height="403" style="border:0 dotted #808080ff ;" titletext="로그인">
+    <Layouts>
+      <Layout>
+        <Static id="idStc" taborder="0" text="ID" left="19.61%" top="143" right="62.72%" height="35" style="background:cornsilk;border:2 dotted #808080ff ;bordertype:normal 0 0 ;align:center middle;font:20 Dotum,Arial Black;"/>
+        <Static id="pwStc" taborder="1" text="PW" left="19.61%" top="196" right="62.72%" height="35" style="background:cornsilk;border:2 dotted #808080ff ;bordertype:normal 0 0 ;align:center middle;font:20 Dotum,Arial Black;"/>
+        <Edit id="idNoEd" taborder="2" left="39.61%" top="143" right="40.97%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
+        <Edit id="idNmEd" taborder="3" left="61.36%" top="143" right="19.22%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
+        <Edit id="idPwEd" taborder="4" left="39.61%" top="196" right="19.22%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
+        <Button id="checkBtn" taborder="5" left="26.41%" top="268" right="52.82%" height="36" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;"/>
+        <Button id="closeBtn" taborder="6" left="52.23%" top="268" right="26.99%" height="36" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;" onclick="closeBtn_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[
+//닫기 버튼
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.exit();
+}
+]]></Script>
+  </Form>
+</FDL>
