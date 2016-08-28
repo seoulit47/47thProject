@@ -42,6 +42,6 @@ public class EmpController {
     	Map<String, String> argsMap  = datasetBeanMapper.variablesToMap(inData);
     	
     	List<EmpBean> empList=empServiceFacade.findEmpList(argsMap);
-    	System.out.println(empList.size()+"싸이쯔~");
+    	datasetBeanMapper.beansToDataset(outData, empList, EmpBean.class);
     }
 }
