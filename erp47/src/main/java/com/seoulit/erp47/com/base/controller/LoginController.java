@@ -37,7 +37,6 @@ public class LoginController {
 
     @RequestMapping("com/loginCheck.do")
     public void loginCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	
     	PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
 
@@ -54,6 +53,5 @@ public class LoginController {
         }
 
         datasetBeanMapper.beanToDataset(outData, empBean, EmpBean.class);
-
     }
 }
