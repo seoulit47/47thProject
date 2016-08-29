@@ -12,13 +12,10 @@
           </Layouts>
         </Div>
         <Static id="subCodeStc01" taborder="1" text="그룹코드" onclick="subCodeStc_onclick" left="1.95%" top="67" right="91.02%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Combo id="Combo00" taborder="2" text="Combo00" left="9.96%" top="66" right="78.03%" height="30"/>
         <Static id="subCodeStc02" taborder="3" text="코드" onclick="subCodeStc_onclick" left="23.34%" top="67" right="69.63%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Combo id="Combo01" taborder="4" text="Combo00" left="31.05%" top="66" right="56.93%" height="30"/>
         <Static id="subCodeStc03" taborder="5" text="코드명" onclick="subCodeStc_onclick" left="45.31%" top="67" right="47.66%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Edit id="Edit00" taborder="6" left="52.93%" top="68" right="35.84%" height="30"/>
+        <Edit id="codeNameEdit" taborder="6" left="52.93%" top="68" right="35.84%" height="30"/>
         <Static id="subCodeStc04" taborder="7" text="사용여부" onclick="subCodeStc_onclick" left="66.02%" top="67" right="26.95%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Button id="DelBtn07" taborder="8" onclick="DelBtn_onclick" cssclass="DelBtn" left="89.06%" top="64" right="2.15%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Grid id="Grid00" taborder="9" useinputpanel="false" left="2.25%" top="103" right="2.64%" height="628" autofittype="col" binddataset="dsCode">
           <Formats>
             <Format id="default">
@@ -62,6 +59,12 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="DelBtn03" taborder="10" onclick="DelBtn_onclick" cssclass="DelBtn" left="78.22%" top="14" right="12.99%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn00" taborder="11" onclick="DelBtn_onclick" cssclass="DelBtn" left="69.53%" top="14" right="21.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn05" taborder="12" onclick="DelBtn_onclick" cssclass="DelBtn" left="86.82%" top="14" right="4.69%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchCodeBtn" taborder="13" onclick="DelBtn_onclick" cssclass="searchBtn" left="60.74%" top="14" right="30.47%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Edit id="Edit00" taborder="14" left="9.18%" top="68" right="80.27%" height="27"/>
+        <Edit id="Edit01" taborder="15" left="30.47%" top="69" right="58.98%" height="27"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -80,6 +83,64 @@
           <Column id="modiyn" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCodeList</Col>
+            <Col id="URL">erp::com/findCodeList.do</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">findCodeListCallback</Col>
+            <Col id="outData">dsCode=dsCode</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+코드관리 화면                                           						                                                                         
+@Path			시스템공통            				   				
+@Description	시스템 공통 코드 관리하는 화면
+@Author	  		김형섭				    			                        								                                            
+@Create             
+@LastUpdated     
+                         		                    				                   		                    				                                           
+********************************************************************************/
+
+include "scripts::commonScripts.xjs";
+
+
+
+//코드조회 
+
+this.DelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+		
+		var subCode = this.Edit00.value;
+		var code = this.Edit01.value;
+		var codeName =  this.codeNameEdit.value;
+	
+	
+		var argument = "subCode='"+subCode+"' code='"+code+"' codeName='"+codeName+"'";
+	
+	
+	alert(argument);
+	
+	this.dsService.setColumn(0,4,argument);  //transaction에 넘길 변수값 셋팅.
+	
+	//alert(this.dsService.getColumn(0,4));
+	
+	this.gfnService("findCodeList",true);
+	
+}
+]]></Script>
   </Form>
 </FDL>
