@@ -5,10 +5,7 @@
 @Description    서비스ID 입력으로 트랜잭션 수행
 @Author            임행섭
 @Create         2016. 5. 26.
-@Author            김형섭
-@Create         
 ********************************************************************************/
-
 
 
 // @Description 각 Form에서 dsService 데이터셋을 이용해 트랜잭션하는 함수
@@ -19,8 +16,6 @@
 // @Usage      this.gfnService("findEmpList"); // 결과값 : findEmpList 트랜잭션를 비동기 방식으로 수행
 //            this.gfnService("findCodeName", false); // 결과값 : findCodeName 트랜잭션을 동기 방식으로 수행
 this.gfnService = function(serviceID, bAsync) {
-
-this.gfnService = function(serviceID) {
    var serviceRow         = this.dsService.findRow("serviceID", serviceID);       // 트랜잭션ID
    var serviceURL         = this.dsService.getColumn(serviceRow, "URL");          // URL
    var serviceInData      = this.dsService.getColumn(serviceRow, "inData");       // inData 데이터셋
@@ -28,7 +23,6 @@ this.gfnService = function(serviceID) {
    var serviceArgument      = this.dsService.getColumn(serviceRow, "argument");       // 인자
    var serviceCallbackFunc = this.dsService.getColumn(serviceRow, "callbackFunc");    // 콜백함수명
    var serviceAsync        = bAsync;
-  
 
    if (serviceRow < 0) {
       alert("서비스 ID가 없습니다.");
@@ -62,7 +56,6 @@ this.gfnService = function(serviceID) {
       serviceAsync = true;
    }
    
-  
    // 트랜잭션 실행
    this.transaction(
       serviceID,
@@ -72,8 +65,6 @@ this.gfnService = function(serviceID) {
       serviceArgument,
       serviceCallbackFunc,
       bAsync
-      serviceCallbackFunc
-      
    );      
    
    // LOG 출력
@@ -86,7 +77,6 @@ this.gfnService = function(serviceID) {
    log += "callback  : " + serviceCallbackFunc + "\n";            
    log += "bAsync    : " + bAsync             + "\n";   
    trace(log);
-  
 }
 
 this.ErrorCode = 1;
@@ -102,4 +92,3 @@ this.gfnCallbackFunc = function(svcID, ErrorCode, ErrorMsg){
       trace("===== " + svcID + " 트랜잭션 성공 =====\n");
    }
 }]]></Script>
-]]></Script>
