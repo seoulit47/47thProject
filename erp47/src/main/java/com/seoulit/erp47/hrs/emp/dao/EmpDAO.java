@@ -17,7 +17,5 @@ import com.seoulit.erp47.hrs.emp.to.EmpBean;
  */
 
 public interface EmpDAO {
-
 	List<EmpBean> selectEmpList(Map<String, String> argsMap);
-
 }

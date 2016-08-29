@@ -31,4 +31,10 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
         return loginApplicationService.login(argsMap);
     }
 
+	@Override
+	public Map<String, Object> checkAuth(Map<String, String> authMap) throws IdNotFoundException, PwMissMatchException {
+		System.out.println("test ~ serviceFacade~");
+		return null;
+	}
+
 }

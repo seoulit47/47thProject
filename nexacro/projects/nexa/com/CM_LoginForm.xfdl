@@ -6,10 +6,10 @@
       <Layout>
         <Static id="idStc" taborder="0" text="ID" left="19.61%" top="143" right="62.72%" height="35" style="background:cornsilk;border:2 dotted #808080ff ;bordertype:normal 0 0 ;align:center middle;font:20 Dotum,Arial Black;"/>
         <Static id="pwStc" taborder="1" text="PW" left="19.61%" top="196" right="62.72%" height="35" style="background:cornsilk;border:2 dotted #808080ff ;bordertype:normal 0 0 ;align:center middle;font:20 Dotum,Arial Black;"/>
-        <Edit id="idNoEd" taborder="2" left="39.61%" top="143" right="40.97%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
+        <Edit id="idNoEd" taborder="2" left="39.61%" top="143" right="40.97%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;" oneditclick="idNoEd_oneditclick"/>
         <Edit id="idNmEd" taborder="3" left="61.36%" top="143" right="19.22%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
         <Edit id="idPwEd" taborder="4" left="39.61%" top="196" right="19.22%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
-        <Button id="checkBtn" taborder="5" left="26.41%" top="268" right="52.82%" height="36" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;"/>
+        <Button id="checkBtn" taborder="5" left="26.41%" top="268" right="52.82%" height="36" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;" onclick="checkBtn_onclick"/>
         <Button id="closeBtn" taborder="6" left="52.23%" top="268" right="26.99%" height="36" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;" onclick="closeBtn_onclick"/>
       </Layout>
     </Layouts>
@@ -18,6 +18,37 @@
 this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	application.exit();
+}
+
+this.checkBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+// 	var empId=this.id
+// 	this.transaction(
+// 		"loginCheck",
+// 		"erp47::com/loginCheck.do",
+// 		
+// 	);
+}
+
+
+this.idNoEd_oneditclick = function(obj:Edit,  e:nexacro.EditClickEventInfo)
+{
+	this.gfnEmpPopup();
+}
+
+//사원목록 팝업
+this.gfnEmpPopup = function(hr)
+{
+		application.open(
+			"empPopupForm",
+			"hrs::HM_EmpPopupForm.xfdl",
+			this.parent,
+			"",
+			"showtitlebar=true showstatusbar=false",
+			110,110,
+			this
+			
+		);
 }
 ]]></Script>
   </Form>

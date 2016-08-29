@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="test" classname="test" left="0" top="0" width="427" height="546" titletext="New Form">
+  <Form id="empPopupForm" classname="empPopupForm" left="0" top="0" width="427" height="546" titletext="사원검색">
     <Layouts>
       <Layout>
-        <Div id="Div01" taborder="0" positionstep="-1" left="0%" top="0" width="425" height="60" style="background:transparent URL('img::titleBar2.jpg');">
+        <Div id="Div01" taborder="0" positionstep="-1" left="0.23%" top="0" width="425" height="60" style="background:transparent URL('img::titleBar2.jpg');">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="사원검색" left="13.18%" top="8" right="63.76%" height="36"/>
@@ -59,10 +59,32 @@
       <BindItem id="item0" compid="empGrid" propid="binddataset" datasetid="dsHmEmp" columnid=""/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[
+//조회버튼 클릭
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	alert(this.empRadio.value);
+	var parameter;
+	var empRadioValue=this.empRadio.value;
+
+	if(empRadioValue=='Y'){
+		//사원번호
+		parameter="empNo="+this.searchEd.value;
+		
+	}else{
+		//사원명
+		parameter="empNamm="+this.searchEd.value;
+	}
+
+	this.transaction(
+ 		"findEmpList",
+		"erp47::hrs/emp/findEmpList.do",
+		"",
+		"",
+		"",
+		""
+	)
 }
+
+
 ]]></Script>
   </Form>
 </FDL>

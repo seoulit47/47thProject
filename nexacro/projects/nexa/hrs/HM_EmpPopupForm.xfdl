@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HM_EmpPopupForm" classname="HM_EmpPopupForm" left="0" top="0" width="427" height="546" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="0" positionstep="-1" left="0.23%" top="0" width="425" height="60" style="background:transparent URL('img::titleBar2.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="사원검색" left="13.18%" top="8" right="63.76%" height="36"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="empGrid" taborder="1" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncelldblclick="empGrid_oncelldblclick" left="9.37%" top="113" right="11.48%" height="407">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="177"/>
+                <Column size="132"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호"/>
+                <Cell col="1" text="사원명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:empNo"/>
+                <Cell col="1" text="bind:empNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchBtn" taborder="2" onclick="searchBtn_onclick" cssclass="DelBtn" left="71.66%" top="61" right="7.26%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Edit id="searchEd" taborder="3" left="10.77%" top="61" right="30.21%" height="23"/>
+        <Radio id="empRadio" taborder="4" columncount="2" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="Y" onitemclick="Radio00_onitemclick" left="11.94%" top="84" right="53.16%" height="25" style="font:antialias 9 HY수평선B;border:0px none #000000ff ;bordertype:round 3 3 ;align:center middle;" class="AreaRadio">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">Y</Col>
+                <Col id="datacolumn">사원번호</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">N</Col>
+                <Col id="datacolumn">사원명</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="empGrid" propid="binddataset" datasetid="dsHmEmp" columnid=""/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsHmEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_emp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">empList</Col>
+            <Col id="URL">erp47::hrs/emp/findEmpList.do</Col>
+            <Col id="inData">dsHmEmp=dsHmEmp</Col>
+            <Col id="outData">dsHmEmp=gdsEmp</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+
+//조회버튼 클릭
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var argument;
+	var empRadioValue=this.empRadio.value;
+
+	if(empRadioValue=='Y'){
+		//사원번호
+		argument="empNo="+this.searchEd.value;
+		
+	}else{
+		//사원명
+		argument="empNamm="+this.searchEd.value;
+	}
+	this.dsService.setColumn(0,"argument",argument);
+	trace(this.dsService.saveXML());
+	this.gfnService("empList",true);
+	
+// 	this.transaction(
+//  		"findEmpList",
+// 		"erp47::hrs/emp/findEmpList.do",
+// 		"",
+// 		"dsHmEmp=gdsEmp",
+// 		"",
+// 		""
+// 	)
+}
+
+
+]]></Script>
+  </Form>
+</FDL>
