@@ -95,7 +95,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">findCodeList</Col>
-            <Col id="URL">erp::com/findCodeList.do</Col>
+            <Col id="URL">erp47::com/findCodeList.do</Col>
             <Col id="inData"/>
             <Col id="argument"/>
             <Col id="callbackFunc">findCodeListCallback</Col>
