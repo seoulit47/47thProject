@@ -63,8 +63,9 @@
         <Button id="DelBtn00" taborder="11" onclick="DelBtn_onclick" cssclass="DelBtn" left="69.53%" top="14" right="21.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="DelBtn05" taborder="12" onclick="DelBtn_onclick" cssclass="DelBtn" left="86.82%" top="14" right="4.69%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="searchCodeBtn" taborder="13" onclick="DelBtn_onclick" cssclass="searchBtn" left="60.74%" top="14" right="30.47%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Edit id="Edit00" taborder="14" left="9.18%" top="68" right="80.27%" height="27"/>
-        <Edit id="Edit01" taborder="15" left="30.47%" top="69" right="58.98%" height="27"/>
+        <Combo id="subcombo" taborder="16" left="9.18%" top="66" right="78.81%" height="30" innerdataset="@dsSubCode" codecolumn="subcode" datacolumn="subcode" index="0" value="GD" text="GD"/>
+        <Combo id="codecombo" taborder="17" left="31.05%" top="66" right="56.93%" height="30"/>
+        <Radio id="useRadio" taborder="18" left="73.83%" top="58" right="17.97%" height="50" innerdataset="@dsUse" codecolumn="value" datacolumn="value" columncount="2"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -103,6 +104,65 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="dsSubCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="subcode" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="subcode">GD</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">HS</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GF</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">SP</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">AC</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">MD</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GA</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GP</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GB</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GS</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">SC</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">CM</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">CL</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsUse" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
 코드관리 화면                                           						                                                                         
@@ -124,12 +184,12 @@ this.DelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	
 		
-		var subCode = this.Edit00.value;
-		var code = this.Edit01.value;
+		var subCode = this.subcombo.text;
+		var code = this.codecombo.text;
 		var codeName =  this.codeNameEdit.value;
+		var use = this.useRadio.value;
 	
-	
-		var argument = "subCode='"+subCode+"' code='"+code+"' codeName='"+codeName+"'";
+		var argument = "subCode='"+subCode+"' code='"+code+"' codeName='"+codeName+"' use='"+use+"' ";
 	
 	
 	alert(argument);
