@@ -41,7 +41,7 @@ this.gfnEmpPopup = function(hr)
 {
 		application.open(
 			"empPopupForm",
-			"hrs::test.xfdl",
+			"hrs::HM_EmpPopupForm.xfdl",
 			this.parent,
 			"",
 			"showtitlebar=true showstatusbar=false",
