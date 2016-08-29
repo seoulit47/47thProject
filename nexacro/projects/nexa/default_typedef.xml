@@ -35,7 +35,6 @@
     <Service prefixid="example" type="form" url="./example/" version="0" communicationversion="0"/>
     <Service prefixid="img" type="file" url="./img/" version="0" communicationversion="0"/>
     <Service prefixid="base" type="form" url="./Base/" version="0" communicationversion="0"/>
-    <Service prefixid="scripts" type="form" url="./scripts/" version="0" communicationversion="0"/>
     <Service prefixid="acc" type="form" url="./acc/" version="0" communicationversion="0"/>
     <Service prefixid="com" type="form" url="./com/" version="0" communicationversion="0"/>
     <Service prefixid="hrs" type="form" url="./hrs/" version="0" communicationversion="0"/>
@@ -43,6 +42,8 @@
     <Service prefixid="med" type="form" url="./med/" version="0" communicationversion="0"/>
     <Service prefixid="sup" type="form" url="./sup/" version="0" communicationversion="0"/>
     <Service prefixid="won" type="form" url="./won/" version="0" communicationversion="0"/>
+    <Service prefixid="erp47" type="JSP" url="http://localhost:8282/erp47/" version="0" communicationversion="0" cachelevel="none"/>
+    <Service prefixid="scripts" type="js" url="./scripts/" version="0" communicationversion="0"/>
   </Services>
   <Update/>
 </TypeDefinition>
