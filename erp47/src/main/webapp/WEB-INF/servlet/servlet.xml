@@ -18,11 +18,13 @@
     <context:component-scan base-package="com.seoulit">
         <context:include-filter type="aspectj" expression="com.seoulit..controller.*" />
     </context:component-scan>
-
+<!-- logger 와 nexacro연동을 위한 bean객체 설정. -->
     <bean id="loggerAspect" class="com.seoulit.erp47.common.aspect.LoggerAspect" />
     <bean id="nexacroInterceptor" class="com.seoulit.erp47.common.interceptor.NexacroInterceptor" />
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 
+
+<!-- RequestMappingHandlerMapping 설정 nexacroInterceptor  ref bean에 설정 -->
    <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
         <property name="alwaysUseFullPath" value="true" />
         <property name="order" value="0" />
@@ -33,6 +35,8 @@
         </property>
     </bean>
 
+
+<!-- ResourceBundleViewResolver 설정 -->
     <bean id="viewMapping" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
         <property name="basename" value="report" />
         <property name="order" value="1" />
