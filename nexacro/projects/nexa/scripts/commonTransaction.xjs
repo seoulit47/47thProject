@@ -24,6 +24,7 @@ this.gfnService = function(serviceID, bAsync) {
    var serviceCallbackFunc = this.dsService.getColumn(serviceRow, "callbackFunc");    // 콜백함수명
    var serviceAsync        = bAsync;
 
+	alert(serviceRow);
    if (serviceRow < 0) {
       alert("서비스 ID가 없습니다.");
    } else if (typeof serviceURL == "undefined" || serviceURL == "") {
