@@ -139,17 +139,19 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	trace(this.dsService.saveXML());
 	this.gfnService("empList",true);
 	
-// 	this.transaction(
-//  		"findEmpList",
-// 		"erp47::hrs/emp/findEmpList.do",
-// 		"",
-// 		"dsHmEmp=gdsEmp",
-// 		"",
-// 		""
-// 	)
 }
 
 
+
+this.empGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	
+	var empNo=this.dsHmEmp.getColumn(e.row,"empNo");
+	var empNm=this.dsHmEmp.getColumn(e.row,"empNm");
+	this.opener.setEmpInfo(empNo,empNm);
+	this.close();
+	
+}
 ]]></Script>
   </Form>
 </FDL>
