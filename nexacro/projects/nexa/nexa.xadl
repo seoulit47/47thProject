@@ -17,6 +17,7 @@
     </Layout>
     <ScreenInfo/>
   </Application>
+<<<<<<< HEAD
   <Script type="xscript5.0"><![CDATA[/********************************************************************************
 Seoul Hospital Information System 진입점
 @Description 	로그인
@@ -26,6 +27,9 @@ Seoul Hospital Information System 진입점
 ********************************************************************************/
 
 this.application_onload = function(obj:Application, e:nexacro.LoadEventInfo)
+=======
+  <Script type="xscript5.0"><![CDATA[this.application_onload = function(obj:Application, e:nexacro.LoadEventInfo)
+>>>>>>> 34d88bfff22914cb3b30d45ceaf89aabce203197
 {
 	var loginFrame = new ChildFrame();
 	

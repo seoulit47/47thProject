@@ -26,8 +26,7 @@ public class LoginApplicationServiceImpl implements LoginApplicationService {
     private ResourceBundleMessageSource messageSource;
 
     @Override
-    public Map<String, Object> login(Map<String, String> argsMap)
-            throws IdNotFoundException, PwMissMatchException {
+    public Map<String, Object> login(Map<String, String> argsMap) throws IdNotFoundException, PwMissMatchException {
         Map<String, Object> login = new HashMap<>();
         EmpBean empBean = empDAO.selectEmp(argsMap);
         
