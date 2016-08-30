@@ -96,7 +96,18 @@ this.setEmpInfo=function(empNo,empNm){
 	this.idNoEd.set_value(empNo);
 }
 
-this.loginCallback
+//callback
+this.loginCallback = function(svcID, ErrorCode, ErrorMsg)
+{
+  if(ErrorCode == 1){
+	alert(this.idNmEd.value+"님 환영합니다.");
+	application.mainframe.visible = true;
+	this.close();
+  }else if(ErrorCode == 0){
+	alert("비밀번호가 맞지 않습니다.");
+	this.idPwEd.set_value("");
+  }
+}
 
 ]]></Script>
   </Form>
