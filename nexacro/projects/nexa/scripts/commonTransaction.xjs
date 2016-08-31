@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Script type="xscript5.0"><![CDATA[/********************************************************************************
+<Script type="xscript5.0"><![CDATA[
+/********************************************************************************
 공통 트랜잭션관리
 @Path          scripts::commonTransaction.xjs
 @Description    서비스ID 입력으로 트랜잭션 수행
@@ -32,6 +33,7 @@ this.gfnService = function(serviceID) {
       alert("서비스 URL이 없습니다.");
    }
   
+  alert(123);
    // 트랜잭션 실행
    this.transaction(
       serviceID,
@@ -42,7 +44,7 @@ this.gfnService = function(serviceID) {
       serviceCallbackFunc
       
    );      
-  
+  alert(456);
 }
 
 ]]></Script>
