@@ -38,6 +38,7 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
     }
 
 	@Override
+
 	public List<CodeBean> findCodeList(Map<String, String> argsMap) {
 		
 		return codeApplicationService.findCodeList(argsMap);
@@ -47,6 +48,11 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
 	public List<CodeNmBean> findCode(Map<String, String> argsMap) {
 		
 		return codeApplicationService.findCode(argsMap);
+	}
+	public Map<String, Object> checkAuth(Map<String, String> authMap) throws IdNotFoundException, PwMissMatchException {
+		System.out.println("test ~ serviceFacade~");
+		return null;
+
 	}
 
 }

@@ -148,7 +148,11 @@ this.empGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 	
 	var empNo=this.dsHmEmp.getColumn(e.row,"empNo");
 	var empNm=this.dsHmEmp.getColumn(e.row,"empNm");
+<<<<<<< HEAD
 	this.opener.setEmpInfo(empNo,empNm);
+=======
+	this.opener.setEmpInfo(empNo,empNm);
+>>>>>>> branch 'master' of https://github.com/seoulit47/47thProject
 	this.close();
 	
 }
