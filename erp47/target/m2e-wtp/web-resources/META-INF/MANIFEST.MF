@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: hwanee
 Build-Jdk: 1.8.0_101
+=======
+Built-By: ￪ﾹﾀ￭ﾘﾕ￬ﾄﾭ
+Build-Jdk: 1.8.0_65
+>>>>>>> 325406ea0e6595b129de9e79de68492e5ee2276c
 Created-By: Maven Integration for Eclipse
 

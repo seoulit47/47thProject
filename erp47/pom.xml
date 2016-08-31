@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.seoulit</groupId>
 	<artifactId>erp47</artifactId>
-	<name>erp47</name>
+	<name>erp47</name> <!-- 프로젝트 명  -->
 	<packaging>war</packaging>
 	<url>http://maven.apache.org</url>
 	<version>0.0.1-SNAPSHOT</version>
@@ -18,6 +18,8 @@
 		<org.aspectj-version>1.8.9</org.aspectj-version>
 	</properties>
 
+
+<!--  repositories 태그에 저장소 적기 .. 저장소 여러개 적어도 상관 없다. 저장소에서 jar파일을 가져온다. -->
 	<repositories>
 		<repository>
 			<id>thirdparty</id>

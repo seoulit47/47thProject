@@ -1,5 +1,8 @@
 package com.seoulit.erp47.com.base.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.com.base.service.ComBaseServiceFacade;
+import com.seoulit.erp47.com.base.to.CodeBean;
+import com.seoulit.erp47.com.base.to.CodeNmBean;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 
 @Controller
@@ -23,17 +28,42 @@ public class CodeController {
 	    
 	    
 	    @RequestMapping("com/findCodeList.do")
-	    public void loginCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    public void findCodeList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 	    
 	    	PlatformData inData = (PlatformData)request.getAttribute("inData");
+	    	PlatformData outData =(PlatformData)request.getAttribute("outData");
 	    	
-	    	String codeName=inData.getVariable("codeName").getString();
+	    	
+	    	Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
 	    	
 	    	
-	    	System.out.println(codeName);
 	    	
-	    	System.out.println("진환아 잘되니???"); 
+	    	//DatasetBeanMapper에 보면 inData를  Map으로 받을 수 있도록 variablesToMap 매서드가 있다.
+	    	//받을 argument가 여러개라면 각각 inData로 받아서 map 에 넣지말고
+	    	//요걸 써가지구 한방에 가져오고 map 에다가 넣자.!!!!
+	    	 
+	    	List<CodeBean>codeList = comBaseServiceFacade.findCodeList(argsMap);
+	    	System.out.println(codeList.size());
+	    	datasetBeanMapper.beansToDataset(outData, codeList, CodeBean.class);
+    	
+	    }
+	    
+	    @RequestMapping("com/findCode.do")
+	    public void findCode(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    	
+	    	System.out.println("findCode.do");
+	    	
+	    	PlatformData inData = (PlatformData)request.getAttribute("inData"); 
+	    	PlatformData outData =(PlatformData)request.getAttribute("outData");
+	    
+	    	Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
+	    
+	    	
+	    	List<CodeNmBean>codeList=comBaseServiceFacade.findCode(argsMap);
+	    	
+	    	
+	    	datasetBeanMapper.beansToDataset(outData, codeList, CodeNmBean.class);
 	    }
 	    
 }
