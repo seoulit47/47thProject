@@ -1,2 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs"; //트랜잭션 스크립트]]></Script>
+<Script type="xscript5.0"><![CDATA[
+include "scripts::commonTransaction.xjs";//트랜잭션 스크립트
+include "scripts::commonUtil.xjs";]]></Script>

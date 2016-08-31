@@ -26,14 +26,14 @@ public class LoginApplicationServiceImpl implements LoginApplicationService {
     private ResourceBundleMessageSource messageSource;
 
     @Override
-    public Map<String, Object> login(Map<String, String> argsMap)
-            throws IdNotFoundException, PwMissMatchException {
+    public Map<String, Object> login(Map<String, String> argsMap) throws IdNotFoundException, PwMissMatchException {
         Map<String, Object> login = new HashMap<>();
-        List<EmpBean> empList = empDAO.selectEmpList(argsMap);
-        if (empList.size() == 0) {
+        EmpBean empBean = empDAO.selectEmp(argsMap);
+        
+        if (empBean == null) { 
             throw new IdNotFoundException(messageSource.getMessage("idNotFound", null, Locale.KOREAN));
-        } else if (empList.get(0).getPassword().equals(argsMap.get("empPw"))) {
-            login.put("empInfo", empList.get(0));
+        } else if (empBean.getPassword().equals(argsMap.get("empPw"))) {
+            login.put("empInfo", empBean);
         } else {
             throw new PwMissMatchException(messageSource.getMessage("pwMissMatch", null, Locale.KOREAN));
         }

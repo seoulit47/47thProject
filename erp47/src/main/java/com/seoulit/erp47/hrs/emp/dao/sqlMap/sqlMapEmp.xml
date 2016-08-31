@@ -11,6 +11,20 @@
 
 	</resultMap>
 
+	<select id="selectEmp" resultMap="resultEmp" parameterType="HashMap">
+		select
+		<!-- 사원번호 -->
+		e.emp_no ,
+		<!-- 사원명 -->
+		e.emp_nm ,
+		<!-- 비밀번호 -->
+		e.password
+		<!-- 사원정보  -->
+		from hm_emp e
+		where emp_no = #{empNo}
+	
+	</select>
+	
 	<select id="selectEmpList" resultMap="resultEmp" parameterType="HashMap">
 		select
 		<!-- 사원번호 -->

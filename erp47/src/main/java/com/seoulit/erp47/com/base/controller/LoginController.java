@@ -41,8 +41,8 @@ public class LoginController {
         PlatformData outData = (PlatformData) request.getAttribute("outData");
 
         Map<String, String> argsMap  = datasetBeanMapper.variablesToMap(inData);
-
-        
+       
+       
         Map<String, Object> login = null;
         EmpBean empBean = null;
         try {
@@ -53,5 +53,6 @@ public class LoginController {
         }
 
         datasetBeanMapper.beanToDataset(outData, empBean, EmpBean.class);
+        
     }
 }
