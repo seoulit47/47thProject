@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.com.base.service.ComBaseServiceFacade;
 import com.seoulit.erp47.com.base.to.CodeBean;
+import com.seoulit.erp47.com.base.to.CodeNmBean;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 
 @Controller
@@ -45,13 +46,24 @@ public class CodeController {
 	    	List<CodeBean>codeList = comBaseServiceFacade.findCodeList(argsMap);
 	    	System.out.println(codeList.size());
 	    	datasetBeanMapper.beansToDataset(outData, codeList, CodeBean.class);
-	    		
-	    	
-	    	
+    	
+	    }
 	    
-
-
+	    @RequestMapping("com/findCode.do")
+	    public void findCode(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    	
+	    	System.out.println("findCode.do");
+	    	
+	    	PlatformData inData = (PlatformData)request.getAttribute("inData"); 
+	    	PlatformData outData =(PlatformData)request.getAttribute("outData");
+	    
+	    	Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
+	    
+	    	
+	    	List<CodeNmBean>codeList=comBaseServiceFacade.findCode(argsMap);
+	    	
+	    	
+	    	datasetBeanMapper.beansToDataset(outData, codeList, CodeNmBean.class);
 	    }
 	    
 }
