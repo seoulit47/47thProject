@@ -28,13 +28,17 @@
         WHERE
             SUB_CODE = #{subCode}
        <if test="code != null">
-            AND CODE = #{code}
+         AND CODE = #{code}
        </if>
        <if test="codeName!=null">
          AND CODE_NAME LIKE '%' || #{codeName} || '%'
         
         </if> 
-  
+        <if test="use != null">
+        AND USE_YN =#{use}  
+        </if>
+  		ORDER BY 
+            DETAIL_CODE
  </select>
  
  

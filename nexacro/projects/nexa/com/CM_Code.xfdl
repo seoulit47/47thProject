@@ -16,7 +16,7 @@
         <Static id="subCodeStc03" taborder="5" text="코드명" onclick="subCodeStc_onclick" left="45.31%" top="67" right="47.66%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="codeNameEdit" taborder="6" left="52.93%" top="68" right="35.84%" height="30"/>
         <Static id="subCodeStc04" taborder="7" text="사용여부" onclick="subCodeStc_onclick" left="66.02%" top="67" right="26.95%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Grid id="Grid00" taborder="9" useinputpanel="false" left="2.25%" top="103" right="2.64%" height="628" autofittype="col" binddataset="dsCode">
+        <Grid id="codeGrid" taborder="9" useinputpanel="false" left="2.25%" top="103" right="2.64%" height="628" autofittype="col" binddataset="dsCode">
           <Formats>
             <Format id="default">
               <Columns>
@@ -48,20 +48,20 @@
               <Band id="body">
                 <Cell text="bind:subCode"/>
                 <Cell col="1" text="bind:code"/>
-                <Cell col="2" text="bind:detailCode"/>
-                <Cell col="3" text="bind:codeName"/>
-                <Cell col="4" text="bind:detailCodeName"/>
+                <Cell col="2" displaytype="text" edittype="text" text="bind:detailCode"/>
+                <Cell col="3" displaytype="text" edittype="text" text="bind:codeName"/>
+                <Cell col="4" displaytype="text" edittype="text" text="bind:detailCodeName"/>
                 <Cell col="5" text="bind:regId"/>
                 <Cell col="6" text="bind:regIp"/>
-                <Cell col="7" text="bind:modiyn"/>
-                <Cell col="8" text="bind:useYn"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:modiyn" combodataset="dsUse" combocodecol="value" combodatacol="value"/>
+                <Cell col="8" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="dsUse" combocodecol="value" combodatacol="value"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="DelBtn03" taborder="10" onclick="DelBtn_onclick" cssclass="DelBtn" left="80.57%" top="14" right="10.64%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="DelBtn00" taborder="11" onclick="DelBtn_onclick" cssclass="DelBtn" left="71.88%" top="14" right="19.34%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="DelBtn05" taborder="12" onclick="DelBtn_onclick" cssclass="DelBtn" left="89.16%" top="14" right="2.34%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBtn" taborder="10" cssclass="DelBtn" left="80.57%" top="14" right="10.64%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addBtn_onclick"/>
+        <Button id="DelBtn00" taborder="11" cssclass="DelBtn" left="71.88%" top="14" right="19.34%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn05" taborder="12" cssclass="DelBtn" left="89.16%" top="14" right="2.34%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="searchCodeBtn" taborder="13" onclick="DelBtn_onclick" cssclass="searchBtn" left="63.09%" top="14" right="28.13%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Combo id="subcombo" taborder="16" left="9.18%" top="66" right="78.81%" height="30" innerdataset="@dsSubCode" codecolumn="subcode" datacolumn="subcode" index="0" value="GD" text="GD" onitemclick="subcombo_onitemclick"/>
         <Combo id="codecombo" taborder="17" left="31.05%" top="66" right="56.93%" height="30" innerdataset="@dsCodeNm" datacolumn="code" codecolumn="code"/>
@@ -219,6 +219,14 @@ this.subcombo_onitemclick = function(obj:Combo, e:nexacro.ListBoxClickEventInfo)
 	
 		this.dsService.setColumn(1,4,"subCode="+e.itemtext);  //transaction에 넘길 변수값 셋팅.
 		this.gfnService("findCode");
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+		this.dsCode.addRow();
+		this.dsCode.setColumn(this.codeGrid.currentrow,"subCode",this.subcombo.text);
+		this.dsCode.setColumn(this.codeGrid.currentrow,"code",this.codecombo.text);
 }
 ]]></Script>
   </Form>
