@@ -30,4 +30,30 @@ public class CodeApplicationServiceImpl implements CodeApplicationService{
 		return codeDAO.findCode(argsMap);
 	}
 
+
+	@Override
+	public void  batchCode(List<CodeBean> batchCodeList) {
+		// TODO Auto-generated method stub
+		
+			for(CodeBean code : batchCodeList){
+				
+					if(code.getStatus().equals("inserted")){
+						codeDAO.insertCode(code);
+							
+					}
+					
+					else if(code.getStatus().equals("deleted")){
+						
+						
+					}
+					else if(code.getStatus().equals("updated")){
+						
+						
+					}
+					
+				
+			}
+		
+	}
+
 }

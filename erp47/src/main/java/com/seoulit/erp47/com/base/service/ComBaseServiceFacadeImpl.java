@@ -55,4 +55,10 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
 
 	}
 
+	@Override
+	public void  batchCode(List<CodeBean> batchCodeList) {
+		// TODO Auto-generated method stub
+		codeApplicationService.batchCode(batchCodeList);
+	}
+
 }

@@ -54,5 +54,38 @@
     </select>
     
     
+    <insert id="insertCode" parameterType="CodeBean">
+INSERT INTO
+            CM_CODE(
+                DETAIL_CODE,
+                EDIT_IP,
+                EDIT_ID,
+                USE_YN,
+                MODIYN,
+                REG_IP,
+                REG_ID,
+                CODE,
+                SUB_CODE,
+                CODE_NAME,
+                DETAIL_CODE_NAME
+            )VALUES(
+                #{detailCode},
+                #{editIp},
+                #{editId},
+                #{useYn},
+                #{modiyn},
+                #{regIp},
+                #{regId},
+                #{code},
+                #{subCode},
+                #{codeName},
+                #{detailCodeName}
+            
+            
+            )
+
+    
+    </insert>
+    
     
   </mapper>
