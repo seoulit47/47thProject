@@ -44,7 +44,7 @@
     <Service prefixid="won" type="form" url="./won/" version="0" communicationversion="0"/>
     <Service prefixid="scripts" type="js" url="./scripts/" version="0" communicationversion="0"/>
     <Service prefixid="erp47" type="JSP" url="http://localhost:8282/erp47/" cachelevel="none" version="0" communicationversion="0"/>
-    <Service prefixid="erp" type="form" url="http://localhost:8282/erp47/" cachelevel="none" version="0" communicationversion="0"/>
+    <Service prefixid="erp" type="JSP" url="http://localhost:8282/erp47/" cachelevel="none" version="0" communicationversion="0"/>
   </Services>
   <Update/>
 </TypeDefinition>
