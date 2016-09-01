@@ -23,6 +23,7 @@
       
     <!-- 인사 -->
 	<package name="com.seoulit.erp47.hrs.emp.to" />		<!-- 인사관리 -->
+	<package name="com.seoulit.erp47.hrs.guntae.to" />		<!-- 근태관리 -->
       
     <!-- 회계 -->
       
