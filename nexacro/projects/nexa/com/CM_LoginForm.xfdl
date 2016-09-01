@@ -13,7 +13,37 @@
         <Button id="closeBtn" taborder="6" left="52.23%" top="268" right="26.99%" height="36" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;" onclick="closeBtn_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.0"><![CDATA[
+    <Objects>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">loginCheck</Col>
+            <Col id="URL">erp47::com/loginCheck.do</Col>
+            <Col id="inData">dsHmEmp=dsHmEmp</Col>
+            <Col id="outData">dsHmEmp=gdsEmp</Col>
+            <Col id="callbackFunc">loginCheckCallback</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+로그인 화면                                             						                                                                         
+@Path			공통              				   				
+@Description	로그인을 하기 위한 폼							
+@Author	  		김진환				    			                        								                                            
+@Create         2016. 8. 30.                             		                    				                                            
+********************************************************************************/
+
+include "scripts::commonScripts.xjs"; 
+
 //닫기 버튼
 this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
@@ -22,12 +52,21 @@ this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 
 this.checkBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-// 	var empId=this.id
-// 	this.transaction(
-// 		"loginCheck",
-// 		"erp47::com/loginCheck.do",
-// 		
-// 	);
+	var empId=this.idNoEd.value;
+	var empPw=this.idPwEd.value;
+	
+	if(this.gfnIsNull(empId)){
+		alert("아이디를 입력하세요");
+	}else if(this.gfnIsNull(empPw)){
+		alert("비밀번호를 입력하세요");
+	}else{
+		var argument = "empNo='"+empId+"' empPw='"+empPw+"'";
+		var row = this.dsService.findRow("serviceID" , "loginCheck");
+		this.dsService.setColumn(row,"argument",argument);
+		this.gfnService("loginCheck");
+	}
+	
+	
 }
 
 
@@ -50,6 +89,23 @@ this.gfnEmpPopup = function(hr)
 			
 		);
 }
-]]></Script>
+
+this.setEmpInfo=function(empNo,empNm){
+	this.idNmEd.set_value(empNm);
+	this.idNoEd.set_value(empNo);
+}
+
+//callback
+this.loginCheckCallback = function(svcID, ErrorCode, ErrorMsg)
+{
+  if(ErrorCode == 1){
+	alert(this.idNmEd.value+"님 환영합니다.");
+	application.mainframe.visible = true;
+	this.close();
+  }else if(ErrorCode == 0){
+	alert("비밀번호가 맞지 않습니다.");
+	this.idPwEd.set_value("");
+  }
+}]]></Script>
   </Form>
 </FDL>
