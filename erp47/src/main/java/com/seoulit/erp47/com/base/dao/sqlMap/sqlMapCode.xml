@@ -100,7 +100,7 @@
     <update id="updateCode" parameterType="CodeBean">
     
     	UPDATE CM_CODE 
-    	SET 
+    	SET  
     	        DETAIL_CODE=#{detailCode},
                 EDIT_IP=#{editIp},
                 EDIT_ID=#{editId},
