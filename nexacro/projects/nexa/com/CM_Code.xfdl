@@ -60,7 +60,7 @@
           </Formats>
         </Grid>
         <Button id="addBtn" taborder="10" cssclass="DelBtn" left="80.57%" top="14" right="10.64%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addBtn_onclick"/>
-        <Button id="DelBtn00" taborder="11" cssclass="DelBtn" left="71.88%" top="14" right="19.34%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn00" taborder="11" cssclass="DelBtn" left="71.88%" top="14" right="19.34%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="DelBtn00_onclick"/>
         <Button id="saveBtn" taborder="12" cssclass="DelBtn" left="89.16%" top="14" right="2.34%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="saveBtn_onclick"/>
         <Button id="searchCodeBtn" taborder="13" onclick="DelBtn_onclick" cssclass="searchBtn" left="63.09%" top="14" right="28.13%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Combo id="subcombo" taborder="16" left="9.18%" top="66" right="78.81%" height="30" innerdataset="@dsSubCode" codecolumn="subcode" datacolumn="subcode" index="0" value="GD" text="GD" onitemclick="subcombo_onitemclick"/>
@@ -244,6 +244,14 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 		this.gfnService("batchCode");
 		
+}
+
+
+//삭제버튼 클릭시 발생하는 이벤트.
+this.DelBtn00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		this.dsCode.deleteRow(this.codeGrid.currentrow);
+	
 }
 ]]></Script>
   </Form>

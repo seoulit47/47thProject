@@ -75,7 +75,8 @@ public class CodeController {
 	    	PlatformData inData = (PlatformData)request.getAttribute("inData");
     
 	    	List<CodeBean>batchCodeList = datasetBeanMapper.datasetToBeans(inData, CodeBean.class);
-    	
+	    	//넥사에서 받은 inData , 즉 데이터셋을 datasetBeanMapper로 빈즈화 시킨다.. dsCode를  CodeBean과 매핑..
+	    	//즉 batchCodeList에는 넥사코드폼의 codeGrid의 값들이 그대로 맵핑되서 전달된다.
 	    	
 	    	comBaseServiceFacade.batchCode(batchCodeList);
 	    }

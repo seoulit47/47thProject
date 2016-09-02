@@ -55,7 +55,7 @@
     
     
     <insert id="insertCode" parameterType="CodeBean">
-INSERT INTO
+		INSERT INTO
             CM_CODE(
                 DETAIL_CODE,
                 EDIT_IP,
@@ -86,6 +86,35 @@ INSERT INTO
 
     
     </insert>
+    
+    <delete id="deleteCode" parameterType="CodeBean">
+    
+    	DELETE FROM CM_CODE 
+    	WHERE
+    	DETAIL_CODE=#{detailCode}
+    	AND 
+    	CODE=#{code}
+    
+    </delete>
+    
+    <update id="updateCode" parameterType="CodeBean">
+    
+    	UPDATE CM_CODE 
+    	SET 
+    	        DETAIL_CODE=#{detailCode},
+                EDIT_IP=#{editIp},
+                EDIT_ID=#{editId},
+                USE_YN=#{useYn},
+                MODIYN=#{modiyn},
+                REG_IP=#{regIp},
+                REG_ID=#{regId},
+                CODE=#{code},
+                SUB_CODE=#{subCode},
+                CODE_NAME=#{codeName},
+                DETAIL_CODE_NAME=#{detailCodeName}
+    	WHERE DETAIL_CODE=#{detailCode}
+    	AND CODE=#{code}
+    </update>
     
     
   </mapper>

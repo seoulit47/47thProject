@@ -35,19 +35,22 @@ public class CodeApplicationServiceImpl implements CodeApplicationService{
 	public void  batchCode(List<CodeBean> batchCodeList) {
 		// TODO Auto-generated method stub
 		
-			for(CodeBean code : batchCodeList){
+			for(CodeBean codebean : batchCodeList){
 				
-					if(code.getStatus().equals("inserted")){
-						codeDAO.insertCode(code);
+					if(codebean.getStatus().equals("inserted")){
+						codeDAO.insertCode(codebean);
+				
 							
 					}
 					
-					else if(code.getStatus().equals("deleted")){
-						
+					else if(codebean.getStatus().equals("deleted")){
+
+						codeDAO.deleteCode(codebean);
 						
 					}
-					else if(code.getStatus().equals("updated")){
+					else if(codebean.getStatus().equals("updated")){
 						
+						codeDAO.updateCode(codebean);
 						
 					}
 					
