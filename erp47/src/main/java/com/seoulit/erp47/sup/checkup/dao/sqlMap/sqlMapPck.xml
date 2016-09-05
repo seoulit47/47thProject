@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.seoulit.erp47.sup.checkup.dao.PckDAO">
+	<cache eviction="LRU" flushInterval="86400000"/>
+	<!-- 종합검진 패키지 관리 - 패키지검사 조회 -->
+	<select resultType="InspBean" useCache="true" flushCache="false" id="selectPckInspList"> 
+		SELECT PCK_CD, I.INSP_CD, INSP_NM, OCS_CD, E.EMR_NM AS OCS_NM, RSLT_DEPT_CD, 
+		FN_CM_CODENAME('SC036',RSLT_DEPT_CD) AS RSLT_DEPT_NM, OCS_DIV_CD, AMT, USE_YN 
+		FROM SC_PCK_INSP P, SC_INSP I, SC_EMR_CODE E 
+		WHERE P.PCK_CD = #{pckCd} 
+		AND P.INSP_CD = I.INSP_CD 
+		AND I.OCS_CD = E.EMR_CD 
+	</select>
+
+</mapper>
+		

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript5.0"><![CDATA[
+/********************************************************************************
+원무공통 스크립트
+@Path		    scripts-wonScripts	
+@Description 	원무공통 스크립트
+@Author	 		김진환
+@Create         2016. 09. 05.      
+********************************************************************************/
+
+// 환자등록번호조회팝업
+this.gfnPatPopup = function() {
+	return application.open(
+			"WS_PatPopupForm",
+			"won::WS_PatPopupForm.xfdl",
+			this.parent,
+			{},
+			"showtitlebar=true showstatusbar=false",
+			110, 110,
+			this
+	);
+}
+]]></Script>
