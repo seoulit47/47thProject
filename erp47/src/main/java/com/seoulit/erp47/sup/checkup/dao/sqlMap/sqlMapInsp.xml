@@ -20,6 +20,15 @@
 		WHERE CI.INSP_CD=I.INSP_CD
 		AND RSVT_NO = #{rsvtNo}
 	</select>
+	
+	<!-- 종합검진 검사관리  - 선택 검사목록외 조회 -->
+	<select resultType="InspBean" useCache="true" flushCache="false" id="selectExChoInspList"> 
+		SELECT I.INSP_CD, I.INSP_NM, I.OCS_CD,E.EMR_NM AS OCS_NM, AMT, I.RSLT_DEPT_CD, USE_YN, OCS_DIV_CD, FN_CM_CODENAME('SC036',I.RSLT_DEPT_CD) 
+      	FROM SC_INSP I,SC_EMR_CODE E  
+      	WHERE INSP_CD NOT IN(SELECT INSP_CD FROM SC_CHO_INSP WHERE RSVT_NO = #{rsvtNo})
+      	AND I.OCS_CD = E.EMR_CD
+      	AND I.USE_YN = #{useYn}
+	</select>
 
 </mapper>
 		

@@ -50,4 +50,11 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 		List<ChoInspBean> choInspList = supCheckupApplicationService.findChoInspList(argsMap);
 		return choInspList;
 	}
+
+
+	@Override
+	public List<InspBean> findExChoInspList(Map<String, String> argsMap) {
+		List<InspBean> exChoInspList = supCheckupApplicationService.findExChoInspList(argsMap);
+		return exChoInspList;
+	}
 }

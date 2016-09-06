@@ -218,11 +218,12 @@ this.SC_PckInspPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 			this.gfnService("findExPckInspList",false);
 		}
 	}
-	else if(parentId =="SC_RsvtMgtForm"||parentId == "SC_ReceiptMgtForm")
+	else if(parentId =="SC_RsvtMgtForm")
 	{
-
+        var rsvtNo = this.parent.param;
+		
 		var useYn = 'Y';
-		var argument = 'useYn='+useYn;
+		var argument = 'useYn='+useYn+' rsvtNo='+rsvtNo;
 		var row = this.dsService.findRow('serviceID' , "findExChoInspList");
 		this.dsService.setColumn(row, "argument", argument);
 		

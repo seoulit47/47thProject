@@ -432,7 +432,8 @@ this.compBox_patPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInf
 
 this.btnBox_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	var param = {};
+	
+	var param = {param:rsvtNo};
 	this.gfnPopup("SC_PckInspPopForm","sup",param,"");
 }
 ]]></Script>

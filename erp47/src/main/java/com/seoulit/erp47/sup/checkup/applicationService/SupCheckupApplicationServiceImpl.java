@@ -55,4 +55,11 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 		List<ChoInspBean> choInspList = inspDAO.selectChoInspList(argsMap);
 		return choInspList;
 	}
+
+	/* 종합검진 검사관리 - 선택 검사목록외 조회 */
+	@Override
+	public List<InspBean> findExChoInspList(Map<String, String> argsMap) {
+		List<InspBean> exChoInspList = inspDAO.selectExChoInspList(argsMap);
+		return exChoInspList;
+	}
 }

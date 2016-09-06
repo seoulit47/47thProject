@@ -16,4 +16,7 @@ public interface SupCheckupServiceFacade {
     
     /* 종합검진 검사관리 - 선택 검사목록 조회*/
     List<ChoInspBean> findChoInspList(Map<String, String> argsMap);
+    
+    /* 종합검진 검사관리 - 선택 검사목록외 조회*/
+    List<InspBean> findExChoInspList(Map<String, String> argsMap);
 }

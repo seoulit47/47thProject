@@ -60,5 +60,17 @@ public class InspController {
         dataSetBeanMapper.beansToDataset(outData, choInspList, ChoInspBean.class);
     }
     
+    /* 종합검진 검사관리 - 선택 검사목록외 조회 */
+    @RequestMapping("sup/checkup/findExChoInspList.do")
+    public void findExChoInspList(HttpServletRequest request, HttpServletResponse response)throws Exception {
+    	PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        
+        List<InspBean> exChoInspList=supCheckupServiceFacade.findExChoInspList(argsMap);
+        System.out.println(exChoInspList);
+        dataSetBeanMapper.beansToDataset(outData, exChoInspList, InspBean.class);
+    }
+    
    
 }
