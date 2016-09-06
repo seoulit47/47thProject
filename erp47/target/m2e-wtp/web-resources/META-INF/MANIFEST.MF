@@ -1,5 +1,7 @@
-Manifest-Version: 1.0
-Built-By: ￪ﾹﾀ￭ﾘﾕ￬ﾄﾭ
+0
+Built-By: hwanee
+Build-Jdk: 1.8.0_101
+Built-By: YonG
 Build-Jdk: 1.8.0_65
 Created-By: Maven Integration for Eclipse
 

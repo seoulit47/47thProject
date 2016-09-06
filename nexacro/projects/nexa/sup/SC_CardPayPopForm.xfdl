@@ -37,5 +37,31 @@
         </Div>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+          <Column id="msg" type="STRING" size="256"/>
+          <Column id="callbackFunc2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">registerRece</Col>
+            <Col id="URL">his::sup/checkup/registerRece.do</Col>
+            <Col id="inData">dsRece=dsRece</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="msg"/>
+            <Col id="callbackFunc"/>
+            <Col id="callbackFunc2"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
