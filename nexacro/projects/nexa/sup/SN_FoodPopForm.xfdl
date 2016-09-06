@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SN_FoodPopForm" classname="SN_FoodPopForm" left="0" top="0" width="415" height="476" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="0%" top="2" right="2.89%" height="60" style="background:transparent URL('img::titleBar7.jpg');"/>
+        <Grid id="foodGrid" taborder="1" binddataset="dsFood" useinputpanel="false" autofittype="col" oncelldblclick="codeGrid_oncelldblclick" left="6.99%" top="104" right="6.75%" height="308">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="81"/>
+                <Column size="222"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="v"/>
+                <Cell col="1" text="음식"/>
+                <Cell col="2" text="음식명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:checkDiv" tooltiptext="bind:checkDiv"/>
+                <Cell col="1" text="bind:foodCd"/>
+                <Cell col="2" style="font:8 arial;" text="bind:foodNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="2" text="음식 조회" onclick="Static00_onclick" left="12.53%" top="-2" right="26.51%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Edit id="foodCdEd" taborder="3" left="30.6%" top="66" right="46.02%" height="30"/>
+        <Div id="Div01" taborder="4" text="음식코드/명" left="6.99%" top="66" right="70.6%" height="30" style="background:thistle;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="foodNmEd" taborder="5" left="54.94%" top="66" right="15.18%" height="30"/>
+        <Button id="searchBtn" taborder="6" onclick="searchBtn_onclick" left="85.54%" top="65" right="6.75%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="okBtn" taborder="7" onclick="okBtn_onclick" left="48.19%" top="424" right="30.12%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="closeBtn" taborder="8" onclick="closeBtn_onclick" left="71.33%" top="424" right="6.99%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFoodList</Col>
+            <Col id="URL">his::sup/nutritive/findFoodList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsFood=dsFood</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFood" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsFood_onrowposchanged">
+        <ColumnInfo>
+          <Column id="foodGrpCd" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodType" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
+          <Column id="notes" type="STRING" size="256"/>
+          <Column id="amount" type="STRING" size="256"/>
+          <Column id="nutrit1" type="STRING" size="256"/>
+          <Column id="nutrit2" type="STRING" size="256"/>
+          <Column id="nutrit3" type="STRING" size="256"/>
+          <Column id="nutrit4" type="STRING" size="256"/>
+          <Column id="nutrit5" type="STRING" size="256"/>
+          <Column id="nutrit7" type="STRING" size="256"/>
+          <Column id="nutrit8" type="STRING" size="256"/>
+          <Column id="nutrit9" type="STRING" size="256"/>
+          <Column id="nutrit11" type="STRING" size="256"/>
+          <Column id="nutrit16" type="STRING" size="256"/>
+          <Column id="nutrit17" type="STRING" size="256"/>
+          <Column id="nutrit18" type="STRING" size="256"/>
+          <Column id="nutrit22" type="STRING" size="256"/>
+          <Column id="nutrit23" type="STRING" size="256"/>
+          <Column id="nutrit25" type="STRING" size="256"/>
+          <Column id="checkDiv" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsFoodCopy" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsFood_onrowposchanged">
+        <ColumnInfo>
+          <Column id="foodGrpCd" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodType" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
+          <Column id="notes" type="STRING" size="256"/>
+          <Column id="amount" type="STRING" size="256"/>
+          <Column id="nutrit1" type="STRING" size="256"/>
+          <Column id="nutrit2" type="STRING" size="256"/>
+          <Column id="nutrit3" type="STRING" size="256"/>
+          <Column id="nutrit4" type="STRING" size="256"/>
+          <Column id="nutrit5" type="STRING" size="256"/>
+          <Column id="nutrit7" type="STRING" size="256"/>
+          <Column id="nutrit8" type="STRING" size="256"/>
+          <Column id="nutrit9" type="STRING" size="256"/>
+          <Column id="nutrit11" type="STRING" size="256"/>
+          <Column id="nutrit16" type="STRING" size="256"/>
+          <Column id="nutrit17" type="STRING" size="256"/>
+          <Column id="nutrit18" type="STRING" size="256"/>
+          <Column id="nutrit22" type="STRING" size="256"/>
+          <Column id="nutrit23" type="STRING" size="256"/>
+          <Column id="nutrit25" type="STRING" size="256"/>
+          <Column id="checkDiv" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var foodCd = this.foodCdEd.value;
+	var foodNm = this.foodNmEd.value;
+	
+	var argument = 'foodCd='+foodCd+' foodNm='+foodNm;
+	
+	var row = this.dsService.findRow("serviceID", "findFoodList");
+
+	this.dsService.setColumn(row, "argument", argument);
+	
+	this.gfnService("findFoodList", false);
+	
+}
+]]></Script>
+  </Form>
+</FDL>

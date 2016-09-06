@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AT_TaxinvForm" classname="AT_TaxinvForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" text="       세금계산서 등록" left="0%" top="4" right="2.08%" height="60" style="align:left middle;background:transparent URL('img::titleBar6.jpg');font:bold 15 Dotum;" cssclass="TStc"/>
+        <Div id="taxinvDiv" taborder="1" left="1.76%" top="77" right="1.68%" height="643" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Combo id="billComb" taborder="4" innerdataset="dsBillDiv" codecolumn="code" datacolumn="value" left="11.95%" top="10" right="74.61%" height="28"/>
+              <Combo id="purchSalesComb" taborder="5" innerdataset="dsPurchSalesDiv" codecolumn="code" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="40.75%" top="10" right="45.81%" height="28"/>
+              <Combo id="pubComb" taborder="6" innerdataset="dsPubDiv" codecolumn="code" datacolumn="value" left="69.79%" top="10" right="16.76%" height="28"/>
+              <Edit id="ResolNoEd" taborder="7" left="40.66%" top="50" right="45.89%" height="28"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="stDiv1" taborder="2" text="계산서 구분" left="2.96%" top="88" right="87.44%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv2" taborder="3" text="매입/매출" left="30.88%" top="88" right="59.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv4" taborder="4" text="발행구분" left="58.96%" top="88" right="31.44%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv00" taborder="5" text="전표 번호" left="2.96%" top="128" right="87.44%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv03" taborder="6" text="결의 번호" left="30.88%" top="128" right="59.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv5" taborder="7" text="세금계산서" left="2.96%" top="163" right="27.52%" height="60" style="background:antiquewhite;align:center middle;font:bold 15 Dotum;"/>
+        <Static id="stDiv8" taborder="8" text="         공           급        자" wordwrap="english" left="3.04%" top="232" right="93.92%" height="125" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv9" taborder="9" text="상호(법인명)" left="6.96%" top="232" right="85.04%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc03" taborder="10" text="사업장 주소 " left="6.96%" top="281" right="85.04%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc02" taborder="11" text="업태" left="7.04%" top="326" right="84.96%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc08" taborder="12" text="성명(대표자)" left="26.56%" top="232" right="65.44%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc09" taborder="13" text="종목" left="26.56%" top="326" right="65.44%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv01" taborder="14" text="         공           급           받           는        자" wordwrap="english" left="49.92%" top="232" right="47.04%" height="125" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv12" taborder="15" text="상호(법인명)" left="53.68%" top="232" right="38.32%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc01" taborder="16" text="성명(대표자)" left="73.36%" top="232" right="18.64%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc00" taborder="17" text="사업장 주소 " left="53.68%" top="281" right="38.32%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc04" taborder="18" text="업태" left="53.84%" top="326" right="38.16%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc05" taborder="19" text="종목" left="73.36%" top="326" right="18.64%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc07" taborder="20" text="작성일자" left="3.12%" top="365" right="84.96%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc12" taborder="21" text="공급가액" left="15.76%" top="365" right="54.8%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Calendar id="pubDateCal" taborder="22" left="3.12%" top="401" right="84.88%" height="28"/>
+        <Static id="subCodeStc13" taborder="23" text="세액" left="50%" top="365" right="20.48%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc14" taborder="24" text="비고" left="80.24%" top="365" right="3.04%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Grid id="AtDetailTaxinvGrid" taborder="25" binddataset="dsAtDetailTaxinv" useinputpanel="false" autofittype="col" oncellclick="AtDetailTaxinvGrid_oncellclick" left="3.12%" top="436" right="3.04%" height="164">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="200"/>
+                <Column size="30"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO"/>
+                <Cell col="1" text="발행일자"/>
+                <Cell col="2" text="공제여부"/>
+                <Cell col="3" colspan="2" text="품목"/>
+                <Cell col="5" text="규격"/>
+                <Cell col="6" text="단가"/>
+                <Cell col="7" text="수량"/>
+                <Cell col="8" text="공급가액"/>
+                <Cell col="9" text="세액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:no"/>
+                <Cell col="1" edittype="date" text="bind:pubDate"/>
+                <Cell col="2" edittype="combo" text="bind:dedYn" combodataset="dsYN" combocodecol="YN" combodatacol="YN"/>
+                <Cell col="3" text="bind:fm"/>
+                <Cell col="4" displaytype="image"/>
+                <Cell col="5" text="bind:stand"/>
+                <Cell col="6" text="bind:price"/>
+                <Cell col="7" edittype="normal" text="bind:qnt"/>
+                <Cell col="8" text="bind:splyPrice"/>
+                <Cell col="9" text="bind:taxAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc10" taborder="26" text="합계금액" left="3.2%" top="647" right="81.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc16" taborder="27" text="현금" left="19.2%" top="647" right="69.44%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc11" taborder="28" text="수표" left="31.36%" top="647" right="57.28%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc15" taborder="29" text="어음" left="43.36%" top="647" right="45.28%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc06" taborder="30" text="외상미수금" left="55.44%" top="647" right="33.2%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="subCodeStc17" taborder="31" text="이 금액을                       함" left="67.6%" top="647" right="3.12%" height="62" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="pubComb00" taborder="32" innerdataset="dsBillDiv" codecolumn="code" datacolumn="value" left="80%" top="663" right="11.84%" height="28"/>
+        <Static id="stDiv3" taborder="33" text="기표일자" left="73.44%" top="163" right="18.56%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="stDiv02" taborder="34" text="발행번호 " left="73.44%" top="195" right="18.56%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Calendar id="gipyoDateCal" taborder="35" onchanged="gipyoDateCal_onchanged" left="82.16%" top="163" right="7.84%" height="28"/>
+        <Button id="ATDetailTaxinAddBtn" taborder="36" onclick="ATDetailTaxinAddBtn_onclick" cssclass="DelBtn" left="81.36%" top="608" right="11.44%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="ATDetailTaxinDelBtn" taborder="37" onclick="ATDetailTaxinDelBtn_onclick" cssclass="DelBtn" left="89.6%" top="608" right="3.2%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Edit id="slipNoEd" taborder="38" left="13.28%" top="129" right="73.68%" height="28" class="AreaEdt"/>
+        <Button id="searchSlipNoBtn" taborder="39" onclick="DelBtn_onclick" cssclass="DelBtn" left="27.28%" top="127" right="70.16%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchResolNoBtn" taborder="40" onclick="DelBtn_onclick" left="54.96%" top="127" right="42.48%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Edit id="salesCustnmEd" taborder="41" oneditclick="salesCustnmEd_oneditclick" left="15.68%" top="232" right="74.24%" height="28" class="AreaEdt"/>
+        <Edit id="salesPrsdntnmEd" taborder="42" left="35.28%" top="232" right="54.64%" height="28" class="AreaEdt"/>
+        <Button id="searchSalesBtn" taborder="43" onclick="searchSalesBtn_onclick" left="45.84%" top="230" right="51.6%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Edit id="salesAddrEd" taborder="44" left="15.68%" top="281" right="54.64%" height="28" class="AreaEdt"/>
+        <Edit id="salesBussHpnmEd" taborder="45" left="15.68%" top="327" right="74.24%" height="28" class="AreaEdt"/>
+        <Edit id="salesBusctgnmEd" taborder="46" left="35.28%" top="327" right="54.64%" height="28" class="AreaEdt"/>
+        <Edit id="splyPriceEd" taborder="47" left="15.68%" top="401" right="54.64%" height="28" class="AreaEdt"/>
+        <Edit id="pubNoEd" taborder="48" oneditclick="pubNoEd_oneditclick" left="82.16%" top="195" right="7.84%" height="28" class="AreaEdt"/>
+        <Edit id="purchCustnmEd" taborder="49" left="62.48%" top="232" right="27.44%" height="28" class="AreaEdt"/>
+        <Edit id="purchPrsdntnmEd" taborder="50" left="82.16%" top="232" right="7.76%" height="28" class="AreaEdt"/>
+        <Edit id="purchAddrEd" taborder="51" left="62.48%" top="281" right="7.84%" height="28" class="AreaEdt"/>
+        <Edit id="purchBusctgnmEd" taborder="52" left="82.16%" top="326" right="7.76%" height="28" class="AreaEdt"/>
+        <Edit id="purchBussHpnmEd" taborder="53" left="62.48%" top="326" right="27.44%" height="28" class="AreaEdt"/>
+        <Edit id="taxAmtEd" taborder="54" oneditclick="taxAmtEd_oneditclick" left="50.08%" top="401" right="20.4%" height="28" class="AreaEdt"/>
+        <Edit id="absEd" taborder="55" left="80.16%" top="401" right="3.04%" height="28" class="AreaEdt"/>
+        <Edit id="assetNoEd09" taborder="56" oneditclick="assetNoEd09_oneditclick" left="3.2%" top="683" right="81.52%" height="28" class="AreaEdt"/>
+        <Edit id="assetNoEd19" taborder="57" left="19.2%" top="683" right="69.36%" height="28" class="AreaEdt"/>
+        <Edit id="assetNoEd10" taborder="58" left="31.36%" top="683" right="57.2%" height="28" class="AreaEdt"/>
+        <Edit id="assetNoEd18" taborder="59" oneditclick="assetNoEd18_oneditclick" left="43.44%" top="683" right="45.12%" height="28" class="AreaEdt"/>
+        <Edit id="assetNoEd11" taborder="60" left="55.52%" top="683" right="33.04%" height="28" class="AreaEdt"/>
+        <Button id="searchPurchasBtn" taborder="61" onclick="searchPurchasBtn_onclick" left="92.56%" top="230" right="4.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addTaxInvBtn" taborder="62" onclick="addTaxInvBtn_onclick" left="91.12%" top="728" right="1.68%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="slipNoEd" propid="value" datasetid="dsAtTaxinv" columnid="slipNo"/>
+      <BindItem id="item5" compid="salesCustnmEd" propid="value" datasetid="dsAtDetailTaxinv" columnid=""/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findTaxInvList</Col>
+            <Col id="inData"/>
+            <Col id="URL">his::acc/vat/findTaxInvList.do</Col>
+            <Col id="callbackFunc">texinvCallBack</Col>
+            <Col id="outData">dsTaxInv=dsTaxInv dsDetailTaxInv=dsDetailTaxInv</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchAtTaxInvProcess</Col>
+            <Col id="URL">his::acc/vat/batchAtTaxInvProcess.do</Col>
+            <Col id="inData">dsTaxInv=dsTaxInv:U dsDetailTaxInv=dsDetailTaxInv:U</Col>
+            <Col id="callbackFunc">texinvCallBack</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findAccount</Col>
+            <Col id="URL">his::acc/resol/findAccount.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAccount=dsAccount</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDetailTaxInv">
+        <ColumnInfo>
+          <Column id="no" type="undefined" size="100"/>
+          <Column id="pubDate" type="undefined" size="100"/>
+          <Column id="taxAmt" type="undefined" size="100"/>
+          <Column id="splyPrice" type="undefined" size="100"/>
+          <Column id="stand" type="undefined" size="100"/>
+          <Column id="pubNo" type="undefined" size="100"/>
+          <Column id="dedYn" type="undefined" size="100"/>
+          <Column id="qnt" type="undefined" size="100"/>
+          <Column id="fm" type="undefined" size="100"/>
+          <Column id="price" type="undefined" size="100"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTaxInv">
+        <ColumnInfo>
+          <Column id="pubDate" type="undefined" size="100"/>
+          <Column id="taxAmt" type="undefined" size="100"/>
+          <Column id="splyPrice" type="undefined" size="100"/>
+          <Column id="pubNo" type="undefined" size="100"/>
+          <Column id="custCd" type="undefined" size="100"/>
+          <Column id="pubDiv" type="undefined" size="100"/>
+          <Column id="abs" type="undefined" size="100"/>
+          <Column id="anspDiv" type="undefined" size="100"/>
+          <Column id="sumPrice" type="undefined" size="100"/>
+          <Column id="slipNo" type="undefined" size="100"/>
+          <Column id="gipyoDate" type="undefined" size="100"/>
+          <Column id="resolNo" type="undefined" size="100"/>
+          <Column id="billDiv" type="undefined" size="100"/>
+          <Column id="purchSalesDiv" type="undefined" size="100"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>
