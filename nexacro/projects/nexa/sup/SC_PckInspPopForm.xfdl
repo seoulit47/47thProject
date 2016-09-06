@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_PckInspPopForm" classname="SC_PckInspPopForm" left="0" top="0" width="691" height="475" titletext="종합검진 검사" onload="SC_PckInspPopForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="2.32%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="종합검진 검사" onclick="Static00_onclick" left="7.38%" top="-2" right="31.84%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="inspGrid" taborder="2" binddataset="dsInsp" useinputpanel="false" cellsizingtype="col" autofittype="col" treeuseimage="false" onsetfocus="inspGrid_onsetfocus" left="4.05%" top="64" right="3.62%" height="352" style="font:돋움,8,antialias;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="33"/>
+                <Column size="62"/>
+                <Column size="165"/>
+                <Column size="196"/>
+                <Column size="55"/>
+                <Column size="60"/>
+                <Column size="67"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="text" edittype="text"/>
+                <Cell col="1" text="코드"/>
+                <Cell col="2" text="검사명"/>
+                <Cell col="3" text="처방명"/>
+                <Cell col="4" text="OCS구분"/>
+                <Cell col="5" text="결과부서"/>
+                <Cell col="6" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check" editdisplay="edit" tooltiptext="bind:check"/>
+                <Cell col="1" text="bind:inspCd"/>
+                <Cell col="2" text="bind:inspNm"/>
+                <Cell col="3" text="bind:ocsNm"/>
+                <Cell col="4" displaytype="combo" text="bind:ocsDivCd" combodataset="dsOcsDivCd" combocodecol="code" combodatacol="value"/>
+                <Cell col="5" text="bind:rsltDeptNm"/>
+                <Cell col="6" displaytype="number" style="align:right;" text="bind:amt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="okBtn" taborder="3" onclick="okBtn_onclick" left="69.46%" top="424" right="17.51%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="closeBtn" taborder="4" onclick="closeBtn_onclick" left="83.5%" top="424" right="3.47%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findExPckInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findExPckInspList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsInsp=dsInsp</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchPckInspProcess</Col>
+            <Col id="URL">his::sup/checkup/batchPckInspProcess.do</Col>
+            <Col id="outData"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData">dsInsp=dsPckInspU:U</Col>
+            <Col id="argument"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findExChoInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findExChoInspList.do</Col>
+            <Col id="outData">dsInsp=dsInsp</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchChoInspProcess</Col>
+            <Col id="URL">his::sup/checkup/batchChoInspProcess.do</Col>
+            <Col id="inData">dsChoInsp=dsPckInspU:U</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="outData"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dlPckInsp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+          <Column id="ocsCd" type="STRING" size="256"/>
+          <Column id="ocsNm" type="STRING" size="256"/>
+          <Column id="rsltDeptCd" type="STRING" size="256"/>
+          <Column id="rsltDeptNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="ocsDivCd" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">SC031</Col>
+            <Col id="dsName">dsGenderCd</Col>
+          </Row>
+          <Row>
+            <Col id="dsName">dsInspDivCd</Col>
+            <Col id="code">SC049</Col>
+          </Row>
+          <Row>
+            <Col id="code">SC035</Col>
+            <Col id="dsName">dsOcsDivCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGenderCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsUseYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Y</Col>
+            <Col id="value">사용</Col>
+          </Row>
+          <Row>
+            <Col id="code">N</Col>
+            <Col id="value">미사용</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPckInspU" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="false" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dlPckInsp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+          <Column id="ocsCd" type="STRING" size="256"/>
+          <Column id="ocsNm" type="STRING" size="256"/>
+          <Column id="rsltDeptCd" type="STRING" size="256"/>
+          <Column id="rsltDeptNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="ocsDivCd" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOcsDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsInspDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 종합검진 검사 패키지별 검사 추가 시 도움창								*
+*                                                                               *
+* @Path		    종합검진 - 기초정보관리 - 패키지관리 - 패키지 검사추가  	*
+* @Description 	종합검진 패키지별 검사 추가 시 팝업    	    				*
+* 																				*
+*																				*
+* @Author	      						                                		*
+* 									                                            *
+* Created on 2015. 05. 31.                             		                    *
+*									                                            *
+********************************************************************************/
+
+// 공통 스크립트
+include "scripts::commonScripts.xjs"; 
+
+// 공통 변수
+var parentId
+this.SC_PckInspPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+	parentId = this.opener.name;
+	
+	if(parentId =="SC_PckMgtForm")
+	{
+		if(!this.gfnIsNull(this.parent.param))									
+		{	
+			var pckCd = this.parent.param;
+			var useYn = 'Y';
+			var argument = 'pckCd='+pckCd+' useYn='+useYn;
+			var row = this.dsService.findRow('serviceID' , "findExPckInspList");
+			this.dsService.setColumn(row, "argument", argument);
+			
+			this.gfnService("findExPckInspList",false);
+		}
+	}
+	else if(parentId =="SC_RsvtMgtForm"||parentId == "SC_ReceiptMgtForm")
+	{
+
+		var useYn = 'Y';
+		var argument = 'useYn='+useYn;
+		var row = this.dsService.findRow('serviceID' , "findExChoInspList");
+		this.dsService.setColumn(row, "argument", argument);
+		
+		this.gfnService("findExChoInspList",false);
+		
+
+	}
+	
+}
+
+
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+]]></Script>
+  </Form>
+</FDL>
