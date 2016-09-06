@@ -35,6 +35,7 @@
       
     <!-- 진료지원 -->
     <package name="com.seoulit.erp47.sup.checkup.to"/>  
+    <package name="com.seoulit.erp47.sup.nutritive.to"/>  
 
 	<!-- 원무 -->
 	
