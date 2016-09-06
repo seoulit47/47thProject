@@ -26,7 +26,7 @@
 	<package name="com.seoulit.erp47.hrs.guntae.to" />			<!-- 근태관리 -->
       
     <!-- 회계 -->
-	<package name="com.seoul.his.acc.vat.to" />					<!-- 부가가치세 -->
+	<package name="com.seoulit.erp47.acc.vat.to" />				<!-- 부가가치세 -->
 
     <!-- 원무 -->
       
@@ -39,7 +39,7 @@
 	
 	
 	<!-- 진료지원 -->
-		
+	<package name="com.seoulit.erp47.sup.nutritive.to"/>		<!-- 식품관리 -->	
      
     <!-- 진료처방 -->
   

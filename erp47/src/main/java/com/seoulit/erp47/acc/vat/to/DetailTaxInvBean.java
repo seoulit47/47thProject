@@ -1,4 +1,4 @@
-package com.seoulit.erp47.sup.vat.to;
+package com.seoulit.erp47.acc.vat.to;
 
 import com.seoulit.erp47.common.annotation.Dataset;
 import com.seoulit.erp47.common.to.BaseBean;
