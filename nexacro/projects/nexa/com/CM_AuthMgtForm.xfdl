@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
@@ -93,3 +94,35 @@
     <Script type="xscript5.0"><![CDATA[]]></Script>
   </Form>
 </FDL>
+=======
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CM_AuthMgtForm" classname="CM_AuthMgtForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Button id="testBtn" taborder="0" left="4.69%" top="80" right="86.52%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchBtn" onclick="testBtn_onclick" cssclass="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "scripts::test.xjs";
+
+this.testBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert("hello world");
+	
+	this.transaction(
+		"testFunc",
+		"http://localhost:8282/erp47/com/authCheck.do",
+		"",
+		"",
+		"",
+		"zzz"
+	);
+}
+
+this.zzz = function(a,b,c){
+	alert("zzz");
+}]]></Script>
+  </Form>
+</FDL>
+>>>>>>> b83f74f31bb56753b4c266cfd24ee968d76a6082

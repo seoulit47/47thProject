@@ -3,8 +3,8 @@
 공통 트랜잭션관리
 @Path          scripts::commonTransaction.xjs
 @Description    서비스ID 입력으로 트랜잭션 수행
-@Author            임행섭
-@Create         2016. 5. 26.
+@Author            김형섭
+@Create         2016. 09. 01.
 ********************************************************************************/
 
 

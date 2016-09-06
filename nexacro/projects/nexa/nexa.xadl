@@ -2,7 +2,7 @@
 <ADL version="1.2">
   <TypeDefinition url="default_typedef.xml"/>
   <GlobalVariables url="globalvars.xml"/>
-  <Application id="nexa" codepage="utf-8" language="Korean" loginformurl="" loginformstyle="" windowopeneffect="" windowcloseeffect="" version="" tracemode="" themeid="default.xtheme">
+  <Application id="nexa" codepage="utf-8" language="Korean" loginformurl="" loginformstyle="" windowopeneffect="" windowcloseeffect="" version="" tracemode="" themeid="default.xtheme" onload="application_onload">
     <Layout>
       <MainFrame id="mainframe" title="maintitle" defaultfont="" resizable="true" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1260" height="965" titletext="서울IT병원프로젝트">
         <VFrameSet id="frameSet" separatesize="50,50,*,50">
@@ -17,4 +17,13 @@
     </Layout>
     <ScreenInfo/>
   </Application>
+  <Script type="xscript5.0"><![CDATA[this.application_onload = function(obj:Application, e:nexacro.LoadEventInfo)
+{
+	var loginFrame = new ChildFrame();
+	
+	loginFrame.init("LOGIN","absolute", 400, 300, 536, 376,null,null,"com::CM_LoginForm.xfdl");
+	loginFrame.set_openalign("center middle");
+	loginFrame.showModal("LOGIN");
+}
+]]></Script>
 </ADL>

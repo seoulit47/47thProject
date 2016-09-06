@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.com.base.dao.CodeDAO">
+<!-- mapper의 namespace는  Interface인  실제 DAO의 경로로 설정한다. -->
+<cache flushInterval="86400000" eviction="LRU" />
+<!-- <resultMap type="CodeBean" id="resultCode">
+		
+		<result column="DETAIL_CODE" jdbcType="VARCHAR" property="detailCode"/>
+</resultMap> -->
+
+    <select id="findCodeList" resultType="CodeBean" parameterType="map">
+        SELECT
+            DETAIL_CODE as detailCode,
+            CODE as code,
+            CODE_NAME as codeName,
+            DETAIL_CODE_NAME as detailCodeName,
+            REG_ID as regId,
+            REG_IP as regIp,
+            MODIYN as modiyn,
+            USE_YN as useYn,
+            EDIT_IP as editIp,
+            EDIT_ID as editId,
+            SUB_CODE as subCode		
+        FROM 
+            CM_CODE
+        WHERE
+            SUB_CODE = #{subCode}
+       <if test="code != null">
+         AND CODE = #{code}
+       </if>
+       <if test="codeName!=null">
+         AND CODE_NAME LIKE '%' || #{codeName} || '%'
+        
+        </if> 
+        <if test="use != null">
+        AND USE_YN =#{use}  
+        </if>
+  		ORDER BY 
+            DETAIL_CODE
+ </select>
+ 
+ 
+    
+    
+    <select id="findCode" parameterType="map" resultType="CodeNmBean">
+    
+    	SELECT DISTINCT CODE 
+    	FROM CM_CODE 
+    	WHERE SUB_CODE=#{subCode}
+    	ORDER BY CODE
+    
+    </select>
+    
+    
+    <insert id="insertCode" parameterType="CodeBean">
+		INSERT INTO
+            CM_CODE(
+                DETAIL_CODE,
+                EDIT_IP,
+                EDIT_ID,
+                USE_YN,
+                MODIYN,
+                REG_IP,
+                REG_ID,
+                CODE,
+                SUB_CODE,
+                CODE_NAME,
+                DETAIL_CODE_NAME
+            )VALUES(
+                #{detailCode},
+                #{editIp},
+                #{editId},
+                #{useYn},
+                #{modiyn},
+                #{regIp},
+                #{regId},
+                #{code},
+                #{subCode},
+                #{codeName},
+                #{detailCodeName}
+            
+            
+            )
+
+    
+    </insert>
+    
+    <delete id="deleteCode" parameterType="CodeBean">
+    
+    	DELETE FROM CM_CODE 
+    	WHERE
+    	DETAIL_CODE=#{detailCode}
+    	AND 
+    	CODE=#{code}
+    
+    </delete>
+    
+    <update id="updateCode" parameterType="CodeBean">
+    
+    	UPDATE CM_CODE 
+    	SET  
+    	        DETAIL_CODE=#{detailCode},
+                EDIT_IP=#{editIp},
+                EDIT_ID=#{editId},
+                USE_YN=#{useYn},
+                MODIYN=#{modiyn},
+                REG_IP=#{regIp},
+                REG_ID=#{regId},
+                CODE=#{code},
+                SUB_CODE=#{subCode},
+                CODE_NAME=#{codeName},
+                DETAIL_CODE_NAME=#{detailCodeName}
+    	WHERE DETAIL_CODE=#{detailCode}
+    	AND CODE=#{code}
+    </update>
+    
+    
+  </mapper>

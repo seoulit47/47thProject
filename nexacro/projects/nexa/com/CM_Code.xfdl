@@ -16,7 +16,7 @@
         <Static id="subCodeStc03" taborder="5" text="코드명" onclick="subCodeStc_onclick" left="45.31%" top="67" right="47.66%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="codeNameEdit" taborder="6" left="52.93%" top="68" right="35.84%" height="30"/>
         <Static id="subCodeStc04" taborder="7" text="사용여부" onclick="subCodeStc_onclick" left="66.02%" top="67" right="26.95%" height="27" style="background:salmon;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Grid id="Grid00" taborder="9" useinputpanel="false" left="2.25%" top="103" right="2.64%" height="628" autofittype="col" binddataset="dsCode">
+        <Grid id="codeGrid" taborder="9" useinputpanel="false" left="2.25%" top="103" right="2.64%" height="628" autofittype="col" binddataset="dsCode">
           <Formats>
             <Format id="default">
               <Columns>
@@ -48,23 +48,24 @@
               <Band id="body">
                 <Cell text="bind:subCode"/>
                 <Cell col="1" text="bind:code"/>
-                <Cell col="2" text="bind:detailCode"/>
-                <Cell col="3" text="bind:codeName"/>
-                <Cell col="4" text="bind:detailCodeName"/>
+                <Cell col="2" displaytype="text" edittype="text" text="bind:detailCode"/>
+                <Cell col="3" displaytype="text" edittype="text" text="bind:codeName"/>
+                <Cell col="4" displaytype="text" edittype="text" text="bind:detailCodeName"/>
                 <Cell col="5" text="bind:regId"/>
                 <Cell col="6" text="bind:regIp"/>
-                <Cell col="7" text="bind:modiyn"/>
-                <Cell col="8" text="bind:useYn"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:modiyn" combodataset="dsUse" combocodecol="value" combodatacol="value"/>
+                <Cell col="8" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="dsUse" combocodecol="value" combodatacol="value"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="DelBtn03" taborder="10" onclick="DelBtn_onclick" cssclass="DelBtn" left="78.22%" top="14" right="12.99%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="DelBtn00" taborder="11" onclick="DelBtn_onclick" cssclass="DelBtn" left="69.53%" top="14" right="21.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="DelBtn05" taborder="12" onclick="DelBtn_onclick" cssclass="DelBtn" left="86.82%" top="14" right="4.69%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="searchCodeBtn" taborder="13" onclick="DelBtn_onclick" cssclass="searchBtn" left="60.74%" top="14" right="30.47%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Edit id="Edit00" taborder="14" left="9.18%" top="68" right="80.27%" height="27"/>
-        <Edit id="Edit01" taborder="15" left="30.47%" top="69" right="58.98%" height="27"/>
+        <Button id="addBtn" taborder="10" cssclass="DelBtn" left="80.57%" top="14" right="10.64%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addBtn_onclick"/>
+        <Button id="DelBtn00" taborder="11" cssclass="DelBtn" left="71.88%" top="14" right="19.34%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="DelBtn00_onclick"/>
+        <Button id="saveBtn" taborder="12" cssclass="DelBtn" left="89.16%" top="14" right="2.34%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="saveBtn_onclick"/>
+        <Button id="searchCodeBtn" taborder="13" onclick="DelBtn_onclick" cssclass="searchBtn" left="63.09%" top="14" right="28.13%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Combo id="subcombo" taborder="16" left="9.18%" top="66" right="78.81%" height="30" innerdataset="@dsSubCode" codecolumn="subcode" datacolumn="subcode" index="0" value="GD" text="GD" onitemclick="subcombo_onitemclick"/>
+        <Combo id="codecombo" taborder="17" left="31.05%" top="66" right="56.93%" height="30" innerdataset="@dsCodeNm" datacolumn="code" codecolumn="code"/>
+        <Radio id="useRadio" taborder="18" left="73.83%" top="58" right="17.97%" height="50" innerdataset="@dsUse" codecolumn="value" datacolumn="value" columncount="2"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -101,7 +102,81 @@
             <Col id="callbackFunc">findCodeListCallback</Col>
             <Col id="outData">dsCode=dsCode</Col>
           </Row>
+          <Row>
+            <Col id="serviceID">findCode</Col>
+            <Col id="URL">erp47::com/findCode.do</Col>
+            <Col id="outData">dsCodeNm=dsCodeNm</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchCode</Col>
+            <Col id="URL">erp47::com/batchCode.do</Col>
+            <Col id="inData">dsCode=dsCode:u</Col>
+          </Row>
         </Rows>
+      </Dataset>
+      <Dataset id="dsSubCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="subcode" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="subcode">GD</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">HS</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GF</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">SP</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">AC</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">MD</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GA</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GP</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GB</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">GS</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">SC</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">CM</Col>
+          </Row>
+          <Row>
+            <Col id="subcode">CL</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsUse" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCodeNm" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+        </ColumnInfo>
       </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
@@ -118,18 +193,17 @@ include "scripts::commonScripts.xjs";
 
 
 
-//코드조회 
-
+//조회버튼 클릭시 발생하는 이벤트
 this.DelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	
 		
-		var subCode = this.Edit00.value;
-		var code = this.Edit01.value;
+		var subCode = this.subcombo.text;
+		var code = this.codecombo.text;
 		var codeName =  this.codeNameEdit.value;
+		var use = this.useRadio.value;
 	
-	
-		var argument = "subCode='"+subCode+"' code='"+code+"' codeName='"+codeName+"'";
+		var argument = "subCode='"+subCode+"' code='"+code+"' codeName='"+codeName+"' use='"+use+"' ";
 	
 	
 	alert(argument);
@@ -139,6 +213,44 @@ this.DelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	//alert(this.dsService.getColumn(0,4));
 	
 	this.gfnService("findCodeList",true);
+	
+}
+
+
+//그룹코드 선택시 발생하는 이벤트
+this.subcombo_onitemclick = function(obj:Combo, e:nexacro.ListBoxClickEventInfo)
+{
+	
+		this.dsService.setColumn(1,4,"subCode="+e.itemtext);  //transaction에 넘길 변수값 셋팅.
+		this.gfnService("findCode");
+}
+
+
+
+//등록버튼 클릭시 발생하는 이벤트
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+		this.dsCode.addRow();
+		this.dsCode.setColumn(this.codeGrid.currentrow,"subCode",this.subcombo.text);
+		this.dsCode.setColumn(this.codeGrid.currentrow,"code",this.codecombo.text);
+		
+		
+}
+
+
+//저장버튼 클릭시 발생하는 이벤트
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		this.gfnService("batchCode");
+		
+}
+
+
+//삭제버튼 클릭시 발생하는 이벤트.
+this.DelBtn00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		this.dsCode.deleteRow(this.codeGrid.currentrow);
 	
 }
 ]]></Script>

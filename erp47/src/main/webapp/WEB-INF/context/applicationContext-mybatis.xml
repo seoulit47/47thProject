@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-
+<!--  mybatis 설정을 위한 bean태그  "org.mybatis.spring.SqlSessionFactoryBean"  -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
         p:dataSource-ref="dataSource" 
         p:mapperLocations="classpath:com/seoulit/erp47/**/dao/sqlMap/*.xml"
@@ -20,7 +20,9 @@
         p:mapperLocations="classpath:com/seoulit/post/dao/sqlMap/*.xml"
         p:configLocation="/WEB-INF/config/mybatisConfig.xml" />
 
-   <!--  interface로 Impl객체 생성 -->
+
+
+   <!--  interface로 Impl객체 생성  DAO 경로 잘 확인해서 명시하기. -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.seoulit.erp47.**.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />

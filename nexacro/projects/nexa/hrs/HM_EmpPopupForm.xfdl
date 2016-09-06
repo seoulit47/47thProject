@@ -34,8 +34,8 @@
           </Formats>
         </Grid>
         <Button id="searchBtn" taborder="2" onclick="searchBtn_onclick" cssclass="DelBtn" left="71.66%" top="61" right="7.26%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Edit id="searchEd" taborder="3" left="10.77%" top="61" right="30.21%" height="23"/>
-        <Radio id="empRadio" taborder="4" columncount="2" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="Y" onitemclick="Radio00_onitemclick" left="11.94%" top="84" right="53.16%" height="25" style="font:antialias 9 HY수평선B;border:0px none #000000ff ;bordertype:round 3 3 ;align:center middle;" class="AreaRadio">
+        <Edit id="searchEd" taborder="3" left="10.77%" top="61" right="30.21%" height="23" oneditclick="searchEd_oneditclick" onchar="searchEd_onchar"/>
+        <Radio id="empRadio" taborder="4" columncount="2" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="Y" left="11.94%" top="84" right="53.16%" height="25" style="font:antialias 9 HY수평선B;border:0px none #000000ff ;bordertype:round 3 3 ;align:center middle;" class="AreaRadio">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -139,16 +139,19 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	trace(this.dsService.saveXML());
 	this.gfnService("empList",true);
 	
-// 	this.transaction(
-//  		"findEmpList",
-// 		"erp47::hrs/emp/findEmpList.do",
-// 		"",
-// 		"dsHmEmp=gdsEmp",
-// 		"",
-// 		""
-// 	)
 }
 
+
+
+this.empGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	
+	var empNo=this.dsHmEmp.getColumn(e.row,"empNo");
+	var empNm=this.dsHmEmp.getColumn(e.row,"empNm");
+	this.opener.setEmpInfo(empNo,empNm);
+	this.close();
+	
+}
 
 ]]></Script>
   </Form>
