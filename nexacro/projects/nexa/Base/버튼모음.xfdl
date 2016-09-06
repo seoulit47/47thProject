@@ -44,7 +44,7 @@
         <Button id="DelBtn39" taborder="37" onclick="DelBtn_onclick" cssclass="DelBtn" left="16.21%" top="392" right="73.05%" height="32" style="background:@gradation URL('img::receiptXBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Combo id="Combo00" taborder="38" text="Combo00" left="58.4%" top="106" right="29.59%" height="30"/>
         <Edit id="Edit00" taborder="39" left="58.4%" top="148" right="30.37%" height="30"/>
-        <MaskEdit id="MaskEdit00" taborder="40" left="58.4%" top="195" right="34.38%" height="30"/>
+        <MaskEdit id="MaskEdit00" taborder="40" left="58.4%" top="195" right="34.38%" height="30" style="align:center middle;"/>
         <Calendar id="Calendar00" taborder="41" autoskip="true" type="spin" left="58.4%" top="250" right="29.59%" height="30"/>
         <Calendar id="Calendar01" taborder="42" autoskip="true" left="58.4%" top="306" right="29.59%" height="30" style="padding:0 0 0 0;"/>
         <Grid id="Grid00" taborder="43" useinputpanel="false" autofittype="col" left="56.25%" top="360" right="22.17%" height="287">

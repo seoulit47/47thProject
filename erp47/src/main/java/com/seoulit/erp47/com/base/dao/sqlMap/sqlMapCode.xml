@@ -8,9 +8,7 @@
 		<result column="DETAIL_CODE" jdbcType="VARCHAR" property="detailCode"/>
 </resultMap> -->
 
-    <select id="findCodeList" 
-     resultType="CodeBean"
-     parameterType="map">
+    <select id="findCodeList" resultType="CodeBean" parameterType="map">
         SELECT
             DETAIL_CODE as detailCode,
             CODE as code,
@@ -53,6 +51,68 @@
     
     </select>
     
+    
+    <insert id="insertCode" parameterType="CodeBean">
+		INSERT INTO
+            CM_CODE(
+                DETAIL_CODE,
+                EDIT_IP,
+                EDIT_ID,
+                USE_YN,
+                MODIYN,
+                REG_IP,
+                REG_ID,
+                CODE,
+                SUB_CODE,
+                CODE_NAME,
+                DETAIL_CODE_NAME
+            )VALUES(
+                #{detailCode},
+                #{editIp},
+                #{editId},
+                #{useYn},
+                #{modiyn},
+                #{regIp},
+                #{regId},
+                #{code},
+                #{subCode},
+                #{codeName},
+                #{detailCodeName}
+            
+            
+            )
+
+    
+    </insert>
+    
+    <delete id="deleteCode" parameterType="CodeBean">
+    
+    	DELETE FROM CM_CODE 
+    	WHERE
+    	DETAIL_CODE=#{detailCode}
+    	AND 
+    	CODE=#{code}
+    
+    </delete>
+    
+    <update id="updateCode" parameterType="CodeBean">
+    
+    	UPDATE CM_CODE 
+    	SET  
+    	        DETAIL_CODE=#{detailCode},
+                EDIT_IP=#{editIp},
+                EDIT_ID=#{editId},
+                USE_YN=#{useYn},
+                MODIYN=#{modiyn},
+                REG_IP=#{regIp},
+                REG_ID=#{regId},
+                CODE=#{code},
+                SUB_CODE=#{subCode},
+                CODE_NAME=#{codeName},
+                DETAIL_CODE_NAME=#{detailCodeName}
+    	WHERE DETAIL_CODE=#{detailCode}
+    	AND CODE=#{code}
+    </update>
     
     
   </mapper>

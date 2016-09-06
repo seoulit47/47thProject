@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_RsvtMgtForm" classname="SC_RsvtMgtForm" left="0" top="0" width="1250" height="768" titletext="종합검진 예약관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="-33.6%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="1" text="종합검진 예약관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div06" taborder="2" left="35.84%" top="658" right="2.4%" height="46" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="Div03" taborder="3" left="35.84%" top="63" right="2.4%" height="355" style="background:white;border:1 solid gainsboro ;">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Grid id="inspGrid" taborder="4" binddataset="dsInsp" useinputpanel="false" autofittype="col" left="35.84%" top="462" right="44%" height="191">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="141"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="검사목록"/>
+                <Cell row="1" text="검사코드"/>
+                <Cell row="1" col="1" text="검사명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:inspCd"/>
+                <Cell col="1" text="bind:inspNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="choInspGrid" taborder="5" binddataset="dsChoInsp" useinputpanel="false" autofittype="col" oncelldblclick="choInspGrid_oncelldblclick" onenterdown="choInspGrid_onenterdown" left="56.8%" top="462" right="2.4%" height="189">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="56"/>
+                <Column size="158"/>
+                <Column size="38"/>
+                <Column size="65"/>
+                <Column size="85"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="5" text="선택검사 목록"/>
+                <Cell row="1" text="코드"/>
+                <Cell row="1" col="1" text="검사명"/>
+                <Cell row="1" col="2" text="수량"/>
+                <Cell row="1" col="3" text="금액"/>
+                <Cell row="1" col="4" text="검사예정일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:inspCd"/>
+                <Cell col="1" text="bind:inspNm"/>
+                <Cell col="2" displaytype="number" edittype="none" text="bind:qnt"/>
+                <Cell col="3" displaytype="number" style="align:right;padding:0 3 0 0;" text="bind:sumAmt" expr="expr:qnt*amt"/>
+                <Cell col="4" edittype="none" text="bind:inspPlnDate" mask="####-##-##"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="합              계"/>
+                <Cell col="2"/>
+                <Cell col="3" displaytype="number" style="align:right;padding:0 3 0 0;" expr="expr:dataset.getSum('qnt*amt')"/>
+                <Cell col="4"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="rsvtGrid" taborder="6" binddataset="dsRsvt" useinputpanel="false" autofittype="col" left="2.24%" top="99" right="65.12%" height="605">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="89"/>
+                <Column size="72"/>
+                <Column size="69"/>
+                <Column size="39"/>
+                <Column size="78"/>
+                <Column size="63"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="6" text="예약자 목록"/>
+                <Cell row="1" text="검진예정일"/>
+                <Cell row="1" col="1" text="예약번호"/>
+                <Cell row="1" col="2" text="검진자명"/>
+                <Cell row="1" col="3" text="성별"/>
+                <Cell row="1" col="4" text="검진시간"/>
+                <Cell row="1" col="5" text="예약취소"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:inspPlnDate"/>
+                <Cell col="1" text="bind:rsvtNo"/>
+                <Cell col="2" text="bind:patNm"/>
+                <Cell col="3" text="bind:gender"/>
+                <Cell col="4" displaytype="normal" text="bind:inspPlnTime" mask="##:##"/>
+                <Cell col="5" text="bind:cancelYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Calendar id="inspPlnDateCal" taborder="7" expr="Date()" dateformat="yyyy-MM-dd" left="11.84%" top="64" right="74.72%" height="27"/>
+        <Div id="Div01" taborder="8" text="검진예정일" left="2.32%" top="63" right="89.04%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Button id="searchBtn" taborder="9" onclick="searchBtn_onclick" left="27.76%" top="62" right="65.04%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+        <Div id="compBox" taborder="10" left="35.84%" top="75" right="2.72%" height="352" style="background:@gradation;border:0 solid #9f9f9fb3 ;" enable="false">
+          <Layouts>
+            <Layout width="768" height="339">
+              <Edit id="rsvtDateEd" taborder="234" readonly="true" left="13.93%" top="15" right="68.88%" height="30" style="border:1 solid #d5d5d5ff ; :disabled {align:center middle;}" compCheck="EsEd"/>
+              <Edit id="regNo1Ed" taborder="235" readonly="true" left="13.93%" top="123" right="73.31%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="patNmEd" taborder="236" left="13.93%" top="87" right="73.31%" height="30" compCheck="EsEd"/>
+              <Edit id="patNoEd" taborder="237" readonly="true" left="13.93%" top="51" right="68.88%" height="30" style="border:1 solid #d5d5d5ff ;" compCheck="EsEd"/>
+              <Edit id="ageEd" taborder="238" left="35.81%" top="87" right="56.38%" height="30"/>
+              <Edit id="pckCdEd" taborder="239" readonly="true" left="56.9%" top="123" right="31.12%" height="30" style="border:1 solid #d5d5d5ff ;" compCheck="EsEd"/>
+              <Edit id="reducCdEd" taborder="240" readonly="true" left="56.9%" top="159" right="31.12%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="reducNmEd" taborder="241" readonly="true" left="69.53%" top="159" right="6.77%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="pckNmEd" taborder="242" readonly="true" left="69.53%" top="123" right="6.64%" height="30" style="border:1 solid #d5d5d5ff ;" compCheck="EsEd"/>
+              <Edit id="rsvtNoEd" taborder="243" left="56.9%" top="15" right="23.96%" height="30" compCheck="EsEd"/>
+              <Calendar id="inspDateCal" taborder="244" left="56.9%" top="87" right="23.96%" height="30" compCheck="EsCal"/>
+              <Edit id="smsEd" taborder="245" readonly="true" left="13.93%" top="159" right="56.51%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="aplMan" taborder="246" left="13.93%" top="195" right="76.3%" height="30"/>
+              <Edit id="rlEd" taborder="247" imemode="alpha" left="35.16%" top="195" right="56.38%" height="30"/>
+              <Edit id="rsvtRespEd" taborder="248" left="56.9%" top="49" right="23.96%" height="30"/>
+              <Edit id="phoneEd" taborder="249" left="13.93%" top="231" right="56.51%" height="30"/>
+              <Edit id="payManEd" taborder="250" left="84.51%" top="195" right="2.34%" height="30"/>
+              <TextArea id="memoArea" taborder="251" left="13.93%" top="269" right="56.25%" height="64"/>
+              <Edit id="regNo2Ed" taborder="252" readonly="true" left="30.86%" top="123" right="56.38%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Static id="Static01" taborder="254" text="-" left="27.08%" top="123" right="69.92%" height="28" style="background:transparent;border:0px solid transparent transparent;align:center middle;"/>
+              <Combo id="genderCombo" taborder="255" innerdataset="dsGenderCd" codecolumn="code" datacolumn="value" left="27.73%" top="87" right="65.1%" height="30" class="AreaCombo"/>
+              <MaskEdit id="basicInspAmtEd" taborder="256" mask="###,###" left="56.9%" top="195" right="27.47%" height="30" style="padding:0 5 0 0;align:right;"/>
+              <MaskEdit id="reducAmtEd" taborder="257" mask="###,###" left="56.9%" top="231" right="27.47%" height="30" style="padding:0 5 0 0;align:right;"/>
+              <MaskEdit id="basicInspSumAmtEd" taborder="258" mask="###,###" left="56.9%" top="303" right="23.44%" height="30" style="padding:0 5 0 0;align:right;"/>
+              <Div id="Div07" taborder="259" text="신청인" left="2.73%" top="195" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div00" taborder="260" text="연락처" left="2.73%" top="231" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div01" taborder="261" text="주민번호" left="2.73%" top="123" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div02" taborder="262" text="검진자명*" left="2.73%" top="87" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div03" taborder="263" text="등록번호*" left="2.73%" top="51" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div05" taborder="264" text="예약일자*" left="2.73%" top="15" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div06" taborder="265" text="예약번호*" left="45.7%" top="15" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div08" taborder="266" text="예약담당" left="45.7%" top="51" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div09" taborder="267" text="검진일시*" left="45.7%" top="87" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div10" taborder="268" text="패키지*" left="45.7%" top="123" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div11" taborder="269" text="입금자" left="73.7%" top="195" right="16.41%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div12" taborder="270" text="감면구분" left="45.7%" top="159" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div13" taborder="271" text="기본금액" left="45.7%" top="195" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div14" taborder="272" text="감면금액" left="45.7%" top="231" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div16" taborder="273" text="총기본금액" left="45.7%" top="303" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div17" taborder="274" text="SMS" left="2.73%" top="159" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div18" taborder="275" text="메모" left="2.73%" top="267" right="87.37%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div19" taborder="276" text="관계" left="24.35%" top="195" right="65.76%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Button id="pckPopBtn" taborder="277" onclick="compBox_pckPopBtn_onclick" left="93.75%" top="123" right="2.08%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="reducPopBtn" taborder="278" onclick="compBox_reducPopBtn_onclick" left="93.75%" top="159" right="2.08%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="patPopupBtn" taborder="279" onclick="compBox_patPopupBtn_onclick" left="31.9%" top="50" right="63.93%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Div id="Div04" taborder="280" text="취소여부" left="73.7%" top="231" right="16.41%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="cancelEd" taborder="281" left="84.51%" top="231" right="2.34%" height="30"/>
+              <CheckBox id="cancelYnChk" taborder="282" value="N" truevalue="Y" falsevalue="N" readonly="true" left="90.1%" top="229" right="7.03%" height="32"/>
+              <MaskEdit id="rsvtAmtEd" taborder="284" mask="###,###" left="56.9%" top="267" right="23.44%" height="30" style="padding:0 5 0 0;align:right;"/>
+              <Div id="Div15" taborder="285" text="예약금액" left="45.7%" top="267" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <MaskEdit id="MaskEdit00" taborder="286" left="32.03%" top="15" right="56.25%" height="30" mask="##:##" readonly="true" style=":disabled {align:center middle;}" type="string"/>
+              <MaskEdit id="inspTimeMask" taborder="287" readonly="true" type="string" mask="##:##" left="76.82%" top="86" right="11.46%" height="32" style=":disabled {align:center middle;}"/>
+            </Layout>
+          </Layouts>
+          <InitValue>
+            <Combo id="genderCombo" class="AreaCombo"/>
+          </InitValue>
+        </Div>
+        <Div id="btnBox" taborder="11" left="74.4%" top="415" right="1.52%" height="57">
+          <Layouts>
+            <Layout width="301" height="57">
+              <Button id="addBtn" taborder="1" onclick="btnBox_addBtn_onclick" cssclass="DelBtn" left="34.88%" top="9" right="35.22%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="delBtn" taborder="2" onclick="btnBox_delBtn_onclick" left="66.78%" top="9" right="3.32%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div02" taborder="12" text="기본검사금액" left="36.64%" top="666" right="54.72%" height="30" style="background:rosybrown;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Div id="Div04" taborder="13" text="총수납금액" left="77.44%" top="666" right="13.92%" height="30" style="background:rosybrown;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Div id="Div05" taborder="14" text="선택검사금액" left="57.12%" top="666" right="34.24%" height="30" style="background:rosybrown;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Div id="btnBox2" taborder="15" left="53.12%" top="708" right="1.52%" height="52">
+          <Layouts>
+            <Layout width="662" height="57">
+              <Button id="receBtn" taborder="15" onclick="btnBox2_receBtn_onclick" left="47.62%" top="8" right="36.51%" height="32" style="background:@gradation URL('img::storeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="modiBtn" taborder="16" onclick="btnBox2_modiBtn_onclick" left="64.9%" top="8" right="19.22%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="saveBtn" taborder="17" onclick="btnBox2_saveBtn_onclick" left="82.19%" top="8" right="1.94%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="addRsvtBtn" taborder="18" onclick="btnBox2_addRsvtBtn_onclick" left="6.7%" top="8" right="77.43%" height="32" style="background:@gradation URL('img::reserveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="cancelBtn" taborder="19" onclick="btnBox2_cancelBtn_onclick" left="23.63%" top="8" right="56.97%" height="32" style="background:@gradation URL('img::reserveXBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <MaskEdit id="basicInspSumAmtEd" taborder="16" mask="###,###" left="45.6%" top="666" right="43.76%" height="30"/>
+        <MaskEdit id="inspSumAmtEd" taborder="17" mask="###,###" left="86.48%" top="666" right="2.88%" height="30"/>
+        <MaskEdit id="choInspAmtEd" taborder="18" mask="###,###" left="66.16%" top="666" right="23.6%" height="30"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item30" compid="basicInspSumAmtEd" propid="value" datasetid="dsRsvt" columnid="basicInspSumAmt"/>
+      <BindItem id="item31" compid="inspSumAmtEd" propid="value" datasetid="dsRsvt" columnid="inspSumAmt"/>
+      <BindItem id="item32" compid="choInspAmtEd" propid="value" datasetid="dsRsvt" columnid="choInspAmt"/>
+      <BindItem id="item0" compid="compBox.rsvtDateEd" propid="value" datasetid="dsRsvt" columnid="rsvtDate"/>
+      <BindItem id="item2" compid="compBox.rsvtNoEd" propid="value" datasetid="dsRsvt" columnid="rsvtNo"/>
+      <BindItem id="item3" compid="compBox.patNoEd" propid="value" datasetid="dsRsvt" columnid="patNo"/>
+      <BindItem id="item4" compid="compBox.rsvtRespEd" propid="value" datasetid="dsRsvt" columnid="rsvtResp"/>
+      <BindItem id="item5" compid="compBox.patNmEd" propid="value" datasetid="dsRsvt" columnid="patNm"/>
+      <BindItem id="item6" compid="compBox.genderCombo" propid="value" datasetid="dsRsvt" columnid="gender"/>
+      <BindItem id="item7" compid="compBox.ageEd" propid="value" datasetid="dsRsvt" columnid="age"/>
+      <BindItem id="item8" compid="compBox.inspDateCal" propid="value" datasetid="dsRsvt" columnid="inspPlnDate"/>
+      <BindItem id="item1" compid="compBox.MaskEdit00" propid="value" datasetid="dsRsvt" columnid="rsvtTime"/>
+      <BindItem id="item9" compid="compBox.inspTimeMask" propid="value" datasetid="dsRsvt" columnid="inspPlnTime"/>
+      <BindItem id="item10" compid="compBox.regNo1Ed" propid="value" datasetid="dsRsvt" columnid="rrn1"/>
+      <BindItem id="item11" compid="compBox.regNo2Ed" propid="value" datasetid="dsRsvt" columnid="rrn2"/>
+      <BindItem id="item12" compid="compBox.pckCdEd" propid="value" datasetid="dsRsvt" columnid="pckCd"/>
+      <BindItem id="item13" compid="compBox.pckNmEd" propid="value" datasetid="dsRsvt" columnid="pckNm"/>
+      <BindItem id="item14" compid="compBox.smsEd" propid="value" datasetid="dsRsvt" columnid="sms"/>
+      <BindItem id="item15" compid="compBox.aplMan" propid="value" datasetid="dsRsvt" columnid="aplMan"/>
+      <BindItem id="item16" compid="compBox.rlEd" propid="value" datasetid="dsRsvt" columnid="rship"/>
+      <BindItem id="item17" compid="compBox.phoneEd" propid="value" datasetid="dsRsvt" columnid="aplManTel"/>
+      <BindItem id="item18" compid="compBox.memoArea" propid="value" datasetid="dsRsvt" columnid="memo"/>
+      <BindItem id="item19" compid="compBox.reducCdEd" propid="value" datasetid="dsRsvt" columnid="reducCd"/>
+      <BindItem id="item20" compid="compBox.reducNmEd" propid="value" datasetid="dsRsvt" columnid="reducNm"/>
+      <BindItem id="item21" compid="compBox.basicInspAmtEd" propid="value" datasetid="dsRsvt" columnid="basicInspAmt"/>
+      <BindItem id="item22" compid="compBox.payManEd" propid="value" datasetid="dsRsvt" columnid="payMan"/>
+      <BindItem id="item23" compid="compBox.reducAmtEd" propid="value" datasetid="dsRsvt" columnid="reducAmt"/>
+      <BindItem id="item25" compid="compBox.rsvtAmtEd" propid="value" datasetid="dsRsvt" columnid="rsvtAmt"/>
+      <BindItem id="item26" compid="compBox.basicInspSumAmtEd" propid="value" datasetid="dsRsvt" columnid="basicInspSumAmt"/>
+      <BindItem id="item27" compid="compBox.cancelYnChk" propid="value" datasetid="dsRsvt" columnid="cancelYn"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findRsvtList</Col>
+            <Col id="URL">erp47::sup/checkup/findRsvtList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsRsvt=dsRsvt</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findChoInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findChoInspList.do</Col>
+            <Col id="outData">dsInsp=dsInsp dsChoInsp=dsChoInsp</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPckInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findPckInspList.do</Col>
+            <Col id="outData">dsInsp=dsInsp</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchRsvtProcess</Col>
+            <Col id="URL">his::sup/checkup/batchRsvtProcess.do</Col>
+            <Col id="inData">dsRsvt=dsRsvt:U dsChoInsp=dsChoInsp:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPat</Col>
+            <Col id="URL">his::won/outPatMngnt/findPat.do</Col>
+            <Col id="outData">dsPat=dsPat</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">cancelRsvt</Col>
+            <Col id="URL">his::sup/checkup/cancelRsvt.do</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="outData"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsRsvt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsRsvt_onrowposchanged" canrowposchange="dsRsvt_canrowposchange">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="rsvtTime" type="STRING" size="256"/>
+          <Column id="inspPlnDate" type="STRING" size="256"/>
+          <Column id="inspPlnTime" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="sms" type="STRING" size="256"/>
+          <Column id="aplMan" type="STRING" size="256"/>
+          <Column id="aplManTel" type="STRING" size="256"/>
+          <Column id="rship" type="STRING" size="256"/>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="pckNm" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="reducCd" type="STRING" size="256"/>
+          <Column id="reducNm" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="basicInspSumAmt" type="STRING" size="256"/>
+          <Column id="payMan" type="STRING" size="256"/>
+          <Column id="rsvtResp" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGenderCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">남</Col>
+            <Col id="value">남</Col>
+          </Row>
+          <Row>
+            <Col id="code">여</Col>
+            <Col id="value">여</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[//공통 스크립트
+include "scripts::commonScripts.xjs";
+
+
+// 변수
+var rsvtNo; //예약번호
+var pckCd; //패키지코드
+var editFlag = false;
+var	addFlag = false;
+
+// 조회버튼
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var inspDate = this.inspPlnDateCal.value;
+	
+	if(!this.gfnIsNull(inspDate)){
+		var argument = 'inspPlnDate='+inspDate;
+		var row = this.dsService.findRow("serviceID","findRsvtList");
+		this.dsService.setColumn(row,"argument",argument);
+		this.gfnService("findRsvtList",false);
+		
+		this.choInspGrid.setCellProperty("Body", 2, "edittype", "none");
+		
+		editFlag = false;
+		addFlag = false;
+		
+		this.compBox.set_enable(false);
+		
+	}
+}
+
+this.dsRsvt_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	if(obj != null){
+		rsvtNo = obj.getColumn(e.newrow, "rsvtNo");
+		pckCd = obj.getColumn(e.newrow, "pckCd");
+	}else{
+		alert("예약번호가 없습니다");
+	}
+	
+	/*검사목록조회*/
+	if(rsvtNo != null){
+
+		var argument = 'pckCd='+pckCd;
+		var row = this.dsService.findRow('serviceID' , "findPckInspList");
+		this.dsService.setColumn(row, "argument", argument);					
+		this.gfnService("findPckInspList",false);
+		
+		argument = 'rsvtNo='+rsvtNo;
+		row = this.dsService.findRow('serviceID' , "findChoInspList");
+		this.dsService.setColumn(row, "argument", argument);
+		this.gfnService("findChoInspList",false);
+		
+		this.compBox.set_enable(false);
+		
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

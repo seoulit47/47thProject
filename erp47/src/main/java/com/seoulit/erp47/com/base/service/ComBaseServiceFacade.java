@@ -9,7 +9,7 @@ import com.seoulit.erp47.com.base.to.CodeBean;
 import com.seoulit.erp47.com.base.to.CodeNmBean;
 
 public interface ComBaseServiceFacade {
-    // 로그인
+   
 
     //코드조회
     public List<CodeBean> findCodeList(Map<String,String> argsMap);
@@ -17,8 +17,13 @@ public interface ComBaseServiceFacade {
   
     //subCode선택시  Code조회
     public List<CodeNmBean> findCode(Map<String,String> argsMap);
-
+    
+    // 로그인
     public Map<String, Object> login(Map<String, String> argsMap) throws IdNotFoundException, PwMissMatchException;
+   
     public Map<String, Object> checkAuth(Map<String, String> authMap) throws IdNotFoundException, PwMissMatchException; 
 
+    
+    //code 수젇,삭제,등록
+    public void  batchCode(List<CodeBean>batchCodeList);
 }
