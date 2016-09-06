@@ -30,6 +30,7 @@ public class NutritiveApplicationServiceImpl implements NutritiveApplicationServ
 
 	@Override /* 영양관리 음식 관리 - 조회 */
 	public List<FoodBean> findFoodList(Map<String, String> argsMap) {
+		System.out.println("selectFoodList"+ argsMap);
 		return foodDAO.selectFoodList(argsMap);
 	}
 

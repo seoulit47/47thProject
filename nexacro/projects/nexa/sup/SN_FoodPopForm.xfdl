@@ -52,7 +52,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">findFoodList</Col>
-            <Col id="URL">his::sup/nutritive/findFoodList.do</Col>
+            <Col id="URL">erp47::sup/nutritive/findFoodList.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsFood=dsFood</Col>
             <Col id="argument"/>
@@ -123,7 +123,7 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var argument = 'foodCd='+foodCd+' foodNm='+foodNm;
 	
 	var row = this.dsService.findRow("serviceID", "findFoodList");
-
+	//alert(row);
 	this.dsService.setColumn(row, "argument", argument);
 	
 	this.gfnService("findFoodList", false);
