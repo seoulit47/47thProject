@@ -34,19 +34,7 @@ public class PckController {
         SupCheckupServiceFacade supCheckupServiceFacade;
     
    
-    /* 종합검진 패키지관리 - 패키지 검사 조회 */
-    @RequestMapping("sup/checkup/findPckInspList.do")
-    public void findPckInspList(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-
-        PlatformData inData = (PlatformData) request.getAttribute("inData");
-        PlatformData outData = (PlatformData) request.getAttribute("outData");
-        
-        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-        
-        List<InspBean> pckInspList = supCheckupServiceFacade.findPckInspList(argsMap);
-        dataSetBeanMapper.beansToDataset(outData, pckInspList, InspBean.class);
-    }
+   
     
  
 }

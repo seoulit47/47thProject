@@ -293,6 +293,7 @@
             <Col id="callbackFunc">callBackFunc</Col>
             <Col id="outData"/>
           </Row>
+          <Row/>
         </Rows>
       </Dataset>
       <Dataset id="dsRsvt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsRsvt_onrowposchanged" canrowposchange="dsRsvt_canrowposchange">
@@ -352,9 +353,22 @@
           <Column id="inspNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsChoInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+          <Column id="qnt" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="inspPlnDate" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[//공통 스크립트
 include "scripts::commonScripts.xjs";
+include "scripts::wonScripts.xjs";
 
 
 // 변수
@@ -409,6 +423,17 @@ this.dsRsvt_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEven
 		this.compBox.set_enable(false);
 		
 	}
+}
+
+this.compBox_patPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPatPopup();
+}
+
+this.btnBox_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.gfnPopup("SC_PckInspPopForm","sup",param,"");
 }
 ]]></Script>
   </Form>

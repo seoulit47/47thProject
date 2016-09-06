@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript5.0"><![CDATA[
+/********************************************************************************
+인사공통 스크립트
+@Path		    scripts-hrsScripts	
+@Description 	인사공통 스크립트
+@Author	 		
+@Create         2016. 09. 05.      
+********************************************************************************/
+
+// 지급일 팝업
+this.hrsOpenPaydayDialog = function(belongYm, seq) {
+	application.open(
+		"paydaySubPopup",
+		"hrs::HS_PaydaySubForm.xfdl",
+		this.parent,
+		{belongYm:belongYm,codeSeq:seq},
+		"showtitlebar=true showstatusbar=false",
+		110, 110,
+		this
+	);	
+}
+
+//사원검색 팝업
+this.gfn_EmpPopup = function(hr){
+	application.open(
+		"empPopupForm",
+		"hrs::HM_EmpSearchPopup.xfdl",
+		this.parent,
+		{hrs:hr},
+		"showtitlebar=true showstatusbar=false",
+		110, 110,
+		this
+	);
+}]]></Script>

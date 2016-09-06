@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.checkup.service.SupCheckupServiceFacade;
+import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 
 /**
@@ -33,25 +34,30 @@ public class InspController {
     @Autowired
         SupCheckupServiceFacade supCheckupServiceFacade;
     
-    // 종합검진 선택검사관리 - 조회
-    @RequestMapping("sup/checkup/findChoInspList.do")
-    public void findChoInspList(HttpServletRequest request, HttpServletResponse response)
+    /* 종합검진 검사관리 - 검사목록 조회 */
+    @RequestMapping("sup/checkup/findPckInspList.do")
+    public void findPckInspList(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+        
+        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        
+        List<InspBean> inspList = supCheckupServiceFacade.findInspList(argsMap);
+        dataSetBeanMapper.beansToDataset(outData, inspList, InspBean.class);
+    }
+    
+    /* 종합검진 검사관리 - 선택 검사목록 조회 */
+    @RequestMapping("sup/checkup/findChoInspList.do")
+    public void findChoInspList(HttpServletRequest request, HttpServletResponse response)throws Exception {
         
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-        System.out.println(inData.saveXml());
-      /*  
-        
-        
-        for(String key : argsMap.keySet()) {
-            System.out.println(key + " : " + argsMap.get(key));
-        }
-        
-        
-        List<InspBean> inspList = supCheckupServiceFacade.findInspList(argsMap);
-        dataSetBeanMapper.beansToDataset(outData, inspList, InspBean.class);*/
+       
+        List<ChoInspBean> choInspList = supCheckupServiceFacade.findChoInspList(argsMap);
+        dataSetBeanMapper.beansToDataset(outData, choInspList, ChoInspBean.class);
     }
     
    
