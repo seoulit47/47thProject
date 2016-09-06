@@ -7,8 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.seoulit.erp47.sup.vat.to.DetailTaxInvBean;
-import com.seoulit.erp47.sup.vat.to.TaxInvBean;
+import com.seoulit.erp47.acc.vat.dao.TaxInvDAO;
+import com.seoulit.erp47.acc.vat.to.DetailTaxInvBean;
+import com.seoulit.erp47.acc.vat.to.TaxInvBean;
 
 @Service
 public class TaxInvApplicationServiceImpl implements TaxInvApplicationService {

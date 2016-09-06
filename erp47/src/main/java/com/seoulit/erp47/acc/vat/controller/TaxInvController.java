@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.acc.vat.service.VATServiceFacade;
+import com.seoulit.erp47.acc.vat.to.DetailTaxInvBean;
+import com.seoulit.erp47.acc.vat.to.TaxInvBean;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
-import com.seoulit.erp47.sup.vat.to.DetailTaxInvBean;
-import com.seoulit.erp47.sup.vat.to.TaxInvBean;
 
 
 /**
