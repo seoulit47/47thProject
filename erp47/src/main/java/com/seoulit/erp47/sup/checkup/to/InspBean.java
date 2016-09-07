@@ -35,5 +35,7 @@ public class InspBean extends BaseBean {
                     useYn,           // 사용여부
                     userId,          // 사용자ID
                     userIp,          // 사용자IP
-                    pckCd;           // 패키지코드
+                    pckCd,           // 패키지코드
+    				check="0";		 // 체크박스 
+    				
 }

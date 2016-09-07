@@ -112,7 +112,7 @@
                 <Cell col="2" text="bind:patNm"/>
                 <Cell col="3" text="bind:gender"/>
                 <Cell col="4" displaytype="normal" text="bind:inspPlnTime" mask="##:##"/>
-                <Cell col="5" text="bind:cancelYn"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="bind:cancelYn"/>
               </Band>
             </Format>
           </Formats>
@@ -376,11 +376,12 @@ var rsvtNo; //예약번호
 var pckCd; //패키지코드
 var editFlag = false;
 var	addFlag = false;
+var inspDate;
 
 // 조회버튼
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	var inspDate = this.inspPlnDateCal.value;
+	inspDate = this.inspPlnDateCal.value;
 	
 	if(!this.gfnIsNull(inspDate)){
 		var argument = 'inspPlnDate='+inspDate;
@@ -436,6 +437,41 @@ this.btnBox_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var param = {param:rsvtNo};
 	this.gfnPopup("SC_PckInspPopForm","sup",param,"");
 }
-]]></Script>
+
+this.btnBox_delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsChoInsp.deleteRow(this.dsChoInsp.rowposition);
+}
+
+this.pCode=function(retVal)
+{
+	addFlag = true;
+	
+	if(retVal == 1)
+	{	
+		this.autoCalChoInspAmt();
+	}	
+}
+
+// 추가 검사 선택 후 금액 계산
+this.autoCalChoInspAmt=function()
+{
+	var basicInspSumAmt	= this.dsRsvt.getColumn(this.dsRsvt.rowposition,"basicInspSumAmt");
+	var choInspAmt = this.choInspGrid.getCellText(-2, 3);
+
+	choInspAmt2 = choInspAmt.replace(",","");    
+	
+	var inspSumAmt;
+	
+	if(!this.gfnIsNull(choInspAmt2))
+	{
+		inspSumAmt	= parseInt(basicInspSumAmt) + parseInt(choInspAmt2);
+
+	}
+
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "inspSumAmt", inspSumAmt);
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "choInspAmt", choInspAmt2);
+	
+}]]></Script>
   </Form>
 </FDL>

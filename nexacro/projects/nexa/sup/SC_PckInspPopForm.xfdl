@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SC_PckInspPopForm" classname="SC_PckInspPopForm" left="0" top="0" width="691" height="475" titletext="종합검진 검사" onload="SC_PckInspPopForm_onload">
+  <Form id="SC_PckInspPopForm" classname="SC_PckInspPopForm" left="0" top="0" width="700" height="475" titletext="종합검진 검사" onload="SC_PckInspPopForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="0" right="2.32%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
@@ -23,7 +23,7 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="text" edittype="text"/>
+                <Cell displaytype="normal" edittype="none"/>
                 <Cell col="1" text="코드"/>
                 <Cell col="2" text="검사명"/>
                 <Cell col="3" text="처방명"/>
@@ -32,13 +32,13 @@
                 <Cell col="6" text="금액"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check" editdisplay="edit" tooltiptext="bind:check"/>
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check" editdisplay="edit"/>
                 <Cell col="1" text="bind:inspCd"/>
                 <Cell col="2" text="bind:inspNm"/>
                 <Cell col="3" text="bind:ocsNm"/>
                 <Cell col="4" displaytype="combo" text="bind:ocsDivCd" combodataset="dsOcsDivCd" combocodecol="code" combodatacol="value"/>
                 <Cell col="5" text="bind:rsltDeptNm"/>
-                <Cell col="6" displaytype="number" style="align:right;" text="bind:amt"/>
+                <Cell col="6" displaytype="normal" edittype="none" style="align:right;" text="bind:amt"/>
               </Band>
             </Format>
           </Formats>
@@ -229,7 +229,6 @@ this.SC_PckInspPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 		
 		this.gfnService("findExChoInspList",false);
 		
-
 	}
 	
 }
@@ -240,6 +239,34 @@ this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.close();
 }
 
+/* 확인 버튼 */
+this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	var dsRow = this.dsInsp.getRowCount();
+	for(var i=0; i<dsRow; i++){
+		var flag = this.dsInsp.getColumn(i, "check");
+		if(flag == "1"){
+			var inspCd = this.dsInsp.getColumn(i, "inspCd");
+			var inspNm = this.dsInsp.getColumn(i, "inspNm");
+			var amt = this.dsInsp.getColumn(i, "amt");
+			
+		    var openerDs = this.opener.dsChoInsp;
+			var openerDsRow =openerDs.getRowCount();
+			
+			openerDs.addRow();
+			openerDs.setColumn(openerDsRow,"inspCd",inspCd);
+			openerDs.setColumn(openerDsRow,"inspNm",inspNm);
+			openerDs.setColumn(openerDsRow,"qnt",1);
+			openerDs.setColumn(openerDsRow,"amt",amt);
+			openerDs.setColumn(openerDsRow,"inspPlnDate",this.opener.compBox.inspDateCal.value);
+			openerDs.setColumn(openerDsRow,"inspPlnDate",this.opener.compBox.rsvtNoEd.value);
+			
+		}
+	}
+	this.opener.pCode(1);
+	this.close();
+}
 ]]></Script>
   </Form>
 </FDL>
