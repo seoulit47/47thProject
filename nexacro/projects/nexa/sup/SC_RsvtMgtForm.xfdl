@@ -438,9 +438,11 @@ this.btnBox_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnPopup("SC_PckInspPopForm","sup",param,"");
 }
 
+/* 삭제 */
 this.btnBox_delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.dsChoInsp.deleteRow(this.dsChoInsp.rowposition);
+	this.pCode(1);
 }
 
 this.pCode=function(retVal)
