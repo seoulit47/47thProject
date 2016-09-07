@@ -27,12 +27,10 @@ public class BudgBimokController {
 	// 예산비목 조회
 		@RequestMapping("acc/budget/findBudgBimokList.do")
 		public void findBimokList(HttpServletRequest request, HttpServletResponse response) throws Exception{
-			System.out.println("findBimokList 시작");
 		    PlatformData inData = (PlatformData) request.getAttribute("inData");
 			PlatformData outData = (PlatformData) request.getAttribute("outData");
 			Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
 			List<BudgBimokBean> bimokList = budgetServiceFacade.findBimokList(argsMap);
 			dataSetBeanMapper.beansToDataset(outData, bimokList, BudgBimokBean.class);
-			System.out.println("findBimokList 종료");
 		}
 }

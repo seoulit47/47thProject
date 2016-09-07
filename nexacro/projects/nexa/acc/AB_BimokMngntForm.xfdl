@@ -21,7 +21,7 @@
         <Grid id="Grid00" taborder="10" useinputpanel="false" left="0.78%" top="146" right="74.02%" height="576" style="background:white;border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;bordertype:round 0 0 ;font:9 Dotum;">
           <Formats/>
         </Grid>
-        <Grid id="Grid01" taborder="11" useinputpanel="false" left="27.64%" top="145" right="0.98%" height="576" style="border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;color:#edececff;bordertype:round 0 0 ;align:center middle;font:9 Dotum;" autofittype="col">
+        <Grid id="bimokGrid" taborder="11" useinputpanel="false" left="27.64%" top="145" right="0.98%" height="576" style="border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;color:#edececff;bordertype:round 0 0 ;align:center middle;font:9 Dotum;" autofittype="col" binddataset="dsBudgBimok">
           <Formats>
             <Format id="default">
               <Columns>
@@ -57,16 +57,16 @@
                 <Cell row="1" col="7" style="background:transparent;color:black;color2:transparent;" text="보조과목" autosizerow="default" autosizecol="default"/>
               </Band>
               <Band id="body">
-                <Cell/>
-                <Cell col="1"/>
-                <Cell col="2"/>
-                <Cell col="3"/>
-                <Cell col="4"/>
-                <Cell col="5"/>
-                <Cell col="6"/>
-                <Cell col="7"/>
-                <Cell col="8"/>
-                <Cell col="9"/>
+                <Cell displaytype="text" edittype="none" text="bind:bimokLevel"/>
+                <Cell col="1" edittype="normal" text="bind:bimokCd"/>
+                <Cell col="2" edittype="text" text="bind:bimokNm"/>
+                <Cell col="3" text="bind:parentBimok"/>
+                <Cell col="4" edittype="expand" text="bind:acntCd"/>
+                <Cell col="5" text="bind:acntNm"/>
+                <Cell col="6" edittype="expand" text="bind:assiSubCd"/>
+                <Cell col="7" text="bind:assiSubNm"/>
+                <Cell col="8" text="bind:finYn"/>
+                <Cell col="9" edittype="combo" text="bind:useYn"/>
               </Band>
             </Format>
           </Formats>
@@ -164,7 +164,7 @@ var accYear;
 //*******
 this.AB_BimokMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	//this.gfnBind();
+	this.gfnBind();
 }
 
 //*****
@@ -172,7 +172,6 @@ this.AB_BimokMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 //*****
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	alert("시작");
 	accYear = this.yearSpin.value;
 	var bimokNm = this.bimokEd.value;
 	var accAcntNm = this.acntEd.value;
@@ -180,7 +179,7 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var argument = 'accYear='+accYear+' bimokNm='+bimokNm+' accAcntNm='+accAcntNm+' useYn='+useYn;
 	this.dsService.setColumn(0,"argument",argument);
 	this.gfnService("findBimokList");
-	alert("종료");
+
 }
 
 //*************

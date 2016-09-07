@@ -27,8 +27,8 @@ public class BudgBimokBean extends BaseBean{
 				    , useYn			// 사용여부
 				    , goveAprcYn	// 정부출연여부
 				    , budgGuide		// 예산지침내용
-				    , creDebDiv   	//
-				    , deptCount;   	//
+				    , creDebDiv   	// 대차구분
+				    , deptCount;   	// 부서건수
 	
 	
 }
