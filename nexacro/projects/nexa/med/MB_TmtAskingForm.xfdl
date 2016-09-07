@@ -73,6 +73,7 @@
                       <Column size="134"/>
                       <Column size="83"/>
                       <Column size="82"/>
+                      <Column size="77"/>
                       <Column size="137"/>
                       <Column size="79"/>
                       <Column size="87"/>
@@ -91,36 +92,38 @@
                       <Cell text="의뢰일"/>
                       <Cell col="1" text="구분"/>
                       <Cell col="2" text="환자명"/>
-                      <Cell col="3" text="등록번호"/>
-                      <Cell col="4" text="의뢰과"/>
-                      <Cell col="5" text="의뢰의"/>
-                      <Cell col="6" text="응답과"/>
-                      <Cell col="7" text="응답의"/>
-                      <Cell col="8" text="유형"/>
-                      <Cell col="9" text="응급"/>
-                      <Cell col="10" text="ADR"/>
-                      <Cell col="11" text="실시"/>
+                      <Cell col="3" text="환자번호"/>
+                      <Cell col="4" text="등록번호"/>
+                      <Cell col="5" text="의뢰과"/>
+                      <Cell col="6" text="의뢰의"/>
+                      <Cell col="7" text="응답과"/>
+                      <Cell col="8" text="응답의"/>
+                      <Cell col="9" text="유형"/>
+                      <Cell col="10" text="응급"/>
+                      <Cell col="11" text="ADR"/>
+                      <Cell col="12" text="실시"/>
                     </Band>
                     <Band id="body">
-                      <Cell displaytype="text" edittype="none" text="bind:askingDate" mask="@@@@/@@/@@"/>
-                      <Cell col="1" displaytype="combo" text="bind:patDiv" combodataset="dsPatDiv" combocodecol="code" combodatacol="value"/>
-                      <Cell col="2" text="bind:patNm"/>
-                      <Cell col="3" text="bind:cfrnTrmtNo"/>
-                      <Cell col="4" text="bind:askingDeptNm"/>
-                      <Cell col="5" text="bind:askingDoctNm"/>
-                      <Cell col="6" text="bind:respDeptNm"/>
-                      <Cell col="7" text="bind:respDoctNm"/>
-                      <Cell col="8" displaytype="combo" text="bind:callYN" combodataset="dsCallYN" combocodecol="code" combodatacol="value"/>
-                      <Cell col="9" displaytype="combo" text="bind:emeYN" combodataset="dsEmeYN" combocodecol="code" combodatacol="value"/>
-                      <Cell col="10" text="bind:adrYN"/>
-                      <Cell col="11"/>
+                      <Cell displaytype="text" edittype="normal" text="bind:askingDate" mask="@@@@/@@/@@"/>
+                      <Cell col="1" displaytype="combo" edittype="combo" text="bind:patDiv" combodataset="dsPatDiv" combocodecol="code" combodatacol="value"/>
+                      <Cell col="2" edittype="normal" text="bind:patNm"/>
+                      <Cell col="3" edittype="normal" text="bind:patNo"/>
+                      <Cell col="4" edittype="normal" text="bind:cfrnTrmtNo"/>
+                      <Cell col="5" edittype="normal" text="bind:askingDeptNm"/>
+                      <Cell col="6" edittype="normal" text="bind:askingDoctNm"/>
+                      <Cell col="7" edittype="normal" text="bind:respDeptNm"/>
+                      <Cell col="8" edittype="normal" text="bind:respDoctNm"/>
+                      <Cell col="9" displaytype="combo" edittype="combo" text="bind:callYN" combodataset="dsCallYN" combocodecol="code" combodatacol="value"/>
+                      <Cell col="10" displaytype="combo" edittype="combo" text="bind:emeYN" combodataset="dsEmeYN" combocodecol="code" combodatacol="value"/>
+                      <Cell col="11" edittype="normal" text="bind:adrYN"/>
+                      <Cell col="12" edittype="normal"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="deleteBtn" taborder="1" onclick="DelBtn_onclick" left="9.92%" top="39" right="81.28%" height="33" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="saveBtn" taborder="2" onclick="DelBtn_onclick" left="19.03%" top="39" right="72.17%" height="33" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="addBtn" taborder="3" onclick="DelBtn_onclick" left="0.81%" top="39" right="90.49%" height="33" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="deleteBtn" taborder="1" left="9.92%" top="39" right="81.28%" height="33" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="saveBtn" taborder="2" left="19.03%" top="39" right="72.17%" height="33" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="" onclick="Div02_saveBtn_onclick"/>
+              <Button id="addBtn" taborder="3" left="0.81%" top="39" right="90.49%" height="33" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="" onclick="Div02_addBtn_onclick"/>
               <Static id="ctrtDateSelStc02" taborder="4" text="진 료 소 견" onclick="subCodeStc_onclick" left="69.03%" top="77" right="1.52%" height="30" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 12 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="ctrtDateSelStc00" taborder="5" text="사          유" onclick="subCodeStc_onclick" left="69.53%" top="197" right="1.52%" height="30" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 12 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="ctrtDateSelStc01" taborder="6" text="회          신" onclick="subCodeStc_onclick" left="69.53%" top="422" right="1.52%" height="30" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 12 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -147,6 +150,11 @@
             <Col id="serviceID">findCfrnTrmtList</Col>
             <Col id="outData">dsCfrnTrmt=dsCfrnTrmt</Col>
             <Col id="URL">erp47::med/request/findCfrnTrmt.do</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchCfrnTrmtList</Col>
+            <Col id="URL">erp47::med/request/batchCfrnTrmtList.do</Col>
+            <Col id="inData">dsCfrnTrmt=dsCfrnTrmt:u</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -253,13 +261,13 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	
 	var startDate = this.Div00.startDate.value;
 	var endDate = this.Div00.endDate.value;
-	var clinicDate = this.Div00.dateRadio.value;
-	var searchType = this.Div00.typeRadio.value;
+	var hopeDateRadio = this.Div00.dateRadio.value;
+	var typeRadio = this.Div00.typeRadio.value;
 	
-	alert(startDate+'////'+ endDate +'////' + clinicDate+ '/////' + searchType);
+	//alert(startDate+'////'+ endDate +'////' + clinicDate+ '/////' + searchType);
 	
 	
-	var argument="startDate='"+startDate+"' endDate='"+endDate+"' clinicDate='"+clinicDate+"' searchType='"+searchType+"'";
+	var argument="startDate='"+startDate+"' endDate='"+endDate+"' hopeDateRadio='"+hopeDateRadio+"' typeRadio='"+typeRadio+"'";
 	
 	this.dsService.setColumn(0,4,argument);
 	
@@ -269,6 +277,21 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	alert(this.dsCfrnTrmt.saveXML());
 }
 
+
+
+///등록버튼클릭시 발생하는 이벤트
+this.Div02_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsCfrnTrmt.addRow();
+		
+}
+
+//저장버튼클릭시 발생하는 이벤트
+this.Div02_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchCfrnTrmtList",false);
+	
+}
 ]]></Script>
   </Form>
 </FDL>
