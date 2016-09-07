@@ -57,4 +57,10 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 		List<InspBean> exChoInspList = supCheckupApplicationService.findExChoInspList(argsMap);
 		return exChoInspList;
 	}
+
+
+	@Override
+	public void cancelRsvt(Map<String, String> argsMap) {
+		supCheckupApplicationService.cancelRsvt(argsMap);
+	}
 }

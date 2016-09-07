@@ -10,5 +10,7 @@ public interface RsvtDAO {
     /* 종합검진 예약관리 - 예약조회 */
     List<RsvtBean> selectRsvtList(Map<String, String> argsMap);
     
+    /* 종합검진 예약관리 - 예약취소 */
+    void updateRsvtYN(Map<String, String> argsMap);
  
 }

@@ -40,6 +40,12 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	    return rsvtList;
 	}
 	
+
+	/* 종합검진 예약관리 - 예약취소 */
+	@Override
+	public void cancelRsvt(Map<String, String> argsMap) {
+		rsvtDAO.updateRsvtYN(argsMap);
+	}
 	
 	/* 종합검진 검사관리  - 검사목록 조회 */
 	@Override                
@@ -62,4 +68,5 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 		List<InspBean> exChoInspList = inspDAO.selectExChoInspList(argsMap);
 		return exChoInspList;
 	}
+
 }

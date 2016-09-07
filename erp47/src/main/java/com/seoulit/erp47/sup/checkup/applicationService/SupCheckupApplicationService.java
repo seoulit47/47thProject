@@ -11,6 +11,9 @@ public interface SupCheckupApplicationService {
 	/* 종합검진 예약관리 - 예약목록 조회 */
     public List<RsvtBean> findRsvtList(Map<String, String> argsMap);
     
+    /* 종합검진 예약관리 - 예약 취소 */
+    public void cancelRsvt(Map<String, String> argsMap);
+    
     /* 종합검진 검사관리 - 검사목록 조회 */
     public List<InspBean> findInspList(Map<String, String> argsMap);
     

@@ -22,5 +22,10 @@
 		</if>
 	</select>
 
+	<!-- 종합검진 예약관리 - 예약취소  -->
+	<update id="updateRsvtYN"> 
+	UPDATE SC_RSVT SET CANCEL_YN=#{cancelYn}, MOD_ID=#{userId}, MOD_IP=#{userIp}, MOD_DATE=TO_CHAR(SYSDATE,'YYYY-MM-DD') 
+	WHERE RSVT_NO = #{rsvtNo}
+	</update>
 </mapper>
 		

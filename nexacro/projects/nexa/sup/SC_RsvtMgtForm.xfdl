@@ -274,7 +274,7 @@
           </Row>
           <Row>
             <Col id="serviceID">batchRsvtProcess</Col>
-            <Col id="URL">his::sup/checkup/batchRsvtProcess.do</Col>
+            <Col id="URL">erp47::sup/checkup/batchRsvtProcess.do</Col>
             <Col id="inData">dsRsvt=dsRsvt:U dsChoInsp=dsChoInsp:U</Col>
             <Col id="outData"/>
             <Col id="argument"/>
@@ -282,18 +282,17 @@
           </Row>
           <Row>
             <Col id="serviceID">findPat</Col>
-            <Col id="URL">his::won/outPatMngnt/findPat.do</Col>
+            <Col id="URL">erp47::won/outPatMngnt/findPat.do</Col>
             <Col id="outData">dsPat=dsPat</Col>
             <Col id="argument"/>
             <Col id="callbackFunc">callBackFunc</Col>
           </Row>
           <Row>
             <Col id="serviceID">cancelRsvt</Col>
-            <Col id="URL">his::sup/checkup/cancelRsvt.do</Col>
+            <Col id="URL">erp47::sup/checkup/cancelRsvt.do</Col>
             <Col id="callbackFunc">callBackFunc</Col>
             <Col id="outData"/>
           </Row>
-          <Row/>
         </Rows>
       </Dataset>
       <Dataset id="dsRsvt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsRsvt_onrowposchanged" canrowposchange="dsRsvt_canrowposchange">
@@ -363,6 +362,62 @@
           <Column id="userId" type="STRING" size="256"/>
           <Column id="userIp" type="STRING" size="256"/>
           <Column id="rsvtNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRece" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="receDate" type="STRING" size="256"/>
+          <Column id="befReceAmt" type="STRING" size="256"/>
+          <Column id="payAmt" type="STRING" size="256"/>
+          <Column id="cardCashDiv" type="STRING" size="256"/>
+          <Column id="aprvNo" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="inspDate" type="STRING" size="256"/>
+          <Column id="aprvDate" type="STRING" size="256"/>
+          <Column id="cardCd" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="valPrid" type="STRING" size="256"/>
+          <Column id="instmPrid" type="STRING" size="256"/>
+          <Column id="cashAprvData" type="STRING" size="256"/>
+          <Column id="cashAprvDivCd" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPat" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="barrAss" type="STRING" size="256"/>
+          <Column id="dtlAddr" type="STRING" size="256"/>
+          <Column id="zip" type="STRING" size="256"/>
+          <Column id="deathDate" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="smsReceiveYb" type="STRING" size="256"/>
+          <Column id="smsReceiveNo" type="STRING" size="256"/>
+          <Column id="smsReceiver" type="STRING" size="256"/>
+          <Column id="recNwDate" type="STRING" size="256"/>
+          <Column id="estbGiho" type="STRING" size="256"/>
+          <Column id="certfctNo" type="STRING" size="256"/>
+          <Column id="insuRrn" type="STRING" size="256"/>
+          <Column id="insuNm" type="STRING" size="256"/>
+          <Column id="applyStartDate" type="STRING" size="256"/>
+          <Column id="applyEndDate" type="STRING" size="256"/>
+          <Column id="outpaReceiptNo" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -474,6 +529,104 @@ this.autoCalChoInspAmt=function()
 	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "inspSumAmt", inspSumAmt);
 	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "choInspAmt", choInspAmt2);
 	
-}]]></Script>
+}
+
+
+this.btnBox2_addRsvtBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.dsRsvt_canrowposchange(null,null))
+	{
+		this.dsRsvt.addRow();	
+		this.newRsvtNo();
+	}
+}
+
+this.dsRsvt_canrowposchange=function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	if(addFlag == true || editFlag == true)
+	{
+		var yn = application.confirm("수정하고 있는 작업을  취소 하겠습니까?");
+		if (yn==false)
+		{
+			return false;
+		}
+		else
+		{
+	
+			if(editFlag == true)
+			{
+				this.dsRsvt.reset();
+				editFlag = false;
+				return true;
+				
+			}else if(addFlag == true){
+				addFlag = false;
+				
+				this.dsRsvt.reset();
+				return true;
+			}
+		}
+	}
+	return true;
+}
+
+//  새예약시 데이터 초기화
+this.newRsvtNo=function()
+{
+	var row = this.dsRsvt.rowposition;
+
+	var sysDate = this.gfnDate('yyyy-MM-dd/HHMi',false);
+
+	var date = sysDate.split("/");
+	
+	this.dsRsvt.setColumn(row, "rsvtDate", date[0]);
+	this.dsRsvt.setColumn(row, "rsvtTime", date[1]);
+	this.dsRsvt.setColumn(row, "rsvtNo", application.rsvtNo);	
+
+	this.dsInsp.clearData();
+	this.dsChoInsp.clearData();
+
+	var disArr = ['patNmEd', 'rsvtDateEd','rsvtTimeMask','rsvtNoEd', 'rsvtRespEd',
+				 'regNo1Ed', 'regNo2Ed', 'smsEd', 'ageEd', 'basicInspAmtEd',
+				  'reducAmtEd', 'rsvtAmtEd', 'basicInspSumAmtEd','cancelEd'];
+				  
+	this.compBox.set_enable(true);
+	
+	this.choInspGrid.setCellProperty("Body", 2, "edittype", "normal"); 
+	
+	addFlag = true;
+}
+
+/* 예약 취소 */
+this.btnBox2_cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(confirm("예약을 취소하겠습니까?")){
+		var argument = 'rsvtNo='+rsvtNo+' cancelYn=Y';
+		var row = this.dsService.findRow('serviceID' , "cancelRsvt");
+		this.dsService.setColumn(row, "argument", argument);
+							
+		this.gfnService("cancelRsvt",false);
+		this.searchBtn_onclick(null,null);
+	}
+}
+
+/* 수납 */
+this.btnBox2_receBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsRece.clearData();
+	this.dsRece.addRow();
+	this.dsRece.setColumn(0, "rsvtNo", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "rsvtNo"));
+	this.dsRece.setColumn(0, "rsvtDate", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "rsvtDate"));
+	this.dsRece.setColumn(0, "inspDate", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "inspPlnDate"));
+	this.dsRece.setColumn(0, "basicInspAmt", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "basicInspAmt"));
+	this.dsRece.setColumn(0, "reducAmt", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "reducAmt"));
+	this.dsRece.setColumn(0, "rsvtAmt", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "rsvtAmt"));
+	this.dsRece.setColumn(0, "choInspAmt", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "choInspAmt"));
+	this.dsRece.setColumn(0, "inspSumAmt", this.dsRsvt.getColumn(this.dsRsvt.rowposition, "inspSumAmt"));
+
+	var param = {dsRece:this.dsRece};
+	this.gfnPopup("SC_RecePopForm","sup",param,"");	
+}
+]]></Script>
   </Form>
 </FDL>

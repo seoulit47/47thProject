@@ -33,6 +33,7 @@ public class RsvtController {
 	@Autowired
 	SupCheckupServiceFacade supCheckupServiceFacade;
 	
+	/*예약목록 조회*/
 	@RequestMapping("sup/checkup/findRsvtList.do")
 	public void findRsvtList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		PlatformData inData = (PlatformData)request.getAttribute("inData");
@@ -43,4 +44,14 @@ public class RsvtController {
 	    List<RsvtBean> rsvtList = supCheckupServiceFacade.findRsvtList(argsMap);
 	    dataSetBeanMapper.beansToDataset(outData, rsvtList, RsvtBean.class);
 	}
+	
+	/* 종합검진 예약관리 - 예약취소 */
+    @RequestMapping("sup/checkup/cancelRsvt.do")
+    public void cancelRsvt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        
+        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+
+        supCheckupServiceFacade.cancelRsvt(argsMap);
+    }
 }
