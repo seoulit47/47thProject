@@ -18,7 +18,6 @@
     <!-- 시스템공통 -->
 	<package name="com.seoulit.post.to" />
 	<package name="com.seoulit.erp47.com.base.to"/>
-	<package name="com.seoulit.erp47.com.util.to"/>
     <!-- 물류 -->
       
       
