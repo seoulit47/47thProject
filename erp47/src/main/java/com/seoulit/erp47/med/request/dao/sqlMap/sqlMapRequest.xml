@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.med.request.dao.RequestDAO">
+
+<cache flushInterval="86400000" eviction="LRU" />
+
+<select id="findCfrnTrmt" resultType="CfrnTrmtBean" >
+
+		SELECT
+		 ASKING_DATE, <!-- 의뢰일 -->
+		 PAT_DIV, <!-- 구분 -->
+		 PAT_NM, <!-- 환자명 -->
+		 CFRN_TRMT_NO,<!-- 등록번호 -->
+		  ASKING_DEPT_NM, <!-- 의뢰과 명 -->
+		 ASKING_DOCT_NM,<!-- 의뢰의 명 -->
+		RESP_DEPT_NM,<!-- 응답과 명 -->
+		 RESP_DOCT_NM,<!-- 응답의 명 -->
+		 CALL_YN,<!-- 유형 -->
+		  EME_YN,<!-- 응급 -->
+		 ADR_YN, <!-- ADR -->
+		 ASKING_CON, <!-- 진료소견 -->
+		 ASKING_CAU, <!-- 사유 -->
+		 RESP_CON <!-- 회신 -->
+
+		FROM MQ_CFRN_TRMT_MNG
+	
+
+
+
+
+</select>
+
+
+
+
+
+</mapper>
