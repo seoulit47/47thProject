@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.sup.checkup.applicationService.SupCheckupApplicationService;
+import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
@@ -24,22 +25,36 @@ import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 @Service
 public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 
-	 @Autowired
-	    private SupCheckupApplicationService supCheckupApplicationService;
+	@Autowired
+	   private SupCheckupApplicationService supCheckupApplicationService;
 
 	 
-	 /* 종합검진 예약관리 - 예약 조회 */
-	 @Override               
-	 public List<RsvtBean> findRsvtList(Map<String, String> argsMap) {
-	    List<RsvtBean> rsvtList = supCheckupApplicationService.findRsvtList(argsMap);
-	    return rsvtList;
-	 }
+	/* 종합검진 예약관리 - 예약목록 조회 */
+	@Override               
+	public List<RsvtBean> findRsvtList(Map<String, String> argsMap) {
+	   List<RsvtBean> rsvtList = supCheckupApplicationService.findRsvtList(argsMap);
+	   return rsvtList;
+	}
 	 
 	 
-	 /* 종합검진 패키지관리 - 패키지 검사 조회 */
-	 @Override               
-	 public List<InspBean> findPckInspList(Map<String, String> argsMap) {
-	    List<InspBean> inspList = supCheckupApplicationService.findPckInspList(argsMap);
-	    return inspList;
-	 }
+	/* 종합검진 패키지관리 - 패키지 검사목록 조회 */
+	@Override               
+	public List<InspBean> findInspList(Map<String, String> argsMap) {
+	   List<InspBean> inspList = supCheckupApplicationService.findInspList(argsMap);
+	   return inspList;
+	}
+
+	 /*종합검진 선택검사관리 - 선택 검사목록 조회*/
+	@Override
+	public List<ChoInspBean> findChoInspList(Map<String, String> argsMap) {
+		List<ChoInspBean> choInspList = supCheckupApplicationService.findChoInspList(argsMap);
+		return choInspList;
+	}
+
+
+	@Override
+	public List<InspBean> findExChoInspList(Map<String, String> argsMap) {
+		List<InspBean> exChoInspList = supCheckupApplicationService.findExChoInspList(argsMap);
+		return exChoInspList;
+	}
 }

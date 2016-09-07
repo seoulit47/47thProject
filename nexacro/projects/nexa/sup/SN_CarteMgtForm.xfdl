@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SN_CarteMgtForm" classname="SN_CarteMgtForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="2.16%" top="407" right="2.32%" height="311" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="Div05" taborder="1" left="2.16%" top="61" right="2.32%" height="338" style="background:white;border:1 solid gainsboro ;"/>
+        <Static id="subCodeStc01" taborder="2" text="  식단등록" onclick="subCodeStc_onclick" left="2.24%" top="61" right="79.04%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+        <Div id="Div00" taborder="3" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
+        <Static id="Static00" taborder="4" text="식단관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div01" taborder="5" text="급식일자" left="3.52%" top="98" right="88%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Calendar id="dateCal" taborder="6" dateformat="yyyy-MM-dd" left="12.56%" top="98" right="73.12%" height="31"/>
+        <Div id="Div02" taborder="7" text="식단분류" left="38.24%" top="98" right="53.28%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Combo id="divCombo" taborder="8" innerdataset="dsCode" codecolumn="smallCode" datacolumn="fullName" onitemchanged="divCombo_onitemchanged" left="47.12%" top="98" right="38.56%" height="31"/>
+        <Button id="searchBtn" taborder="9" onclick="searchBtn_onclick" left="89.2%" top="98" right="3.6%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Grid id="breakfastGrid" taborder="10" binddataset="dsBreakfast" useinputpanel="false" autofittype="col" left="3.52%" top="136" right="66%" height="218">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="150"/>
+                <Column size="200"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="조식"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell row="1" text="음식코드"/>
+                <Cell row="1" col="1" text="음식명"/>
+                <Cell row="1" col="2"/>
+                <Cell row="1" col="3"/>
+                <Cell row="1" col="4"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:foodCd"/>
+                <Cell col="1" text="bind:foodNm"/>
+                <Cell col="2" text="bind:carteDate"/>
+                <Cell col="3" text="bind:carteTime"/>
+                <Cell col="4" text="bind:menuGrpCd"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="lunchGrid" taborder="11" binddataset="dsLunch" useinputpanel="false" autofittype="col" left="34.64%" top="136" right="34.88%" height="218">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="158"/>
+                <Column size="192"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="중식"/>
+                <Cell row="1" text="음식코드"/>
+                <Cell row="1" col="1" text="음식명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:foodCd"/>
+                <Cell col="1" text="bind:foodNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="dinnerGrid" taborder="12" binddataset="dsDinner" useinputpanel="false" autofittype="col" left="65.76%" top="136" right="3.76%" height="218">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="160"/>
+                <Column size="190"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="석식"/>
+                <Cell row="1" text="음식코드"/>
+                <Cell row="1" col="1" text="음식명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:foodCd"/>
+                <Cell col="1" text="bind:foodNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc00" taborder="13" text="  식단조회" onclick="subCodeStc_onclick" left="2.16%" top="407" right="79.12%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+        <Button id="saveBtn" taborder="14" onclick="saveBtn_onclick" left="90.48%" top="728" right="2.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Div id="Div03" taborder="15" text="급식일자" left="3.52%" top="445" right="88%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Calendar id="startDateCal" taborder="16" dateformat="yyyy-MM-dd" onchanged="startDateCal_onchanged" oneditclick="startDateCal_oneditclick" left="12.4%" top="445" right="75.04%" height="31"/>
+        <Div id="Div04" taborder="17" text="식단분류" left="51.92%" top="445" right="39.6%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Combo id="divCombo2" taborder="18" innerdataset="dsCode2" codecolumn="smallCode" datacolumn="fullName" left="60.8%" top="445" right="24.88%" height="31"/>
+        <Button id="searchBtn2" taborder="19" onclick="searchBtn2_onclick" left="89.2%" top="445" right="3.6%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Calendar id="endDateCal" taborder="20" dateformat="yyyy-MM-dd" editformat="yyyy-m-d" enable="false" left="27.76%" top="445" right="59.68%" height="31"/>
+        <Static id="Static01" taborder="21" text="~" left="25.92%" top="447" right="71.76%" height="31"/>
+        <Button id="menuCopyBtn" taborder="22" left="2.24%" top="728" right="88.96%" height="32" style="background:@gradation URL('img::menuCopyBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Div id="btnBox" taborder="23" left="2.72%" top="353" right="2.56%" height="45" enable="false">
+          <Layouts>
+            <Layout width="1184" height="45">
+              <Button id="dinnerMinusBtn" taborder="6" onsetfocus="btnBox_dinnerMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="96.2%" top="5" right="1.1%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="dinnerPlusBtn" taborder="7" onsetfocus="btnBox_dinnerPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="93.33%" top="5" right="3.97%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="lunchMinusBtn" taborder="8" onsetfocus="btnBox_lunchMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="63.34%" top="5" right="33.95%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="lunchPlusBtn" taborder="9" onsetfocus="btnBox_lunchPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="60.47%" top="5" right="36.82%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="bfPlusBtn" taborder="10" onsetfocus="btnBox_bfPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="27.53%" top="5" right="69.76%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="bfMinusBtn" taborder="11" onsetfocus="btnBox_bfMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="30.49%" top="5" right="66.81%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="menuGrid" taborder="24" binddataset="dsDCarte" useinputpanel="false" selecttype="cell" autofittype="col" suppresslevel="allskip" cellclickbound="cell" left="2.24%" top="483" right="3.6%" height="221">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="25" band="head"/>
+                <Row size="25" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="3" mask="####-##-##"/>
+                <Cell col="3" colspan="3" mask="####-##-##"/>
+                <Cell col="6" colspan="3" mask="####-##-##"/>
+                <Cell row="1" text="조식"/>
+                <Cell row="1" col="1" text="중식"/>
+                <Cell row="1" col="2" text="석식"/>
+                <Cell row="1" col="3" text="조식"/>
+                <Cell row="1" col="4" text="중식"/>
+                <Cell row="1" col="5" text="석식"/>
+                <Cell row="1" col="6" text="조식"/>
+                <Cell row="1" col="7" text="중식"/>
+                <Cell row="1" col="8" text="석식"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:breakfast1"/>
+                <Cell col="1" text="bind:lunch1"/>
+                <Cell col="2" text="bind:dinner1"/>
+                <Cell col="3" text="bind:breakfast2"/>
+                <Cell col="4" text="bind:lunch2"/>
+                <Cell col="5" text="bind:dinner2"/>
+                <Cell col="6" text="bind:breakfast3"/>
+                <Cell col="7" text="bind:lunch3"/>
+                <Cell col="8" text="bind:dinner3"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="divCombo" propid="codecolumn" datasetid="dsService" columnid=""/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findDivList</Col>
+            <Col id="URL">his::sup/nutritive/findDivList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsCode=dsCode</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findCarteList</Col>
+            <Col id="URL">his::sup/nutritive/findCarteList.do</Col>
+            <Col id="outData">dsCarte=dsCarte</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDCarteList</Col>
+            <Col id="URL">his::sup/nutritive/findDCarteList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">dsDCarte=dsDCarte</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchCarteProces</Col>
+            <Col id="URL">his::sup/nutritive/batchCarteProcess.do</Col>
+            <Col id="inData">dsBreakfast=dsBreakfast:U dsLunch=dsLunch:U dsDinner=dsDinner:U</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

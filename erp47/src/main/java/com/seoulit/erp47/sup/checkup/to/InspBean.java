@@ -23,7 +23,7 @@ import lombok.ToString;
 @Dataset(name = "dsInsp")
 public class InspBean extends BaseBean {
     private String
-                    rsvNo,           // 예약번호
+                    rsvtNo,           // 예약번호
                     inspCd,          // 검사코드
                     inspNm,          // 검사명
                     ocsCd,           // 처방전달코드

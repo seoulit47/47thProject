@@ -5,4 +5,4 @@
  * @author YonG
  *
  */
-package com.seoulit.erp47.com.util.dao;
+package com.seoulit.erp47.sup.vat.to;

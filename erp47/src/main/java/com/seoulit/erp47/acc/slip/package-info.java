@@ -5,4 +5,4 @@
  * @author YonG
  *
  */
-package com.seoulit.erp47.com.util.controller;
+package com.seoulit.erp47.acc.slip;

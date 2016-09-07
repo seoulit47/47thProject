@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.nutritive.dao.FoodDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+    
+    <!-- 영양관리 음식관리 - 조회 -->
+    <select id="selectFoodList" flushCache="false"  useCache="true" resultType="FoodBean">
+        SELECT 
+            a.FOOD_GRP_CD,
+            a.FOOD_CD,
+            a.FOOD_TYPE,
+            a.FOOD_NM,
+            a.NOTES,
+            0 as checkDiv
+        FROM 
+            SN_FOOD a
+            
+        where 1=1
+        
+        <if test="foodGrpCd != null">
+            AND a.FOOD_GRP_CD = #{foodGrpCd}
+        </if>
+        <if test="foodCd != null">
+            AND a.FOOD_CD LIKE '%'||#{foodCd}||'%'
+        </if>
+        <if test="foodNm != null">
+            AND a.FOOD_NM LIKE '%'||#{foodNm}||'%'
+        </if>
+        
+        GROUP BY 
+            a.FOOD_GRP_CD,
+            a.FOOD_CD,
+            a.FOOD_TYPE,
+            a.FOOD_NM,
+            a.NOTES
+        ORDER BY 
+            a.FOOD_CD 
+    </select>
+
+    <!-- 영양관리 음식관리 - 상세조회 -->
+    <select id="selectFoodDtlList" flushCache="false"  useCache="true" resultType="FoodDtlBean">
+        select 
+            a.FOOD_CD, 
+            a.INGRED_CD,
+            b.INGRED_NM,
+            a.QTY, 
+            b.UNIT, 
+            a.MAINMENU_YN
+        from 
+            SN_FOOD_DTL a,
+            SN_INGRED b
+        where 
+            a.FOOD_CD = #{foodCd}
+        and 
+            b.INGRED_CD = a.INGRED_CD
+    </select>
+
+    <!-- 영양관리 음식관리 - 코드조회 -->
+    <select id="selectCodeList" flushCache="false"  useCache="true" resultType="NCodeBean">
+        select 
+            SMALL_CODE as SMALL_CODE1,
+            FULL_NAME as FULL_NAME1
+        FROM
+            SN_CODE
+        where 
+            LARGE_CODE  = 'S'
+        and 
+            MID_CODE = 'SF007'
+        and 
+            nvl(USE_YN,'N') = 'Y'
+        order by
+            SORT_SEQ,
+            SMALL_CODE
+    </select>
+    
+    <!-- 영양관리 음식 관리 - 음식등록 - 저장 -->
+    <update id="updateFoodDtl">
+        UPDATE SN_FOOD_DTL
+            SET 
+                QTY=#{qty}
+        WHERE INGRED_CD = #{ingredCd}
+        AND FOOD_CD=#{foodCd}
+    </update>
+    
+    <insert id="insertFoodDtl" >
+        INSERT INTO SN_FOOD_DTL
+               (
+                FOOD_CD,
+                INGRED_CD,
+                QTY,
+                MAINMENU_YN
+                )
+        values(
+                #{foodCd},
+                #{ingredCd},
+                #{qty},
+                #{mainmenuYn}
+                )
+     </insert>
+    
+    <update id="insertFood" >
+        MERGE INTO SN_FOOD
+            USING DUAL
+                ON ( FOOD_GRP_CD = #{foodGrpCd} 
+                        AND FOOD_CD = #{foodCd})
+            
+            WHEN MATCHED THEN
+                UPDATE SET
+                    FOOD_NM=#{foodNm},
+                    NOTES=#{notes}
+
+            WHEN NOT MATCHED THEN
+                INSERT
+                   ( FOOD_GRP_CD,
+                     FOOD_CD,
+                     FOOD_NM,
+                     NOTES )
+                VALUES(
+                    #{foodGrpCd},
+                    #{foodCd},
+                    #{foodNm},
+                    #{notes}
+                      )
+     </update>
+     
+    <delete id="deleteFoodDtl">
+        DELETE FROM SN_FOOD_DTL
+        WHERE FOOD_CD = #{foodCd}
+        <if test="ingredCd != null">
+           AND INGRED_CD = #{ingredCd}
+        </if>
+    </delete>
+    <!-- 영양관리 음식 관리 - 음식등록 - 저장 -->
+
+    <delete id="deleteFood">
+        DELETE FROM SN_FOOD
+        WHERE FOOD_CD = #{foodCd}
+        AND FOOD_GRP_CD = #{foodGrpCd}
+    </delete>
+</mapper>
