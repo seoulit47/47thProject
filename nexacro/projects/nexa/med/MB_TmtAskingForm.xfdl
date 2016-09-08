@@ -121,7 +121,7 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="deleteBtn" taborder="1" left="9.92%" top="39" right="81.28%" height="33" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="deleteBtn" taborder="1" left="9.92%" top="39" right="81.28%" height="33" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="Div02_deleteBtn_onclick"/>
               <Button id="saveBtn" taborder="2" left="19.03%" top="39" right="72.17%" height="33" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="" onclick="Div02_saveBtn_onclick"/>
               <Button id="addBtn" taborder="3" left="0.81%" top="39" right="90.49%" height="33" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="" onclick="Div02_addBtn_onclick"/>
               <Static id="ctrtDateSelStc02" taborder="4" text="진 료 소 견" onclick="subCodeStc_onclick" left="69.03%" top="77" right="1.52%" height="30" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 12 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -129,7 +129,7 @@
               <Static id="ctrtDateSelStc01" taborder="6" text="회          신" onclick="subCodeStc_onclick" left="69.53%" top="422" right="1.52%" height="30" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 12 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <TextArea id="TextArea01" taborder="8" left="69.53%" top="227" right="1.52%" height="177"/>
               <TextArea id="TextArea02" taborder="9" left="69.53%" top="449" right="1.52%" height="146"/>
-              <TextArea id="TextArea00" taborder="10" enable="false" left="69.04%" top="104" right="1.32%" height="82"/>
+              <TextArea id="TextArea00" taborder="10" enable="true" left="69.04%" top="104" right="1.32%" height="82"/>
             </Layout>
           </Layouts>
         </Div>
@@ -291,6 +291,13 @@ this.Div02_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnService("batchCfrnTrmtList",false);
 	
+}
+
+//삭제버튼클릭시 발생하는 이벤트
+this.Div02_deleteBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	this.dsCfrnTrmt.deleteRow(this.Div02.Grid00.currentrow);
 }
 ]]></Script>
   </Form>

@@ -28,19 +28,19 @@ public class RequestapplicationServiceImpl implements RequestapplicationService{
 		for(CfrnTrmtBean cfrnTrmtBean : batchCfrnList){
 			
 			
-				if(cfrnTrmtBean.getStatus()=="inserted"){
+				if(cfrnTrmtBean.getStatus()=="inserted"){ //조회
 					
 					requestDAO.insertCfrnTrmt(cfrnTrmtBean);
 					
-				}else if(cfrnTrmtBean.getStatus()=="deleted"){
+				}else if(cfrnTrmtBean.getStatus()=="deleted"){//삭제
+					
+					requestDAO.deleteCfrnTrmt(cfrnTrmtBean);
 					
 					
+				}else if(cfrnTrmtBean.getStatus()=="updated"){//수정
 					
 					
-				}else if(cfrnTrmtBean.getStatus()=="updated"){
-					
-					
-					
+					requestDAO.updateCfrnTrmt(cfrnTrmtBean);
 				}
 			
 			
