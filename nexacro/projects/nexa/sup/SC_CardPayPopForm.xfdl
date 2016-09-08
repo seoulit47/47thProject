@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SC_CardPayPopForm" classname="SC_CardPayPopForm" left="0" top="0" width="528" height="387" titletext="New Form">
+  <Form id="SC_CardPayPopForm" classname="SC_CardPayPopForm" left="0" top="0" width="528" height="387" titletext="카드승인 관리">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="5.3%" top="66" right="5.49%" height="254" style="background:white;border:1 solid gainsboro ;"/>
