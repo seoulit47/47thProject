@@ -8,7 +8,7 @@
 		<result column="DETAIL_CODE" jdbcType="VARCHAR" property="detailCode"/>
 </resultMap> -->
 
-    <select id="findCodeList" resultType="CodeBean" parameterType="map">
+    <select id="selectMenuList" resultType="CodeBean" parameterType="map">
         SELECT
             DETAIL_CODE as detailCode,
             CODE as code,
