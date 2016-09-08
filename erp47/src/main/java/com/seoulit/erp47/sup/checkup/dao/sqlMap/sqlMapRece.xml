@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.checkup.dao.ReceDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+
+    <!-- 종합검진 접수 - 수납조회 -->
+    <select id="selectReceList" flushCache="false"  useCache="true" resultType="ReceBean">
+        SELECT 
+            R.RECE_DATE, 
+            NVL(R.BEF_RECE_AMT,0) AS BEF_RECE_AMT,
+            R.PAY_AMT,
+            R.CARD_CASH_DIV,
+            R.APRV_NO,
+            R.CANCEL_YN,
+            A.VAL_PRID,
+            A.INSTM_PRID,
+            R.SEQ
+        FROM 
+            SC_RECE R,
+            SC_PAY_APRV A
+        WHERE 
+            R.RSVT_NO =#{rsvtNo}
+        AND 
+            R.APRV_NO = A.APRV_NO
+        AND 
+            NVL(R.CANCEL_YN,'N') = 'N'
+        ORDER BY 
+            R.RECE_DATE
+    </select>
+    
+    <update id="insertAprv" >
+         MERGE INTO SC_PAY_APRV
+         USING DUAL
+            ON (APRV_NO = #{aprvNo})
+          WHEN NOT MATCHED THEN
+        INSERT ( APRV_NO
+                ,RECE_DATE
+                ,INSP_DATE
+                ,CARD_NO
+                ,VAL_PRID
+                ,CARD_CD
+                ,PAY_AMT
+                ,APRV_DATE
+                ,INSTM_PRID
+                ,CARD_CASH_DIV
+                ,CASH_APRV_DIV_CD
+                ,CASH_APRV_DATA
+                ,CANCEL_YN
+                ,REG_ID
+                ,REG_IP
+                ,REG_DATE
+                )
+        values(
+                #{aprvNo},
+                TO_CHAR(TO_DATE(#{receDate},'YYYYMMDD'),'YYYY-MM-DD'),
+                #{inspDate},
+                #{cardNo},
+                #{valPrid},
+                #{cardCd},
+                #{payAmt},
+                TO_CHAR(SYSDATE,'YYYY-MM-DD'),
+                #{instmPrid},
+                #{cardCashDiv},
+                #{cashAprvDivCd},
+                #{cashAprvData},
+                #{cancelYn},
+                #{userId},
+                #{userIp},
+                TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                )
+    </update>
+        
+    <insert id="insertRece" >
+        INSERT INTO SC_RECE
+               (
+                RSVT_NO,
+                RECE_DATE,
+                SEQ,
+                BEF_RECE_AMT,
+                PAY_AMT,
+                CARD_CASH_DIV,
+                APRV_NO,
+                CANCEL_YN,
+                REG_ID,
+                REG_IP,
+                REG_DATE
+                )
+        values(
+                #{rsvtNo},
+                TO_CHAR(TO_DATE(#{receDate},'YYYYMMDD'),'YYYY-MM-DD'),
+                CHECKUP_RECE_SEQ.NEXTVAL,
+                #{befReceAmt},
+                #{payAmt},
+                #{cardCashDiv},
+                #{aprvNo},
+                #{cancelYn},
+                #{userId},
+                #{userIp},
+                TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                )
+     </insert>
+</mapper>

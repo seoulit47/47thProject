@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.seoulit.erp47.sup.checkup.applicationService.SupCheckupApplicationService;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
+import com.seoulit.erp47.sup.checkup.to.ReceBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 /**
@@ -51,16 +52,23 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 		return choInspList;
 	}
 
-
+	/* 종합검진 검사관리 - 선택 검사목록외 조회*/
 	@Override
 	public List<InspBean> findExChoInspList(Map<String, String> argsMap) {
 		List<InspBean> exChoInspList = supCheckupApplicationService.findExChoInspList(argsMap);
 		return exChoInspList;
 	}
 
-
+	/* 종합검진 예약관리 - 예약 취소 */
 	@Override
 	public void cancelRsvt(Map<String, String> argsMap) {
 		supCheckupApplicationService.cancelRsvt(argsMap);
+	}
+
+	/* 종합검진 수납 - 조회 */
+	@Override
+	public List<ReceBean> findReceList(Map<String, String> argsMap) {
+		List<ReceBean> receList = supCheckupApplicationService.findReceList(argsMap);
+		return receList;
 	}
 }

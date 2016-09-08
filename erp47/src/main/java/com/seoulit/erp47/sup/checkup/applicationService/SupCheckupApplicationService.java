@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
+import com.seoulit.erp47.sup.checkup.to.ReceBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 public interface SupCheckupApplicationService {
@@ -22,6 +23,9 @@ public interface SupCheckupApplicationService {
     
     /* 종합검진 검사관리 - 선택 검사목록외 조회*/
     public List<InspBean> findExChoInspList(Map<String, String> argsMap);
+    
+    /* 종합검진 수납 - 조회 */
+    public List<ReceBean> findReceList(Map<String, String> argsMap);
     
     
 }

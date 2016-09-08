@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.sup.checkup.dao.InspDAO;
 import com.seoulit.erp47.sup.checkup.dao.PckDAO;
+import com.seoulit.erp47.sup.checkup.dao.ReceDAO;
 import com.seoulit.erp47.sup.checkup.dao.RsvtDAO;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
+import com.seoulit.erp47.sup.checkup.to.ReceBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 /**
@@ -32,8 +34,10 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
     private PckDAO pckDAO;
 	@Autowired
 	private InspDAO inspDAO;
+	@Autowired
+	private ReceDAO receDAO;
 	
-	/* 종합검진 예약관리 - 예약목록 조회 */
+	/* 종합검진 예약관리 - 예약목록 조회  */
 	@Override                
 	public List<RsvtBean> findRsvtList(Map<String, String> argsMap) {
 	    List<RsvtBean> rsvtList = rsvtDAO.selectRsvtList(argsMap);
@@ -41,13 +45,13 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	}
 	
 
-	/* 종합검진 예약관리 - 예약취소 */
+	/* 종합검진 예약관리 - 예약취소  */
 	@Override
 	public void cancelRsvt(Map<String, String> argsMap) {
 		rsvtDAO.updateRsvtYN(argsMap);
 	}
 	
-	/* 종합검진 검사관리  - 검사목록 조회 */
+	/* 종합검진 검사관리  - 검사목록 조회  */
 	@Override                
     public List<InspBean> findInspList(Map<String, String> argsMap) {
         List<InspBean> inspList = inspDAO.selectInspList(argsMap);
@@ -55,18 +59,25 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
         return inspList;
     }
 
-	/* 종합검진 검사관리 - 선택 검사목록 조회 */
+	/* 종합검진 검사관리 - 선택 검사목록 조회  */
 	@Override
 	public List<ChoInspBean> findChoInspList(Map<String, String> argsMap) {
 		List<ChoInspBean> choInspList = inspDAO.selectChoInspList(argsMap);
 		return choInspList;
 	}
 
-	/* 종합검진 검사관리 - 선택 검사목록외 조회 */
+	/* 종합검진 검사관리 - 선택 검사목록외 조회  */
 	@Override
 	public List<InspBean> findExChoInspList(Map<String, String> argsMap) {
 		List<InspBean> exChoInspList = inspDAO.selectExChoInspList(argsMap);
 		return exChoInspList;
+	}
+
+	/* 종합검진 수납 - 수납조회  */
+	@Override
+	public List<ReceBean> findReceList(Map<String, String> argsMap) {
+		List<ReceBean> receList = receDAO.selectReceList(argsMap);
+		return receList;
 	}
 
 }
