@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_RecePopForm" classname="SC_RecePopForm" left="0" top="0" width="700" height="660" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="3.71%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>
+        <Static id="Static00" taborder="1" text="종합검진 진료비 수납" onclick="Static00_onclick" left="7.43%" top="-2" right="22%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="receGrid" taborder="2" binddataset="dlRece" useinputpanel="false" autofittype="col" left="4%" top="353" right="5.14%" height="226">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="83"/>
+                <Column size="59"/>
+                <Column size="191"/>
+                <Column size="75"/>
+                <Column size="58"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="7" text="수납내역"/>
+                <Cell row="1" text="수납일자"/>
+                <Cell row="1" col="1" text="결제금액"/>
+                <Cell row="1" col="2" text="지불구분"/>
+                <Cell row="1" col="3" text="승인번호"/>
+                <Cell row="1" col="4" text="유효기간"/>
+                <Cell row="1" col="5" text="할부"/>
+                <Cell row="1" col="6"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:receDate"/>
+                <Cell col="1" displaytype="number" style="align:right;padding:0 5 0 0;" text="bind:payAmt"/>
+                <Cell col="2" displaytype="combo" text="bind:cardCashDiv" combodataset="dsCardCashDivCd" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" text="bind:aprvNo"/>
+                <Cell col="4" text="bind:valPrid"/>
+                <Cell col="5" text="bind:instmPrid"/>
+                <Cell col="6" text="bind:userId"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합  계"/>
+                <Cell col="1" displaytype="number" style="align:right;padding:0 5 0 0;" expr="expr:dataset.getSum(&quot;payAmt*1&quot;)"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div00" taborder="3" left="4.29%" top="66" right="3.57%" height="277" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="compBox" taborder="4" left="4.29%" top="80" right="5.57%" height="252" style="background:@gradation;border:0 solid #9f9f9fb3 ;">
+          <Layouts>
+            <Layout width="660" height="266">
+              <Div id="Div01" taborder="228" text="총금액" left="3.96%" top="199" right="80.35%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div02" taborder="229" text="선택금액" left="3.96%" top="153" right="80.35%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div03" taborder="230" text="감면금액" left="3.96%" top="107" right="80.35%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div04" taborder="231" text="기본금액" left="3.96%" top="61" right="80.35%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div05" taborder="232" text="수납일자" left="3.96%" top="15" right="80.35%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div06" taborder="233" text="예약일자" left="52.14%" top="15" right="32.17%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div08" taborder="234" text="검진일자" left="52.14%" top="61" right="32.17%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div09" taborder="235" text="예약금액" left="52.14%" top="107" right="32.17%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div10" taborder="236" text="이전수납액" left="52.14%" top="153" right="32.17%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div12" taborder="237" text="수납할금액" left="52.14%" top="199" right="32.17%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <MaskEdit id="basicInspAmtMask" taborder="238" mask="###,###" enable="false" left="21.24%" top="61" right="52.93%" height="30"/>
+              <MaskEdit id="reducAmtMask" taborder="239" mask="###,###" enable="false" left="21.24%" top="107" right="52.93%" height="30"/>
+              <MaskEdit id="choInspAmtMask" taborder="240" mask="###,###" enable="false" left="21.24%" top="153" right="52.93%" height="30"/>
+              <MaskEdit id="inspSumAmtMask" taborder="241" mask="###,###" enable="false" left="21.24%" top="199" right="52.93%" height="30"/>
+              <MaskEdit id="refReceAmtMask" taborder="242" mask="###,###" enable="false" left="69.26%" top="153" right="5.07%" height="30"/>
+              <MaskEdit id="payAmtMask" taborder="243" mask="###,###" left="69.26%" top="199" right="5.07%" height="30"/>
+              <MaskEdit id="rsvtAmtMask" taborder="244" mask="###,###" enable="false" left="69.26%" top="107" right="5.07%" height="30"/>
+              <Edit id="rsvtDateEd" taborder="245" enable="false" left="69.26%" top="15" right="5.07%" height="30" style=":disabled {align:center middle;}"/>
+              <Calendar id="inspPlnDateCal" taborder="246" readonly="true" left="21.24%" top="15" right="52.93%" height="30" ondrop="compBox_inspPlnDateCal_ondrop"/>
+              <MaskEdit id="inspDateEd" taborder="247" type="string" mask="####-##-##" enable="false" left="69.41%" top="61" right="5.23%" height="30" style=":disabled {align:center middle;}"/>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+        <Button id="closeBtn" taborder="5" onclick="closeBtn_onclick" left="81.71%" top="592" right="5.43%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="cardPayBtn" taborder="6" onclick="cardPayBtn_onclick" left="4%" top="592" right="80.29%" height="32" style="background:@gradation URL('img::cardBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="cashPayBtn" taborder="7" onclick="cashPayBtn_onclick" left="20.71%" top="592" right="63.57%" height="32" style="background:@gradation URL('img::cashBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findReceList</Col>
+            <Col id="URL">his::sup/checkup/findReceList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dlRece=dsRece</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">cancelRece</Col>
+            <Col id="URL">his::sup/checkup/cancelRece.do</Col>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+            <Col id="inData">dsRece=dsRece:U</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dlRece" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="receDate" type="STRING" size="256"/>
+          <Column id="payAmt" type="STRING" size="256"/>
+          <Column id="cardCashDiv" type="STRING" size="256"/>
+          <Column id="aprvNo" type="STRING" size="256"/>
+          <Column id="valPrid" type="STRING" size="256"/>
+          <Column id="instmPrid" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCardCashDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRece" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="receDate" type="STRING" size="256"/>
+          <Column id="befReceAmt" type="STRING" size="256"/>
+          <Column id="payAmt" type="STRING" size="256"/>
+          <Column id="cardCashDiv" type="STRING" size="256"/>
+          <Column id="aprvNo" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="inspDate" type="STRING" size="256"/>
+          <Column id="aprvDate" type="STRING" size="256"/>
+          <Column id="cardCd" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="valPrid" type="STRING" size="256"/>
+          <Column id="instmPrid" type="STRING" size="256"/>
+          <Column id="cashAprvData" type="STRING" size="256"/>
+          <Column id="cashAprvDivCd" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">SC006</Col>
+            <Col id="dsName">dsCardCashDivCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
