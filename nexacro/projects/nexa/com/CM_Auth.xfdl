@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CM_Auth" classname="CM_Auth" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="0" left="0%" top="0" right="-21.88%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
+        <Static id="Static00" taborder="1" text="권한 관리" left="4.79%" top="-4" right="81.64%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+        <Static id="subCodeStc" taborder="2" text="권한명" onclick="subCodeStc_onclick" left="1.56%" top="77" right="91.41%" height="27" style="background:papayawhip;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="authEdt" taborder="3" left="9.28%" top="78" right="82.71%" height="26" class="AreaEdt"/>
+        <Grid id="authGrid" taborder="4" binddataset="dsAuth" autoenter="select" useinputpanel="false" autofittype="col" oncellclick="authGrid_oncellclick" left="1.56%" top="120" right="74.51%" height="580">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="권한코드"/>
+                <Cell col="1" text="권한명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="expr:(dataset.getRowType(currow) == 2 || dataset.getRowType(currow) == 4) ? 'normal' : 'none'" text="bind:authCode"/>
+                <Cell col="1" edittype="normal" text="bind:authName"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc00" taborder="5" text="메뉴관리" onclick="subCodeStc_onclick" left="28.52%" top="77" right="64.45%" height="27" style="background:papayawhip;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Grid id="menuGrid" taborder="6" binddataset="dsMenu" useinputpanel="false" autofittype="col" left="28.61%" top="120" right="32.81%" height="580">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="87"/>
+                <Column size="148"/>
+                <Column size="84"/>
+                <Column size="117"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="메뉴코드"/>
+                <Cell col="1" text="메뉴명"/>
+                <Cell col="2" text="레벨"/>
+                <Cell col="3" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;normal&quot;" text="bind:menuCode"/>
+                <Cell col="1" edittype="normal" text="bind:menuName"/>
+                <Cell col="2" edittype="normal" text="bind:menuLevel"/>
+                <Cell col="3" edittype="normal" text="bind:useYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc01" taborder="7" text="전체메뉴" onclick="subCodeStc_onclick" left="73.05%" top="77" right="20.02%" height="27" style="background:papayawhip;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Grid id="allMenuGrid" taborder="8" binddataset="dsAllMenu" useinputpanel="false" autofittype="col" left="73.44%" top="120" right="2.73%" height="580">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="94"/>
+                <Column size="194"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="메뉴코드"/>
+                <Cell col="1" text="메뉴명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:menuCode"/>
+                <Cell col="1" text="bind:menuName"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchAuthBtn" taborder="9" onclick="searchAuthBtn_onclick" left="18.16%" top="75" right="74.32%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addAuthBtn" taborder="10" left="3.71%" top="708" right="87.5%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addAuthBtn_onclick"/>
+        <Button id="delAuthBtn" taborder="11" onclick="delAuthBtn_onclick" left="14.55%" top="708" right="76.66%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addMenuBtn" taborder="12" onclick="addMenuBtn_onclick" left="68.36%" top="376" right="27.93%" height="32" style="background:@gradation URL('img::miniBtn1.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delMenuBtn" taborder="13" onclick="delMenuBtn_onclick" left="68.36%" top="416" right="27.93%" height="32" style="background:@gradation URL('img::miniBtn2.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchAuthMenuBtn" taborder="14" onclick="batchAuthMenuBtn_onclick" left="827" top="708" width="90" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsMenu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="menuCode" type="STRING" size="256"/>
+          <Column id="menuName" type="STRING" size="256"/>
+          <Column id="menuLevel" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="authCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAuthList</Col>
+            <Col id="URL">erp47::com/findAuthList.do</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">authCallback</Col>
+            <Col id="outData">dsAuth=dsAuth</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findAuthMenuList</Col>
+            <Col id="URL">erp47::com/findAuthMenuList.do</Col>
+            <Col id="outData">dsMenu=dsMenu</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findAllMenu</Col>
+            <Col id="URL">erp47::com/findAllMenu.do</Col>
+            <Col id="outData">dsAllMenu=dsAllMenu</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">processAuthBatch</Col>
+            <Col id="URL">erp47::com/authMenuBatch.do</Col>
+            <Col id="inData">dsAuth=dsAuth:u dsMenu=dsMenu:u</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAuth" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="authCode" type="STRING" size="256"/>
+          <Column id="authName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAllMenu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="menuCode" type="STRING" size="256"/>
+          <Column id="menuName" type="STRING" size="256"/>
+          <Column id="menuLevel" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+권한 & 메뉴 관리 화면                                           						                                                                         
+@Path			시스템공통            				   				
+@Description	권한과 메뉴를 관리하기 위한 화면							
+@Author	  		임행섭				    			                        								                                            
+@Create         2016. 5. 27.          
+@LastUpdated    2016. 5. 31.  
+	권한그리드에서 권한추가나 권한명 변경시 권한코드 편집 가능하도록 기능 추가
+	권한메뉴 추가시 전체메뉴 한칸 밑으로 내려가도록 편의기능 추가
+********************************************************************************/
+
+include "scripts::commonScripts.xjs"
+
+//권한 조회 버튼
+this.searchAuthBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	//검색어 셋팅
+	this.dsService.setColumn(0,4,"authName=" + this.authEdt.text);
+	
+	//권한 검색
+	this.gfnService("findAuthList");
+	
+	//권한 전체
+	this.gfnService("findAllMenu");
+}
+
+// 클릭한 권한에 대한 메뉴
+this.authGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.dsService.setColumn(1, 4, "authCode=" + this.dsAuth.getColumn(e.row,"authCode")); 
+	this.gfnService("findAuthMenuList");
+}
+
+//권한 추가
+this.addAuthBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsAuth.addRow();
+}
+
+//권한 삭제
+this.delAuthBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsAuth.deleteRow(this.authGrid.currentrow);
+}
+
+//권한 메뉴 추가
+this.addMenuBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var menuCode  = this.dsAllMenu.getColumn(this.allMenuGrid.currentrow, "menuCode");
+	var menuName  = this.dsAllMenu.getColumn(this.allMenuGrid.currentrow, "menuName");
+	var menuLevel = this.dsAllMenu.getColumn(this.allMenuGrid.currentrow, "menuLevel");
+	var useYn 	  = this.dsAllMenu.getColumn(this.allMenuGrid.currentrow, "useYn");
+	var authCode  = this.dsAuth.getColumn(this.authGrid.currentrow, "authCode");
+	
+	this.dsMenu.addRow();
+	this.dsMenu.setColumn(this.menuGrid.currentrow, "menuCode", menuCode);
+	this.dsMenu.setColumn(this.menuGrid.currentrow, "menuName", menuName);
+	this.dsMenu.setColumn(this.menuGrid.currentrow, "menuLevel", menuLevel);
+	this.dsMenu.setColumn(this.menuGrid.currentrow, "useYn", useYn);
+	this.dsMenu.setColumn(this.menuGrid.currentrow, "authCode", authCode);
+	
+	// 전체메뉴 그리드 한칸 아래로 이동
+	this.dsAllMenu.set_rowposition(this.allMenuGrid.currentrow + 1);
+}
+
+//권한 메뉴 삭제
+this.delMenuBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsMenu.deleteRow(this.menuGrid.currentrow);
+}
+
+//일괄처리
+this.batchAuthMenuBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(confirm("일괄처리 하시겠습니까?")){
+		this.dsService.setColumn(3, 4, "authCode=" + this.dsAuth.getColumn(this.authGrid.currentrow, "authCode"));
+		this.gfnService("processAuthBatch");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>
