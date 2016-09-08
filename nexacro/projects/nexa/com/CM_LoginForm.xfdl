@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_LoginForm" classname="CM_LoginForm" left="0" top="0" width="515" height="403" style="border:0 dotted #808080ff ;" titletext="로그인">
+  <Form id="CM_LoginForm" classname="CM_LoginForm" left="0" top="0" width="798" height="362" style="border:0 dotted #808080ff ;" titletext="로그인">
     <Layouts>
       <Layout>
-        <Static id="idStc" taborder="0" text="ID" left="19.61%" top="143" right="62.72%" height="35" style="background:cornsilk;border:2 dotted #808080ff ;bordertype:normal 0 0 ;align:center middle;font:20 Dotum,Arial Black;"/>
-        <Static id="pwStc" taborder="1" text="PW" left="19.61%" top="196" right="62.72%" height="35" style="background:cornsilk;border:2 dotted #808080ff ;bordertype:normal 0 0 ;align:center middle;font:20 Dotum,Arial Black;"/>
-        <Edit id="idNoEd" taborder="2" left="39.61%" top="143" right="40.97%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;" oneditclick="idNoEd_oneditclick"/>
-        <Edit id="idNmEd" taborder="3" left="61.36%" top="143" right="19.22%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
-        <Edit id="idPwEd" taborder="4" left="39.61%" top="196" right="19.22%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
-        <Button id="checkBtn" taborder="5" left="26.41%" top="268" right="52.82%" height="36" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;" onclick="checkBtn_onclick"/>
-        <Button id="closeBtn" taborder="6" left="52.23%" top="268" right="26.99%" height="36" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;" onclick="closeBtn_onclick"/>
+        <ImageViewer id="ImageViewer00" taborder="7" left="0%" top="0" right="45.11%" height="362" style="background:#ffffffff URL('img::병원전경[1].jpg') stretch;"/>
+        <ImageViewer id="ImageViewer01" taborder="8" left="54.64%" top="0" right="0%" height="362" style="background:#ffffffff URL('img::LoginForm.png') stretch;"/>
+        <Edit id="idNoEd" taborder="2" left="58.15%" top="135" right="26.19%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;" oneditclick="idNoEd_oneditclick"/>
+        <Edit id="idNmEd" taborder="3" left="74.31%" top="135" right="8.27%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;"/>
+        <Edit id="idPwEd" taborder="4" left="58.27%" top="225" right="8.27%" height="35" style="border:3 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;align:center middle;" password="true"/>
+        <Button id="checkBtn" taborder="9" left="62.91%" top="286" right="14.04%" height="50" style="background:@gradation URL('img::goBtn.png') stretch;border:1 none #999999ff ;" onclick="checkBtn_onclick" onmouseenter="checkBtn_onmouseenter" onmouseleave="checkBtn_onmouseleave"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -106,6 +105,18 @@ this.loginCheckCallback = function(svcID, ErrorCode, ErrorMsg)
 	alert("비밀번호가 맞지 않습니다.");
 	this.idPwEd.set_value("");
   }
-}]]></Script>
+}
+
+this.checkBtn_onmouseenter = function(obj:Button, e:nexacro.MouseEventInfo)
+{
+	this.checkBtn.style.set_background_image('url("img::goBtn2.png")');
+}
+
+this.checkBtn_onmouseleave = function(obj:Button, e:nexacro.MouseEventInfo)
+{
+	this.checkBtn.style.set_background_image('url("img::goBtn.png")');
+}
+
+]]></Script>
   </Form>
 </FDL>

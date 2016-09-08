@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1024" height="44" titletext="New Form">
+  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1024" height="91" titletext="New Form">
     <Layouts>
       <Layout>
-        <Static id="Static00" taborder="0" text="민블 민사이 갓혜자" left="2.34%" top="-7" right="4.1%" height="47"/>
-        <Button id="Button00" taborder="1" text="Button00" left="23.24%" top="10" right="68.46%" height="22"/>
-        <Button id="Button01" taborder="2" text="Button01" left="41.02%" top="8" right="48.44%" height="22"/>
+        <Tab id="Tab00" taborder="0" left="15.63%" top="0" right="0.1%" height="78" tabindex="0" scrollbars="autoboth" usecontrolkey="false" enableevent="true">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="인사"/>
+            <Tabpage id="tabpage2" text="물류"/>
+            <Tabpage id="tabpage3" text="회계"/>
+            <Tabpage id="tabpage4" text="원무" applystyletype="keep"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static00" taborder="1" text="ERP47" left="5.47%" top="12" right="86.33%" height="60"/>
       </Layout>
     </Layouts>
   </Form>

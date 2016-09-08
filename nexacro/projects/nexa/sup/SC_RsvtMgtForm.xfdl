@@ -627,6 +627,39 @@ this.btnBox2_receBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var param = {dsRece:this.dsRece};
 	this.gfnPopup("SC_RecePopForm","sup",param,"");	
 }
+
+/* 수정 */
+this.btnBox2_modiBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var disArr = ['patNmEd', 'rsvtDateEd','rsvtTimeMask','rsvtNoEd', 'rsvtRespEd',
+				 'regNo1Ed', 'regNo2Ed', 'smsEd', 'ageEd', 'basicInspAmtEd',
+				  'reducAmtEd', 'rsvtAmtEd', 'basicInspSumAmtEd','cancelEd'];
+				  
+	this.compBox.set_enable(true);
+	
+	this.choInspGrid.setCellProperty("Body", 2, "edittype", "normal");  //확인하기
+	editFlag = true;
+}
+
+/* 저장 */
+this.btnBox2_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.supCheckMdData(this.compBox))
+	{
+	
+		var rsvtNo = this.compBox.rsvtNoEd.value;
+		var count = this.dsChoInsp.rowcount;
+		
+		for(i=0; i<count; i++){
+			this.dsChoInsp.setColumn(i,"rsvtNo",rsvtNo);	
+		}
+		
+		trace(this.dsRsvt.saveXML());
+		
+		this.gfnService("batchRsvtProcess",false);
+		this.searchBtn_onclick(null,null);
+	}
+}
 ]]></Script>
   </Form>
 </FDL>
