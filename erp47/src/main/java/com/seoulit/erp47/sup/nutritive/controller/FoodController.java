@@ -69,7 +69,8 @@ public class FoodController {
 	public void findCodeList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
-
+		
+		
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
 
 		List<NCodeBean> codeList = nutritiveServiceFacade.findCodeList(argsMap);
@@ -77,7 +78,9 @@ public class FoodController {
 		dataSetBeanMapper.beansToDataset(outData, codeList, NCodeBean.class);
 	}
 
-	/* 영양관리 음식 관리 - 음식등록 - 저장 */
+	
+/*	
+	 영양관리 음식 관리 - 음식등록 - 저장 
 	@RequestMapping("sup/nutritive/batchFoodAddFormProcess.do")
 	public void batchFoodDtlProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
@@ -98,7 +101,7 @@ public class FoodController {
 		nutritiveServiceFacade.batchFoodAddFormProcess(map);
 	}
 
-	/* 영양관리 음식 관리 - 저장 */
+	 영양관리 음식 관리 - 저장 
 	@RequestMapping("sup/nutritive/batchFoodMgtFormProcess.do")
 	public void batchFoodMgtFormProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("짠");
@@ -119,4 +122,6 @@ public class FoodController {
 
 		nutritiveServiceFacade.batchFoodMgtFormProcess(map);
 	}
+	
+	*/
 }

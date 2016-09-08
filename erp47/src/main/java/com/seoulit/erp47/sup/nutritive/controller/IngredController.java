@@ -43,8 +43,9 @@ public class IngredController {
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
 
 		List<IngredBean> ingredList = nutritiveServiceFacade.findIngredList(argsMap);
-
+		System.out.println("inData"+inData.saveXml());
 		dataSetBeanMapper.beansToDataset(outData, ingredList, IngredBean.class);
+		
 	}
 
 	/* 영양관리 식품 관리 - 저장 */

@@ -42,7 +42,7 @@ public class NutritiveApplicationServiceImpl implements NutritiveApplicationServ
 	@Override /* 영양관리 음식 관리 - 코드조회 */
 	public List<NCodeBean> findCodeList(Map<String, String> argsMap) {
 		String div = argsMap.get("formDiv");
-
+					
 		List<NCodeBean> codeList = null;
 
 		if (div.equals("food")) {
@@ -57,6 +57,7 @@ public class NutritiveApplicationServiceImpl implements NutritiveApplicationServ
 
 	@Override /* 영양관리 식품 관리 - 조회 */
 	public List<IngredBean> findIngredList(Map<String, String> argsMap) {
+		System.out.println("+++++++++++++"+argsMap);
 		return ingredDAO.selectIngredList(argsMap);
 	}
 
