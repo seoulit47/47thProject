@@ -89,6 +89,41 @@
 
 
 
+<delete id="deleteCfrnTrmt" parameterType="CfrnTrmtBean">
+
+
+	DELETE FROM
+		MQ_CFRN_TRMT_MNG
+		WHERE PAT_NO=#{patNo}
+
+
+</delete>
+
+
+<update id="updateCfrnTrmt" parameterType="CfrnTrmtBean">
+
+
+	UPDATE MQ_CFRN_TRMT_MNG
+	SET
+	 PAT_NO =#{patNo},<!-- 환자번호 -->
+		 ASKING_DATE= #{askingDate},<!-- 의뢰일 -->
+		 PAT_DIV=#{patDiv}, <!-- 구분 -->
+		 PAT_NM=#{patNm}, <!-- 환자명 -->
+		 CFRN_TRMT_NO=#{cfrnTrmtNo},<!-- 등록번호 -->
+		  ASKING_DEPT_NM=#{askingDeptNm}, <!-- 의뢰과 명 -->
+		 ASKING_DOCT_NM=#{askingDoctNm},<!-- 의뢰의 명 -->
+		RESP_DEPT_NM=#{respDeptNm},<!-- 응답과 명 -->
+		 RESP_DOCT_NM= #{respDoctNm},<!-- 응답의 명 -->
+		 CALL_YN=#{callYN},<!-- 유형 -->
+		  EME_YN=#{emeYN},<!-- 응급 -->
+		 ADR_YN=#{adrYN}, <!-- ADR -->
+		 ASKING_CON=#{askingCon}, <!-- 진료소견 -->
+		 ASKING_CAU=#{askingCau}, <!-- 사유 -->
+		 RESP_CON=#{respCon} <!-- 회신 -->
+	WHERE
+	CFRN_TRMT_NO=#{cfrnTrmtNo}
+</update>
+
 
 
 </mapper>
