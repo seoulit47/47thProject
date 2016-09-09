@@ -63,6 +63,7 @@
                 <Cell row="1" col="7" style="background:transparent;color:black;color2:transparent;" text="보조과목" autosizerow="default" autosizecol="default"/>
               </Band>
               <Band id="body">
+                <Cell displaytype="text" edittype="none" text="bind:bimokLevel"/>
                 <Cell/>
                 <Cell col="1"/>
                 <Cell col="2"/>

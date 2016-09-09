@@ -9,5 +9,5 @@ public interface BudgBimokDAO {
 
 	List<BudgBimokBean> selectBimokList(Map<String, String> argsMap);
 
-
+	void callCopyBimok(BudgBimokBean budgBimokBean);
 }
