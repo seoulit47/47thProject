@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HG_HdayForm" classname="HG_HdayForm" left="0" top="0" width="1264" height="778" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="titleDiv" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="휴일관리" left="4.78%" top="-4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="mainDiv" taborder="1" text="Div01" left="0.88%" top="56" right="0.64%" height="704" style="background:whitesmoke;border:1 solid #808080ff ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Calendar id="startCal" taborder="16" left="9.31%" top="5" right="79.51%" height="30"/>
+              <Calendar id="endCal" taborder="17" left="22.67%" top="5" right="66.07%" height="30"/>
+              <Static id="hdateStc" taborder="18" text="기간" left="1.21%" top="6" right="91.74%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+              <Grid id="hdayGrid" taborder="19" binddataset="dsHday" useinputpanel="false" autofittype="col" left="1.21%" top="42" right="1.21%" height="654">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="68"/>
+                      <Column size="383"/>
+                      <Column size="383"/>
+                      <Column size="383"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="순번"/>
+                      <Cell col="1" text="날짜"/>
+                      <Cell col="2" text="휴일명"/>
+                      <Cell col="3" text="공휴일명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell expr="currow+1"/>
+                      <Cell col="1" displaytype="date" edittype="date" text="bind:hdayDate"/>
+                      <Cell col="2" text="bind:hdayNm"/>
+                      <Cell col="3" edittype="text" text="bind:hdayNm2"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static04" taborder="20" text="   ~" left="20.24%" top="6" right="77.17%" height="31" style="color:#46463dff;"/>
+              <Button id="addHdayBtn" taborder="25" cssclass="DelBtn" left="77.31%" top="8" right="16.33%" height="28" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_addHdayBtn_onclick" enable="false"/>
+              <Button id="delHdayBtn" taborder="26" cssclass="DelBtn" enable="false" left="84.23%" top="8" right="9.49%" height="28" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_delHdayBtn_onclick"/>
+              <Button id="serchHdayBtn" taborder="27" cssclass="SearchBtn" left="70.47%" top="8" right="23.17%" height="28" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_serchHdayBtn_onclick"/>
+              <Button id="saveBtn" taborder="28" onclick="saveBtn_onclick" cssclass="DelBtn" enable="false" left="91.15%" top="8" right="3.22%" height="28" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="payDate" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+          <Column id="loginIp" type="STRING" size="256"/>
+          <Column id="loginTime" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">43001</Col>
+            <Col id="empNm">나이팅게일</Col>
+            <Col id="jobcl">간호직</Col>
+            <Col id="jobtt">실장(부장급)</Col>
+            <Col id="jobrk">매니저1급간호사</Col>
+            <Col id="rrn">220512-2345678</Col>
+            <Col id="birthday">19220512</Col>
+            <Col id="gender">W</Col>
+            <Col id="mateYn">1</Col>
+            <Col id="addr">진주시 가좌동 639-1번지</Col>
+            <Col id="zipCd">660-330</Col>
+            <Col id="permaddr">영국 어딘가</Col>
+            <Col id="tel">055-753-3677</Col>
+            <Col id="phone">010-3672-6182</Col>
+            <Col id="extsn">7001</Col>
+            <Col id="fax">055-753-3676</Col>
+            <Col id="password">1</Col>
+            <Col id="image">430013.jpg</Col>
+            <Col id="natnt">영국</Col>
+            <Col id="localYn">1</Col>
+            <Col id="forinNum">[Undefined]</Col>
+            <Col id="deptCd">80000</Col>
+            <Col id="hireDiv">정규직</Col>
+            <Col id="workStatus">재직</Col>
+            <Col id="retMonthWorkingdays">[Undefined]</Col>
+            <Col id="payStep">13</Col>
+            <Col id="hireDate">20061201</Col>
+            <Col id="pms">admin</Col>
+            <Col id="detailAddr">나이팅빌라 1004호</Col>
+            <Col id="email">woojung0284</Col>
+            <Col id="bankNm">하나은행</Col>
+            <Col id="accountNm">805-12-214984</Col>
+            <Col id="retDate">[Undefined]</Col>
+            <Col id="payDate">25</Col>
+            <Col id="workPeriod">8</Col>
+            <Col id="deptNm">인사팀</Col>
+            <Col id="frignSingleTxrate">[Undefined]</Col>
+            <Col id="sts">[Undefined]</Col>
+            <Col id="loginIp"/>
+            <Col id="loginTime">20151230-002654</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHday">
+        <ColumnInfo>
+          <Column id="hdayDate" type="STRING" size="256"/>
+          <Column id="hdayNm" type="STRING" size="256"/>
+          <Column id="hdayNm2" type="STRING" size="256"/>
+          <Column id="sDate" type="STRING" size="256"/>
+          <Column id="eDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">searchHdayList</Col>
+            <Col id="URL">erp47::hrs/hday/findHday.do</Col>
+            <Col id="outData">dsHday=dsHday</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchHday</Col>
+            <Col id="URL">erp47::hrs/hday/batchHdayProcess.do</Col>
+            <Col id="inData">dsHday=dsHday:u</Col>
+            <Col id="outData">dsHday=dsHday</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 휴일관리                                                  		*
+*                                                                   *
+* @Path		    휴일관리        	                        		*
+* @Description  휴일정보 조회,등록,수정,삭제 화면          		*
+* @Author	    박 영 희   					                    *
+* 								                                    *
+* Created on 2016. 9. 06.                             		        *
+*								                                    *
+********************************************************************/
+
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScript.xjs";
+include "scripts::commonTransaction.xjs";
+
+
+
+/***************************************************************************************************
+*                                         화면 변수 선언부                                         *
+***************************************************************************************************/
+var startDate;//시작일자
+var endDate;//마지막일자
+var pms;
+var deptNm;
+
+
+/***************************************************************************************************
+*                                         콜백 함수 셋팅                                           *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)
+	{	
+		this.gfn_errorPopup(svcID, errorMsg);
+		return;	
+	}else{			
+		if(svcID=="searchHdayList")
+		{		
+			var rowCount = this.dsHday.getRowCount();
+			
+			if(rowCount== 0)
+			{		
+				alert("조회 내용이 없습니다.");
+				return;
+			}
+		}
+		if(svcID=="batchHday")
+		{		
+			alert("정상 처리되었습니다.");		
+		}
+	
+	}
+	
+}
+
+/***************************************************************************************************
+*                                         onload Event                                      	   *
+***************************************************************************************************/
+this.HGhdayForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	
+	this.mainDiv.startCal.set_value(this.fn_Today());
+	this.mainDiv.endCal.set_value(this.fn_Today());
+	pms = application.gdsEmp.getColumn(0,"pms");
+	deptNm = application.gdsEmp.getColumn(0,"deptNm");
+
+	if(pms == 'admin' && deptNm == '인사팀'){
+		
+		this.addHdayBtn.set_enable(true);
+		this.delHdayBtn.set_enable(true);
+		this.saveBtn.set_enable(true);
+	
+	}	
+	
+}
+
+
+/***************************************************************************************************
+*                                         현재 날짜 셋팅 FUNCTION                            	   *
+***************************************************************************************************/
+this.fn_Today = function()
+{
+	var objDate = new Date();
+	var sToday  = objDate.getFullYear().toString();
+	    sToday += (objDate.getMonth()+1).toString().padLeft(2, "0");
+	    sToday += objDate.getDate().toString().padLeft(2, "0"); 
+
+	return sToday;
+}
+
+
+/***************************************************************************************************
+*                                         조회 버튼 클릭 Event                               	   *
+***************************************************************************************************/
+this.mainDiv_serchHdayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	startDate = this.mainDiv.startCal.value;
+	endDate = this.mainDiv.endCal.value;
+	
+	var argument = 'sDate='+startDate+' eDate='+endDate;
+	this.dsService.setColumn(0,"argument",argument);
+	
+	this.gfnService("searchHdayList");
+	
+	this.mainDiv.hdayGrid.setCellProperty("body","edittype","none");
+}
+
+
+/***************************************************************************************************
+*                                         추가 버튼 클릭 Event                              	   *
+***************************************************************************************************/
+this.mainDiv_addHdayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsHday.addRow();
+	this.dsHday.setColumn(this.dsHday.rowcount-1,"hdayDate",this.fn_Today());
+	this.mainDiv.hdayGrid.setCellProperty("body","edittype","normal");
+}
+
+
+
+/***************************************************************************************************
+*                                         삭제 버튼 클릭 Event                               	   *
+***************************************************************************************************/
+this.mainDiv_delHdayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsHday.deleteRow(this.dsHday.rowposition);
+}
+
+
+/***************************************************************************************************
+*                                         일괄처리 버튼 클릭 Event                               *
+***************************************************************************************************/
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchHday");
+}
+
+
+]]></Script>
+  </Form>
+</FDL>
