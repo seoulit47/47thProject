@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SN_FoodAddPopForm" classname="SN_FoodAddPopForm" left="0" top="0" width="746" height="743" titletext="New Form" onload="SN_FoodAddPopForm_onload">
+  <Form id="SN_FoodAddPopForm" classname="SN_FoodAddPopForm" left="0" top="0" width="746" height="743" titletext="음식 등록" onload="SN_FoodAddPopForm_onload">
     <Layouts>
       <Layout>
         <Div id="compBox" taborder="0" left="3.75%" top="59" right="3.75%" height="102" style="background:white;border:1 solid gainsboro ;"/>
-        <Div id="Div00" taborder="1" left="0%" top="0" right="2.01%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
-        <Edit id="foodGrpCdEd" taborder="2" enable="false" left="18.9%" top="76" right="68.9%" height="30"/>
+        <Div id="Div00" taborder="1" left="0%" top="0" right="3.62%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
+        <Edit id="foodGrpCdEd" taborder="2" enable="false" left="18.9%" top="76" right="68.9%" height="30" position="absolute" style="align:center middle;"/>
         <Div id="Div01" taborder="3" text="음식 분류" left="5.9%" top="76" right="82.17%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
         <Static id="Static00" taborder="4" text="음식 등록" left="7.24%" top="-3" right="69.03%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
         <Edit id="foodMemoEd" taborder="5" left="18.9%" top="115" right="19.17%" height="30"/>
         <Div id="Div02" taborder="6" text="음식코드" left="33.78%" top="76" right="54.29%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
-        <Edit id="foodCdEd" taborder="7" enable="false" left="46.78%" top="76" right="38.87%" height="30"/>
-        <Edit id="foodNmEd" taborder="8" left="76.81%" top="76" right="6.03%" height="30"/>
+        <Edit id="foodCdEd" taborder="7" enable="false" left="46.78%" top="76" right="38.87%" height="30" position="absolute" style="align:center middle;"/>
+        <Edit id="foodNmEd" taborder="8" left="76.81%" top="76" right="6.03%" height="30" position="absolute" style="align:center middle;"/>
         <Div id="Div03" taborder="9" text="음식명" left="63.81%" top="76" right="24.26%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
         <Div id="Div04" taborder="10" text="비고" left="5.9%" top="115" right="82.17%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
         <Grid id="ingredDtlGrid" taborder="11" binddataset="dsFoodDtl" useinputpanel="false" autofittype="col" left="3.75%" top="203" right="3.75%" height="124">
@@ -279,18 +279,22 @@
 
 var state;
 var foodGrpCd;
+var foodCd;
 
 this.SN_FoodAddPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	state= this.parent.state;
-	foodGrpCd= this.parent.foodGrpCd;
+	//alert(this.parent.state);
+	state = this.parent.state;
+	foodGrpCd = this.parent.foodGrpCd;
+	foodCd = this.parent.foodCd;
 
 	if(state=="insert"){
 		this.dsFood.addRow();
-		this.dsFood.setColumn(0,"foodGrpCd",foodGrpCd);
+		this.dsFood.setColumn(0, "foodGrpCd",foodGrpCd);
+		this.dsFood.setColumn(0, "foodCd",foodCd);
+		this.dsFood.setColumn(0, "foodNm", this.foodNmEd.value);
+		this.dsFood.setColumn(0, "notes", this.foodMemoEd.value);
 		
-		this.foodCdEd.set_enable(true);
-		this.foodNmEd.set_enable(true);
 		
 	}else if(state=="update"){
 		this.dsFood.addRow();
@@ -303,6 +307,10 @@ this.SN_FoodAddPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	}
 }
 
+
+
+
+
 // 식품조회
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
@@ -310,11 +318,8 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var ingredNm = this.ingredNmEd.value;
 	
 	var argument = 'ingredCd='+ingredCd+' ingredNm='+ingredNm;
-	
 	var row = this.dsService.findRow("serviceID", "findIngredList");
-
 	this.dsService.setColumn(row, "argument", argument);
-	
 	this.gfnService("findIngredList", false);
 }
 
@@ -342,15 +347,14 @@ this.plusBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.dsFoodDtl.setColumn(count, "mainmenuYn", mainmenuYn);
 }
 
+
+
 //확인버튼
 this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	alert(this.dsFoodDtl.getColumn(0,"ingredNm"));
-	alert(this.dsFoodDtl.getColumn(1
-	
-	,"foodCd"));
 
-	this.gfnService("batchFoodAddFormProcess");
+	alert(this.dsFood.getColumn(0,"foodNm"));
+	this.gfnService("batchFoodAddFormProcess",false);
 	
 }
 

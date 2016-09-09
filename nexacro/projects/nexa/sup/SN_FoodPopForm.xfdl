@@ -115,6 +115,7 @@
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
 
+//조회 버트
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var foodCd = this.foodCdEd.value;
@@ -127,6 +128,18 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.dsService.setColumn(row, "argument", argument);
 	
 	this.gfnService("findFoodList", false);
+	
+}
+
+//닫기
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+
+this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
 	
 }
 ]]></Script>

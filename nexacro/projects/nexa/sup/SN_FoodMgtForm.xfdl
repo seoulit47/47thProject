@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SN_FoodMgtForm" classname="SN_FoodMgtForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SN_FoodMgtForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
+        <Static id="Static00" taborder="1" text="음식관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="codeGrid" taborder="2" binddataset="dsCode" useinputpanel="false" autofittype="col" left="2.24%" top="107" right="67.92%" height="316">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="232"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="분류코드"/>
+                <Cell col="1" text="분류명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:smallCode1"/>
+                <Cell col="1" text="bind:fullName1"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="foodGrid" taborder="3" binddataset="dsFood" useinputpanel="false" autofittype="col" onsetfocus="foodGrid_onsetfocus" oncellclick="foodGrid_oncellclick" left="33.12%" top="107" right="2.08%" height="598">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="217"/>
+                <Column size="409"/>
+                <Column size="185"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="음식코드"/>
+                <Cell col="1" text="음식명"/>
+                <Cell col="2" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:foodCd"/>
+                <Cell col="1" text="bind:foodNm"/>
+                <Cell col="2" text="bind:notes"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="foodCdEd" taborder="4" left="42.24%" top="72" right="47.68%" height="30"/>
+        <Div id="Div01" taborder="5" text="음식코드" left="33.12%" top="72" right="58.4%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="foodNmEd" taborder="6" left="52.96%" top="72" right="31.52%" height="30"/>
+        <Button id="searchBtn" taborder="7" onclick="searchBtn_onclick" left="90.72%" top="70" right="2.08%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBtn" taborder="8" onclick="addBtn_onclick" left="58.96%" top="712" right="33.84%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="modBtn" taborder="9" onclick="modBtn_onclick" left="74.8%" top="712" right="18%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="printBtn" taborder="10" onclick="DelBtn_onclick" left="90.64%" top="712" right="2.16%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Static id="subCodeStc00" taborder="11" text="  음식분류" onclick="subCodeStc_onclick" left="2.24%" top="72" right="67.92%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+        <Grid id="foodDtlGrid" taborder="12" binddataset="dsFoodDtl" useinputpanel="false" autofittype="col" onsetfocus="foodDtlGrid_onsetfocus" left="2.24%" top="472" right="67.92%" height="233">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="79"/>
+                <Column size="210"/>
+                <Column size="48"/>
+                <Column size="42"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="4" text="음식별 식품 정보"/>
+                <Cell row="1" text="식품코드"/>
+                <Cell row="1" col="1" text="식품명"/>
+                <Cell row="1" col="2" text="수량"/>
+                <Cell row="1" col="3" text="단위"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ingredCd"/>
+                <Cell col="1" text="bind:ingredNm"/>
+                <Cell col="2" text="bind:qty"/>
+                <Cell col="3" text="bind:unit"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc10" taborder="13" text="  음식 상세정보" onclick="subCodeStc_onclick" left="2.24%" top="434" right="67.92%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+        <Button id="delBtn" taborder="14" onclick="delBtn_onclick" left="66.88%" top="712" right="25.92%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="saveBtn" taborder="15" onclick="saveBtn_onclick" left="82.72%" top="712" right="10.08%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFoodList</Col>
+            <Col id="URL">erp47::sup/nutritive/findFoodList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsFood=dsFood</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findFoodDtlList</Col>
+            <Col id="URL">erp47::sup/nutritive/findFoodDtlList.do</Col>
+            <Col id="outData">dsFoodDtl=dsFoodDtl</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findCodeList</Col>
+            <Col id="URL">erp47::sup/nutritive/findCodeList.do</Col>
+            <Col id="outData">dsCode=dsCode</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchFoodMgtFormProcess</Col>
+            <Col id="URL">his::sup/nutritive/batchFoodMgtFormProcess.do</Col>
+            <Col id="inData">dsFood=dsFood:U dsFoodDtl=dsFoodDtl:U</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFood" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsFood_onrowposchanged">
+        <ColumnInfo>
+          <Column id="foodGrpCd" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodType" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
+          <Column id="notes" type="STRING" size="256"/>
+          <Column id="amount" type="STRING" size="256"/>
+          <Column id="nutrit1" type="STRING" size="256"/>
+          <Column id="nutrit2" type="STRING" size="256"/>
+          <Column id="nutrit3" type="STRING" size="256"/>
+          <Column id="nutrit4" type="STRING" size="256"/>
+          <Column id="nutrit5" type="STRING" size="256"/>
+          <Column id="nutrit7" type="STRING" size="256"/>
+          <Column id="nutrit8" type="STRING" size="256"/>
+          <Column id="nutrit9" type="STRING" size="256"/>
+          <Column id="nutrit11" type="STRING" size="256"/>
+          <Column id="nutrit16" type="STRING" size="256"/>
+          <Column id="nutrit17" type="STRING" size="256"/>
+          <Column id="nutrit18" type="STRING" size="256"/>
+          <Column id="nutrit22" type="STRING" size="256"/>
+          <Column id="nutrit23" type="STRING" size="256"/>
+          <Column id="nutrit25" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsFoodDtl" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="ingredCd" type="STRING" size="256"/>
+          <Column id="ingredNm" type="STRING" size="256"/>
+          <Column id="qty" type="STRING" size="256"/>
+          <Column id="unit" type="STRING" size="256"/>
+          <Column id="mainmenuYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="smallCode1" type="STRING" size="256"/>
+          <Column id="fullName1" type="STRING" size="256"/>
+          <Column id="smallCode2" type="STRING" size="256"/>
+          <Column id="fullName2" type="STRING" size="256"/>
+          <Column id="smallCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+var foodGrpCd;
+
+//화면 로드
+this.SN_FoodMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var argument = "formDiv="+"food";
+	var row = this.dsService.findRow("serviceID", "findCodeList");
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("findCodeList", false);
+}
+
+//조회 버튼
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var foodNm = this.foodNmEd.value;
+	var foodCd = this.foodCdEd.value;
+	
+	var argument = "foodNm="+foodNm+" foodCd="+foodCd;
+	var row = this.dsService.findRow("serviceID", "findFoodList");
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("findFoodList", false);
+	
+	alert("조회 되었습니다.");
+}
+
+//코드 그리드
+this.dsCode_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{	
+	foodGrpCd=obj.getColumn(e.newrow, "smallCode1");
+	this.codeClick();
+}
+
+this.codeClick=function()
+{
+	var argument = "foodGrpCd="+foodGrpCd;
+	var row = this.dsService.findRow("serviceID", "findFoodList");
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("findFoodList", false);
+}
+
+
+//상세조회
+this.dsFood_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	var argument = "foodCd="+obj.getColumn(e.newrow,"foodCd");
+	var row = this.dsService.findRow("serviceID", "findFoodDtlList");
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("findFoodDtlList", false);
+}
+
+
+//등록버튼
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var row =this.dsFood.getRowCount()+1;	
+	var foodCd;
+		if(row < 10){
+			foodCd = foodGrpCd + "00"+row;
+		}else if(row < 100 && row > 9){
+			foodCd = foodGrpCd + "0"+row;
+		}else{
+			foodCd = foodGrpCd + row;
+		}
+	
+	var param = {state:"insert", foodGrpCd:foodGrpCd, foodCd:foodCd};
+	this.gfnPopup("SN_FoodAddPopForm","sup",param);
+	
+	
+}
+
+]]></Script>
+  </Form>
+</FDL>
