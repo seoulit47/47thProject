@@ -346,9 +346,7 @@ this.plusBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	alert(this.dsFoodDtl.getColumn(0,"ingredNm"));
-	alert(this.dsFoodDtl.getColumn(1
-	
-	,"foodCd"));
+	alert(this.dsFoodDtl.getColumn(1,"foodCd"));
 
 	this.gfnService("batchFoodAddFormProcess");
 	
