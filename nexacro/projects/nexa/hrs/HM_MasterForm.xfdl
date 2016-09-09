@@ -1,0 +1,2196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HM_MasterForm" classname="HM_MasterForm" left="0" top="0" width="1024" height="770" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div02" taborder="0" left="17.87%" top="67" right="1.07%" height="425" style="background:whitesmoke;border:1 solid #808080ff ;bordertype:round 5 5 ;font:9 Dotum;">
+          <Layouts>
+            <Layout>
+              <Button id="Button_EXL" taborder="0" text="EXL" onclick="Div02_Button_EXL_onclick" left="90.46%" top="11" right="3.62%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Static id="Static26" taborder="1" text="원내전화" onclick="Static01_onclick" left="50.36%" top="227" right="42.63%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+              <Static id="Static15" taborder="2" text="imgName" onclick="Static01_onclick" left="1.09%" top="294" right="90.22%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+              <Spin id="workperiodSpin" taborder="3" value="1" displaynulltext="1" cssclass="AreaSpin" left="57.73%" top="34" right="33.33%" height="29" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div03" taborder="1" left="18.07%" top="494" right="1.07%" height="227" style="background:whitesmoke;border:1 solid #808080ff ;bordertype:round 5 5 ;font:9 Dotum;"/>
+        <Div id="Div04" taborder="2" left="0.68%" top="725" right="1.07%" height="38" style="border:1 solid black ;bordertype:round 5 5 ;font:9 Dotum;"/>
+        <ImageViewer id="imageViewer" taborder="3" stretch="fit" onclick="imageViewer_onclick" cssclass="AreaImg" left="18.55%" top="73" right="63.77%" height="288" style="border:1 solid cadetblue ;bordertype:round 5 5 ;font:9 Dotum;"/>
+        <Static id="Static05" taborder="4" text="패스워드" onclick="Static01_onclick" left="36.62%" top="168" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static07" taborder="5" text="성별" onclick="Static01_onclick" left="78.42%" top="168" right="15.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static18" taborder="6" text="호봉" onclick="Static01_onclick" left="76.37%" top="360" right="20.31%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static19" taborder="7" text="근속연수" onclick="Static01_onclick" left="58.59%" top="104" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static21" taborder="8" text="입사일" onclick="Static01_onclick" left="58.59%" top="136" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Div id="Div06" taborder="9" left="83.98%" top="73" right="2.73%" height="40" style="border:1 solid blueviolet ;bordertype:round 5 5 ;"/>
+        <Static id="Static22" taborder="10" text="재직상태" onclick="Static01_onclick" left="78.42%" top="200" right="15.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static23" taborder="11" text="퇴사일" onclick="Static01_onclick" left="58.59%" top="168" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static24" taborder="12" text="퇴직예정일" onclick="Static01_onclick" left="58.59%" top="200" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static27" taborder="13" text="전화번호" onclick="Static01_onclick" left="58.59%" top="232" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static28" taborder="14" text="국적" onclick="Static01_onclick" left="78.42%" top="232" right="15.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static29" taborder="15" text="휴대폰번호" onclick="Static01_onclick" left="58.59%" top="264" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static30" taborder="16" text="혼인여부" onclick="Static01_onclick" left="78.42%" top="136" right="15.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static31" taborder="17" text="은행명" onclick="Static01_onclick" left="82.32%" top="424" right="13.96%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static35" taborder="18" text="급여계좌" onclick="Static01_onclick" left="76.37%" top="424" right="17.87%" height="62" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static36" taborder="19" text="계좌번호" onclick="Static01_onclick" left="76.37%" top="392" right="17.87%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static37" taborder="20" text="팩스" onclick="Static01_onclick" left="58.59%" top="328" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static14" taborder="21" text="급여일" onclick="Static01_onclick" left="87.6%" top="360" right="7.71%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static25" taborder="22" text="예금주" onclick="Static01_onclick" left="82.32%" top="456" right="13.96%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Edit id="imageEd" taborder="23" oneditclick="imageEd_oneditclick" cssclass="AreaEdt" left="25.98%" top="362" right="63.77%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Static id="Static15" taborder="24" text="기준등록지" onclick="Static01_onclick" left="36.62%" top="392" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static12" taborder="25" text="고용구분" onclick="Static01_onclick" left="36.62%" top="328" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static11" taborder="26" text="직급명" onclick="Static01_onclick" left="36.62%" top="297" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static10" taborder="27" text="직종명" onclick="Static01_onclick" left="36.62%" top="264" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static09" taborder="28" text="직위명" onclick="Static01_onclick" left="36.62%" top="232" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static08" taborder="29" text="생년월일" onclick="Static01_onclick" left="36.62%" top="200" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static06" taborder="30" text="주민번호" onclick="Static01_onclick" left="36.62%" top="136" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static13" taborder="31" text="주소" onclick="Static01_onclick" left="36.62%" top="424" right="57.52%" height="62" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static17" taborder="32" text="부서" onclick="Static01_onclick" left="36.62%" top="104" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static04" taborder="33" text="사번/성명" onclick="Static01_onclick" left="36.62%" top="72" right="57.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <MaskEdit id="empBirthdayEd" taborder="34" type="string" mask="####'/'##'/'##" cssclass="AreaMaskEdt" left="42.68%" top="200" right="48.93%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <MaskEdit id="empRrnEd" taborder="35" type="string" mask="######'-'#######" cssclass="AreaMaskEdt" left="42.68%" top="136" right="44.04%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <Div id="Div01" taborder="36" tabstop="false" text="Div01" left="0.68%" top="68" right="82.03%" height="655" style="background:whitesmoke;border:1 solid black ;bordertype:round 5 5 ;font:9 Dotum;">
+          <Layouts>
+            <Layout>
+              <Button id="btn_empcheck" taborder="0" onclick="Div02_Button_PDF_onclick" cssclass="DelBtn" left="78.86%" top="57" right="3.43%" height="28" style="background:@gradation URL('img::miniBtn2.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Static id="Static00" taborder="1" text="사원탐색" left="1.71%" top="7" right="26.86%" height="15"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static26" taborder="37" text="사번" onclick="Static01_onclick" left="1.07%" top="95" right="95.61%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Edit id="searchEmpNoEd" taborder="38" cssclass="AreaEdt" left="4.49%" top="95" right="86.04%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="searchEmpNmEd" taborder="39" cssclass="AreaEdt" left="4.49%" top="126" right="86.04%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Static id="Static16" taborder="40" text="성명" onclick="Static01_onclick" left="1.07%" top="126" right="95.61%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static20" taborder="41" text="권한" onclick="Static01_onclick" left="58.59%" top="72" right="35.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Radio id="workStatusRadio" taborder="42" columncount="3" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaRadio" left="85.16%" top="203" right="1.27%" height="30" style="color:black;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">재직</Col>
+                <Col id="datacolumn">재직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">휴직</Col>
+                <Col id="datacolumn">휴직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">퇴직</Col>
+                <Col id="datacolumn">퇴직</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <MaskEdit id="telMaskEd" taborder="43" type="string" mask="###'-'###'-'####" cssclass="AreaMaskEdt" left="64.55%" top="232" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <MaskEdit id="phoneMaskEd" taborder="44" type="string" mask="###'-'####'-'####" cssclass="AreaMaskEdt" left="64.55%" top="264" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <MaskEdit id="extsnMaskEd" taborder="45" type="string" mask="###'-'###'-'####" cssclass="AreaMaskEdt" left="64.55%" top="296" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <MaskEdit id="faxMaskEd" taborder="46" type="string" mask="###'-'###'-'####" cssclass="AreaMaskEdt" left="64.55%" top="328" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <Calendar id="retMonthWorkingdaysCal" taborder="47" expr="expr:Date()" cssclass="AreaCal" left="64.55%" top="200" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Calendar id="empRetDateCal" taborder="48" expr="expr:Date()" cssclass="AreaCal" left="64.55%" top="168" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <CheckBox id="frignSingleTxrateCheck" taborder="50" cssclass="AreaCheck" left="96.78%" top="264" right="1.07%" height="30" style="font:9 Dotum;"/>
+        <Static id="Static02" taborder="51" text="외국인세율" onclick="Static01_onclick" left="87.99%" top="264" right="3.91%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static03" taborder="52" text="외국인" onclick="Static01_onclick" left="78.42%" top="264" right="15.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static34" taborder="53" text="   외국인    등록번호" wordwrap="english" onclick="Static01_onclick" left="76.27%" top="296" right="15.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Combo id="bankNmCombo" taborder="54" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="86.52%" top="424" right="1.46%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">신한은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">국민은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">3</Col>
+                <Col id="datacolumn">우리은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">4</Col>
+                <Col id="datacolumn">서울은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">5</Col>
+                <Col id="datacolumn">조흥은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">6</Col>
+                <Col id="datacolumn">농협</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">7</Col>
+                <Col id="datacolumn">축협은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">8</Col>
+                <Col id="datacolumn">외환은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">9</Col>
+                <Col id="datacolumn">기업은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">10</Col>
+                <Col id="datacolumn">하나은행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">11</Col>
+                <Col id="datacolumn">제일은행</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="hireDivCombo" taborder="55" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="328" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;" onitemchanged="hireDivCombo_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">정규직</Col>
+                <Col id="datacolumn">정규직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">비정규직</Col>
+                <Col id="datacolumn">비정규직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">별정직</Col>
+                <Col id="datacolumn">별정직</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="jobrkCombo" taborder="56" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="296" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">의사</Col>
+                <Col id="datacolumn">의사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">초빙의사</Col>
+                <Col id="datacolumn">초빙의사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">전임의사</Col>
+                <Col id="datacolumn">전임의사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">일반의사</Col>
+                <Col id="datacolumn">일반의사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">레지던트</Col>
+                <Col id="datacolumn">레지던트</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">인턴</Col>
+                <Col id="datacolumn">인턴</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저2급연구원</Col>
+                <Col id="datacolumn">매니저2급연구원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저1급연구원</Col>
+                <Col id="datacolumn">매니저1급연구원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어2급연구원</Col>
+                <Col id="datacolumn">시니어2급연구원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어1급연구원</Col>
+                <Col id="datacolumn">시니어1급연구원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어2급연구원</Col>
+                <Col id="datacolumn">주니어2급연구원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어1급연구원</Col>
+                <Col id="datacolumn">주니어1급연구원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저2급약사</Col>
+                <Col id="datacolumn">매니저2급약사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저1급약사</Col>
+                <Col id="datacolumn">매니저1급약사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어2급약사</Col>
+                <Col id="datacolumn">시니어2급약사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어1급약사</Col>
+                <Col id="datacolumn">시니어1급약사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어2급약사</Col>
+                <Col id="datacolumn">주니어2급약사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어1급약사</Col>
+                <Col id="datacolumn">주니어1급약사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저2급간호사</Col>
+                <Col id="datacolumn">매니저2급간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저1급간호사</Col>
+                <Col id="datacolumn">매니저1급간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어2급간호사</Col>
+                <Col id="datacolumn">시니어2급간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어1급간호사</Col>
+                <Col id="datacolumn">시니어1급간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어2급간호사</Col>
+                <Col id="datacolumn">주니어2급간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어1급간호사</Col>
+                <Col id="datacolumn">주니어1급간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저2급기사</Col>
+                <Col id="datacolumn">매니저2급기사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저1급기사</Col>
+                <Col id="datacolumn">매니저1급기사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어2급기사</Col>
+                <Col id="datacolumn">시니어2급기사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어1급기사</Col>
+                <Col id="datacolumn">시니어1급기사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어2급기사</Col>
+                <Col id="datacolumn">주니어2급기사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어1급기사</Col>
+                <Col id="datacolumn">주니어1급기사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저2급행정원</Col>
+                <Col id="datacolumn">매니저2급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저1급행정원</Col>
+                <Col id="datacolumn">매니저1급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어2급행정원</Col>
+                <Col id="datacolumn">시니어2급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어1급행정원</Col>
+                <Col id="datacolumn">시니어1급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어2급행정원</Col>
+                <Col id="datacolumn">주니어2급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어1급행정원</Col>
+                <Col id="datacolumn">주니어1급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">어시스턴트3급행정원</Col>
+                <Col id="datacolumn">어시스턴트3급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">어시스턴트2급행정원</Col>
+                <Col id="datacolumn">어시스턴트2급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">어시스턴트1급행정원</Col>
+                <Col id="datacolumn">어시스턴트1급행정원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저2급기술원</Col>
+                <Col id="datacolumn">매니저2급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">매니저1급기술원</Col>
+                <Col id="datacolumn">매니저1급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어2급기술원</Col>
+                <Col id="datacolumn">시니어2급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">시니어1급기술원</Col>
+                <Col id="datacolumn">시니어1급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어2급기술원</Col>
+                <Col id="datacolumn">주니어2급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주니어1급기술원</Col>
+                <Col id="datacolumn">주니어1급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">어시스턴트3급기술원</Col>
+                <Col id="datacolumn">어시스턴트3급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">어시스턴트2급기술원</Col>
+                <Col id="datacolumn">어시스턴트2급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">어시스턴트1급기술원</Col>
+                <Col id="datacolumn">어시스턴트1급기술원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">아르바이트생</Col>
+                <Col id="datacolumn">아르바이트생</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">기능원</Col>
+                <Col id="datacolumn">기능원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">위촉연구원</Col>
+                <Col id="datacolumn">위촉연구원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">박사후연수생</Col>
+                <Col id="datacolumn">박사후연수생</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">석사후연구생</Col>
+                <Col id="datacolumn">석사후연구생</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구보조원</Col>
+                <Col id="datacolumn">연구보조원</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">박사과정연구생</Col>
+                <Col id="datacolumn">박사과정연구생</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">석사과정연구생</Col>
+                <Col id="datacolumn">석사과정연구생</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">파견직원(단장급)</Col>
+                <Col id="datacolumn">파견직원(단장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">파견직원(부장급)</Col>
+                <Col id="datacolumn">파견직원(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">파견직원(팀장급)</Col>
+                <Col id="datacolumn">파견직원(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">파견직원(일반급)</Col>
+                <Col id="datacolumn">파견직원(일반급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">별정직</Col>
+                <Col id="datacolumn">별정직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">협력사원</Col>
+                <Col id="datacolumn">협력사원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="jobclCombo" taborder="57" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="264" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">기관장</Col>
+                <Col id="datacolumn">기관장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">의무직</Col>
+                <Col id="datacolumn">의무직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구의무직</Col>
+                <Col id="datacolumn">연구의무직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구직</Col>
+                <Col id="datacolumn">연구직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">임상연구직</Col>
+                <Col id="datacolumn">임상연구직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">약무직</Col>
+                <Col id="datacolumn">약무직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">간호직</Col>
+                <Col id="datacolumn">간호직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">보건직</Col>
+                <Col id="datacolumn">보건직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">행정직</Col>
+                <Col id="datacolumn">행정직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">기술직</Col>
+                <Col id="datacolumn">기술직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">별정직</Col>
+                <Col id="datacolumn">별정직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">외부인력</Col>
+                <Col id="datacolumn">외부인력</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">파견직</Col>
+                <Col id="datacolumn">파견직</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="jobttlCombo" taborder="58" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="232" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;" onitemchanged="jobttlCombo_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">동남권원자력의학원장</Col>
+                <Col id="datacolumn">동남권원자력의학원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장</Col>
+                <Col id="datacolumn">원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장 직무대행</Col>
+                <Col id="datacolumn">원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주임과장</Col>
+                <Col id="datacolumn">주임과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장</Col>
+                <Col id="datacolumn">실장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장</Col>
+                <Col id="datacolumn">센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장</Col>
+                <Col id="datacolumn">병원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장 직무대행</Col>
+                <Col id="datacolumn">병원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장</Col>
+                <Col id="datacolumn">연구센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장 직무대행</Col>
+                <Col id="datacolumn">연구센터장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장</Col>
+                <Col id="datacolumn">부장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장대우</Col>
+                <Col id="datacolumn">부장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장 직무대행</Col>
+                <Col id="datacolumn">부장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)</Col>
+                <Col id="datacolumn">실장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)대우</Col>
+                <Col id="datacolumn">실장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급) 직무대행</Col>
+                <Col id="datacolumn">실장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)</Col>
+                <Col id="datacolumn">센터장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)대우</Col>
+                <Col id="datacolumn">센터장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장</Col>
+                <Col id="datacolumn">팀장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장대우</Col>
+                <Col id="datacolumn">팀장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장 직무대행</Col>
+                <Col id="datacolumn">팀장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장</Col>
+                <Col id="datacolumn">과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장대우</Col>
+                <Col id="datacolumn">과장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장 직무대행</Col>
+                <Col id="datacolumn">과장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)</Col>
+                <Col id="datacolumn">실장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)대우</Col>
+                <Col id="datacolumn">실장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">실장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)</Col>
+                <Col id="datacolumn">센터장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)대우</Col>
+                <Col id="datacolumn">센터장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">수간호사</Col>
+                <Col id="datacolumn">수간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">정책위원</Col>
+                <Col id="datacolumn">정책위원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="empNoEd" taborder="59" ontextchange="empNoEd_ontextchange" cssclass="AreaEdt" enable="false" left="42.68%" top="72" right="52.64%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum; :disabled {font:antialias 10 HY수평선B;}"/>
+        <Button id="findImageBtn" taborder="60" text="찾아보기" onclick="findImageBtn_onclick" cssclass="AreaBtn" left="18.55%" top="398" right="63.77%" height="30" style="background:#848484ff;color:white;bordertype:round 3 3 ;font:bold 10 돋움;"/>
+        <Edit id="edit_fzip" taborder="61" cssclass="AreaEdt" left="42.68%" top="424" right="50.49%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="edit_empAddr" taborder="62" cssclass="AreaEdt" left="49.71%" top="424" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="detailAddrEd" taborder="63" cssclass="AreaEdt" left="45.41%" top="456" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Tab id="tab_empInfo" taborder="64" left="18.16%" top="500" right="1.07%" height="214" tabindex="0" scrollbars="autoboth" cssclass="AreaTab" style="buttonbackground:@gradation;buttongradation:liner 0,0 #feffffff 0,100 #e1e1dfff [60% #f2f2efff][70% #ecece9ff];buttonborder:1 solid #a8a8a2ff ;buttonbordertype:round 3 3  lefttop;background:transparent;border:1 solid #9f8f71ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff;color:#777777ff;font:9 Dotum;">
+          <Tabpages>
+            <Tabpage id="tpg_perconaldate" text="인적사항">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="dsHmPerconaldate" useinputpanel="false" autofittype="col" oncelldblclick="tab_empInfo_tpg_perconaldate_Grid00_oncelldblclick" left="0.24%" top="2" right="0%" height="187" style="font:9 Dotum;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell style="color: ;" text="키"/>
+                          <Cell col="1" style="color: ;" text="몸무게"/>
+                          <Cell col="2" style="color: ;" text="시력"/>
+                          <Cell col="3" style="color: ;" text="종교"/>
+                          <Cell col="4" style="color: ;" text="취미"/>
+                          <Cell col="5" style="color: ;" text="특기"/>
+                          <Cell col="6" style="color: ;" text="주거"/>
+                          <Cell col="7" style="color: ;" text="시민권"/>
+                          <Cell col="8" style="color: ;" text="영주권"/>
+                          <Cell col="9" style="color: ;" text="혈액형"/>
+                          <Cell col="10" style="color: ;" text="생활정도"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="normal" text="bind:height"/>
+                          <Cell col="1" edittype="normal" text="bind:weight"/>
+                          <Cell col="2" edittype="normal" text="bind:eyeseght"/>
+                          <Cell col="3" edittype="normal" text="bind:religion"/>
+                          <Cell col="4" edittype="normal" text="bind:hobby"/>
+                          <Cell col="5" edittype="normal" text="bind:talent"/>
+                          <Cell col="6" edittype="normal" text="bind:living"/>
+                          <Cell col="7" edittype="normal" text="bind:citizenship"/>
+                          <Cell col="8" edittype="normal" text="bind:perresi"/>
+                          <Cell col="9" edittype="normal" text="bind:bloodType"/>
+                          <Cell col="10" edittype="normal" text="bind:lifeLevel"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tpg_family" text="가족">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" useinputpanel="false" autofittype="col" left="0.36%" top="2" right="0.12%" height="187">
+                    <Formats/>
+                  </Grid>
+                  <Grid id="Grid01" taborder="1" binddataset="dsHmFamily" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="109"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell style="color: ;" text="이름"/>
+                          <Cell col="1" style="color: ;" text="주민등록번호"/>
+                          <Cell col="2" style="color: ;" text="관계"/>
+                          <Cell col="3" style="color: ;" text="동거여부"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="normal" text="bind:name"/>
+                          <Cell col="1" edittype="normal" text="bind:rrn"/>
+                          <Cell col="2" displaytype="text" edittype="combo" text="bind:relt" combodataset="dsFamiliyType" combodatacol="familyType"/>
+                          <Cell col="3" displaytype="checkbox" edittype="checkbox" text="bind:spptYn"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tpg_education" text="학력">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="dsHmEducation" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell style="color: ;" text="학교명"/>
+                          <Cell col="1" style="color: ;" text="전공"/>
+                          <Cell col="2" style="color: ;" text="입학일"/>
+                          <Cell col="3" style="color: ;" text="졸업일"/>
+                          <Cell col="4" style="color: ;" text="학위"/>
+                          <Cell col="5" style="color: ;" text="최종여부"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="normal" text="bind:schoolName"/>
+                          <Cell col="1" edittype="normal" text="bind:major"/>
+                          <Cell col="2" displaytype="date" edittype="date" text="bind:admDay"/>
+                          <Cell col="3" displaytype="date" edittype="date" text="bind:graduDay"/>
+                          <Cell col="4" displaytype="text" edittype="combo" text="bind:degree" combodataset="dsDegreeType" combodatacol="degreeType"/>
+                          <Cell col="5" displaytype="checkbox" edittype="checkbox" text="bind:finYn"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tbg_license" text="자격 및 면허">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="dsHmLicense" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell style="color: ;" text="자격번호"/>
+                          <Cell col="1" style="color: ;" text="자격명"/>
+                          <Cell col="2" style="color: ;" text="취득일자"/>
+                          <Cell col="3" style="color: ;" text="발행처"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="normal" text="bind:licenseNo"/>
+                          <Cell col="1" displaytype="text" edittype="combo" text="bind:licenseType" combodataset="dsLicenseType" combodatacol="licenseType"/>
+                          <Cell col="2" displaytype="date" edittype="date" text="bind:acqDay"/>
+                          <Cell col="3" edittype="normal" text="bind:issue"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tab_empInfo" text="경력">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="dsHmCareer" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell style="color: ;" text="근무자명"/>
+                          <Cell col="1" style="color: ;" text="직급"/>
+                          <Cell col="2" style="color: ;" text="담당업무"/>
+                          <Cell col="3" style="color: ;" text="입사일"/>
+                          <Cell col="4" style="color: ;" text="퇴사일"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="normal" text="bind:workplace"/>
+                          <Cell col="1" edittype="normal" text="bind:position"/>
+                          <Cell col="2" edittype="normal" text="bind:respTask"/>
+                          <Cell col="3" displaytype="date" edittype="date" text="bind:joinDay"/>
+                          <Cell col="4" displaytype="date" edittype="date" text="bind:retireDay"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tpg_military" text="병력">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="dsHmMilitary" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="50"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell style="color: ;" text="군번"/>
+                          <Cell col="1" style="color: ;" text="군별"/>
+                          <Cell col="2" style="color: ;" text="병과"/>
+                          <Cell col="3" style="color: ;" text="계급"/>
+                          <Cell col="4" style="color: ;" text="신체등급"/>
+                          <Cell col="5" style="color: ;" text="입대일"/>
+                          <Cell col="6" style="color: ;" text="전역일"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="normal" text="bind:msn"/>
+                          <Cell col="1" displaytype="text" edittype="combo" text="bind:mgroup" combodataset="dsMgroupType" combodatacol="mgType"/>
+                          <Cell col="2" displaytype="text" edittype="combo" text="bind:branch" combodataset="dsBranchType" combodatacol="branchType"/>
+                          <Cell col="3" displaytype="text" edittype="combo" text="bind:hierarachy" combodataset="dsHierarachyType" combodatacol="hierarachyType"/>
+                          <Cell col="4" displaytype="text" edittype="combo" text="bind:physiqueGrade" combodataset="dsPhysiqueGradeType" combodatacol="physiqueGradeType"/>
+                          <Cell col="5" displaytype="date" edittype="date" text="bind:joinArmyDay"/>
+                          <Cell col="6" displaytype="date" edittype="date" text="bind:dischargeDay"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tpg_disability" text="장애" style="gradation:none 0,0 white 100,100 black;">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="dsHmDisability" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="143"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell style="color: ;" text="장애유형"/>
+                          <Cell col="1" style="color: ;" text="장애인정구분"/>
+                          <Cell col="2" style="color: ;" text="장애등급"/>
+                          <Cell col="3" edittype="normal" style="color: ;" text="장애인정일"/>
+                          <Cell col="4" style="color: ;" text="중증여부"/>
+                          <Cell col="5" style="color: ;" text="비고"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="text" edittype="combo" text="bind:disabilityType" combodataset="dsDisabilityType" combodatacol="physiqueGradeType"/>
+                          <Cell col="1" displaytype="text" edittype="combo" text="bind:disabilityApvDiv" combodataset="dsDisabilityDivType" combodatacol="divType"/>
+                          <Cell col="2" edittype="normal" text="bind:disabilityGrade"/>
+                          <Cell col="3" displaytype="date" edittype="date" text="bind:disabilityApvDay"/>
+                          <Cell col="4" edittype="normal" text="bind:intensiveYn"/>
+                          <Cell col="5" edittype="normal" text="bind:note"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <CheckBox id="birthCheck" taborder="65" text="음력" left="51.27%" top="201" right="44.04%" height="28"/>
+        <Edit id="empNmEd" taborder="66" cssclass="AreaEdt" left="47.46%" top="72" right="44.14%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="empDeptCdEd" taborder="67" cssclass="AreaEdt" left="42.68%" top="104" right="52.64%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="empDeptNmEd" taborder="68" cssclass="AreaEdt" left="47.46%" top="104" right="44.14%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="empPasswordEd" taborder="69" cssclass="AreaEdt" left="42.68%" top="168" right="44.04%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="emailMaskEd" taborder="70" cssclass="AreaEdt" left="42.68%" top="360" right="38.67%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Combo id="empPayStepCombo00" taborder="71" value="1" text="@naver.com" codecolumn="codecolumn" datacolumn="datacolumn" index="0" cssclass="AreaCombo" left="61.43%" top="360" right="24.12%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">@naver.com</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">@nate.com</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="permaddrEd" taborder="72" cssclass="AreaEdt" left="42.68%" top="392" right="24.22%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="pmsCdEd" taborder="73" cssclass="AreaEdt" left="64.45%" top="72" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <CheckBox id="mateYnCheck" taborder="74" cssclass="AreaCheck" left="85.16%" top="137" right="12.7%" height="30" style="font:9 Dotum;"/>
+        <Radio id="genderRadio" taborder="75" columncount="2" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaRadio" left="85.16%" top="175" right="6.54%" height="22" style="color:black;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">M</Col>
+                <Col id="datacolumn">남</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">W</Col>
+                <Col id="datacolumn">여</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Edit id="empNatntEd" taborder="76" cssclass="AreaEdt" left="84.38%" top="232" right="1.95%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="bankpsEd" taborder="77" cssclass="AreaEdt" left="84.38%" top="295" right="1.95%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <CheckBox id="localYnCheck" taborder="78" cssclass="AreaCheck" left="85.16%" top="264" right="12.99%" height="30" style="font:9 Dotum;"/>
+        <Combo id="empPayStepCombo" taborder="79" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="79.88%" top="360" right="12.5%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">3</Col>
+                <Col id="datacolumn">3호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">4</Col>
+                <Col id="datacolumn">4호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">5</Col>
+                <Col id="datacolumn">5호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">6</Col>
+                <Col id="datacolumn">6호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">7</Col>
+                <Col id="datacolumn">7호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">8</Col>
+                <Col id="datacolumn">8호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">9</Col>
+                <Col id="datacolumn">9호봉</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">10</Col>
+                <Col id="datacolumn">10호봉</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="accountNmEd" taborder="80" cssclass="AreaEdt" left="82.32%" top="392" right="1.46%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="imageEd29" taborder="81" cssclass="AreaEdt" left="86.52%" top="456" right="1.46%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Spin id="payDateSpin" taborder="82" value="1" displaynulltext="1" max="31" cssclass="AreaSpin" left="92.48%" top="360" right="1.46%" height="29" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
+        <Button id="Button_PDF" taborder="83" text="PDF" onclick="Div02_Button_PDF_onclick" left="85.45%" top="79" right="9.67%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+        <Grid id="empListGrid" cssclass="AreaGrid" taborder="84" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncellclick="empListGrid_oncellclick" oncelldblclick="empListGrid_oncelldblclick" onselectchanged="empListGrid_onselectchanged" onenterdown="empListGrid_onenterdown" left="1.07%" top="160" right="82.52%" height="558" style="color:#5f5f5fff;bordertype:round 5 5 ;font:9 Dotum;opacity:100;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="43"/>
+                <Column size="42"/>
+                <Column size="97"/>
+                <Column size="137"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox" text="선택"/>
+                <Cell col="1" style="font: ;" text="NO"/>
+                <Cell col="2" style="color:black;font: ;" text="사번"/>
+                <Cell col="3" style="font: ;" text="사원명"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="body" displaytype="checkbox" edittype="checkbox" style="color:EXPR(gender=='M'?'black':'blue');color2:EXPR(gender=='M'?'black':'blue');" text="bind:select" editautoselect="false" editdisplay="edit"/>
+                <Cell col="1" style="color:EXPR(gender=='M'?'black':'blue');color2:EXPR(gender=='M'?'black':'blue');" expr="expr:currow+1"/>
+                <Cell col="2" displaytype="normal" edittype="none" style="align:center;color:EXPR(gender=='M'?'black':'blue');color2:EXPR(gender=='M'?'black':'blue');" text="bind:empNo"/>
+                <Cell col="3" edittype="none" style="color:EXPR(gender=='M'?'black':'blue');color2:EXPR(gender=='M'?'black':'blue');" text="bind:empNm"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="3" style="background:gainsboro;" text="사원수"/>
+                <Cell col="3" displaytype="number" edittype="none" style="background:gainsboro;" expr="expr:dataset.getRowCount()" mask="###명"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static32" taborder="85" text="e-mail" onclick="Static01_onclick" left="36.72%" top="359" right="57.42%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Button id="btn_empDeptPopup" taborder="86" onclick="btn_empDeptPopup_onclick" cssclass="DelBtn" left="55.96%" top="103" right="41.41%" height="29" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="btn_findZip" taborder="87" onclick="btn_findZip_onclick" cssclass="DelBtn" left="42.87%" top="455" right="54.69%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="Button00" taborder="88" text="행추가" onclick="Button00_onclick" left="84.77%" top="494" right="8.59%" height="26" style="background:slateblue;color:white;font:bold 10 돋움;"/>
+        <Button id="Button01" taborder="89" text="행삭제" onclick="Button01_onclick" left="91.7%" top="494" right="1.56%" height="27" style="background:slateblue;color:white;font:bold 10 돋움;"/>
+        <Button id="btn_empPopup" taborder="90" onclick="btn_empPopup_onclick" cssclass="DelBtn" left="14.26%" top="96" right="82.71%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn15" taborder="91" onclick="btn_insertEmp_onclick" cssclass="DelBtn" left="60.16%" top="728" right="31.05%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn00" taborder="92" onclick="btn_deleteEmp_onclick" cssclass="DelBtn" left="69.34%" top="728" right="21.88%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn19" taborder="93" onclick="btn_saveAll_onclick" cssclass="DelBtn" left="78.52%" top="728" right="10.74%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn17" taborder="94" onclick="exitFxAstBtn_onclick" cssclass="DelBtn" left="89.65%" top="728" right="1.56%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div05" taborder="95" left="0%" top="0" right="1.07%" height="60" style="background:transparent URL('img::titleBar2.jpg');">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="96" text="인사마스터" left="5.57%" top="-1" right="39.84%" height="51" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+        <Calendar id="hireDateCal" taborder="98" cssclass="AreaCal" left="64.55%" top="136" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;" dateformat="yyyy-MM-dd ddd" value="null"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item26" compid="hireDateCal" propid="value" datasetid="dsHmEmp" columnid="hireDate"/>
+      <BindItem id="item0" compid="imageEd" propid="value" datasetid="dsHmEmp" columnid="image"/>
+      <BindItem id="item12" compid="empBirthdayEd" propid="value" datasetid="dsHmEmp" columnid="birthday"/>
+      <BindItem id="item11" compid="empRrnEd" propid="value" datasetid="dsHmEmp" columnid="rrn"/>
+      <BindItem id="item22" compid="workStatusRadio" propid="value" datasetid="dsHmEmp" columnid="workStatus"/>
+      <BindItem id="item4" compid="telMaskEd" propid="value" datasetid="dsHmEmp" columnid="tel"/>
+      <BindItem id="item29" compid="phoneMaskEd" propid="value" datasetid="dsHmEmp" columnid="phone"/>
+      <BindItem id="item30" compid="extsnMaskEd" propid="value" datasetid="dsHmEmp" columnid="extsn"/>
+      <BindItem id="item31" compid="faxMaskEd" propid="value" datasetid="dsHmEmp" columnid="fax"/>
+      <BindItem id="item28" compid="retMonthWorkingdaysCal" propid="value" datasetid="dsHmEmp" columnid="retMonthWorkingdays"/>
+      <BindItem id="item27" compid="empRetDateCal" propid="value" datasetid="dsHmEmp" columnid="retDate"/>
+      <BindItem id="item33" compid="frignSingleTxrateCheck" propid="value" datasetid="dsHmEmp" columnid="frignSingleTxrate"/>
+      <BindItem id="item1" compid="bankNmCombo" propid="value" datasetid="dsHmEmp" columnid="bankNm"/>
+      <BindItem id="item17" compid="hireDivCombo" propid="value" datasetid="dsHmEmp" columnid="hireDiv"/>
+      <BindItem id="item16" compid="jobrkCombo" propid="value" datasetid="dsHmEmp" columnid="jobrk"/>
+      <BindItem id="item15" compid="jobclCombo" propid="value" datasetid="dsHmEmp" columnid="jobcl"/>
+      <BindItem id="item14" compid="jobttlCombo" propid="value" datasetid="dsHmEmp" columnid="jobtt"/>
+      <BindItem id="item3" compid="empNoEd" propid="value" datasetid="dsHmEmp" columnid="empNo"/>
+      <BindItem id="item2" compid="edit_fzip" propid="value" datasetid="dsHmEmp" columnid="zipCd"/>
+      <BindItem id="item5" compid="edit_empAddr" propid="value" datasetid="dsHmEmp" columnid="addr"/>
+      <BindItem id="item41" compid="detailAddrEd" propid="value" datasetid="dsHmEmp" columnid="detailAddr"/>
+      <BindItem id="item6" compid="empNmEd" propid="value" datasetid="dsHmEmp" columnid="empNm"/>
+      <BindItem id="item13" compid="empDeptCdEd" propid="value" datasetid="dsHmEmp" columnid="deptCd"/>
+      <BindItem id="item7" compid="empDeptNmEd" propid="value" datasetid="dsHmEmp" columnid="deptNm"/>
+      <BindItem id="item8" compid="empPasswordEd" propid="value" datasetid="dsHmEmp" columnid="password"/>
+      <BindItem id="item9" compid="emailMaskEd" propid="value" datasetid="dsHmEmp" columnid="email"/>
+      <BindItem id="item10" compid="permaddrEd" propid="value" datasetid="dsHmEmp" columnid="permaddr"/>
+      <BindItem id="item18" compid="pmsCdEd" propid="value" datasetid="dsHmEmp" columnid="pms"/>
+      <BindItem id="item19" compid="mateYnCheck" propid="value" datasetid="dsHmEmp" columnid="mateYn"/>
+      <BindItem id="item20" compid="genderRadio" propid="value" datasetid="dsHmEmp" columnid="gender"/>
+      <BindItem id="item21" compid="empNatntEd" propid="value" datasetid="dsHmEmp" columnid="natnt"/>
+      <BindItem id="item34" compid="bankpsEd" propid="value" datasetid="dsHmEmp" columnid="bankNm"/>
+      <BindItem id="item23" compid="empPayStepCombo" propid="value" datasetid="dsHmEmp" columnid="payStep"/>
+      <BindItem id="item24" compid="accountNmEd" propid="value" datasetid="dsHmEmp" columnid="accountNm"/>
+      <BindItem id="item25" compid="imageEd29" propid="value" datasetid="dsHmEmp" columnid="empNm"/>
+      <BindItem id="item32" compid="payDateSpin" propid="value" datasetid="dsHmEmp" columnid="payDate"/>
+      <BindItem id="item36" compid="payDateSpin" propid="visible" datasetid="dsHmEmp" columnid="payDate"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsHmFamily" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="famSeq" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="relt" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="spptYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">16001</Col>
+            <Col id="famSeq">1</Col>
+            <Col id="name">2</Col>
+            <Col id="relt">3</Col>
+            <Col id="rrn">4</Col>
+            <Col id="spptYn">5</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">empInfo</Col>
+            <Col id="URL">his::hrs/emp/findEmpList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsHmEmp=gdsEmp</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">empImage</Col>
+            <Col id="URL">his::hrs/emp/registerEmpImage.do</Col>
+            <Col id="inData">dsImage=dsImage:U</Col>
+            <Col id="outData">dsImage=dsImage</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">searchEmp</Col>
+            <Col id="URL">his::hrs/emp/selectEmpList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsHmEmp=gdsEmp dsHmFamily=dsHmFamily dsHmEducation=dsHmEducation dsHmCareer=dsHmCareer dsHmLicense=dsHmLicense dsHmPerconaldate=dsHmPerconaldate dsHmDisability=dsHmDisability dsHmMilitary=dsHmMilitary</Col>
+            <Col id="argument"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">mngntEmp</Col>
+            <Col id="URL">his::hrs/emp/mngntEmp.do</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="inData">gdsEmp=dsHmEmp:U dsHmFamily=dsHmFamily:U dsHmEducation=dsHmEducation:U dsHmCareer=dsHmCareer:U dsHmLicense=dsHmLicense:U dsHmPerconaldate=dsHmPerconaldate:U dsHmDisability=dsHmDisability:U dsHmMilitary=dsHmMilitary:U </Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmEmp" onrowposchanged="dsHmEmp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="payDate" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+          <Column id="lunar" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="zipCd">660-100</Col>
+            <Col id="tel">0557547545</Col>
+            <Col id="phone">01012341234</Col>
+            <Col id="password">1</Col>
+            <Col id="image">160012.jpg</Col>
+            <Col id="hireDiv">정규직</Col>
+            <Col id="gender">M</Col>
+            <Col id="hireDate">2006-01-01</Col>
+            <Col id="fax">0551231234</Col>
+            <Col id="empNo">16001</Col>
+            <Col id="birthday">19820101</Col>
+            <Col id="addr">1234</Col>
+            <Col id="detailAddr">5678</Col>
+            <Col id="email">1234</Col>
+            <Col id="deptNm">내과</Col>
+            <Col id="bankNm">1</Col>
+            <Col id="empNm">김재</Col>
+            <Col id="workStatus">재직</Col>
+            <Col id="rrn">4300001234567</Col>
+            <Col id="retMonthWorkingdays">20190101</Col>
+            <Col id="retDate">20160120</Col>
+            <Col id="deptCd">10100</Col>
+            <Col id="forinNum">111111</Col>
+            <Col id="extsn">7001001231</Col>
+            <Col id="natnt">중국</Col>
+            <Col id="payStep">8</Col>
+            <Col id="workPeriod">10</Col>
+            <Col id="permaddr">산청 어딘가</Col>
+            <Col id="localYn">1</Col>
+            <Col id="jobrk">의사</Col>
+            <Col id="jobcl">의무직</Col>
+            <Col id="jobtt">병원장</Col>
+            <Col id="accountNm">805-12-214984</Col>
+            <Col id="mateYn">1</Col>
+            <Col id="pms">admin</Col>
+            <Col id="frignSingleTxrate">1</Col>
+            <Col id="sts">insert</Col>
+            <Col id="lunar">1</Col>
+            <Col id="payDate">2</Col>
+          </Row>
+          <Row>
+            <Col id="empNm">만재</Col>
+            <Col id="empNo">16002</Col>
+            <Col id="sts">insert</Col>
+            <Col id="payDate">2</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFamiliyType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="familyType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="familyType">본인</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">부</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">손자녀</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">사촌이내</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">자부</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">자녀(셋째이상)</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">모</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">배우자</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">자녀</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">배우자(부)</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">배우자(모)</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">형제자매</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">조부</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">조모</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDegreeType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="degreeType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="degreeType">학사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">석사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">박사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">전문학사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">석사수료</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">박사수료</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmPerconaldate" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="height" type="STRING" size="256"/>
+          <Column id="weight" type="STRING" size="256"/>
+          <Column id="eyeseght" type="STRING" size="256"/>
+          <Column id="colorblind" type="STRING" size="256"/>
+          <Column id="bloodType" type="STRING" size="256"/>
+          <Column id="medicalHistory" type="STRING" size="256"/>
+          <Column id="religion" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="hobby" type="STRING" size="256"/>
+          <Column id="talent" type="STRING" size="256"/>
+          <Column id="realestate" type="STRING" size="256"/>
+          <Column id="lifeLevel" type="STRING" size="256"/>
+          <Column id="living" type="STRING" size="256"/>
+          <Column id="citizenship" type="STRING" size="256"/>
+          <Column id="perresi" type="STRING" size="256"/>
+          <Column id="ctyName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="height">1</Col>
+            <Col id="weight">2</Col>
+            <Col id="eyeseght">3</Col>
+            <Col id="colorblind">5</Col>
+            <Col id="bloodType">6</Col>
+            <Col id="medicalHistory">4</Col>
+            <Col id="religion">7</Col>
+            <Col id="empNo">16001</Col>
+            <Col id="hobby">8</Col>
+            <Col id="talent">9</Col>
+            <Col id="realestate">0</Col>
+            <Col id="lifeLevel">11</Col>
+            <Col id="living">12</Col>
+            <Col id="citizenship">13</Col>
+            <Col id="perresi">14</Col>
+            <Col id="ctyName">15</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmMilitary" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="physiqueGrade" type="STRING" size="256"/>
+          <Column id="mgroup" type="STRING" size="256"/>
+          <Column id="branch" type="STRING" size="256"/>
+          <Column id="hierarachy" type="STRING" size="256"/>
+          <Column id="msn" type="STRING" size="256"/>
+          <Column id="joinArmyDay" type="STRING" size="256"/>
+          <Column id="dischargeDay" type="STRING" size="256"/>
+          <Column id="militarySeq" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">16001</Col>
+            <Col id="physiqueGrade">1</Col>
+            <Col id="mgroup">2</Col>
+            <Col id="branch">3</Col>
+            <Col id="hierarachy">4</Col>
+            <Col id="msn">5</Col>
+            <Col id="joinArmyDay">6</Col>
+            <Col id="dischargeDay">7</Col>
+            <Col id="militarySeq">8</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <VirtualFile id="fileImg" onsuccess="fileImg_onsuccess" onerror="fileImg_onerror"/>
+      <Dataset id="dsHmEducation">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="admDay" type="STRING" size="256"/>
+          <Column id="graduDay" type="STRING" size="256"/>
+          <Column id="schoolName" type="STRING" size="256"/>
+          <Column id="major" type="STRING" size="256"/>
+          <Column id="degree" type="STRING" size="256"/>
+          <Column id="educationSeq" type="STRING" size="256"/>
+          <Column id="finYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">16001</Col>
+            <Col id="admDay">1</Col>
+            <Col id="graduDay">2</Col>
+            <Col id="schoolName">3</Col>
+            <Col id="major">4</Col>
+            <Col id="degree">5</Col>
+            <Col id="educationSeq">6</Col>
+            <Col id="finYn">7</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmLicense">
+        <ColumnInfo>
+          <Column id="licenseSeq" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="acqDay" type="STRING" size="256"/>
+          <Column id="licenseType" type="STRING" size="256"/>
+          <Column id="licenseNo" type="STRING" size="256"/>
+          <Column id="issue" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="licenseSeq">0001</Col>
+            <Col id="empNo">16001</Col>
+            <Col id="acqDay">20060101</Col>
+            <Col id="licenseNo">01-232626-02</Col>
+            <Col id="issue">자동차판매소</Col>
+            <Col id="licenseType">운전면허</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHierarachyType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="hierarachyType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="hierarachyType">대장</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">중장</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">소장</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">준장</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">대령</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">중령</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">소령</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">대위</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">중위</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">소위</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">준위</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">원사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">상사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">중사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">하사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">병장</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">상병</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">일병</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">이병</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPhysiqueGradeType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="physiqueGradeType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="physiqueGradeType">1급</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">2급</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">3급</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">4급</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">5급</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">6급</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">7급</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDisabilityType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="physiqueGradeType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="physiqueGradeType">장애유형무관</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">지체장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">뇌병변</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">시각장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">청각장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">언어장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">정신지체</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">정신장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">발달장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">신장장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">심장장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">안면변형장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">호흡기장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">간장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">장루/요루장애</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">간질장애</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMgroupType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="mgType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="mgType">육군</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">해군</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">공군</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">해병</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">전투경찰</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">의무경찰</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">기타</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">카츄사</Col>
+          </Row>
+          <Row>
+            <Col id="mgType">공익근무요원</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDisabilityDivType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="divType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="divType">등록장애인</Col>
+          </Row>
+          <Row>
+            <Col id="divType">국가유공장애인</Col>
+          </Row>
+          <Row>
+            <Col id="divType">산업재해장애인</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBranchType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="branchType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="branchType">보병</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">포병</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">기갑</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">공병</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">통신</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">병참</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">수송</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">화학</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">특전화기</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">행정</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">헌병</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">군의</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">의무</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">의정</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">군종</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">법무</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">군악</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">간호</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">전투</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">기관</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">기술</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">일반</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">보급</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">조종</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">정비</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">취사</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">암호</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">전산</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">여군</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">항해</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">경비</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">보안</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">정보</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">소총</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">갑판</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">화기</Col>
+          </Row>
+          <Row>
+            <Col id="branchType">기타</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsJobttType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="physiqueGradeType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="physiqueGradeType">동남권원자력의학원장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">원장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">원장 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">주임과장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">실장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">센터장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">병원장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">병원장 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">연구센터장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">연구센터장 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">부장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">부장대우</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">부장 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">실장(부장급)</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">실장(부장급)대우</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">실장(부장급) 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">센터장(부장급)</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">센터장(부장급)대우</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">센터장(부장급) 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">팀장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">팀장대우</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">팀장 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">과장</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">과장대우</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">과장 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">실장(팀장급)</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">실장(팀장급)대우</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">실장(팀장급) 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">센터장(팀장급)</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">센터장(팀장급)대우</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">센터장(팀장급) 직무대행</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">수간호사</Col>
+          </Row>
+          <Row>
+            <Col id="physiqueGradeType">정책위원</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsLicenseType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="licenseType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="licenseType">간호사면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">간호조무사 자격</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">건축배관기능사 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">고압가스냉동기능사 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">고압가스취급기능사 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">고압가스화학기능사 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">교원자격증</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">교환원면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">국가기술 열처리기능사 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">국문타자3급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">물리치료사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">방사선사면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">방화관리자</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">사회복지사 자격증 1급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">선반기능사 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">소방설비기사 1급(전기분야)</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">수의사면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">약사면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">양호교사 자격증</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">영양사 자격증</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">운전면허(대형)</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">운전면허(1종보통)</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">운전면허2종 보통</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">의사면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">임상병리사면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">치과위생사면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">정보처리기사2</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">워드프로세서</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">응급구조사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">재활치료학</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">세포병리사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">RI 일반면허</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">특수급무선통신사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">스포츠마사지사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">정보처리산업기사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">세무회계관리사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">산업안전산업기사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">보험심사간호사(민간자격)</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">한자능력검정</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">증권투자상담사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">컴퓨터활용능력2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">TEPS(영어능력검정)2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">일본어능력시험(JLPT) 3급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">컴퓨터활용능력1급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">사무자동화 산업기사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">소방설비기사(기계분야)</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">워드프로세서 1급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">워드프로세서 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">보육교사1급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">사회복지사 자격증 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">전산회계 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">전산회계 1급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">유통관리사 2급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">CISA</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">OCP</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">한식조리사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">전문간호사자격증</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">정보처리기능사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">의공산업기사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">의공기사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">전기기사 1급</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">소화기내시경전문의</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">요양보호사자격증</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">응급처치강사자격증</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">심폐소생술자격증</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">Offce 2007master</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">위생사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">CT전문방사선사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">전기산업기사</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">TESOL</Col>
+          </Row>
+          <Row>
+            <Col id="licenseType">마이크로소프트공인전문가</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmDisability" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="disabilityApvDay" type="STRING" size="256"/>
+          <Column id="disabilityApvDiv" type="STRING" size="256"/>
+          <Column id="disabilityType" type="STRING" size="256"/>
+          <Column id="disabilityGrade" type="STRING" size="256"/>
+          <Column id="intensiveYn" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="disabilitySeq" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">16001</Col>
+            <Col id="disabilityApvDay">1</Col>
+            <Col id="disabilityApvDiv">2</Col>
+            <Col id="disabilityType">3</Col>
+            <Col id="disabilityGrade">4</Col>
+            <Col id="intensiveYn">5</Col>
+            <Col id="note">6</Col>
+            <Col id="disabilitySeq">7</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmCareer" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="careerSeq" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="joinDay" type="STRING" size="256"/>
+          <Column id="retireDay" type="STRING" size="256"/>
+          <Column id="workplace" type="STRING" size="256"/>
+          <Column id="position" type="STRING" size="256"/>
+          <Column id="respTask" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">16001</Col>
+            <Col id="careerSeq">1</Col>
+            <Col id="joinDay">2</Col>
+            <Col id="retireDay">3</Col>
+            <Col id="workplace">4</Col>
+            <Col id="position">5</Col>
+            <Col id="respTask">6</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <FileDialog id="fileDialog" filter="All(*.*)|*.*|" filterindex="0" defaultextension="true" onclose="fileDialog_onclose"/>
+      <Dataset id="dsImage">
+        <ColumnInfo>
+          <Column id="imgNm" type="STRING" size="256"/>
+          <Column id="imgBinary" type="BLOB" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 인사마스터                                                       *
+*                                                                   *
+* @Path		    인사 상세정보 관리        	                    *
+* @Description  인사정보/상세정보 조회,등록,수정,삭제 화면     *
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 9. 06.                             		        *
+*								                                    *
+********************************************************************/
+
+include "scripts::hrsScripts.xjs"
+include "scripts::commonScripts.xjs"
+
+//이미지 변수
+var imagePath ="";
+var image = "";
+var imgName = "";
+
+//화면 초기화작업
+this.HM_MasterForm_oninit = function(obj:Form, e:nexacro.InitEventInfo)
+{
+	this.gfnService("searchEmp");
+}
+
+//사원 검색 팝업
+this.btn_empPopup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfn_EmpPopup();
+	
+	this.setEmpInfo = function(arrRtn){
+		//set_value 해야 들어감
+		this.searchEmpNoEd.set_value(arrRtn[0]);
+		this.searchEmpNmEd.set_value(arrRtn[1]);
+	}
+}]]></Script>
+  </Form>
+</FDL>

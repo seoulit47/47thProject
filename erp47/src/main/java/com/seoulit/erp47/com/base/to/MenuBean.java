@@ -12,7 +12,6 @@ import lombok.ToString;
 @ToString
 @Dataset(name = "dsMenu")
 public class MenuBean extends BaseBean {
-
     private String menuCode,        // 메뉴코드
                    menuName,        // 메뉴명
                    menuLevel,       // 메뉴레벨

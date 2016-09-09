@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SN_IngredMgtForm" classname="SN_IngredMgtForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="SN_IngredMgtForm" classname="SN_IngredMgtForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SN_IngredMgtForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>
@@ -240,16 +240,41 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="compBox.unitEd" propid="value" datasetid="dsIngred" columnid="unit"/>
+      <BindItem id="item1" compid="compBox.minOrdQtyEd" propid="value" datasetid="dsIngred" columnid="minOrdQty"/>
+      <BindItem id="item2" compid="compBox.chngQty3Ed" propid="value" datasetid="dsIngred" columnid="chngQty3"/>
+      <BindItem id="item4" compid="compBox.chngQtyEd" propid="value" datasetid="dsIngred" columnid="chngQty"/>
+      <BindItem id="item3" compid="compBox.specEd" propid="value" datasetid="dsIngred" columnid="spec"/>
+      <BindItem id="item5" compid="compBox.roundFlagEd" propid="value" datasetid="dsIngred" columnid="roundFlag"/>
+      <BindItem id="item6" compid="compBox.rateEd" propid="value" datasetid="dsIngred" columnid="rate"/>
+      <BindItem id="item7" compid="compBox.ingredGrpCdEd" propid="value" datasetid="dsIngred" columnid="ingredGrpCd"/>
+      <BindItem id="item8" compid="compBox.ingredCdEd" propid="value" datasetid="dsIngred" columnid="ingredCd"/>
+      <BindItem id="item9" compid="compBox.ingredNmEd" propid="value" datasetid="dsIngred" columnid="ingredNm"/>
+      <BindItem id="item10" compid="compBox.nutrit1Ed" propid="value" datasetid="dsIngred" columnid="nutrit1"/>
+      <BindItem id="item11" compid="compBox.nutrit2Ed" propid="value" datasetid="dsIngred" columnid="nutrit2"/>
+      <BindItem id="item12" compid="compBox.nutrit22Ed" propid="value" datasetid="dsIngred" columnid="nutrit22"/>
+      <BindItem id="item13" compid="compBox.nutrit9Ed" propid="value" datasetid="dsIngred" columnid="nutrit9"/>
+      <BindItem id="item14" compid="compBox.nutrit4Ed" propid="value" datasetid="dsIngred" columnid="nutrit4"/>
+      <BindItem id="item15" compid="compBox.nutrit11Ed" propid="value" datasetid="dsIngred" columnid="nutrit11"/>
+      <BindItem id="item16" compid="compBox.nutrit16Ed" propid="value" datasetid="dsIngred" columnid="nutrit16"/>
+      <BindItem id="item17" compid="compBox.nutrit17Ed" propid="value" datasetid="dsIngred" columnid="nutrit17"/>
+      <BindItem id="item18" compid="compBox.nutrit7Ed" propid="value" datasetid="dsIngred" columnid="nutrit7"/>
+      <BindItem id="item19" compid="compBox.nutrit23Ed" propid="value" datasetid="dsIngred" columnid="nutrit23"/>
+      <BindItem id="item20" compid="compBox.nutrit8Ed" propid="value" datasetid="dsIngred" columnid="nutrit8"/>
+      <BindItem id="item21" compid="compBox.nutrit3Ed" propid="value" datasetid="dsIngred" columnid="nutrit3"/>
+      <BindItem id="item22" compid="compBox.nutrit5Ed" propid="value" datasetid="dsIngred" columnid="nutrit5"/>
+      <BindItem id="item23" compid="compBox.nutrit18Ed" propid="value" datasetid="dsIngred" columnid="nutrit18"/>
+      <BindItem id="item24" compid="compBox.nutrit25Ed" propid="value" datasetid="dsIngred" columnid="nutrit25"/>
+    </Bind>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
 
-
-// 변수
 var ingredGrpCd;
 
 // 화면로드
-this.SN_IngredMgt_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+this.SN_IngredMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	var argument = 'formDiv='+"ingred";
+	var argument = "formDiv="+"ingred";
 	var row = this.dsService.findRow("serviceID", "findCodeList");
 
 	this.dsService.setColumn(row, "argument", argument);
@@ -257,71 +282,57 @@ this.SN_IngredMgt_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	this.gfnService("findCodeList", false);
 }
 
-// 코드그리드 클릭
+//코드그리드
 this.dsCode_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
 {
 	this.compBox.set_enable(false);
-	
-	ingredGrpCd=obj.getColumn(e.newrow , "smallCode");
-	
+	ingredGrpCd = obj.getColumn(e.newrow,"smallCode");
 	this.codeClick();
-	
 }
 
-// 조회버튼
+//조회
+this.codeClick=function()
+{
+var argument = "ingredGrpCd="+ingredGrpCd;
+alert(argument);
+var row = this.dsService.findRow("serviceID", "findIngredList");
+alert(row);
+this.dsService.setColumn(row, "argument", argument);
+this.gfnService("findIngredList", false);
+}
+
+
+//조회 버튼
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.compBox.set_enable(false);
-	
+
 	var ingredCd = this.ingredCdEd.value;
 	var ingredNm = this.ingredNmEd.value;
-	
-	var argument = 'ingredCd='+ingredCd+' ingredNm='+ingredNm;
-	
-	var row = this.dsService.findRow("serviceID", "findIngredList");
 
+	var argument = "ingredCd="+ingredCd+" ingredNm="+ingredNm;
+	alert(argument);
+	var row = this.dsService.findRow("serviceID", "findIngredList");
+	alert(row);
 	this.dsService.setColumn(row, "argument", argument);
 	
 	this.gfnService("findIngredList", false);
-
-	alert("조회되었습니다.");
-}
-
-// 조회버튼
-this.codeClick=function()
-{	
-	var argument = 'ingredGrpCd='+ingredGrpCd;
 	
-	var row = this.dsService.findRow("serviceID", "findIngredList");
-
-	this.dsService.setColumn(row, "argument", argument);
-	
-	this.gfnService("findIngredList", false);
-		
-}
-
-// 콜백함수
-this.callBackFunc = function(svcID, errorCode, errorMsg){
-	if (errorCode < 0) {
-		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
-	} else {
-
- 	}
+	alert("조회 되었습니다.");
 }
 
 // 수정버튼
 this.modBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.compBox.set_enable(true);	
+	this.compBox.set_enable(true);
 }
 
-// 저장버튼
+// 확인버튼
 this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnService("batchIngredProcess");
-	alert("저장되었습니다.");
-	
-	this.searchBtn_onclick(null,null);
+	alert("저장 되었습니다.");
+	this.searchBtn_onclick(null, null);
 }
 ]]></Script>
   </Form>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SN_FoodPopForm" classname="SN_FoodPopForm" left="0" top="0" width="415" height="476" titletext="New Form">
+  <Form id="SN_FoodPopForm" classname="SN_FoodPopForm" left="0" top="0" width="415" height="468" titletext="New Form">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="0%" top="2" right="2.89%" height="60" style="background:transparent URL('img::titleBar7.jpg');"/>

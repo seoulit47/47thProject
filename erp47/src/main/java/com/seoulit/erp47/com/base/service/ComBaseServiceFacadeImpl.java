@@ -6,12 +6,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seoulit.erp47.com.base.applicationService.AuthApplicationService;
 import com.seoulit.erp47.com.base.applicationService.CodeApplicationService;
 import com.seoulit.erp47.com.base.applicationService.LoginApplicationService;
+import com.seoulit.erp47.com.base.applicationService.MenuApplicationService;
 import com.seoulit.erp47.com.base.exception.IdNotFoundException;
 import com.seoulit.erp47.com.base.exception.PwMissMatchException;
+import com.seoulit.erp47.com.base.to.AuthBean;
 import com.seoulit.erp47.com.base.to.CodeBean;
 import com.seoulit.erp47.com.base.to.CodeNmBean;
+import com.seoulit.erp47.com.base.to.MenuBean;
 
 /**
  * @Package  	com.seoulit.erp47.com.base.service
@@ -29,7 +33,11 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
     private LoginApplicationService loginApplicationService;
     @Autowired
     private CodeApplicationService codeApplicationService;
-   
+    @Autowired
+    private AuthApplicationService authApplicationService;
+    @Autowired
+    private MenuApplicationService menuApplicationService;
+    
     // 로그인
     @Override
     public Map<String, Object> login(Map<String, String> argsMap)
@@ -57,8 +65,35 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
 
 	@Override
 	public void  batchCode(List<CodeBean> batchCodeList) {
-		// TODO Auto-generated method stub
 		codeApplicationService.batchCode(batchCodeList);
 	}
 
+	
+/*-----------------------------------------------------------
+	------------------------------------------------------------*/
+	//권한 관련
+	@Override
+	public List<AuthBean> findAuthList(Map<String, String> authName) {
+		return authApplicationService.findAuthList(authName);
+	}
+
+	@Override
+	public List<MenuBean> findAuthMenuList(Map<String, String> codeName) {
+		return menuApplicationService.findAuthMenuList(codeName);
+	}
+
+	@Override
+	public List<MenuBean> findAllMenu() {
+		return menuApplicationService.findAllMenu();
+	}
+
+	//권한 & 메뉴 일괄처리
+	@Override
+	public void BatchAuthAndMenu(Map<String, List> map) {
+		List<AuthBean> authList = map.get("authList");
+		List<MenuBean> menuList = map.get("menuList");
+		
+	    authApplicationService.batchAuth(authList);
+	    menuApplicationService.batchMenu(menuList);
+	}
 }
