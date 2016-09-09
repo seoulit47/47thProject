@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SC_CardPayPopForm" classname="SC_CardPayPopForm" left="0" top="0" width="528" height="387" titletext="카드승인 관리">
+  <Form id="SC_CardPayPopForm" classname="SC_CardPayPopForm" left="0" top="0" width="528" height="387" titletext="카드승인 관리" onload="SC_CardPayPopForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="5.3%" top="66" right="5.49%" height="254" style="background:white;border:1 solid gainsboro ;"/>
@@ -12,13 +12,13 @@
           <Layouts>
             <Layout>
               <Div id="Div05" taborder="26" text="카드구분" left="2.39%" top="10" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
-              <Div id="Div00" taborder="27" text="카드번호" left="2.39%" top="56" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
-              <Div id="Div03" taborder="28" text="잔     액" left="2.39%" top="102" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div00" taborder="27" text="카드번호" left="2.39%" top="99" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div03" taborder="28" text="잔     액" left="2.39%" top="54" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
               <Div id="Div02" taborder="29" text="결제금액" left="2.39%" top="148" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
               <Div id="Div01" taborder="30" text="할     부" left="2.39%" top="194" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
               <Div id="Div12" taborder="31" text="유효기간" left="46.52%" top="194" right="31.96%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
               <Combo id="cardCdCombo" taborder="32" innerdataset="dsCardCd" codecolumn="code" datacolumn="value" left="26.96%" top="10" right="49.57%" height="30" style="align:center middle;" compCheck="EsCombo"/>
-              <MaskEdit id="cardNoMask" taborder="33" type="string" mask="####-####-####-####" left="26.96%" top="94" right="1.3%" height="30" style="align:center middle;" compCheck="EsMaskEd"/>
+              <MaskEdit id="cardNoMask" taborder="33" type="string" mask="####-####-####-####" left="26.96%" top="99" right="1.3%" height="30" style="align:center middle;" compCheck="EsMaskEd"/>
               <MaskEdit id="payBalMask" taborder="34" mask="###,###" enable="false" left="26.96%" top="56" right="1.3%" height="30" style="align:center middle;"/>
               <MaskEdit id="payAmtMask" taborder="35" mask="###,###" autoselect="true" left="26.96%" top="148" right="1.3%" height="30" style="align:center middle;" compCheck="EsMaskEd"/>
               <MaskEdit id="valPridMask" taborder="36" type="string" mask="##/##" left="70.87%" top="194" right="1.3%" height="30" style="align:center middle;" compCheck="EsMaskEd"/>
@@ -52,7 +52,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">registerRece</Col>
-            <Col id="URL">his::sup/checkup/registerRece.do</Col>
+            <Col id="URL">erp47::sup/checkup/registerRece.do</Col>
             <Col id="inData">dsRece=dsRece</Col>
             <Col id="outData"/>
             <Col id="argument"/>
@@ -62,6 +62,134 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="dsCardCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRece" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="receDate" type="STRING" size="256"/>
+          <Column id="befReceAmt" type="STRING" size="256"/>
+          <Column id="payAmt" type="STRING" size="256"/>
+          <Column id="cardCashDiv" type="STRING" size="256"/>
+          <Column id="aprvNo" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="inspDate" type="STRING" size="256"/>
+          <Column id="aprvDate" type="STRING" size="256"/>
+          <Column id="cardCd" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="valPrid" type="STRING" size="256"/>
+          <Column id="instmPrid" type="STRING" size="256"/>
+          <Column id="cashAprvData" type="STRING" size="256"/>
+          <Column id="cashAprvDivCd" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA012</Col>
+            <Col id="dsName">dsCardCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="compBox.payAmtMask" propid="value" datasetid="dsRece" columnid="payAmt"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+// 공통 스크립트
+include "scripts::commonScripts.xjs"; 
+include "scripts::supScripts.xjs";
+
+//	화면 로드
+this.SC_CardPayPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+	alert(this.parent.param);
+	this.dsRece.copyData(this.parent.param);
+	alert(this.dsRece.saveXML());
+	this.compBox.payBalMask.set_value(this.parent.payAmt);	
+}
+
+// 초기화 버튼
+
+this.resetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.compBox.cardCdCombo.set_value("");
+	this.compBox.cardNoMask.set_value("");
+	this.compBox.payAmtMask.set_value("");
+	this.compBox.instmPridEd.set_value("");
+	this.compBox.valPridMask.set_value("");
+}
+
+// 승인요청 버튼
+
+this.aprvBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.gfnIsNull(this.compBox.cardCdCombo.value))
+	{
+		alert("카드구분을 선택하세요");
+		return;
+	}
+	if(this.gfnIsNull(this.compBox.cardNoMask.value))
+	{
+		
+		alert("카드번호를 입력하세요");
+		return;
+	}
+	
+	if(this.gfnIsNull(this.compBox.payAmtMask.value))
+	{
+		alert("결제금액을 입력하세요");
+		return;
+	}
+
+	if(this.gfnIsNull(this.compBox.payAmtMask.value))
+	{
+		alert("카드의 유효기간을 입력하세요");
+		return;
+	}	
+	
+	if(this.gfnIsNull(this.compBox.payAmtMask.value))
+	{
+		alert("카드할부를 입력하세요");
+		return;
+	}
+	
+	if(parseInt(this.compBox.payBalMask.value) < parseInt(this.compBox.payAmtMask.value)){
+		alert("승인금액이 승인잔액보다 초과합니다.");
+		return;
+	}
+	
+	trace(this.dsRece.saveXML());
+	this.gfnService("registerRece");
+	this.opener.checkSc(1);
+	
+	this.close();
+}
+
+
+// 취소버튼
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+]]></Script>
   </Form>
 </FDL>

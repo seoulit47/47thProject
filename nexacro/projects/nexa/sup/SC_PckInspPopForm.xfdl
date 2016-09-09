@@ -260,6 +260,7 @@ this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 			openerDs.setColumn(openerDsRow,"qnt",1);
 			openerDs.setColumn(openerDsRow,"amt",amt);
 			openerDs.setColumn(openerDsRow,"inspPlnDate",this.opener.compBox.inspDateCal.value);
+			alert(this.opener.compBox.inspDateCal.value);
 			openerDs.setColumn(openerDsRow,"inspPlnDate",this.opener.compBox.rsvtNoEd.value);
 			
 		}

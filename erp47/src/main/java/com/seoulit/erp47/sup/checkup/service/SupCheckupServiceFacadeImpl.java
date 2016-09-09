@@ -36,6 +36,18 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 	   List<RsvtBean> rsvtList = supCheckupApplicationService.findRsvtList(argsMap);
 	   return rsvtList;
 	}
+	
+	/* 종합검진 예약관리 - 예약 취소 */
+	@Override
+	public void cancelRsvt(Map<String, String> argsMap) {
+		supCheckupApplicationService.cancelRsvt(argsMap);
+	}
+	
+	/* 종합검진 예약관리 - 저장 */
+	@Override                
+	public void batchRsvtProcess(Map<String, Object> map) {
+	   supCheckupApplicationService.batchRsvtProcess(map);
+	}
 	 
 	 
 	/* 종합검진 패키지관리 - 패키지 검사목록 조회 */
@@ -59,16 +71,19 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 		return exChoInspList;
 	}
 
-	/* 종합검진 예약관리 - 예약 취소 */
-	@Override
-	public void cancelRsvt(Map<String, String> argsMap) {
-		supCheckupApplicationService.cancelRsvt(argsMap);
-	}
-
 	/* 종합검진 수납 - 조회 */
 	@Override
 	public List<ReceBean> findReceList(Map<String, String> argsMap) {
 		List<ReceBean> receList = supCheckupApplicationService.findReceList(argsMap);
 		return receList;
 	}
+	
+	/* 종합검진 수납 - 카드승인  */
+	@Override                
+    public void registerRece(ReceBean receBean) {
+        supCheckupApplicationService.registerRece(receBean);
+    }
+	
+	
+
 }

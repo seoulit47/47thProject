@@ -424,7 +424,7 @@
     <Script type="xscript5.0"><![CDATA[//공통 스크립트
 include "scripts::commonScripts.xjs";
 include "scripts::wonScripts.xjs";
-
+include "scripts::supScripts.xjs";
 
 // 변수
 var rsvtNo; //예약번호
@@ -628,6 +628,14 @@ this.btnBox2_receBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnPopup("SC_RecePopForm","sup",param,"");	
 }
 
+this.payCo=function(retVal)
+{
+	if(retVal == 1)
+	{	
+			alert("수납이 완료되었습니다.");
+	}
+}
+
 /* 수정 */
 this.btnBox2_modiBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
@@ -660,6 +668,14 @@ this.btnBox2_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		this.searchBtn_onclick(null,null);
 	}
 }
-]]></Script>
+
+// 콜백함수
+this.callBackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	} else {
+
+ 	}
+}]]></Script>
   </Form>
 </FDL>

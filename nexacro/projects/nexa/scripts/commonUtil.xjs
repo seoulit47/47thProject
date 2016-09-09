@@ -15,7 +15,7 @@ this.serverDate = "";
 this.gfnDate = function(format) {
    this.transaction(
       "findDate",
-      "his::com/findDate.do",
+      "erp47::com/findDate.do",
       "",
       "",
       "format=" + format,

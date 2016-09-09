@@ -16,13 +16,13 @@ import com.seoulit.erp47.sup.checkup.service.SupCheckupServiceFacade;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
 
 /**
- * @Package  com.seoul.his.sup.checkup.controller
+ * @Package  com.seoulit.erp47.sup.checkup.controller
  * @Class    ReceController.java
- * @Create   2016. 6. 5.
- * @Author   한수정
+ * @Create   2016. 09. 09.
+ * @Author   김진환
  * @Description   수납관리 컨트롤러
  *
- * @LastUpdated   2016. 7. 4. 
+ * @LastUpdated   2016. 09. 09. 
  */
 
 @Controller
@@ -49,5 +49,15 @@ public class ReceController {
 
     }
     
+    // 종합검진 접수 - 수납 - 카드 승인
+    @RequestMapping("sup/checkup/registerRece.do")
+    public void registerRece(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        
+        ReceBean receBean= dataSetBeanMapper.datasetToBean(inData, ReceBean.class);
+        supCheckupServiceFacade.registerRece(receBean);
+    	
+    }
     
 }
