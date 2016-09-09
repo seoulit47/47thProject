@@ -69,7 +69,7 @@
                 <Cell row="1" col="7" style="background:transparent;color:black;color2:transparent;" text="보조과목" autosizerow="default" autosizecol="default"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="text" edittype="text" text="bind:bimokLevel" combodataset="dsGB001" combocodecol="code" combodatacol="value"/>
+                <Cell displaytype="combo" edittype="combo" text="bind:bimokLevel" combodataset="dsGB001" combocodecol="code" combodatacol="value"/>
                 <Cell col="1" edittype="normal" text="bind:bimokCd"/>
                 <Cell col="2" edittype="text" text="bind:bimokNm"/>
                 <Cell col="3" text="bind:parentBimok"/>
@@ -78,7 +78,7 @@
                 <Cell col="6" edittype="expand" text="bind:assiSubCd"/>
                 <Cell col="7" text="bind:assiSubNm"/>
                 <Cell col="8" text="bind:finYn"/>
-                <Cell col="9" edittype="combo" text="bind:useYn"/>
+                <Cell col="9" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="useYN" combocodecol="code" combodatacol="value"/>
               </Band>
             </Format>
           </Formats>
@@ -86,8 +86,8 @@
         <Radio id="useYnRadio" taborder="12" innerdataset="@useYN" codecolumn="code" datacolumn="value" direction="vertical" left="73.05%" top="84" right="13.28%" height="36" style="buttonsize:17;color:black;font:10 Dotum;"/>
         <Button id="searchBtn" taborder="13" left="87.5%" top="83" right="3.13%" height="37" style="background:@gradation URL('img::searchBtn.png') stretch;border:0 none #999999ff ;color:#ffffffff;bordertype:normal 3 3 ;gradation:none 0,0 white 100,100 black;" onclick="searchBtn_onclick"/>
         <Button id="addBtn" taborder="18" left="70.21%" top="728" right="21.19%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;" onclick="addBtn_onclick"/>
-        <Button id="delBtn" taborder="19" left="80.37%" top="728" right="11.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;"/>
-        <Button id="saveBtn" taborder="20" left="90.53%" top="728" right="0.88%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;gradation:linear 0,0 #fefefeff 0,100 #ecece5ff;"/>
+        <Button id="delBtn" taborder="19" left="80.37%" top="728" right="11.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;" onclick="delBtn_onclick"/>
+        <Button id="saveBtn" taborder="20" left="90.53%" top="728" right="0.88%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;gradation:linear 0,0 #fefefeff 0,100 #ecece5ff;" onclick="saveBtn_onclick"/>
         <Button id="copyBtn" taborder="21" text="전년도 복사" left="59.28%" top="728" right="31.35%" height="32" style="background:#848484ff;color:white;font:bold 10 돋움;" onclick="copyBtn_onclick"/>
       </Layout>
     </Layouts>
@@ -171,6 +171,28 @@
           <Column id="value" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GB001</Col>
+            <Col id="dsName">dsGB001</Col>
+          </Row>
+          <Row>
+            <Col id="code">GB002</Col>
+            <Col id="dsName">dsGB002</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGB002" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
@@ -242,6 +264,29 @@ this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 						,e.screenX
 						,e.screenY);
 	}
+}
+
+//*****
+//삭제
+//*****
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var finYn = this.dsBudgBimok.getColumn(this.dsBudgBimok.rowposition,"finYn");
+	
+	if(finYn == 'Y'){
+		this.dsBudgBimok.deleteRow(this.dsBudgBimok.rowposition);
+	} else {
+		alert("자식 데이터가 있습니다.");
+		return;
+	}
+}
+
+//*****
+//저장
+//*****
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchBimokProcess");
 }
 ]]></Script>
   </Form>

@@ -6,8 +6,8 @@
       <Layout>
         <Div id="Div00" taborder="0" left="1.5%" top="6" right="1.75%" height="137" style="background:powderblue;color:powderblue;bordertype:round 5 5 ;"/>
         <TextArea id="descriptionArea" taborder="1" enable="false" left="3.75%" top="19" right="3.75%" height="74" class="AreaArea"/>
-        <Button id="closeBtn" taborder="2" text="닫  기" left="67.5%" top="106" right="9.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
-        <Button id="addLowerLevBtn" taborder="3" text="하위수준입력" left="38.5%" top="106" right="36.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="closeBtn" taborder="2" text="닫  기" left="67.5%" top="106" right="9.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="closeBtn_onclick"/>
+        <Button id="addLowerLevBtn" taborder="3" text="하위수준입력" left="38.5%" top="106" right="36.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="addLowerLevBtn_onclick"/>
         <Button id="addSameLevBtn" taborder="4" text="동일수준입력" left="9.5%" top="106" right="65.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="addSameLevBtn_onclick"/>
       </Layout>
     </Layouts>
@@ -60,21 +60,62 @@ this.AB_bimokPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 this.addSameLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var nRow = this.dsBudgBimok.findRow('bimokCd',bimokCd);
-	alert(bimokCd+"Row = "+nRow);
+	alert("bimokCd = "+bimokCd+" / nRow = "+nRow);
 	alert("bimokLevel = "+bimokLevel);
 	if(bimokLevel==1){
-		var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel,nRow+1);
+		var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel,nRow+1);                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	}else{
 		var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel-1,nRow+1);
 	}
-	alert(Row);
+	//alert(Row);
+	if(Row==-1){
+		var iRow = this.parent.dsBudgBimok.insertRow(nRow+1);
+	}else{
+		var iRow = this.parent.dsBudgBimok.insertRow(Row);
+	}
+	this.parent.dsBudgBimok.setColumn(iRow ,"bimokLevel" , bimokLevel);
+	this.parent.dsBudgBimok.setColumn(iRow ,"finYn" , 'Y');
+	this.parent.dsBudgBimok.setColumn(iRow ,"parentBimok" , parentBimok);
+	this.parent.dsBudgBimok.setColumn(iRow ,"accYear" , accYear);
+	this.close();
+	
+}
+
+//**************
+//하위수준입력
+//**************
+this.addLowerLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsBudgBimok.findRow('bimokCd',bimokCd);
+	var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel,nRow+1);
+	alert("bimokCd = "+bimokCd+" / nRow = "+nRow +" / Row = "+Row );
+	alert("bimokLevel = "+bimokLevel);
+	
 	if(Row==-1){
 		var iRow = this.parent.dsBudgBimok.insertRow(nRow+1);
 	}else{
 		var iRow = this.parent.dsBudgBimok.insertRow(Row);
 	}
 	
+	this.parent.dsBudgBimok.setColumn(iRow,"bimokLevel",parseInt(bimokLevel)+1);
+	
+	if(finYn == 'Y'){
+		this.parent.dsBudgBimok.setColumn(nRow,"finYn",'N');
+		this.parent.dsBudgBimok.setColumn(iRow,"finYn","Y");
+	}
+	
+	this.parent.dsBudgBimok.setColumn(iRow ,"finYn" , 'Y');
+	this.parent.dsBudgBimok.setColumn(iRow ,"parentBimok" , bimokCd);
+	this.parent.dsBudgBimok.setColumn(iRow ,"accYear" , accYear);
+	this.close();
 }
-]]></Script>
+
+//*****
+//닫기
+//*****
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}]]></Script>
   </Form>
 </FDL>

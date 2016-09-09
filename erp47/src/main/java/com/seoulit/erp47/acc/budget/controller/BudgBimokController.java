@@ -42,4 +42,12 @@ public class BudgBimokController {
 			List<BudgBimokBean> budgBimokList = budgetServiceFacade.copyBimok(year);
 			dataSetBeanMapper.beansToDataset(outData, budgBimokList, BudgBimokBean.class);
 		}
+		
+		// 예산비목 일괄처리 
+		@RequestMapping("acc/budget/batchBimokProcess.do")
+		public void batchBimokProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		    PlatformData inData = (PlatformData) request.getAttribute("inData");
+			List<BudgBimokBean> bimokList = (List<BudgBimokBean>) dataSetBeanMapper.datasetToBeans(inData, BudgBimokBean.class);
+			//budgetServiceFacade.batchBimokProcess(bimokList);
+		}
 }
