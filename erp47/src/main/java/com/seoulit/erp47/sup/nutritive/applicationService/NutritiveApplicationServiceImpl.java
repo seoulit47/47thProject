@@ -81,9 +81,9 @@ public class NutritiveApplicationServiceImpl implements NutritiveApplicationServ
 			for (FoodBean foodBean : foodList) {
 
 				switch (foodBean.getStatus()) {
-
-				case "updated": foodDAO.updateFood(foodBean); break;
 				case "inserted": foodDAO.insertFood(foodBean); break;
+				case "updated": foodDAO.updateFood(foodBean); break;
+				
 				}
 			}
 		}
