@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_bimokPopupForm" classname="AB_bimokPopupForm" left="0" top="0" width="400" height="170" titletext="New Form" onload="AB_bimokPopupForm_onload">
+  <Form id="AB_BimokPopupForm" classname="AB_BimokPopupForm" left="0" top="0" width="400" height="170" titletext="New Form" onload="AB_BimokPopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="1.5%" top="6" right="1.75%" height="137" style="background:powderblue;color:powderblue;bordertype:round 5 5 ;"/>
         <TextArea id="descriptionArea" taborder="1" enable="false" left="3.75%" top="19" right="3.75%" height="74" class="AreaArea"/>
-        <Button id="closeBtn" taborder="2" text="닫  기" left="67.5%" top="106" right="9.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="closeBtn_onclick"/>
-        <Button id="addLowerLevBtn" taborder="3" text="하위수준입력" left="38.5%" top="106" right="36.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="addLowerLevBtn_onclick"/>
-        <Button id="addSameLevBtn" taborder="4" text="동일수준입력" left="9.5%" top="106" right="65.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="addSameLevBtn_onclick"/>
+        <Button id="closeBtn" taborder="2" text="닫  기" onclick="closeBtn_onclick" left="67.5%" top="106" right="9.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="addLowerLevBtn" taborder="3" text="하위수준입력" onclick="addLowerLevBtn_onclick" left="38.5%" top="106" right="36.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="addSameLevBtn" taborder="4" text="동일수준입력" onclick="addSameLevBtn_onclick" left="9.5%" top="106" right="65.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -40,7 +40,7 @@ var parentBimok;
 //*******
 //온로드
 //*******
-this.AB_bimokPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+this.AB_BimokPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	this.descriptionArea.set_value(this.parent.bimokNm + "을 선택하셨습니다 \n 처리방법을 선택해주세요");
 	this.dsBudgBimok.copyData(this.parent.dsBudgBimok);
@@ -51,7 +51,7 @@ this.AB_bimokPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	bimokLevel = this.parent.bimokLevel;
 	finYn = this.parent.finYn;
 	parentBimok = this.parent.parentBimok;
-	alert(bimokNm+"-"+bimokCd+"-"+bimokLevel+"-"+finYn+"-"+parentBimok);
+	//alert(bimokNm+"-"+bimokCd+"-"+bimokLevel+"-"+finYn+"-"+parentBimok);
 }
 
 //**************
@@ -60,8 +60,8 @@ this.AB_bimokPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 this.addSameLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var nRow = this.dsBudgBimok.findRow('bimokCd',bimokCd);
-	alert("bimokCd = "+bimokCd+" / nRow = "+nRow);
-	alert("bimokLevel = "+bimokLevel);
+	//alert("bimokCd = "+bimokCd+" / nRow = "+nRow);
+	//alert("bimokLevel = "+bimokLevel);
 	if(bimokLevel==1){
 		var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel,nRow+1);                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	}else{
@@ -88,8 +88,8 @@ this.addLowerLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var nRow = this.dsBudgBimok.findRow('bimokCd',bimokCd);
 	var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel,nRow+1);
-	alert("bimokCd = "+bimokCd+" / nRow = "+nRow +" / Row = "+Row );
-	alert("bimokLevel = "+bimokLevel);
+	//alert("bimokCd = "+bimokCd+" / nRow = "+nRow +" / Row = "+Row );
+	//alert("bimokLevel = "+bimokLevel);
 	
 	if(Row==-1){
 		var iRow = this.parent.dsBudgBimok.insertRow(nRow+1);
