@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 import com.seoulit.erp47.sup.checkup.dao.InspDAO;
 import com.seoulit.erp47.sup.checkup.dao.PckDAO;
 import com.seoulit.erp47.sup.checkup.dao.ReceDAO;
+import com.seoulit.erp47.sup.checkup.dao.ReceiptDAO;
 import com.seoulit.erp47.sup.checkup.dao.RsvtDAO;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
+import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
+import com.seoulit.erp47.sup.checkup.to.ReducBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 /**
@@ -37,6 +40,8 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	private InspDAO inspDAO;
 	@Autowired
 	private ReceDAO receDAO;
+	@Autowired
+	private ReceiptDAO receiptDAO;
 	
 	/* 종합검진 예약관리 - 예약목록 조회  */
 	@Override                
@@ -131,17 +136,29 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
         receBean.setAprvNo(newAprvNo);
       
         receDAO.insertAprv(receBean);
-        System.out.println(receBean.getPayAmt()+"!!!!!!!!!!!!");
         receDAO.insertRece(receBean);
     }
 	
 	private String getNewAprvNo(String receDate){
         Long t =Calendar.getInstance().getTimeInMillis();
-        System.out.println(receDate+"[][][][]");
         String newAprvNo = receDate.substring(2)+t.toString();
         
         return newAprvNo;
     }
     
+	 /* 종합검진 접수 - 패키지 조회 */
+	@Override                
+    public List<PckBean> findPckList(Map<String, String> argsMap) {
+        List<PckBean> pckList = pckDAO.selectPckList(argsMap);
+        return pckList;
+    }
+	
+	/* 종합검진 접수 - 감면조회 */
+	@Override               
+    public List<ReducBean> findReducList(Map<String, String> argsMap) {
+        List<ReducBean> reducList = receiptDAO.selectReducList(argsMap);
+        
+        return reducList;
+    }
 
 }
