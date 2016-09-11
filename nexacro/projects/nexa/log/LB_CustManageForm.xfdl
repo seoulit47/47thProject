@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LB_CustManageForm" classname="LB_CustManageForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="0.48%" top="4" right="-57.12%" height="60" style="background:transparent URL('img::titleBar7.jpg');"/>
+        <Static id="Static00" taborder="1" text="거래처 관리" left="4.8%" top="5" right="81.68%" height="51" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+        <Static id="custCdStc" taborder="2" text="거래처코드" onclick="subCodeStc_onclick" left="2.4%" top="72" right="90.64%" height="34" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="Edit00" taborder="3" left="9.44%" top="77" right="80.4%" height="29"/>
+        <Button id="DelBtn10" taborder="4" onclick="DelBtn_onclick" cssclass="DelBtn" left="32.08%" top="75" right="64.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Edit id="Edit01" taborder="5" left="20.24%" top="77" right="68.24%" height="29"/>
+        <Button id="DelBtn07" taborder="6" onclick="DelBtn_onclick" cssclass="DelBtn" left="60.24%" top="72" right="30.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="Grid00" taborder="7" useinputpanel="false" left="2.8%" top="118" right="2.08%" height="634" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="110"/>
+                <Column size="153"/>
+                <Column size="102"/>
+                <Column size="92"/>
+                <Column size="102"/>
+                <Column size="104"/>
+                <Column size="116"/>
+                <Column size="104"/>
+                <Column size="126"/>
+                <Column size="128"/>
+                <Column size="161"/>
+                <Column size="131"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="거래처코드"/>
+                <Cell col="1" text="적용일자"/>
+                <Cell col="2" text="우편번호"/>
+                <Cell col="3" text="전화번호"/>
+                <Cell col="4" text="팩스번호"/>
+                <Cell col="5" text="업종명"/>
+                <Cell col="6" text="사업자명"/>
+                <Cell col="7" text="은행코드"/>
+                <Cell col="8" text="예금주"/>
+                <Cell col="9" text="인사사용여부"/>
+                <Cell col="10" text="카드가맹점여부"/>
+                <Cell col="11" text="병원구분"/>
+                <Cell row="1" text="거래처명"/>
+                <Cell row="1" col="1" text="사업자번호"/>
+                <Cell row="1" col="2" colspan="3" text="주소"/>
+                <Cell row="1" col="5" text="업태명"/>
+                <Cell row="1" col="6" text="주민등록번호"/>
+                <Cell row="1" col="7" colspan="2" text="계좌번호"/>
+                <Cell row="1" col="9" text="구매사용여부"/>
+                <Cell row="1" col="10" text="동위원소거래처여부"/>
+                <Cell row="1" col="11" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell row="1"/>
+                <Cell row="1" col="1"/>
+                <Cell row="1" col="2" colspan="3"/>
+                <Cell row="1" col="5"/>
+                <Cell row="1" col="6"/>
+                <Cell row="1" col="7" colspan="2"/>
+                <Cell row="1" col="9"/>
+                <Cell row="1" col="10"/>
+                <Cell row="1" col="11"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  		//공통 스크립트
+include "scripts::logScripts.xjs";			//물류 스크립트
+include "scripts::commonGrid.xjs";
+
+]]></Script>
+  </Form>
+</FDL>
