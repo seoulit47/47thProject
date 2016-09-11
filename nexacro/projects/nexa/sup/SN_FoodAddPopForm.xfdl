@@ -295,11 +295,10 @@ this.SN_FoodAddPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 		this.dsFood.setColumn(0, "foodNm", this.foodNmEd.value);
 		this.dsFood.setColumn(0, "notes", this.foodMemoEd.value);
 		
-		
 	}else if(state=="update"){
 		this.dsFood.addRow();
 		this.dsFood.setColumn(0, "foodGrpCd", foodGrpCd);
-		this.dsFood.setColumn(0, "foodCd", this.parent.foodCd);
+		this.dsFood.setColumn(0, "foodCd", foodCd);
 		this.dsFood.setColumn(0, "foodNm", this.parent.foodNm);
 		this.dsFood.setColumn(0, "notes", this.parent.foodMemo);
 		
