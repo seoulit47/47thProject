@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SC_CashPayPopForm" classname="SC_CashPayPopForm" left="0" top="0" width="528" height="345" titletext="현금승인 관리">
+  <Form id="SC_CashPayPopForm" classname="SC_CashPayPopForm" left="0" top="0" width="528" height="345" titletext="현금승인 관리" onload="SC_CashPayPopForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="5.3%" top="66" right="5.49%" height="208" style="background:white;border:1 solid gainsboro ;"/>
@@ -26,5 +26,130 @@
         </Div>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">registerRece</Col>
+            <Col id="URL">erp47::sup/checkup/registerRece.do</Col>
+            <Col id="inData">dsRece=dsRece</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA097</Col>
+            <Col id="dsName">dsCashAprvDivCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCashAprvDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRece" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="receDate" type="STRING" size="256"/>
+          <Column id="befReceAmt" type="STRING" size="256"/>
+          <Column id="payAmt" type="STRING" size="256"/>
+          <Column id="cardCashDiv" type="STRING" size="256"/>
+          <Column id="aprvNo" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="inspDate" type="STRING" size="256"/>
+          <Column id="aprvDate" type="STRING" size="256"/>
+          <Column id="cardCd" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="valPrid" type="STRING" size="256"/>
+          <Column id="instmPrid" type="STRING" size="256"/>
+          <Column id="cashAprvData" type="STRING" size="256"/>
+          <Column id="cashAprvDivCd" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[// 공통 스크립트
+include "scripts::supScripts.xjs";
+include "scripts::commonScripts.xjs"; 
+
+/* 화면 로드 */
+this.SC_CashPayPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+	
+	this.dsRece.copyData(this.parent.param);
+	this.compBox.payBalMask.set_value(this.parent.payAmt);	
+}
+
+/* 초기화 */
+this.resetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.compBox.cashAprvDataMask.set_value("");
+	this.compBox.payAmtMask.set_value("");
+}
+
+/* 닫기 */
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+/* 승인요청 */
+this.aprvBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.gfnIsNull(this.compBox.cashAprvDivCdRadio.value))
+	{
+		alert("거래구분을 선택하세요");
+		return;
+	}
+	if(this.gfnIsNull(this.compBox.cashAprvDataMask.value))
+	{
+		
+		alert("승인자료를 입력하세요");
+		return;
+	}
+	
+	if(this.gfnIsNull(this.compBox.payAmtMask.value))
+	{
+		alert("승인금액을 입력하세요");
+		return;
+	}
+
+	if(parseInt(this.compBox.payBalMask.value) < parseInt(this.compBox.payAmtMask.value)){
+		alert("승인금액이 승인잔액보다 초과합니다.");
+		return;
+	}
+	
+	this.gfnService("registerRece");
+	this.opener.checkSc(1);
+	this.close();
+}
+]]></Script>
   </Form>
 </FDL>
