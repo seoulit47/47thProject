@@ -54,7 +54,7 @@ public class ReceController {
     public void registerRece(HttpServletRequest request, HttpServletResponse response) throws Exception {
         
         PlatformData inData = (PlatformData) request.getAttribute("inData");
-        
+        System.out.println(inData.saveXml());
         ReceBean receBean= dataSetBeanMapper.datasetToBean(inData, ReceBean.class);
         supCheckupServiceFacade.registerRece(receBean);
     	

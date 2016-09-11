@@ -131,6 +131,7 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
         receBean.setAprvNo(newAprvNo);
       
         receDAO.insertAprv(receBean);
+        System.out.println(receBean.getPayAmt()+"!!!!!!!!!!!!");
         receDAO.insertRece(receBean);
     }
 	

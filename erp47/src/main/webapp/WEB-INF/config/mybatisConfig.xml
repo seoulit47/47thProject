@@ -31,7 +31,7 @@
 	<package name="com.seoulit.erp47.acc.budget.to" />				<!-- 예산관리 -->
 
     <!-- 원무 -->
-      
+    <package name="com.seoulit.erp47.won.outPatMgt.to" />	  
       
       
     <!-- 진료지원 -->
