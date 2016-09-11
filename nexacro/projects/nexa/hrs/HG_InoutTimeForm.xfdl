@@ -318,8 +318,8 @@ this.mainDiv_empSerchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInf
 *                                         사원 셋팅	                                       	   *
 ***************************************************************************************************/
 this.setEmpInfo=function(empNo,empNm){
-	this.empNmEd.set_value(empNm);
-	this.empNoEd.set_value(empNo);
+	this.mainDiv.empNmEd.set_value(empNm);
+	this.mainDiv.empNoEd.set_value(empNo);
 }]]></Script>
   </Form>
 </FDL>

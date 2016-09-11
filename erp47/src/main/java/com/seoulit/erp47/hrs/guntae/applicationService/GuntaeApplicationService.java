@@ -3,6 +3,7 @@ package com.seoulit.erp47.hrs.guntae.applicationService;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
@@ -33,7 +34,7 @@ public interface GuntaeApplicationService {
 
     //휴가신청 일괄처리
     void batchHolidayProcess(List<HolidayBean> list);
-    */
+*/
     //출퇴근시간 조회
     List<InoutWorkTimeBean> findInoutWorkTimeList(Map<String, String> argsMap);
 
@@ -48,13 +49,13 @@ public interface GuntaeApplicationService {
 
     //시간외근무 일괄처리
     void batchOverTimeWorkProcess(List<OverTimeWorkBean> list);
-/*
+
     //일근태 생성
     List<DayGuntaeBean> createDayGuntae(Map<String, String> argsMap);
 
     //일근태 조회
     List<DayGuntaeBean> findDayGuntaeList(Map<String, String> argsMap);
-
+/*
     //월근태 조회
     List<MonGuntaeBean> findMonGuntaeList(Map<String, String> argsMap);
 

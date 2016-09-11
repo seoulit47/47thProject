@@ -3,6 +3,7 @@ package com.seoulit.erp47.hrs.guntae.service;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
@@ -50,10 +51,10 @@ public interface GuntaeServiceFacade {
     void batchOverTimeWorkProcess(List<OverTimeWorkBean> list);
 
     //일근태 생성
-    //List<DayGuntaeBean> createDayGuntae(Map<String, String> argsMap);
+    List<DayGuntaeBean> createDayGuntae(Map<String, String> argsMap);
 
     //일근태 조회
-    //List<DayGuntaeBean> findDayGuntaeList(Map<String, String> argsMap);
+    List<DayGuntaeBean> findDayGuntaeList(Map<String, String> argsMap);
 
     //월근태 조회
     //List<MonGuntaeBean> findMonGuntaeList(Map<String, String> argsMap);

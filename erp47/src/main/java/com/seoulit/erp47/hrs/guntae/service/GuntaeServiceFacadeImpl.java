@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.hrs.guntae.applicationService.GuntaeApplicationService;
+import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
@@ -90,19 +91,19 @@ public class GuntaeServiceFacadeImpl implements GuntaeServiceFacade{
     public void batchOverTimeWorkProcess(List<OverTimeWorkBean> list) {
     	guntaeApplicationService.batchOverTimeWorkProcess(list);
     }
-/*
+
     //일근태 생성
     @Override
     public List<DayGuntaeBean> createDayGuntae(Map<String, String> argsMap) {
-        return guntaeAS.createDayGuntae(argsMap);
+        return guntaeApplicationService.createDayGuntae(argsMap);
     }
 
     //일근태 조회
     @Override
     public List<DayGuntaeBean> findDayGuntaeList(Map<String, String> argsMap) {
-        return guntaeAS.findDayGuntaeList(argsMap);
+        return guntaeApplicationService.findDayGuntaeList(argsMap);
     }
-
+/*
     //월근태 조회
     @Override
     public List<MonGuntaeBean> findMonGuntaeList(Map<String, String> argsMap) {

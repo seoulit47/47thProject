@@ -320,7 +320,6 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnService("batchHday");
 }
 
-
 ]]></Script>
   </Form>
 </FDL>

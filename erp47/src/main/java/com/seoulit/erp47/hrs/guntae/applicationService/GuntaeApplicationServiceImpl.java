@@ -6,13 +6,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seoulit.erp47.hrs.guntae.dao.GuntaeDAO;
 import com.seoulit.erp47.hrs.guntae.dao.HdayDAO;
 import com.seoulit.erp47.hrs.guntae.dao.InoutWorkTimeDAO;
 import com.seoulit.erp47.hrs.guntae.dao.OverTimeWorkDAO;
+import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
-
 
 /**
  * @Package  com.seoul.his.hrs.guntae.applicationService
@@ -40,7 +41,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     OverTimeWorkDAO overTimeWorkDAO;
 
     //@Autowired
-    //GuntaeDAO guntaeDAO;
+    GuntaeDAO guntaeDAO;
 
     //@Autowired
     //YeonchaDAO yeonchaDAO;
@@ -155,7 +156,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
         }
 
     }
-/*
+
     //일근태 생성
     @Override
     public List<DayGuntaeBean> createDayGuntae(Map<String, String> argsMap) {
@@ -176,7 +177,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     public List<DayGuntaeBean> findDayGuntaeList(Map<String, String> argsMap) {
         return guntaeDAO.selectDayGuntaeList(argsMap);
     }
-
+/*
     //월근태 조회
     @Override
     public List<MonGuntaeBean> findMonGuntaeList(Map<String, String> argsMap) {
