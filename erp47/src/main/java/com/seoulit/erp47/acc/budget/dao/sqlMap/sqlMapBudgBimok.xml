@@ -131,7 +131,7 @@
           FROM AB_BUDG_BIMOK 
          WHERE ACC_YEAR = #{accYear} 
                AND BIMOK_CD = #{bimokCd}
- 	</delete>
+ 	</delete> -->
  	
  	<select id="callCopyBimok" statementType="CALLABLE" parameterType="BudgBimokBean" resultType="BudgBimokBean">
      	{call PC_AB_COPY_BIMOK (
@@ -139,5 +139,5 @@
 				, #{errorCode, mode=OUT, jdbcType=VARCHAR}
 		      	, #{errorMsg, mode=OUT, jdbcType=VARCHAR}
      	) }
- 	</select> -->
+ 	</select> 
 </mapper>

@@ -1,4 +1,4 @@
-package com.seoulit.erp47.log.base.to;
+package com.seoulit.erp47.log;
 
 import com.seoulit.erp47.common.annotation.Dataset;
 import com.seoulit.erp47.common.to.BaseBean;

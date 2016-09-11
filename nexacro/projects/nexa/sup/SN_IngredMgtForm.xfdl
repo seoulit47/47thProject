@@ -294,9 +294,9 @@ this.dsCode_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEven
 this.codeClick=function()
 {
 var argument = "ingredGrpCd="+ingredGrpCd;
-alert(argument);
+//alert(argument);
 var row = this.dsService.findRow("serviceID", "findIngredList");
-alert(row);
+//alert(row);
 this.dsService.setColumn(row, "argument", argument);
 this.gfnService("findIngredList", false);
 }
@@ -311,9 +311,9 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var ingredNm = this.ingredNmEd.value;
 
 	var argument = "ingredCd="+ingredCd+" ingredNm="+ingredNm;
-	alert(argument);
+	//alert(argument);
 	var row = this.dsService.findRow("serviceID", "findIngredList");
-	alert(row);
+	//alert(row);
 	this.dsService.setColumn(row, "argument", argument);
 	
 	this.gfnService("findIngredList", false);
