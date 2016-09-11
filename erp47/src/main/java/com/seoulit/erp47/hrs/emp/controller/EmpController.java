@@ -59,7 +59,7 @@ public class EmpController {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
 		System.out.println("Check" + argsMap);
-		List<EmpBean> list = empServiceFacade.selectEmpList(argsMap);
+		List<EmpBean> list = empServiceFacade.findEmpList(argsMap);
 
 		List<CareerBean> careerList = new ArrayList<CareerBean>();
 		List<DisabilityBean> disabilityList = new ArrayList<DisabilityBean>();

@@ -11,7 +11,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="empGrid" taborder="1" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncelldblclick="empGrid_oncelldblclick" left="9.37%" top="113" right="11.48%" height="407">
+        <Grid id="empGrid" taborder="1" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncelldblclick="empGrid_oncelldblclick" left="7.49%" top="113" right="6.79%" height="407">
           <Formats>
             <Format id="default">
               <Columns>

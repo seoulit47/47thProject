@@ -96,7 +96,7 @@ this.gfnAccountPopup = function() {
 this.gfnEmpPopup = function() {
    return application.open(
 	   "사원팝업",
-	   "hrs::HM_EmpSearchPopup.xfdl",
+	   "hrs::HM_EmpPopupForm.xfdl",
 	   this.parent,
 	   null,
 	   "showtitlebar=true showstatusbar=false",

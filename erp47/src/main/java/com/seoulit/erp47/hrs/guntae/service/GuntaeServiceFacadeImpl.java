@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.hrs.guntae.applicationService.GuntaeApplicationService;
+import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
+import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.service
@@ -25,19 +27,19 @@ public class GuntaeServiceFacadeImpl implements GuntaeServiceFacade{
     @Autowired
     GuntaeApplicationService guntaeApplicationService;
 
-    /*//휴일 조회
+    //휴일 조회
     @Override
     public List<HdayBean> findHdayList(Map<String, String> argsMap) {
-        return guntaeAS.findHdayList(argsMap);
+        return guntaeApplicationService.findHdayList(argsMap);
     }
 
     //휴일 일괄처리
     @Override
     public void batchHdayProcess(List<HdayBean> list) {
-        guntaeAS.batchHdayProcess(list);
+    	guntaeApplicationService.batchHdayProcess(list);
 
     }
-
+/*
     //개인휴가 조회
     @Override
     public List<HolidayBean> findHolidayList(Map<String, String> argsMap) {
@@ -70,25 +72,25 @@ public class GuntaeServiceFacadeImpl implements GuntaeServiceFacade{
     	guntaeApplicationService.batchInoutWorkTimeProcess(list);
 
     }
-    /*
+
     //개인 시간외근무 조회
     @Override
     public List<OverTimeWorkBean> findOverTimeWorkList(Map<String, String> argsMap) {
-        return guntaeAS.findOverTimeWorkList(argsMap);
+        return guntaeApplicationService.findOverTimeWorkList(argsMap);
     }
 
     //관리자 시간외근무 조회
     @Override
     public List<OverTimeWorkBean> findApproverOverTimeWorkList() {
-        return guntaeAS.findApproverOverTimeWorkList();
+        return guntaeApplicationService.findApproverOverTimeWorkList();
     }
 
     //시간외근무 일괄처리
     @Override
     public void batchOverTimeWorkProcess(List<OverTimeWorkBean> list) {
-        guntaeAS.batchOverTimeWorkProcess(list);
+    	guntaeApplicationService.batchOverTimeWorkProcess(list);
     }
-
+/*
     //일근태 생성
     @Override
     public List<DayGuntaeBean> createDayGuntae(Map<String, String> argsMap) {
