@@ -24,8 +24,24 @@
 
 	<!-- 종합검진 예약관리 - 예약취소  -->
 	<update id="updateRsvtYN"> 
-	UPDATE SC_RSVT SET CANCEL_YN=#{cancelYn}, MOD_ID=#{userId}, MOD_IP=#{userIp}, MOD_DATE=TO_CHAR(SYSDATE,'YYYY-MM-DD') 
-	WHERE RSVT_NO = #{rsvtNo}
+		UPDATE SC_RSVT SET CANCEL_YN=#{cancelYn}, MOD_ID=#{userId}, MOD_IP=#{userIp}, MOD_DATE=TO_CHAR(SYSDATE,'YYYY-MM-DD') 
+		WHERE RSVT_NO = #{rsvtNo}
+	</update>
+	
+	<!-- 종합검진 접수, 예약관리 - 저장 -->
+	<update id="updateRsvt"> 
+		UPDATE SC_RSVT SET PAT_NO=#{patNo}, RSVT_DATE=#{rsvtDate}, RSVT_AMT=#{rsvtAmt}, RSVT_NO=#{rsvtNo}, 
+		INSP_PLN_TIME=#{inspPlnTime}, PAY_MAN=#{payMan}, RSHIP=#{rship}, CHO_INSP_AMT=#{choInspAmt}, 
+		INSP_PLN_DATE=#{inspPlnDate}, APL_MAN_TEL=#{aplManTel}, MEMO=#{memo}, REDUC_AMT=#{reducAmt}, 
+		INSP_SUM_AMT=#{inspSumAmt}, PCK_CD=#{pckCd}, RSVT_TIME=#{rsvtTime}, BASIC_INSP_AMT=#{basicInspAmt}, 
+		BASIC_INSP_SUM_AMT=#{basicInspSumAmt}, REDUC_CD=#{reducCd}, APL_MAN=#{aplMan}, CANCEL_YN=#{cancelYn}, 
+		MOD_ID=#{userId}, MOD_IP=#{userIp}, MOD_DATE=TO_CHAR(SYSDATE,'YYYY-MM-DD') WHERE RSVT_NO = #{rsvtNo} 
+	</update>
+
+	<update id="insertRsvt"> 
+		MERGE INTO SC_RSVT USING DUAL ON (RSVT_NO = #{rsvtNo}) WHEN NOT MATCHED THEN 
+		INSERT (PAT_NO, RSVT_NO, RSVT_DATE, RSVT_AMT, INSP_PLN_TIME, RSVT_RESP, PAY_MAN, RSHIP, CHO_INSP_AMT, INSP_PLN_DATE, APL_MAN_TEL, MEMO, REDUC_AMT, INSP_SUM_AMT, CANCEL_YN, PCK_CD, RSVT_TIME, BASIC_INSP_AMT, BASIC_INSP_SUM_AMT, REDUC_CD, APL_MAN, REG_ID, REG_IP, REG_DATE ) 
+		values( #{patNo}, #{rsvtNo}, #{rsvtDate}, #{rsvtAmt}, #{inspPlnTime}, #{userId}, #{payMan}, #{rship}, #{choInspAmt}, #{inspPlnDate}, #{aplManTel}, #{memo}, #{reducAmt}, #{inspSumAmt}, #{cancelYn}, #{pckCd}, #{rsvtTime}, #{basicInspAmt}, #{basicInspSumAmt}, #{reducCd}, #{aplMan}, #{userId}, #{userIp}, TO_CHAR(SYSDATE,'YYYY-MM-DD') ) 
 	</update>
 </mapper>
 		

@@ -212,7 +212,7 @@ var param;
 // 화면 로드
 this.SC_RecePopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-
+	alert(this.gfnDate("yyyymmdd"));
 	this.compBox.inspPlnDateCal.set_value(this.gfnDate("yyyymmdd"));
 	this.dsRece.copyData(this.parent.dsRece);
 	rsvtNo = this.dsRece.getColumn(0, "rsvtNo");
@@ -254,6 +254,7 @@ this.cardPayBtn_onclick=function(obj:Button,  e:nexacro.ClickEventInfo)
 			return;
 		}else{
 			this.dsRece.setColumn(0,"cardCashDiv", "1");
+			alert(this.compBox.inspPlnDateCal.value);
 			this.dsRece.setColumn(0, "receDate", this.compBox.inspPlnDateCal.value);
 			
 			var payAmt = this.compBox.payAmtMask.value;

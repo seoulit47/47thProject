@@ -1,5 +1,6 @@
 package com.seoulit.erp47.sup.checkup.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.checkup.service.SupCheckupServiceFacade;
+import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 /**
@@ -54,4 +56,27 @@ public class RsvtController {
 
         supCheckupServiceFacade.cancelRsvt(argsMap);
     }
+    
+    /* 종합검진 예약관리 - 저장*/
+    @RequestMapping("sup/checkup/batchRsvtProcess")
+    public void batchRsvtProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	 PlatformData inData = (PlatformData) request.getAttribute("inData");
+         
+    	 System.out.println(inData.saveXml());
+         List<RsvtBean> rsvtList  = dataSetBeanMapper.datasetToBeans(inData, RsvtBean.class);
+         List<ChoInspBean> choInspList = dataSetBeanMapper.datasetToBeans(inData, ChoInspBean.class);
+
+         Map<String, Object> map = new HashMap<>();
+
+         if(rsvtList.size() > 0){
+             map.put("rsvtList", rsvtList);
+         }
+         
+         if(choInspList.size() > 0){
+             map.put("choInspList", choInspList);
+         }
+         
+         supCheckupServiceFacade.batchRsvtProcess(map);
+    }
+    
 }

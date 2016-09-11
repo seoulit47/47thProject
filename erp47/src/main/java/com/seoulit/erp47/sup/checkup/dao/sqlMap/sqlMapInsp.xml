@@ -29,6 +29,19 @@
       	AND I.OCS_CD = E.EMR_CD
       	AND I.USE_YN = #{useYn}
 	</select>
+	
+	<!-- 종합검진 검사관리 - 수정, 등록, 저장 -->
+	<update id="insertChoInsp"> 
+		MERGE INTO SC_CHO_INSP USING DUAL ON (RSVT_NO = #{rsvtNo} AND INSP_CD = #{inspCd}) WHEN NOT MATCHED THEN INSERT ( RSVT_NO, INSP_CD, QNT, AMT, INSP_PLN_DATE ) VALUES ( #{rsvtNo}, #{inspCd}, #{qnt}, #{amt}, #{inspPlnDate} ) 
+	</update>
+
+	<delete id="deleteChoInsp"> 
+		DELETE FROM SC_CHO_INSP WHERE RSVT_NO =#{rsvtNo} AND INSP_CD =#{inspCd} 
+	</delete>
+
+	<update id="updateChoInsp"> 
+		UPDATE SC_CHO_INSP SET QNT =#{qnt}, AMT =#{amt}, INSP_PLN_DATE = #{inspPlnDate} WHERE RSVT_NO = #{rsvtNo} AND INSP_CD = #{inspCd} 
+	</update>
 
 </mapper>
 		

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AB_bimokPopupForm" classname="AB_bimokPopupForm" left="0" top="0" width="400" height="170" titletext="New Form" onload="AB_bimokPopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="1.5%" top="6" right="1.75%" height="137" style="background:powderblue;color:powderblue;bordertype:round 5 5 ;"/>
+        <TextArea id="descriptionArea" taborder="1" enable="false" left="3.75%" top="19" right="3.75%" height="74" class="AreaArea"/>
+        <Button id="closeBtn" taborder="2" text="닫  기" left="67.5%" top="106" right="9.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="closeBtn_onclick"/>
+        <Button id="addLowerLevBtn" taborder="3" text="하위수준입력" left="38.5%" top="106" right="36.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="addLowerLevBtn_onclick"/>
+        <Button id="addSameLevBtn" taborder="4" text="동일수준입력" left="9.5%" top="106" right="65.75%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="addSameLevBtn_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsBudgBimok" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="bimokNm" type="STRING" size="256"/>
+          <Column id="parentBimok" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="assiSubNm" type="STRING" size="256"/>
+          <Column id="bimokLevel" type="STRING" size="256"/>
+          <Column id="finYn" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="goveAprcYn" type="STRING" size="256"/>
+          <Column id="budgGuide" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[var accYear;
+var bimokNm;
+var bimokCd;
+var bimokLevel;
+var finYn;
+var parentBimok; 
+
+//*******
+//온로드
+//*******
+this.AB_bimokPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.descriptionArea.set_value(this.parent.bimokNm + "을 선택하셨습니다 \n 처리방법을 선택해주세요");
+	this.dsBudgBimok.copyData(this.parent.dsBudgBimok);
+	
+	accYear = this.parent.accYear;
+	bimokNm = this.parent.bimokNm;
+	bimokCd = this.parent.bimokCd;
+	bimokLevel = this.parent.bimokLevel;
+	finYn = this.parent.finYn;
+	parentBimok = this.parent.parentBimok;
+	alert(bimokNm+"-"+bimokCd+"-"+bimokLevel+"-"+finYn+"-"+parentBimok);
+}
+
+//**************
+//동일수준입력
+//**************
+this.addSameLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsBudgBimok.findRow('bimokCd',bimokCd);
+	alert("bimokCd = "+bimokCd+" / nRow = "+nRow);
+	alert("bimokLevel = "+bimokLevel);
+	if(bimokLevel==1){
+		var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel,nRow+1);                                                                                                                                                                                                                                                                                                                                                                                                                                     
+	}else{
+		var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel-1,nRow+1);
+	}
+	//alert(Row);
+	if(Row==-1){
+		var iRow = this.parent.dsBudgBimok.insertRow(nRow+1);
+	}else{
+		var iRow = this.parent.dsBudgBimok.insertRow(Row);
+	}
+	this.parent.dsBudgBimok.setColumn(iRow ,"bimokLevel" , bimokLevel);
+	this.parent.dsBudgBimok.setColumn(iRow ,"finYn" , 'Y');
+	this.parent.dsBudgBimok.setColumn(iRow ,"parentBimok" , parentBimok);
+	this.parent.dsBudgBimok.setColumn(iRow ,"accYear" , accYear);
+	this.close();
+	
+}
+
+//**************
+//하위수준입력
+//**************
+this.addLowerLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsBudgBimok.findRow('bimokCd',bimokCd);
+	var Row = this.dsBudgBimok.findRow('bimokLevel',bimokLevel,nRow+1);
+	alert("bimokCd = "+bimokCd+" / nRow = "+nRow +" / Row = "+Row );
+	alert("bimokLevel = "+bimokLevel);
+	
+	if(Row==-1){
+		var iRow = this.parent.dsBudgBimok.insertRow(nRow+1);
+	}else{
+		var iRow = this.parent.dsBudgBimok.insertRow(Row);
+	}
+	
+	this.parent.dsBudgBimok.setColumn(iRow,"bimokLevel",parseInt(bimokLevel)+1);
+	
+	if(finYn == 'Y'){
+		this.parent.dsBudgBimok.setColumn(nRow,"finYn",'N');
+		this.parent.dsBudgBimok.setColumn(iRow,"finYn","Y");
+	}
+	
+	this.parent.dsBudgBimok.setColumn(iRow ,"finYn" , 'Y');
+	this.parent.dsBudgBimok.setColumn(iRow ,"parentBimok" , bimokCd);
+	this.parent.dsBudgBimok.setColumn(iRow ,"accYear" , accYear);
+	this.close();
+}
+
+//*****
+//닫기
+//*****
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

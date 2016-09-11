@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LB_LogCdPopupForm" classname="LB_LogCdPopupForm" left="0" top="0" width="339" height="442" titletext="New Form" onload="LB_LogCdPopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="-2.36%" top="4" right="4.13%" height="60" style="background:transparent URL('img::titleBar4.jpg');">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="titleNm" taborder="1" left="14.16%" top="13" right="22.42%" height="43" style="color:#6c6c6cff;font:bold 20 다음_Regular;" onclick="Static00_onclick" text="물류 코드 관리"/>
+        <Static id="cdStc" taborder="2" text="코드" left="2.06%" top="67" right="85.84%" height="26" style="background:darkseagreen;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 다음_Regular;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="cdNmStc" taborder="3" text="코드명" left="40.12%" top="67" right="45.13%" height="26" style="background:darkseagreen;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 다음_Regular;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="codeEdit" taborder="4" left="14.16%" top="67" right="61.36%" height="26"/>
+        <Edit id="codeNmEdit" taborder="5" left="54.28%" top="66" right="21.24%" height="27"/>
+        <Button id="searchBtn" taborder="6" left="79.06%" top="64" right="0.88%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Grid id="codeGrid" taborder="7" useinputpanel="false" left="3.83%" top="98" right="3.83%" height="337" autofittype="col" binddataset="dsLogCd">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="93"/>
+                <Column size="176"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="코드"/>
+                <Cell col="1" text="코드명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:code"/>
+                <Cell col="1" text="bind:value"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">bindLogCd</Col>
+            <Col id="URL">erp47::log/base/bindLogCd.do</Col>
+            <Col id="inData">dsBindLogCd=dsBindLogCd</Col>
+            <Col id="callbackFunc">callbackLogBind</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindLogCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdDiv" type="STRING" size="256"/>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="secCode" type="STRING" size="256"/>
+          <Column id="thrCode" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="dsLogName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsLogCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  		//공통 스크립트
+include "scripts::logScripts.xjs";  		//물류 공통 스크립트
+
+var titleNm;	//팝업창 타이틀 변수
+var cd;			//Grid Head, Static Text를 해당 코드로 변경 하는 변수
+var cdNm;		//Grid Head, Static Text를 해당 코드명으로 변경 하는 변수
+
+this.LB_LogCdPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	
+		this.dsBindLogCd.clearData();
+		
+		switch(this.parent.divCode){   //divCode - 구분코드	
+		
+		/*
+			구분코드 종류에는
+			wh, gds, cust, searchBigGrp, searchMidGrp, searchSmGrp, addBigGrp, addMidGrp, addSmGrp
+			
+		*/		
+		
+		case "wh" :
+			
+				titleNm="창고";
+				cd="창고코드";
+				cdNm="창고명";
+				this.findWhGdsCustCd();
+				break;
+		
+		case "gds" :
+				
+				titleNm="물품";
+				cd="물품코드";
+				cdNm="물품명";
+				this.findWhGdsCustCd();
+				break;
+				
+		case "cust" :
+				
+				titleNm="거래처";
+				cd="거래처코드";
+				cdNm="거래처명";
+				this.findWhGdsCustCd();
+				break;
+		
+		case "searchBigGrp" :
+				
+				titleNm="대분류";
+				cd="대분류코드";
+				cdNm="대분류명";
+				this.findGrpCd();
+				break;
+		
+		case "searchMidGrp" :
+				
+				titleNm="중분류";
+				cd="중분류코드";
+				cdNm="중분류명";
+				this.findGrpCd();
+				break;
+		
+		case "searchSmGrp" :
+				
+				titleNm="소분류";
+				cd="소분류코드";
+				cdNm="소분류명";
+				this.findGrpCd();
+				break;
+		
+		case "addBigGrp" :
+				
+				titleNm="대분류";
+				cd="대분류코드";
+				cdNm="대분류명";
+				this.findGrpCd();
+				break;
+		
+		case "addMidGrp" :
+				
+				titleNm="중분류";
+				cd="중분류코드";
+				cdNm="중분류명";
+				this.findGrpCd();
+				break;
+		
+		case "addSmGrp" :
+				
+				titleNm="소분류";
+				cd="소분류코드";
+				cdNm="소분류명";
+				this.findGrpCd();
+				break;
+		
+		
+		}
+
+		this.titleNm.set_text(titleNm);
+		this.cdStc.set_text(cd);
+		this.cdNmStc.set_text(cdNm);
+		this.codeGrid.setCellProperty("Head",0,"text",cd);
+		this.codeGrid.setCellProperty("Head",0,"text",cdNm);
+		
+		//그리드.setCellProperty(설정하고자하는셀영역, 셀인덱스, Cell의 property명, 설정할 값)
+	
+}
+
+
+this.findWhGdsCustCd = function(){    //찾는코드가 창고, 물품, 거래처일 경우 검색조건창 띄우기 위한 함수
+
+		this.titleNm.set_visible(true);
+		this.cdStc.set_visible(true);
+		this.cdNmStc.set_visible(true);
+		this.codeEdit.set_visible(true);
+		this.codeNmEdit.set_visible(true);
+		
+		this.codeEdit.set_value(this.parent.logCode);
+		this.codeNmEdit.set_value(this.parent.logCdNm);
+
+   //부모창에서의 코드의 값을 가져와서 Edit박스에 셋팅
+}
+this.findGrpCd = function(){ //찾는코드가 분류코드를 찾을경우, 조회조건없이 바로조회하는 함수
+
+		var currentRow=this.dsBindLogCd.addRow();  //데이터셋에 setColumn을 하기위해 addRow
+		
+this.dsBindLogCd.setColumn(currentRow,"cdDiv",this.parent.divCode);
+this.dsBindLogCd.setColumn(currentRow,"code",this.parent.logCode);
+this.dsBindLogCd.setColumn(currentRow,"secCode",this.parent.secCode);
+this.dsBindLogCd.setColumn(currentRow,"thrCode",this.parent.thrCode);
+this.dsBindLogCd.setColumn(currentRow,"dsLogName","dsLogCd");
+
+this.logBindCd("bindLogCd");
+
+
+}
+
+this.searchBtn = function(obj){
+
+		switch(obj){
+		
+			case this.searchBtn:    //조회버튼
+			
+					this.clickBtn();
+					break;
+			
+		}
+
+
+
+}
+
+
+
+this.clickBtn = function(){
+
+
+		this.dsBindLogCd.clearData();
+		this.dsLogCd.clearData();
+		
+		var logCd = this.codeEdit.value;
+		var logCdNm = this.codeNmEdit.value;
+		var currentRow = this.dsBindLogCd.addRow();
+		
+		
+		this.dsBindLogCd.setColumn(currentRow,"cdDiv",this.parent.divCode);
+		this.dsBindLogCd.setColumn(currentRow,"code",logCd);
+		this.dsBindLogCd.setColumn(currentRow,"cdNm",logCdNm);
+		this.dsBindLogCd.setColumn(currentRow,"dsLogName","dsLogCd");
+		
+		this.logBindCd("bindLogCd");
+		
+		
+		
+		
+
+
+
+
+}
+
+]]></Script>
+  </Form>
+</FDL>

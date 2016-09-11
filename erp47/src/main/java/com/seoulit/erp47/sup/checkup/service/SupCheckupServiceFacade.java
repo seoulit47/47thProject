@@ -15,6 +15,9 @@ public interface SupCheckupServiceFacade {
     /* 종합검진 예약관리 - 예약 취소 */
     void cancelRsvt(Map<String, String> argsMap);
     
+    /* 종합검진 예약관리 - 저장 */
+    void batchRsvtProcess(Map<String, Object> map);
+    
     /* 종합검진 검사관리 - 검사목록 조회 */
     List<InspBean> findInspList(Map<String, String> argsMap);
     
@@ -27,5 +30,9 @@ public interface SupCheckupServiceFacade {
     /* 종합검진 수납 - 조회*/
     List<ReceBean> findReceList(Map<String, String> argsMap);
     
+    /* 종합검진 수납 - 카드승인 */
+    void registerRece(ReceBean receBean);
+    
+   
     
 }
