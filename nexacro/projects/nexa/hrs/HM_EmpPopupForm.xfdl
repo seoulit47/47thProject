@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HM_EmpPopupForm" classname="HM_EmpPopupForm" left="0" top="0" width="427" height="546" titletext="New Form">
+  <Form id="HM_EmpPopupForm" classname="HM_EmpPopupForm" left="0" top="0" width="427" height="546" titletext="사원검색">
     <Layouts>
       <Layout>
         <Div id="Div01" taborder="0" positionstep="-1" left="0.23%" top="0" width="425" height="60" style="background:transparent URL('img::titleBar2.jpg');">
