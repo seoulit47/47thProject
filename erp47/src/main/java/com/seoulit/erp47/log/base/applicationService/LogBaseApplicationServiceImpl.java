@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.seoulit.erp47.log.base.dao.CustDAO;
+import com.seoulit.erp47.log.base.dao.WhDAO;
 import com.seoulit.erp47.log.base.to.BindLogCdBean;
 import com.seoulit.erp47.log.base.to.OutLogCdBean;
+import com.seoulit.erp47.log.base.to.WhBean;
 
 
 @Component
@@ -17,6 +19,9 @@ public class LogBaseApplicationServiceImpl implements LogBaseApplicationService{
 
 	@Autowired
 	CustDAO custDAO;
+	
+	@Autowired
+	WhDAO whDAO;
 	
 	
 	@Override
@@ -30,6 +35,11 @@ public class LogBaseApplicationServiceImpl implements LogBaseApplicationService{
 							if(bindLogCdBean.getCdDiv().equals("cust")){
 								Map<String,String>argsMap=setArgsMap(bindLogCdBean);
 								bindLogCdMap.put(bindLogCdBean.getDsLogName(), custDAO.selectBindCustCdList(argsMap));
+								
+							}else if(bindLogCdBean.getCdDiv().equals("wh")){
+								
+								Map<String,String>argsMap=setArgsMap(bindLogCdBean);
+								bindLogCdMap.put(bindLogCdBean.getDsLogName(), whDAO.selectBindWhList(argsMap));
 								
 							}
 					
@@ -47,5 +57,12 @@ public class LogBaseApplicationServiceImpl implements LogBaseApplicationService{
         
         return argsMap;
     }
+
+	@Override
+	public List<WhBean> findWhList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		
+		return whDAO.findWhList(argsMap);
+	}
 
 }
