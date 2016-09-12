@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.checkup.dao.ReceiptDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+
+    <!-- 종합검진 접수 - 감면조회 -->
+	<select id="selectReducList" resultType="ReducBean" useCache="true" flushCache="false">
+		SELECT REDUC_CD, REDUC_NM, REDUC_AMT, RATE_AMT_DIV_CD, USE_YN FROM SC_REDUC 
+		<if test="reducCd != null"> 
+			WHERE REDUC_CD = #{reducCd} 
+		</if>
+	</select>
+</mapper>

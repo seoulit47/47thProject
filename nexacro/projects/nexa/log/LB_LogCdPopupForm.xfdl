@@ -14,7 +14,7 @@
         <Static id="cdNmStc" taborder="3" text="코드명" left="40.12%" top="67" right="45.13%" height="26" style="background:darkseagreen;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 다음_Regular;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="codeEdit" taborder="4" left="14.16%" top="67" right="61.36%" height="26"/>
         <Edit id="codeNmEdit" taborder="5" left="54.28%" top="66" right="21.24%" height="27"/>
-        <Button id="searchBtn" taborder="6" left="79.06%" top="64" right="0.88%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Button id="searchBtn" taborder="6" left="79.06%" top="64" right="0.88%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
         <Grid id="codeGrid" taborder="7" useinputpanel="false" left="3.83%" top="98" right="3.83%" height="337" autofittype="col" binddataset="dsLogCd">
           <Formats>
             <Format id="default">
@@ -209,13 +209,13 @@ this.logBindCd("bindLogCd");
 
 }
 
-this.searchBtn = function(obj){
+this.clickBtn = function(obj){
 
 		switch(obj){
 		
 			case this.searchBtn:    //조회버튼
 			
-					this.clickBtn();
+					this.clickSearchBtn();
 					break;
 			
 		}
@@ -226,7 +226,7 @@ this.searchBtn = function(obj){
 
 
 
-this.clickBtn = function(){
+this.clickSearchBtn = function(){
 
 
 		this.dsBindLogCd.clearData();
@@ -243,13 +243,6 @@ this.clickBtn = function(){
 		this.dsBindLogCd.setColumn(currentRow,"dsLogName","dsLogCd");
 		
 		this.logBindCd("bindLogCd");
-		
-		
-		
-		
-
-
-
 
 }
 

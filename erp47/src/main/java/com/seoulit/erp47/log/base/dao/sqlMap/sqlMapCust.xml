@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.log.base.dao.CustDAO">
+<!-- mapper의 namespace는  Interface인  실제 DAO의 경로로 설정한다. -->
+<cache flushInterval="86400000" eviction="LRU" />
+
+
+<select id="selectBindCustCdList" resultType="OutLogCdBean" flushCache="false" useCache="true">
+	SELECT CUST_CD AS code,
+		   CUST_NM as value
+		 
+	FROM
+		LC_CUST
+
+
+</select>
+
+
+
+</mapper>

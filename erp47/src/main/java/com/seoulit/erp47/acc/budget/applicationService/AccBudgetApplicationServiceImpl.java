@@ -41,4 +41,20 @@ public class AccBudgetApplicationServiceImpl implements AccBudgetApplicationServ
 				throw new BimokCopyException(budgBimokBean.getErrorMsg());
 			}
 		}
+		
+		// 예산비목 일괄처리
+		@Override
+		public void batchBimokProcess(List<BudgBimokBean> bimokList) {
+			for(BudgBimokBean budgBimokBean : bimokList){
+				String status=budgBimokBean.getStatus();
+				if(status.equals("inserted")){
+					budgBimokDAO.insertBimok(budgBimokBean);
+				}else if(status.equals("updated")){
+					budgBimokDAO.updateBimok(budgBimokBean);
+				}else if(status.equals("deleted")){
+					budgBimokDAO.deleteBimok(budgBimokBean);
+				}
+			}
+			
+		}
 }

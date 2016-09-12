@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AcntCodePopupForm" classname="AE_AcntCodePopupForm" left="0" top="0" width="499" height="596" titletext="New Form" onload="AE_AcntCodePopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="0%" top="4" right="1.6%" height="52" style="background:transparent URL('img::titleBar7.jpg') stretch;">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="계정과목 조회" left="6.31%" top="8" right="49.08%" height="29" style="font:bold 15 arial;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="1" text="계정과목명" left="2%" top="55" right="82.36%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
+        <Edit id="acntNmEd" taborder="2" left="19.24%" top="55" right="61.92%" height="26" class="AreaEdt"/>
+        <Static id="Static03" taborder="3" text="계정구분" left="40.88%" top="55" right="45.29%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
+        <Grid id="accAcntGrid" taborder="5" binddataset="dsAccAcnt" useinputpanel="false" autofittype="col" left="1.6%" top="88" right="1.6%" height="495" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계정과목코드"/>
+                <Cell col="1" text="계정과목명"/>
+                <Cell col="2" text="계정구분"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="none"/>
+                <Cell col="1"/>
+                <Cell col="2" displaytype="normal" combodataset="dsGA050" combocodecol="code" combodatacol="value"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchBtn" taborder="6" left="78.76%" top="53" right="1.8%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Combo id="acntDivCombo" taborder="7" left="56.31%" top="55" right="23.85%" height="26" class="AreaCombo" index="-1" innerdataset="@dsGA050" codecolumn="code" datacolumn="value"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsGA050" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA050</Col>
+            <Col id="dsName">dsGA050</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAccAcntCode</Col>
+            <Col id="URL">erp47::acc/elementary/findAccAcntList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAccAcnt=dsAccAcnt</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAccAcnt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="acntDiv" type="STRING" size="256"/>
+          <Column id="assiTypeCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCodePopup" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+include "scripts::commonBind.xjs";
+include "scripts::commonUtil.xjs";
+
+this.AE_AcntCodePopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -59,7 +59,7 @@
         <Button id="searchBtn" taborder="7" onclick="searchBtn_onclick" left="90.72%" top="70" right="2.08%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="addBtn" taborder="8" onclick="addBtn_onclick" left="58.96%" top="712" right="33.84%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
         <Button id="modBtn" taborder="9" onclick="modBtn_onclick" left="74.8%" top="712" right="18%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-        <Button id="printBtn" taborder="10" onclick="DelBtn_onclick" left="90.64%" top="712" right="2.16%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="printBtn" taborder="10" left="90.64%" top="712" right="2.16%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
         <Static id="subCodeStc00" taborder="11" text="  음식분류" onclick="subCodeStc_onclick" left="2.24%" top="72" right="67.92%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
         <Grid id="foodDtlGrid" taborder="12" binddataset="dsFoodDtl" useinputpanel="false" autofittype="col" onsetfocus="foodDtlGrid_onsetfocus" left="2.24%" top="472" right="67.92%" height="233">
           <Formats>
@@ -129,7 +129,7 @@
           </Row>
           <Row>
             <Col id="serviceID">batchFoodMgtFormProcess</Col>
-            <Col id="URL">his::sup/nutritive/batchFoodMgtFormProcess.do</Col>
+            <Col id="URL">erp47::sup/nutritive/batchFoodMgtFormProcess.do</Col>
             <Col id="inData">dsFood=dsFood:U dsFoodDtl=dsFoodDtl:U</Col>
             <Col id="callbackFunc">callBackFunc</Col>
           </Row>
@@ -184,6 +184,7 @@
 
 
 var foodGrpCd;
+var foodCd;
 
 //화면 로드
 this.SN_FoodMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
@@ -192,6 +193,13 @@ this.SN_FoodMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	var row = this.dsService.findRow("serviceID", "findCodeList");
 	this.dsService.setColumn(row, "argument", argument);
 	this.gfnService("findCodeList", false);
+}
+
+this.pCode=function(retVal)
+{
+	if(retVal == 1){
+		this.SN_FoodMgtForm_onload(null,null);
+	}
 }
 
 //조회 버튼
@@ -249,10 +257,46 @@ this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	
 	var param = {state:"insert", foodGrpCd:foodGrpCd, foodCd:foodCd};
 	this.gfnPopup("SN_FoodAddPopForm","sup",param);
-	
-	
 }
 
-]]></Script>
+//삭제버튼
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//alert(this.dsFood.deleteRow(this.foodGrid.currentrow););
+	this.dsFood.deleteRow(this.foodGrid.currentrow);
+	alert("삭제 되었습니다.");
+}
+
+//저장버튼
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchFoodMgtFormProcess", false);
+}
+
+
+//수정버튼
+this.modBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var foodNm = this.dsFood.getColumn(this.foodGrid.currentrow, "foodNm");
+	var memo = this.dsFood.getColumn(this.foodGrid.currentrow, "notes");
+	
+	var param = {state:"update", foodGrpCd:foodGrpCd, foodCd:foodCd, foodNm:foodNm, foodMemo:memo, dataSet:this.dsFoodDtl};
+	this.gfnPopup("SN_FoodAddPopForm","sup",param);
+		
+}
+
+//콜백함수
+this.callBackFunc=function(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)
+	{
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	}else{
+		if(svcID=="batchFoodMgtFormProcess"){
+			alert("저장 되었습니다.");
+		}else{
+		}
+	}
+}]]></Script>
   </Form>
 </FDL>

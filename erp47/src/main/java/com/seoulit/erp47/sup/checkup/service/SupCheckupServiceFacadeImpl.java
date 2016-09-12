@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.seoulit.erp47.sup.checkup.applicationService.SupCheckupApplicationService;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
+import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
+import com.seoulit.erp47.sup.checkup.to.ReducBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 /**
@@ -84,6 +86,19 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
         supCheckupApplicationService.registerRece(receBean);
     }
 	
+	 /* 종합검진 접수 - 패키지 조회 */
+	@Override               
+    public List<PckBean> findPckList(Map<String, String> argsMap) {
+        List<PckBean> pckList = supCheckupApplicationService.findPckList(argsMap);
+        return pckList;
+    }
+	
+	/* 종합검진 접수 - 감면조회  */
+	@Override                
+    public List<ReducBean> findReducList(Map<String, String> argsMap) {
+        List<ReducBean> reducList = supCheckupApplicationService.findReducList(argsMap);
+        return reducList;
+    }
 	
 
 }

@@ -5,7 +5,9 @@ import java.util.Map;
 
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
+import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
+import com.seoulit.erp47.sup.checkup.to.ReducBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 public interface SupCheckupServiceFacade {
@@ -32,6 +34,12 @@ public interface SupCheckupServiceFacade {
     
     /* 종합검진 수납 - 카드승인 */
     void registerRece(ReceBean receBean);
+    
+    /* 종합검진 접수 - 패키지 조회 */
+    List<PckBean> findPckList(Map<String, String> argsMap);
+    
+    /* 종합검진 접수 - 감면조회 */
+    List<ReducBean> findReducList(Map<String, String> argsMap);
     
    
     

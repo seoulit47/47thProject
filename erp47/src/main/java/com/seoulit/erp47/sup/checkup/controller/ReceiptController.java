@@ -13,39 +13,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.checkup.service.SupCheckupServiceFacade;
-import com.seoulit.erp47.sup.checkup.to.PckBean;
+import com.seoulit.erp47.sup.checkup.to.ReducBean;
 
 /**
- * @Package  com.seoul.erp47.sup.checkup.controller
- * @Class    PckController.java
- * @Create   2016. 09. 05.
+ * @Package  com.seoul.his.sup.checkup.controller
+ * @Class    ReceiptController.java
+ * @Create   2016. 09. 11.
  * @Author   김진환
- * @Description   패키지관리 컨트롤러
+ * @Description   접수관리 컨트롤러
  *
- * @LastUpdated   2016. 09. 05. 
+ * @LastUpdated   2016. 09. 11. 
  */
 
 @Controller
-public class PckController {
+public class ReceiptController {
     @Autowired
     DataSetBeanMapper dataSetBeanMapper;
     
     @Autowired
-        SupCheckupServiceFacade supCheckupServiceFacade;
+    SupCheckupServiceFacade supCheckupServiceFacade;
     
-    /* 종합검진 접수, 패키지관리 - 패키지 조회 */
-    @RequestMapping("sup/checkup/findPckList.do")
-    public void findPckList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+     
+    /* 종합검진 접수 - 감면조회 */
+    @RequestMapping("sup/checkup/findReducList.do")
+    public void findReducList(HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
-
+        
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-        List<PckBean> pckList = supCheckupServiceFacade.findPckList(argsMap);
-
-        dataSetBeanMapper.beansToDataset(outData, pckList, PckBean.class);
+        
+        List<ReducBean> reducList = supCheckupServiceFacade.findReducList(argsMap);
+        
+        dataSetBeanMapper.beansToDataset(outData, reducList, ReducBean.class);
     }
-   
     
- 
+    
 }
+

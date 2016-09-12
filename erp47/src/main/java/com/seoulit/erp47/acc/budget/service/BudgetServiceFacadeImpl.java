@@ -30,5 +30,11 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 		List<BudgBimokBean> budgBimokList = accBudgetApplicationService.copyBimok(year);
 		return budgBimokList;
 	}
+	
+	// 예산비목 일괄처리 
+	@Override
+	public void batchBimokProcess(List<BudgBimokBean> bimokList) {
+		accBudgetApplicationService.batchBimokProcess(bimokList);
+	}
 
 }

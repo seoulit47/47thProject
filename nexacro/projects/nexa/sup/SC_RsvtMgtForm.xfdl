@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SC_RsvtMgtForm" classname="SC_RsvtMgtForm" left="0" top="0" width="1250" height="768" titletext="종합검진 예약관리">
+  <Form id="SC_RsvtMgtForm" classname="SC_RsvtMgtForm" left="0" top="0" width="1250" height="768" titletext="종합검진 예약관리" onload="SC_RsvtMgtForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="0" right="-33.6%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
@@ -433,7 +433,21 @@ var editFlag = false;
 var	addFlag = false;
 var inspDate;
 
-// 조회버튼
+/* 화면 로드 */
+this.SC_RsvtMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var objDate = new Date();
+	var month = objDate.getMonth()+1;
+	if(month < 10){
+		month = "0"+month;
+	}
+	var today = objDate.getFullYear()+""+month+""+objDate.getDate();
+	
+	this.inspPlnDateCal.set_value(today);
+}
+
+
+/* 조회버튼 */
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	inspDate = this.inspPlnDateCal.value;
@@ -481,11 +495,35 @@ this.dsRsvt_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEven
 	}
 }
 
+/* 등록번호 팝업 */
 this.compBox_patPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnPatPopup();
 }
 
+this.setPatInfo=function(arry)
+{
+	var patNo = arry[0];
+	var argument = 'patNo='+patNo;
+	var row = this.dsService.findRow('serviceID' , "findPat");
+	this.dsService.setColumn(row, "argument", argument);
+						
+	this.gfnService("findPat",false);
+	this.settingPatInfo();
+}
+
+this.settingPatInfo=function()
+{
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "patNo", this.dsPat.getColumn(0, "patNo"));
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "patNm", this.dsPat.getColumn(0, "patNm"));
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "gender", this.dsPat.getColumn(0, "gender"));
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "age", this.dsPat.getColumn(0, "age"));
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "rrn1", this.dsPat.getColumn(0, "rrn1"));
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "rrn2", this.dsPat.getColumn(0, "rrn2"));
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "sms", this.dsPat.getColumn(0, "tel"));
+}
+
+/* 선택검사 추가 */
 this.btnBox_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	
@@ -493,7 +531,7 @@ this.btnBox_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnPopup("SC_PckInspPopForm","sup",param,"");
 }
 
-/* 삭제 */
+/* 선택검사 삭제 */
 this.btnBox_delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.dsChoInsp.deleteRow(this.dsChoInsp.rowposition);
@@ -669,13 +707,95 @@ this.btnBox2_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	}
 }
 
-// 콜백함수
+/*패키지팝업\*/
+this.compBox_pckPopBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.gfnPopup("SC_PckPopForm","sup",param,"");
+}
+
+this.pckCode=function(retVal)
+{
+	var pckCd 	= retVal[0];
+	var pckNm 	= retVal[1];
+	var amt 	= retVal[2];
+	
+	this.compBox.pckCdEd.set_value(pckCd);
+	this.compBox.pckNmEd.set_value(pckNm);
+	this.compBox.basicInspAmtEd.set_value(amt);
+	
+	var argument = 'pckCd='+pckCd;
+	var row = this.dsService.findRow('serviceID' , "findPckInspList");
+	this.dsService.setColumn(row, "argument", argument);
+		
+	this.gfnService("findPckInspList",false);	
+
+	this.autoCalInspAmt();
+	
+}
+
+/* 검사금액 계산 */
+
+this.autoCalInspAmt=function()
+{
+	var reducAmt = this.dsRsvt.getColumn(this.dsRsvt.rowposition,"reducAmt");
+	var basicInspAmt = this.dsRsvt.getColumn(this.dsRsvt.rowposition,"basicInspAmt");
+	var choInspAmt = this.dsRsvt.getColumn(this.dsRsvt.rowposition,"choInspAmt");
+
+	var inspSumAmt;
+	var basicInspSumAmt;
+	
+	if(!this.gfnIsNull(reducAmt)&&!this.gfnIsNull(basicInspAmt)&&!this.gfnIsNull(choInspAmt)){
+		inspSumAmt = parseInt(basicInspAmt) + parseInt(choInspAmt) - parseInt(reducAmt);
+	}
+	
+	if(!this.gfnIsNull(reducAmt)&&!this.gfnIsNull(basicInspAmt)){
+		inspSumAmt = parseInt(basicInspAmt) - parseInt(reducAmt);
+		basicInspSumAmt = parseInt(basicInspAmt) - parseInt(reducAmt);
+		this.dsRsvt.setColumn(this.dsRsvt.rowposition, "basicInspSumAmt", basicInspSumAmt);	
+		
+	}else if(!this.gfnIsNull(basicInspAmt)&&!this.gfnIsNull(choInspAmt)){
+		inspSumAmt = parseInt(basicInspAmt) + parseInt(choInspAmt);
+		basicInspSumAmt = parseInt(basicInspAmt);
+		this.dsRsvt.setColumn(this.dsRsvt.rowposition, "basicInspSumAmt", basicInspSumAmt);	
+	}
+
+	this.dsRsvt.setColumn(this.dsRsvt.rowposition, "inspSumAmt", inspSumAmt);		
+}
+
+/* 감면코드 선택 */
+this.compBox_reducPopBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.gfnPopup("SC_ReducPopForm","sup",param,"");
+	
+}
+
+// 팝업 셋팅
+this.setCode=function(code, arrRtn)
+{
+	var reducCd = arrRtn[0];
+	var reducNm = arrRtn[1];
+	var reducAmt = arrRtn[2];
+		
+	this.compBox.reducCdEd.set_value(reducCd);
+	this.compBox.reducNmEd.set_value(reducNm);
+	this.compBox.reducAmtEd.set_value(reducAmt);
+
+	this.autoCalInspAmt();
+}
+
+
+/* 콜백함수 */
 this.callBackFunc = function(svcID, errorCode, errorMsg){
 	if (errorCode < 0) {
 		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
 	} else {
 
  	}
-}]]></Script>
+}
+
+
+]]></Script>
   </Form>
 </FDL>

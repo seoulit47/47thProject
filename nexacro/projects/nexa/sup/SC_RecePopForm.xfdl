@@ -184,6 +184,7 @@
       <BindItem id="item5" compid="compBox.choInspAmtMask" propid="value" datasetid="dsRece" columnid="choInspAmt"/>
       <BindItem id="item6" compid="compBox.refReceAmtMask" propid="value" datasetid="dsRece" columnid="befReceAmt"/>
       <BindItem id="item7" compid="compBox.inspSumAmtMask" propid="value" datasetid="dsRece" columnid="inspSumAmt"/>
+      <BindItem id="item8" compid="compBox.payAmtMask" propid="value" datasetid="dsRece" columnid="payAmt"/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************
 *                                                                               *

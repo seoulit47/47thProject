@@ -12,4 +12,5 @@ public interface AccBudgetApplicationService {
 	
 	List<BudgBimokBean> copyBimok(String year) throws BimokCopyException;
 
+	void batchBimokProcess(List<BudgBimokBean> bimokList);
 }

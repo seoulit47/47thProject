@@ -20,7 +20,7 @@
 	<package name="com.seoulit.erp47.com.base.to"/>
 	<package name="com.seoulit.erp47.com.util.to"/>
     <!-- 물류 -->
-      
+    <package name="com.seoulit.erp47.log.base.to"/>
       
     <!-- 인사 -->
 	<package name="com.seoulit.erp47.hrs.emp.to" />				<!-- 인사관리 -->
@@ -31,7 +31,7 @@
 	<package name="com.seoulit.erp47.acc.budget.to" />				<!-- 예산관리 -->
 
     <!-- 원무 -->
-      
+    <package name="com.seoulit.erp47.won.outPatMgt.to" />	  
       
       
     <!-- 진료지원 -->
