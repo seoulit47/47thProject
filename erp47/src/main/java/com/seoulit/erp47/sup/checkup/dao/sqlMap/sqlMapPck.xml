@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.checkup.dao.PckDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+	<select resultType="PckBean" useCache="true" flushCache="false" id="selectPckList">
+		SELECT /*+ INDEX(SC_PCK SC_PCK_INDEX)*/ PCK_CD ,PCK_NM ,GENDER_CD ,AMT ,INSP_DIV_CD ,USE_YN 
+		FROM SC_PCK 
+		<where>
+			<if test="pckCd != null"> 
+				(PCK_CD LIKE '%'||#{pckCd}||'%' OR PCK_NM LIKE '%'||#{pckCd}||'%') 
+			</if>
+			<if test="useYn != null"> 
+				AND NVL(USE_YN,'Y') = #{useYn} 
+			</if>
+			<if test="pckNm != null"> 
+				AND PCK_NM LIKE '%'||#{pckNm}||'%' 
+			</if>
+		</where>
+	</select>
+</mapper>
