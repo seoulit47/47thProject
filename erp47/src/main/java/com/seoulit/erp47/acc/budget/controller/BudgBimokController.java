@@ -47,7 +47,8 @@ public class BudgBimokController {
 		@RequestMapping("acc/budget/batchBimokProcess.do")
 		public void batchBimokProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		    PlatformData inData = (PlatformData) request.getAttribute("inData");
+		    System.out.println("indata: " +inData);
 			List<BudgBimokBean> bimokList = (List<BudgBimokBean>) dataSetBeanMapper.datasetToBeans(inData, BudgBimokBean.class);
-			//budgetServiceFacade.batchBimokProcess(bimokList);
+			budgetServiceFacade.batchBimokProcess(bimokList);
 		}
 }

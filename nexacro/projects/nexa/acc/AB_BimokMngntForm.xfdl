@@ -5,7 +5,7 @@
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.68%" top="2" right="0.88%" height="63" style="background:#35363bff URL('img::titleBar6.jpg') stretch;"/>
-        <Static id="Static00" taborder="1" text="예산비목코드등록" left="5.37%" top="3" right="75.39%" height="51" style="color:black;font:15 arial;"/>
+        <Static id="Static00" taborder="1" text="예산비목코드등록" left="5.37%" top="4" right="75.39%" height="51" style="color:black;font:bold 15 arial;"/>
         <Div id="Div01" taborder="3" left="0.68%" top="73" right="0.88%" height="56" style="background:#edececff;border:1 solid lightsteelblue ;color:#444444ff;">
           <Layouts>
             <Layout/>
@@ -33,7 +33,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="bimokGrid" taborder="11" useinputpanel="false" left="27.64%" top="145" right="0.98%" height="576" style="border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;color:#edececff;bordertype:round 0 0 ;align:center middle;font:9 Dotum;" autofittype="col" binddataset="dsBudgBimok">
+        <Grid id="bimokGrid" taborder="11" useinputpanel="false" left="27.64%" top="145" right="0.98%" height="576" style="border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;color:#edececff;bordertype:round 0 0 ;align:center middle;font:9 Dotum;" autofittype="col" binddataset="dsBudgBimok" onexpanddown="bimokGrid_onexpanddown">
           <Formats>
             <Format id="default">
               <Columns>
@@ -73,9 +73,9 @@
                 <Cell col="1" edittype="normal" text="bind:bimokCd"/>
                 <Cell col="2" edittype="text" text="bind:bimokNm"/>
                 <Cell col="3" text="bind:parentBimok"/>
-                <Cell col="4" edittype="expand" text="bind:acntCd"/>
+                <Cell col="4" edittype="expand" text="bind:acntCd" expandshow="show" expandchar="..."/>
                 <Cell col="5" text="bind:acntNm"/>
-                <Cell col="6" edittype="expand" text="bind:assiSubCd"/>
+                <Cell col="6" edittype="expand" text="bind:assiSubCd" expandshow="show" expandchar="..."/>
                 <Cell col="7" text="bind:assiSubNm"/>
                 <Cell col="8" text="bind:finYn"/>
                 <Cell col="9" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="useYN" combocodecol="code" combodatacol="value"/>
@@ -288,6 +288,27 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnService("batchBimokProcess");
 }
+
+//*************
+//그리드 함수
+//*************
+this.bimokGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
+{
+	cell=e.cell
+	
+	if(e.cell==4){
+	alert("[4]"+e.cell);
+		var accCodeArr = application.open("계정과목도움","acc::AE_AcntCodePopupForm.xfdl",this.parent,{gubun:'acntCD'},'',e.screenX,e.screenY);
+	}else if(e.cell==6){
+	alert("[6]"+e.cell);
+	}
+}
+
+
+
+
+
+
 ]]></Script>
   </Form>
 </FDL>

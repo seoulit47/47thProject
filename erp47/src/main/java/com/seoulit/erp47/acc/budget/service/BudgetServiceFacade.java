@@ -11,5 +11,7 @@ public interface BudgetServiceFacade {
 	List<BudgBimokBean> findBimokList(Map<String, String> argsMap);
 
 	List<BudgBimokBean> copyBimok(String year) throws BimokCopyException;
+	
+	void batchBimokProcess(List<BudgBimokBean> bimokList);
 
 }
