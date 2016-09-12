@@ -18,9 +18,9 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="40"/>
+                <Column size="127"/>
+                <Column size="121"/>
+                <Column size="93"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -32,14 +32,14 @@
                 <Cell col="2" text="계정구분"/>
               </Band>
               <Band id="body">
-                <Cell edittype="none"/>
-                <Cell col="1"/>
-                <Cell col="2" displaytype="normal" combodataset="dsGA050" combocodecol="code" combodatacol="value"/>
+                <Cell edittype="none" text="bind:acntCd"/>
+                <Cell col="1" text="bind:acntNm"/>
+                <Cell col="2" displaytype="combo" text="bind:acntDiv" combodataset="dsGA050" combocodecol="code" combodatacol="value"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="searchBtn" taborder="6" left="78.76%" top="53" right="1.8%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="6" left="78.76%" top="53" right="1.8%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
         <Combo id="acntDivCombo" taborder="7" left="56.31%" top="55" right="23.85%" height="26" class="AreaCombo" index="-1" innerdataset="@dsGA050" codecolumn="code" datacolumn="value"/>
       </Layout>
     </Layouts>
@@ -104,6 +104,21 @@ include "scripts::commonUtil.xjs";
 this.AE_AcntCodePopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	this.gfnBind();
+}
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = this.opener.yearSpin.value;
+	var acntDiv = this.acntDivCombo.value;
+	
+	if(this.parent.gubun == 'acntCD'){		//gubun 은 open 할때 주는 인자 값
+		var acntNm=this.acntNmEd.value;
+		argument = 'accYear='+accYear;
+			+' acntNm='+acntNm
+			+' acntDiv='+acntDiv
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("findAccAcntCode");
+	}
 }
 ]]></Script>
   </Form>
