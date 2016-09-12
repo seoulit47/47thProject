@@ -191,7 +191,7 @@
 *																				*
 * @Author	      						                                		*
 * 									                                            *
-* Created on 2015. 05. 31.                             		                    *
+* Created on 2016. 09. 11.                             		                    *
 *									                                            *
 ********************************************************************************/
 
@@ -218,7 +218,7 @@ this.SC_PckInspPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 			this.gfnService("findExPckInspList",false);
 		}
 	}
-	else if(parentId =="SC_RsvtMgtForm")
+	else if(parentId =="SC_RsvtMgtForm" || parentId =="SC_ReceiptMgtForm")
 	{
         var rsvtNo = this.parent.param;
 		
@@ -260,7 +260,6 @@ this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 			openerDs.setColumn(openerDsRow,"qnt",1);
 			openerDs.setColumn(openerDsRow,"amt",amt);
 			openerDs.setColumn(openerDsRow,"inspPlnDate",this.opener.compBox.inspDateCal.value);
-			alert(this.opener.compBox.inspDateCal.value);
 			openerDs.setColumn(openerDsRow,"inspPlnDate",this.opener.compBox.rsvtNoEd.value);
 			
 		}

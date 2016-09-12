@@ -58,7 +58,7 @@ public class RsvtBean extends BaseBean{
                     userId,                    // 사용자ID
                     userIp;                    // 사용자IP
  
-private List<InspBean> pckInspList;
-private List<ChoInspBean> choInspList;
+	private List<InspBean> pckInspList;
+	private List<ChoInspBean> choInspList;
 
 }
