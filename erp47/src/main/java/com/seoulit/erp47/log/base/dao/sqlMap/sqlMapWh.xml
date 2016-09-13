@@ -44,4 +44,48 @@
             WH_CD
     </select>
 
+<insert id="insertWhList" parameterType="WhBean">
+
+	INSERT INTO LC_WH(	
+			WH_CD,
+			WH_NM,
+			IO_CFMT_CD,
+			IO_CFMT,
+			IO_TYPE_CD,
+			IO_TYPE,
+			USE_YB,
+			APPLY_START_DATE,
+			APPLY_END_DATE,
+			NOTE	
+	)VALUES(
+			#{whCd},
+			#{whNm},
+			#{ioCfmtCd},
+			#{ioCfmt},
+			#{ioTypeCd},
+			#{ioType},
+			#{useYb},
+			#{applyStartDate},
+			#{applyEndDate},
+			#{note}
+	)		
+
+</insert>
+    <update id="updateWhList" flushCache="false" parameterType="WhBean">
+        UPDATE
+            LC_WH
+        SET
+            WH_NM            = #{whNm}
+          , IO_CFMT          = #{ioCfmt}
+          , IO_TYPE          = #{ioType}
+          , USE_YB           = #{useYb}
+          , APPLY_START_DATE = #{applyStartDate}
+          , APPLY_END_DATE   = #{applyEndDate}
+          , NOTE             = #{note}
+        WHERE 
+            WH_CD            = #{whCd}
+        AND IO_CFMT_CD       = #{ioCfmtCd}
+        AND IO_TYPE_CD       = #{ioTypeCd}
+    </update>
+
 </mapper>

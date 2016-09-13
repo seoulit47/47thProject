@@ -32,11 +32,11 @@ public class LogBaseApplicationServiceImpl implements LogBaseApplicationService{
 			
 				for(BindLogCdBean bindLogCdBean: bindLogCdList){
 					
-							if(bindLogCdBean.getCdDiv().equals("cust")){
+							if(bindLogCdBean.getCdDiv().equals("cust")){ //거래처
 								Map<String,String>argsMap=setArgsMap(bindLogCdBean);
 								bindLogCdMap.put(bindLogCdBean.getDsLogName(), custDAO.selectBindCustCdList(argsMap));
 								
-							}else if(bindLogCdBean.getCdDiv().equals("wh")){
+							}else if(bindLogCdBean.getCdDiv().equals("wh")){ //창고
 								
 								Map<String,String>argsMap=setArgsMap(bindLogCdBean);
 								bindLogCdMap.put(bindLogCdBean.getDsLogName(), whDAO.selectBindWhList(argsMap));
@@ -64,5 +64,28 @@ public class LogBaseApplicationServiceImpl implements LogBaseApplicationService{
 		
 		return whDAO.findWhList(argsMap);
 	}
+
+	@Override
+	public void batchWhProcess(List<WhBean> batchWhList) {
+		// TODO Auto-generated method stub
+		
+			for(WhBean whBean : batchWhList){
+				
+					if(whBean.getStatus().equals("inserted")){
+						
+						whDAO.insertWhList(whBean);
+						
+					}else if(whBean.getStatus().equals("updated")){
+						
+						whDAO.updateWhList(whBean);
+					}
+				
+				
+			}
+		
+		
+	}
+
+
 
 }
