@@ -5,7 +5,7 @@
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="2.16%" top="407" right="2.32%" height="311" style="background:white;border:1 solid gainsboro ;"/>
-        <Div id="Div05" taborder="1" left="2.16%" top="61" right="2.32%" height="338" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="Div05" taborder="1" left="1.28%" top="61" right="3.2%" height="338" style="background:white;border:1 solid gainsboro ;"/>
         <Static id="subCodeStc01" taborder="2" text="  식단등록" onclick="subCodeStc_onclick" left="2.24%" top="61" right="79.04%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
         <Div id="Div00" taborder="3" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
         <Static id="Static00" taborder="4" text="식단관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
@@ -169,9 +169,7 @@
         </Grid>
       </Layout>
     </Layouts>
-    <Bind>
-      <BindItem id="item0" compid="divCombo" propid="codecolumn" datasetid="dsService" columnid=""/>
-    </Bind>
+    <Bind/>
     <Objects>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
@@ -193,7 +191,7 @@
           </Row>
           <Row>
             <Col id="serviceID">findCarteList</Col>
-            <Col id="URL">his::sup/nutritive/findCarteList.do</Col>
+            <Col id="URL">erp47::sup/nutritive/findCarteList.do</Col>
             <Col id="outData">dsCarte=dsCarte</Col>
             <Col id="callbackFunc">callBackFunc</Col>
           </Row>
@@ -212,7 +210,7 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="dsCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+      <Dataset id="dsCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="fullName" type="STRING" size="256"/>
           <Column id="smallCode" type="STRING" size="256"/>
@@ -292,8 +290,28 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var carteDate = this.dateCal.value;
 	var meunGrpCd = this.divCombo.value;
 	
-	
+	if(this.gfnIsNull(carteDate)){
+		alert("급식일자를 선택해주세요");
+	}else if(this.gfnIsNull(meunGrpCd)){
+		alert("식단분류를 선택해주세요");
+	}else{
+		var argument = "carteDate="+carteDate+" meunGrpCd="+meunGrpCd;
+		var row = this.dsService.findRow("serviceID","findCarteList");
+		this.dsService.setColumn(row, "argument", argument);
+		this.gfnService("findCarteList", false);
+	}
 }
-]]></Script>
+
+//콜백
+this.callBackFunc = function(svcID, errorCode, errorMsg)
+{
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	} else {
+		if(svcID=="findDivList"){
+			this.dsCode2.copyData(this.dsCode);	
+			}
+		}
+}]]></Script>
   </Form>
 </FDL>
