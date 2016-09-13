@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SN_CarteMgtForm" classname="SN_CarteMgtForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="SN_CarteMgtForm" classname="SN_CarteMgtForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SN_CarteMgtForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="2.16%" top="407" right="2.32%" height="311" style="background:white;border:1 solid gainsboro ;"/>
@@ -185,7 +185,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">findDivList</Col>
-            <Col id="URL">his::sup/nutritive/findDivList.do</Col>
+            <Col id="URL">erp47::sup/nutritive/findDivList.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsCode=dsCode</Col>
             <Col id="argument"/>
@@ -212,6 +212,88 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="dsCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="fullName" type="STRING" size="256"/>
+          <Column id="smallCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCode2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="fullName" type="STRING" size="256"/>
+          <Column id="smallCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCarte" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="menuGrpCd" type="STRING" size="256"/>
+          <Column id="carteDate" type="STRING" size="256"/>
+          <Column id="carteTime" type="STRING" size="256"/>
+          <Column id="rNum" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBreakfast" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="menuGrpCd" type="STRING" size="256"/>
+          <Column id="carteDate" type="STRING" size="256"/>
+          <Column id="carteTime" type="STRING" size="256"/>
+          <Column id="rNum" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsLunch" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="menuGrpCd" type="STRING" size="256"/>
+          <Column id="carteDate" type="STRING" size="256"/>
+          <Column id="carteTime" type="STRING" size="256"/>
+          <Column id="rNum" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDinner" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="menuGrpCd" type="STRING" size="256"/>
+          <Column id="carteDate" type="STRING" size="256"/>
+          <Column id="carteTime" type="STRING" size="256"/>
+          <Column id="rNum" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDCarte" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
+        <ColumnInfo>
+          <Column id="breakfast1" type="STRING" size="256"/>
+          <Column id="lunch1" type="STRING" size="256"/>
+          <Column id="dinner1" type="STRING" size="256"/>
+          <Column id="breakfast2" type="STRING" size="256"/>
+          <Column id="lunch2" type="STRING" size="256"/>
+          <Column id="dinner2" type="STRING" size="256"/>
+          <Column id="breakfast3" type="STRING" size="256"/>
+          <Column id="lunch3" type="STRING" size="256"/>
+          <Column id="dinner3" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+this.SN_CarteMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findDivList", false);
+}
+
+//식단조회
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var carteDate = this.dateCal.value;
+	var meunGrpCd = this.divCombo.value;
+	
+	
+}
+]]></Script>
   </Form>
 </FDL>
