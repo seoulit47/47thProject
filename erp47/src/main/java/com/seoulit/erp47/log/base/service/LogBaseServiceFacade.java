@@ -15,5 +15,6 @@ public interface LogBaseServiceFacade {
 	
 			public Map<String,List<OutLogCdBean>> BindLogCd(List<BindLogCdBean>bindLogCdList);
 			public List<WhBean>findWhList(Map<String,String>argsMap);
+			public void batchWhProcess(List<WhBean>batchWhList);
 	
 }

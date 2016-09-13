@@ -12,4 +12,8 @@ public interface WhDAO {
 	
 	public List<OutLogCdBean>selectBindWhList(Map<String,String>argsMap) ;
 	public List<WhBean>findWhList(Map<String,String>argsMap);
+	
+	
+	public void insertWhList(WhBean whBean);
+	public void updateWhList(WhBean whBean);
 }

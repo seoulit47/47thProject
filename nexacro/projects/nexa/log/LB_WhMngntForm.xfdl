@@ -16,7 +16,7 @@
         <Edit id="whCdNmEdit" taborder="3" left="20.24%" top="78" right="69.68%" height="32"/>
         <Button id="whBtn" taborder="4" cssclass="DelBtn" left="30.64%" top="81" right="66.24%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
         <Button id="searchwhBtn" taborder="5" onclick="clickBtn" cssclass="DelBtn" left="89.12%" top="80" right="2.08%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Grid id="whGrid" taborder="6" useinputpanel="false" left="2.16%" top="128" right="2.72%" height="627" autofittype="col" binddataset="dsWh">
+        <Grid id="whGrid" taborder="6" useinputpanel="false" left="2.16%" top="128" right="2.72%" height="597" autofittype="col" binddataset="dsWh">
           <Formats>
             <Format id="default">
               <Columns>
@@ -44,18 +44,21 @@
                 <Cell col="7" text="적요"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:whCd"/>
-                <Cell col="1" text="bind:whNm"/>
-                <Cell col="2" text="bind:ioTypeCd"/>
-                <Cell col="3" text="bind:ioType"/>
-                <Cell col="4" text="bind:useYb"/>
-                <Cell col="5" text="bind:applyStartDate"/>
-                <Cell col="6" text="bind:applyEndDate"/>
-                <Cell col="7" text="bind:note"/>
+                <Cell edittype="normal" text="bind:whCd"/>
+                <Cell col="1" edittype="normal" text="bind:whNm"/>
+                <Cell col="2" edittype="normal" text="bind:ioTypeCd"/>
+                <Cell col="3" edittype="normal" text="bind:ioType"/>
+                <Cell col="4" edittype="normal" text="bind:useYb"/>
+                <Cell col="5" edittype="normal" text="bind:applyStartDate"/>
+                <Cell col="6" edittype="normal" text="bind:applyEndDate"/>
+                <Cell col="7" edittype="normal" text="bind:note"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
+        <Button id="saveBtn" taborder="7" onclick="clickBtn" cssclass="DelBtn" left="53.76%" top="80" right="37.44%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="deleteBtn" taborder="8" onclick="clickBtn" cssclass="DelBtn" left="44.8%" top="80" right="46.48%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBtn" taborder="9" onclick="clickBtn" cssclass="DelBtn" left="35.84%" top="80" right="55.44%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -73,6 +76,11 @@
             <Col id="serviceID">findWhList</Col>
             <Col id="URL">erp47::/log/base/findWhList</Col>
             <Col id="outData">dsWh=dsWh</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchWhProcess</Col>
+            <Col id="URL">erp47::/log/base/batchWhProcess</Col>
+            <Col id="inData">dsWh=dsWh:u</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -95,7 +103,7 @@
 include "scripts::logScripts.xjs";			//물류 스크립트
 
 
-this.clickBtn = function(obj){ //버튼 클릭시발생하는 이벤트
+this.clickBtn = function(obj){ //버튼 클릭시발생하는 이벤트(모든버튼에대해서 switch case문으로)
 
 			switch(obj){
 			
@@ -103,11 +111,41 @@ this.clickBtn = function(obj){ //버튼 클릭시발생하는 이벤트
 					 this.clickWhBtn();
 					 break;
 				
-				case this.searchwhBtn :
+				case this.searchwhBtn :  //조회버튼클릭시
 					 this.clicksearchWh();
+					 break;
+					 
+				case this.addBtn :   //추가버튼
+					 this.clickaddBtn();
+					 break;
+					 
+				case this.saveBtn:  //저장버튼
+					 this.clicksaveBtn();
+					 break;
+			
+				case this.deleteBtn: //삭제버튼
+					 this.clickdeleteBtn();
 					 break;
 			}
 		
+
+}
+
+this.clickaddBtn =function(){ //추가
+
+	
+	this.dsWh.addRow();
+}
+
+this.clicksaveBtn =function(){ //저장
+
+
+	this.gfnService("batchWhProcess");
+}
+this.clickdeleteBtn = function(){  //삭제 
+
+
+	this.dsWh.deleteRow();
 
 }
 
