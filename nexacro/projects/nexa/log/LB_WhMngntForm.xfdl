@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LB_WhMngntForm" classname="LB_WhMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="0" left="0.08%" top="8" right="-62%" height="60" style="background:transparent URL('img::titleBar2.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="창고 관리" left="2.42%" top="8" right="84.03%" height="32" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="whCdStc" taborder="1" text="창고코드" onclick="subCodeStc_onclick" left="2.24%" top="77" right="90.8%" height="35" style="background:beige;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="whCdEdit" taborder="2" left="9.52%" top="78" right="80.4%" height="32"/>
+        <Edit id="whCdNmEdit" taborder="3" left="20.24%" top="78" right="69.68%" height="32"/>
+        <Button id="whBtn" taborder="4" cssclass="DelBtn" left="30.64%" top="81" right="66.24%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
+        <Button id="searchwhBtn" taborder="5" onclick="clickBtn" cssclass="DelBtn" left="89.12%" top="80" right="2.08%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="whGrid" taborder="6" useinputpanel="false" left="2.16%" top="128" right="2.72%" height="627" autofittype="col" binddataset="dsWh">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="98"/>
+                <Column size="171"/>
+                <Column size="110"/>
+                <Column size="120"/>
+                <Column size="106"/>
+                <Column size="97"/>
+                <Column size="98"/>
+                <Column size="77"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="창고코드"/>
+                <Cell col="1" text="창고명"/>
+                <Cell col="2" text="입출형태코드"/>
+                <Cell col="3" text="입출유형"/>
+                <Cell col="4" text="사용여부"/>
+                <Cell col="5" text="적용시작일자"/>
+                <Cell col="6" text="적용종료일자"/>
+                <Cell col="7" text="적요"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:whCd"/>
+                <Cell col="1" text="bind:whNm"/>
+                <Cell col="2" text="bind:ioTypeCd"/>
+                <Cell col="3" text="bind:ioType"/>
+                <Cell col="4" text="bind:useYb"/>
+                <Cell col="5" text="bind:applyStartDate"/>
+                <Cell col="6" text="bind:applyEndDate"/>
+                <Cell col="7" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findWhList</Col>
+            <Col id="URL">erp47::/log/base/findWhList</Col>
+            <Col id="outData">dsWh=dsWh</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsWh" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="whCd" type="STRING" size="256"/>
+          <Column id="whNm" type="STRING" size="256"/>
+          <Column id="ioCfmtCd" type="STRING" size="256"/>
+          <Column id="ioCfmt" type="STRING" size="256"/>
+          <Column id="ioTypeCd" type="STRING" size="256"/>
+          <Column id="ioType" type="STRING" size="256"/>
+          <Column id="useYb" type="STRING" size="256"/>
+          <Column id="applyStartDate" type="STRING" size="256"/>
+          <Column id="applyEndDate" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  		//공통 스크립트
+include "scripts::logScripts.xjs";			//물류 스크립트
+
+
+this.clickBtn = function(obj){ //버튼 클릭시발생하는 이벤트
+
+			switch(obj){
+			
+				case this.whBtn :      //창고코드,창고이름 검색 팝업창.
+					 this.clickWhBtn();
+					 break;
+				
+				case this.searchwhBtn :
+					 this.clicksearchWh();
+					 break;
+			}
+		
+
+}
+
+this.clickWhBtn = function(){ //코드팝업창띄우기  "wh" 를 변수값으로 날려서 창고코드로
+
+
+		this.logOpenCdDialog("wh");
+
+
+
+}
+
+this.clicksearchWh = function(){     //조회버튼눌렀을때의 이벤트 발생.
+
+		var whCd = this.whCdEdit.value;
+		var whNm = this.whCdNmEdit.value;
+		var argument = "whCd='"+whCd+"' whNm='"+whNm+"' ";
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("findWhList", false);
+
+
+}
+this.setLogCodeArray =function(divCode,logCode,setCode,thrCode,logCdArray){
+//코드팝업폼에서 넘겨받은 값 셋팅하는 function .  배열로 값을 전달하였어요잉!
+		switch(divCode){
+		
+			case "wh":
+			
+				this.whCdEdit.set_value(logCdArray[0]);
+				this.whCdNmEdit.set_value(logCdArray[1]);
+				break;
+		}
+
+}]]></Script>
+  </Form>
+</FDL>

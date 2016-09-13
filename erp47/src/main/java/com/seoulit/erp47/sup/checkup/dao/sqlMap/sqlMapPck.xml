@@ -3,6 +3,13 @@
 
 <mapper namespace="com.seoulit.erp47.sup.checkup.dao.PckDAO">
     <cache flushInterval="86400000" eviction="LRU" />
+    <!-- 종합검진 패키지 관리 - 패키지검사 조회 -->
+	<select resultType="InspBean" useCache="true" flushCache="false" id="selectPckInspList"> 
+		SELECT PCK_CD, I.INSP_CD, INSP_NM, OCS_CD, E.EMR_NM AS OCS_NM, RSLT_DEPT_CD, FN_CM_CODENAME('SC036',RSLT_DEPT_CD) AS RSLT_DEPT_NM, OCS_DIV_CD, AMT, USE_YN 
+		FROM SC_PCK_INSP P, SC_INSP I, SC_EMR_CODE E 
+		WHERE P.PCK_CD = #{pckCd} AND P.INSP_CD = I.INSP_CD AND I.OCS_CD = E.EMR_CD 
+	</select>
+    
 	<select resultType="PckBean" useCache="true" flushCache="false" id="selectPckList">
 		SELECT /*+ INDEX(SC_PCK SC_PCK_INDEX)*/ PCK_CD ,PCK_NM ,GENDER_CD ,AMT ,INSP_DIV_CD ,USE_YN 
 		FROM SC_PCK 

@@ -40,4 +40,5 @@ public interface ReceiptDAO {
     /* 종합검진 접수 - 저장 */
     void updateReceipt(ReceiptBean receiptBean);
 
+    
 }

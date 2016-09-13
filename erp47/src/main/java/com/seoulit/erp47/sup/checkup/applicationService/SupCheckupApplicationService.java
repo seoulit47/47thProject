@@ -7,6 +7,7 @@ import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
+import com.seoulit.erp47.sup.checkup.to.ReceiptBean;
 import com.seoulit.erp47.sup.checkup.to.ReducBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
@@ -40,5 +41,18 @@ public interface SupCheckupApplicationService {
     
     /* 종합검진 접수 - 감면조회 */
     public List<ReducBean> findReducList(Map<String, String> argsMap);
+    
+    /* 종합검진 접수 - 접수, 예약조회 */
+    public Map<String, Object> findRsvtReceiptList(Map<String, String> argsMap);
+    
+    /* 종합검진 접수 - 예약검사 조회 */
+    public RsvtBean findRsvtInspList(Map<String, String> argsMap);
+    
+    /* 종합검진 접수 - 접수 등록 */
+    public void registerReceipt(ReceiptBean receiptBean);
+    
+    /* 종합검진 접수 - 접수 취소 */
+    public void cancelReceipt(ReceiptBean receiptBean);
+    
     
 }

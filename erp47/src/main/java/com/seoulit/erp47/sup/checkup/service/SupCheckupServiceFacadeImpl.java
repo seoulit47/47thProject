@@ -12,6 +12,7 @@ import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
+import com.seoulit.erp47.sup.checkup.to.ReceiptBean;
 import com.seoulit.erp47.sup.checkup.to.ReducBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
@@ -100,5 +101,30 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
         return reducList;
     }
 	
-
+	/* 종합검진 접수 - 접수, 예약조회 */
+    @Override               
+    public Map<String, Object> findRsvtReceiptList(Map<String, String> argsMap) {
+        Map<String, Object> map = supCheckupApplicationService.findRsvtReceiptList(argsMap);
+        return map;
+    }
+    
+    /* 종합검진 접수 - 예약검사 조회 */
+    @Override               
+    public RsvtBean findRsvtInspList(Map<String, String> argsMap) {
+        RsvtBean rsvtBean = supCheckupApplicationService.findRsvtInspList(argsMap);
+        return rsvtBean;
+    }
+    
+    /* 종합검진 접수 - 접수 등록 */
+    @Override                
+    public void registerReceipt(ReceiptBean receiptBean) {
+        supCheckupApplicationService.registerReceipt(receiptBean);
+    }
+    
+    /* 종합검진 접수 - 접수 취소 */
+    @Override                
+    public void cancelReceipt(ReceiptBean receiptBean) {
+        supCheckupApplicationService.cancelReceipt(receiptBean);
+    }
+    
 }

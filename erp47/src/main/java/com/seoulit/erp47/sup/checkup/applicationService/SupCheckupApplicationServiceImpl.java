@@ -1,6 +1,7 @@
 package com.seoulit.erp47.sup.checkup.applicationService;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
+import com.seoulit.erp47.sup.checkup.to.ReceiptBean;
 import com.seoulit.erp47.sup.checkup.to.ReducBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
@@ -160,5 +162,50 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
         
         return reducList;
     }
+	
+	/* 종합검진 접수 - 접수, 예약조회 */
+	@Override                 
+	public Map<String, Object> findRsvtReceiptList(Map<String, String> argsMap) {
+	    List<RsvtBean> rsvtList = receiptDAO.selectRsvtList(argsMap);
+	    List<ReceiptBean> receiptList = receiptDAO.selectReceiptList(argsMap);
+	    System.out.println("!!!!!!!!!!!!!!!!!"+argsMap);
+	        
+	    Map<String, Object> map = new HashMap<>();
+	    map.put("rsvtList", rsvtList);
+	    map.put("receiptList", receiptList);
+
+	    return map;
+	}
+
+	/* 종합검진 접수 - 예약검사 조회 */
+	@Override                 
+	public RsvtBean findRsvtInspList(Map<String, String> argsMap) {
+	    RsvtBean rsvtBean = receiptDAO.selectRsvtInspList(argsMap);
+	    return rsvtBean;
+	}
+	
+	/* 종합검진 접수 - 접수 등록 */
+	@Override                 
+    public void registerReceipt(ReceiptBean receiptBean) {
+        if(receiptBean!=null){
+            String status = receiptBean.getStatus();
+            
+            if(status.equals("inserted")){
+                int retVal = receiptDAO.insertReceipt(receiptBean);
+
+                if(retVal==0){
+
+                    receiptBean.setCancelYn("N");
+                    receiptDAO.updateCancelYN(receiptBean);
+                }
+            }
+        }
+    }
+	
+	/* 종합검진 접수 - 접수 취소 */
+	@Override
+	public void cancelReceipt(ReceiptBean receiptBean) {
+	    receiptDAO.updateCancelYN(receiptBean);
+	}
 
 }

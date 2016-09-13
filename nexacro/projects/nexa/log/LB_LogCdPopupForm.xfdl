@@ -15,7 +15,7 @@
         <Edit id="codeEdit" taborder="4" left="14.16%" top="67" right="61.36%" height="26"/>
         <Edit id="codeNmEdit" taborder="5" left="54.28%" top="66" right="21.24%" height="27"/>
         <Button id="searchBtn" taborder="6" left="79.06%" top="64" right="0.88%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
-        <Grid id="codeGrid" taborder="7" useinputpanel="false" left="3.83%" top="98" right="3.83%" height="337" autofittype="col" binddataset="dsLogCd">
+        <Grid id="codeGrid" taborder="7" useinputpanel="false" left="3.83%" top="98" right="3.83%" height="337" autofittype="col" binddataset="dsLogCd" oncelldblclick="codeGrid_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -238,6 +238,7 @@ this.clickSearchBtn = function(){
 		
 		
 		this.dsBindLogCd.setColumn(currentRow,"cdDiv",this.parent.divCode);
+		alert(this.parent.divCode);
 		this.dsBindLogCd.setColumn(currentRow,"code",logCd);
 		this.dsBindLogCd.setColumn(currentRow,"cdNm",logCdNm);
 		this.dsBindLogCd.setColumn(currentRow,"dsLogName","dsLogCd");
@@ -246,6 +247,25 @@ this.clickSearchBtn = function(){
 
 }
 
+//그리드에서 cell더블클릭시 현재 폼을 닫히게하면서 부모창에다가 배열로 값을 전달.
+this.codeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var logCdArray = new Array;
+	var i=0;
+	
+	
+	logCdArray[i++] = this.dsLogCd.getColumn(e.row,"code");
+	logCdArray[i++] = this.dsLogCd.getColumn(e.row,"value");
+	
+	
+	alert(logCdArray[0] +  logCdArray[1]);
+	
+	this.opener.setLogCodeArray(this.parent.divCode,this.parent.logCode,this.parent.setCode,this.parent.thrCode,logCdArray);
+	this.close();
+	
+	//이 코드팝업폼을 사용하는 부모폼에서는 setLogCodArray Function을 만들어서 값을 받아서
+	//Edit박스에 셋팅만 하면됩니다잉!
+}
 ]]></Script>
   </Form>
 </FDL>

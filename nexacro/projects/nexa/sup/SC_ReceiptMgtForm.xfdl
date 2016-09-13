@@ -1,0 +1,931 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_ReceiptMgtForm" classname="SC_ReceiptMgtForm" left="0" top="0" width="1250" height="768" titletext="종합검진 접수">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="35.84%" top="658" right="2.4%" height="46" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="Div03" taborder="1" left="35.84%" top="63" right="2.4%" height="355" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="Div00" taborder="2" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar3.jpg');"/>
+        <Grid id="inspGrid" taborder="3" binddataset="dsInsp" useinputpanel="false" autofittype="col" left="35.84%" top="462" right="44%" height="191">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="141"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="검사목록"/>
+                <Cell row="1" text="검사코드"/>
+                <Cell row="1" col="1" text="검사명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:inspCd"/>
+                <Cell col="1" text="bind:inspNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="receiptGrid" taborder="4" binddataset="dsReceipt" useinputpanel="false" cellsizingtype="col" autofittype="col" onsetfocus="receiptGrid_onsetfocus" left="2.4%" top="462" right="65.12%" height="282">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="93"/>
+                <Column size="76"/>
+                <Column size="80"/>
+                <Column size="47"/>
+                <Column size="66"/>
+                <Column size="42"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="6" text="접수자 목록"/>
+                <Cell row="1" text="검진예정일"/>
+                <Cell row="1" col="1" text="등록번호"/>
+                <Cell row="1" col="2" text="검진자명"/>
+                <Cell row="1" col="3" text="성별"/>
+                <Cell row="1" col="4" text="검진시간"/>
+                <Cell row="1" col="5" text="취소"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:inspPlnDate"/>
+                <Cell col="1" text="bind:patNo"/>
+                <Cell col="2" text="bind:patNm"/>
+                <Cell col="3" text="bind:gender"/>
+                <Cell col="4" text="bind:inspPlnTime" mask="##:##"/>
+                <Cell col="5" text="bind:cancelYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="choInspGrid" taborder="5" binddataset="dsChoInsp" useinputpanel="false" autofittype="col" oncelldblclick="choInspGrid_oncelldblclick" onenterdown="choInspGrid_onenterdown" left="56.8%" top="462" right="2.4%" height="189">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="56"/>
+                <Column size="158"/>
+                <Column size="38"/>
+                <Column size="65"/>
+                <Column size="85"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="5" text="정밀검사 목록"/>
+                <Cell col="5"/>
+                <Cell row="1" text="코드"/>
+                <Cell row="1" col="1" text="검사명"/>
+                <Cell row="1" col="2" text="수량"/>
+                <Cell row="1" col="3" text="금액"/>
+                <Cell row="1" col="4" text="검사예정일"/>
+                <Cell row="1" col="5"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:inspCd"/>
+                <Cell col="1" text="bind:inspNm"/>
+                <Cell col="2" displaytype="number" edittype="none" text="bind:qnt"/>
+                <Cell col="3" displaytype="number" style="align:right;padding:0 3 0 0;" text="bind:sumAmt" expr="expr:qnt*amt"/>
+                <Cell col="4" edittype="none" text="bind:inspPlnDate"/>
+                <Cell col="5" text="bind:rsvtNo"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="합              계"/>
+                <Cell col="2"/>
+                <Cell col="3" displaytype="number" style="align:right;padding:0 3 0 0;" expr="expr:dataset.getSum('qnt*amt')"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="rsvtGrid" taborder="6" binddataset="dsRsvt" useinputpanel="false" autofittype="col" onsetfocus="rsvtGrid_onsetfocus" left="2.24%" top="99" right="65.12%" height="356">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="106"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="39"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="5" text="접수대상자 목록"/>
+                <Cell row="1" text="검진예정일"/>
+                <Cell row="1" col="1" text="등록번호"/>
+                <Cell row="1" col="2" text="검진자명"/>
+                <Cell row="1" col="3" text="성별"/>
+                <Cell row="1" col="4" text="검진시간"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:inspPlnDate"/>
+                <Cell col="1" text="bind:patNo"/>
+                <Cell col="2" text="bind:patNm"/>
+                <Cell col="3" displaytype="text" text="bind:gender"/>
+                <Cell col="4" displaytype="normal" text="bind:inspPlnTime" mask="##:##"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Calendar id="inspPlnDateCal" taborder="7" expr="Date()" dateformat="yyyy-MM-dd" left="11.84%" top="64" right="74.72%" height="27"/>
+        <Static id="Static02" taborder="8" text="종합검진 접수" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div01" taborder="9" text="검진예정일" left="2.32%" top="63" right="89.04%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Button id="searchBtn" taborder="10" onclick="searchBtn_onclick" left="27.76%" top="62" right="65.04%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+        <Div id="compBox" taborder="11" left="35.84%" top="64" right="2.72%" height="352" style="background:@gradation;border:0 solid #9f9f9fb3 ;" enable="false">
+          <Layouts>
+            <Layout width="795" height="339">
+              <Edit id="rsvtDateEd" taborder="174" readonly="true" left="14.19%" top="15" right="68.62%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="regNo1Ed" taborder="175" readonly="true" left="14.19%" top="151" right="73.05%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="patNmEd" taborder="176" left="14.19%" top="117" right="73.05%" height="30"/>
+              <Edit id="patNoEd" taborder="177" readonly="true" left="14.19%" top="83" right="68.62%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="ageEd" taborder="178" left="36.07%" top="117" right="56.12%" height="30"/>
+              <Edit id="pckCdEd" taborder="179" readonly="true" left="57.16%" top="117" right="30.86%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="reducCdEd" taborder="180" readonly="true" left="57.16%" top="151" right="30.86%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="reducNmEd" taborder="181" readonly="true" left="69.79%" top="151" right="6.51%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="pckNmEd" taborder="182" readonly="true" left="69.79%" top="117" right="6.38%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="rsvtNoEd" taborder="183" left="57.16%" top="15" right="23.7%" height="30"/>
+              <Calendar id="inspDateCal" taborder="184" left="57.16%" top="83" right="23.7%" height="30"/>
+              <Edit id="smsEd" taborder="185" readonly="true" left="14.19%" top="185" right="56.25%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="aplMan" taborder="186" left="14.19%" top="219" right="76.04%" height="30"/>
+              <Edit id="rlEd" taborder="187" imemode="alpha" left="35.29%" top="220" right="56.25%" height="30"/>
+              <Edit id="rsvtRespEd" taborder="188" left="57.16%" top="49" right="23.7%" height="30"/>
+              <Edit id="phoneEd" taborder="189" left="14.19%" top="253" right="56.25%" height="30"/>
+              <Edit id="payManEd" taborder="190" left="84.77%" top="185" right="2.08%" height="30"/>
+              <TextArea id="memoArea" taborder="191" left="14.19%" top="287" right="56.25%" height="50" class="AreaArea"/>
+              <Edit id="regNo2Ed" taborder="192" readonly="true" left="31.12%" top="151" right="56.12%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <MaskEdit id="inspTimeMask" taborder="193" type="string" mask="##:##" left="77.34%" top="83" right="10.68%" height="30" style="align:center;"/>
+              <Static id="Static01" taborder="194" text="-" left="27.34%" top="151" right="69.66%" height="28" style="background:transparent;border:0px solid transparent transparent;align:center middle;"/>
+              <Combo id="genderCombo" taborder="195" innerdataset="dsGenderCd" codecolumn="code" datacolumn="value" left="27.99%" top="117" right="64.84%" height="30" class="AreaCombo"/>
+              <Edit id="aplDateEd" taborder="196" readonly="true" left="14.19%" top="49" right="68.62%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <MaskEdit id="aplTimeMask" taborder="197" type="string" mask="##:##" left="31.9%" top="49" right="56.12%" height="30" style="align:center;"/>
+              <MaskEdit id="basicInspAmtEd" taborder="198" mask="###,###" left="57.16%" top="185" right="27.21%" height="30" style="padding:0 5 0 0;align:right;"/>
+              <MaskEdit id="reducAmtEd" taborder="199" mask="###,###" left="57.16%" top="219" right="23.18%" height="30" style="padding:0 5 0 0;align:right;"/>
+              <MaskEdit id="rsvtAmtEd" taborder="200" mask="###,###" left="57.16%" top="253" right="23.18%" height="30" style="padding:0 5 0 0;align:right;"/>
+              <MaskEdit id="basicInspSumAmtEd" taborder="201" mask="###,###" left="57.16%" top="287" right="23.18%" height="30" style="padding:0 5 0 0;align:right;" class="AreaMaskEdt"/>
+              <Div id="Div07" taborder="202" text="신청인" left="2.99%" top="219" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div00" taborder="203" text="연락처" left="2.99%" top="253" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div01" taborder="204" text="주민번호" left="2.99%" top="151" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div02" taborder="205" text="검진자명" left="2.99%" top="117" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div03" taborder="206" text="등록번호" left="2.99%" top="83" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div04" taborder="207" text="접수일자" left="2.99%" top="49" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div05" taborder="208" text="예약일자" left="2.99%" top="15" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div06" taborder="209" text="예약번호" left="45.96%" top="15" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div08" taborder="210" text="예약담당" left="45.96%" top="49" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div09" taborder="211" text="검진일시" left="45.96%" top="83" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div10" taborder="212" text="패키지" left="45.96%" top="117" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div11" taborder="213" text="입금자" left="73.96%" top="185" right="16.15%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div12" taborder="214" text="감면구분" left="45.96%" top="151" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div13" taborder="215" text="기본금액" left="45.96%" top="185" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div14" taborder="216" text="감면금액" left="45.96%" top="219" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div15" taborder="217" text="예약금액" left="45.96%" top="253" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div16" taborder="218" text="총기본금액" left="45.96%" top="287" right="44.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div17" taborder="219" text="SMS" left="2.99%" top="185" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div18" taborder="220" text="메모" left="2.99%" top="287" right="87.11%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div19" taborder="221" text="관계" left="24.61%" top="219" right="65.49%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Button id="pckPopBtn" taborder="222" onclick="compBox_pckPopBtn_onclick" left="94.01%" top="116" right="1.82%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="reducPopBtn" taborder="223" onclick="compBox_reducPopBtn_onclick" left="94.01%" top="151" right="1.82%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+            </Layout>
+          </Layouts>
+          <InitValue>
+            <Combo id="genderCombo" class="AreaCombo"/>
+          </InitValue>
+        </Div>
+        <Div id="btnBox" taborder="12" left="74.4%" top="415" right="1.52%" height="57">
+          <Layouts>
+            <Layout width="301" height="57">
+              <Button id="addBtn" taborder="3" onclick="btnBox_addBtn_onclick" cssclass="DelBtn" left="34.88%" top="9" right="35.22%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="delBtn" taborder="4" onclick="btnBox_delBtn_onclick" left="66.78%" top="9" right="3.32%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div02" taborder="13" text="기본검사금액" left="36.64%" top="666" right="54.72%" height="30" style="background:rosybrown;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Div id="Div04" taborder="14" text="총수납금액" left="77.44%" top="666" right="13.92%" height="30" style="background:rosybrown;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Div id="Div05" taborder="15" text="선택검사금액" left="57.12%" top="666" right="34.24%" height="30" style="background:rosybrown;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Div id="btnBox2" taborder="16" left="60.32%" top="703" right="1.12%" height="52">
+          <Layouts>
+            <Layout width="474" height="57">
+              <Button id="receiptBtn" taborder="9" onclick="btnBox2_receiptBtn_onclick" cssclass="DelBtn" left="17.01%" top="8" right="64.32%" height="32" style="background:@gradation URL('img::receiptBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="receBtn" taborder="10" onclick="btnBox2_receBtn_onclick" left="37.55%" top="8" right="43.78%" height="32" style="background:@gradation URL('img::storeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="modiBtn" taborder="11" onclick="btnBox2_modiBtn_onclick" left="57.88%" top="8" right="23.44%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="saveBtn" taborder="12" onclick="btnBox2_saveBtn_onclick" left="78.22%" top="8" right="3.11%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="receiptXBtn" taborder="13" onclick="btnBox2_receiptXBtn_onclick" visible="false" left="12.86%" top="8" right="64.32%" height="32" style="background:@gradation URL('img::receiptXBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <MaskEdit id="basicInspSumAmtEd" taborder="17" mask="###,###" left="45.52%" top="666" right="43.84%" height="30"/>
+        <MaskEdit id="choInspAmtEd00" taborder="18" mask="###,###" left="66.08%" top="666" right="23.68%" height="30"/>
+        <MaskEdit id="inspSumAmtEd00" taborder="19" mask="###,###" left="86.32%" top="666" right="3.36%" height="30"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item30" compid="basicInspSumAmtEd" propid="value" datasetid="dsTempR" columnid="basicInspSumAmt"/>
+      <BindItem id="item32" compid="choInspAmtEd00" propid="value" datasetid="dsTempR" columnid="choInspAmt"/>
+      <BindItem id="item31" compid="inspSumAmtEd00" propid="value" datasetid="dsTempR" columnid="inspSumAmt"/>
+      <BindItem id="item0" compid="compBox.rsvtDateEd" propid="value" datasetid="dsTempR" columnid="rsvtDate"/>
+      <BindItem id="item1" compid="compBox.aplDateEd" propid="value" datasetid="dsTempR" columnid="aplDate"/>
+      <BindItem id="item2" compid="compBox.aplTimeMask" propid="value" datasetid="dsTempR" columnid="aplTime"/>
+      <BindItem id="item3" compid="compBox.patNoEd" propid="value" datasetid="dsTempR" columnid="patNo"/>
+      <BindItem id="item4" compid="compBox.patNmEd" propid="value" datasetid="dsTempR" columnid="patNm"/>
+      <BindItem id="item5" compid="compBox.genderCombo" propid="value" datasetid="dsTempR" columnid="gender"/>
+      <BindItem id="item6" compid="compBox.ageEd" propid="value" datasetid="dsTempR" columnid="age"/>
+      <BindItem id="item7" compid="compBox.regNo1Ed" propid="value" datasetid="dsTempR" columnid="rrn1"/>
+      <BindItem id="item8" compid="compBox.regNo2Ed" propid="value" datasetid="dsTempR" columnid="rrn2"/>
+      <BindItem id="item9" compid="compBox.smsEd" propid="value" datasetid="dsTempR" columnid="sms"/>
+      <BindItem id="item10" compid="compBox.aplMan" propid="value" datasetid="dsTempR" columnid="aplMan"/>
+      <BindItem id="item11" compid="compBox.rlEd" propid="value" datasetid="dsTempR" columnid="rship"/>
+      <BindItem id="item12" compid="compBox.phoneEd" propid="value" datasetid="dsTempR" columnid="aplManTel"/>
+      <BindItem id="item13" compid="compBox.memoArea" propid="value" datasetid="dsTempR" columnid="memo"/>
+      <BindItem id="item14" compid="compBox.rsvtNoEd" propid="value" datasetid="dsTempR" columnid="rsvtNo"/>
+      <BindItem id="item15" compid="compBox.rsvtRespEd" propid="value" datasetid="dsTempR" columnid="rsvtResp"/>
+      <BindItem id="item16" compid="compBox.inspDateCal" propid="value" datasetid="dsTempR" columnid="inspPlnDate"/>
+      <BindItem id="item17" compid="compBox.inspTimeMask" propid="value" datasetid="dsTempR" columnid="inspPlnTime"/>
+      <BindItem id="item18" compid="compBox.pckCdEd" propid="value" datasetid="dsTempR" columnid="pckCd"/>
+      <BindItem id="item19" compid="compBox.pckNmEd" propid="value" datasetid="dsTempR" columnid="patNm"/>
+      <BindItem id="item20" compid="compBox.reducCdEd" propid="value" datasetid="dsTempR" columnid="reducCd"/>
+      <BindItem id="item21" compid="compBox.reducNmEd" propid="value" datasetid="dsTempR" columnid="reducNm"/>
+      <BindItem id="item22" compid="compBox.basicInspAmtEd" propid="value" datasetid="dsReceipt" columnid="basicInspAmt"/>
+      <BindItem id="item23" compid="compBox.payManEd" propid="value" datasetid="dsTempR" columnid="payMan"/>
+      <BindItem id="item24" compid="compBox.reducAmtEd" propid="value" datasetid="dsTempR" columnid="reducAmt"/>
+      <BindItem id="item25" compid="compBox.rsvtAmtEd" propid="value" datasetid="dsTempR" columnid="rsvtAmt"/>
+      <BindItem id="item26" compid="compBox.basicInspSumAmtEd" propid="value" datasetid="dsTempR" columnid=" "/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsRece" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="receDate" type="STRING" size="256"/>
+          <Column id="befReceAmt" type="STRING" size="256"/>
+          <Column id="payAmt" type="STRING" size="256"/>
+          <Column id="cardCashDiv" type="STRING" size="256"/>
+          <Column id="aprvNo" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="inspDate" type="STRING" size="256"/>
+          <Column id="aprvDate" type="STRING" size="256"/>
+          <Column id="cardCd" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="valPrid" type="STRING" size="256"/>
+          <Column id="instmPrid" type="STRING" size="256"/>
+          <Column id="cashAprvData" type="STRING" size="256"/>
+          <Column id="cashAprvDivCd" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRsvt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsRsvt_onrowposchanged" canrowposchange="dsRsvt_canrowposchange">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="rsvtTime" type="STRING" size="256"/>
+          <Column id="inspPlnDate" type="STRING" size="256"/>
+          <Column id="inspPlnTime" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="sms" type="STRING" size="256"/>
+          <Column id="aplMan" type="STRING" size="256"/>
+          <Column id="aplManTel" type="STRING" size="256"/>
+          <Column id="rship" type="STRING" size="256"/>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="pckNm" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="reducCd" type="STRING" size="256"/>
+          <Column id="reducNm" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="basicInspSumAmt" type="STRING" size="256"/>
+          <Column id="payMan" type="STRING" size="256"/>
+          <Column id="rsvtResp" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChoInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+          <Column id="qnt" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="inspPlnDate" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findRsvtReceiptList</Col>
+            <Col id="URL">erp47::sup/checkup/findRsvtReceiptList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsReceipt=dsReceipt dsRsvt=dsRsvt</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findRsvtInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findRsvtInspList.do</Col>
+            <Col id="outData">dsInsp=dsInsp dsChoInsp=dsChoInsp</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPckInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findPckInspList.do</Col>
+            <Col id="outData">dsInsp=dsInsp</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findReducList</Col>
+            <Col id="URL">erp47::sup/checkup/findReducList.do</Col>
+            <Col id="outData">dsReduc=dsReduc</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchReceiptProcess</Col>
+            <Col id="URL">erp47::sup/checkup/batchReceiptProcess.do</Col>
+            <Col id="inData">dsRsvt=dsTempR dsChoInsp=dsChoInsp:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">cancelReceipt</Col>
+            <Col id="URL">erp47::sup/checkup/cancelReceipt.do</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData">dsReceipt=dsTempR:U</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerReceipt</Col>
+            <Col id="URL">erp47::sup/checkup/registerReceipt.do</Col>
+            <Col id="inData">dsReceipt=dsTempR:U</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGenderCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">남</Col>
+            <Col id="value">남</Col>
+          </Row>
+          <Row>
+            <Col id="code">여</Col>
+            <Col id="value">여</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPat" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="barrAss" type="STRING" size="256"/>
+          <Column id="dtlAddr" type="STRING" size="256"/>
+          <Column id="zip" type="STRING" size="256"/>
+          <Column id="deathDate" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="smsReceiveYb" type="STRING" size="256"/>
+          <Column id="smsReceiveNo" type="STRING" size="256"/>
+          <Column id="smsReceiver" type="STRING" size="256"/>
+          <Column id="recNwDate" type="STRING" size="256"/>
+          <Column id="estbGiho" type="STRING" size="256"/>
+          <Column id="certfctNo" type="STRING" size="256"/>
+          <Column id="insuRrn" type="STRING" size="256"/>
+          <Column id="insuNm" type="STRING" size="256"/>
+          <Column id="applyStartDate" type="STRING" size="256"/>
+          <Column id="applyEndDate" type="STRING" size="256"/>
+          <Column id="outpaReceiptNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsReceipt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsReceipt_onrowposchanged" canrowposchange="dsReceipt_canrowposchange">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="rsvtTime" type="STRING" size="256"/>
+          <Column id="inspPlnDate" type="STRING" size="256"/>
+          <Column id="inspPlnTime" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="sms" type="STRING" size="256"/>
+          <Column id="aplMan" type="STRING" size="256"/>
+          <Column id="aplManTel" type="STRING" size="256"/>
+          <Column id="rship" type="STRING" size="256"/>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="pckNm" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="reducCd" type="STRING" size="256"/>
+          <Column id="reducNm" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="basicInspSumAmt" type="STRING" size="256"/>
+          <Column id="payMan" type="STRING" size="256"/>
+          <Column id="rsvtResp" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+          <Column id="aplDate" type="STRING" size="256"/>
+          <Column id="aplTime" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTempR" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="rsvtTime" type="STRING" size="256"/>
+          <Column id="inspPlnDate" type="STRING" size="256"/>
+          <Column id="inspPlnTime" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="sms" type="STRING" size="256"/>
+          <Column id="aplMan" type="STRING" size="256"/>
+          <Column id="aplManTel" type="STRING" size="256"/>
+          <Column id="rship" type="STRING" size="256"/>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="pckNm" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="reducCd" type="STRING" size="256"/>
+          <Column id="reducNm" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="basicInspSumAmt" type="STRING" size="256"/>
+          <Column id="payMan" type="STRING" size="256"/>
+          <Column id="rsvtResp" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+          <Column id="aplDate" type="STRING" size="256"/>
+          <Column id="aplTime" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 진료지원 종합검진 접수관리                                               	*
+*                                                                               *
+* @Path		                	                        						*
+* @Description 										   							*
+* @Author	    김진환					                                		*
+* 									                                            *
+* Created on 2016. 09. 12.                             		                    *
+*									                                            *
+********************************************************************************/
+
+
+// 공통 스크립트
+include "scripts::commonScripts.xjs"; 
+include "scripts::supScripts.xjs";
+
+// 화면변수
+var editFlag = false;
+var	addFlag = false;
+
+
+// 접수 대상자 및 접수 조회
+this.searchBtn_onclick=function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	var inspDate = this.inspPlnDateCal.value;
+
+	var argument = 'inspPlnDate='+inspDate+' receiptFlag=Y';
+	var row = this.dsService.findRow('serviceID' , "findRsvtReceiptList");
+	this.dsService.setColumn(row, "argument", argument);
+
+	this.gfnService("findRsvtReceiptList", false);
+
+	this.choInspGrid.setCellProperty("Body", 2, "edittype", "none");
+
+	editFlag = false;
+	addFlag = false;
+
+}
+
+
+//  접수대상자 목록 선택 시 상세조회
+this.dsRsvt_onrowposchanged=function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	this.compBox.set_enable(false);
+	var rsvtNo = this.dsRsvt.getColumn(this.rsvtGrid.currentrow,"rsvtNo");
+
+	this.setTempR(this.dsRsvt);
+ 	this.findRsvtInspList(rsvtNo);
+ 	
+}
+
+
+//  접수 목록 선택 시 상세조회
+this.dsReceipt_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	this.compBox.set_enable(false);
+	var rsvtNo = this.dsReceipt.getColumn(this.receiptGrid.currentrow,"rsvtNo");
+
+	this.setTempR(this.dsReceipt);
+	
+ 	this.findRsvtInspList(rsvtNo);
+}
+
+this.setTempR=function(ds)
+{
+	this.dsTempR.clearData();
+	this.dsTempR.addRow();
+	this.dsTempR.copyRow(0, ds, ds.rowposition);
+}
+
+// 
+this.findRsvtInspList=function(rsvtNo)
+{
+	if(rsvtNo!=null)		
+	{
+		var argument = 'rsvtNo='+rsvtNo;
+		var row = this.dsService.findRow('serviceID' , "findRsvtInspList");
+		this.dsService.setColumn(row, "argument", argument);
+						
+		this.gfnService("findRsvtInspList");	
+	}
+}
+
+// 버튼박스 1 -  추가버튼
+this.btnBox_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.gfnPopup("SC_PckInspPopForm","sup",param,"");
+}
+
+
+
+this.pCode=function(retVal)
+{
+	addFlag = true;
+
+	if(retVal == 1)
+	{	
+		this.autoCalChoInspAmt();
+	}
+}
+
+
+// 추가 검사 선택 후 금액 계산
+this.autoCalChoInspAmt=function()
+{
+	var basicInspSumAmt	= this.dsTempR.getColumn(this.dsTempR.rowposition,"basicInspSumAmt");
+	var choInspAmt = this.choInspGrid.getCellText(-2, 3);
+
+	choInspAmt2 = choInspAmt.replace(",","");    
+	
+	var inspSumAmt;
+	
+	if(!this.gfnIsNull(choInspAmt2))
+	{
+		inspSumAmt	= parseInt(basicInspSumAmt) + parseInt(choInspAmt2);
+
+	}
+
+	this.dsTempR.setColumn(this.dsTempR.rowposition, "inspSumAmt", inspSumAmt);
+	this.dsTempR.setColumn(this.dsTempR.rowposition, "choInspAmt", choInspAmt2);
+	
+}
+
+// 수정
+this.choInspGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.choInspGrid.setCellProperty("Body", 2, "edittype", "normal");	
+}
+
+this.choInspGrid_onenterdown=function(obj:Grid, e:GridEditEventInfo)
+{
+	obj.setCellPos(1);
+	this.autoCalChoInspAmt();
+}
+
+
+// 버튼박스 1 - 삭제 버튼
+this.btnBox_delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsChoInsp.deleteRow(this.dsChoInsp.rowposition);
+	this.autoCalChoInspAmt();	
+}
+
+
+// 버튼박스2 - 수정버튼
+this.btnBox2_modiBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	this.compBox.set_enable(true);
+	this.choInspGrid.setCellProperty("Body", 2, "edittype", "normal"); 
+	editFlag = true;
+}
+
+
+// 버튼박스2 - 저장버튼
+this.btnBox2_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//this.fn_setUserData(this.dsRsvt);
+	
+	if(this.supCheckMdData(this.compBox))
+	{
+		this.gfnService("batchReceiptProcess");
+	}	
+}
+
+
+// 버튼박스2 - 수납버튼
+
+this.btnBox2_receBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+ 	this.dsRece.clearData();
+	this.dsRece.addRow();
+	
+	this.dsRece.setColumn(0, "rsvtNo", this.dsTempR.getColumn(this.dsTempR.rowposition, "rsvtNo"));
+	this.dsRece.setColumn(0, "rsvtDate", this.dsTempR.getColumn(this.dsTempR.rowposition, "rsvtDate"));
+	this.dsRece.setColumn(0, "inspDate", this.dsTempR.getColumn(this.dsTempR.rowposition, "inspPlnDate"));
+	this.dsRece.setColumn(0, "basicInspAmt", this.dsTempR.getColumn(this.dsTempR.rowposition, "basicInspAmt"));
+	this.dsRece.setColumn(0, "reducAmt", this.dsTempR.getColumn(this.dsTempR.rowposition, "reducAmt"));
+	this.dsRece.setColumn(0, "rsvtAmt", this.dsTempR.getColumn(this.dsTempR.rowposition, "rsvtAmt"));
+	this.dsRece.setColumn(0, "choInspAmt", this.dsTempR.getColumn(this.dsTempR.rowposition, "choInspAmt"));
+	this.dsRece.setColumn(0, "inspSumAmt", this.dsTempR.getColumn(this.dsTempR.rowposition, "inspSumAmt"));
+
+	var param = {dsRece:this.dsRece};
+	this.gfnPopup("SC_RecePopForm","sup",param,"");
+}
+
+this.payCo=function(retVal)
+{
+	if(retVal == 1)
+	{	
+			alert("수납이 완료되었습니다.");
+	}
+}
+
+// 접수 버튼
+this.btnBox2_receiptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	trace(this.dsTempR.saveXML());
+
+	if(confirm("접수를 하겠습니까?")){
+		var row = this.dsTempR.rowposition;
+
+		var sysDate = this.gfnDate('yyyy-MM-dd/HHMi');
+
+		var date = sysDate.split("/");
+
+		this.dsTempR.setColumn(row, "aplTime", date[1]);
+		this.dsTempR.setColumn(row, "aplDate", date[0]);
+
+		this.gfnService("registerReceipt",false);
+		//this.searchBtn_onclick(null,null);
+	}
+}
+
+
+// 접수취소 버튼
+this.btnBox2_receiptXBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(confirm("접수취소를 하겠습니까?")){
+		var row = this.dsTempR.rowposition;
+		this.dsTempR.setColumn(row, "cancelYn", 'Y');
+
+		//this.fn_setUserData(this.dsTempR, row);
+		
+		this.gfnService("cancelReceipt",false);
+		this.searchBtn_onclick(null,null);
+	}
+}
+
+//
+this.rsvtGrid_onsetfocus = function(obj:Grid, e:nexacro.SetFocusEventInfo)
+{
+	this.btnBox2.receiptXBtn.set_visible(false);
+	this.btnBox2.receiptBtn.set_visible(true);
+
+	
+	this.dsRsvt_onrowposchanged(null, null);
+}
+
+this.receiptGrid_onsetfocus = function(obj:Grid, e:nexacro.SetFocusEventInfo)
+{
+	this.btnBox2.receiptXBtn.set_visible(true);
+	this.btnBox2.receiptBtn.set_visible(false);
+	
+	
+	this.dsReceipt_onrowposchanged(null,null);	
+}
+
+
+// 패키지 버튼
+this.compBox_pckPopBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.gfnPopup("SC_PckPopForm","sup",param,"");
+	
+}
+
+this.pckCode=function(retVal)
+{
+	var pckCd 	= retVal[0];
+	var pckNm 	= retVal[1];
+	var amt 	= retVal[2];
+	
+	this.compBox.pckCdEd.set_value(pckCd);
+	this.compBox.pckNmEd.set_value(pckNm);
+	this.compBox.basicInspAmtEd.set_value(amt);
+	
+	var argument = 'pckCd='+pckCd;
+	var row = this.dsService.findRow('serviceID' , "findPckInspList");
+	this.dsService.setColumn(row, "argument", argument);
+		
+	this.gfnService("findPckInspList",false);	
+	
+	this.autoCalInspAmt();
+}
+
+// 감면코드 버튼
+this.compBox_reducPopBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var param = {};
+	this.gfnPopup("SC_ReducPopForm","sup",param,"");
+}
+
+// 팝업 셋팅
+this.setCode=function(code, arrRtn)
+{
+	var reducCd = arrRtn[0];
+	var reducNm = arrRtn[1];
+	var reducAmt = arrRtn[2];
+		
+	this.compBox.reducCdEd.set_value(reducCd);
+	this.compBox.reducNmEd.set_value(reducNm);
+	this.compBox.reducAmtEd.set_value(reducAmt);
+
+	this.autoCalInspAmt();
+}
+
+
+// 검사금액 계산
+this.autoCalInspAmt=function()
+{
+	var reducAmt = this.dsTempR.getColumn(this.dsTempR.rowposition,"reducAmt");
+	var basicInspAmt = this.dsTempR.getColumn(this.dsTempR.rowposition,"basicInspAmt");
+	var choInspAmt = this.dsTempR.getColumn(this.dsTempR.rowposition,"choInspAmt");
+
+	var inspSumAmt;
+	var basicInspSumAmt;
+	
+	if(!this.gfnIsNull(reducAmt)&&!this.gfnIsNull(basicInspAmt)&&!this.gfnIsNull(choInspAmt)){
+		inspSumAmt = parseInt(basicInspAmt) + parseInt(choInspAmt) - parseInt(reducAmt);
+	}
+	
+	if(!this.gfnIsNull(reducAmt)&&!this.gfnIsNull(basicInspAmt)){
+		inspSumAmt = parseInt(basicInspAmt) - parseInt(reducAmt);
+		basicInspSumAmt = parseInt(basicInspAmt) - parseInt(reducAmt);
+		
+		this.dsTempR.setColumn(this.dsTempR.rowposition, "basicInspSumAmt", basicInspSumAmt);	
+		
+	}else if(!this.gfnIsNull(basicInspAmt)&&!this.gfnIsNull(choInspAmt)){
+		inspSumAmt = parseInt(basicInspAmt) + parseInt(choInspAmt);
+		basicInspSumAmt = parseInt(basicInspAmt);
+		
+		this.dsTempR.setColumn(this.dsTempR.rowposition, "basicInspSumAmt", basicInspSumAmt);	
+	}
+
+	this.dsTempR.setColumn(this.dsTempR.rowposition, "inspSumAmt", inspSumAmt);	
+}
+
+// 콜백함수
+this.callBackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	} else {
+		if(svcID == 'registerReceipt'){
+			this.searchBtn_onclick(null,null);
+		}
+ 	}
+}
+
+
+this.dsRsvt_canrowposchange = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	if(addFlag == true || editFlag == true)
+	{
+		var yn = application.confirm("수정하고 있는 작업을  취소 하겠습니까?");
+		if (yn==false)
+		{
+			return false;
+		}
+		else
+		{
+	
+			if(editFlag == true)
+			{
+				this.dsRsvt.reset();
+				editFlag = false;
+				return true;
+				
+			}else if(addFlag == true){
+				addFlag = false;
+				
+				this.dsRsvt.reset();
+				return true;
+			}
+		}
+	}
+	return true;	
+}
+
+this.dsReceipt_canrowposchange = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	if(addFlag == true || editFlag == true)
+	{
+		var yn = application.confirm("수정하고 있는 작업을  취소 하겠습니까?");
+		if (yn==false)
+		{
+			return false;
+		}
+		else
+		{
+	
+			if(editFlag == true)
+			{
+				this.dsReceipt.reset();
+				editFlag = false;
+				return true;
+				
+			}else if(addFlag == true){
+				addFlag = false;
+				
+				this.dsReceipt.reset();
+				return true;
+			}
+		}
+	}
+	return true;	
+}
+]]></Script>
+  </Form>
+</FDL>

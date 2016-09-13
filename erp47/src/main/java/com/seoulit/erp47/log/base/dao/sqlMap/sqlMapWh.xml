@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.log.base.dao.WhDAO">
+<!-- mapper의 namespace는  Interface인  실제 DAO의 경로로 설정한다. -->
+<cache flushInterval="86400000" eviction="LRU" />
+<resultMap type="WhBean" id="selectWhBeanResultMap">
+        <result property="whCd"             column="WH_CD" />
+        <result property="whNm"             column="WH_NM" />
+        <result property="ioCfmtCd"         column="IO_CFMT_CD" />
+        <result property="ioCfmt"           column="IO_CFMT" />
+        <result property="ioTypeCd"         column="IO_TYPE_CD" />
+        <result property="ioType"           column="IO_TYPE" />
+        <result property="useYb"            column="USE_YB" />
+        <result property="applyStartDate"   column="APPLY_START_DATE" />
+        <result property="applyEndDate"     column="APPLY_END_DATE" />
+        <result property="note"             column="NOTE" />
+    </resultMap>
+
+
+
+<select id="selectBindWhList" resultType="OutLogCdBean" flushCache="false" useCache="true">
+
+		SELECT DISTINCT(WH_CD) as code,
+			   WH_NM as value
+			 
+		FROM LC_WH
+
+
+</select>
+<select id="findWhList" flushCache="false" useCache="true" resultType="WhBean" parameterType="map">
+        SELECT
+            *
+        FROM
+            LC_WH
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="whCd != '' and whCd != null">
+                AND WH_CD LIKE '%'||#{whCd}||'%'
+            </if>
+            <if test="whNm != '' and whNm != null">
+                AND WH_NM LIKE '%'||#{whNm}||'%'
+            </if>
+        </trim>
+        ORDER BY
+            WH_CD
+    </select>
+
+</mapper>
