@@ -101,7 +101,7 @@
         <Static id="subCodeStc00" taborder="13" text="  식단조회" onclick="subCodeStc_onclick" left="2.16%" top="407" right="79.12%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
         <Button id="saveBtn" taborder="14" onclick="saveBtn_onclick" left="90.48%" top="728" right="2.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
         <Div id="Div03" taborder="15" text="급식일자" left="3.52%" top="445" right="88%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
-        <Calendar id="startDateCal" taborder="16" dateformat="yyyy-MM-dd" onchanged="startDateCal_onchanged" oneditclick="startDateCal_oneditclick" left="12.4%" top="445" right="75.04%" height="31"/>
+        <Calendar id="startDateCal" taborder="16" dateformat="yyyy-MM-dd" onchanged="startDateCal_onchanged" oneditclick="startDateCal_oneditclick" left="12.4%" top="445" right="75.04%" height="31" style="background:transparent;"/>
         <Div id="Div04" taborder="17" text="식단분류" left="51.92%" top="445" right="39.6%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
         <Combo id="divCombo2" taborder="18" innerdataset="dsCode2" codecolumn="smallCode" datacolumn="fullName" left="60.8%" top="445" right="24.88%" height="31"/>
         <Button id="searchBtn2" taborder="19" onclick="searchBtn2_onclick" left="89.2%" top="445" right="3.6%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
@@ -284,7 +284,7 @@ this.SN_CarteMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	this.gfnService("findDivList", false);
 }
 
-//식단조회
+//식단등록 조회
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var carteDate = this.dateCal.value;
@@ -302,6 +302,41 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	}
 }
 
+this.bindData = function()
+{
+	this.daBreakfast.copyData(this.dsCarte);
+	this.dsBreakfast.filter("carteTime == '1'");
+
+	this.dsLunch.copyData(this.dsCarte);
+	this.dsLunch.filter("carteTime == '2'");
+	
+	this.dsDinner.copyData(this.dsCarte);
+	this.dsDinner.filter("carteTime == '3'");
+	
+}
+
+//식단 조회
+this.searchBtn2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert(123);
+	var startDate = this.startDateCal.value;
+	var endDate = this.endDateCal.value;
+	var menuGrpCd = this.divCombo2.value;
+	
+	if(this.gfnIsNull(startDate)){
+		alert("급식 날짜를 선택해주세요");
+	}else if(this.gfnIsNull(endDate)){
+		alert("급식 날짜를 선택해주세요");
+	}else if(this.gfnIsNull(menuGrpCd)){
+		alert("식단분류를 선택해주세요");
+	}else{
+		var argument = "starDate="+startDate+" endDate="+endDate+" menuGrpCd="+menuGrpCd;
+		var row = this.dsService.findRow("serviceID", "findDCarteList");
+		this.dsService.setColumn(row, "argument", argument);
+		this.gfnService("findDCarteList", false);		
+	}
+}
+
 //콜백
 this.callBackFunc = function(svcID, errorCode, errorMsg)
 {
@@ -310,8 +345,21 @@ this.callBackFunc = function(svcID, errorCode, errorMsg)
 	} else {
 		if(svcID=="findDivList"){
 			this.dsCode2.copyData(this.dsCode);	
-			}
+		}else if(svcID=="findCarteList"){
+			this.bindData();
+		}else if(svcID=="findCarteList"){
+		
 		}
-}]]></Script>
+	}
+}
+
+this.btnBox_bfPlusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
+{
+	alert(obj);
+	this.btnName = obj;
+}
+
+
+]]></Script>
   </Form>
 </FDL>

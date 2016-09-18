@@ -1,6 +1,7 @@
 package com.seoulit.erp47.sup.nutritive.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.nutritive.service.NutritiveServiceFacade;
+import com.seoulit.erp47.sup.nutritive.to.CarteBean;
 import com.seoulit.erp47.sup.nutritive.to.NCodeBean;
 
 /**
@@ -21,7 +23,7 @@ import com.seoulit.erp47.sup.nutritive.to.NCodeBean;
  * @Author YonG
  * @Description 식단 컨트롤러
  *
- * @LastUpdated 
+ * @LastUpdated
  */
 
 @Controller
@@ -43,5 +45,18 @@ public class CarteController {
 
 		dataSetBeanMapper.beansToDataset(outData, divList, NCodeBean.class);
 	}
-	
+
+	/* 영양관리 식단 관리 - 식단조회 */
+	@RequestMapping("sup/nutritive/findCarteList.do")
+
+	public void findCarteList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+
+		List<CarteBean> carteList = nutritiveServiceFacade.findCarteList(argsMap);
+
+		dataSetBeanMapper.beansToDataset(outData, carteList, CarteBean.class);
+	}
 }
