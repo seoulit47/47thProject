@@ -8,12 +8,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seoulit.erp47.sup.checkup.dao.DtInspDAO;
 import com.seoulit.erp47.sup.checkup.dao.InspDAO;
 import com.seoulit.erp47.sup.checkup.dao.PckDAO;
 import com.seoulit.erp47.sup.checkup.dao.ReceDAO;
 import com.seoulit.erp47.sup.checkup.dao.ReceiptDAO;
 import com.seoulit.erp47.sup.checkup.dao.RsvtDAO;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
+import com.seoulit.erp47.sup.checkup.to.DtInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
@@ -44,6 +46,8 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	private ReceDAO receDAO;
 	@Autowired
 	private ReceiptDAO receiptDAO;
+	@Autowired
+	private DtInspDAO dtInspDAO;
 	
 	/* 종합검진 예약관리 - 예약목록 조회  */
 	@Override                
@@ -97,6 +101,36 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
                 inspDAO.deleteChoInsp(choInsp);
             }else if(status.equals("updated")){         
                 inspDAO.updateChoInsp(choInsp);
+            }
+        }
+    }
+    
+    /* 종합검진 세부검사관리 - 검사 조회 */
+    @Override                
+    public List<InspBean> findSimpleInspList(Map<String, String> argsMap) {
+        List<InspBean> inspList = dtInspDAO.selectSimpleInspList(argsMap);
+        return inspList;
+    }
+
+    /* 종합검진 세부검사관리 - 세부검사 조회 */
+    @Override                 
+    public List<DtInspBean> findDtInspList(Map<String, String> argsMap) {
+        System.out.println(argsMap.get("inspCd"));
+        List<DtInspBean> dtInspList = dtInspDAO.selectDtInspList(argsMap);
+        return dtInspList;
+    }
+
+    /* 종합검진 세부검사관리 - 수정, 추가 */
+    @Override                 
+    public void batchDtInspProcess(List<DtInspBean> dtInspList) {
+        for (DtInspBean dtInspBean: dtInspList) {
+            switch (dtInspBean.getStatus()) {
+            case "inserted":
+                dtInspDAO.insertDtInsp(dtInspBean);
+                break;
+            case "updated":
+                dtInspDAO.updateDtInsp(dtInspBean);
+                break;
             }
         }
     }
@@ -155,6 +189,58 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
         return pckList;
     }
 	
+	/* 종합검진 패키지관리 - EX 패키지 조회 */
+	@Override                
+	public List<InspBean> findExPckInspList(Map<String, String> argsMap) {
+	    List<InspBean> pckInspList = pckDAO.selectExPckInspList(argsMap);
+	    return pckInspList;
+	}
+	
+	/* 종합검진 패키지관리 - 저장 */
+	@Override                
+    public void batchPckProcess(Map<String, Object> map) {
+        List<PckBean> pckList = (List<PckBean>) map.get("pckList");
+        List<InspBean> pckInspList = (List<InspBean>) map.get("pckInspList");
+        
+        for(PckBean pckBean: pckList){
+            String status = pckBean.getStatus();
+            
+            if(status.equals("inserted")){
+               pckDAO.insertPck(pckBean);
+               
+            }else if(status.equals("updated")){
+                pckDAO.updatePck(pckBean);
+            
+            }else if(status.equals("deleted")){
+                pckDAO.deletePckInsp(pckBean);
+                pckDAO.deletePck(pckBean);
+            }
+        }
+        
+        for(InspBean inspBean: pckInspList){
+            String status = inspBean.getStatus();
+            
+            if(status.equals("inserted")){
+               pckDAO.insertPckInsp(inspBean);
+               
+            }else if(status.equals("deleted")){
+                pckDAO.deletePckInsp2(inspBean);
+            }
+        }
+    }
+    
+    @Override
+    public void batchPckProcess2(PckBean pckBean) {
+        String status = pckBean.getStatus();
+        
+        if(status.equals("inserted")){
+           pckDAO.insertPck(pckBean);
+           
+        }else if(status.equals("updated")){
+            pckDAO.updatePck(pckBean);
+        }
+    }
+	
 	/* 종합검진 접수 - 감면조회 */
 	@Override               
     public List<ReducBean> findReducList(Map<String, String> argsMap) {
@@ -208,4 +294,39 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	    receiptDAO.updateCancelYN(receiptBean);
 	}
 
+	/* 종합검진 접수 - 접수 저장 */
+	@Override                 
+    public void batchReceiptProcess(Map<String, Object> map) {
+        RsvtBean rsvtBean = (RsvtBean) map.get("rsvtBean");
+        
+        List<ChoInspBean> choInspList = (List<ChoInspBean>) map.get("choInspList");
+        
+        if(rsvtBean!=null){
+            String choInspAmt = rsvtBean.getChoInspAmt();
+            String choInspAmt2 = choInspAmt.replaceAll(",", "");
+            
+            rsvtBean.setChoInspAmt(choInspAmt2);
+            
+            rsvtDAO.updateRsvt(rsvtBean);
+        }
+        
+        if(choInspList!=null){
+            batchChoInspProcess(choInspList);
+        }
+    }
+	
+	/* 종합검진 접수 - 선택검사 일괄처리 */
+	@Override                 
+    public void batchPckInspProcess(List<InspBean> pckInspList) {
+        for(InspBean inspBean: pckInspList){
+            switch (inspBean.getStatus()){
+            case "inserted" :
+                receiptDAO.insertPckInsp(inspBean);
+                break;
+            case "deleted" :
+                receiptDAO.deletePckInsp(inspBean);
+                break;
+            }
+        }
+    }
 }

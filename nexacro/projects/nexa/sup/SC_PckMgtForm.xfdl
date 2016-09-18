@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_PckMgtForm" classname="SC_PckMgtForm" left="0" top="0" width="1250" height="768" titletext="종합검진 패키지 관리" onload="SC_PckMgtForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');"/>
+        <Static id="Static02" taborder="1" text="종합검진 패키지 관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div01" taborder="2" text="패키지코드" left="2.24%" top="72" right="90.72%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="pckCdEd" taborder="3" left="9.76%" top="72" right="81.52%" height="30"/>
+        <Div id="Div02" taborder="4" text="패키지명" left="19.2%" top="72" right="73.76%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="pckNmEd" taborder="5" left="26.72%" top="72" right="61.6%" height="30"/>
+        <Grid id="pckGrid" taborder="6" binddataset="dsPck" useinputpanel="false" cellsizingtype="col" autofittype="col" onsetfocus="pckGrid_onsetfocus" left="2.24%" top="111" right="58.8%" height="586" style="font:돋움,8,antialias;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="65"/>
+                <Column size="152"/>
+                <Column size="74"/>
+                <Column size="41"/>
+                <Column size="80"/>
+                <Column size="43"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="6" text="종합검진 패키지 목록"/>
+                <Cell row="1" style="color: ;" text="코드"/>
+                <Cell row="1" col="1" style="color: ;" text="패키지명"/>
+                <Cell row="1" col="2" style="color: ;" text="검진구분"/>
+                <Cell row="1" col="3" style="color: ;" text="성별"/>
+                <Cell row="1" col="4" style="color: ;" text="금액"/>
+                <Cell row="1" col="5" style="color: ;" text="사용"/>
+              </Band>
+              <Band id="body">
+                <Cell style="background: ;background2:#eeeeeeff;" text="bind:pckCd"/>
+                <Cell col="1" style="background: ;background2:#eeeeeeff;" text="bind:pckNm"/>
+                <Cell col="2" displaytype="combo" style="background: ;background2:#eeeeeeff;" text="bind:inspDivCd" combodataset="dsInspDivCd" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" displaytype="combo" style="background: ;background2:#eeeeeeff;" text="bind:genderCd" combodataset="dsGenderCd" combocodecol="code" combodatacol="value"/>
+                <Cell col="4" displaytype="number" style="align:right;background: ;background2:#eeeeeeff;" text="bind:amt"/>
+                <Cell col="5" style="background: ;background2:#eeeeeeff;" text="bind:useYn" combodataset="dsUseYN" combocodecol="code" combodatacol="value"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="inspGrid" taborder="7" binddataset="dsPckInsp" useinputpanel="false" cellsizingtype="col" autofittype="col" onsetfocus="inspGrid_onsetfocus" left="42.16%" top="71" right="2.32%" height="322" style="border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;font:antialias 8 돋움;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="73"/>
+                <Column size="178"/>
+                <Column size="76"/>
+                <Column size="176"/>
+                <Column size="67"/>
+                <Column size="65"/>
+                <Column size="95"/>
+                <Column size="55"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="8" text="패키지 구성 검사 목록"/>
+                <Cell row="1" style="background: ;" text="코드"/>
+                <Cell row="1" col="1" style="background: ;" text="검사명"/>
+                <Cell row="1" col="2" style="background: ;" text="처방코드"/>
+                <Cell row="1" col="3" style="background: ;" text="처방명"/>
+                <Cell row="1" col="4" style="background: ;" text="OCS구분"/>
+                <Cell row="1" col="5" style="background: ;" text="결과부서"/>
+                <Cell row="1" col="6" style="background: ;" text="금액"/>
+                <Cell row="1" col="7" style="background: ;" text="사용"/>
+              </Band>
+              <Band id="body">
+                <Cell style="background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:inspCd"/>
+                <Cell col="1" style="background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:inspNm"/>
+                <Cell col="2" style="background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:ocsCd"/>
+                <Cell col="3" style="background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:ocsNm"/>
+                <Cell col="4" displaytype="combo" style="background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:ocsDivCd" combodataset="dsOcsDivCd" combocodecol="code" combodatacol="value"/>
+                <Cell col="5" style="background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:rsltDeptNm"/>
+                <Cell col="6" displaytype="number" style="align:right;background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:amt"/>
+                <Cell col="7" style="background:#f6f6f6ff;background2:#eeeeeeff;" text="bind:useYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="dtInspGrid" taborder="8" binddataset="dsDtInsp" useinputpanel="false" autofittype="col" onsetfocus="dtInspGrid_onsetfocus" left="42.16%" top="400" right="2.32%" height="297" style="background:transparent;font:antialias 8 돋움;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="119"/>
+                <Column size="352"/>
+                <Column size="109"/>
+                <Column size="112"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="4" text="세부검사 항목"/>
+                <Cell row="1" style="background:@gradation;" text="검사항목코드"/>
+                <Cell row="1" col="1" style="background:@gradation;" text="검  사  항  목  명"/>
+                <Cell row="1" col="2" style="background:@gradation;" text="성    별"/>
+                <Cell row="1" col="3" style="background:@gradation;" text="실행여부"/>
+              </Band>
+              <Band id="body">
+                <Cell style="background:whitesmoke;background2:#eeeeeeff;" text="bind:dtInspCd"/>
+                <Cell col="1" style="background:whitesmoke;background2:#eeeeeeff;" text="bind:dtInspNm"/>
+                <Cell col="2" displaytype="combo" style="background:whitesmoke;background2:#eeeeeeff;" text="bind:genderCd" combodataset="dsGenderCd" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" displaytype="combo" style="background:whitesmoke;background2:#eeeeeeff;" text="bind:runYn" combodataset="dsRunYN" combocodecol="code" combodatacol="value"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="pckSearchBtn" taborder="9" onclick="pckSearchBtn_onclick" left="38.8%" top="71" right="58.64%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="addBtn" taborder="10" onclick="addBtn_onclick" left="65.52%" top="708" right="27.28%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="modBtn" taborder="11" onclick="modBtn_onclick" left="73.84%" top="708" right="18.96%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="delBtn" taborder="12" onclick="delBtn_onclick" left="82.16%" top="708" right="10.64%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="saveBtn" taborder="13" onclick="saveBtn_onclick" left="90.48%" top="708" right="2.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findPckList</Col>
+            <Col id="URL">erp47::sup/checkup/findPckList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsPck=dsPck</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPckInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findPckInspList.do</Col>
+            <Col id="outData">dsPckInsp=dsInsp</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDtInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findDtInspList.do</Col>
+            <Col id="outData">dsDtInsp=dsDtInsp</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchPckProcess</Col>
+            <Col id="URL">erp47::sup/checkup/batchPckProcess.do</Col>
+            <Col id="inData">dsPck=dsPck:U dsInsp=dsPckInsp:U</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="outData"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPck" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsPck_onrowposchanged">
+        <ColumnInfo>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="pckNm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="inspDivCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">SC031</Col>
+            <Col id="dsName">dsGenderCd</Col>
+          </Row>
+          <Row>
+            <Col id="code">SC049</Col>
+            <Col id="dsName">dsInspDivCd</Col>
+          </Row>
+          <Row>
+            <Col id="code">SC035</Col>
+            <Col id="dsName">dsOcsDivCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPckInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsPckInsp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+          <Column id="ocsCd" type="STRING" size="256"/>
+          <Column id="ocsNm" type="STRING" size="256"/>
+          <Column id="rsltDeptCd" type="STRING" size="256"/>
+          <Column id="rsltDeptNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="ocsDivCd" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDtInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="dtlInspCd" type="STRING" size="256"/>
+          <Column id="dtlInspNm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="runYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGenderCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsInspDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOcsDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRunYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">실행</Col>
+          </Row>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="value">미실행</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsUseYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Y</Col>
+            <Col id="value">사용</Col>
+          </Row>
+          <Row>
+            <Col id="code">N</Col>
+            <Col id="value">미사용</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+// 공통 스크립트
+include "scripts::commonScripts.xjs"; 
+include "scripts::supScripts.xjs";
+
+// 화면변수
+var mainGrid ;
+var pckCd ;
+
+
+// 코드바인드 및 전체조회
+this.SC_PckMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+	this.pckSearchBtn_onclick(null,null);
+}
+
+// 조회버튼
+this.pckSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var pckCd = this.pckCdEd.value;
+	var pckNm = this.pckNmEd.value;
+	var argument = 'pckCd='+pckCd+' pckNm='+pckNm;
+	var row = this.dsService.findRow('serviceID' , "findPckList");
+	this.dsService.setColumn(row, "argument", argument);
+	
+	this.gfnService("findPckList",false);
+	
+	this.addBtn.set_enable(false);
+	this.modBtn.set_enable(false);
+	this.delBtn.set_enable(false);
+	this.saveBtn.set_enable(false);
+
+}
+
+//  패키지 검사 조회
+this.dsPck_onrowposchanged=function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	if(obj != null)
+	{
+		pckCd = obj.getColumn(e.newrow, "pckCd").trim();
+	}
+	var argument = 'pckCd='+pckCd;
+	
+	var row = this.dsService.findRow('serviceID' , "findPckInspList");
+	this.dsService.setColumn(row, "argument", argument);
+
+	this.gfnService("findPckInspList",false);
+	
+}
+
+
+//  검사별 세부검사 조회
+this.dsPckInsp_onrowposchanged=function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	var argument = 'inspCd='+obj.getColumn(e.newrow , "inspCd");
+	var row = this.dsService.findRow('serviceID' , "findDtInspList");
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("findDtInspList",false);
+}
+
+//  그리드 포커스 이동 시 
+this.pckGrid_onsetfocus=function(obj:Grid, e:nexacro.SetFocusEventInfo)
+{
+	this.mainGrid = obj;
+	this.addBtn.set_enable(true);
+	this.modBtn.set_enable(true);
+	this.delBtn.set_enable(true);
+}
+
+this.inspGrid_onsetfocus=function(obj:Grid, e:nexacro.SetFocusEventInfo)
+{
+	this.mainGrid = obj;
+	this.addBtn.set_enable(true);
+	this.modBtn.set_enable(false);
+	this.delBtn.set_enable(true);
+}
+
+this.dtInspGrid_onsetfocus=function(obj:Grid, e:nexacro.SetFocusEventInfo)
+{
+	this.mainGrid = obj;
+	this.addBtn.set_enable(false);
+	this.modBtn.set_enable(false);
+	this.delBtn.set_enable(false);
+}
+
+
+// 추가
+this.addBtn_onclick=function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	switch(this.mainGrid.name)
+	{
+		case "pckGrid" : 
+				var param = {};
+				var retVal = this.gfnPopup("SC_PckAddPopForm","sup",param);
+			
+			if(retVal == 1)
+			{
+				alert(this.MSG_SUP_SAVE);
+				this.pckSearchBtn_onclick (null,null);
+			}
+			
+			break;
+
+		case "inspGrid" :
+			var param = { param : pckCd };
+			var retVal = this.gfnPopup("SC_PckInspPopForm","sup",param);
+			
+			this.saveBtn.set_enable(true);
+			
+			break;
+
+		case "dtInspGrid" : break;
+	}	
+}
+
+this.pCode=function(retVal)
+{
+	if(retVal == 1)
+		{
+
+			alert(this.MSG_SUP_SAVE);
+			this.pckSearchBtn_onclick (null,null);		
+		}
+}
+
+// 수정버튼
+this.modBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.mainGrid.name == "pckGrid")
+	{
+		var param = { param : pckCd };
+		this.gfnPopup("SC_PckAddPopForm","sup",param);
+	}	
+}
+
+// 삭제버튼
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.mainGrid.name == "inspGrid"){
+		this.saveBtn.set_enable(true);
+		this.dsPckInsp.deleteRow(this.dsPckInsp.rowposition);	
+	}else if(this.mainGrid.name == "pckGrid"){
+		this.saveBtn.set_enable(true);
+		this.dsPck.deleteRow(this.dsPck.rowposition);	
+	}
+}
+
+this.callBackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	} else {
+		if(svcID.slice(0,5)=="batch"){
+			alert(this.MSG_SUP_SAVE);
+		}
+ 	}
+}
+
+// 저장
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchPckProcess",false);
+	this.saveBtn.set_enable(false);
+}
+]]></Script>
+  </Form>
+</FDL>

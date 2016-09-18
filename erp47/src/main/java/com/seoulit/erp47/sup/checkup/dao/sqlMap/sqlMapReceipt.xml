@@ -79,6 +79,15 @@
 		DELETE FROM SC_RECEIPT
 		WHERE RSVT_NO = #{rsvtNo}
 		AND INSP_PLN_DATE = #{inspPlnDate}
+	</delete>
 	
+	<!-- 종합검진 접수 - 선택검사 일괄처리 추가 -->
+	<update id="insertPckInsp"> 
+		MERGE INTO SC_PCK_INSP USING DUAL ON (PCK_CD = #{pckCd} AND INSP_CD = #{inspCd}) WHEN NOT MATCHED THEN INSERT ( PCK_CD, INSP_CD, REG_ID, REG_IP, REG_DATE ) VALUES ( #{pckCd}, #{inspCd}, #{userId}, #{userIp}, TO_CHAR(SYSDATE,'YYYY-MM-DD')) 
+	</update>
+
+	<!-- 종합검진 접수 - 선택검사 일괄처리 삭제 -->
+	<delete id="deletePckInsp"> 
+	DELETE FROM SC_PCK_INSP WHERE PCK_CD = #{pckCd} AND INSP_CD = #{inspCd} 
 	</delete>
 </mapper>

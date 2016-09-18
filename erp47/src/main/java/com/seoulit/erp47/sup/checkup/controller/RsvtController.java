@@ -62,7 +62,7 @@ public class RsvtController {
     public void batchRsvtProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
     	 PlatformData inData = (PlatformData) request.getAttribute("inData");
          
-    	 System.out.println(inData.saveXml());
+    	 
          List<RsvtBean> rsvtList  = dataSetBeanMapper.datasetToBeans(inData, RsvtBean.class);
          List<ChoInspBean> choInspList = dataSetBeanMapper.datasetToBeans(inData, ChoInspBean.class);
 
