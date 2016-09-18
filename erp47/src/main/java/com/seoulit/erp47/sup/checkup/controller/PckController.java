@@ -66,6 +66,7 @@ public class PckController {
     public void batchPckProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
 
+        System.out.println(inData.saveXml());
         List<PckBean> pckList = dataSetBeanMapper.datasetToBeans(inData, PckBean.class);
         List<InspBean> pckInspList = dataSetBeanMapper.datasetToBeans(inData, InspBean.class);
         
@@ -80,6 +81,14 @@ public class PckController {
         }
         
         supCheckupServiceFacade.batchPckProcess(map);
+
+    }
+    
+    @RequestMapping("sup/checkup/batchPckProcess2.do")
+    public void batchPckProcess2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PckBean pckBean = dataSetBeanMapper.datasetToBean(inData, PckBean.class); 
+        supCheckupServiceFacade.batchPckProcess2(pckBean);
 
     }    
     
