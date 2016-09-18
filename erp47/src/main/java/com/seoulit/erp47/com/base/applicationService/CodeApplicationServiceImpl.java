@@ -59,4 +59,11 @@ public class CodeApplicationServiceImpl implements CodeApplicationService{
 		
 	}
 
+
+	@Override
+	public List<CodeNmBean> findCodePopupList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return codeDAO.findCodePopupList(argsMap);
+	}
+
 }

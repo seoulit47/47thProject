@@ -11,15 +11,15 @@
         <Button id="searchCustBtn" taborder="4" onclick="clickBtn" cssclass="DelBtn" left="32.08%" top="75" right="64.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Edit id="custCdNmEd" taborder="5" left="20.24%" top="77" right="68.24%" height="29"/>
         <Button id="searchBtn" taborder="6" onclick="clickBtn" cssclass="DelBtn" left="88.96%" top="75" right="2.24%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Grid id="Grid00" taborder="7" useinputpanel="false" left="2.8%" top="118" right="2.08%" height="634" autofittype="col" binddataset="dsCust">
+        <Grid id="custGrid" taborder="7" useinputpanel="false" left="2.8%" top="118" right="2.08%" height="634" autofittype="col" binddataset="dsCust" onexpanddown="custGrid_onexpanddown">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="110"/>
                 <Column size="153"/>
-                <Column size="102"/>
-                <Column size="92"/>
-                <Column size="102"/>
+                <Column size="136"/>
+                <Column size="153"/>
+                <Column size="156"/>
                 <Column size="104"/>
                 <Column size="116"/>
                 <Column size="104"/>
@@ -60,12 +60,12 @@
               <Band id="body">
                 <Cell edittype="normal" text="bind:custCd"/>
                 <Cell col="1" displaytype="date" edittype="date" text="bind:adptDt"/>
-                <Cell col="2" edittype="expand" text="bind:zipCd"/>
+                <Cell col="2" edittype="expand" text="bind:zipCd" expandshow="show"/>
                 <Cell col="3" edittype="normal" text="bind:telNo"/>
                 <Cell col="4" edittype="normal" text="bind:faxNo"/>
                 <Cell col="5" edittype="normal" text="bind:busCtgNm"/>
                 <Cell col="6" edittype="normal" text="bind:prsdntNm"/>
-                <Cell col="7" displaytype="combo" edittype="expand" text="bind:bankCd" combodataset="dsBank" combocodecol="code" combodatacol="bigValue"/>
+                <Cell col="7" displaytype="combo" edittype="expand" text="bind:bankCd" expandshow="show" combodataset="dsBank" combocodecol="code" combodatacol="bigValue"/>
                 <Cell col="8" edittype="normal" text="bind:dpstr"/>
                 <Cell col="9" edittype="combo" text="bind:gdUseYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
                 <Cell col="10" edittype="combo" text="bind:cardYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
@@ -83,6 +83,9 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="addBtn" taborder="8" left="37.76%" top="77" right="53.52%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
+        <Button id="deleteBtn" taborder="9" left="47.6%" top="78" right="43.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="saveBtn" taborder="10" left="57.76%" top="78" right="33.44%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -146,7 +149,11 @@
             <Col id="URL">erp47::log/base/findCustList.do</Col>
             <Col id="outData">dsCust=dsCust</Col>
           </Row>
-          <Row/>
+          <Row>
+            <Col id="serviceID">batchCustProcess</Col>
+            <Col id="URL">erp47::log/base/batchCustProcess.do</Col>
+            <Col id="inData">dsCust=dsCust:u</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>
@@ -155,7 +162,9 @@ include "scripts::logScripts.xjs";			//물류 스크립트
 include "scripts::commonGrid.xjs";
 
 
-this.clickBtn = function(obj)
+var row;
+
+this.clickBtn = function(obj)   //버튼이벤트를 한곳에서 관리
 {
 	switch(obj){
 	
@@ -163,21 +172,43 @@ this.clickBtn = function(obj)
 			     this.clicksearchCustBtn();
 			     break;
 			     
-			case this.searchBtn:
+			case this.searchBtn:      //조회버튼눌렀을때,
 				 this.clicksearchBtn();
 				 break;
-	
+				 
+			
+			case this.addBtn:      //등록버튼눌렀을때,
+				 this.clickaddBtn();
+				 break;
+			
+			case this.saveBtn:    //저장버튼눌렀을때,
+			     this.clicksaveBtn();
+			     break;
 	}
 }
 
-this.clicksearchCustBtn = function(){
+this.clicksaveBtn = function(){  //저장버튼
+
+		this.gfnService("batchCustProcess");
+
+}
+
+this.clickaddBtn  = function(){   //등록버튼
+
+		this.dsCust.addRow();
+	
+
+}
+
+
+this.clicksearchCustBtn = function(){ //거래처코드검색 팝업 창 띄우는 함수
 
 
 		this.logOpenCdDialog("cust");
 
 }
 
-this.clicksearchBtn = function(){
+this.clicksearchBtn = function(){ //조회버튼눌렀을때의 함수
 
 		var custCd = this.custCdEd.value;
 		var custNm =this.custCdNmEd.value;
@@ -185,7 +216,7 @@ this.clicksearchBtn = function(){
 		alert(custCd + custNm);
 		
 		var argument = "custCd='"+custCd+"' custNm='"+custNm+"' ";
-		
+		//controller에 보낼 argument  dsService에 setting
 		this.dsService.setColumn(0,"argument",argument);
 		
 		this.gfnService("findCustList",false);
@@ -197,6 +228,7 @@ this.clicksearchBtn = function(){
 
 this.setLogCodeArray =function(divCode,logCode,setCode,thrCode,logCdArray){
 //코드팝업폼에서 넘겨받은 값 셋팅하는 function .  배열로 값을 전달하였어요잉!
+//set_value("")  값을 셋팅하는 함수.		
 		switch(divCode){
 		
 			case "cust":
@@ -206,6 +238,15 @@ this.setLogCodeArray =function(divCode,logCode,setCode,thrCode,logCdArray){
 				break;
 		}
 
+}
+
+this.custGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
+{
+	row = e.row;
+	
+			if(e.col == 7){
+				this.gfnCodePopup("GA003");
+			}
 }
 ]]></Script>
   </Form>

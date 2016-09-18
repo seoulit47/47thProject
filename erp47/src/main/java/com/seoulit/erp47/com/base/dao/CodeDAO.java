@@ -14,5 +14,6 @@ public interface CodeDAO {
 		public void insertCode(CodeBean codeBean);
 		public void deleteCode(CodeBean codeBean);
 		public void updateCode(CodeBean codeBean);
+		public List<CodeNmBean> findCodePopupList(Map<String,String>argsMap);
 	
 }
