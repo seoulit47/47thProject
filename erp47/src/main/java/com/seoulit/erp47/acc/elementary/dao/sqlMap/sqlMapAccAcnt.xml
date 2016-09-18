@@ -29,17 +29,17 @@
         WHERE
             1=1
         <if test="acntNm != null">
-            AND A.ACNT_NM LIKE '%' || #{acntNm} || '%'
+            AND A.ACNT_NM LIKE '%' || #{acntNm} || '%'	<!-- 계정과목명 -->
         </if>
         <if test="accYear != null">
-            AND A.ACC_YEAR = #{accYear}
+            AND A.ACC_YEAR = #{accYear}			<!-- 회계년도  -->
         </if>
         <if test="creDebDiv != null">
-            AND A.CRE_DEB_DIV = #{creDebDiv}
+            AND A.CRE_DEB_DIV = #{creDebDiv}	<!-- 차대구분 --> 
             AND A.INPUT_YN = 'Y'
         </if>
         <if test="acntDiv != null">
-            AND A.ACNT_DIV = #{acntDiv}
+            AND A.ACNT_DIV = #{acntDiv}			<!-- 계정구분 -->
         </if>
         START WITH 
             PARENT_ACNT_CD IS NULL

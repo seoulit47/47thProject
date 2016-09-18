@@ -10,5 +10,4 @@ public interface AccAcntDAO {
     List<AccAcntBean> selectAccAcntList(Map<String, String> argsMap);
 
 
-
 }

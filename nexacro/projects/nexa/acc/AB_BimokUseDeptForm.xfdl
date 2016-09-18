@@ -66,11 +66,67 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="searchBtn" taborder="11" onclick="searchBtn_onclick" left="64.06%" top="83" right="26.56%" height="37" style="background:@gradation URL('img::searchBtn.png') stretch;border:0 none #999999ff ;color:#ffffffff;bordertype:normal 3 3 ;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="searchUseDeptBtn" taborder="11" left="64.94%" top="84" right="25.68%" height="35" style="background:@gradation URL('img::searchBtn.png') stretch;border:0 none #999999ff ;color:#ffffffff;bordertype:normal 3 3 ;gradation:none 0,0 white 100,100 black;" onclick="searchUseDeptBtn_onclick"/>
         <Button id="addDeptBtn" taborder="12" left="70.21%" top="728" right="21.19%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;"/>
         <Button id="delBtn" taborder="13" left="80.37%" top="728" right="11.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;"/>
         <Button id="saveBtn" taborder="14" left="90.53%" top="728" right="0.88%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;gradation:linear 0,0 #fefefeff 0,100 #ecece5ff;"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findBudgUseDeptList</Col>
+            <Col id="URL">erp47::acc/budget/findBudgUseDeptList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsBudgBimok=dsBudgBimok dsBudgUserDept=dsBudgUserDept</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">findUseDeptCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchBudgUseDeptProcess</Col>
+            <Col id="URL">erp47::acc/budget/batchBudgUseDeptProcess.do</Col>
+            <Col id="inData">dsBudgUserDept=dsBudgUserDept:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">copyBimok</Col>
+            <Col id="URL">erp47::acc/budget/copyBimok.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsBudgBimok=dsBudgBimok</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"; 
+
+
+//*****
+//조회
+//*****
+this.searchUseDeptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = this.yearSpin.value;
+	var bimokNm = this.bimokEd.value;
+	var deptNm = this.deptEd.value;
+	
+	var argument = 'accYear='+accYear+' bimokNm='+bimokNm+' deptNm='+deptNm;
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findBudgUseDeptList");
+	this.dsBudgUserDept.filter("dimokCd=="+this.dsBudgBiomk.getColumn(e.row,"bimokCd"));
+}
+]]></Script>
   </Form>
 </FDL>

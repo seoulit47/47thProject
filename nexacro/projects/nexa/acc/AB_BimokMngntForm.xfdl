@@ -305,6 +305,15 @@ this.bimokGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
 }
 
 
+this.setCode = function(code,arrRtn){
+	if(cell==4){
+		this.dsBudgBimok.setColumn(this.dsBudgBimok.rowposition,"acntCd",arrRtn[0]);
+		this.dsBudgBimok.setColumn(this.dsBudgBimok.rowposition,"acntNm",arrRtn[1]);
+	}else if(cell==6){
+		this.dsBudgBimok.setColumn(this.dsBudgBimok.rowposition,"assiSubCd",arrRtn[0]);
+		this.dsBudgBimok.setColumn(this.dsBudgBimok.rowposition,"assiSubNm",arrRtn[1]);
+	}
+}
 
 
 
