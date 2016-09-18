@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.seoulit.erp47.log.base.dao.CustDAO;
 import com.seoulit.erp47.log.base.dao.WhDAO;
 import com.seoulit.erp47.log.base.to.BindLogCdBean;
+import com.seoulit.erp47.log.base.to.CustBean;
 import com.seoulit.erp47.log.base.to.OutLogCdBean;
 import com.seoulit.erp47.log.base.to.WhBean;
 
@@ -80,6 +81,40 @@ public class LogBaseApplicationServiceImpl implements LogBaseApplicationService{
 						whDAO.updateWhList(whBean);
 					}
 				
+				
+			}
+		
+		
+	}
+
+	@Override
+	public List<CustBean> findCustList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return custDAO.findCustList(argsMap);
+	}
+
+	@Override
+	public void batchCustProcess(List<CustBean> batchCustList) {
+		// TODO Auto-generated method stub
+		// bean 과 list 확장 for문
+	
+			for(CustBean custbean : batchCustList){
+				
+						if(custbean.getStatus().equals("inserted")){  //거래처 추가
+							
+								custDAO.insertCustList(custbean);
+						
+						}else if(custbean.getStatus().equals("deleted")){
+							
+							//  코드 팝업 끝내고 할 것 
+							
+						}else if(custbean.getStatus().equals("updated")){
+							
+							
+							// 코드 팝업 끝내고 할 것 
+						}
+						
+						
 				
 			}
 		

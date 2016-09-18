@@ -81,5 +81,18 @@ public class CodeController {
 	    	comBaseServiceFacade.batchCode(batchCodeList);
 	    }
 	
-	    
+	@RequestMapping("com/findCodePopupList.do")
+	 public void findCodePopupList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+			
+			System.out.println("코드팝업매서드 입니다.");
+		
+			PlatformData inData = (PlatformData)request.getAttribute("inData");
+			PlatformData outData = (PlatformData)request.getAttribute("outData");
+			
+			Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
+			
+			List<CodeNmBean>findCodePopupList=comBaseServiceFacade.findCodePopupList(argsMap);
+			
+			datasetBeanMapper.beansToDataset(outData, findCodePopupList, CodeNmBean.class);
+	}
 }

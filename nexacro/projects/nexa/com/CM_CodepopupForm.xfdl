@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.25%" top="0" right="1%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="코드도움" left="13.92%" top="-4" right="58.73%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc" taborder="1" text="코드명" onclick="subCodeStc_onclick" left="18%" top="72" right="60.25%" height="27" style="background:papayawhip;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="codeNameEdit" taborder="2" left="44.25%" top="74" right="17.5%" height="27"/>
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="7.25%" top="110" right="7%" height="370" autofittype="col" binddataset="dsCodeNm">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="118"/>
+                <Column size="203"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="코드"/>
+                <Cell col="1" text="코드명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:code"/>
+                <Cell col="1" text="bind:codeName"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCodeNm" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCodePopupList</Col>
+            <Col id="URL">erp47::com/findCodePopupList.do</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callback</Col>
+            <Col id="outData">dsCodeNm=dsCodeNm</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+
+
+this.CM_CodepopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.dsService.setColumn(0, "argument", "code=" + this.parent.code);
+    
+    alert(this.parent.code);
+    
+    this.gfnService("findCodePopupList");
+}
+]]></Script>
+  </Form>
+</FDL>
