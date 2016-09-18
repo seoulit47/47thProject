@@ -14,7 +14,7 @@
         <Static id="Static01" taborder="1" text="계정과목명" left="2%" top="55" right="83.97%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
         <Edit id="acntNmEd" taborder="2" left="17.64%" top="55" right="63.53%" height="26" class="AreaEdt"/>
         <Static id="Static03" taborder="3" text="계정구분" left="40.88%" top="55" right="46.89%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
-        <Grid id="accAcntGrid" taborder="5" binddataset="dsAccAcnt" useinputpanel="false" autofittype="col" left="1.6%" top="88" right="3.21%" height="487" class="AreaGrid">
+        <Grid id="accAcntGrid" taborder="5" binddataset="dsAccAcnt" useinputpanel="false" autofittype="col" left="1.6%" top="88" right="3.21%" height="487" class="AreaGrid" oncelldblclick="accAcntGrid_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -119,7 +119,40 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		this.dsService.setColumn(0,"argument",argument);
 		this.gfnService("findAccAcntCode");
 	}
+	/*else if(this.opener.gubun=='autoJourHelp'){
+		var acntNm=this.acntNmEd.value;
+		argument = 'accYear='+accYear
+				+' acntNm='+acntNm
+				+' acntDiv='+acntDiv
+				+' creDebDiv=2';//creDebDiv 부모창에서 넘겨주는 변수				
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("findAccAcntCode");
+	}else if(this.opener.gubun=='sudongJourHelp'){
+		var acntNm=this.acntNmEd.value;
+		argument = 'accYear='+accYear
+				+' acntNm='+acntNm
+				+' acntDiv='+acntDiv
+				+' creDebDiv=1';//creDebDiv 부모창에서 넘겨주는 변수				
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("findAccAcntCode");
+	}*/
 }
+
+this.accAcntGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array();
+	var i=0;
+	
+	arrRtn[i++] = this.dsAccAcnt.getColumn(e.row,"acntCd");
+	arrRtn[i++] = this.dsAccAcnt.getColumn(e.row,"acntNm");
+	arrRtn[i++] = this.dsAccAcnt.getColumn(e.row,"assiTypeCd");
+	
+	this.opener.setCode(this.parent.code, arrRtn);
+	this.close();
+}
+
+
+
 ]]></Script>
   </Form>
 </FDL>
