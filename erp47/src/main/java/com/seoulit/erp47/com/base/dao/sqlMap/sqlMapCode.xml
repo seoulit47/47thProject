@@ -113,6 +113,19 @@
     	WHERE DETAIL_CODE=#{detailCode}
     	AND CODE=#{code}
     </update>
-    
+  
+  <select id="findCodePopupList" parameterType="map" flushCache="false" resultType="CodeNmBean">
+ 	  
+ 	  <!-- resultType 이니깐 as로 별칭 !   테이블의 컬럼값을 넥사의 컬럼값이랑 같게 맞춰준다. -->
+ 	   SELECT
+            DETAIL_CODE AS code,
+            DETAIL_CODE_NAME AS codeName
+        FROM 
+            CM_CODE
+        WHERE 
+            CODE = #{code}
+  
+  </select>
+   
     
   </mapper>

@@ -26,8 +26,9 @@ public interface ComBaseServiceFacade {
 	// code 수젇,삭제,등록
 	public void batchCode(List<CodeBean> batchCodeList);
 
-
+	// codePopupForm에서의 코드조회
 	
+	public List<CodeNmBean>findCodePopupList(Map<String,String>argsMap);
 	
 	
 	
