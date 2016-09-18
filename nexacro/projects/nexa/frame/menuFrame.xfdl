@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1024" height="91" titletext="New Form">
+  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1024" height="91" onload="menuFrame_onload" visible="true">
     <Layouts>
       <Layout>
         <Tab id="Tab00" taborder="0" left="15.63%" top="0" right="0.1%" height="78" tabindex="0" scrollbars="autoboth" usecontrolkey="false" enableevent="true">
           <Tabpages>
-            <Tabpage id="tabpage1" text="인사"/>
+            <Tabpage id="tabpage1" text="인사" style="background:#ffffffff;">
+              <Layouts>
+                <Layout>
+                  <Menu id="menu" taborder="0" innerdataset="@gdsMenu" idcolumn="menuCode" captioncolumn="menuName" levelcolumn="menuLevel" userdatacolumn="menuUrl" onmenuclick="menu_onmenuclick" left="2.9%" top="7" right="0.35%" height="37" style="itempadding:0 13 0 13;popupitempadding:1 3 1 3;popupfont:bold antialias 14 맑은 고딕;background:transparent;color:black;font:bold antialias 14 맑은 고딕;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
             <Tabpage id="tabpage2" text="물류"/>
             <Tabpage id="tabpage3" text="회계"/>
             <Tabpage id="tabpage4" text="원무" applystyletype="keep"/>
@@ -15,5 +21,64 @@
         <Static id="Static00" taborder="1" text="ERP47" left="5.47%" top="12" right="86.33%" height="60"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAuthList</Col>
+            <Col id="URL">erp47::com/findAuthList.do</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">authCallback</Col>
+            <Col id="outData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findMenuList</Col>
+            <Col id="URL">erp47::com/findMenuList.do</Col>
+            <Col id="outData">dsMenu=dsMenu</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsData" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="userdata" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMenu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="menuCode" type="STRING" size="256"/>
+          <Column id="menuName" type="STRING" size="256"/>
+          <Column id="menuLevel" type="STRING" size="256"/>
+          <Column id="menuUrl" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+메뉴 프레임                                            						                                                                         
+@Path			시스템 레이아웃 프레임          				   				
+@Description 	메뉴프레임						
+@Author	  		김진환				    			                        								                                            
+@Create         2016. 09. 18.                             		                    				                                            
+********************************************************************************/
+
+include "scripts::commonScripts.xjs";
+this.menuFrame_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	
+}
+
+]]></Script>
   </Form>
 </FDL>

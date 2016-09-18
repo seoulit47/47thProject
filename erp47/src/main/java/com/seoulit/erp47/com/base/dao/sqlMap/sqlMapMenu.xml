@@ -4,6 +4,12 @@
 	<!-- mapper의 namespace는 Interface인 실제 DAO의 경로로 설정한다. -->
 	<cache flushInterval="86400000" eviction="LRU" />
 
+	<select resultType="MenuBean" useCache="true" flushCache="false" id="selectMenuList"> 
+		SELECT menuCode AS menuCode, menuLevel AS menuLevel, menuName AS menuName, menuUrl AS menuUrl 
+		FROM (SELECT m.MENU_CODE AS menuCode, m.MENU_LEVEL AS menuLevel, m.MENU_NAME AS menuName, m.MENU_URL AS menuUrl, m.MO_MENU_CODE FROM CM_PERMISSION_MAPPING p, CM_MENU m WHERE p.MENU_CODE=m.MENU_CODE AND m.USE_YN='Y' AND p.AUTH_CODE='admin') 
+		START WITH MO_MENU_CODE IS NULL CONNECT BY PRIOR MENUCODE = MO_MENU_CODE ORDER BY MENUCODE 
+	</select>
+
 	<select id="selectAuthMenuList" flushCache="false" useCache="true" resultType="MenuBean">
 		SELECT
 			cm.menu_code as menuCode,

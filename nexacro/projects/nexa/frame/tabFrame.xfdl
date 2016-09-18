@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="tabFrame" classname="tabFrame" left="0" top="0" width="1024" height="43" titletext="New Form">
+  <Form id="tabFrame" classname="tabFrame" left="0" top="0" width="1024" height="43">
     <Layouts>
       <Layout>
         <Tab id="topTab" taborder="0" left="0.68%" top="5" right="3.71%" height="33" onchanged="topTab_onchanged" onextrabuttonclick="topTab_onextrabuttonclick" tabindex="0" scrollbars="autoboth" style="buttonbackground:#4682b466;buttongradation:liner 0,0 #feffffff 0,100 aliceblue [60% #f2f2efff][70% #ecece9ff];buttonborder:2 solid transparent ;buttonpadding:8 16 8 16;background:transparent;border:0 solid transparent ;bordertype:round 3 3 ;font:12 antialias 맑은 고딕;">

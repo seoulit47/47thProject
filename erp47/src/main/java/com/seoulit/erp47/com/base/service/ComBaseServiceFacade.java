@@ -25,6 +25,9 @@ public interface ComBaseServiceFacade {
 
 	// code 수젇,삭제,등록
 	public void batchCode(List<CodeBean> batchCodeList);
+	
+	//메뉴
+	public List<MenuBean> findMenuList();
 
 
 	

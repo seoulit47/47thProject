@@ -27,8 +27,13 @@
             <Col id="serviceID">loginCheck</Col>
             <Col id="URL">erp47::com/loginCheck.do</Col>
             <Col id="inData">dsHmEmp=dsHmEmp</Col>
-            <Col id="outData">dsHmEmp=gdsEmp</Col>
+            <Col id="outData">gdsEmp=gdsEmp</Col>
             <Col id="callbackFunc">loginCheckCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findMenuList</Col>
+            <Col id="URL">erp47::com/findMenuList.do</Col>
+            <Col id="outData">gdsMenu=dsMenu</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -63,6 +68,9 @@ this.checkBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		var row = this.dsService.findRow("serviceID" , "loginCheck");
 		this.dsService.setColumn(row,"argument",argument);
 		this.gfnService("loginCheck");
+		application.gdsEmp.setColumn(0,"empNo",empId);
+		
+		
 	}
 	
 	
@@ -98,8 +106,12 @@ this.setEmpInfo=function(empNo,empNm){
 this.loginCheckCallback = function(svcID, ErrorCode, ErrorMsg)
 {
   if(ErrorCode == 1){
+	var pms = application.gdsEmp.getColumn(0,"pms"); //권한
+	//this.gfnService("findMenuList");
+	
 	alert(this.idNmEd.value+"님 환영합니다.");
-	application.mainframe.visible = true;
+	
+	application.mainframe.set_visible(true);
 	this.close();
   }else if(ErrorCode == 0){
 	alert("비밀번호가 맞지 않습니다.");
