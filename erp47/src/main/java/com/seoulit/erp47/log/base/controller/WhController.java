@@ -41,4 +41,18 @@ public class WhController {
 		datasetBeanMapper.beansToDataset(outData, findWhList, WhBean.class);
 		
 	}
+	@RequestMapping("/log/base/batchWhProcess")
+	public void batchWhProcess(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		
+		
+		PlatformData inData = (PlatformData)request.getAttribute("inData");
+		
+	    List<WhBean>batchWhList=datasetBeanMapper.datasetToBeans(inData, WhBean.class); 
+	    //넥사에서 보낸  데이터셋을 빈즈화 시켜서 리스트에  담기.. 조회를 제외한 추가,저장,삭제,업데이트는 이런식으로.
+	    
+	    logBaseServiceFacade.batchWhProcess(batchWhList);
+	    
+	    
+	    
+	}
 }

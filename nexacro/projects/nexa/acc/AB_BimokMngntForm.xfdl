@@ -297,10 +297,10 @@ this.bimokGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
 	cell=e.cell
 	
 	if(e.cell==4){
-	alert("[4]"+e.cell);
 		var accCodeArr = application.open("계정과목도움","acc::AE_AcntCodePopupForm.xfdl",this.parent,{gubun:'acntCD'},'',e.screenX,e.screenY);
 	}else if(e.cell==6){
-	alert("[6]"+e.cell);
+		var acntCd = this.dsBudgBimok.getColumn(this.dsBudgBimok.rowposition,"acntCd");
+		var assiSubArr = application.open("보조과목도움","acc::AE_AccAssiSubPopupForm.xfdl",this.parent,{acntCd:acntCd},'',e.screenX,e.screenY);
 	}
 }
 

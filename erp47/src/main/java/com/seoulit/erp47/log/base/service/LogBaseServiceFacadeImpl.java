@@ -31,4 +31,12 @@ public class LogBaseServiceFacadeImpl implements LogBaseServiceFacade{
 		return logBaseApplicationService.findWhList(argsMap);
 	}
 
+
+	@Override
+	public void batchWhProcess(List<WhBean> batchWhList) {
+		// TODO Auto-generated method stub
+		
+		logBaseApplicationService.batchWhProcess(batchWhList);
+	}
+
 }

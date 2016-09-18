@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AE_AcntCodePopupForm" classname="AE_AcntCodePopupForm" left="0" top="0" width="499" height="596" titletext="New Form" onload="AE_AcntCodePopupForm_onload">
+  <Form id="AE_AcntCodePopupForm" classname="AE_AcntCodePopupForm" left="0" top="0" width="490" height="596" titletext="New Form" onload="AE_AcntCodePopupForm_onload">
     <Layouts>
       <Layout>
-        <Div id="Div06" taborder="0" left="0%" top="4" right="1.6%" height="52" style="background:transparent URL('img::titleBar7.jpg') stretch;">
+        <Div id="Div06" taborder="0" left="0%" top="4" right="3.21%" height="52" style="background:transparent URL('img::titleBar7.jpg') stretch;">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="계정과목 조회" left="6.31%" top="8" right="49.08%" height="29" style="font:bold 15 arial;"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="1" text="계정과목명" left="2%" top="55" right="82.36%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
-        <Edit id="acntNmEd" taborder="2" left="19.24%" top="55" right="61.92%" height="26" class="AreaEdt"/>
-        <Static id="Static03" taborder="3" text="계정구분" left="40.88%" top="55" right="45.29%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
-        <Grid id="accAcntGrid" taborder="5" binddataset="dsAccAcnt" useinputpanel="false" autofittype="col" left="1.6%" top="88" right="1.6%" height="495" class="AreaGrid">
+        <Static id="Static01" taborder="1" text="계정과목명" left="2%" top="55" right="83.97%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
+        <Edit id="acntNmEd" taborder="2" left="17.64%" top="55" right="63.53%" height="26" class="AreaEdt"/>
+        <Static id="Static03" taborder="3" text="계정구분" left="40.88%" top="55" right="46.89%" height="26" style="background:#c4d2daff;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
+        <Grid id="accAcntGrid" taborder="5" binddataset="dsAccAcnt" useinputpanel="false" autofittype="col" left="1.6%" top="88" right="3.21%" height="487" class="AreaGrid">
           <Formats>
             <Format id="default">
               <Columns>
@@ -39,8 +39,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="searchBtn" taborder="6" left="78.76%" top="53" right="1.8%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
-        <Combo id="acntDivCombo" taborder="7" left="56.31%" top="55" right="23.85%" height="26" class="AreaCombo" index="-1" innerdataset="@dsGA050" codecolumn="code" datacolumn="value"/>
+        <Button id="searchBtn" taborder="6" left="78.76%" top="53" right="3.41%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Combo id="acntDivCombo" taborder="7" left="54.71%" top="55" right="25.45%" height="26" class="AreaCombo" index="-1" innerdataset="@dsGA050" codecolumn="code" datacolumn="value"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -113,7 +113,7 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	
 	if(this.parent.gubun == 'acntCD'){		//gubun 은 open 할때 주는 인자 값
 		var acntNm=this.acntNmEd.value;
-		argument = 'accYear='+accYear;
+		argument = 'accYear='+accYear
 			+' acntNm='+acntNm
 			+' acntDiv='+acntDiv
 		this.dsService.setColumn(0,"argument",argument);
