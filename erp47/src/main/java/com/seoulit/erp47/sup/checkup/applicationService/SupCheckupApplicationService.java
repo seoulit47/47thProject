@@ -54,5 +54,8 @@ public interface SupCheckupApplicationService {
     /* 종합검진 접수 - 접수 취소 */
     public void cancelReceipt(ReceiptBean receiptBean);
     
+    /* 종합검진 접수 - 접수 저장 */
+    public void batchReceiptProcess(Map<String, Object> map);
+    
     
 }

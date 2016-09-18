@@ -127,4 +127,10 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
         supCheckupApplicationService.cancelReceipt(receiptBean);
     }
     
+    /* 종합검진 접수 - 접수 저장 */
+    @Override               
+    public void batchReceiptProcess(Map<String, Object> map) {
+        supCheckupApplicationService.batchReceiptProcess(map);
+    }
+    
 }

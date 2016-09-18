@@ -208,4 +208,24 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	    receiptDAO.updateCancelYN(receiptBean);
 	}
 
+	/* 종합검진 접수 - 접수 저장 */
+	@Override                 
+    public void batchReceiptProcess(Map<String, Object> map) {
+        RsvtBean rsvtBean = (RsvtBean) map.get("rsvtBean");
+        
+        List<ChoInspBean> choInspList = (List<ChoInspBean>) map.get("choInspList");
+        
+        if(rsvtBean!=null){
+            String choInspAmt = rsvtBean.getChoInspAmt();
+            String choInspAmt2 = choInspAmt.replaceAll(",", "");
+            
+            rsvtBean.setChoInspAmt(choInspAmt2);
+            
+            rsvtDAO.updateRsvt(rsvtBean);
+        }
+        
+        if(choInspList!=null){
+            batchChoInspProcess(choInspList);
+        }
+    }
 }

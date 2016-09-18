@@ -133,7 +133,6 @@
               <Edit id="reducNmEd" taborder="241" readonly="true" left="69.53%" top="159" right="6.77%" height="30" style="border:1 solid #d5d5d5ff ;"/>
               <Edit id="pckNmEd" taborder="242" readonly="true" left="69.53%" top="123" right="6.64%" height="30" style="border:1 solid #d5d5d5ff ;" compCheck="EsEd"/>
               <Edit id="rsvtNoEd" taborder="243" left="56.9%" top="15" right="23.96%" height="30" compCheck="EsEd"/>
-              <Calendar id="inspDateCal" taborder="244" left="56.9%" top="87" right="23.96%" height="30" compCheck="EsCal"/>
               <Edit id="smsEd" taborder="245" readonly="true" left="13.93%" top="159" right="56.51%" height="30" style="border:1 solid #d5d5d5ff ;"/>
               <Edit id="aplMan" taborder="246" left="13.93%" top="195" right="76.3%" height="30"/>
               <Edit id="rlEd" taborder="247" imemode="alpha" left="35.16%" top="195" right="56.38%" height="30"/>
@@ -175,6 +174,7 @@
               <Div id="Div15" taborder="285" text="예약금액" left="45.7%" top="267" right="44.4%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
               <MaskEdit id="MaskEdit00" taborder="286" left="32.03%" top="15" right="56.25%" height="30" mask="##:##" readonly="true" style=":disabled {align:center middle;}" type="string"/>
               <MaskEdit id="inspTimeMask" taborder="287" readonly="true" type="string" mask="##:##" left="76.82%" top="86" right="11.46%" height="32" style=":disabled {align:center middle;}"/>
+              <Calendar id="inspDateCal" taborder="288" left="57.16%" top="89" right="24.35%" height="27"/>
             </Layout>
           </Layouts>
           <InitValue>
@@ -219,7 +219,6 @@
       <BindItem id="item5" compid="compBox.patNmEd" propid="value" datasetid="dsRsvt" columnid="patNm"/>
       <BindItem id="item6" compid="compBox.genderCombo" propid="value" datasetid="dsRsvt" columnid="gender"/>
       <BindItem id="item7" compid="compBox.ageEd" propid="value" datasetid="dsRsvt" columnid="age"/>
-      <BindItem id="item8" compid="compBox.inspDateCal" propid="value" datasetid="dsRsvt" columnid="inspPlnDate"/>
       <BindItem id="item1" compid="compBox.MaskEdit00" propid="value" datasetid="dsRsvt" columnid="rsvtTime"/>
       <BindItem id="item9" compid="compBox.inspTimeMask" propid="value" datasetid="dsRsvt" columnid="inspPlnTime"/>
       <BindItem id="item10" compid="compBox.regNo1Ed" propid="value" datasetid="dsRsvt" columnid="rrn1"/>
@@ -239,6 +238,7 @@
       <BindItem id="item25" compid="compBox.rsvtAmtEd" propid="value" datasetid="dsRsvt" columnid="rsvtAmt"/>
       <BindItem id="item26" compid="compBox.basicInspSumAmtEd" propid="value" datasetid="dsRsvt" columnid="basicInspSumAmt"/>
       <BindItem id="item27" compid="compBox.cancelYnChk" propid="value" datasetid="dsRsvt" columnid="cancelYn"/>
+      <BindItem id="item8" compid="compBox.inspDateCal" propid="value" datasetid="dsRsvt" columnid="inspPlnDate"/>
     </Bind>
     <Objects>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -612,7 +612,6 @@ this.dsRsvt_canrowposchange=function(obj:Dataset, e:nexacro.DSRowPosChangeEventI
 this.newRsvtNo=function()
 {
 	var row = this.dsRsvt.rowposition;
-
 	var sysDate = this.gfnDate('yyyy-MM-dd/HHMi',false);
 
 	var date = sysDate.split("/");
@@ -692,7 +691,8 @@ this.btnBox2_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	if(this.supCheckMdData(this.compBox))
 	{
-	
+		var row = this.dsRsvt.rowposition;
+		this.dsRsvt.setColumn(row, "inspPlnDate", this.compBox.inspDateCal.value);
 		var rsvtNo = this.compBox.rsvtNoEd.value;
 		var count = this.dsChoInsp.rowcount;
 		

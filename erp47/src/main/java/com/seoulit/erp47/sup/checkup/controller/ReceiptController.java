@@ -1,6 +1,7 @@
 package com.seoulit.erp47.sup.checkup.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -113,6 +114,29 @@ public class ReceiptController {
         ReceiptBean receiptBean = dataSetBeanMapper.datasetToBean(inData, ReceiptBean.class);
 
         supCheckupServiceFacade.cancelReceipt(receiptBean);
+    }
+    
+    /* 종합검진 접수 - 접수 저장 */
+    @RequestMapping("sup/checkup/batchReceiptProcess.do")
+    public void batchReceiptProcess(HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        RsvtBean rsvtBean = dataSetBeanMapper.datasetToBean(inData, RsvtBean.class);
+        
+        List<ChoInspBean> choInspList= dataSetBeanMapper.datasetToBeans(inData, ChoInspBean.class);
+
+        Map<String, Object> map = new HashMap<>();
+
+        if(rsvtBean!=null){
+            map.put("rsvtBean", rsvtBean);
+        }
+        
+        if(choInspList.size() > 0){
+            map.put("choInspList", choInspList);
+        }
+        
+        supCheckupServiceFacade.batchReceiptProcess(map);
     }
 }
 
