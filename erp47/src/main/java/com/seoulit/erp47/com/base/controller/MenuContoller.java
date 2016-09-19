@@ -72,4 +72,12 @@ public class MenuContoller {
 		
 		comBaseServiceFacade.BatchAuthAndMenu(map);
 	}
+	
+	// 메뉴 목록 조회
+    @RequestMapping("com/findMenuList.do")
+    public void findMenuList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+        List<MenuBean> menuList = comBaseServiceFacade.findMenuList();
+        datasetBeanMapper.beansToDataset(outData, menuList, MenuBean.class);
+    }
 }

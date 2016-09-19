@@ -10,6 +10,15 @@
 		WHERE P.PCK_CD = #{pckCd} AND P.INSP_CD = I.INSP_CD AND I.OCS_CD = E.EMR_CD 
 	</select>
     
+    <!-- 종합검진 패키지 관리 - EX패키지 조회 -->
+	<select resultType="InspBean" useCache="true" flushCache="false" id="selectExPckInspList">
+		SELECT #{pckCd} AS PCK_CD, INSP_CD, INSP_NM, OCS_CD, E.EMR_NM AS OCS_NM, RSLT_DEPT_CD, FN_CM_CODENAME('SC036',RSLT_DEPT_CD) AS RSLT_DEPT_NM, OCS_DIV_CD, AMT 
+		FROM SC_INSP, SC_EMR_CODE E 
+		WHERE INSP_CD NOT IN (SELECT INSP_CD FROM SC_PCK_INSP WHERE PCK_CD = #{pckCd} ) 
+	<if test="useYn != null"> AND NVL(USE_YN,'Y') = #{useYn} </if>
+		AND OCS_CD = E.EMR_CD 
+	</select>
+    
 	<select resultType="PckBean" useCache="true" flushCache="false" id="selectPckList">
 		SELECT /*+ INDEX(SC_PCK SC_PCK_INDEX)*/ PCK_CD ,PCK_NM ,GENDER_CD ,AMT ,INSP_DIV_CD ,USE_YN 
 		FROM SC_PCK 
@@ -25,4 +34,24 @@
 			</if>
 		</where>
 	</select>
+	
+	<!-- 종합검진 패키지 관리 - 저장 -->
+	<update id="updatePck"> 
+		UPDATE SC_PCK SET PCK_NM = #{pckNm}, GENDER_CD = #{genderCd}, AMT = #{amt}, INSP_DIV_CD = #{inspDivCd}, USE_YN = #{useYn}, REG_ID = #{userId}, REG_IP = #{userIp}, REG_DATE = TO_CHAR(SYSDATE,'YYYY-MM-DD') WHERE PCK_CD = #{pckCd} 
+	</update>
+	<update id="insertPck"> 
+		MERGE INTO SC_PCK USING DUAL ON (PCK_CD = #{pckCd}) WHEN NOT MATCHED THEN INSERT ( PCK_CD, PCK_NM, GENDER_CD, AMT, INSP_DIV_CD, USE_YN, REG_ID, REG_IP, REG_DATE ) VALUES ( #{pckCd}, #{pckNm}, NVL(#{genderCd},'B'), #{amt}, #{inspDivCd}, NVL(#{useYn},'Y'), #{userId}, #{userIp}, TO_CHAR(SYSDATE,'YYYY-MM-DD')) 
+	</update>
+	<delete id="deletePck"> 
+		DELETE FROM SC_PCK WHERE PCK_CD = #{pckCd} 
+	</delete>
+	<delete id="deletePckInsp"> 
+		DELETE FROM SC_PCK_INSP WHERE PCK_CD = #{pckCd} 
+	</delete>
+	<update id="insertPckInsp"> 
+		MERGE INTO SC_PCK_INSP USING DUAL ON (pckCd = #{pckCd}) WHEN NOT MATCHED THEN INSERT ( PCK_CD, INSP_CD ) values( #{pckCd}, #{inspCd} ) 
+	</update>
+	<delete id="deletePckInsp2"> 
+		DELETE FROM SC_PCK_INSP WHERE PCK_CD = #{pckCd} AND INSP_CD= #{inspCd} 
+	</delete>
 </mapper>

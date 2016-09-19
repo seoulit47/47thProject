@@ -1,4 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GlobalVariables>
-  <Dataset id="Dataset0"/>
+  <Dataset id="gdsEmp" onrowposchanged="dsHmEmp_onrowposchanged">
+    <ColumnInfo>
+      <Column id="payDate" type="STRING" size="256"/>
+      <Column id="zipCd" type="STRING" size="256"/>
+      <Column id="workStatus" type="STRING" size="256"/>
+      <Column id="workPeriod" type="STRING" size="256"/>
+      <Column id="tel" type="STRING" size="256"/>
+      <Column id="rrn" type="STRING" size="256"/>
+      <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+      <Column id="retDate" type="STRING" size="256"/>
+      <Column id="pms" type="STRING" size="256"/>
+      <Column id="phone" type="STRING" size="256"/>
+      <Column id="permaddr" type="STRING" size="256"/>
+      <Column id="payStep" type="STRING" size="256"/>
+      <Column id="password" type="STRING" size="256"/>
+      <Column id="natnt" type="STRING" size="256"/>
+      <Column id="mateYn" type="STRING" size="256"/>
+      <Column id="localYn" type="STRING" size="256"/>
+      <Column id="jobtt" type="STRING" size="256"/>
+      <Column id="jobrk" type="STRING" size="256"/>
+      <Column id="jobcl" type="STRING" size="256"/>
+      <Column id="image" type="STRING" size="256"/>
+      <Column id="hireDiv" type="STRING" size="256"/>
+      <Column id="hireDate" type="STRING" size="256"/>
+      <Column id="gender" type="STRING" size="256"/>
+      <Column id="frignSingleTxrate" type="STRING" size="256"/>
+      <Column id="forinNum" type="STRING" size="256"/>
+      <Column id="fax" type="STRING" size="256"/>
+      <Column id="extsn" type="STRING" size="256"/>
+      <Column id="empNo" type="STRING" size="256"/>
+      <Column id="empNm" type="STRING" size="256"/>
+      <Column id="deptCd" type="STRING" size="256"/>
+      <Column id="birthday" type="STRING" size="256"/>
+      <Column id="addr" type="STRING" size="256"/>
+      <Column id="detailAddr" type="STRING" size="256"/>
+      <Column id="email" type="STRING" size="256"/>
+      <Column id="deptNm" type="STRING" size="256"/>
+      <Column id="bankNm" type="STRING" size="256"/>
+      <Column id="accountNm" type="STRING" size="256"/>
+      <Column id="sts" type="STRING" size="256"/>
+      <Column id="lunar" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Dataset id="gdsMenu">
+    <ColumnInfo>
+      <Column id="menuCode" type="STRING" size="256"/>
+      <Column id="menuName" type="STRING" size="256"/>
+      <Column id="menuLevel" type="STRING" size="256"/>
+      <Column id="menuUrl" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
 </GlobalVariables>

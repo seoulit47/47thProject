@@ -8,18 +8,18 @@
         <Static id="Static00" taborder="1" text="거래처 관리" left="4.8%" top="5" right="81.68%" height="51" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
         <Static id="custCdStc" taborder="2" text="거래처코드" onclick="subCodeStc_onclick" left="2.4%" top="72" right="90.64%" height="34" style="background:beige;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="custCdEd" taborder="3" left="9.44%" top="77" right="80.4%" height="29"/>
-        <Button id="searchCustBtn" taborder="4" onclick="DelBtn_onclick" cssclass="DelBtn" left="32.08%" top="75" right="64.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchCustBtn" taborder="4" onclick="clickBtn" cssclass="DelBtn" left="32.08%" top="75" right="64.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Edit id="custCdNmEd" taborder="5" left="20.24%" top="77" right="68.24%" height="29"/>
-        <Button id="DelBtn07" taborder="6" onclick="DelBtn_onclick" cssclass="DelBtn" left="88.96%" top="75" right="2.24%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Grid id="Grid00" taborder="7" useinputpanel="false" left="2.8%" top="118" right="2.08%" height="634" autofittype="col">
+        <Button id="searchBtn" taborder="6" onclick="clickBtn" cssclass="DelBtn" left="88.96%" top="75" right="2.24%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="custGrid" taborder="7" useinputpanel="false" left="2.8%" top="118" right="2.08%" height="634" autofittype="col" binddataset="dsCust" onexpanddown="custGrid_onexpanddown">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="110"/>
                 <Column size="153"/>
-                <Column size="102"/>
-                <Column size="92"/>
-                <Column size="102"/>
+                <Column size="136"/>
+                <Column size="153"/>
+                <Column size="156"/>
                 <Column size="104"/>
                 <Column size="116"/>
                 <Column size="104"/>
@@ -58,37 +58,196 @@
                 <Cell row="1" col="11" text="사용여부"/>
               </Band>
               <Band id="body">
-                <Cell/>
-                <Cell col="1"/>
-                <Cell col="2"/>
-                <Cell col="3"/>
-                <Cell col="4"/>
-                <Cell col="5"/>
-                <Cell col="6"/>
-                <Cell col="7"/>
-                <Cell col="8"/>
-                <Cell col="9"/>
-                <Cell col="10"/>
-                <Cell col="11"/>
-                <Cell row="1"/>
-                <Cell row="1" col="1"/>
-                <Cell row="1" col="2" colspan="3"/>
-                <Cell row="1" col="5"/>
-                <Cell row="1" col="6"/>
-                <Cell row="1" col="7" colspan="2"/>
-                <Cell row="1" col="9"/>
-                <Cell row="1" col="10"/>
-                <Cell row="1" col="11"/>
+                <Cell edittype="normal" text="bind:custCd"/>
+                <Cell col="1" displaytype="date" edittype="date" text="bind:adptDt"/>
+                <Cell col="2" edittype="expand" text="bind:zipCd" expandshow="show"/>
+                <Cell col="3" edittype="normal" text="bind:telNo"/>
+                <Cell col="4" edittype="normal" text="bind:faxNo"/>
+                <Cell col="5" edittype="normal" text="bind:busCtgNm"/>
+                <Cell col="6" edittype="normal" text="bind:prsdntNm"/>
+                <Cell col="7" displaytype="combo" edittype="expand" text="bind:bankCd" expandshow="show" combodataset="dsBank" combocodecol="code" combodatacol="bigValue"/>
+                <Cell col="8" edittype="normal" text="bind:dpstr"/>
+                <Cell col="9" edittype="combo" text="bind:gdUseYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
+                <Cell col="10" edittype="combo" text="bind:cardYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
+                <Cell col="11" edittype="normal" text="bind:hospCls"/>
+                <Cell row="1" edittype="normal" text="bind:custNm"/>
+                <Cell row="1" col="1" edittype="normal" text="bind:bussNo" mask="###-##-#####"/>
+                <Cell row="1" col="2" colspan="3" edittype="normal" text="bind:addr"/>
+                <Cell row="1" col="5" edittype="normal" text="bind:busShpNm"/>
+                <Cell row="1" col="6" edittype="mask" text="bind:resNo" mask="######-#######"/>
+                <Cell row="1" col="7" colspan="2" edittype="normal" text="bind:accNo"/>
+                <Cell row="1" col="9" edittype="combo" text="bind:gdUseYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
+                <Cell row="1" col="10" edittype="combo" text="bind:riUseYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
+                <Cell row="1" col="11" edittype="combo" text="bind:useYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
+        <Button id="addBtn" taborder="8" left="37.76%" top="77" right="53.52%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
+        <Button id="deleteBtn" taborder="9" left="47.6%" top="78" right="43.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="saveBtn" taborder="10" left="57.76%" top="78" right="33.44%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsCust" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="adptDt" type="STRING" size="256"/>
+          <Column id="bussNo" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="accNo" type="STRING" size="256"/>
+          <Column id="busCtgNm" type="STRING" size="256"/>
+          <Column id="busShpNm" type="STRING" size="256"/>
+          <Column id="prsdntNm" type="STRING" size="256"/>
+          <Column id="resNo" type="STRING" size="256"/>
+          <Column id="dpstr" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="gpUseYn" type="STRING" size="256"/>
+          <Column id="gdUseYn" type="STRING" size="256"/>
+          <Column id="cardYn" type="STRING" size="256"/>
+          <Column id="riUseYn" type="STRING" size="256"/>
+          <Column id="hospCls" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsYb" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="yn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="yn">Y</Col>
+          </Row>
+          <Row>
+            <Col id="yn">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBank">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCustList</Col>
+            <Col id="URL">erp47::log/base/findCustList.do</Col>
+            <Col id="outData">dsCust=dsCust</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchCustProcess</Col>
+            <Col id="URL">erp47::log/base/batchCustProcess.do</Col>
+            <Col id="inData">dsCust=dsCust:u</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  		//공통 스크립트
 include "scripts::logScripts.xjs";			//물류 스크립트
 include "scripts::commonGrid.xjs";
 
+
+var row;
+
+this.clickBtn = function(obj)   //버튼이벤트를 한곳에서 관리
+{
+	switch(obj){
+	
+			case this.searchCustBtn:    //거래처 코드 검색 팝업창
+			     this.clicksearchCustBtn();
+			     break;
+			     
+			case this.searchBtn:      //조회버튼눌렀을때,
+				 this.clicksearchBtn();
+				 break;
+				 
+			
+			case this.addBtn:      //등록버튼눌렀을때,
+				 this.clickaddBtn();
+				 break;
+			
+			case this.saveBtn:    //저장버튼눌렀을때,
+			     this.clicksaveBtn();
+			     break;
+	}
+}
+
+this.clicksaveBtn = function(){  //저장버튼
+
+		this.gfnService("batchCustProcess");
+
+}
+
+this.clickaddBtn  = function(){   //등록버튼
+
+		this.dsCust.addRow();
+	
+
+}
+
+
+this.clicksearchCustBtn = function(){ //거래처코드검색 팝업 창 띄우는 함수
+
+
+		this.logOpenCdDialog("cust");
+
+}
+
+this.clicksearchBtn = function(){ //조회버튼눌렀을때의 함수
+
+		var custCd = this.custCdEd.value;
+		var custNm =this.custCdNmEd.value;
+		
+		alert(custCd + custNm);
+		
+		var argument = "custCd='"+custCd+"' custNm='"+custNm+"' ";
+		//controller에 보낼 argument  dsService에 setting
+		this.dsService.setColumn(0,"argument",argument);
+		
+		this.gfnService("findCustList",false);
+		
+	
+	
+}
+
+
+this.setLogCodeArray =function(divCode,logCode,setCode,thrCode,logCdArray){
+//코드팝업폼에서 넘겨받은 값 셋팅하는 function .  배열로 값을 전달하였어요잉!
+//set_value("")  값을 셋팅하는 함수.		
+		switch(divCode){
+		
+			case "cust":
+			
+				this.custCdEd.set_value(logCdArray[0]);
+				this.custCdNmEd.set_value(logCdArray[1]);
+				break;
+		}
+
+}
+
+this.custGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
+{
+	row = e.row;
+	
+			if(e.col == 7){
+				this.gfnCodePopup("GA003");
+			}
+}
 ]]></Script>
   </Form>
 </FDL>

@@ -120,10 +120,8 @@ include "scripts::supScripts.xjs";
 //	화면 로드
 this.SC_CardPayPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	this.gfnBind();
-	alert(this.parent.param);
+	this.gfnBind();	
 	this.dsRece.copyData(this.parent.param);
-	alert(this.dsRece.saveXML());
 	this.compBox.payBalMask.set_value(this.parent.payAmt);	
 }
 

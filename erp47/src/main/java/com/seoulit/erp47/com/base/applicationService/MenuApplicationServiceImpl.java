@@ -35,5 +35,11 @@ public class MenuApplicationServiceImpl implements MenuApplicationService {
 			}
 		}
 	}
+	
+	//메뉴목록조회
+	@Override
+    public List<MenuBean> findMenuList() {
+        return menuDAO.selectMenuList();
+    }
 
 }

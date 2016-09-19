@@ -18,5 +18,7 @@ public interface MenuDAO {
 	public void insertMenu(MenuBean menuBean);
 
 	public void deleteMenu(MenuBean menuBean);
+	
+	public List<MenuBean> selectMenuList();
 
 }

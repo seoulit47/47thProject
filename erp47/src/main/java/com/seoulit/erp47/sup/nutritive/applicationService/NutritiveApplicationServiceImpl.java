@@ -134,8 +134,7 @@ public class NutritiveApplicationServiceImpl implements NutritiveApplicationServ
 
 	@Override /* 영양관리 식단 관리 - 코드조회 */
 	public List<NCodeBean> findDivList() {
-		List<NCodeBean> divList = carteDAO.selectDivList();
-		return divList;
+		return carteDAO.selectDivList();
 	}
 
 	@Override /* 영양관리 식단 관리 - 식단조회 */

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="bottomFrame" classname="bottomFrame" left="0" top="0" width="1024" height="46" titletext="New Form">
+  <Form id="bottomFrame" classname="bottomFrame" left="0" top="0" width="1024" height="46">
     <Layouts>
       <Layout>
         <Static id="Static00" taborder="0" text="민라디미르 트롤" left="0.88%" top="6" right="0.78%" height="34" style="font:bold 14 arial;"/>

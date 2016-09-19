@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_PckAddPopForm" classname="SC_PckAddPopForm" left="0" top="0" width="528" height="437" titletext="종합검진 패키지" onload="SC_PckAddPopForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="5.3%" top="66" right="5.49%" height="310" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="Div04" taborder="1" left="0%" top="0" right="3.22%" height="60" style="background:transparent URL('img::titleBar6.jpg');"/>
+        <Static id="Static00" taborder="2" text="종합검진 패키지" left="10.8%" top="-2" right="28.41%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Button id="closeBtn" taborder="3" onclick="closeBtn_onclick" left="77.84%" top="384" right="5.11%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="compBox" taborder="4" left="5.68%" top="75" right="7.2%" height="295">
+          <Layouts>
+            <Layout width="460" height="239">
+              <Div id="Div05" taborder="33" text="패키지코드" left="3.91%" top="13" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div00" taborder="34" text="패키지명" left="3.91%" top="60" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div03" taborder="35" text="검진구분" left="3.91%" top="107" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div02" taborder="36" text="성별" left="3.91%" top="154" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div01" taborder="37" text="검사금액" left="3.91%" top="201" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <MaskEdit id="amtMask" taborder="38" mask="###,###" autoselect="true" left="26.74%" top="201" right="2.83%" height="30" style="align:center middle;"/>
+              <Div id="Div04" taborder="39" text="사용여부" left="3.91%" top="248" right="76.09%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="pckCdEd" taborder="40" left="26.74%" top="13" right="2.83%" height="30" compCheck="EsEd"/>
+              <Edit id="pckNmEd" taborder="41" left="26.74%" top="60" right="2.83%" height="30" compCheck="EsEd"/>
+              <Combo id="inspDivCombo" taborder="42" innerdataset="dsInspDivCd" codecolumn="code" datacolumn="value" left="26.74%" top="107" right="2.83%" height="30"/>
+              <Combo id="genderCombo" taborder="43" innerdataset="dsGenderCd" codecolumn="code" datacolumn="value" left="26.74%" top="154" right="2.83%" height="30"/>
+              <Combo id="useYnCombo" taborder="44" innerdataset="dsUseYN" codecolumn="code" datacolumn="value" onitemchanged="compBox_useYnCombo_onitemchanged" left="26.74%" top="248" right="2.83%" height="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="saveBtn" taborder="5" onclick="saveBtn_onclick" left="59.66%" top="384" right="23.3%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsUseYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Y</Col>
+            <Col id="value">사용</Col>
+          </Row>
+          <Row>
+            <Col id="code">N</Col>
+            <Col id="value">미사용</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">batchPckProcess</Col>
+            <Col id="URL">erp47::sup/checkup/batchPckProcess2.do</Col>
+            <Col id="inData">dsPck=dsPck:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">pckCallBack</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPckList</Col>
+            <Col id="URL">erp47::sup/checkup/findPckList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsPck=dsPck</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">pckCallBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPck" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="pckNm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="inspDivCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGenderCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">SC031</Col>
+            <Col id="dsName">dsGenderCd</Col>
+          </Row>
+          <Row>
+            <Col id="dsName">dsInspDivCd</Col>
+            <Col id="code">SC049</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsInspDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">llll</Col>
+            <Col id="value">lllll</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="compBox.pckCdEd" propid="value" datasetid="dsPck" columnid="pckCd"/>
+      <BindItem id="item1" compid="compBox.pckNmEd" propid="value" datasetid="dsPck" columnid="pckNm"/>
+      <BindItem id="item2" compid="compBox.inspDivCombo" propid="value" datasetid="dsPck" columnid="inspDivCd"/>
+      <BindItem id="item3" compid="compBox.genderCombo" propid="value" datasetid="dsPck" columnid="genderCd"/>
+      <BindItem id="item4" compid="compBox.amtMask" propid="value" datasetid="dsPck" columnid="amt"/>
+      <BindItem id="item5" compid="compBox.useYnCombo" propid="value" datasetid="dsPck" columnid="useYn"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+// 공통 스크립트
+include "scripts::supScripts.xjs";
+include "scripts::commonScripts.xjs"; 
+
+// 코드바인드 및 수정할 패키지 조회 
+this.SC_PckAddPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+
+	if(!this.gfnIsNull(this.parent.param))			
+	{	
+		alert(this.parent.param);
+		
+		var pckCd = this.parent.param;
+		var argument = 'pckCd='+pckCd;
+		var row = this.dsService.findRow('serviceID' , "findPckList");
+		this.dsService.setColumn(row, "argument", argument);
+		
+
+		this.gfnService("findPckList");
+		
+		this.compBox.pckCdEd.set_enable(false);
+		this.compBox.genderCombo.set_enable(false);
+		
+	}
+	else							
+	{	
+		this.dsPck.addRow();
+	}
+}
+
+// 저장
+this.saveBtn_onclick=function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.supCheckMdData(this.compBox))
+	{
+		//this.fn_setUserData(this.dsPck);
+		this.gfnService("batchPckProcess");
+	}
+}
+
+//  저장 후 callBack
+this.pckCallBack=function(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)
+	{
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	}else{
+		trace(this.dsPck.saveXML());
+		this.opener.pCode(1);
+		this.close();
+	}
+}
+
+// 닫기
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

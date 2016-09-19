@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.sup.checkup.applicationService.SupCheckupApplicationService;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
+import com.seoulit.erp47.sup.checkup.to.DtInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
@@ -52,6 +53,25 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 	   supCheckupApplicationService.batchRsvtProcess(map);
 	}
 	 
+	/* 종합검진 세부검사관리 - 검사 조회 */
+	@Override                 
+	public List<InspBean> findSimpleInspList(Map<String, String> argsMap) {
+	    List<InspBean> inspList = supCheckupApplicationService.findSimpleInspList(argsMap);
+	    return inspList;
+	}
+
+	/* 종합검진 세부검사관리 - 세부검사 조회 */
+	@Override                
+	public List<DtInspBean> findDtInspList(Map<String, String> argsMap) {
+	    List<DtInspBean> dtInspList = supCheckupApplicationService.findDtInspList(argsMap);
+	    return dtInspList;
+	}
+
+	 /* 종합검진 세부검사관리 - 수정, 추가 */
+	@Override                
+	public void batchDtInspProcess(List<DtInspBean> dtInspList) {
+	    supCheckupApplicationService.batchDtInspProcess(dtInspList);
+	}
 	 
 	/* 종합검진 패키지관리 - 패키지 검사목록 조회 */
 	@Override               
@@ -59,6 +79,17 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 	   List<InspBean> inspList = supCheckupApplicationService.findInspList(argsMap);
 	   return inspList;
 	}
+	
+	/* 종합검진 패키지관리 - 저장 */
+	@Override               
+    public void batchPckProcess(Map<String, Object> map) {
+        supCheckupApplicationService.batchPckProcess(map);
+    }
+    
+    @Override
+    public void batchPckProcess2(PckBean pckBean) {
+        supCheckupApplicationService.batchPckProcess2(pckBean);
+    }
 
 	 /*종합검진 선택검사관리 - 선택 검사목록 조회*/
 	@Override
@@ -94,6 +125,13 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
         return pckList;
     }
 	
+	/* 종합검진 패키지관리 - EX 패키지 조회 */
+	@Override                
+    public List<InspBean> findExPckInspList(Map<String, String> argsMap) {
+        List<InspBean> inspList = supCheckupApplicationService.findExPckInspList(argsMap);
+        return inspList;
+    }
+	
 	/* 종합검진 접수 - 감면조회  */
 	@Override                
     public List<ReducBean> findReducList(Map<String, String> argsMap) {
@@ -125,6 +163,18 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
     @Override                
     public void cancelReceipt(ReceiptBean receiptBean) {
         supCheckupApplicationService.cancelReceipt(receiptBean);
+    }
+    
+    /* 종합검진 접수 - 접수 저장 */
+    @Override               
+    public void batchReceiptProcess(Map<String, Object> map) {
+        supCheckupApplicationService.batchReceiptProcess(map);
+    }
+    
+    /* 종합검진 접수 - 선택검사 일괄처리 */
+    @Override                
+    public void batchPckInspProcess(List<InspBean> pckInspList) {
+        supCheckupApplicationService.batchPckInspProcess(pckInspList);
     }
     
 }

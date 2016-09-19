@@ -9,4 +9,6 @@ public interface MenuApplicationService {
 	public List<MenuBean> findAllMenu();
 	public List<MenuBean> findAuthMenuList(Map<String, String> codeName);
 	public void batchMenu(List<MenuBean> menuBeans);
+	
+	public List<MenuBean> findMenuList();
 }
