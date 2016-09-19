@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
+import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
@@ -12,11 +13,11 @@ import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
  * @Package  com.seoul.his.hrs.guntae.service
  * @Class    GuntaeServiceFacade.java
  * @Create   2016. 8. 30.
- * @Author   PYH
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated
- *     
+ *     2016. 09. 19.
  */
 public interface GuntaeServiceFacade {
 
@@ -27,13 +28,13 @@ public interface GuntaeServiceFacade {
     void batchHdayProcess(List<HdayBean> list);
 
     //개인휴가 조회
-    //List<HolidayBean> findHolidayList(Map<String, String> argsMap);
+    List<HolidayBean> findHolidayList(Map<String, String> argsMap);
 
     //관리자 휴가신청 조회
-    //List<HolidayBean> findAdminHolidayList(Map<String, String> argsMap);
+    List<HolidayBean> findAdminHolidayList(Map<String, String> argsMap);
 
     //휴가신청 일괄처리
-    //void batchHolidayProcess(List<HolidayBean> list);
+    void batchHolidayProcess(List<HolidayBean> list);
 
     //출퇴근시간 조회
     List<InoutWorkTimeBean> findInoutWorkTimeList(Map<String, String> argsMap);

@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.hrs.guntae.dao.GuntaeDAO;
 import com.seoulit.erp47.hrs.guntae.dao.HdayDAO;
+import com.seoulit.erp47.hrs.guntae.dao.HolidayDAO;
 import com.seoulit.erp47.hrs.guntae.dao.InoutWorkTimeDAO;
 import com.seoulit.erp47.hrs.guntae.dao.OverTimeWorkDAO;
 import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
+import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
@@ -19,7 +21,7 @@ import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
  * @Package  com.seoul.his.hrs.guntae.applicationService
  * @Class    GuntaeAsImpl.java
  * @Create   2016. 9. 06.
- * @Author   pyh
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated
@@ -32,7 +34,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     HdayDAO hdayDAO;
 
     //@Autowired
-    //HolidayDAO holidayDAO;
+    HolidayDAO holidayDAO;
     
     @Autowired
     InoutWorkTimeDAO inoutWorkTimeDAO;
@@ -68,7 +70,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
         }
 
     }
-/*
+
     //개인휴가 조회
     @Override
     public List<HolidayBean> findHolidayList(Map<String, String> argsMap) {
@@ -100,7 +102,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
         }
 
     }
-    */
+
     //출퇴근시간 조회
     @Override
     public List<InoutWorkTimeBean> findInoutWorkTimeList(Map<String, String> argsMap) {

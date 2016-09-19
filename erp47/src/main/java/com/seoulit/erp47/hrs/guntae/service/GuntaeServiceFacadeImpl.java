@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.seoulit.erp47.hrs.guntae.applicationService.GuntaeApplicationService;
 import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
+import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
@@ -16,11 +17,11 @@ import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
  * @Package  com.seoul.his.hrs.guntae.service
  * @Class    GuntaeServiceFacadeImpl.java
  * @Create   2016. 8. 30.
- * @Author   PYH
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated
- *      
+ *      2016. 09. 19
  */
 @Service
 public class GuntaeServiceFacadeImpl implements GuntaeServiceFacade{
@@ -40,27 +41,26 @@ public class GuntaeServiceFacadeImpl implements GuntaeServiceFacade{
     	guntaeApplicationService.batchHdayProcess(list);
 
     }
-/*
+
     //개인휴가 조회
     @Override
     public List<HolidayBean> findHolidayList(Map<String, String> argsMap) {
-        return guntaeAS.findHolidayList(argsMap);
+        return guntaeApplicationService.findHolidayList(argsMap);
     }
 
     //관리자 휴가신청 조회
     @Override
     public List<HolidayBean> findAdminHolidayList(Map<String, String> argsMap) {
-        return guntaeAS.findAdminHolidayList(argsMap);
+        return guntaeApplicationService.findAdminHolidayList(argsMap);
     }
 
     //휴가신청 일괄처리
     @Override
     public void batchHolidayProcess(List<HolidayBean> list) {
-        System.out.println("일괄처리 서비스퍼사드 타나??");
-        guntaeAS.batchHolidayProcess(list);
+    	guntaeApplicationService.batchHolidayProcess(list);
 
     }
-    */
+
     //출퇴근시간 조회
     @Override
     public List<InoutWorkTimeBean> findInoutWorkTimeList(Map<String, String> argsMap) {

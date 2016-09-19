@@ -7,11 +7,11 @@
         <Div id="Div01" taborder="0" positionstep="-1" left="0.23%" top="0" width="425" height="60" style="background:transparent URL('img::titleBar2.jpg');">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="사원검색" left="13.18%" top="8" right="63.76%" height="36"/>
+              <Static id="Static00" taborder="0" text="사원검색" left="13.18%" top="8" right="63.76%" height="36" style="font:bold 12 arial;"/>
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="empGrid" taborder="1" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncelldblclick="empGrid_oncelldblclick" left="7.49%" top="113" right="6.79%" height="407">
+        <Grid id="empGrid" taborder="1" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncelldblclick="empGrid_oncelldblclick" left="7.73%" top="113" right="6.56%" height="407">
           <Formats>
             <Format id="default">
               <Columns>
