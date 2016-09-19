@@ -51,4 +51,6 @@
       <Column id="menuUrl" type="STRING" size="256"/>
     </ColumnInfo>
   </Dataset>
+  <Variable id="gvTabIndex" initval="0"/>
+  <Variable id="rsvtNo"/>
 </GlobalVariables>

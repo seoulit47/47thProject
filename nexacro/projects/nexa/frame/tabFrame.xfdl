@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="tabFrame" classname="tabFrame" left="0" top="0" width="1024" height="43">
+  <Form id="tabFrame" classname="tabFrame" left="0" top="0" width="1024" height="43" onload="tabFrame_onload">
     <Layouts>
       <Layout>
         <Tab id="topTab" taborder="0" left="0.68%" top="5" right="3.71%" height="33" onchanged="topTab_onchanged" onextrabuttonclick="topTab_onextrabuttonclick" tabindex="0" scrollbars="autoboth" style="buttonbackground:#4682b466;buttongradation:liner 0,0 #feffffff 0,100 aliceblue [60% #f2f2efff][70% #ecece9ff];buttonborder:2 solid transparent ;buttonpadding:8 16 8 16;background:transparent;border:0 solid transparent ;bordertype:round 3 3 ;font:12 antialias 맑은 고딕;">
@@ -10,8 +10,89 @@
             <Tabpage id="tabpage2" text="tabpage2"/>
           </Tabpages>
         </Tab>
-        <Static id="Static00" taborder="1" text="탭프레임 민용666" left="51.66%" top="7" right="12.99%" height="29"/>
+        <Button id="allCloseBtn" taborder="1" text="X" onclick="allCloseBtn_onclick" left="97.17%" top="5" right="0.68%" height="29" style="background:gainsboro;color:orangered;font:bold 13 antialias 맑은 고딕;"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+탭 프레임                                            						                                                                         
+@Path			시스템 레이아웃 프레임          				   				
+@Description 	각 화면으로 이동할 수 있는 탭 프레임						
+@Author	  		김진환				    			                        								                                            
+@Create         2016. 09. 19.                             		                    				                                            
+********************************************************************************/
+
+include "scripts::commonScripts.xjs";
+
+// 폼 로드시
+this.tabFrame_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	// 탭 초기화
+	for (var i = (this.topTab.tabpages.length-1); i >= 0; i--) {
+		this.topTab.removeTabpage(i);
+	}
+	
+}
+
+// 탭 추가 함수
+// @Param (탭페이지에 연결할 URL, 탭에 표시할 텍스트)
+this.fn_addTabpage = function(menuURL, menuNM) 
+{	
+	
+	var result = this.topTab.insertTabpage("tabpage"+application.gvTabIndex, application.gvTabIndex,"",menuNM);
+	if(result == -1) {
+		alert("화면 로딩이 실패하였습니다.");
+	} else {
+		application.gvTabIndex++;
+	}
+}
+
+// 모든 창 닫기
+this.allCloseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if (confirm("모든 창을 닫으시겠습니까?")) {
+		var tabCnt = this.topTab.tabpages.length;
+		for (var i = (this.topTab.tabpages.length-1); i >= 0; i--) {
+			var childName = this.topTab.tabpages[i].url;
+			var objChild = application.mainframe.vframeSet.frameSet.frames[childName];
+			application.mainframe.vframeSet.frameSet.removeChild(childName);
+			objChild.destroy();
+			objChild = null;	
+			this.topTab.removeTabpage(i);
+		}
+	}
+	application.gvTabIndex = 0;
+}
+
+// 탭 변경시 기존 탭 작아지고 새로 눌러진 탭 키우기
+this.topTab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo) 
+{
+	if (this.topTab.tabpages[e.postindex] == null) return;
+	
+	var preChildName  = obj.tabpages[e.preindex].url;
+	var postChildName = obj.tabpages[e.postindex].url;
+	
+	var objPreChild  = application.mainframe.vframeSet.frameSet.frames[preChildName];
+	var objPostChild = application.mainframe.vframeSet.frameSet.frames[postChildName];
+	
+	objPreChild.set_openstatus("minimize");
+	objPostChild.set_openstatus("maximize");
+	objPostChild.setFocus();
+}
+
+// 탭 버튼 옆에 추가적으로 보여지는 extrabutton 을 눌렀을 때 발생하는 이벤트
+this.topTab_onextrabuttonclick = function(obj:Tab, e:nexacro.TabMouseEventInfo)
+{	
+	if (confirm(obj.tabpages[e.index].text + " 탭을 닫으시겠습니까?")) {
+		var childName = obj.tabpages[e.index].url;
+		var objChild = application.mainframe.vframeSet.frameSet.frames[childName];
+		application.mainframe.vframeSet.frameSet.removeChild(childName);
+		objChild.destroy();
+		objChild = null;	
+		obj.removeTabpage(e.index);
+	}
+}
+
+
+]]></Script>
   </Form>
 </FDL>

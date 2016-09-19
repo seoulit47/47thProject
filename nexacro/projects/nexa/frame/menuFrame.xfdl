@@ -79,6 +79,16 @@ this.menuFrame_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	
 }
 
+
+this.menu_onmenuclick = function(obj:Menu, e:nexacro.MenuClickEventInfo)
+{
+	this.dsData.setColumn(0, 0, e.id);
+	this.dsData.setColumn(0, 1, e.userdata);
+	
+	var menuName=application.gdsMenu.lookup("menuCode",this.dsData.getColumn(0,"id"),"menuName"); //클릭한 메뉴id의 메뉴이름 가져옴.
+	this.gfnOpen(this.dsData.getColumn(0, "id"), this.dsData.getColumn(0, "userdata"), menuName);//클릭한 메뉴의 아이디, 메뉴url, 메뉴이름을 넘김.
+	
+}
 ]]></Script>
   </Form>
 </FDL>

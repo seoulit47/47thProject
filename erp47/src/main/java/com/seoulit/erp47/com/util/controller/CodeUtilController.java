@@ -38,8 +38,7 @@ public class CodeUtilController {
             throws Exception {
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         PlatformData inData = (PlatformData) request.getAttribute("inData");
-        List<BindCodeBean> bindCodeList = dataSetBeanMapper.datasetToBeans(inData,
-                BindCodeBean.class);
+        List<BindCodeBean> bindCodeList = dataSetBeanMapper.datasetToBeans(inData,BindCodeBean.class);
         Map<String, List<OutCodeBean>> bindCodeMap = utilServiceFacade.bindCode(bindCodeList);
         dataSetBeanMapper.bindCode(outData, bindCodeMap, bindCodeList, OutCodeBean.class);
     }

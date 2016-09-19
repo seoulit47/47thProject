@@ -107,7 +107,7 @@ this.loginCheckCallback = function(svcID, ErrorCode, ErrorMsg)
 {
   if(ErrorCode == 1){
 	var pms = application.gdsEmp.getColumn(0,"pms"); //권한
-	//this.gfnService("findMenuList");
+	this.gfnService("findMenuList");
 	
 	alert(this.idNmEd.value+"님 환영합니다.");
 	
