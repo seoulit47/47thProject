@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.seoulit.erp47.acc.budget.dao.BudgBimokDAO;
+import com.seoulit.erp47.acc.budget.dao.BudgUseDeptDAO;
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
+import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
 
 
 @Component
@@ -17,7 +19,8 @@ public class AccBudgetApplicationServiceImpl implements AccBudgetApplicationServ
 	
 	@Autowired
 	BudgBimokDAO budgBimokDAO;
-
+	@Autowired
+	BudgUseDeptDAO budgUseDeptDAO;
 
     // 예산비목 조회	
 	@Override
@@ -56,5 +59,28 @@ public class AccBudgetApplicationServiceImpl implements AccBudgetApplicationServ
 				}
 			}
 			
+		}
+
+		// 예산사용부서 조회
+		@Override
+		public List<BudgUseDeptBean> findBudgUseDept(Map<String, String> queryMap) {
+			List<BudgUseDeptBean> budgUseDeptList = budgUseDeptDAO.selectBudgUseDept(queryMap);
+			return budgUseDeptList;
+		}
+		
+		// 예산사용부서 저장    
+		@Override
+		public void batchBudgUseDeptProcess(List<BudgUseDeptBean> useDeptBeanList) {
+			for(BudgUseDeptBean budgUseDeptBean:useDeptBeanList) {
+				String status = budgUseDeptBean.getStatus();
+
+				if(status.equals("inserted")) {
+					budgUseDeptDAO.insertBudgUseDept(budgUseDeptBean);
+				}else if(status.equals("updated")) {
+					budgUseDeptDAO.updateBudgUseDept(budgUseDeptBean);
+				}else if(status.equals("deleted")) {
+					budgUseDeptDAO.deleteBudgUseDept(budgUseDeptBean);
+				}
+			}
 		}
 }
