@@ -6,40 +6,49 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seoulit.erp47.hrs.guntae.dao.GuntaeDAO;
+import com.seoulit.erp47.hrs.guntae.dao.HdayDAO;
+import com.seoulit.erp47.hrs.guntae.dao.HolidayDAO;
 import com.seoulit.erp47.hrs.guntae.dao.InoutWorkTimeDAO;
+import com.seoulit.erp47.hrs.guntae.dao.OverTimeWorkDAO;
+import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.HdayBean;
+import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
-
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
+import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.applicationService
  * @Class    GuntaeAsImpl.java
- * @Create   2016. 5. 27.
- * @Author   yi
+ * @Create   2016. 9. 06.
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated
- *      2016.05.27
+ *     
  */
 @Service
 public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
 
-    /*@Autowired
+    @Autowired
     HdayDAO hdayDAO;
 
     @Autowired
     HolidayDAO holidayDAO;
-    */
+    
     @Autowired
     InoutWorkTimeDAO inoutWorkTimeDAO;
-    /*
+
     @Autowired
     OverTimeWorkDAO overTimeWorkDAO;
 
     @Autowired
     GuntaeDAO guntaeDAO;
 
-    @Autowired
-    YeonchaDAO yeonchaDAO;
+    //@Autowired
+    //YeonchaDAO yeonchaDAO;
 
     //휴일 조회
     @Override
@@ -54,14 +63,11 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
         for(HdayBean hdayBean : list){
 
             switch (hdayBean.getStatus()) {
-            case "inserted" : hdayDAO.callHday(hdayBean); break;
-            case "updated" : hdayDAO.callHday(hdayBean); break;
-            case "deleted" : hdayDAO.deleteHday(hdayBean); break;
-
+	            case "inserted" : hdayDAO.callHday(hdayBean); break;
+	            case "updated" : hdayDAO.callHday(hdayBean); break;
+	            case "deleted" : hdayDAO.deleteHday(hdayBean); break;
             }
-
         }
-
     }
 
     //개인휴가 조회
@@ -79,7 +85,6 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     //휴가신청 일괄처리
     @Override
     public void batchHolidayProcess(List<HolidayBean> list) {
-        System.out.println("일괄처리 AS타나?");
         for(HolidayBean holidayBean : list){
 
             String appType = holidayBean.getAppType();
@@ -95,7 +100,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
         }
 
     }
-    */
+
     //출퇴근시간 조회
     @Override
     public List<InoutWorkTimeBean> findInoutWorkTimeList(Map<String, String> argsMap) {
@@ -118,7 +123,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
         }
 
     }
-    /*
+
     //개인 시간외근무 조회
     @Override
     public List<OverTimeWorkBean> findOverTimeWorkList(Map<String, String> argsMap) {
@@ -211,7 +216,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
 
         return monGuntaeCloseList;
     }
-
+/*
     //연차 조회
     @Override
     public List<YeonchaBean> findYeonchaList(Map<String, String> argsMap) {

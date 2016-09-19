@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HG_MonGuntaeForm" classname="HG_MonGuntaeForm" left="0" top="0" width="1256" height="759" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="titleDiv" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="월근태조회" left="4.78%" top="-4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="mainDiv" taborder="1" left="1.27%" top="55" right="1.11%" height="697" style="background:#edececff;" enableevent="false">
+          <Layouts>
+            <Layout width="1233" height="721">
+              <Grid id="holidayRequestGrid" taborder="65" binddataset="dsMonGuntae" useinputpanel="false" autofittype="col" oncellclick="mainDiv_holidayRequestGrid_oncellclick" left="1.3%" top="40" right="0.81%" height="649">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="40"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="No"/>
+                      <Cell col="1" text="날짜"/>
+                      <Cell col="2" text="사번"/>
+                      <Cell col="3" text="기본시간"/>
+                      <Cell col="4" text="연장시간"/>
+                      <Cell col="5" text="기본일"/>
+                      <Cell col="6" text="결근일"/>
+                      <Cell col="7" text="유급일"/>
+                      <Cell col="8" text="휴직일"/>
+                      <Cell col="9" text="연차일"/>
+                      <Cell col="10" text="조퇴일"/>
+                      <Cell col="11" text="지각일"/>
+                      <Cell col="12" text="외출일"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell expr="expr:currow+1"/>
+                      <Cell col="1" text="bind:belongYearMon"/>
+                      <Cell col="2" text="bind:empNo"/>
+                      <Cell col="3" text="bind:basicTime"/>
+                      <Cell col="4" text="bind:overTime"/>
+                      <Cell col="5" text="bind:basicDay"/>
+                      <Cell col="6" text="bind:absenteeismDay"/>
+                      <Cell col="7" text="bind:paidDay"/>
+                      <Cell col="8" text="bind:absenceDay"/>
+                      <Cell col="9" text="bind:yeonchaDay"/>
+                      <Cell col="10" text="bind:aleryDay"/>
+                      <Cell col="11" text="bind:latelessDay"/>
+                      <Cell col="12" text="bind:goOutDay"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="subCodeStc00" taborder="66" text="사번" onclick="subCodeStc_onclick" left="33.2%" top="8" right="62.09%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="empNoEd" taborder="67" enable="false" left="38.23%" top="8" right="54.06%" height="26"/>
+              <Edit id="empNmEd" taborder="68" enable="false" left="56.9%" top="8" right="35.15%" height="26"/>
+              <Static id="subCodeStc01" taborder="69" text="성명" left="50.57%" top="8" right="43.75%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="hdateStc" taborder="70" text="기간" left="1.22%" top="6" right="91.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+              <Spin id="yearSpin" taborder="71" value="2016" onspin="yearSpin_onspin" left="8.56%" top="5" right="83.61%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+              <Static id="Static02" taborder="72" text="년" left="17.05%" top="7" right="80.75%" height="24"/>
+              <Combo id="monthCombo" taborder="73" innerdataset="dsMonth" codecolumn="code" datacolumn="code" left="18.92%" top="7" right="73.57%" height="24"/>
+              <Button id="guntaeCreateBtn" taborder="75" text="월근태생성" onclick="mainDiv.guntaeCreateBtn_onclick" enable="false" left="74.39%" top="5" right="18.6%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+              <Button id="searchMonGuntaeBtn" taborder="76" onclick="mainDiv_searchMonGuntaeBtn_onclick" cssclass="SearchBtn" left="84.18%" top="5" right="9.38%" height="28" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="monGuntaeCloseBtn" taborder="77" onclick="DelBtn_onclick" cssclass="DelBtn" left="91.27%" top="5" right="2.12%" height="28" style="background:@gradation URL('img::dLineBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="false"/>
+              <Static id="Static00" taborder="78" text="월" left="26.84%" top="7" right="70.96%" height="24"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="empSearchBtn" taborder="2" onclick="mainDiv_empSearchBtn_onclick" cssclass="AddBtn" left="46.74%" top="60" right="50.72%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsMonGuntae">
+        <ColumnInfo>
+          <Column id="belongYearMon" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="basicTime" type="STRING" size="256"/>
+          <Column id="overTime" type="STRING" size="256"/>
+          <Column id="basicDay" type="STRING" size="256"/>
+          <Column id="absenteeismDay" type="STRING" size="256"/>
+          <Column id="paidDay" type="STRING" size="256"/>
+          <Column id="absenceDay" type="STRING" size="256"/>
+          <Column id="yeonchaDay" type="STRING" size="256"/>
+          <Column id="aleryDay" type="STRING" size="256"/>
+          <Column id="latelessDay" type="STRING" size="256"/>
+          <Column id="goOutDay" type="STRING" size="256"/>
+          <Column id="closeYn" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="endDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">searchMonGuntaeList</Col>
+            <Col id="URL">erp47::hrs/guntae/findMonGuntaeList.do</Col>
+            <Col id="outData">dsMonGuntae=dsMonGuntae</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">createGuntae</Col>
+            <Col id="URL">erp47::hrs/guntae/callMonGuntae.do</Col>
+            <Col id="inData">dsMonGuntae=dsMonGuntae:u</Col>
+            <Col id="outData">dsMonGuntae=dsMonGuntae</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">monGuntaeClose</Col>
+            <Col id="URL">erp47::hrs/guntae/callCloseMonGuntae.do</Col>
+            <Col id="outData">dsMonGuntaeClose=dsMonGuntaeClose</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMonGuntaeClose">
+        <ColumnInfo>
+          <Column id="monGuntaeNo" type="STRING" size="256"/>
+          <Column id="belongYearMon" type="STRING" size="256"/>
+          <Column id="closeYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsMonth">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+          </Row>
+          <Row>
+            <Col id="code">04</Col>
+          </Row>
+          <Row>
+            <Col id="code">05</Col>
+          </Row>
+          <Row>
+            <Col id="code">06</Col>
+          </Row>
+          <Row>
+            <Col id="code">07</Col>
+          </Row>
+          <Row>
+            <Col id="code">08</Col>
+          </Row>
+          <Row>
+            <Col id="code">09</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 월근태 관리                                               		*
+*                                                                   *
+* @Path		    hrs-HG_MonGuntaeForm     	                       	*
+* @Description  월근태  정보 조회,생성,마감  화면               *
+* @Author		박영희   					                        *
+* 								                                    *
+* Created on 2016. 9. 19.                             		        *
+*								                                    *
+********************************************************************/
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+
+include "scripts::commonScript.xjs";
+include "scripts::hrsScripts.xjs";
+include "scripts::commonTransaction.xjs";
+include "scripts::commonPopup.xjs";
+
+/***************************************************************************************************
+*                                          화면 변수 선언부                                        *
+***************************************************************************************************/
+
+var startDate;
+var endDate;
+var empNo;
+var empNm;
+var pms;
+var deptNm;
+
+/***************************************************************************************************
+*                                         콜백 함수 셋팅                                           *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)	{	
+		this.gfn_errorPopup(svcID, errorMsg);
+		return;
+	
+	}else{	
+		if(svcID=="searchMonGuntaeList"){
+			var rowCount = this.dsMonGuntae.getRowCount();
+			
+			if(rowCount== 0){
+				alert("조회 내용이 없습니다.");
+				return;
+		
+			}
+		}
+		
+		if(svcID=="createGuntae"){
+			alert("정상 처리되었습니다.");
+		}
+		
+		if(svcID=="monGuntaeClose"){
+			alert("정상 처리되었습니다.");
+		
+		}
+	}
+}
+
+/***************************************************************************************************
+*                                         onload Event                                      	   *
+***************************************************************************************************/
+this.HG_MonGuntaeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.mainDiv.empNoEd.set_value(application.gdsEmp.getColumn(0,"empNo"));
+	this.mainDiv.empNmEd.set_value(application.gdsEmp.getColumn(0,"empNm"));
+	
+	empNo = this.mainDiv.empnoEdt.value;
+	empNm = this.mainDiv.empnmEdt.value;
+	
+	pms = application.gdsEmp.getColumn(0,"pms");
+	deptNm = application.gdsEmp.getColumn(0,"deptNm");
+	
+	if(pms == 'admin' && deptNm == '인사팀'){
+		
+		this.mainDiv.guntaeCreateBtn.set_enable(true);
+		this.mainDiv.monGuntaeCloseBtn.set_enable(true);
+	
+	}
+	
+}
+
+
+/***************************************************************************************************
+*                                         사원 조회 버튼 클릭 Event                            	   *
+***************************************************************************************************/
+this.mainDiv_empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnEmpPopup();
+}
+
+
+/***************************************************************************************************
+*                                        사원 셋팅 				    		                       *
+***************************************************************************************************/
+this.setEmpInfo=function(empNo,empNm){
+	this.mainDiv.empNmEd.set_value(empNm);
+	this.mainDiv.empNoEd.set_value(empNo);
+}
+
+
+
+/***************************************************************************************************
+*                                         조회 버튼 클릭 Event     		                       	   *
+***************************************************************************************************/
+this.mainDiv_searchMonGuntaeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	empNo = this.mainDiv.empNoEd.value;
+	var belongYearMon = this.mainDiv.yearSpin.value;
+	belongYearMon += this.mainDiv.monthCombo.value;
+	
+	if(this.mainDiv.monthCombo.value == undefined){
+		alert("월을 선택하세요.");
+		return;
+	}
+	
+	if(pms == 'admin' && deptNm == '인사팀'){
+		var argument = 'belongYearMon='+belongYearMon;
+	}else{
+		var argument = 'empNo='+empNo+' belongYearMon='+belongYearMon;	
+	}
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("searchMonGuntaeList");
+	
+}
+
+
+/***************************************************************************************************
+*                                         월근태생성 버튼 클릭 Event	                       	   *
+***************************************************************************************************/
+this.mainDiv.guntaeCreateBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.mainDiv.monthCombo.value == undefined){
+	
+		alert("월을 선택하세요.");
+		return;
+	}
+	
+	var count = this.dsMonGuntae.rowcount;
+
+	if(count == 0){
+	
+		alert("조회 후 월근태를 생성하세요.");
+		return;
+	}else{
+	
+		var closeYn = this.dsMonGuntae.getColumn(0,"closeYn");
+		
+		if(closeYn == "Y"){
+		
+			alert("이미 마감된 데이터입니다.");
+			return;
+		
+		}
+	
+	}
+	
+	this.gfnService("createGuntae");
+}
+
+
+/***************************************************************************************************
+*                                         월근태마감 버튼 클릭 Event	                       	   *
+***************************************************************************************************/
+this.mainDiv.monGuntaeCloseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var belongYearMon = this.mainDiv.yearSpin.value;
+	belongYearMon += this.mainDiv.monthCombo.value;
+	
+	if(this.mainDiv.monthCombo.value == undefined){
+	
+		alert("월을 선택하세요.");
+		return;
+	}
+
+	var count = this.dsMonGuntae.rowcount;
+
+	if(count == 0){
+	
+		alert("조회 후 월근태를 마감하세요.");
+		return;
+	}
+	
+	var argument = 'belongYearMon='+belongYearMon;
+	this.dsService.setColumn(2,"argument",argument);
+	
+	var closeYn = this.dsMonGuntaeClose.getColumn(0,"closeYn");
+	
+	if(closeYn == "Y"){
+	
+		alert("이미 마감된 월근태입니다.");
+		return;
+	}
+	
+	this.gfnService("monGuntaeClose");
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

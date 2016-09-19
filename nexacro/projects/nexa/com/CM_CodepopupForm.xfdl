@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload">
+
+  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload" onclick="CM_CodepopupForm_onclick">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.25%" top="0" right="1%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
@@ -11,6 +12,9 @@
             </Layout>
           </Layouts>
         </Div>
+        <Static id="subCodeStc" taborder="1" text="코드명" onclick="subCodeStc_onclick" left="18%" top="72" right="60.25%" height="27" style="background:papayawhip;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="codeNameEdit" taborder="2" left="44.25%" top="74" right="17.5%" height="27"/>
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="7.25%" top="110" right="7%" height="370" autofittype="col" binddataset="dsCodeNm">
         <Grid id="CdpopupGrid" taborder="3" useinputpanel="false" left="7.25%" top="72" right="7%" height="411" autofittype="col" binddataset="dsCodeNm" oncelldblclick="CdpopupGrid_oncelldblclick">
           <Formats>
             <Format id="default">
