@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_DtInspMgtForm" classname="SC_DtInspMgtForm" left="0" top="0" width="1250" height="768" titletext="종합검진 세부검사 관리" onload="SC_DtInspMgtForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="btnBox" taborder="0" left="73.6%" top="693" right="1.04%" height="50" enable="false">
+          <Layouts>
+            <Layout width="317" height="50">
+              <Button id="saveBtn" taborder="3" onclick="saveBtn_onclick" cssclass="DelBtn" left="66.56%" top="9" right="5.05%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="modBtn" taborder="4" onclick="modBtn_onclick" left="35.02%" top="9" right="36.59%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="registerBtn" taborder="5" onclick="addBtn_onclick" cssclass="DelBtn" left="3.15%" top="9" right="68.45%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="1" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
+        <Static id="Static00" taborder="2" text="종합검진 세부검사 관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="inspGrid" taborder="3" binddataset="dsInsp" useinputpanel="false" autofittype="col" left="2.32%" top="110" right="62.8%" height="623">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="111"/>
+                <Column size="325"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검사코드"/>
+                <Cell col="1" text="검사명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:inspCd"/>
+                <Cell col="1" text="bind:inspNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div01" taborder="4" text="검사코드" left="2.24%" top="72" right="92.32%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="inspCodeEdit" taborder="5" left="8.16%" top="72" right="84.16%" height="30"/>
+        <Edit id="inspNameEdit" taborder="6" left="22%" top="72" right="65.52%" height="30"/>
+        <Div id="Div02" taborder="7" text="검사명" left="16.48%" top="72" right="78.48%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Div id="Div03" taborder="8" left="38.16%" top="519" right="2.4%" height="173" style="background:white;border:1 solid gainsboro ;"/>
+        <Div id="compBox" taborder="9" left="39.52%" top="532" right="4%" height="145" style="border:0 none #808080ff ;" enable="false" enableevent="false">
+          <Layouts>
+            <Layout width="392" height="264">
+              <Div id="Div07" taborder="17" text="성별" left="70.96%" top="17" right="18.27%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div09" taborder="18" text="검사여부" left="70.96%" top="58" right="18.27%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Combo id="runYnEd" taborder="19" innerdataset="dsRunYN" codecolumn="code" datacolumn="value" left="82.86%" top="58" right="1.13%" height="30"/>
+              <Combo id="genderCombo" taborder="20" innerdataset="dsGenderCd" codecolumn="code" datacolumn="value" left="82.86%" top="17" right="1.13%" height="30"/>
+              <Div id="Div08" taborder="21" text="단위" left="70.96%" top="98" right="18.27%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="unitEd" taborder="22" left="82.86%" top="98" right="1.13%" height="30"/>
+              <Button id="ocsSearchBtn" taborder="23" onclick="ocsSearchBtn_onclick" left="63.17%" top="56" right="32.29%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Div id="Div05" taborder="24" text="참고치(하/상)" left="1.27%" top="98" right="83.85%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div06" taborder="25" text="OCS코드/명" left="1.27%" top="58" right="83.85%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="ocsCodeEd" taborder="26" readonly="true" left="17.56%" top="58" right="67.85%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="refLowFigEd" taborder="27" left="17.56%" top="98" right="58.92%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="refHighFigEd" taborder="28" left="41.64%" top="98" right="32.58%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="ocsNameEd" taborder="29" readonly="true" left="33%" top="58" right="37.39%" height="30" style="border:1 solid #d5d5d5ff ;"/>
+              <Edit id="dtInpsNameEd" taborder="30" left="32.86%" top="18" right="32.58%" height="30" compCheck="EsEd"/>
+              <Edit id="dtInpsCodeEd" taborder="31" left="17.56%" top="18" right="67.85%" height="30" compCheck="EsEd"/>
+              <Div id="Div04" taborder="32" text="세부코드/명" left="1.27%" top="18" right="83.85%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+        <Button id="searchBtn" taborder="10" onclick="searchBtn_onclick" left="34.8%" top="71" right="62.64%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Grid id="dtInspGrid" taborder="11" binddataset="dsDtInsp" useinputpanel="false" autofittype="col" left="38.16%" top="110" right="2.4%" height="399">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="165"/>
+                <Column size="80"/>
+                <Column size="69"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="71"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="세부검사코드"/>
+                <Cell col="1" rowspan="2" text="세부검사명"/>
+                <Cell col="2" rowspan="2" text="OCS코드"/>
+                <Cell col="3" rowspan="2" text="성별"/>
+                <Cell col="4" colspan="2" text="참고치"/>
+                <Cell col="6" rowspan="2" text="단위"/>
+                <Cell row="1" col="4" text="하한"/>
+                <Cell row="1" col="5" text="상한"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:dtInspCd"/>
+                <Cell col="1" text="bind:dtInspNm"/>
+                <Cell col="2" text="bind:ocsCd"/>
+                <Cell col="3" text="bind:genderCd"/>
+                <Cell col="4" text="bind:refLowFig"/>
+                <Cell col="5" text="bind:refHighFig"/>
+                <Cell col="6" text="bind:unit"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsInsp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+          <Column id="ocsCd" type="STRING" size="256"/>
+          <Column id="ocsNm" type="STRING" size="256"/>
+          <Column id="rsltDeptCd" type="STRING" size="256"/>
+          <Column id="rsltDeptNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="ocsDivCd" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDtInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dlDtlInsp_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="dtInspCd" type="STRING" size="256"/>
+          <Column id="dtInspNm" type="STRING" size="256"/>
+          <Column id="unit" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="ocsCd" type="STRING" size="256"/>
+          <Column id="ocsNm" type="STRING" size="256"/>
+          <Column id="refHighFig" type="STRING" size="256"/>
+          <Column id="refLowFig" type="STRING" size="256"/>
+          <Column id="runYn" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGenderCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findSimpleInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findInspList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsInsp=dsInsp</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDtInspList</Col>
+            <Col id="URL">erp47::sup/checkup/findDtInspList.do</Col>
+            <Col id="outData">dsDtInsp=dsDtInsp</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchDtInspProcess</Col>
+            <Col id="URL">erp47::sup/checkup/batchDtInspProcess.do</Col>
+            <Col id="inData">dsDtInsp=dsDtInsp:U</Col>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsRunYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">SC031</Col>
+            <Col id="dsName">dsGenderCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="compBox.dtInpsCodeEd" propid="value" datasetid="dsDtInsp" columnid="dtInspCd"/>
+      <BindItem id="item1" compid="compBox.dtInpsNameEd" propid="value" datasetid="dsDtInsp" columnid="dtInspNm"/>
+      <BindItem id="item2" compid="compBox.genderCombo" propid="value" datasetid="dsDtInsp" columnid="genderCd"/>
+      <BindItem id="item3" compid="compBox.ocsCodeEd" propid="value" datasetid="dsDtInsp" columnid="ocsCd"/>
+      <BindItem id="item4" compid="compBox.ocsNameEd" propid="value" datasetid="dsDtInsp" columnid="ocsNm"/>
+      <BindItem id="item5" compid="compBox.runYnEd" propid="value" datasetid="dsDtInsp" columnid="runYn"/>
+      <BindItem id="item6" compid="compBox.refLowFigEd" propid="value" datasetid="dsDtInsp" columnid="refLowFig"/>
+      <BindItem id="item7" compid="compBox.refHighFigEd" propid="value" datasetid="dsDtInsp" columnid="refHighFig"/>
+      <BindItem id="item8" compid="compBox.unitEd" propid="value" datasetid="dsDtInsp" columnid="unit"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 진료지원 종합검진 세부검사관리                                            *
+*                                                                               *
+* @Path		                	                        						*
+* @Description 										   							*
+* @Author	    김진환					                                		*
+* 									                                            *
+* Created on 2016. 09. 19.                             		                    *
+*									                                            *
+********************************************************************************/
+
+
+// 공통 스크립트
+include "scripts::commonTransaction.xjs";
+include "scripts::commonPopup.xjs";	
+include "scripts::commonBind.xjs";
+include "scripts::supScripts.xjs";
+
+
+// 공통 변수
+var enableState = false;
+
+//코드 바인드
+this.SC_DtInspMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+}
+
+
+// 조회
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var inspCd = this.inspCodeEdit.value;
+	var inspNm = this.inspNameEdit.value;
+	
+	var argument = "inspCd='"+inspCd+"' inspNm='"+inspNm+"'";
+	
+	//alert(argument);
+	var row = this.dsService.findRow("serviceID", "findSimpleInspList");
+
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("findSimpleInspList", false);
+
+	enableState = false;
+	this.btnBox.set_enable(true);
+}
+
+// 세부조회
+this.dsInsp_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	var argument = "inspCd='"+obj.getColumn(e.newrow , "inspCd")+"'";
+	var row = this.dsService.findRow("serviceID", "findDtInspList");
+	
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("findDtInspList", false);
+}
+
+
+// 처방코드 팝업
+this.ocsSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var rsltDeptCd = this.dsInsp.getColumn(this.dsInsp.rowposition, "rsltDeptCd");
+	var param = {rsltDeptCd:rsltDeptCd};
+	
+	this.gfnPopup("SC_OcsPopupForm","sup",param,"supCallBackFunc");
+}	
+
+// 팝업 셋팅
+this.setCode=function(code, arrRtn)
+{
+	this.compBox.ocsCodeEd.set_value(arrRtn[0]);
+	this.compBox.ocsNameEd.set_value(arrRtn[1]);
+}
+
+// 추가
+
+this.addBtn_onclick=function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+
+	if(this.dsInsp.rowposition == -1){
+		alert(this.MSG_SUP_ADD);	
+		return;
+	}else{
+		if (enableState == true){
+			if(!this.supCheckMdData(this.compBox)){
+				return;
+			}
+		}
+	}
+
+	this.dsDtInsp.addRow();
+	this.compBox.set_enable(true);
+	
+	this.dsDtInsp.setColumn(this.dsDtInsp.rowposition, "inspCd",
+							this.dsInsp.getColumn(this.dsInsp.rowposition, "inspCd"));						
+		
+	//this.fn_setUserData(this.dsDtInsp);
+	enableState = true;
+}
+
+
+// 수정
+this.modBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.compBox.set_enable(true);
+	enableState = true;
+}
+
+// 수정시 사용자정보 셋팅 
+// 
+// this.dlDtlInsp_oncolumnchanged=function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+// {
+// 	this.fn_setUserData(obj);
+// }
+// 
+// 
+// this.dlInsp_canrowposchange=function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+// {
+// 	//수정중입니다. 확인을 누르시면 작업중인 정보를 잃게됩니다. 계속하시겠습니까.//
+// }
+
+
+// 저장
+this.saveBtn_onclick=function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.supCheckMdData(this.compBox))
+	{
+		this.gfnService("batchDtInspProcess");
+		enableState = false;
+	}
+	this.searchBtn_onclick(null,null);
+}
+]]></Script>
+  </Form>
+</FDL>
