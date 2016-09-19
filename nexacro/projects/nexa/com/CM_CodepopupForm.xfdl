@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload">
+  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload" onclick="CM_CodepopupForm_onclick">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.25%" top="0" right="1%" height="60" style="background:transparent URL('img::titleBar1.jpg');">

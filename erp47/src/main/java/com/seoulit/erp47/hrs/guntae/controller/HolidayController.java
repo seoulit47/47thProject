@@ -16,7 +16,7 @@ import com.seoulit.erp47.hrs.guntae.service.GuntaeServiceFacade;
 import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 
 /**
- * @Package  com.seoul.his.hrs.guntae.controller
+ * @Package  com.seoulit.erp47.hrs.guntae.controller
  * @Class    HolidayController.java
  * @Create   2016. 9. 19.
  * @Author   

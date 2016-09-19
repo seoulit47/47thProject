@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.dao
@@ -21,12 +23,12 @@ public interface GuntaeDAO {
 
 	List<DayGuntaeBean> selectDayGuntaeList(Map<String, String> argsMap);
 
-	//List<MonGuntaeBean> selectMonGuntaeList(Map<String, String> argsMap);
+	List<MonGuntaeBean> selectMonGuntaeList(Map<String, String> argsMap);
 
-	//List<MonGuntaeBean> callMonGuntae(Map<String, String> argsMap);
+	List<MonGuntaeBean> callMonGuntae(Map<String, String> argsMap);
 
-	//List<MonGuntaeBean> callCloseMonGuntae(Map<String, String> argsMap);
+	List<MonGuntaeBean> callCloseMonGuntae(Map<String, String> argsMap);
 
-	//List<MonGuntaeCloseBean> selectMonGuntaeCloseList(Map<String, String> argsMap);
+	List<MonGuntaeCloseBean> selectMonGuntaeCloseList(Map<String, String> argsMap);
 
 }

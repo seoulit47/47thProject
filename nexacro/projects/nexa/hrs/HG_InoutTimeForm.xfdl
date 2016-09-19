@@ -153,6 +153,9 @@
 *                                         import                                                   *
 ***************************************************************************************************/
 include "scripts::commonScripts.xjs";
+include "scripts::hrsScripts.xjs";
+include "scripts::commonTransaction.xjs";
+include "scripts::commonPopup.xjs";
 
 
 /***************************************************************************************************
@@ -280,16 +283,20 @@ this.mainDiv_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 ***************************************************************************************************/
 this.mainDiv_searchInoutTimeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	deptCd = this.mainDiv.deptCdEd.value;
-	empNo = this.mainDiv.empNoEd.value;
-	
-	startDate = this.mainDiv.startCal.value;
-	endDate = this.mainDiv.endCal.value;
+	if(this.mainDiv.startCal.value == '') {
+		alert("시작일자를 입력해 주세요.");
+	}else {
+		deptCd = this.mainDiv.deptCdEd.value;
+		empNo = this.mainDiv.empNoEd.value;
+		
+		startDate = this.mainDiv.startCal.value;
+		endDate = this.mainDiv.endCal.value;
 
-	var argument = 'empNo='+empNo+' sDate='+startDate+' eDate='+endDate;
-	
-	this.dsService.setColumn(0,"argument",argument);
-	this.gfnService("searchInoutTimeList");		
+		var argument = 'empNo='+empNo+' sDate='+startDate+' eDate='+endDate;
+		
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("searchInoutTimeList");	
+	}	
 }
 
 
@@ -320,6 +327,44 @@ this.mainDiv_empSerchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInf
 this.setEmpInfo=function(empNo,empNm){
 	this.mainDiv.empNmEd.set_value(empNm);
 	this.mainDiv.empNoEd.set_value(empNo);
+}
+
+
+
+/***************************************************************************************************
+*                                         부서조회  버튼 클릭 Event	                       	   *
+***************************************************************************************************/
+this.mainDiv_deptSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnCodePopup("GP500");
+}
+
+
+
+/***************************************************************************************************
+*                                         콜백 함수 셋팅                                         *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)
+	{
+		alert(errorMsg);
+		return;
+	}
+	
+	if(svcID=="searchInoutTimeList"){
+		var rowCount = this.dsInoutWorkTime.getRowCount();
+			
+			if(rowCount== 0){
+				alert("조회 내용이 없습니다.");
+				return;
+			}
+	}
+	
+	if(svcID=="batchInoutTimeProcess")
+	{
+		alert("정상 처리되었습니다.");	
+	}	
 }]]></Script>
   </Form>
 </FDL>

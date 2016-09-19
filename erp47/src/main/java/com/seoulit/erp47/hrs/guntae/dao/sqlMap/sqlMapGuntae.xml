@@ -42,7 +42,7 @@
 			order by BELONG_DAY
 	</select>
 
-<!--  <parameterMap id="monGuntaeParmeterMap" type="hashmap" >
+  <parameterMap id="monGuntaeParmeterMap" type="hashmap" >
       <parameter property="errorCode" mode="OUT" javaType="string" jdbcType="VARCHAR" />
       <parameter property="errorMsg" mode="OUT" javaType="string" jdbcType="VARCHAR" />
    </parameterMap>
@@ -60,7 +60,32 @@
 			)
 		}
 	</select>
-
+	
+	<select id="selectMonGuntaeList" resultType="monGuntaeBean">
+		select 
+			BELONG_YEAR_MON 
+			,EMP_NO ,BASIC_TIME 
+			,OVER_TIME 
+			,BASIC_DAY 
+			,ABSENTEEISM_DAY
+			,PAID_DAY 
+			,ABSENCE_DAY 
+			,YEONCHA_DAY 
+			,ALERY_DAY 
+			,LATELESS_DAY 
+			,GO_OUT_DAY 
+			,CLOSE_YN 
+		from 
+			HG_MON_GUNTAE 
+		where 1=1 
+		<if test="empNo != null"> 
+		AND EMP_NO = #{empNo} 
+		</if>	
+		<if test="belongYearMon != null and belongYearMon !='' "> 
+		AND BELONG_YEAR_MON = #{belongYearMon}
+		</if>
+	</select>
+	
 	<select id="selectMonGuntaeCloseList" resultType="monGuntaeCloseBean">
 		SELECT MON_GUNTAE_NO
 			 , BELONG_YEAR_MON
@@ -68,5 +93,4 @@
 		FROM HG_MON_GUNTAE_CLOSE
 		WHERE BELONG_YEAR_MON = #{belongYearMon}
 	</select>
- -->
 </mapper>

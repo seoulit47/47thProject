@@ -15,6 +15,8 @@ import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
 /**
@@ -33,7 +35,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     @Autowired
     HdayDAO hdayDAO;
 
-    //@Autowired
+    @Autowired
     HolidayDAO holidayDAO;
     
     @Autowired
@@ -42,7 +44,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     @Autowired
     OverTimeWorkDAO overTimeWorkDAO;
 
-    //@Autowired
+    @Autowired
     GuntaeDAO guntaeDAO;
 
     //@Autowired
@@ -61,14 +63,11 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
         for(HdayBean hdayBean : list){
 
             switch (hdayBean.getStatus()) {
-            case "inserted" : hdayDAO.callHday(hdayBean); break;
-            case "updated" : hdayDAO.callHday(hdayBean); break;
-            case "deleted" : hdayDAO.deleteHday(hdayBean); break;
-
+	            case "inserted" : hdayDAO.callHday(hdayBean); break;
+	            case "updated" : hdayDAO.callHday(hdayBean); break;
+	            case "deleted" : hdayDAO.deleteHday(hdayBean); break;
             }
-
         }
-
     }
 
     //개인휴가 조회
@@ -86,7 +85,6 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     //휴가신청 일괄처리
     @Override
     public void batchHolidayProcess(List<HolidayBean> list) {
-        System.out.println("일괄처리 AS타나?");
         for(HolidayBean holidayBean : list){
 
             String appType = holidayBean.getAppType();
@@ -179,7 +177,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     public List<DayGuntaeBean> findDayGuntaeList(Map<String, String> argsMap) {
         return guntaeDAO.selectDayGuntaeList(argsMap);
     }
-/*
+
     //월근태 조회
     @Override
     public List<MonGuntaeBean> findMonGuntaeList(Map<String, String> argsMap) {
@@ -218,7 +216,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
 
         return monGuntaeCloseList;
     }
-
+/*
     //연차 조회
     @Override
     public List<YeonchaBean> findYeonchaList(Map<String, String> argsMap) {

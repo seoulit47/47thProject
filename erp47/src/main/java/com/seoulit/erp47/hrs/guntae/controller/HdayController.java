@@ -20,7 +20,7 @@ import com.seoulit.erp47.hrs.guntae.to.HdayBean;
  * @Package  com.seoul.his.hrs.guntae.controller
  * @Class    HdayController.java
  * @Create   2016. 9. 06.
- * @Author   pyh
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated

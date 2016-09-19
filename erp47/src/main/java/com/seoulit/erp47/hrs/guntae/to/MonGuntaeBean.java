@@ -8,14 +8,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.hrs.guntae.to
+ * @Package  com.seoulit.erp47.hrs.guntae.to
  * @Class    MonGuntaeBean.java
- * @Create   2016. 9. 11.
+ * @Create   2016. 9. 19.
  * @Author   박 영 희
  * @Description
  *
  * @LastUpdated
- *    
+ *      
  */
 @Dataset(name="dsMonGuntae")
 @Getter

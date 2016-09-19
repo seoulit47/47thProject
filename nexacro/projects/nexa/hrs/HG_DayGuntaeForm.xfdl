@@ -109,7 +109,7 @@
             <Col id="serviceID">searchDayGuntaeList</Col>
             <Col id="URL">erp47::hrs/guntae/findDayGuntaeList.do</Col>
             <Col id="outData">dsDayGuntae=dsDayGuntae</Col>
-            <Col id="inData"/>
+            <Col id="inData">dsDayGuntae=dsDayGuntae</Col>
             <Col id="argument"/>
             <Col id="callbackFunc"/>
           </Row>
@@ -206,6 +206,7 @@
 *                                         import                                                   *
 ***************************************************************************************************/
 include "scripts::commonScripts.xjs";
+include "scripts::commonPopup.xjs";
 
 
 

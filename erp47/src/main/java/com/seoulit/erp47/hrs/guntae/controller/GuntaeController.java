@@ -15,6 +15,8 @@ import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.common.util.NexacroLogger;
 import com.seoulit.erp47.hrs.guntae.service.GuntaeServiceFacade;
 import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.controller
@@ -60,7 +62,7 @@ public class GuntaeController {
         dataSetBeanMapper.beansToDataset(outData, list, DayGuntaeBean.class);
 
     }
-/*
+
     //월근태 조회
     @RequestMapping("/findMonGuntaeList.do")
     public void findMonGuntaeList(HttpServletRequest request,
@@ -100,5 +102,5 @@ public class GuntaeController {
         dataSetBeanMapper.beansToDataset(outData, list, MonGuntaeCloseBean.class);
 
     }
-*/
+
 }

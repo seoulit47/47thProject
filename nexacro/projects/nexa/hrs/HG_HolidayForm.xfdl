@@ -148,18 +148,18 @@
         <Rows>
           <Row>
             <Col id="serviceID">searchHolidayList</Col>
-            <Col id="URL">his::hrs/holiday/findHolidayList.do</Col>
+            <Col id="URL">erp47::hrs/holiday/findHolidayList.do</Col>
             <Col id="outData">dsHoliday=dsHoliday</Col>
           </Row>
           <Row>
             <Col id="serviceID">searchAdminHolidayList</Col>
-            <Col id="URL">his::hrs/holiday/findAdminHolidayList.do</Col>
+            <Col id="URL">erp47::hrs/holiday/findAdminHolidayList.do</Col>
             <Col id="outData">dsHoliday=dsHoliday</Col>
           </Row>
           <Row>
             <Col id="inData">dsHoliday=dsHoliday:u</Col>
             <Col id="serviceID">batchHoliday</Col>
-            <Col id="URL">his::hrs/holiday/batchHolidayProcess.do</Col>
+            <Col id="URL">erp47::hrs/holiday/batchHolidayProcess.do</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -196,12 +196,14 @@
 /***************************************************************************************************
 *                                         공통 Script Include                                      *
 ***************************************************************************************************/
-include "scripts::commonScript.xjs";
+include "scripts::commonScripts.xjs";
+include "scripts::hrsScripts.xjs";
 include "scripts::commonTransaction.xjs";
+include "scripts::commonPopup.xjs";
 
 
 /***************************************************************************************************
-*                                         변수 선언부                                         *
+*                                         변수 선언부                                            *
 ***************************************************************************************************/
 var pms;//권한
 var belongYear;//기준년
@@ -323,21 +325,19 @@ this.mainDiv_apBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 }
 
 
+
 /***************************************************************************************************
 *                                         휴가신청 그리드 클릭 Event                             *
 ***************************************************************************************************/
 this.mainDiv_holidayRequestGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
 
-	if(pms == 'admin' && deptNm == '인사팀'){}
-	else
-	{
+	if(pms == 'admin' && deptNm == '인사팀'){
 	
+	}else{
 		var status = this.dsHoliday.getColumn(e.row,"holidayStatus");
 		
-		if(status == "결재완료")
-		{
-		
+		if(status == "결재완료"){
 			alert("결재완료된 내용입니다.");
 			return;
 		
@@ -360,8 +360,34 @@ this.mainDiv_holidayRequestGrid_oncellclick = function(obj:Grid, e:nexacro.GridC
 ***************************************************************************************************/
 this.mainDiv_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	
 	this.gfnService("batchHoliday");
+}
+
+
+
+/***************************************************************************************************
+*                                         콜백 함수 셋팅                                         *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)	{
+		alert(errorMsg);
+		return;
+	}
+	
+	if(svcID=="searchHolidayList" || svcID=="searchAdminHolidayList"){
+		var rowCount = this.dsHoliday.getRowCount();
+			
+			if(rowCount== 0){
+				alert("조회 내용이 없습니다.");
+				return;	
+			}		
+	}	
+	
+	if(svcID=="batchHoliday"){
+		alert("정상 처리되었습니다.");	
+	}
+	
 	
 }]]></Script>
   </Form>

@@ -7,6 +7,8 @@ import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
 /**
@@ -58,13 +60,13 @@ public interface GuntaeServiceFacade {
     List<DayGuntaeBean> findDayGuntaeList(Map<String, String> argsMap);
 
     //월근태 조회
-    //List<MonGuntaeBean> findMonGuntaeList(Map<String, String> argsMap);
+    List<MonGuntaeBean> findMonGuntaeList(Map<String, String> argsMap);
 
     //월근태 생성
-    //List<MonGuntaeBean> createMonGuntae(Map<String, String> argsMap);
+    List<MonGuntaeBean> createMonGuntae(Map<String, String> argsMap);
 
     //월근태 마감
-    //List<MonGuntaeCloseBean> closeMonGuntae(Map<String, String> argsMap);
+    List<MonGuntaeCloseBean> closeMonGuntae(Map<String, String> argsMap);
 
     //연차 조회
     //List<YeonchaBean> findYeonchaList(Map<String, String> argsMap);

@@ -20,7 +20,7 @@ import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
  * @Package  com.seoulit.erp47.hrs.guntae.controller
  * @Class    InoutWorkTimeController.java
  * @Create   2016. 8. 29.
- * @Author   P.Y.H
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated
