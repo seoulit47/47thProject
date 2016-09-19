@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1024" height="91" onload="menuFrame_onload" visible="true">
+  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1024" height="88" onload="menuFrame_onload" visible="true">
     <Layouts>
       <Layout>
-        <Tab id="Tab00" taborder="0" left="15.63%" top="0" right="0.1%" height="78" tabindex="0" scrollbars="autoboth" usecontrolkey="false" enableevent="true">
+        <Tab id="Tab00" taborder="0" left="15.63%" top="0" right="0.1%" height="77" tabindex="0" scrollbars="autoboth" usecontrolkey="false" enableevent="true">
           <Tabpages>
             <Tabpage id="tabpage1" text="인사" style="background:#ffffffff;">
               <Layouts>
                 <Layout>
-                  <Menu id="menu" taborder="0" innerdataset="@gdsMenu" idcolumn="menuCode" captioncolumn="menuName" levelcolumn="menuLevel" userdatacolumn="menuUrl" onmenuclick="menu_onmenuclick" left="2.9%" top="7" right="0.35%" height="37" style="itempadding:0 13 0 13;popupitempadding:1 3 1 3;popupfont:bold antialias 14 맑은 고딕;background:transparent;color:black;font:bold antialias 14 맑은 고딕;"/>
+                  <Menu id="menu" taborder="0" innerdataset="@gdsMenu" idcolumn="menuCode" captioncolumn="menuName" levelcolumn="menuLevel" userdatacolumn="menuUrl" onmenuclick="menu_onmenuclick" left="2.9%" top="7" right="0.35%" height="38" style="itempadding:0 13 0 13;popupitemheight:30;popupitempadding:1 3 1 3;popupfont:bold antialias 14 맑은 고딕;background:transparent;color:black;font:bold antialias 14 맑은 고딕;"/>
                 </Layout>
               </Layouts>
             </Tabpage>

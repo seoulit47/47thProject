@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="mainFrame" classname="mainFrame" left="0" top="0" width="1024" height="768" visible="true">
+  <Form id="mainFrame" classname="mainFrame" left="0" top="0" width="1024" height="768" visible="true" scrollbars="fixedvert">
     <Layouts>
       <Layout/>
     </Layouts>

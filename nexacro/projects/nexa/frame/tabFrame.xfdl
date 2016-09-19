@@ -37,8 +37,8 @@ this.tabFrame_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 // @Param (탭페이지에 연결할 URL, 탭에 표시할 텍스트)
 this.fn_addTabpage = function(menuURL, menuNM) 
 {	
-	
-	var result = this.topTab.insertTabpage("tabpage"+application.gvTabIndex, application.gvTabIndex,"",menuNM);
+	alert(menuURL);
+	var result = this.topTab.insertTabpage("tabpage"+application.gvTabIndex,application.gvTabIndex,menuURL,menuNM);
 	if(result == -1) {
 		alert("화면 로딩이 실패하였습니다.");
 	} else {
@@ -84,8 +84,10 @@ this.topTab_onextrabuttonclick = function(obj:Tab, e:nexacro.TabMouseEventInfo)
 {	
 	if (confirm(obj.tabpages[e.index].text + " 탭을 닫으시겠습니까?")) {
 		var childName = obj.tabpages[e.index].url;
+		
 		var objChild = application.mainframe.vframeSet.frameSet.frames[childName];
 		application.mainframe.vframeSet.frameSet.removeChild(childName);
+		
 		objChild.destroy();
 		objChild = null;	
 		obj.removeTabpage(e.index);
