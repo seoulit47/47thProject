@@ -212,11 +212,11 @@ this.HG_InoutTimeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	
 	belongDay = this.fn_Today().substr(0,6);
 	
-	deptCd = application.gdsEmp_test.getColumn(0,"deptCd");   //테스트용 emp데이터셋 사용 나중에 고쳐야함
-	deptNm = application.gdsEmp_test.getColumn(0,"deptNm");
-	empNo = application.gdsEmp_test.getColumn(0,"empNo");
-	empNm = application.gdsEmp_test.getColumn(0,"empNm");
-	pms = application.gdsEmp_test.getColumn(0,"pms");
+	deptCd = application.gdsEmp.getColumn(0,"deptCd");   //테스트용 emp데이터셋 사용 나중에 고쳐야함
+	deptNm = application.gdsEmp.getColumn(0,"deptNm");
+	empNo = application.gdsEmp.getColumn(0,"empNo");
+	empNm = application.gdsEmp.getColumn(0,"empNm");
+	pms = application.gdsEmp.getColumn(0,"pms");
 
 	if(pms == "admin" && deptNm == "인사팀")
 	{
@@ -299,7 +299,7 @@ this.mainDiv_searchInoutTimeBtn_onclick = function(obj:Button,  e:nexacro.ClickE
 ***************************************************************************************************/
 this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	 
+	this.gfnService("batchInoutTimeProcess");
 }
 
 
@@ -309,8 +309,17 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 ***************************************************************************************************/
 this.mainDiv_empSerchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	
+	this.gfnEmpPopup();
 }
-]]></Script>
+
+
+
+/***************************************************************************************************
+*                                         사원 셋팅	                                       	   *
+***************************************************************************************************/
+this.setEmpInfo=function(empNo,empNm){
+	this.mainDiv.empNmEd.set_value(empNm);
+	this.mainDiv.empNoEd.set_value(empNo);
+}]]></Script>
   </Form>
 </FDL>

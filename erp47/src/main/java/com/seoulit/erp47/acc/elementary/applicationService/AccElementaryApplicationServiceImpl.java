@@ -16,18 +16,18 @@ public class AccElementaryApplicationServiceImpl implements AccElementaryApplica
 
     @Autowired
     AccAcntDAO accAcntDAO;
-    @Autowired
-    AssiSubDAO assiSubDAO;
+   // @Autowired
+    //AssiSubDAO assiSubDAO;
 
-    @Override
-    public List<AccAcntBean> findAccAcntList(Map<String, String> argsMap) {
-        return accAcntDAO.selectAccAcntList(argsMap);
-    }
+    //@Override
+    //public List<AccAcntBean> findAccAcntList(Map<String, String> argsMap) {
+       //return accAcntDAO.selectAccAcntList(argsMap);
+   // }
 
-	@Override
-	public List<AssiSubBean> findAssiSubList(Map<String, String> argsMap) {
-		return assiSubDAO.selectAssiSubList(argsMap);
-	}
+	//@Override
+	//public List<AssiSubBean> findAssiSubList(Map<String, String> argsMap) {
+		//return assiSubDAO.selectAssiSubList(argsMap);
+	//}
 
 }
 

@@ -8,8 +8,8 @@ import com.seoulit.erp47.acc.elementary.to.AssiSubBean;
 
 public interface AccElementaryApplicationService {
 
-    List<AccAcntBean> findAccAcntList(Map<String, String> argsMap);
+   // List<AccAcntBean> findAccAcntList(Map<String, String> argsMap);
     
-    List<AssiSubBean> findAssiSubList(Map<String, String> argsMap);
+    //List<AssiSubBean> findAssiSubList(Map<String, String> argsMap);
 
 }

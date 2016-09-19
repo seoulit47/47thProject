@@ -31,6 +31,7 @@ this.gfnPopup = function(popupId, popupFolder, param, callbackFunc) {
 this.gfnCodePopup = function(code,args) {
 	return application.open(
 		"코드팝업",
+<<<<<<< HEAD
 		"com::CM_CodepopupForm.xfdl",
 		this.parent,
 		{code:code , args:args},
@@ -97,6 +98,74 @@ this.gfnEmpPopup = function() {
    return application.open(
 	   "사원팝업",
 	   "hrs::HM_EmpSearchPopup.xfdl",
+=======
+		"com::CM_CdPopupForm.xfdl",
+		this.parent,
+		{code:code , args:args},
+		"showtitlebar=true showstatusbar=false",
+		110, 110,
+		this
+	);
+}
+
+// 의사 팝업
+this.gfnDoctPopup = function(deptCode, deptName) {
+	return application.open(
+		"의사팝업",
+		"com::CM_DoctPopupForm.xfdl",
+		this.parent,
+		{deptCd:deptCode, deptNm:deptName},
+		"showtitlebar=true showstatusbar=false",
+		110, 110,
+		this
+	);
+}
+
+// 에러 팝업
+this.gfnErrorPopup = function(svcID, errorMsg) {
+   return application.open(
+	   "에러팝업",
+	   "com::CM_ErrorPopupForm.xfdl",
+	   this.parent,
+	   {svcID:svcID, errorMsg:errorMsg},
+	   "showtitlebar=true showstatusbar=false",
+	   200, 300,
+	   this
+   );
+}
+
+// 주소 팝업
+this.gfnPostPopup = function() {
+   return application.open(
+	   "우편번호팝업",
+	   "com::CM_PostPopupForm.xfdl",
+	   this.parent,
+	   null,
+	   "showtitlebar=true showstatusbar=false",
+	   110, 110,
+	   this
+   );
+}
+
+// 회계 팝업
+this.gfnAccountPopup = function() {
+   return application.open(
+	   "회계팝업",
+	   "acc::AB_AccountPopupForm.xfdl",
+	   this.parent,
+	   "",
+	   "showtitlebar=true showstatusbar=false",
+	   110, 110,
+	   this
+   );
+}
+
+// 사원팝업
+this.gfnEmpPopup = function() {
+   return application.open(
+	   "사원팝업",
+	   "hrs::HM_EmpPopupForm.xfdl",
+>>>>>>> refs/heads/20160909
 	   this.parent,
 	   null,
 	   "showtitlebar=true showstatusbar=false",

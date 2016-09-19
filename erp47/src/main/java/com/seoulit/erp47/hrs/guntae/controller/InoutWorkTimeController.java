@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
+import com.seoulit.erp47.common.util.NexacroLogger;
 import com.seoulit.erp47.hrs.guntae.service.GuntaeServiceFacade;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 
@@ -46,9 +47,8 @@ public class InoutWorkTimeController {
 	}
 
     //출퇴근시간 일괄처리
-	/*@RequestMapping("hrs/inoutTime/batchInoutWorkTimeProcess.do")
-	public void batchInoutWorkTimeProcess(HttpServletRequest request,
-			HttpServletResponse response) throws Exception{
+	@RequestMapping("hrs/inoutTime/batchInoutWorkTimeProcess.do")
+	public void batchInoutWorkTimeProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
 		PlatformData inData = (PlatformData)request.getAttribute("inData");
 		PlatformData outData = (PlatformData)request.getAttribute("outData");
@@ -63,5 +63,4 @@ public class InoutWorkTimeController {
 		guntaeServiceFacade.batchInoutWorkTimeProcess(list);
 
 	}
-*/
 }
