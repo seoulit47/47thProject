@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LB_CustManageForm" classname="LB_CustManageForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="LB_CustManageForm" classname="LB_CustManageForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="LB_CustManageForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="0.48%" top="4" right="-57.12%" height="60" style="background:transparent URL('img::titleBar7.jpg');"/>
@@ -22,7 +22,7 @@
                 <Column size="156"/>
                 <Column size="104"/>
                 <Column size="116"/>
-                <Column size="104"/>
+                <Column size="143"/>
                 <Column size="126"/>
                 <Column size="128"/>
                 <Column size="161"/>
@@ -65,7 +65,7 @@
                 <Cell col="4" edittype="normal" text="bind:faxNo"/>
                 <Cell col="5" edittype="normal" text="bind:busCtgNm"/>
                 <Cell col="6" edittype="normal" text="bind:prsdntNm"/>
-                <Cell col="7" displaytype="combo" edittype="expand" text="bind:bankCd" expandshow="show" combodataset="dsBank" combocodecol="code" combodatacol="bigValue"/>
+                <Cell col="7" displaytype="combo" edittype="expand" text="bind:bankCd" expandshow="show" expandchar="..." combodataset="dsBank" combocodecol="code" combodatacol="bigValue"/>
                 <Cell col="8" edittype="normal" text="bind:dpstr"/>
                 <Cell col="9" edittype="combo" text="bind:gdUseYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
                 <Cell col="10" edittype="combo" text="bind:cardYn" combodataset="dsYb" combocodecol="yn" combodatacol="yn"/>
@@ -84,8 +84,7 @@
           </Formats>
         </Grid>
         <Button id="addBtn" taborder="8" left="37.76%" top="77" right="53.52%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
-        <Button id="deleteBtn" taborder="9" left="47.6%" top="78" right="43.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="saveBtn" taborder="10" left="57.76%" top="78" right="33.44%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
+        <Button id="saveBtn" taborder="10" left="46.88%" top="78" right="44.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clickBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -156,6 +155,18 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA003</Col>
+            <Col id="dsName">dsBank</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  		//공통 스크립트
 include "scripts::logScripts.xjs";			//물류 스크립트
@@ -184,6 +195,8 @@ this.clickBtn = function(obj)   //버튼이벤트를 한곳에서 관리
 			case this.saveBtn:    //저장버튼눌렀을때,
 			     this.clicksaveBtn();
 			     break;
+			     
+		
 	}
 }
 
@@ -245,9 +258,52 @@ this.custGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
 	row = e.row;
 	
 			if(e.col == 7){
-				this.gfnCodePopup("GA003");
+				this.gfnCodePopup("GA003"); //GA003=은행코드  gfnCodePopup함수에 인자값으로 GA003보낸다
+			}else if(e.col ==2){
+			
+				this.gfnPostPopup();
 			}
 }
+
+this.setCode = function(codeDiv, arrRtn){  //코드팝업창에서의 값을 받는 Function
+
+	if(codeDiv == "GA003"){
+	
+		this.dsCust.setColumn(row,"bankCd",arrRtn[0]);
+	
+	}
+
+
+}
+
+this.setPost = function(zipCode, baseAddr, detailAddr) 
+{//우편번호 팝업창에서의 값을 받는 Function
+
+	this.dsCust.setColumn(row, "zipCd", zipCode);
+	this.dsCust.setColumn(row, "addr", baseAddr + detailAddr);
+}
+
+
+this.LB_CustManageForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	/*
+		★★★★★★	onload될때 !! ★★★★★★★
+	
+@Description 각 Form에서 dsBindCode 데이터셋을 이용해 필요한 코드들만 트랜잭션해 데이터셋에 바인딩하는 함수
+			dsBindCode 데이터셋에 [code, dsName] 컬럼을 생성하고 해당 데이터를 입력하고 사용한다
+
+@ Usage 	code : 코드그룹코드, 
+			dsName : 코드값 가져올 데이터셋 이름을 세팅 (ex: code : GA032(나라그룹코드) | dsName : dsCountry)
+			this.gfnBind(); // 결과값 : dsBindCode 입력에 따라 각 데이터셋에 각 코드그룹별로 바인딩
+			바인딩해오는 데이터셋 이름을 의미있는 이름으로 지을것!!! dsGA032(X) dsCountry(O) 
+	
+	*/ //설명은 행섭행님꺼 참고.
+	
+	
+	this.gfnBind();
+	
+}
+
 ]]></Script>
   </Form>
 </FDL>

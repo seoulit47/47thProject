@@ -98,20 +98,16 @@ public class LogBaseApplicationServiceImpl implements LogBaseApplicationService{
 		// TODO Auto-generated method stub
 		// bean 과 list 확장 for문
 	
-			for(CustBean custbean : batchCustList){
+			for(CustBean custBean : batchCustList){
 				
-						if(custbean.getStatus().equals("inserted")){  //거래처 추가
+						if(custBean.getStatus().equals("inserted")){  //거래처 추가
 							
-								custDAO.insertCustList(custbean);
+								custDAO.insertCustList(custBean);
 						
-						}else if(custbean.getStatus().equals("deleted")){
-							
-							//  코드 팝업 끝내고 할 것 
-							
-						}else if(custbean.getStatus().equals("updated")){
+						}else if(custBean.getStatus().equals("updated")){ //거래처 업데이트
 							
 							
-							// 코드 팝업 끝내고 할 것 
+								custDAO.updateCustList(custBean);
 						}
 						
 						

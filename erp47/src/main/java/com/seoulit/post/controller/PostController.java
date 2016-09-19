@@ -36,10 +36,13 @@ public class PostController {
     @RequestMapping("com/post/findSido.do")
     public void findSidoList(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+    	System.out.println("시도 , 매서드입니다");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
 
         List<PostCondBean> sidoList = postServiceFacade.findSidoList();
+        //dataSetBeanMapper.beansToDataset(outData, sidoList, PostCondBean.class);
         dataSetBeanMapper.beansToDataset(outData, sidoList, "dsPostSi", PostCondBean.class);
+        
     }
 
     @RequestMapping("com/post/findSigungu.do")
@@ -56,10 +59,16 @@ public class PostController {
     @RequestMapping("com/post/findRoadPost.do")
     public void findRoadNameList(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+    	System.out.println("findRoadPost 매서드입니다");
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
 
         PostCondBean postCondBean = dataSetBeanMapper.datasetToBean(inData, PostCondBean.class);
+        	System.out.println("---------------------------");
+        	System.out.println(postCondBean.getSidoCode());
+        	System.out.println(postCondBean.getSigunguName());
+        	System.out.println(postCondBean.getRoadKeyword());
+        	System.out.println("---------------------------");
         List<PostBean> roadPostList = postServiceFacade.findRoadPostList(postCondBean);
         dataSetBeanMapper.beansToDataset(outData, roadPostList, "dsRoadPost", PostBean.class);
     }

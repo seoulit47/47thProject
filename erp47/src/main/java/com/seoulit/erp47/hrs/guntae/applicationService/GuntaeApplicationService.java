@@ -3,7 +3,13 @@ package com.seoulit.erp47.hrs.guntae.applicationService;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.HdayBean;
+import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
 import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
+import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
+import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.applicationService
@@ -17,7 +23,7 @@ import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
  */
 public interface GuntaeApplicationService {
 
-   /* //휴일 조회
+    //휴일 조회
     List<HdayBean> findHdayList(Map<String, String> argsMap);
 
     //휴일 일괄처리
@@ -31,13 +37,13 @@ public interface GuntaeApplicationService {
 
     //휴가신청 일괄처리
     void batchHolidayProcess(List<HolidayBean> list);
-    */
+
     //출퇴근시간 조회
     List<InoutWorkTimeBean> findInoutWorkTimeList(Map<String, String> argsMap);
 
     //출퇴근시간 일괄처리
     void batchInoutWorkTimeProcess(List<InoutWorkTimeBean> list);
-    /*
+    
     //개인 시간외근무 조회
     List<OverTimeWorkBean> findOverTimeWorkList(Map<String, String> argsMap);
 
@@ -61,7 +67,7 @@ public interface GuntaeApplicationService {
 
     //월근태 마감
     List<MonGuntaeCloseBean> closeMonGuntae(Map<String, String> argsMap);
-
+/*
     //연차 조회
     List<YeonchaBean> findYeonchaList(Map<String, String> argsMap);
 
