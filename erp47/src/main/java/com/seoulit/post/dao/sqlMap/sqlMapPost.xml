@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.seoul.post.dao.PostDAO">
+<mapper namespace="com.seoulit.post.dao.PostDAO">
     
     <select id="selectSidoList" resultType="PostCondBean">
-    <![CDATA[
+   
         SELECT DISTINCT
             code AS sido_code,
             value AS sido_name,
@@ -16,7 +16,7 @@
             post_si
         ORDER BY 
             sido_name
-    ]]>
+    
     </select>
     
     <select id="selectSigunguList" resultType="PostCondBean" parameterType="String">
@@ -38,7 +38,7 @@
     </select>
     
     <select id="selectRoadPostList" resultType="PostBean" parameterType="PostCondBean">
-    <![CDATA[
+    
         SELECT DISTINCT
             road_id,
             zipcode AS zip_code,
@@ -60,7 +60,7 @@
             (road_name LIKE '%' || #{roadKeyword} || '%' OR building_sigungu LIKE '%' || #{roadKeyword} || '%')
         ORDER BY
             road_id
-    ]]>
+   
     </select>
     
       

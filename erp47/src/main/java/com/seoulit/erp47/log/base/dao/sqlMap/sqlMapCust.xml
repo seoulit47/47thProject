@@ -111,5 +111,38 @@
 </insert>
 
 
+<update id="updateCustList" flushCache="false">
+ UPDATE
+            LC_CUST
+        SET 
+            CUST_NM     = #{custNm}
+          , ADPT_DT     = #{adptDt}
+          , BUSS_NO     = #{bussNo}
+          , ZIP_CD      = #{zipCd}
+          , ADDR        = #{addr}
+          , TEL_NO      = #{telNo}
+          , FAX_NO      = #{faxNo}
+          , BANK_CD     = #{bankCd}
+          , ACC_NO      = #{accNo}
+          , BUS_CTG_NM  = #{busCtgNm}
+          , BUS_SHP_NM  = #{busShpNm}
+          , PRSDNT_NM   = #{prsdntNm}
+          , RES_NO      = #{resNo}
+          , DPSTR       = #{dpstr}
+          , USE_YN      = #{useYn}
+          , GP_USE_YN   = #{gpUseYn}
+          , GD_USE_YN   = #{gdUseYn}
+          , CARD_YN     = #{cardYn}
+          , RI_USE_YN   = #{riUseYn}
+          , HOSP_CLS    = #{hospCls}
+        WHERE
+            CUST_CD     = #{custCd}
+
+
+
+
+</update>
+
+
 
 </mapper>
