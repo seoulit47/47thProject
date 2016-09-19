@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.log.base.applicationService.LogBaseApplicationService;
 import com.seoulit.erp47.log.base.to.BindLogCdBean;
+import com.seoulit.erp47.log.base.to.CustBean;
 import com.seoulit.erp47.log.base.to.OutLogCdBean;
 import com.seoulit.erp47.log.base.to.WhBean;
 @Service
@@ -37,6 +38,21 @@ public class LogBaseServiceFacadeImpl implements LogBaseServiceFacade{
 		// TODO Auto-generated method stub
 		
 		logBaseApplicationService.batchWhProcess(batchWhList);
+	}
+
+
+	@Override
+	public List<CustBean> findCustList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return logBaseApplicationService.findCustList(argsMap);
+	}
+
+
+	@Override
+	public void batchCustProcess(List<CustBean> batchCustList) {
+		// TODO Auto-generated method stub
+		
+		logBaseApplicationService.batchCustProcess(batchCustList);
 	}
 
 }

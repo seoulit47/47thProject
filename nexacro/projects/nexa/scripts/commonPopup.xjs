@@ -31,7 +31,7 @@ this.gfnPopup = function(popupId, popupFolder, param, callbackFunc) {
 this.gfnCodePopup = function(code,args) {
 	return application.open(
 		"코드팝업",
-		"com::CM_CdPopupForm.xfdl",
+		"com::CM_CodepopupForm.xfdl",
 		this.parent,
 		{code:code , args:args},
 		"showtitlebar=true showstatusbar=false",

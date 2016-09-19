@@ -29,8 +29,9 @@ public interface ComBaseServiceFacade {
 	//메뉴
 	public List<MenuBean> findMenuList();
 
-
+	// codePopupForm에서의 코드조회
 	
+	public List<CodeNmBean>findCodePopupList(Map<String,String>argsMap);
 	
 	
 	

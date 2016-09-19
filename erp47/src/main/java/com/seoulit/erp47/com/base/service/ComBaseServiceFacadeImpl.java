@@ -96,10 +96,14 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
 	    authApplicationService.batchAuth(authList);
 	    menuApplicationService.batchMenu(menuList);
 	}
-	
-	//메뉴목록조회
+	@Override
+	public List<CodeNmBean> findCodePopupList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return codeApplicationService.findCodePopupList(argsMap);
+	}
+
+//메뉴목록조회
 	@Override
     public List<MenuBean> findMenuList() {
         return menuApplicationService.findMenuList();
-    }
-}
+    }}
