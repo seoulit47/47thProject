@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.sup.checkup.applicationService.SupCheckupApplicationService;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
+import com.seoulit.erp47.sup.checkup.to.CodePopupBean;
 import com.seoulit.erp47.sup.checkup.to.DtInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
 import com.seoulit.erp47.sup.checkup.to.ReceiptBean;
 import com.seoulit.erp47.sup.checkup.to.ReducBean;
+import com.seoulit.erp47.sup.checkup.to.RsltBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 /**
@@ -33,7 +35,13 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 	@Autowired
 	   private SupCheckupApplicationService supCheckupApplicationService;
 
-	 
+	/* 종합검진 검사관리 - 처방코드 조회 */
+	@Override                 
+    public List<CodePopupBean> findOcsCodeList(Map<String, String> argsMap) {
+        List<CodePopupBean> odsCodeList = supCheckupApplicationService.findOcsCodeList(argsMap);
+        return odsCodeList;
+    }
+	
 	/* 종합검진 예약관리 - 예약목록 조회 */
 	@Override               
 	public List<RsvtBean> findRsvtList(Map<String, String> argsMap) {
@@ -72,11 +80,26 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
 	public void batchDtInspProcess(List<DtInspBean> dtInspList) {
 	    supCheckupApplicationService.batchDtInspProcess(dtInspList);
 	}
-	 
-	/* 종합검진 패키지관리 - 패키지 검사목록 조회 */
+
+	/* 종합검진 검사관리 - 검사목록 조회 */
+    @Override                 
+    public List<InspBean> findInspList(Map<String, String> argsMap) {
+        List<InspBean> inspList = supCheckupApplicationService.findInspList(argsMap);
+        return inspList;
+    }
+    
+    /* 종합검진 검사관리 - 수정, 추가 */
+    @Override                 
+    public void batchInspProcess(List<InspBean> inspList) {
+        supCheckupApplicationService.batchInspProcess(inspList);
+    }
+
+	
+	
+	/* 종합검진 검사관리 - 패키지 검사목록 조회 */
 	@Override               
-	public List<InspBean> findInspList(Map<String, String> argsMap) {
-	   List<InspBean> inspList = supCheckupApplicationService.findInspList(argsMap);
+	public List<InspBean> findPckInspList(Map<String, String> argsMap) {
+	   List<InspBean> inspList = supCheckupApplicationService.findPckInspList(argsMap);
 	   return inspList;
 	}
 	
@@ -175,6 +198,26 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
     @Override                
     public void batchPckInspProcess(List<InspBean> pckInspList) {
         supCheckupApplicationService.batchPckInspProcess(pckInspList);
+    }
+    
+    /* 종합검진 결과관리 - 검진자조회 */
+    @Override                
+    public List<ReceiptBean> findReceiptList(Map<String, String> argsMap) {
+        List<ReceiptBean> receiptList = supCheckupApplicationService.findReceiptList(argsMap);
+        return receiptList;
+    }
+
+    /* 종합검진 결과관리 - 결과조회 */
+    @Override                
+    public List<RsltBean> findRsltList(Map<String, String> argsMap) {
+        List<RsltBean> rsltList = supCheckupApplicationService.findRsltList(argsMap);
+        return rsltList;
+    }
+
+    /* 종합검진 결과관리 - 저장 */
+    @Override                
+    public void registerRslt(List<RsltBean> rsltList) {
+        supCheckupApplicationService.registerRslt(rsltList);
     }
     
 }

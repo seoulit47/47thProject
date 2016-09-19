@@ -3,8 +3,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.seoulit.erp47.sup.checkup.dao.InspDAO">
 	<cache eviction="LRU" flushInterval="86400000"/>
-	<!-- 종합검진 검사관리  - 검사목록 조회 -->
-	<select resultType="InspBean" useCache="true" flushCache="false" id="selectInspList"> 
+	
+	<!-- 종합검진 검사관리 - 처방코드 조회 -->
+	<select resultType="CodePopupBean" flushCache="false" id="selectOcsCodeList">
+		SELECT EMR_CD AS code, EMR_NM AS codeName 
+		FROM SC_EMR_CODE 
+		WHERE 1=1 
+		<if test="ocs != null">
+		 AND (EMR_CD LIKE '%'||#{ocs}||'%' OR EMR_NM LIKE '%'||#{ocs}||'%') 
+		</if>
+		<choose>
+		<when test="rsltDeptCd == 'HOM'"> AND EMR_CD LIKE 'SH%' </when>
+		<when test="rsltDeptCd == 'DRG'"> AND DEPT_CD = #{rsltDeptCd} </when>
+		<otherwise> AND DEPT_CD is null AND EMR_CD not LIKE 'SH%' </otherwise>
+		</choose>
+	</select>
+	
+	<!-- 종합검진 검사관리 - 검사목록 조회 -->
+	<select resultType="InspBean" useCache="true" flushCache="false" id="selectInspList">
+		SELECT I.INSP_CD, I.INSP_NM, I.OCS_CD, E.EMR_NM AS OCS_NM, I.RSLT_DEPT_CD, FN_CM_CODENAME('SC036',I.RSLT_DEPT_CD) AS RSLT_DEPT_NM, I.OCS_DIV_CD, I.AMT, I.USE_YN 
+		FROM SC_INSP I, SC_EMR_CODE E 
+		WHERE I.OCS_CD = E.EMR_CD 
+		<if test="inspCd != null"> 
+		AND INSP_CD LIKE '%'||#{inspCd}||'%' 
+		</if>
+		<if test="inspNm != null"> 
+		AND INSP_NM LIKE '%'||#{inspNm}||'%' 
+		</if>
+		ORDER BY INSP_CD 
+	</select>
+	
+	<!-- 종합검진 검사관리 - 수정, 등록, 저장 -->
+	<update id="updateInsp"> 
+		UPDATE SC_INSP SET INSP_NM = #{inspNm}, OCS_CD = #{ocsCd}, RSLT_DEPT_CD = #{rsltDeptCd}, OCS_DIV_CD = #{ocsDivCd}, AMT = #{amt}, USE_YN = #{useYn}, MOD_ID = #{userId}, MOD_IP = #{userIp}, MOD_DATE = TO_CHAR(SYSDATE,'YYYY-MM-DD') 
+		WHERE INSP_CD = #{inspCd} 
+	</update>
+	
+	<update id="insertInsp"> 
+		MERGE INTO SC_INSP USING DUAL ON (INSP_CD = #{inspCd}) WHEN NOT MATCHED THEN INSERT ( INSP_CD, INSP_NM, OCS_CD, RSLT_DEPT_CD, OCS_DIV_CD, AMT, USE_YN, REG_ID, REG_IP, REG_DATE ) VALUES( #{inspCd}, #{inspNm}, #{ocsCd}, #{rsltDeptCd}, #{ocsDivCd}, #{amt}, #{useYn}, #{userId}, #{userIp}, TO_CHAR(SYSDATE,'YYYY-MM-DD')) 
+	</update>
+	
+	<!-- 종합검진 검사관리  - 패키지 검사목록 조회 -->
+	<select resultType="InspBean" useCache="true" flushCache="false" id="selectPckInspList"> 
 		SELECT PCK_CD, I.INSP_CD, INSP_NM, OCS_CD, E.EMR_NM AS OCS_NM, RSLT_DEPT_CD, 
 		FN_CM_CODENAME('SC036',RSLT_DEPT_CD) AS RSLT_DEPT_NM, OCS_DIV_CD, AMT, USE_YN 
 		FROM SC_PCK_INSP P, SC_INSP I, SC_EMR_CODE E 

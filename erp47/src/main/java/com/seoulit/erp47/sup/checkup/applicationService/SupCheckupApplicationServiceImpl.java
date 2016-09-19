@@ -13,14 +13,17 @@ import com.seoulit.erp47.sup.checkup.dao.InspDAO;
 import com.seoulit.erp47.sup.checkup.dao.PckDAO;
 import com.seoulit.erp47.sup.checkup.dao.ReceDAO;
 import com.seoulit.erp47.sup.checkup.dao.ReceiptDAO;
+import com.seoulit.erp47.sup.checkup.dao.RsltDAO;
 import com.seoulit.erp47.sup.checkup.dao.RsvtDAO;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
+import com.seoulit.erp47.sup.checkup.to.CodePopupBean;
 import com.seoulit.erp47.sup.checkup.to.DtInspBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 import com.seoulit.erp47.sup.checkup.to.PckBean;
 import com.seoulit.erp47.sup.checkup.to.ReceBean;
 import com.seoulit.erp47.sup.checkup.to.ReceiptBean;
 import com.seoulit.erp47.sup.checkup.to.ReducBean;
+import com.seoulit.erp47.sup.checkup.to.RsltBean;
 import com.seoulit.erp47.sup.checkup.to.RsvtBean;
 
 /**
@@ -48,6 +51,15 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	private ReceiptDAO receiptDAO;
 	@Autowired
 	private DtInspDAO dtInspDAO;
+	@Autowired
+	private RsltDAO rsltDAO;
+	
+	/* 종합검진 검사관리 - 처방코드 조회 */
+	@Override                 
+    public List<CodePopupBean> findOcsCodeList(Map<String, String> argsMap) {
+        List<CodePopupBean> odsCodeList = inspDAO.selectOcsCodeList(argsMap);
+        return odsCodeList;
+    }
 	
 	/* 종합검진 예약관리 - 예약목록 조회  */
 	@Override                
@@ -134,11 +146,34 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
             }
         }
     }
-	
-	/* 종합검진 검사관리  - 검사목록 조회  */
-	@Override                
+    
+    /* 종합검진 검사관리 - 검사목록 조회 */
+    @Override                 
     public List<InspBean> findInspList(Map<String, String> argsMap) {
         List<InspBean> inspList = inspDAO.selectInspList(argsMap);
+        return inspList;
+    }
+    
+    /* 종합검진 검사관리 - 수정, 추가 */
+    @Override                
+    public void batchInspProcess(List<InspBean> inspList) {
+        for (InspBean inspBean: inspList) {
+            
+            switch (inspBean.getStatus()) {
+            case "inserted":
+                inspDAO.insertInsp(inspBean);
+                break;
+            case "updated":
+                inspDAO.updateInsp(inspBean);
+                break;
+            }
+        }
+    }
+	
+	/* 종합검진 검사관리  - 패키지검사목록 조회  */
+	@Override                
+    public List<InspBean> findPckInspList(Map<String, String> argsMap) {
+        List<InspBean> inspList = inspDAO.selectPckInspList(argsMap);
         
         return inspList;
     }
@@ -327,6 +362,28 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
                 receiptDAO.deletePckInsp(inspBean);
                 break;
             }
+        }
+    }
+	
+	/* 종합검진 결과관리 - 검진자조회 */
+	@Override                 
+    public List<ReceiptBean> findReceiptList(Map<String, String> argsMap) {
+        List<ReceiptBean> receiptList = receiptDAO.selectReceiptList(argsMap);
+        return receiptList;
+    }
+
+	/* 종합검진 결과관리 - 결과조회 */
+    @Override                
+    public List<RsltBean> findRsltList(Map<String, String> argsMap) {
+        List<RsltBean> rsltList = rsltDAO.selectRsltList(argsMap);
+        return rsltList;
+    }
+
+    /* 종합검진 결과관리 - 저장 */
+    @Override                
+    public void registerRslt(List<RsltBean> rsltList) {
+        for(RsltBean rsltBean : rsltList){
+            rsltDAO.updateRslt(rsltBean);
         }
     }
 }

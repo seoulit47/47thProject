@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_OcsPopupForm" classname="SC_OcsPopupForm" left="0" top="0" width="360" height="445" titletext="처방코드 조회">
+    <Layouts>
+      <Layout>
+        <Div id="Div04" taborder="0" left="0%" top="0" right="0.56%" height="60" style="background:transparent URL('img::miniTitleBar6.jpg');"/>
+        <Grid id="codeGrid" taborder="1" binddataset="dsCodePopup" useinputpanel="false" autofittype="col" oncelldblclick="codeGrid_oncelldblclick" left="7.5%" top="104" right="7.5%" height="312">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="81"/>
+                <Column size="222"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="코드"/>
+                <Cell col="1" text="코드명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:code"/>
+                <Cell col="1" style="font:8 arial;" text="bind:codeName"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="2" text="처방코드 조회" onclick="Static00_onclick" left="15.28%" top="-2" right="23.89%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Button id="searchBtn" taborder="3" onclick="searchBtn_onclick" left="84.17%" top="66" right="6.94%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Edit id="ocsEd" taborder="4" left="35.56%" top="66" right="16.67%" height="30"/>
+        <Div id="Div01" taborder="5" text="처방코드/명" left="7.5%" top="66" right="66.39%" height="30" style="background:thistle;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCodePopup" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findOcsCodeList</Col>
+            <Col id="URL">erp47::sup/checkup/findOcsCodeList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsCodePopup=dsCodePopup</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 진료지원 처방코드 팝업                                                    	*
+*                                                                               *
+* @Path		                       	                        					*
+* @Description 									   								*
+* @Author	    김진환					                                		*
+* 									                                            *
+* Created on 2016. 09. 19.                             		                    *
+*									                                            *
+********************************************************************************/
+
+// 공통 스크립트
+include "scripts::commonTransaction.xjs"; 
+
+// 공통 변수
+var rsltDeptCd
+
+// 화면 로드시
+this.SC_OcsPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	rsltDeptCd= this.parent.rsltDeptCd;
+	
+	var row = this.dsService.findRow("serviceID", "findOcsCodeList");
+	this.dsService.setColumn(row,"argument","rsltDeptCd="+rsltDeptCd);
+
+	this.gfnService("findOcsCodeList", false);	
+}
+
+
+// 조회
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var ocs = this.ocsEd.value;
+	var argument = 'rsltDeptCd='+rsltDeptCd+' ocs='+ocs;
+	
+	
+	var row = this.dsService.findRow("serviceID", "findOcsCodeList");
+	this.dsService.setColumn(row,"argument",argument);
+
+	this.gfnService("findOcsCodeList", false);	
+}
+
+//  
+this.codeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array;
+	
+	arrRtn[0] = this.dsCodePopup.getColumn(e.row,"code");
+	arrRtn[1] = this.dsCodePopup.getColumn(e.row,"codeName");
+
+	this.opener.setCode(this.parent.code,arrRtn);
+
+	this.close();	
+}
+
+]]></Script>
+  </Form>
+</FDL>

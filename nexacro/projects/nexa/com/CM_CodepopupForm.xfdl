@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload">
+  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="코드도움" onload="CM_CodepopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.25%" top="0" right="1%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
@@ -13,7 +13,7 @@
         </Div>
         <Static id="subCodeStc" taborder="1" text="코드명" onclick="subCodeStc_onclick" left="18%" top="72" right="60.25%" height="27" style="background:papayawhip;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="codeNameEdit" taborder="2" left="44.25%" top="74" right="17.5%" height="27"/>
-        <Grid id="Grid00" taborder="3" useinputpanel="false" left="7.25%" top="110" right="7%" height="370" autofittype="col" binddataset="dsCodeNm">
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="7.25%" top="110" right="7%" height="370" autofittype="col" binddataset="dsCodeNm" oncelldblclick="codeDiv_codeGrid_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -38,12 +38,6 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="dsCodeNm" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="code" type="STRING" size="256"/>
-          <Column id="codeName" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="serviceID" type="STRING" size="256"/>
@@ -64,10 +58,14 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="dsCodeNm" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
-
-
 
 
 this.CM_CodepopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
@@ -78,6 +76,15 @@ this.CM_CodepopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
     
     this.gfnService("findCodePopupList");
 }
-]]></Script>
+
+//그리드 더블클릭
+this.codeDiv_codeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array();
+	arrRtn[0] = this.dsCodeNm.getColumn(e.row, "code");
+	arrRtn[1] = this.dsCodeNm.getColumn(e.row, "codeName");
+	this.opener.setCode(this.parent.code, arrRtn,this.parent.args);
+	this.close();
+}]]></Script>
   </Form>
 </FDL>

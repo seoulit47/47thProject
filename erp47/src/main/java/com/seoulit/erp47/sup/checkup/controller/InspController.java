@@ -14,6 +14,7 @@ import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.checkup.service.SupCheckupServiceFacade;
 import com.seoulit.erp47.sup.checkup.to.ChoInspBean;
+import com.seoulit.erp47.sup.checkup.to.CodePopupBean;
 import com.seoulit.erp47.sup.checkup.to.InspBean;
 
 /**
@@ -34,7 +35,7 @@ public class InspController {
     @Autowired
         SupCheckupServiceFacade supCheckupServiceFacade;
     
-    /* 종합검진 검사관리 - 검사목록 조회 */
+    /* 종합검진 검사관리 - 패키지검사목록 조회 */
     @RequestMapping("sup/checkup/findPckInspList.do")
     public void findPckInspList(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -43,6 +44,24 @@ public class InspController {
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        
+        List<InspBean> inspList = supCheckupServiceFacade.findPckInspList(argsMap);
+        dataSetBeanMapper.beansToDataset(outData, inspList, InspBean.class);
+    }
+    
+    /* 종합검진 검사관리 - 검사목록 조회 */
+    @RequestMapping("sup/checkup/findInspList.do")
+    public void findInspList(HttpServletRequest request, HttpServletResponse response) throws Exception {   
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        
+        /*
+        for(String key : argsMap.keySet()) {
+            System.out.println(key + " : " + argsMap.get(key));
+        }
+        */
         
         List<InspBean> inspList = supCheckupServiceFacade.findInspList(argsMap);
         dataSetBeanMapper.beansToDataset(outData, inspList, InspBean.class);
@@ -72,5 +91,27 @@ public class InspController {
         dataSetBeanMapper.beansToDataset(outData, exChoInspList, InspBean.class);
     }
     
+    /* 종합검진 검사관리 - 처방코드 조회  */
+    @RequestMapping("sup/checkup/findOcsCodeList.do")
+    public void findOcsCodeList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+        
+        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        
+        List<CodePopupBean> odsCodeList = supCheckupServiceFacade.findOcsCodeList(argsMap);
+        dataSetBeanMapper.beansToDataset(outData, odsCodeList, CodePopupBean.class);
+    }
+    
+
+    // 종합검진 검사관리 - 수정, 등록, 저장
+    @RequestMapping("sup/checkup/batchInspProcess.do")
+    public void batchInspProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        List<InspBean> inspList = dataSetBeanMapper.datasetToBeans(inData, InspBean.class);
+        
+        supCheckupServiceFacade.batchInspProcess(inspList);
+    }   
    
 }

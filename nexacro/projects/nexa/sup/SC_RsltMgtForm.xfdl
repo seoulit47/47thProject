@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SC_RsltMgtForm" classname="SC_RsltMgtForm" left="0" top="0" width="1250" height="768" titletext="종합검진 결과 관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');"/>
+        <Static id="Static02" taborder="1" text="종합검진 결과 관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div01" taborder="2" text="검진자" left="2.24%" top="72" right="90.4%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="patNoEd" taborder="3" left="10.08%" top="72" right="82.72%" height="30"/>
+        <Edit id="patNmEd" taborder="4" left="17.76%" top="72" right="69.28%" height="30"/>
+        <Grid id="receiptGrid" taborder="5" binddataset="dsRsvt" useinputpanel="false" autofittype="col" oncellclick="receiptGrid_oncellclick" left="2.16%" top="159" right="60.64%" height="539">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="88"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="33"/>
+                <Column size="34"/>
+                <Column size="142"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검진일자"/>
+                <Cell col="1" text="등록번호"/>
+                <Cell col="2" text="환자명"/>
+                <Cell col="3" text="나이"/>
+                <Cell col="4" text="성별"/>
+                <Cell col="5" text="패키지"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:inspPlnDate"/>
+                <Cell col="1" text="bind:patNo"/>
+                <Cell col="2" text="bind:patNm"/>
+                <Cell col="3" text="bind:age"/>
+                <Cell col="4" text="bind:gender"/>
+                <Cell col="5" text="bind:pckNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div03" taborder="6" text="검진예정일" left="2.24%" top="112" right="90.4%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Calendar id="inspPlnDateCal" taborder="7" dateformat="yyyy-MM-dd" left="10.08%" top="112" right="75.12%" height="30"/>
+        <Button id="searchBtn" taborder="8" onclick="searchBtn_onclick" left="32.16%" top="111" right="60.64%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+        <Tab id="rsltTab" taborder="9" left="40%" top="72" right="2.24%" height="626" onchanged="rsltTab_onchanged" tabindex="0" scrollbars="autoboth">
+          <Tabpages>
+            <Tabpage id="tpgHOM" text="기본검사"/>
+            <Tabpage id="tpgNMR" text="핵체외"/>
+            <Tabpage id="tpgMAT" text="산모진찰"/>
+            <Tabpage id="tpgCPL" text="임상병리"/>
+            <Tabpage id="tpgEND" text="내시경"/>
+            <Tabpage id="tpgXRT" text="진단방사선"/>
+            <Tabpage id="tpgAPC" text="세포병리"/>
+            <Tabpage id="tpgIMA" text="폐기능"/>
+            <Tabpage id="tpgEKK" text="안과상담"/>
+            <Tabpage id="tpgAPS" text="조직병리"/>
+            <Tabpage id="tpgHPO" text="외과"/>
+            <Tabpage id="tpgHP1" text="채혈실"/>
+            <Tabpage id="tpgHAT" text="청력검사"/>
+            <Tabpage id="tpgDRG" text="약국"/>
+          </Tabpages>
+        </Tab>
+        <Grid id="rsltGrid" taborder="10" binddataset="dsRslt" useinputpanel="false" cellsizingtype="col" autofittype="col" oncelldblclick="rsltGrid_oncelldblclick" onenterdown="rsltGrid_onenterdown" left="40.96%" top="109" right="3.36%" height="576">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="206"/>
+                <Column size="166"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="67"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No."/>
+                <Cell col="1" text="검    사    명"/>
+                <Cell col="2" text="검   사   결   과"/>
+                <Cell col="3" text="하한"/>
+                <Cell col="4" text="상한"/>
+                <Cell col="5" text="단위"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="head" expr="expr:currow+1"/>
+                <Cell col="1" text="bind:dtlInspNm"/>
+                <Cell col="2" text="bind:inspRslt"/>
+                <Cell col="3" text="bind:refLowFig"/>
+                <Cell col="4" text="bind:refHighFig"/>
+                <Cell col="5" text="bind:unit"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="saveBtn" taborder="11" onclick="saveBtn_onclick" left="90.48%" top="707" right="2.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="patPopupBtn" taborder="12" onclick="patPopupBtn_onclick" left="31.04%" top="71" right="66.4%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsPckInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChoInsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="inspNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findReceiptList</Col>
+            <Col id="URL">erp47::sup/checkup/findReceiptList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsRsvt=dsReceipt</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findRsltList</Col>
+            <Col id="URL">erp47::sup/checkup/findRsltList.do</Col>
+            <Col id="outData">dsRslt=dsRslt</Col>
+            <Col id="callbackFunc"/>
+            <Col id="inData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerRslt</Col>
+            <Col id="URL">erp47::sup/checkup/registerRslt.do</Col>
+            <Col id="inData">dsRslt=dsRslt:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">supCallBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsRsvt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" canrowposchange="dsRsvt_canrowposchange" onrowposchanged="dsRsvt_onrowposchanged">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="rsvtDate" type="STRING" size="256"/>
+          <Column id="rsvtTime" type="STRING" size="256"/>
+          <Column id="inspPlnDate" type="STRING" size="256"/>
+          <Column id="inspPlnTime" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="sms" type="STRING" size="256"/>
+          <Column id="aplMan" type="STRING" size="256"/>
+          <Column id="aplManTel" type="STRING" size="256"/>
+          <Column id="rship" type="STRING" size="256"/>
+          <Column id="pckCd" type="STRING" size="256"/>
+          <Column id="pckNm" type="STRING" size="256"/>
+          <Column id="basicInspAmt" type="STRING" size="256"/>
+          <Column id="reducCd" type="STRING" size="256"/>
+          <Column id="reducNm" type="STRING" size="256"/>
+          <Column id="reducAmt" type="STRING" size="256"/>
+          <Column id="rsvtAmt" type="STRING" size="256"/>
+          <Column id="basicInspSumAmt" type="STRING" size="256"/>
+          <Column id="payMan" type="STRING" size="256"/>
+          <Column id="rsvtResp" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="cancelYn" type="STRING" size="256"/>
+          <Column id="choInspAmt" type="STRING" size="256"/>
+          <Column id="inspSumAmt" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRslt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rsvtNo" type="STRING" size="256"/>
+          <Column id="inspCd" type="STRING" size="256"/>
+          <Column id="dtlInspCd" type="STRING" size="256"/>
+          <Column id="dtlInspNm" type="STRING" size="256"/>
+          <Column id="inspRslt" type="STRING" size="256"/>
+          <Column id="ocsDivCd" type="STRING" size="256"/>
+          <Column id="rsltDeptCd" type="STRING" size="256"/>
+          <Column id="refLowFig" type="STRING" size="256"/>
+          <Column id="refHighFig" type="STRING" size="256"/>
+          <Column id="unit" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+// 공통 스크립트
+include "scripts::supScripts.xjs";
+include "scripts::wonScripts.xjs";
+include "scripts::commonScripts.xjs"; 
+
+// 공통 변수
+var rsvtNo;
+var editFlag = false;
+var	addFlag = false;
+
+// 검진자 버튼 
+this.patPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPatPopup();
+}
+
+this.setPatInfo=function(arry)
+{	
+	this.patNoEd.set_value(arry[0]);
+	this.patNmEd.set_value(arry[1]);
+}
+
+// 조회버튼
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var inspDate = this.inspPlnDateCal.value;
+	if (!this.gfnIsNull(inspDate))
+	{
+		var patNo = this.patNoEd.value;
+		var argument = 'inspPlnDate='+inspDate+' patNo='+patNo;
+		var row = this.dsService.findRow('serviceID' , "findReceiptList");
+		this.dsService.setColumn(row, "argument", argument);
+		
+		this.gfnService("findReceiptList", false);
+		
+		editFlag = false;
+		addFlag = false;
+	}else{
+		alert("검진자와 검진일을 입력해 주세요.");
+	}
+}
+
+// 결과 조회
+this.receiptGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var rsvtNo = this.dsRsvt.getColumn(this.dsRsvt.rowposition, "rsvtNo");
+	var argument = 'rsvtNo='+rsvtNo;
+	var row = this.dsService.findRow('serviceID' , "findRsltList");
+	this.dsService.setColumn(row, "argument", argument);
+	
+	this.gfnService("findRsltList", false);
+	
+	this.rsltGrid.setCellProperty("Body", 2, "edittype", "none");
+	
+	this.setBaseInspRslt();
+}
+
+this.setBaseInspRslt=function()
+{
+	this.rsltTab_onchanged(null,null);
+}
+
+this.rsltTab_onchanged=function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
+{
+	
+	if(this.gfnIsNull(obj))
+	{
+		rsltDeptCd = 'HOM';
+	}
+	else
+	{
+		var rsltDeptCd = obj.tabpages[e.postindex].name.substr(3);
+	}
+	this.dsRslt.filter("rsltDeptCd == '"+rsltDeptCd+"'");
+}
+
+// 등록, 수정
+this.rsltGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.rsltGrid.setCellProperty("Body", 2, "edittype", "normal");
+}
+
+this.rsltGrid_onenterdown = function(obj:Grid, e:nexacro.GridEditEventInfo)
+{
+	//this.fn_setUserData(this.dsRslt);
+	var bool = this.rsltGrid.moveToNextCell();
+	if(!bool)
+	{
+		this.rsltGrid.setCellPos(0);
+	}
+}
+
+// 저장버튼
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("registerRslt",false);
+	
+	alert(this.MSG_SUP_SAVE);
+}
+
+]]></Script>
+  </Form>
+</FDL>
