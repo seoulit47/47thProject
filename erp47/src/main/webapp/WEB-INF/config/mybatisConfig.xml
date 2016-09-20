@@ -38,11 +38,12 @@
     <!-- 진료지원 -->
     <package name="com.seoulit.erp47.sup.checkup.to"/>  
     <package name="com.seoulit.erp47.sup.nutritive.to"/>  		<!-- 식품관리 -->
-
+	<package name="com.seoulit.erp47.sup.pathology.to"/>
+	  	
 	<!-- 원무 -->
 	
 	
-	<!-- 진료지원 -->
+	
 		
      
     <!-- 진료처방 -->

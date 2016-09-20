@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_ClinspeBlockMgtForm" classname="SL_ClinspeBlockMgtForm" left="0" top="0" width="1261" height="779" titletext="검체블록관리">
+    <Layouts>
+      <Layout>
+        <Grid id="clinspeBlokGrid" taborder="0" binddataset="dsSlClinspeBlok" autoenter="select" useinputpanel="false" autofittype="col" left="0.87%" top="114" right="1.9%" height="611">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="85"/>
+                <Column size="126"/>
+                <Column size="144"/>
+                <Column size="174"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검체블록코드"/>
+                <Cell col="2" text="검체블록 제작일"/>
+                <Cell col="3" text="검체블록 제작시간"/>
+                <Cell col="4" text="검체블록 수량"/>
+                <Cell col="5" text="환자번호"/>
+                <Cell col="6" text="환자명"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:clinspeNo"/>
+                <Cell col="1" text="bind:clinspeBlokCode"/>
+                <Cell col="2" edittype="date" text="bind:clinspeBlokProdDay"/>
+                <Cell col="3" edittype="normal" text="bind:clinspeBlokProdTime"/>
+                <Cell col="4" edittype="text" text="bind:clinspeBlokQnt"/>
+                <Cell col="5" edittype="text" text="bind:patNo"/>
+                <Cell col="6" edittype="text" text="bind:patNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div00" taborder="1" left="0.48%" top="8" right="-32.91%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체블록관리" left="4.79%" top="-4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc02" taborder="2" text="검체번호" onclick="subCodeStc_onclick" left="1.98%" top="76" right="92.15%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="clinspeNoEd" taborder="3" left="8.41%" top="76" right="83.35%" height="30"/>
+        <Button id="searchClinspeNo" taborder="4" onclick="searchClinspeNo_onclick" cssclass="AddBtn" left="17.13%" top="76" right="80.33%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="5" onclick="searchBtn_onclick" cssclass="DelBtn" left="89.69%" top="76" right="3.17%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchBtn" taborder="6" onclick="batchBtn_onclick" cssclass="DelBtn" left="90.96%" top="736" right="1.9%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBtn" taborder="7" onclick="addBtn_onclick" cssclass="DelBtn" left="74.46%" top="736" right="18.4%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delBtn" taborder="8" onclick="delBtn_onclick" cssclass="DelBtn" left="82.71%" top="736" right="10.15%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findClinspeBlokList</Col>
+            <Col id="URL">erp47::sup/pathology/findClinspeBlokList.do</Col>
+            <Col id="outData">dsSlClinspeBlok=dsSlClinspeBlok</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchClinspeBlokProcess</Col>
+            <Col id="URL">erp47::sup/pathology/batchClinspeBlokProcess.do</Col>
+            <Col id="inData">dsSlClinspeBlok=dsSlClinspeBlok:u</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSlClinspeBlok" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+          <Column id="clinspeBlokCode" type="STRING" size="256"/>
+          <Column id="clinspeBlokProdDay" type="STRING" size="256"/>
+          <Column id="clinspeBlokProdTime" type="STRING" size="256"/>
+          <Column id="clinspeBlokQnt" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 검체블록  관리																*
+*                                                                               *
+* @Path		    sup-SL_ClinspeBlokMngntForm										*
+*																				*
+* @Description 	검체블록 관리에서 검체블록 등록,수정,삭제,조회한다.		*
+*               																*
+* @Author	    김진환    						                                *
+* 									                                            *
+* Created on 2016. 09. 19                              		                    *
+*									                                            *
+********************************************************************************/
+
+/**************************************************************************************************
+*                                         공통 Script Include                                     *
+***************************************************************************************************/
+
+include "scripts::commonTransaction.xjs";
+include "scripts::commonScripts.xjs";
+
+/***************************************************************************************************
+* 검체정보 조회                                     
+***************************************************************************************************/
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var aa = this.clinspeNoEd.value;
+	var searchNo = "clinspeNo='"+aa+"'";
+	//alert(aa);
+	this.dsService.setColumn(0, "argument", searchNo);
+	this.gfnService("findClinspeBlokList", "false");
+}
+
+/***************************************************************************************************
+* 검체번호 조회                                                                      
+***************************************************************************************************/
+
+this.searchClinspeNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("SL_ClinspeBlokPopupForm","sup","","");
+}
+
+/***************************************************************************************************
+* 검체번호 조회 click 이벤트 때 사용                                                          
+***************************************************************************************************/
+
+this.setClinspeNoArray = function(cliNo){
+	this.clinspeNoEd.set_value(cliNo);
+}
+
+/***************************************************************************************************
+* 검체블록 추가                                                                   
+***************************************************************************************************/
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsSlClinspeBlok.addRow();
+	
+	var setBlokCode;
+	var count = this.clinspeBlokGrid.currentrow;
+	var blokNo = this.clinspeBlokGrid.currentrow-1;
+	var blokCode = this.clinspeBlokGrid.currentrow+1;
+	
+	var lastCol = this.dsSlClinspeBlok.getColumn(blokNo, "clinspeBlokCode");
+	
+	if(blokCode <10){
+		setBlokCode = "CB"+"00"+blokCode;
+	}else if(blokCode <100){
+		setBlokCode = "CB"+"0"+blokCode;
+	}else if(blokCode <1000){
+		setBlokCode = "CB"+blokCode;
+	}
+	
+	//코드 중복방지
+	if(lastCol == setBlokCode){
+		var setBlok = this.clinspeBlokGrid.currentrow+2;
+		if(blokNo <10){
+			setBlokCode = "CB"+"00"+setBlok;
+		}else if(blokNo <100){
+			setBlokCode = "CB"+"0"+setBlok;
+		}else if(blokNo <1000){
+			setBlokCode = "CB"+setBlok;
+		}
+	}
+	
+	
+	this.dsSlClinspeBlok.setColumn(count , "clinspeNo", this.clinspeNoEd.value);
+	this.dsSlClinspeBlok.setColumn(count , "clinspeBlokCode", setBlokCode);
+//	this.dsSlClinspeBlok.setColumn(count, "clinspeBlokProdTime", this.nowTime());
+}
+
+/***************************************************************************************************
+* 검체블록 삭제                                                                   
+***************************************************************************************************/
+
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsSlClinspeBlok.deleteRow(this.clinspeBlokGrid.currentrow);
+}
+
+/***************************************************************************************************
+* 검체블록 저장                                                                   
+***************************************************************************************************/
+
+this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchClinspeBlokProcess", "false");
+}
+]]></Script>
+  </Form>
+</FDL>
