@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.seoulit.erp47.acc.budget.applicationService.AccBudgetApplicationService;
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
+import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
 
 
 @Service
@@ -36,5 +37,18 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 	public void batchBimokProcess(List<BudgBimokBean> bimokList) {
 		accBudgetApplicationService.batchBimokProcess(bimokList);
 	}
+	
+	// 예산사용부서 조회
+	@Override
+	public List<BudgUseDeptBean> findBudgUseDept(Map<String, String> argsMap) {
+		List<BudgUseDeptBean> findBudgUseDept = accBudgetApplicationService.findBudgUseDept(argsMap);
+		return findBudgUseDept;
+	}
+
+	// 예산사용부서 저장	
+		@Override
+		public void batchBudgUseDeptProcess(List<BudgUseDeptBean> UseDeptBeanList) {
+		    accBudgetApplicationService.batchBudgUseDeptProcess(UseDeptBeanList);
+		}
 
 }

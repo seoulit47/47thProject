@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HG_OverTimeWorkForm" classname="HG_OverTimeWorkForm" left="0" top="0" width="1256" height="784" titletext="시간외 근무관리" onload="HG_OverTimeWorkForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleDiv" taborder="0" left="0%" top="0" right="0.72%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="시간외근무" left="4.78%" top="-4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="mainDiv" taborder="1" left="2.07%" top="55" right="0.96%" height="697" style="background:#edececff;">
+          <Layouts>
+            <Layout width="1233" height="721">
+              <Grid id="overTimeWorkGrid" taborder="63" binddataset="dsOverTimeWork" useinputpanel="false" autofittype="col" left="0.33%" top="40" right="0.25%" height="649" onenterdown="mainDiv_overTimeWorkGrid_onenterdown">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="91"/>
+                      <Column size="83"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사원번호"/>
+                      <Cell col="1" text="사원명"/>
+                      <Cell col="2" text="부서번호"/>
+                      <Cell col="3" text="부서명"/>
+                      <Cell col="4" colspan="4" text="시간외근무시간"/>
+                      <Cell col="8" text="총근무시간"/>
+                      <Cell col="9" text="사유"/>
+                      <Cell col="10" text="결재상태"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:empNo"/>
+                      <Cell col="1" text="bind:empNm"/>
+                      <Cell col="2" text="bind:deptCd"/>
+                      <Cell col="3" text="bind:deptNm"/>
+                      <Cell col="4" displaytype="date" edittype="date" text="bind:startOvertimeDate"/>
+                      <Cell col="5" edittype="masknumber" text="bind:startOvertime" mask="##:00"/>
+                      <Cell col="6" displaytype="date" edittype="date" text="bind:endOvertimeDate"/>
+                      <Cell col="7" edittype="masknumber" text="bind:endOvertime" mask="##:00"/>
+                      <Cell col="8" edittype="masknumber" text="bind:totalOvertime" mask="##시간"/>
+                      <Cell col="9" displaytype="text" edittype="text" text="bind:reason"/>
+                      <Cell col="10" displaytype="normal" edittype="none" text="bind:overStatus"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="empnoStc" taborder="64" text="사번" onclick="subCodeStc_onclick" left="33.58%" top="7" right="62.97%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="empNoEd" taborder="65" enable="false" left="37.36%" top="7" right="54.43%" height="26"/>
+              <Edit id="empNmEd" taborder="66" enable="false" left="53.2%" top="7" right="38.34%" height="26"/>
+              <Static id="empnmStc" taborder="67" text="성명" onclick="subCodeStc_onclick" left="49.18%" top="7" right="47.21%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="hdateStc" taborder="68" text="기간" left="0.57%" top="6" right="92.78%" height="26" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+              <Calendar id="startCal" taborder="69" left="7.8%" top="4" right="80.38%" height="30"/>
+              <Calendar id="endCal" taborder="70" left="20.69%" top="4" right="67.49%" height="30"/>
+              <Static id="Static04" taborder="71" text="   ~" left="18.8%" top="6" right="78.49%" height="31" style="color:#46463dff;"/>
+              <Button id="addOverTimeBtn" taborder="73" onclick="mainDiv_addOverTimeBtn_onclick" cssclass="DelBtn" left="79.89%" top="6" right="13.79%" height="28" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="true"/>
+              <Button id="delOverTimeBtn" taborder="74" onclick="mainDiv_delOverTimeBtn_onclick" cssclass="DelBtn" enable="false" left="86.78%" top="6" right="6.9%" height="28" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchOverTimeWorkBtn" taborder="75" onclick="mainDiv_searchOverTimeWorkBtn_onclick" cssclass="SearchBtn" left="73.07%" top="6" right="20.61%" height="28" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="empSearchBtn" taborder="76" onclick="mainDiv_empSearchBtn_onclick" cssclass="DelBtn" left="45.65%" top="4" right="51.64%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="apBtn" taborder="77" cssclass="DelBtn" left="63.05%" top="6" right="30.13%" height="28" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="false" onclick="mainDiv_apBtn_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="saveBtn" taborder="2" onclick="saveBtn_onclick" cssclass="DelBtn" enable="false" left="92.68%" top="61" right="1.67%" height="28" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">searchOverTimeList</Col>
+            <Col id="URL">erp47::/hrs/overtime/findOverTimeWorkList.do</Col>
+            <Col id="outData">dsOverTimeWork=dsOverTimeWork</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">searchApproverOverTimeList</Col>
+            <Col id="URL">erp47::/hrs/overtime/findApproverOverTimeWorkList.do</Col>
+            <Col id="outData">dsOverTimeWork=dsOverTimeWork</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchOverTimeProcess</Col>
+            <Col id="URL">erp47::/hrs/overtime/batchOverTimeWorkProcess.do</Col>
+            <Col id="inData">dsOverTimeWork=dsOverTimeWork:u</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsOverTimeWork">
+        <ColumnInfo>
+          <Column id="startOvertime" type="STRING" size="256"/>
+          <Column id="endOvertime" type="STRING" size="256"/>
+          <Column id="totalOvertime" type="STRING" size="256"/>
+          <Column id="overStatus" type="STRING" size="256"/>
+          <Column id="reason" type="STRING" size="256"/>
+          <Column id="approvalReason" type="STRING" size="256"/>
+          <Column id="overtimeNo" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="startOvertimeDate" type="STRING" size="256"/>
+          <Column id="endOvertimeDate" type="STRING" size="256"/>
+          <Column id="beforeOvertimeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 시간외근무  관리                                                          	*
+*                                                                               *
+* @Path		    hrs-HG_OverTimeWorkForm                        	                *
+* @Description 	시간외 근무 등록, 조회, 수정 화면  	                        *
+* @Author	    박영희					                                		*
+* 									                                            *
+* Created on 2016. 09. 07                             		                    *
+*									                                            *
+********************************************************************************/
+
+
+/***************************************************************************************************
+*                                         import                                                   *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include "scripts::commonTransaction.xjs";
+
+
+/***************************************************************************************************
+*                                         변수 선언                                               *
+***************************************************************************************************/
+var deptCd;			//부서코드
+var deptNm;			//부서명
+var empNo;			//사원번호
+var empNm;			//사원명
+var pms;			//권한코드
+var sDate;			//시간외근무 시작일
+var eDate;			//시간외근무 종료일
+var hrs;
+
+
+/***************************************************************************************************
+*                                         onload Event                                      	   *
+***************************************************************************************************/
+this.HG_OverTimeWorkForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	empNo = application.gdsEmp.getColumn(0,"empNo");
+	empNm = application.gdsEmp.getColumn(0,"empNm");
+	deptCd = application.gdsEmp.getColumn(0,"deptCd");
+	deptNm = application.gdsEmp.getColumn(0,"deptNm");
+	pms = application.gdsEmp.getColumn(0,"pms");
+
+	this.mainDiv.startCal.set_value(this.fn_Today());
+	this.mainDiv.endCal.set_value(this.fn_Today());
+	this.mainDiv.empnoEdt.set_value(empNo);
+	this.mainDiv.empnmEdt.set_value(empNm);
+	
+	if(pms == "admin" && deptNm == "인사팀"){ㅠ
+	
+		this.mainDiv.apBtn.set_enable(true);
+		this.mainDiv.delOverTimeBtn.set_enable(true);
+	
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                         현재 날짜 셋팅 FUNCTION                          	    *
+***************************************************************************************************/
+this.fn_Today = function()
+{
+	var objDate = new Date();
+	var sToday  = objDate.getFullYear().toString();
+	    sToday += (objDate.getMonth()+1).toString().padLeft(2, "0");
+	    sToday += objDate.getDate().toString().padLeft(2, "0"); 
+
+	return sToday;
+
+}
+
+
+
+/***************************************************************************************************
+*                                    사원조회  버튼 클릭 Event                             	   *
+***************************************************************************************************/
+this.mainDiv_empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnEmpPopup();
+
+	this.setEmpInfo=function(empNo,empNm){
+		this.mainDiv.empNoEd.set_value(empNm);
+		this.mainDiv.empNmEd.set_value(empNo);
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                        사원 셋팅 				    		                    *
+***************************************************************************************************/
+this.setEmpInfo = function(arrRtn)
+{
+	this.mainDiv.empnoEdt.set_value(arrRtn[0]);
+	this.mainDiv.empnmEdt.set_value(arrRtn[1]);
+	deptCd = arrRtn[2];
+	deptNm = arrRtn[3];
+}
+
+
+
+/***************************************************************************************************
+*                                    조회  버튼 클릭 Event                                 	   *
+***************************************************************************************************/
+this.mainDiv_searchOverTimeWorkBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	if(pms == "admin" && deptNm == "인사팀"){
+		
+		this.gfnService("searchApproverOverTimeList");
+		
+	}else{
+	
+		sDate = this.mainDiv.startCal.value;
+		eDate = this.mainDiv.endCal.value;
+		var argument = 'empNo='+empNo+' sDate='+sDate+' eDate='+eDate;
+		
+		this.dsService.setColumn(0,"argument",argument);
+		
+		this.gfnService("searchOverTimeList");	
+	}	
+}
+
+
+
+/***************************************************************************************************
+*                                    추가  버튼 클릭 Event                                 	   *
+***************************************************************************************************/
+this.mainDiv_addOverTimeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	var toDate = this.fn_Today();
+	var beforeOvertimeNo;
+
+	if(pms == "admin" && deptNm == "인사팀"){
+	
+		empNo = this.mainDiv.empNoEd.value;
+		empNm = this.mainDiv.empNmEd.value;
+	
+	}else{
+		if(this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overtimeNo") == undefined){
+		
+			alert('신청할 시간외근무 정보가 존재하지 않습니다.');
+			return;
+		
+		}else if(this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overStatus") == "신청"){
+		
+			alert('승인되지 않은 시간외 근무 정보는 재신청 할 수 없습니다.');
+			return;
+		
+		}
+		
+		beforeOvertimeNo = this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overtimeNo");
+	
+	}
+	
+	this.dsOverTimeWork.addRow();
+	
+	var overtimeNo = this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition-1,"overtimeNo");
+	var count=0;
+	count = count+1;
+
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"startOvertimeDate",toDate);
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"endOvertimeDate",toDate);
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"deptCd",deptCd);
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"deptNm",deptNm);
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"empNo",empNo);
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"empNm",empNm);
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"overStatus","신청");
+	
+	if(overtimeNo == undefined){
+		
+		overtimeNo = parseInt(this.fn_Today()+"00")+count;
+		this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"overtimeNo",overtimeNo);
+
+
+	}else if(overtimeNo.substring(0,8) != toDate){
+		
+		overtimeNo = parseInt(toDate.substr(0,8)+"00")+count;
+		this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"overtimeNo",overtimeNo);
+
+
+	}else if(overtimeNo.substring(0,8) == toDate){
+	
+		overtimeNo = parseInt(overtimeNo)+count;
+		this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"overtimeNo",overtimeNo);
+
+	}
+	
+	if(pms == "admin" && deptNm == "인사팀"){
+		
+	}else{
+	
+		this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"overStatus","신청");
+		this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"beforeOvertimeNo",beforeOvertimeNo);
+	
+	}
+	
+}
+
+
+
+/***************************************************************************************************
+*                                         콜백 함수 셋팅                                         *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)
+	{	
+		this.gfn_errorPopup(svcID, errorMsg);
+		return;
+	
+	}else{	
+		if(svcID=="searchHdayList")
+		{			
+			var rowCount = this.dsHday.getRowCount();
+			
+			if(rowCount== 0)
+			{			
+				alert("조회 내용이 없습니다.");
+				return;
+			}
+		}
+		if(svcID=="batchHday")
+		{	
+			alert("정상 처리되었습니다.");
+		
+		}	
+	}	
+}
+
+
+
+/***************************************************************************************************
+*                                    삭제  버튼 클릭 Event                                 	   *
+***************************************************************************************************/
+this.mainDiv_delOverTimeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var status = this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overStatus");
+	
+	if(status == undefined){
+	
+		this.dsOverTimeWork.deleteRow(this.dsOverTimeWork.rowposition);
+	
+	}else{
+	
+		alert("결재완료되었거나 신청된 내용은 삭제가 불가능합니다.");
+	
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                    저장  버튼 클릭 Event                                 	   *
+***************************************************************************************************/
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchOverTimeProcess");
+}
+
+
+
+/***************************************************************************************************
+*                                    승인  버튼 클릭 Event                                 	   *
+***************************************************************************************************/
+this.mainDiv_apBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"overStatus","결재완료");
+}
+
+
+
+/***************************************************************************************************
+*                                      총시간 자동계산                                           *
+***************************************************************************************************/
+this.mainDiv_overTimeWorkGrid_onenterdown = function(obj:Grid, e:nexacro.GridEditEventInfo)
+{
+	if(e.cell == 7){
+		var endTime = this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"endOvertime");
+		var startTime = this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"startOvertime");
+	
+		var workHours = (parseInt(endTime) - parseInt(startTime))/100;
+		
+		this.dsOverTimeWork.setColumn(this.dsOverTimeWork.rowposition,"totalOvertime",workHours);	
+	}
+}
+]]></Script>
+  </Form>
+</FDL>
