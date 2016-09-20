@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AccAssiSubPopupForm" classname="AE_AccAssiSubPopupForm" left="0" top="0" width="400" height="596" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="1" text="Div01" left="1.75%" top="51" right="2.75%" height="525" style="background:lavender;bordertype:round 5 5 ;"/>
+        <Edit id="assiSubNmEd" taborder="2" left="29.75%" top="62" right="26.25%" height="27" class="AreaEdt"/>
+        <Static id="subCodeStc07" taborder="3" text="보조과목명" onclick="subCodeStc_onclick" left="4.25%" top="62" right="74.5%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Grid id="accAssiSubGrid" taborder="4" useinputpanel="false" autofittype="col" left="2.75%" top="95" right="3.5%" height="476" class="AreaGrid" binddataset="dsAssiSub" oncelldblclick="accAssiSubGrid_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="137"/>
+                <Column size="128"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="보조과목코드"/>
+                <Cell col="1" text="보조과목명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assiSubCd"/>
+                <Cell col="1" text="bind:assiSubNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchassiSubBtn" taborder="5" left="76%" top="62" right="5.5%" height="27" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchassiSubBtn_onclick"/>
+        <Div id="Div06" taborder="6" left="0%" top="4" right="1.5%" height="52" style="background:transparent URL('img::titleBar7.jpg') stretch;">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="보조과목 조회" left="6.35%" top="8" right="48.98%" height="29" style="font:bold 15 arial;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAssiSubList</Col>
+            <Col id="URL">erp47::acc/elementary/findAssiSubList.do</Col>
+            <Col id="outData">dsAssiSub=dsAssiSub</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">call</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAssiSub" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="assiSubNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+// 조회버튼 클릭 이벤트
+this.searchassiSubBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = this.opener.yearSpin.value;
+	var assiSubNm = this.assiSubNmEd.value;
+	var acntCd = this.parent.acntCd;
+	alert('accYear='+accYear+' / assiSubNm='+assiSubNm+' / acntCd='+acntCd);
+	argument = 'accYear='+accYear+' assiSubNm='+assiSubNm+' acntCd='+acntCd;
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findAssiSubList");
+}
+
+
+this.accAssiSubGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array;
+	var i=0;	
+	arrRtn[i++] = this.dsAssiSub.getColumn(e.row,"assiSubCd");
+	arrRtn[i++] = this.dsAssiSub.getColumn(e.row,"assiSubNm");
+	this.opener.setCode(this.parent.code, arrRtn);
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

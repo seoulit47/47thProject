@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AB_BudgForm" classname="AB_BudgForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="4" right="0.29%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
+        <Static id="titleEdt02" taborder="1" text="예산등록" cssclass="TStc" left="4.39%" top="10" right="77.73%" height="44" style="font:bold 15 Dotum;"/>
+        <Div id="Div03" taborder="2" left="1.27%" top="71" right="1.07%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Button id="searchBtn" taborder="0" left="79.26%" top="8" right="12.53%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="saveBtn" taborder="1" left="88.88%" top="8" right="3.21%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="stc_dline" taborder="3" text="마감상태" onclick="subCodeStc_onclick" left="2.25%" top="84" right="90.72%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="dlineCB" taborder="4" innerdataset="dsGB101" codecolumn="code" datacolumn="value" left="10.06%" top="84" right="80.08%" height="26" class="AreaCombo"/>
+        <Static id="stc_year" taborder="5" text="회계년도" onclick="subCodeStc_onclick" left="21.19%" top="84" right="71.78%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Spin id="yearSpin" taborder="6" value="2016" onspin="yearSpin_onspin" left="29%" top="82" right="61.62%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+        <Static id="stc_bimok" taborder="7" text="예산비목" onclick="subCodeStc_onclick" left="39.65%" top="84" right="53.32%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="bimokEd" taborder="8" left="47.46%" top="84" right="42.58%" height="26" class="AreaEdt"/>
+        <Static id="stc_acc" taborder="9" text="계정과목" onclick="subCodeStc_onclick" left="58.69%" top="84" right="34.28%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="acntEd" taborder="10" left="66.5%" top="83" right="23.54%" height="26" class="AreaEdt"/>
+        <Grid id="bimokListGrid" taborder="12" binddataset="dsBudgReg" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" left="1.27%" top="140" right="1.07%" height="616" style="linetype:onlyvert;" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="267"/>
+                <Column size="103"/>
+                <Column size="79"/>
+                <Column size="178"/>
+                <Column size="131"/>
+                <Column size="113"/>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="예산비목"/>
+                <Cell col="1" text="계정책임자"/>
+                <Cell col="2" text="계정코드"/>
+                <Cell col="3" text="계정명"/>
+                <Cell col="4" text="이전예산금액"/>
+                <Cell col="5" text="예산금액"/>
+                <Cell col="6" text="산출근거"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="tree" edittype="tree" treestartlevel="1"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5" edittype="expr:finYn == &quot;N&quot; ? &quot;none&quot; : &quot;normal&quot;"/>
+                <Cell col="6" edittype="expr:finYn == &quot;N&quot; ? &quot;none&quot; : &quot;normal&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoul.his.acc.vat.dao.TaxInvDAO">
+<cache flushInterval="86400000" eviction="LRU" />
+
+    <!-- 세금계산서목록 조회resultMap -->
+    <resultMap type="TaxInvBean" id="taxInvList">
+        <result property="pubNo"            column="PUB_NO" />
+        <result property="pubDate"          column="PUB_DATE" />
+        <result property="pubDiv"           column="PUB_DIV" />
+        <result property="slipNo"           column="SLIP_NO" />
+        <result property="billDiv"          column="BILL_DIV" />
+        <result property="purchSalesDiv"    column="PURCH_SALES_DIV" />
+        <result property="anspDiv"          column="ANSP_DIV" />
+        <result property="custCd"           column="CUST_CD" />
+        <result property="ABS"              column="ABS" />
+        <result property="splyPrice"        column="SPLY_PRICE" />
+        <result property="sumPrice"         column="SUM_PRICE" />
+        <result property="taxAmt"           column="TAX_AMT" />
+        <result property="gipyoDate"        column="GIPYO_DATE" />
+        <result property="resolNo"          column="RESOL_NO" />
+        <collection property="detailTaxInvList" select="selectDetailTaxInvList"
+                    column="PUB_NO" javaType="list" />
+    </resultMap>
+
+    <!-- 세금계산서 목록 조회 -->
+    <select id="selectTaxInvList" flushCache="false"  useCache="true" resultMap="taxInvList">
+        SELECT 
+            PUB_NO,				<!-- 발행번호 -->
+            PUB_DATE,			<!-- 발행일자 -->
+            PUB_DIV,			<!-- 발행구분 -->
+            SLIP_NO,			<!-- 전표번호 -->
+            BILL_DIV,			<!-- 계산서구분 -->
+            PURCH_SALES_DIV,	<!-- 매입/매출구분 -->
+            ANSP_DIV,			<!-- 청구구분 -->
+            CUST_CD,			<!-- 거래처코드 -->
+            ABS,				<!-- 적요 -->
+            SPLY_PRICE,			<!-- 공급가액 -->
+            TAX_AMT,			<!-- 세액 -->
+            SUM_PRICE,			<!-- 금액 -->
+            GIPYO_DATE,			<!-- 기표일자 -->
+            RESOL_NO			<!-- 결의번호 -->
+        FROM
+           AT_TAXINV
+        WHERE  1 = 1
+        <if test="startPubDate != null">
+           AND  PUB_DATE BETWEEN #{startPubDate} AND #{endPubDate}
+        </if>
+        <if test="startGipyoDate != null">
+           AND  GIPYO_DATE BETWEEN #{startGipyoDate} AND #{endGipyoDate}
+        </if>
+        <if test="custCd != null">
+           AND  CUST_CD = #{custCd}
+        </if>
+         <if test="resolNo != null">
+           AND  RESOL_NO = #{resolNo}
+        </if>
+        <if test="pubDiv != null">
+            <if test="pubDiv == 4">
+                AND PUB_DIV IN ('1','2')
+            </if>
+            <if test="pubDiv != 4">
+                AND PUB_DIV = #{pubDiv}
+            </if>
+        </if>
+        <if test="purchSalesDiv != null">
+           AND  PURCH_SALES_DIV = #{purchSalesDiv}
+        </if>
+        <if test="billDiv != null">
+           AND  BILL_DIV = #{billDiv}
+           
+        </if>
+     </select>
+
+     <!-- 세금계산서상세목록 조회 -->
+     <select id="selectDetailTaxInvList" flushCache="false"  useCache="true" resultType="DetailTaxInvBean">
+        SELECT 
+            NO 			AS no,			<!-- 순번 -->
+            PUB_DATE 	AS pubDate,		<!-- 발행일자 -->
+            FM 			AS fm,			<!-- 품목 -->
+            STAND 		AS stand,		<!-- 규격 -->
+            QNT 		AS qnt,			<!-- 수량 -->
+            PRICE 		AS price,		<!-- 단가 -->
+            TAX_AMT 	AS taxAmt,		<!-- 세액 -->
+            SPLY_PRICE 	AS splyPrice,	<!-- 공급가액 -->
+            PUB_NO 		AS pubNo,		<!-- 발행번호 -->
+            DED_yn 		AS dedYN		<!-- 공제여부 -->
+         FROM
+             AT_DETAIL_TAXINV
+         WHERE
+             PUB_NO = #{pubNo}
+     </select>
+
+    <!-- 세금계산서 삭제 -->
+    <delete id="deleteTaxInv" flushCache="false" parameterType="TaxInvBean">
+        DELETE FROM
+            AT_TAXINV
+        WHERE
+            1=1
+        <if test="pubNo!=null">
+            AND PUB_NO = #{pubNo}
+        </if>
+        <if test="resolNo!=null">
+            AND RESOL_NO = #{resolNo}
+        </if>
+    </delete>
+
+    <!-- 세금계산서 추가 -->
+    <insert id="insertTaxInv" flushCache="false" parameterType="TaxInvBean">
+        INSERT INTO
+            AT_TAXINV(
+                PUB_NO
+               ,PUB_DATE
+               ,PUB_DIV
+               ,SLIP_NO
+               ,BILL_DIV
+               ,PURCH_SALES_DIV
+               ,ANSP_DIV
+               ,CUST_CD
+               ,ABS
+               ,SPLY_PRICE
+               ,TAX_AMT
+               ,SUM_PRICE
+               ,RESOL_NO
+               ,GIPYO_DATE
+            )
+            VALUES(
+                 #{pubNo}
+                ,#{pubDate}
+                ,#{pubDiv}
+                ,#{slipNo}
+                ,#{billDiv}
+                ,#{purchSalesDiv}
+                ,#{anspDiv}
+                ,#{custCd}
+                ,#{ABS}
+                ,#{splyPrice}
+                ,#{taxAmt}
+                ,#{sumPrice}
+                ,#{resolNo}
+                ,#{gipyoDate}
+            )
+    </insert>
+
+    <!-- 세금계산서 수정 -->
+    <update id="updateTaxInv" flushCache="false" parameterType="TaxInvBean">
+        UPDATE
+            AT_TAXINV
+        SET
+             PUB_DATE=#{pubDate}
+            ,PUB_DIV=#{pubDiv}
+            ,SLIP_NO=#{slipNo}
+            ,BILL_DIV=#{billDiv}
+            ,PURCH_SALES_DIV=#{purchSalesDiv}
+            ,ANSP_DIV=#{anspDiv}
+            ,CUST_CD=#{custCd}
+            ,ABS=#{ABS}
+            ,SPLY_PRICE=#{splyPrice}
+            ,TAX_AMT=#{taxAmt}
+            ,SUM_PRICE=#{sumPrice}
+            ,RESOL_NO=#{resolNo}
+            ,GIPYO_DATE=#{gipyoDate}
+        WHERE
+            PUB_NO=#{pubNo}
+    </update>
+
+    <!-- 세금계산서상세 삭제 -->
+    <delete id="deleteDetailTaxInv"  flushCache="false" parameterType="DetailTaxInvBean">
+        DELETE FROM
+            AT_DETAIL_TAXINV
+        WHERE
+            PUB_NO=#{pubNo}
+            AND
+            NO=#{no}
+    </delete>
+
+    <!-- 세금계산서상세 추가 -->
+    <insert id="insertDetailTaxInv" flushCache="false" parameterType="DetailTaxInvBean">
+        INSERT INTO
+            AT_DETAIL_TAXINV(
+                 NO
+                ,PUB_DATE
+                ,FM
+                ,STAND
+                ,QNT
+                ,PRICE
+                ,TAX_AMT
+                ,SPLY_PRICE
+                ,PUB_NO
+                ,DED_YN
+            )
+            VALUES(
+                 'A'||DETAIL_TAXINV_SEQ.NEXTVAL
+                ,#{pubDate}
+                ,#{fm}
+                ,#{stand}
+                ,#{qnt}
+                ,#{price}
+                ,#{taxAmt}
+                ,#{splyPrice}
+                ,#{pubNo}
+                ,#{dedYN}
+            )
+    </insert>
+
+    <!-- 세금계산서상세 수정 -->
+    <update id="updateDetailTaxInv" flushCache="false" parameterType="DetailTaxInvBean">
+        UPDATE
+            AT_DETAIL_TAXINV
+        SET
+             PUB_DATE   =#{pubDate}
+            ,FM         =#{fm}
+            ,STAND      =#{stand}
+            ,QNT        =#{qnt}
+            ,PRICE      =#{price}
+            ,TAX_AMT    =#{taxAmt}
+            ,SPLY_PRICE =#{splyPrice}
+            ,DED_YN     =#{dedYN}
+        WHERE
+            PUB_NO=#{pubNo}
+            AND
+            NO=#{no}
+    </update>
+
+    <!-- MAX 발행번호 조회 -->
+    <select id="selectMaxPubNo" resultType="string">
+        SELECT
+            FN_AT_GET_PUB_NO()
+        FROM
+            DUAL
+    </select>
+</mapper>
