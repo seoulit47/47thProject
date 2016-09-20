@@ -22,6 +22,7 @@
     <!-- 물류 -->
     <package name="com.seoulit.erp47.log.base.to"/>
     <package name="com.seoulit.erp47.log.inpt.to"/>    <!-- 인사 -->
+    <package name="com.seoulit.erp47.log.inven.to"/> 
 	<package name="com.seoulit.erp47.hrs.emp.to" />				<!-- 인사관리 -->
 	<package name="com.seoulit.erp47.hrs.guntae.to" />			<!-- 근태관리 -->
       
