@@ -47,7 +47,7 @@ public class CarteController {
 		dataSetBeanMapper.beansToDataset(outData, divList, NCodeBean.class);
 	}
 
-	/* 영양관리 식단 관리 - 식단조회 */
+	//영양관리 식단 관리 - 식단조회 
 	@RequestMapping("sup/nutritive/findCarteList.do")
 
 	public void findCarteList(HttpServletRequest request, HttpServletResponse response) throws Exception {

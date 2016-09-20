@@ -140,7 +140,8 @@ this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 
 this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	
+	var btnDiv = this.parent.btnDiv;
+	alert(btnDiv);
 }
 ]]></Script>
   </Form>

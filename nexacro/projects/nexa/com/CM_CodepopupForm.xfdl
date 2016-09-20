@@ -71,40 +71,6 @@
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
 
-
-
-this.CM_CodepopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
-{
-	//팝업폼 뜨기전에 미리 넘겨받은 코드로  dsService에 셋팅해서 
-	//해당하는 코드목록 가져오기.
-
-
-	this.dsService.setColumn(0, "argument", "code=" + this.parent.code);
-    
-    alert(this.parent.code);
-    
-    this.gfnService("findCodePopupList");
-}
-]]></Script>
-
-this.CdpopupGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
-{
-	//그리드 셀 더블클릭시,값을 배열에 담아서 팝업폼 호출한 부모프레임에 전달한다.
-	//부모프레임에서는 같은이름의 함수를 만들어 배열값을 받아 셋팅하기만 하면된다.
-	
-	var arrRtn = new Array();
-	
-		arrRtn[0] = this.dsCodeNm.getColumn(e.row,"code");
-		arrRtn[1] = this.dsCodeNm.getColumn(e.row,"codeName");
-	
-		this.opener.setCode(this.parent.code, arrRtn, this.parent.args);
-		//부모프레임에서 setCode 라는 Function을 만들어서 받자.
-		//여기서 this.parent.code 는 부모프레임에서의 변수 code 를 뜻한다.
-		
-		alert(arrRtn[0]);
-		this.close();
-	
-}
-]]></Script>
+</Script>
   </Form>
 </FDL>

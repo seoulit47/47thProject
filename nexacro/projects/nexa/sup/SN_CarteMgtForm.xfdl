@@ -231,16 +231,6 @@
           <Column id="foodNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="dsBreakfast" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
-        <ColumnInfo>
-          <Column id="menuGrpCd" type="STRING" size="256"/>
-          <Column id="carteDate" type="STRING" size="256"/>
-          <Column id="carteTime" type="STRING" size="256"/>
-          <Column id="rNum" type="STRING" size="256"/>
-          <Column id="foodCd" type="STRING" size="256"/>
-          <Column id="foodNm" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="dsLunch" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsCode_onrowposchanged">
         <ColumnInfo>
           <Column id="menuGrpCd" type="STRING" size="256"/>
@@ -272,6 +262,16 @@
           <Column id="breakfast3" type="STRING" size="256"/>
           <Column id="lunch3" type="STRING" size="256"/>
           <Column id="dinner3" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBreakfast" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="menuGrpCd" type="STRING" size="256"/>
+          <Column id="carteDate" type="STRING" size="256"/>
+          <Column id="carteTime" type="STRING" size="256"/>
+          <Column id="rNum" type="STRING" size="256"/>
+          <Column id="foodCd" type="STRING" size="256"/>
+          <Column id="foodNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -394,7 +394,10 @@ Date.prototype.toFormatString = function(fmt) {
 
 this.bindData = function()
 {
-	this.daBreakfast.copyData(this.dsCarte);
+	//alert(this.dsBreakfast);
+	//alert(this.dsLunch);
+	//alert(this.dsDinner);
+	this.dsBreakfast.copyData(this.dsCarte);
 	this.dsBreakfast.filter("carteTime == '1'");
 
 	this.dsLunch.copyData(this.dsCarte);
@@ -402,6 +405,8 @@ this.bindData = function()
 	
 	this.dsDinner.copyData(this.dsCarte);
 	this.dsDinner.filter("carteTime == '3'");
+	
+	this.btnBox.set_enable(true);
 	
 }
 
@@ -438,7 +443,16 @@ this.btnBox_dinnerMinusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusE
 //식단 추가, 삭제
 this.plusMinusBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	alert(123);
+	if( nexacro.toNumber(this.dateCal.value) <= this.gfnDate("yyyymmdd")){
+		alert("오늘 날짜를 포함한 이전 날짜의 식단은 추가, 삭제 할 수 없습니다.");
+		}else{
+			alert(this.btnName.name);
+			switch(this.btnName.name){
+				case "bfPlusBtn" : 
+					var param = {btnDiv:"Breakfast",carteTime:1,carteDate:this.dateCal.value, menuGrpCd:this.divCombo.value};	
+					this.gfnPopup("SN_FoodPopForm","sup",param,""); break;
+			}
+		}
 	
 }
 
