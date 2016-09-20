@@ -18,7 +18,7 @@
           </Layouts>
         </Div>
         <Static id="subCodeStc00" taborder="3" text="검사기간" onclick="subCodeStc_onclick" left="3.2%" top="85" right="89.36%" height="31" style="background:azure;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Grid id="Grid00" taborder="4" useinputpanel="false" left="2.72%" top="138" right="1.44%" height="614" autofittype="col">
+        <Grid id="skillExmntGrid" taborder="4" useinputpanel="false" left="2.72%" top="162" right="1.44%" height="585" autofittype="col" binddataset="dsSkillExmntHist">
           <Formats>
             <Format id="default">
               <Columns>
@@ -48,20 +48,22 @@
                 <Cell col="8" text="제조국가명"/>
               </Band>
               <Band id="body">
-                <Cell/>
-                <Cell col="1"/>
-                <Cell col="2"/>
-                <Cell col="3"/>
-                <Cell col="4"/>
-                <Cell col="5"/>
-                <Cell col="6"/>
-                <Cell col="7"/>
-                <Cell col="8"/>
+                <Cell text="bind:ctrtNo"/>
+                <Cell col="1" text="bind:skillExmntNo"/>
+                <Cell col="2" text="bind:assetNm"/>
+                <Cell col="3" text="bind:modelNm"/>
+                <Cell col="4" text="bind:gdsCd"/>
+                <Cell col="5" text="bind:exmntDate"/>
+                <Cell col="6" text="bind:prodCompNm"/>
+                <Cell col="7" text="bind:prodNo"/>
+                <Cell col="8" text="bind:ctryNm"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Button id="searchBtn" taborder="5" left="38.64%" top="86" right="55.84%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Button id="addBtn" taborder="6" left="91.12%" top="128" right="5.76%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addBtn_onclick"/>
+        <Button id="delBtn" taborder="7" left="95.04%" top="128" right="1.84%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -175,9 +177,50 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		
 				alert("시작일과 종료일이 잘못되었습니다");
 		}else{
+			var argument="startDate='"+startDate+"' endDate='"+endDate+"'";
 		
-			this.gfnService("findSkillExmntHistList","false");
+			
+			this.dsService.setColumn(1,"argument",argument);
+		
+			this.gfnService("findSkillExmntHistList",false);
 		}
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	// + 버튼
+	application.open("검사대상물품코드",
+							"log::LE_SkillExmntPopupForm.xfdl",
+							this.parent,{},
+							"showtitlebar=true showstatusbar=false",
+							"",
+							"");
+	
+}
+
+this.selectCode=function(sCtrtNo,sCtrtQnt,sGdsCd,sFm,sCtrtGds,sCust){
+
+//입고한 수량만큼 Row생성.
+	for(var i=0;i<sCtrtQnt;i++){
+		this.dsSkillExmntHist.addRow();
+		this.dsSkillExmntHist.setColumn(i,"ctrtNo",sCtrtNo);
+		this.dsSkillExmntHist.setColumn(i,"exmntDate",this.fn_dateTime());   //검수날짜(오늘)
+		this.dsSkillExmntHist.setColumn(i,"gdsCd",sGdsCd);  //물품코드
+		this.dsSkillExmntHist.setColumn(i,"modelNm",sCtrtGds);   //자산명
+		this.dsSkillExmntHist.setColumn(i,"skillExmntNo","0"+i);  //기술검사번호		
+		this.dsSkillExmntHist.setColumn(i,"prodCompNm",sCust);   //거래처
+		this.dsSkillExmntHist.setColumn(i,"assetNm",sFm);   //품명
+	}
+
+}
+//오늘날짜함수
+this.fn_dateTime = function() 
+{
+    var dDate = new Date();     
+    var sRtn =  dDate.getFullYear()
+          + (dDate.getMonth()+1).toString().padLeft(2, "0")
+          +  dDate.getDate().toString().padLeft(2, "0");
+    return sRtn;
 }
 ]]></Script>
   </Form>
