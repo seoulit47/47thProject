@@ -1,17 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BudgForm" classname="AB_BudgForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+  <Form id="AB_BudgForm" classname="AB_BudgForm" left="0" top="0" width="1024" height="768" titletext="New Form" onload="AB_BudgForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="4" right="0.29%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
         <Static id="titleEdt02" taborder="1" text="예산등록" cssclass="TStc" left="4.39%" top="10" right="77.73%" height="44" style="font:bold 15 Dotum;"/>
         <Div id="Div03" taborder="2" left="1.27%" top="71" right="1.07%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
-            <Layout>
-              <Button id="searchBtn" taborder="0" left="79.26%" top="8" right="12.53%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="saveBtn" taborder="1" left="88.88%" top="8" right="3.21%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-            </Layout>
+            <Layout/>
           </Layouts>
         </Div>
         <Static id="stc_dline" taborder="3" text="마감상태" onclick="subCodeStc_onclick" left="2.25%" top="84" right="90.72%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -26,8 +23,8 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="267"/>
-                <Column size="103"/>
+                <Column size="262"/>
+                <Column size="109"/>
                 <Column size="79"/>
                 <Column size="178"/>
                 <Column size="131"/>
@@ -48,18 +45,140 @@
                 <Cell col="6" text="산출근거"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="tree" edittype="tree" treestartlevel="1"/>
-                <Cell col="1"/>
-                <Cell col="2"/>
-                <Cell col="3"/>
-                <Cell col="4"/>
-                <Cell col="5" edittype="expr:finYn == &quot;N&quot; ? &quot;none&quot; : &quot;normal&quot;"/>
-                <Cell col="6" edittype="expr:finYn == &quot;N&quot; ? &quot;none&quot; : &quot;normal&quot;"/>
+                <Cell displaytype="tree" edittype="tree" text="bind:bimokNm" treestartlevel="1" treelevel="bind:bimokLevel"/>
+                <Cell col="1" text="bind:useDeptNm"/>
+                <Cell col="2" text="bind:acntCd"/>
+                <Cell col="3" text="bind:acntNm"/>
+                <Cell col="4" text="bind:beforeAmount"/>
+                <Cell col="5" edittype="expr:finYn == &quot;N&quot; ? &quot;none&quot; : &quot;normal&quot;" text="bind:amount"/>
+                <Cell col="6" edittype="expr:finYn == &quot;N&quot; ? &quot;none&quot; : &quot;normal&quot;" text="bind:calcReason"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
+        <Button id="searchBtn" taborder="13" left="78.52%" top="80" right="13.28%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Button id="saveBtn" taborder="14" left="88.09%" top="80" right="4%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="saveBtn_onclick"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findBudg</Col>
+            <Col id="URL">erp47::acc/budget/findBudg.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsBudgReg=dsBudgReg dsOrgDline=dsOrgDline</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">findBudgCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerBudg</Col>
+            <Col id="URL">erp47::acc/budget/registerBudg.do</Col>
+            <Col id="inData">dsBudgReg=dsBudgReg:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBudgReg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="bimokNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="parentBimok" type="STRING" size="256"/>
+          <Column id="useDeptNm" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="finYn" type="STRING" size="256"/>
+          <Column id="amount" type="STRING" size="256"/>
+          <Column id="beforeAmount" type="STRING" size="256"/>
+          <Column id="bimokLevel" type="STRING" size="256"/>
+          <Column id="calcReason" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOrgDline" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="reason" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procPerson" type="STRING" size="256"/>
+          <Column id="dlineDiv" type="STRING" size="256"/>
+          <Column id="modifier" type="STRING" size="256"/>
+          <Column id="procDiv" type="STRING" size="256"/>
+          <Column id="modiDay" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGB101" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GB101</Col>
+            <Col id="dsName">dsGB101</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"; 
+
+//*******
+//onload
+//*******
+this.AB_BudgForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+}
+
+//*****
+//조회
+//*****
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = this.yearSpin.value;
+	var bimokNm = this.bimokEd.value;
+	var acntNm = this.acntEd.value;
+	var argument = 'accYear='+accYear+' bimokNm='+bimokNm+' acntNm='+acntNm;
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findBudg");
+}
+
+//*********
+//Callback
+//*********
+this.findBudgCallback = function(){
+	var procDiv = this.dsOrgDline.getColumn(0,"procDiv");
+	if(procDiv==2)
+	{
+		this.bimokListGrid.set_readonly(true);		//그리드편집가능
+	}else
+	{
+		this.bimokListGrid.set_readonly(false);		//그리드편집불가능
+	}
+}
+
+//*****
+//등록
+//*****
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("registerBudg");
+}
+]]></Script>
   </Form>
 </FDL>

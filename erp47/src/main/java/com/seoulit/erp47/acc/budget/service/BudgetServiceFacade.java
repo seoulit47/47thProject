@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
+import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
 
 public interface BudgetServiceFacade {
@@ -18,4 +19,6 @@ public interface BudgetServiceFacade {
 	List<BudgUseDeptBean> findBudgUseDept(Map<String, String> argsMap);
 	
 	void batchBudgUseDeptProcess(List<BudgUseDeptBean> UseDeptBeanList);
+	
+	List<BudgRegBean> findBudg(Map<String, String> argsMap);
 }

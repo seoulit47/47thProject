@@ -74,7 +74,7 @@ this.searchassiSubBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var accYear = this.opener.yearSpin.value;
 	var assiSubNm = this.assiSubNmEd.value;
 	var acntCd = this.parent.acntCd;
-	alert('accYear='+accYear+' / assiSubNm='+assiSubNm+' / acntCd='+acntCd);
+	//alert('accYear='+accYear+' / assiSubNm='+assiSubNm+' / acntCd='+acntCd);
 	argument = 'accYear='+accYear+' assiSubNm='+assiSubNm+' acntCd='+acntCd;
 	this.dsService.setColumn(0,"argument",argument);
 	this.gfnService("findAssiSubList");
