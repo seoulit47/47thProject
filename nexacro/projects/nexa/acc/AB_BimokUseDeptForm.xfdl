@@ -13,13 +13,13 @@
         <Spin id="yearSpin" taborder="6" value="2016" left="10.64%" top="86" right="79.1%" height="31" style="background:#ffffffff;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;bordertype:normal 0 0 ;align:right middle;font:9 Dotum;"/>
         <Edit id="bimokEd" taborder="7" left="30.76%" top="86" right="57.81%" height="31" style="background:#ffffffff;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;bordertype:normal 0 0 ;font:9 Dotum;"/>
         <Edit id="deptEd" taborder="8" left="51.37%" top="86" right="37.21%" height="31" style="background:#ffffffff;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;bordertype:normal 0 0 ;font:9 Dotum;"/>
-        <Grid id="Grid00" taborder="9" useinputpanel="false" autofittype="col" left="0.78%" top="146" right="62.6%" height="576" style="background:white;border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;bordertype:round 0 0 ;font:9 Dotum;">
+        <Grid id="bimokListGrid" taborder="9" useinputpanel="false" autofittype="col" left="0.78%" top="146" right="62.6%" height="576" style="background:white;border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;bordertype:round 0 0 ;font:9 Dotum;" binddataset="dsBudgBimok" treeinitstatus="expand,null" treeusecheckbox="false" oncellclick="bimokListGrid_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="134"/>
-                <Column size="51"/>
-                <Column size="32"/>
+                <Column size="102"/>
+                <Column size="73"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -31,45 +31,45 @@
                 <Cell col="2" text="건수"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="tree" edittype="tree" treestartlevel="1"/>
-                <Cell col="1"/>
-                <Cell col="2"/>
+                <Cell displaytype="tree" edittype="tree" text="bind:bimokNm" treestartlevel="1" treelevel="bind:bimokLevel"/>
+                <Cell col="1" text="bind:acntCd"/>
+                <Cell col="2" text="bind:deptCount"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="10" useinputpanel="false" autofittype="col" left="38.18%" top="146" right="0.98%" height="576" style="border:2 solid #9f8f71ff,0 none #808080ff,0 none #808080ff,0 none #808080ff;color:#edececff;bordertype:round 0 0 ;align:center middle;font:9 Dotum;">
+        <Button id="searchUseDeptBtn" taborder="11" left="64.94%" top="84" right="25.68%" height="35" style="background:@gradation URL('img::searchBtn.png') stretch;border:0 none #999999ff ;color:#ffffffff;bordertype:normal 3 3 ;gradation:none 0,0 white 100,100 black;" onclick="searchUseDeptBtn_onclick"/>
+        <Button id="addDeptBtn" taborder="12" left="70.21%" top="728" right="21.19%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;" onclick="addDeptBtn_onclick"/>
+        <Button id="delBtn" taborder="13" left="80.37%" top="728" right="11.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;" onclick="delBtn_onclick"/>
+        <Button id="saveBtn" taborder="14" left="90.53%" top="728" right="0.88%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;gradation:linear 0,0 #fefefeff 0,100 #ecece5ff;" onclick="saveBtn_onclick"/>
+        <Grid id="budgUseDeptGrid" taborder="15" binddataset="dsBudgUserDept" useinputpanel="false" autofittype="col" onexpanddown="budgUseDeptGrid_onexpanddown" left="37.89%" top="146" right="0.88%" height="576" class="AreaGrid">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="79"/>
-                <Column size="81"/>
-                <Column size="83"/>
-                <Column size="88"/>
+                <Column size="137"/>
+                <Column size="153"/>
+                <Column size="123"/>
+                <Column size="228"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell style="background:transparent;background2:transparent;color:black;color2:transparent;" text="사용부서" autosizerow="default" autosizecol="default"/>
-                <Cell col="1" style="background:transparent;color:black;color2:transparent;" text="부서명" autosizerow="default" autosizecol="default"/>
-                <Cell col="2" style="background:transparent;color:black;color2:transparent;" text="계정책임여부" autosizerow="default" autosizecol="default"/>
-                <Cell col="3" style="background:transparent;color:black;color2:transparent;" text="계정책임명칭" autosizerow="default" autosizecol="default"/>
+                <Cell text="부서코드"/>
+                <Cell col="1" text="부서명"/>
+                <Cell col="2" text="계정책임여부"/>
+                <Cell col="3" text="계정책임명칭"/>
               </Band>
               <Band id="body">
-                <Cell/>
-                <Cell col="1"/>
-                <Cell col="2"/>
-                <Cell col="3"/>
+                <Cell displaytype="normal" edittype="expand" text="bind:useDeptCd" expandshow="show" expandimage="URL('img::popup.png')" expandchar="..."/>
+                <Cell col="1" text="bind:useDeptNm"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:acntRespYn" combodataset="dsYn" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" edittype="text" text="bind:acntRespNm"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="searchUseDeptBtn" taborder="11" left="64.94%" top="84" right="25.68%" height="35" style="background:@gradation URL('img::searchBtn.png') stretch;border:0 none #999999ff ;color:#ffffffff;bordertype:normal 3 3 ;gradation:none 0,0 white 100,100 black;" onclick="searchUseDeptBtn_onclick"/>
-        <Button id="addDeptBtn" taborder="12" left="70.21%" top="728" right="21.19%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;"/>
-        <Button id="delBtn" taborder="13" left="80.37%" top="728" right="11.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;"/>
-        <Button id="saveBtn" taborder="14" left="90.53%" top="728" right="0.88%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;gradation:linear 0,0 #fefefeff 0,100 #ecece5ff;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -109,6 +109,50 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="dsBudgUserDept" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="useDeptCd" type="STRING" size="256"/>
+          <Column id="useDeptNm" type="STRING" size="256"/>
+          <Column id="acntRespYn" type="STRING" size="256"/>
+          <Column id="acntRespNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBudgBimok" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="bimokNm" type="STRING" size="256"/>
+          <Column id="parentBimok" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="assiSubNm" type="STRING" size="256"/>
+          <Column id="bimokLevel" type="STRING" size="256"/>
+          <Column id="finYn" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="goveAprcYn" type="STRING" size="256"/>
+          <Column id="budgGuide" type="STRING" size="256"/>
+          <Column id="deptCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Y</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="code">N</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"; 
 
@@ -123,9 +167,64 @@ this.searchUseDeptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var deptNm = this.deptEd.value;
 	
 	var argument = 'accYear='+accYear+' bimokNm='+bimokNm+' deptNm='+deptNm;
+	
+	//alert(argument);
+	
 	this.dsService.setColumn(0,"argument",argument);
 	this.gfnService("findBudgUseDeptList");
 	this.dsBudgUserDept.filter("dimokCd=="+this.dsBudgBiomk.getColumn(e.row,"bimokCd"));
+}
+
+//*****
+//추가
+//*****
+this.addDeptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var aRow = this.dsBudgUserDept.addRow();
+	var accYear = this.dsBudgBimok.getColumn(this.dsBudgBimok.rowposition,"accYear");
+	var bimokCd = this.dsBudgBimok.getColumn(this.dsBudgBimok.rowposition,"bimokCd");
+	this.dsBudgUserDept.setColumn(aRow,"accYear",accYear);
+	this.dsBudgUserDept.setColumn(aRow,"bimokCd",bimokCd);
+}
+
+//*****
+//삭제
+//*****
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsBudgUserDept.deleteRow(this.dsBudgUserDept.rowposition);
+}
+
+//*****
+//저장
+//*****
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchBudgUseDeptProcess");
+}
+
+
+//************
+//그리드함수
+//************
+this.budgUseDeptGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
+{
+	if(e.cell==0){
+	var deptCodeArr = this.gfnCodePopup('GP500');
+	this.dsBudgUserDept.setColumn(this.dsBudgUserDept.rowposition,"useDeptCd",deptCodeArr[0]);
+	this.dsBudgUserDept.setColumn(this.dsBudgUserDept.rowposition,"useDeptNm",deptCodeArr[1]);
+	}
+}
+
+this.bimokListGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.dsBudgUserDept.filter("bimokCd=="+this.dsBudgBimok.getColumn(e.row,"bimokCd"));
+}
+
+//****************************************
+this.setCode = function(code,arrRtn) {
+	this.dsBudgUserDept.setColumn(this.dsBudgUserDept.rowposition,"useDeptCd",arrRtn[0]);
+	this.dsBudgUserDept.setColumn(this.dsBudgUserDept.rowposition,"useDeptNm",arrRtn[1]);
 }
 ]]></Script>
   </Form>

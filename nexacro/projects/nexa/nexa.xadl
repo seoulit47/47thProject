@@ -4,11 +4,14 @@
   <GlobalVariables url="globalvars.xml"/>
   <Application id="nexa" codepage="utf-8" language="Korean" loginformurl="" loginformstyle="" windowopeneffect="" windowcloseeffect="" version="" tracemode="" themeid="default.xtheme" onload="application_onload">
     <Layout>
+      <MainFrame id="mainframe" title="maintitle" defaultfont="" resizable="true" showtitlebar="true" showstatusbar="true" left="0" top="0" height="965" titletext="서울IT병원프로젝트" width="1260" visible="false">
+        <VFrameSet id="frameSet" separatesize="80,50,*,50">
       <MainFrame id="mainframe" title="maintitle" defaultfont="" resizable="true" showtitlebar="true" showstatusbar="true" left="0" top="0" height="965" titletext="서울IT병원프로젝트" width="1260" visible="true">
         <VFrameSet id="vframeSet" separatesize="80,50,*,50">
           <Frames>
             <ChildFrame id="menuFrame" formurl="frame::menuFrame.xfdl" dragmovetype="none" showtitlebar="false" topmost="false"/>
             <ChildFrame id="tabFrame" formurl="frame::tabFrame.xfdl" dragmovetype="none" showtitlebar="false"/>
+            <FrameSet id="mainFrame"/>
             <FrameSet id="frameSet"/>
             <ChildFrame id="bottomFrame" formurl="frame::bottomFrame.xfdl" dragmovetype="none" showtitlebar="false"/>
           </Frames>

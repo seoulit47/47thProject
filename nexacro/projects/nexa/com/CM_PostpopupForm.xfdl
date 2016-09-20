@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CM_PostpopupForm" classname="CM_PostpopupForm" left="0" top="0" width="700" height="519" titletext="New Form" onload="CM_PostpopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div04" taborder="0" left="0.14%" top="0" right="0.43%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>
+        <Static id="Static00" taborder="1" text="주소검색" left="7.57%" top="-5" right="65%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+        <Tab id="postTab" taborder="2" left="5.14%" top="67" right="4.57%" height="405" tabindex="0" scrollbars="autoboth">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="지번주소">
+              <Layouts>
+                <Layout width="630" height="389">
+                  <Static id="inDoroStc" taborder="0" text="읍/면/동 명을 입력하세요" left="6.98%" top="12" right="67.62%" height="30" style="font:bold 9 돋움;" class="AreaStc"/>
+                  <Edit id="dongEdit" taborder="1" left="32.38%" top="12" right="17.46%" height="30"/>
+                  <Grid id="dongPostGrid" taborder="2" useinputpanel="false" left="5.56%" top="54" right="2.7%" height="182" autofittype="col" binddataset="dsDongPost" oncellclick="postTab_tabpage1_dongPostGrid_oncellclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="140"/>
+                          <Column size="392"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="우편번호"/>
+                          <Cell col="1" text="주소"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:zipCode"/>
+                          <Cell col="1" text="bind:baseAddr"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Static id="inDongZipStc" taborder="3" text="우편번호" left="5.71%" top="255" right="83.17%" height="26" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Static id="inDongBaseStc" taborder="4" text="기본주소" left="34.92%" top="255" right="53.97%" height="26" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Static id="inDongDetailStc" taborder="5" text="상세주소" left="5.71%" top="296" right="83.17%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Edit id="zipEdit" taborder="6" left="17.62%" top="255" right="66.35%" height="26" enable="false"/>
+                  <Edit id="detailEdit" taborder="7" left="17.62%" top="296" right="3.17%" height="31"/>
+                  <Edit id="baseEdit" taborder="8" left="46.83%" top="255" right="3.17%" height="28" enable="false"/>
+                  <Button id="searchBtn" taborder="9" left="83.33%" top="12" right="2.7%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="postTab_tabpage1_searchBtn_onclick"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="도로명주소">
+              <Layouts>
+                <Layout>
+                  <Static id="inDoStc" taborder="0" text="시도" left="0.48%" top="11" right="88.41%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Static id="inGunStc" taborder="1" text="시군구" left="39.37%" top="11" right="49.52%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Combo id="sidoCombo" taborder="2" left="11.9%" top="11" right="63.97%" height="32" innerdataset="@dsPostSi" codecolumn="sidoCode" datacolumn="sidoName" onitemclick="postTab_tabpage2_sidoCombo_onitemclick"/>
+                  <Combo id="gunguCombo" taborder="3" left="51.43%" top="11" right="20%" height="32" innerdataset="@dsPostSigungu" codecolumn="sigunguCode" datacolumn="sigunguName"/>
+                  <Static id="inDoroStc" taborder="4" text="도로명을 입력하세요" left="3.02%" top="53" right="76.35%" height="30" style="font:bold 9 돋움;" class="AreaStc"/>
+                  <Edit id="doroEdit" taborder="5" left="23.49%" top="54" right="17.3%" height="27"/>
+                  <Grid id="doroGrid" taborder="6" useinputpanel="false" left="1.11%" top="90" right="0.95%" height="164" autofittype="col" binddataset="dsRoadPost" oncellclick="postTab_tabpage2_doroGrid_oncellclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="122"/>
+                          <Column size="306"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="우편번호"/>
+                          <Cell col="1" text="주소"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:zipCode"/>
+                          <Cell col="1" text="bind:baseAddr"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Static id="inDongZipStc" taborder="7" text="우편번호" left="3.17%" top="267" right="85.71%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Static id="inDongBaseStc" taborder="8" text="기본주소" left="31.11%" top="267" right="57.94%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Static id="inDongDetailStc" taborder="9" text="상세주소" left="3.17%" top="304" right="85.71%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+                  <Edit id="zipEdit" taborder="10" left="14.44%" top="266" right="69.21%" height="31" enable="false"/>
+                  <Edit id="baseEdit" taborder="11" left="42.54%" top="267" right="0.95%" height="33" enable="false"/>
+                  <Edit id="detailEdit" taborder="12" left="14.6%" top="305" right="0.95%" height="29"/>
+                  <Button id="searchBtn" taborder="13" left="83.81%" top="11" right="3.02%" height="39" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="postTab_tabpage2_searchBtn_onclick"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Button id="okBtn" taborder="3" left="41.71%" top="472" right="43.43%" height="26" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="okBtn_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findSido</Col>
+            <Col id="URL">erp47::com/post/findSido.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsPostSi=dsPostSi</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findSigungu</Col>
+            <Col id="URL">erp47::com/post/findSigungu.do</Col>
+            <Col id="outData">dsPostSigungu=dsPostSigungu</Col>
+            <Col id="callbackFunc">callbackSigungu</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findRoadPost</Col>
+            <Col id="URL">erp47::com/post/findRoadPost.do</Col>
+            <Col id="outData">dsRoadPost=dsRoadPost</Col>
+            <Col id="inData">dsPostCond=dsPostCond</Col>
+            <Col id="callbackFunc"/>
+            <Col id="argument"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDongPost</Col>
+            <Col id="URL">erp47::com/post/findDongPost.do</Col>
+            <Col id="outData">dsDongPost=dsDongPost</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPostSi" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="sidoCode" type="STRING" size="256"/>
+          <Column id="sidoName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDongPost">
+        <ColumnInfo>
+          <Column id="zipCode" type="STRING" size="256"/>
+          <Column id="baseAddr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRoadPost">
+        <ColumnInfo>
+          <Column id="zipCode" type="STRING" size="256"/>
+          <Column id="baseAddr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPostSigungu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="sigunguCode" type="STRING" size="256"/>
+          <Column id="sigunguName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPostCond">
+        <ColumnInfo>
+          <Column id="sidoCode" type="STRING" size="256"/>
+          <Column id="sidoName" type="STRING" size="256"/>
+          <Column id="sigunguCode" type="STRING" size="256"/>
+          <Column id="sigunguName" type="STRING" size="256"/>
+          <Column id="roadKeyword" type="STRING" size="256"/>
+          <Column id="dongKeyword" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*TODO : 주소값(우편번호, 기본주소, 상세주소) 넘겨주는 루틴 작성할것	 
+       지번주소 우편번호(###-###) 와 도로명주소 우편번호(######) 포맷 맞출것            				                                            
+********************************************************************************/
+include "scripts::commonScripts.xjs"
+
+
+this.CM_PostpopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{ //화면 로드 되기전에 시도리스트 가져오기.
+	
+	
+		this.gfnService("findSido");
+}
+
+this.postTab_tabpage2_sidoCombo_onitemclick = function(obj:Combo, e:nexacro.ListBoxClickEventInfo)
+{
+  //시도 콤보박스에서 목록 클릭시 군구 리스트 가져오기.
+  
+	this.dsService.setColumn(1,4,"sido="+e.itemvalue);
+	this.gfnService("findSigungu");
+	
+}
+
+
+this.postTab_tabpage2_searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+   //도로명탭에서 조회버튼을 눌렀을 때 ,
+   
+	this.dsPostCond.clearData();
+	this.dsPostCond.addRow();
+	this.dsPostCond.setColumn(0, "sidoCode", this.postTab.tabpage2.sidoCombo.value);
+	this.dsPostCond.setColumn(0, "sigunguName", this.postTab.tabpage2.gunguCombo.text);
+	this.dsPostCond.setColumn(0, "roadKeyword", this.postTab.tabpage2.doroEdit.value);
+	//alert(this.postTab.tabpage2.sidoCombo.value);
+	//alert(this.postTab.tabpage2.sidoCombo.text);
+	//alert(this.postTab.tabpage2.gunguCombo.value);
+	//alert(this.postTab.tabpage2.gunguCombo.text);
+	
+	//아 시박 진짜 value랑 text의 명확한 차이를 모르겠다 ㅗ
+	this.gfnService("findRoadPost");
+	
+	
+}
+
+this.postTab_tabpage1_searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//지번주소탭에서 조회버튼을 눌렀을 때,
+	this.dsService.setColumn(3, 4, "dong=" + this.postTab.tabpage1.dongEdit.value);
+	this.gfnService("findDongPost");
+	
+}
+
+this.postTab_tabpage1_dongPostGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	//지번주소탭에서 그리드 셀 클릭시,
+	this.postTab.tabpage1.zipEdit.set_value(this.dsDongPost.getColumn(this.dsDongPost.rowposition,1));
+	this.postTab.tabpage1.baseEdit.set_value(this.dsDongPost.getColumn(this.dsDongPost.rowposition,0));
+	
+}
+
+this.postTab_tabpage2_doroGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	//도로명탭에서 그리드 셀 클릭시,
+
+	this.postTab.tabpage2.zipEdit.set_value(this.dsRoadPost.getColumn(this.dsRoadPost.rowposition,1));
+	this.postTab.tabpage2.baseEdit.set_value(this.dsRoadPost.getColumn(this.dsRoadPost.rowposition,0));
+	
+	
+}
+
+this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+// 확인버튼눌렀을때 , 부모프레임으로 값을 전달하는 Function
+// 부모프레임쪽에서는 setPost Function을 만들어서 받아서 쓰기만 하면 된다.
+{
+		var target;
+		if(this.postTab.tabindex == 0){
+					target=this.postTab.tabpage1;
+		
+		}else{
+					target=this.postTab.tabpage2;
+		}
+		
+	this.opener.setPost(target.zipEdit.value, target.baseEdit.value, target.detailEdit.value);
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

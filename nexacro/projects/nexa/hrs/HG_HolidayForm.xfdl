@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HG_HolidayForm" classname="HG_HolidayForm" left="0" top="0" width="1256" height="759" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="titleDiv" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="휴가신청" left="4.78%" top="-4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="mainDiv" taborder="1" left="0.8%" top="55" right="1.11%" height="697" style="background:#edececff;">
+          <Layouts>
+            <Layout width="1233" height="721">
+              <Grid id="holidayRequestGrid" taborder="27" binddataset="dsHoliday" useinputpanel="false" autofittype="col" oncellclick="mainDiv_holidayRequestGrid_oncellclick" left="0.65%" top="40" right="0.65%" height="649">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="65"/>
+                      <Column size="72"/>
+                      <Column size="68"/>
+                      <Column size="99"/>
+                      <Column size="107"/>
+                      <Column size="99"/>
+                      <Column size="111"/>
+                      <Column size="91"/>
+                      <Column size="73"/>
+                      <Column size="76"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell edittype="normal" text="선택"/>
+                      <Cell col="1" text="신청구분"/>
+                      <Cell col="2" text="근태종류"/>
+                      <Cell col="3" colspan="2">
+                        <Cell colspan="2" text="기간"/>
+                      </Cell>
+                      <Cell col="5" text="휴가신청일수"/>
+                      <Cell col="6" text="총휴가일수"/>
+                      <Cell col="7" text="사용일수"/>
+                      <Cell col="8" text="잔여일수"/>
+                      <Cell col="9" text="결제상태"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="checkbox" edittype="checkbox"/>
+                      <Cell col="1" displaytype="combo" edittype="combo" text="bind:appType" combodataset="dsAppType" combocodecol="cd" combodatacol="nm"/>
+                      <Cell col="2" displaytype="combo" edittype="combo" text="bind:guntaeGubun" combodataset="dsGuntaeGubun" combocodecol="gubunNm" combodatacol="gubunNm"/>
+                      <Cell col="3" displaytype="date" edittype="date" text="bind:startDate"/>
+                      <Cell col="4" displaytype="date" edittype="date" text="bind:endDate"/>
+                      <Cell col="5" displaytype="number" edittype="none" text="bind:reqTotalDays" mask="##.#일"/>
+                      <Cell col="6" displaytype="number" edittype="none" text="bind:totalDays" mask="##.#일"/>
+                      <Cell col="7" displaytype="number" edittype="none" text="bind:useDays" mask="##.#일"/>
+                      <Cell col="8" displaytype="number" edittype="none" text="bind:remainDays" mask="##.#일"/>
+                      <Cell col="9" text="bind:holidayStatus"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Spin id="yearSpin" taborder="28" value="2016" onspin="yearSpin_onspin" left="6.17%" top="6" right="87.66%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+              <Static id="subCodeStc" taborder="29" text="년도" onclick="subCodeStc_onclick" left="1.3%" top="7" right="94.32%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Button id="searchHolidayBtn" taborder="30" onclick="mainDiv_searchHolidayBtn_onclick" cssclass="SearchBtn" left="86.2%" top="7" right="7.71%" height="28" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="addHolidayBtn" taborder="31" onclick="mainDiv_addHolidayBtn_onclick" cssclass="DelBtn" left="79.22%" top="7" right="14.77%" height="28" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="apBtn" taborder="32" onclick="DelBtn_onclick" cssclass="DelBtn" left="72.08%" top="7" right="21.59%" height="28" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="false"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="saveBtn" taborder="2" onclick="saveBtn_onclick" cssclass="DelBtn" enable="false" left="92.12%" top="62" right="2.23%" height="28" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsHoliday">
+        <ColumnInfo>
+          <Column id="appType" type="STRING" size="256"/>
+          <Column id="guntaeGubun" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="endDate" type="STRING" size="256"/>
+          <Column id="holidayStatus" type="STRING" size="256"/>
+          <Column id="holidayNo" type="STRING" size="256"/>
+          <Column id="totalDays" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="useDays" type="STRING" size="256"/>
+          <Column id="remainDays" type="STRING" size="256"/>
+          <Column id="reqTotalDays" type="STRING" size="256"/>
+          <Column id="belongYear" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGuntaeGubun">
+        <ColumnInfo>
+          <Column id="gubunNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="gubunNm">연차</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">근속</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">병가</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">경조사</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">공가</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">생리</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">분만</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">유산</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">임신중 검진휴가</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">휴직</Col>
+          </Row>
+          <Row>
+            <Col id="gubunNm">육아휴직</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsTotalInfo">
+        <ColumnInfo>
+          <Column id="totalHoliday" type="STRING" size="256"/>
+          <Column id="useDay" type="STRING" size="256"/>
+          <Column id="remainDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">searchHolidayList</Col>
+            <Col id="URL">erp47::hrs/holiday/findHolidayList.do</Col>
+            <Col id="outData">dsHoliday=dsHoliday</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">searchAdminHolidayList</Col>
+            <Col id="URL">erp47::hrs/holiday/findAdminHolidayList.do</Col>
+            <Col id="outData">dsHoliday=dsHoliday</Col>
+          </Row>
+          <Row>
+            <Col id="inData">dsHoliday=dsHoliday:u</Col>
+            <Col id="serviceID">batchHoliday</Col>
+            <Col id="URL">erp47::hrs/holiday/batchHolidayProcess.do</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAppType">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="nm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="nm">신청</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="nm">취소</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 휴가신청관리                                               		*
+*                                                                   *
+* @Path		    hrs-HG_HolidayForm     	                        	*
+* @Description  휴가신청 정보 조회,등록(신청,취소),결재 화면   *
+* @Author		박영희  					                        *
+* 								                                    *
+* Created on 2016. 9. 19.                             		        *
+*								                                    *
+********************************************************************/
+
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include "scripts::hrsScripts.xjs";
+include "scripts::commonTransaction.xjs";
+include "scripts::commonPopup.xjs";
+
+
+/***************************************************************************************************
+*                                         변수 선언부                                            *
+***************************************************************************************************/
+var pms;//권한
+var belongYear;//기준년
+var empNo;//사원번호
+var deptNm;//부서명
+var holidayNo;//휴가신청번호
+
+
+
+/***************************************************************************************************
+*                                         onload Event                                      	   *
+***************************************************************************************************/
+this.HG_HolidayForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var argument;
+	deptNm = application.gdsEmp.getColumn(0,"deptNm");
+	pms = application.gdsEmp.getColumn(0,"pms");
+	belongYear = this.mainDiv.yearSpin.value;
+	empNo = application.gdsEmp.getColumn(0,"empNo");
+
+	if(pms == 'admin' && deptNm == '인사팀') {
+		this.mainDiv.apBtn.set_enable(true);
+		
+		argument = 'belongYear='+belongYear;
+		this.dsService.setColumn(1,"argument",argument);
+		this.gfnService("searchAdminHolidayList");
+	}else {
+		argument = 'belongYear='+belongYear+' empNo='+empNo;
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("searchHolidayList");
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                         현재 날짜 셋팅 FUNCTION                          	   	   *
+***************************************************************************************************/
+this.fn_Today = function()
+{
+	var objDate = new Date();
+	var sToday  = objDate.getFullYear().toString();
+	    sToday += (objDate.getMonth()+1).toString().padLeft(2, "0");
+	    sToday += objDate.getDate().toString().padLeft(2, "0"); 
+
+	return sToday;
+}
+
+
+/***************************************************************************************************
+*                                         조회 버튼 클릭 Event                             	   	   *
+***************************************************************************************************/
+this.mainDiv_searchHolidayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var argument;
+	belongYear = this.mainDiv.yearSpin.value;
+
+	if(pms == 'admin' && deptNm == '인사팀') {
+		
+		argument = 'belongYear='+belongYear;
+		this.dsService.setColumn(1,"argument",argument);
+		this.gfnService("searchAdminHolidayList");
+
+		
+	}else {	
+		argument = 'belongYear='+belongYear+' empNo='+empNo;
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("searchHolidayList");
+	}	
+}
+
+
+
+/***************************************************************************************************
+*                                         추가 버튼 클릭 Event                             	   *
+***************************************************************************************************/
+this.mainDiv_addHolidayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	var count=0;
+	count=count+1;
+	var status = this.dsHoliday.getColumn(this.dsHoliday.rowcount-1,"holidayStatus");
+	holidayNo = this.dsHoliday.getColumn(this.dsHoliday.rowcount-1,"holidayNo");
+	var toDate = this.fn_Today();
+
+	if(status == undefined || status == "결재완료" ){
+	
+		this.dsHoliday.addRow();
+		this.dsHoliday.setColumn(this.dsHoliday.rowcount-1,"startDate",this.fn_Today());
+		this.dsHoliday.setColumn(this.dsHoliday.rowcount-1,"endDate",this.fn_Today());
+		this.dsHoliday.setColumn(this.dsHoliday.rowcount-1,"empNo",empNo);
+		this.dsHoliday.setColumn(this.dsHoliday.rowcount-1,"belongYear",belongYear);
+		this.dsHoliday.setColumn(this.dsHoliday.rowcount-1,"belongYear",belongYear);
+		
+		//휴일번호 좀더 디테일하게
+		if(holidayNo == undefined){
+		
+			holidayNo = parseInt(this.fn_Today()+"00")+count;
+			this.dsHoliday.setColumn(this.dsHoliday.rowcount-1,"holidayNo",holidayNo);
+		}else{
+		
+			holidayNo = parseInt(holidayNo)+count;
+			this.dsHoliday.setColumn(this.dsHoliday.rowcount-1,"holidayNo",holidayNo);
+		}
+	}else{
+		alert("이전 휴가신청이 결재되지 않은 상태입니다.");
+		return;
+	}
+	
+	
+}
+
+
+/***************************************************************************************************
+*                                         결재 버튼 클릭 Event                             	    *
+***************************************************************************************************/
+this.mainDiv_apBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsHoliday.setColumn(this.dsHoliday.rowposition,"holidayStatus","결재완료");
+}
+
+
+
+/***************************************************************************************************
+*                                         휴가신청 그리드 클릭 Event                             *
+***************************************************************************************************/
+this.mainDiv_holidayRequestGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+
+	if(pms == 'admin' && deptNm == '인사팀'){
+	
+	}else{
+		var status = this.dsHoliday.getColumn(e.row,"holidayStatus");
+		
+		if(status == "결재완료"){
+			alert("결재완료된 내용입니다.");
+			return;
+		
+		}else if(status == "요청"){
+		
+			this.mainDiv.holidayRequestGrid.setCellProperty("body", 2, "edittype", "none");	
+			this.mainDiv.holidayRequestGrid.setCellProperty("body", 3, "edittype", "none");	
+			this.mainDiv.holidayRequestGrid.setCellProperty("body", 4, "edittype", "none");
+		
+		}
+	
+	}
+	
+	
+}
+
+
+/***************************************************************************************************
+*                                         일괄처리 버튼 클릭 Event                               *
+***************************************************************************************************/
+this.mainDiv_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchHoliday");
+}
+
+
+
+/***************************************************************************************************
+*                                         콜백 함수 셋팅                                         *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)	{
+		alert(errorMsg);
+		return;
+	}
+	
+	if(svcID=="searchHolidayList" || svcID=="searchAdminHolidayList"){
+		var rowCount = this.dsHoliday.getRowCount();
+			
+			if(rowCount== 0){
+				alert("조회 내용이 없습니다.");
+				return;	
+			}		
+	}	
+	
+	if(svcID=="batchHoliday"){
+		alert("정상 처리되었습니다.");	
+	}
+	
+	
+}]]></Script>
+  </Form>
+</FDL>

@@ -287,6 +287,7 @@ this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnService("batchBimokProcess");
+	alert("저장 되었습니다");
 }
 
 //*************

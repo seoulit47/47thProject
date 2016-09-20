@@ -13,7 +13,6 @@ public interface CustDAO {
 		public List<CustBean>findCustList(Map<String,String>argsMap);
 		
 		public void insertCustList(CustBean custBean);
-		public void deleteCustList(CustBean custBean);
 		public void updateCustList(CustBean custBean);
 	
 }

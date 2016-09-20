@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="코드도움" onload="CM_CodepopupForm_onload">
+  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload">
+
+  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload" onclick="CM_CodepopupForm_onclick">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.25%" top="0" right="1%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
@@ -13,7 +15,8 @@
         </Div>
         <Static id="subCodeStc" taborder="1" text="코드명" onclick="subCodeStc_onclick" left="18%" top="72" right="60.25%" height="27" style="background:papayawhip;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="codeNameEdit" taborder="2" left="44.25%" top="74" right="17.5%" height="27"/>
-        <Grid id="Grid00" taborder="3" useinputpanel="false" left="7.25%" top="110" right="7%" height="370" autofittype="col" binddataset="dsCodeNm" oncelldblclick="codeDiv_codeGrid_oncelldblclick">
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="7.25%" top="110" right="7%" height="370" autofittype="col" binddataset="dsCodeNm">
+        <Grid id="CdpopupGrid" taborder="3" useinputpanel="false" left="7.25%" top="72" right="7%" height="411" autofittype="col" binddataset="dsCodeNm" oncelldblclick="CdpopupGrid_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -38,6 +41,12 @@
       </Layout>
     </Layouts>
     <Objects>
+      <Dataset id="dsCodeNm" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="serviceID" type="STRING" size="256"/>
@@ -58,33 +67,44 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="dsCodeNm" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="code" type="STRING" size="256"/>
-          <Column id="codeName" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
 
+
+
 this.CM_CodepopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
+	//팝업폼 뜨기전에 미리 넘겨받은 코드로  dsService에 셋팅해서 
+	//해당하는 코드목록 가져오기.
+
+
 	this.dsService.setColumn(0, "argument", "code=" + this.parent.code);
     
     alert(this.parent.code);
     
     this.gfnService("findCodePopupList");
 }
+]]></Script>
 
-//그리드 더블클릭
-this.codeDiv_codeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+this.CdpopupGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
+	//그리드 셀 더블클릭시,값을 배열에 담아서 팝업폼 호출한 부모프레임에 전달한다.
+	//부모프레임에서는 같은이름의 함수를 만들어 배열값을 받아 셋팅하기만 하면된다.
+	
 	var arrRtn = new Array();
-	arrRtn[0] = this.dsCodeNm.getColumn(e.row, "code");
-	arrRtn[1] = this.dsCodeNm.getColumn(e.row, "codeName");
-	this.opener.setCode(this.parent.code, arrRtn,this.parent.args);
-	this.close();
-}]]></Script>
+	
+		arrRtn[0] = this.dsCodeNm.getColumn(e.row,"code");
+		arrRtn[1] = this.dsCodeNm.getColumn(e.row,"codeName");
+	
+		this.opener.setCode(this.parent.code, arrRtn, this.parent.args);
+		//부모프레임에서 setCode 라는 Function을 만들어서 받자.
+		//여기서 this.parent.code 는 부모프레임에서의 변수 code 를 뜻한다.
+		
+		alert(arrRtn[0]);
+		this.close();
+	
+}
+]]></Script>
   </Form>
 </FDL>
