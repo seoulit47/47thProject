@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.pathology.service.PathologyServiceFacade;
+import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
+import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
 
 /**
  * @Package  com.seoulit.erp47.sup.pathology.controller
@@ -32,6 +34,14 @@ public class SLclinspeController {
     DataSetBeanMapper datasetBeanMapper;
 
    
+    // 검체번호 조회
+    @RequestMapping("sup/pathology/findClinspeNoList.do")
+    public void findClinspeNoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+        List<ClinspeBean> clinspeBlokBeanList = pathologyServiceFacade.findClinspeNoList();
+        datasetBeanMapper.beansToDataset(outData, clinspeBlokBeanList, ClinspeBean.class);
+    }
+    
 
     // 검체블록 조회
     @RequestMapping("sup/pathology/findClinspeBlokList.do")
@@ -48,4 +58,18 @@ public class SLclinspeController {
         datasetBeanMapper.beansToDataset(outData, clinspeBlokBeanList, SlClinspeBlokBean.class);
     }
 
+    // 검체슬라이드 조회
+    @RequestMapping("sup/pathology/findClinspeSliList.do")
+    public void findClinspeSliList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+        String cliNo = inData.getVariable("CLINSPE_NO").getString();
+
+        SlClinspeSliBean sliBean = new SlClinspeSliBean();
+        sliBean.setClinspeNo(cliNo);
+
+        List<SlClinspeSliBean> clinspeSliBeanList = pathologyServiceFacade.findClinspeSliList(sliBean);
+        datasetBeanMapper.beansToDataset(outData, clinspeSliBeanList, SlClinspeSliBean.class);
+    }
 }

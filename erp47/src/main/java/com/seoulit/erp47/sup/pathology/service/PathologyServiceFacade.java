@@ -2,6 +2,7 @@ package com.seoulit.erp47.sup.pathology.service;
 
 import java.util.List;
 
+import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
@@ -22,6 +23,6 @@ public interface PathologyServiceFacade {
 	List<SlClinspeInfoBean> findClinspeInfoBeanList(SlClinspeInfoBean clinspeInfoBean);
 	
 	//검체번호 조회
-	//List<ClinspeBean> findClinspeNoList();
+	List<ClinspeBean> findClinspeNoList();
 
 }
