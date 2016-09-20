@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LE_SkillExmntPopupForm" classname="LE_SkillExmntPopupForm" left="0" top="0" width="740" height="484" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div05" taborder="0" left="0.14%" top="8" right="0%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검사대상물품목록" left="7.17%" top="-2" right="61.84%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="searchBtn" taborder="5" left="85.27%" top="63" right="4.05%" height="33" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Grid id="CtrtGrid" taborder="6" useinputpanel="false" left="4.46%" top="95" right="4.05%" height="380" autofittype="col" binddataset="dsCtrtInfo" oncellclick="CtrtGrid_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="111"/>
+                <Column size="98"/>
+                <Column size="99"/>
+                <Column size="227"/>
+                <Column size="122"/>
+                <Column size="97"/>
+                <Column size="98"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="검사여부"/>
+                <Cell col="2" text="물품코드"/>
+                <Cell col="3" text="물 품"/>
+                <Cell col="4" text="계약물품"/>
+                <Cell col="5" text="수량"/>
+                <Cell col="6" text="단가"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ctrtNo"/>
+                <Cell col="1" text="bind:inptYb"/>
+                <Cell col="2" text="bind:gdsCd"/>
+                <Cell col="3" text="bind:fm"/>
+                <Cell col="4" text="bind:ctrtGds"/>
+                <Cell col="5" text="bind:ctrtQnt"/>
+                <Cell col="6" text="bind:ctrtPrice"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCtrtInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="ctrtDate" type="STRING" size="256"/>
+          <Column id="ctrtDiv" type="STRING" size="256"/>
+          <Column id="ctrtStart" type="STRING" size="256"/>
+          <Column id="ctrtEnd" type="STRING" size="256"/>
+          <Column id="ctrtSeq" type="STRING" size="256"/>
+          <Column id="ctrtRespoWorker" type="STRING" size="256"/>
+          <Column id="ctrtRespoWorkerNm" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtStat" type="STRING" size="256"/>
+          <Column id="buyAprvYb" type="STRING" size="256"/>
+          <Column id="signSsYb" type="STRING" size="256"/>
+          <Column id="ctrtCon" type="STRING" size="256"/>
+          <Column id="ctrtStand" type="STRING" size="256"/>
+          <Column id="ctrtQnt" type="STRING" size="256"/>
+          <Column id="ctrtPrice" type="STRING" size="256"/>
+          <Column id="ctrtAmt" type="STRING" size="256"/>
+          <Column id="buyReceiptNo" type="STRING" size="256"/>
+          <Column id="inptYb" type="STRING" size="256"/>
+          <Column id="fm" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="ctrtGds" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCtrtList</Col>
+            <Col id="URL">erp47::log/inpt/findCtrtList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsCtrtInfo=dsCtrtInfo</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"></Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//조회버튼클릭시,			
+			this.gfnService("findCtrtList",false);
+}
+
+this.CtrtGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var sCtrtNo=this.dsCtrtInfo.getColumn(e.row,"ctrtNo");   //선택한 계약번호
+	var sCtrtQnt=this.dsCtrtInfo.getColumn(e.row,"ctrtQnt");  //선택한 수량
+	var sGdsCd=this.dsCtrtInfo.getColumn(e.row,"gdsCd");   //선택한 물품코드
+	var sFm=this.dsCtrtInfo.getColumn(e.row,"fm");   //선택한 품명
+	var sCtrtGds=this.dsCtrtInfo.getColumn(this.dsCtrtInfo.rowposition,"ctrtGds");   //선택한 품명
+	var sCust=this.dsCtrtInfo.getColumn(e.row,"cust");  //거래처
+	
+	this.opener.selectCode(sCtrtNo,sCtrtQnt,sGdsCd,sFm,sCtrtGds,sCust);
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>
