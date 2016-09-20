@@ -204,8 +204,9 @@
           </Row>
           <Row>
             <Col id="serviceID">batchCarteProces</Col>
-            <Col id="URL">his::sup/nutritive/batchCarteProcess.do</Col>
+            <Col id="URL">erp47::sup/nutritive/batchCarteProcess.do</Col>
             <Col id="inData">dsBreakfast=dsBreakfast:U dsLunch=dsLunch:U dsDinner=dsDinner:U</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -291,14 +292,14 @@ this.SN_CarteMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var carteDate = this.dateCal.value;
-	var meunGrpCd = this.divCombo.value;
+	var menuGrpCd = this.divCombo.value;
 	
 	if(this.gfnIsNull(carteDate)){
 		alert("급식일자를 선택해주세요");
-	}else if(this.gfnIsNull(meunGrpCd)){
+	}else if(this.gfnIsNull(menuGrpCd)){
 		alert("식단분류를 선택해주세요");
 	}else{
-		var argument = "carteDate="+carteDate+" meunGrpCd="+meunGrpCd;
+		var argument = "carteDate="+carteDate+" menuGrpCd="+menuGrpCd;
 		var row = this.dsService.findRow("serviceID","findCarteList");
 		this.dsService.setColumn(row, "argument", argument);
 		this.gfnService("findCarteList", false);
@@ -352,7 +353,8 @@ this.startDateCal_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
 
 this.getDate=function(date)
 {
-	//alert(date);
+	var partMonth;
+	var partDay;
 	var dateArr = date.split("-"); 
 	//alert(dateArr[0]);
 	//alert(dateArr[1]);
@@ -446,14 +448,37 @@ this.plusMinusBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	if( nexacro.toNumber(this.dateCal.value) <= this.gfnDate("yyyymmdd")){
 		alert("오늘 날짜를 포함한 이전 날짜의 식단은 추가, 삭제 할 수 없습니다.");
 		}else{
-			alert(this.btnName.name);
+			//alert(this.btnName.name);
 			switch(this.btnName.name){
 				case "bfPlusBtn" : 
 					var param = {btnDiv:"Breakfast",carteTime:1,carteDate:this.dateCal.value, menuGrpCd:this.divCombo.value};	
 					this.gfnPopup("SN_FoodPopForm","sup",param,""); break;
+					
+			case "bfMinusBtn" :
+				this.dsBreakfast.deleteRow(this.breakfastGrid.currentrow); break;
+						
+			case "lunchPlusBtn" : 
+				var param = {btnDiv:"Lunch",carteTime:2,carteDate:this.dateCal.value, menuGrpCd:this.divCombo.value};	
+				this.gfnPopup("SN_FoodPopForm","sup",param,""); break;
+
+			case "lunchMinusBtn" :
+				this.dsLunch.deleteRow(this.lunchGrid.currentrow); break;
+			
+			case "dinnerPlusBtn" : 
+				var param = {btnDiv:"Dinner",carteTime:3,carteDate:this.dateCal.value, menuGrpCd:this.divCombo.value};	
+				this.gfnPopup("SN_FoodPopForm","sup",param,""); break;
+
+			case "dinnerMinusBtn" :
+				this.dsDinner.deleteRow(this.dinnerGrid.currentrow); break;
+
 			}
 		}
-	
+}
+
+//저장 버튼
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchCarteProces");	
 }
 
 //콜백
@@ -473,9 +498,14 @@ this.callBackFunc = function(svcID, errorCode, errorMsg)
 			this.menuGrid.setCellProperty("head",0,"text",date1);
 			this.menuGrid.setCellProperty("head",1,"text",twoDate);
 			this.menuGrid.setCellProperty("head",2,"text",threeDate);
+		
+		}else if(svcID=="batchCarteProces"){
+			alert("저장되었습니다.");
+			this.reload();
 		}
 	}
 }
+
 
 ]]></Script>
   </Form>
