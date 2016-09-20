@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.seoulit.erp47.sup.checkup.dao.DtInspDAO">
+<mapper namespace="com.seoulit.erp47.sup.pathology.dao.ClinspeSliDAO">
 	<cache eviction="LRU" flushInterval="86400000"/>
 	<!-- 종합검진 검사관리 - 세부검사 조회 -->
 	<select resultType="DtInspBean" useCache="true" flushCache="false" id="selectDtInspList">
