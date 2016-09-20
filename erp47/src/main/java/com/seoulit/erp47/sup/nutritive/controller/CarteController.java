@@ -14,6 +14,7 @@ import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.nutritive.service.NutritiveServiceFacade;
 import com.seoulit.erp47.sup.nutritive.to.CarteBean;
+import com.seoulit.erp47.sup.nutritive.to.DCarteBean;
 import com.seoulit.erp47.sup.nutritive.to.NCodeBean;
 
 /**
@@ -59,4 +60,19 @@ public class CarteController {
 
 		dataSetBeanMapper.beansToDataset(outData, carteList, CarteBean.class);
 	}
+
+	/* 영양관리 식단 관리 - 기간별 식단조회 */
+	@RequestMapping("sup/nutritive/findDCarteList.do")
+                        
+    public void findDCarteList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        
+        List<DCarteBean> dCarteList = nutritiveServiceFacade.findDCarteList(argsMap);
+        dataSetBeanMapper.beansToDataset(outData, dCarteList, DCarteBean.class);
+	}
+	
+	
 }

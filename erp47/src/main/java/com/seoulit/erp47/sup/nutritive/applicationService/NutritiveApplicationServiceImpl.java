@@ -145,7 +145,9 @@ public class NutritiveApplicationServiceImpl implements NutritiveApplicationServ
 
 	@Override /* 영양관리 식단 관리 - 기간별 식단조회 */
 	public List<DCarteBean> findDCarteList(Map<String, String> argsMap) {
+		//System.out.println("argsMap"+argsMap);
 		List<DCarteBean> dCarteList = carteDAO.selectDCarteList(argsMap);
+		//System.out.println("++++++++++++++++"+dCarteList);
 		return dCarteList;
 	}
 

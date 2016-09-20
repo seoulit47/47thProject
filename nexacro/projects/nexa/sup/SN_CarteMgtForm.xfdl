@@ -5,8 +5,8 @@
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="2.16%" top="407" right="2.32%" height="311" style="background:white;border:1 solid gainsboro ;"/>
-        <Div id="Div05" taborder="1" left="1.28%" top="61" right="3.2%" height="338" style="background:white;border:1 solid gainsboro ;"/>
-        <Static id="subCodeStc01" taborder="2" text="  식단등록" onclick="subCodeStc_onclick" left="2.24%" top="61" right="79.04%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+        <Div id="Div05" taborder="1" left="1.92%" top="61" right="2.56%" height="338" style="background:white;border:1 solid gainsboro ;"/>
+        <Static id="subCodeStc01" taborder="2" text="  식단등록" onclick="subCodeStc_onclick" left="1.92%" top="61" right="79.36%" height="30" style="background:gainsboro;color:black;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
         <Div id="Div00" taborder="3" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
         <Static id="Static00" taborder="4" text="식단관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
         <Div id="Div01" taborder="5" text="급식일자" left="3.52%" top="98" right="88%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
@@ -107,16 +107,15 @@
         <Button id="searchBtn2" taborder="19" onclick="searchBtn2_onclick" left="89.2%" top="445" right="3.6%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
         <Calendar id="endDateCal" taborder="20" dateformat="yyyy-MM-dd" editformat="yyyy-m-d" enable="false" left="27.76%" top="445" right="59.68%" height="31"/>
         <Static id="Static01" taborder="21" text="~" left="25.92%" top="447" right="71.76%" height="31"/>
-        <Button id="menuCopyBtn" taborder="22" left="2.24%" top="728" right="88.96%" height="32" style="background:@gradation URL('img::menuCopyBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-        <Div id="btnBox" taborder="23" left="2.72%" top="353" right="2.56%" height="45" enable="false">
+        <Div id="btnBox" taborder="23" left="3.36%" top="353" right="1.92%" height="45" enable="false">
           <Layouts>
             <Layout width="1184" height="45">
-              <Button id="dinnerMinusBtn" taborder="6" onsetfocus="btnBox_dinnerMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="96.2%" top="5" right="1.1%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-              <Button id="dinnerPlusBtn" taborder="7" onsetfocus="btnBox_dinnerPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="93.33%" top="5" right="3.97%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-              <Button id="lunchMinusBtn" taborder="8" onsetfocus="btnBox_lunchMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="63.34%" top="5" right="33.95%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-              <Button id="lunchPlusBtn" taborder="9" onsetfocus="btnBox_lunchPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="60.47%" top="5" right="36.82%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-              <Button id="bfPlusBtn" taborder="10" onsetfocus="btnBox_bfPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="27.53%" top="5" right="69.76%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-              <Button id="bfMinusBtn" taborder="11" onsetfocus="btnBox_bfMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="30.49%" top="5" right="66.81%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="dinnerMinusBtn" taborder="6" onsetfocus="btnBox_dinnerMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="95.52%" top="5" right="1.77%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="dinnerPlusBtn" taborder="7" onsetfocus="btnBox_dinnerPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="92.65%" top="5" right="4.65%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="lunchMinusBtn" taborder="8" onsetfocus="btnBox_lunchMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="62.67%" top="5" right="34.63%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="lunchPlusBtn" taborder="9" onsetfocus="btnBox_lunchPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="59.8%" top="5" right="37.5%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="bfPlusBtn" taborder="10" onsetfocus="btnBox_bfPlusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="26.86%" top="5" right="70.44%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="bfMinusBtn" taborder="11" onsetfocus="btnBox_bfMinusBtn_onsetfocus" onclick="plusMinusBtn_onclick" left="29.81%" top="5" right="67.48%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -127,7 +126,7 @@
                 <Column size="100"/>
                 <Column size="100"/>
                 <Column size="100"/>
-                <Column size="100"/>
+                <Column size="98"/>
                 <Column size="100"/>
                 <Column size="100"/>
                 <Column size="100"/>
@@ -197,7 +196,7 @@
           </Row>
           <Row>
             <Col id="serviceID">findDCarteList</Col>
-            <Col id="URL">his::sup/nutritive/findDCarteList.do</Col>
+            <Col id="URL">erp47::sup/nutritive/findDCarteList.do</Col>
             <Col id="inData">[Undefined]</Col>
             <Col id="outData">dsDCarte=dsDCarte</Col>
             <Col id="argument">[Undefined]</Col>
@@ -278,6 +277,10 @@
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
+var btnName;
+var date;
+var threeDate;
+var twoDate;
 
 this.SN_CarteMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
@@ -302,6 +305,93 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	}
 }
 
+//식단 조회
+this.searchBtn2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var startDate = this.startDateCal.value;
+	var endDate = this.endDateCal.value;
+	var menuGrpCd = this.divCombo2.value;
+	
+	endDate = endDate.toString().substr(0,8)
+	//alert(endDate);
+	
+	if(this.gfnIsNull(startDate)){
+		alert("급식 날짜를 선택해주세요");
+	}else if(this.gfnIsNull(endDate)){
+		alert("급식 날짜를 선택해주세요");
+	}else if(this.gfnIsNull(menuGrpCd)){
+		alert("식단분류를 선택해주세요");
+	}else{
+		var argument = "startDate="+startDate+" endDate="+endDate+" middleDate="+twoDate+" menuGrpCd="+menuGrpCd;
+		var row = this.dsService.findRow("serviceID", "findDCarteList");
+		this.dsService.setColumn(row, "argument", argument);
+		this.gfnService("findDCarteList", false);		
+	}
+}
+
+
+
+// 기간별 조회 날짜 자동 설정
+this.startDateCal_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	var date = this.startDateCal.text;
+	var objDate1 = new Date(date);
+	var objDate2 = new Date(date);
+	
+	objDate1.addDate(2);
+	objDate2.addDate(1);
+	
+	var date1 = objDate1.toFormatString("yyyy-mm-dd");
+	var date2 = objDate2.toFormatString("yyyy-mm-dd");
+	
+	threeDate = this.getDate(date1);
+	twoDate = this.getDate(date2);
+	
+	this.endDateCal.set_value(threeDate);
+}
+
+this.getDate=function(date)
+{
+	//alert(date);
+	var dateArr = date.split("-"); 
+	//alert(dateArr[0]);
+	//alert(dateArr[1]);
+	//alert(dateArr[2]);
+	if(dateArr[1].length==1){
+		partMonth="0"+dateArr[1];
+	}else{
+		partMonth = dateArr[1];
+	}
+	
+	if(dateArr[2].length==1){
+		partDay = "0"+dateArr[2];
+	}else{
+		partDay = dateArr[2];
+	}
+	
+	return dateArr[0]+partMonth+partDay;
+}
+
+Date.prototype.toFormatString = function(fmt) {
+	//alert(!this.valueOf());
+    if (!this.valueOf()){ 
+		return "";
+	}
+ 
+    var dt = this;
+    //alert(dt);
+    return fmt.replace(/(yyyy|yy|mm|dd)/gi,
+        function($1){
+            switch ($1){
+                case 'yyyy': return dt.getFullYear();
+                case 'yy':   return dt.getFullYear().toString().substr(2);
+                case 'mm':   return dt.getMonth() + 1;
+                case 'dd':   return dt.getDate();
+            }
+        } 
+    );
+}
+
 this.bindData = function()
 {
 	this.daBreakfast.copyData(this.dsCarte);
@@ -315,26 +405,41 @@ this.bindData = function()
 	
 }
 
-//식단 조회
-this.searchBtn2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+//세팅
+//조식
+this.btnBox_bfPlusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
+{
+	alert(obj);
+	this.btnName = obj;
+}
+this.btnBox_bfMinusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
+{
+	this.btnName = obj;
+}
+//중식
+this.btnBox_lunchPlusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
+{
+	this.btnName = obj;
+}
+this.btnBox_lunchMinusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
+{
+	this.btnName = obj;
+}
+//석식
+this.btnBox_dinnerPlusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
+{
+	this.btnName = obj;
+}
+this.btnBox_dinnerMinusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
+{
+	this.btnName = obj;
+}
+
+//식단 추가, 삭제
+this.plusMinusBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	alert(123);
-	var startDate = this.startDateCal.value;
-	var endDate = this.endDateCal.value;
-	var menuGrpCd = this.divCombo2.value;
 	
-	if(this.gfnIsNull(startDate)){
-		alert("급식 날짜를 선택해주세요");
-	}else if(this.gfnIsNull(endDate)){
-		alert("급식 날짜를 선택해주세요");
-	}else if(this.gfnIsNull(menuGrpCd)){
-		alert("식단분류를 선택해주세요");
-	}else{
-		var argument = "starDate="+startDate+" endDate="+endDate+" menuGrpCd="+menuGrpCd;
-		var row = this.dsService.findRow("serviceID", "findDCarteList");
-		this.dsService.setColumn(row, "argument", argument);
-		this.gfnService("findDCarteList", false);		
-	}
 }
 
 //콜백
@@ -347,18 +452,16 @@ this.callBackFunc = function(svcID, errorCode, errorMsg)
 			this.dsCode2.copyData(this.dsCode);	
 		}else if(svcID=="findCarteList"){
 			this.bindData();
-		}else if(svcID=="findCarteList"){
-		
+		}else if(svcID=="findDCarteList"){
+			var date1 = this.startDateCal.value;
+			var date3 = this.endDateCal.value;
+			
+			this.menuGrid.setCellProperty("head",0,"text",date1);
+			this.menuGrid.setCellProperty("head",1,"text",twoDate);
+			this.menuGrid.setCellProperty("head",2,"text",threeDate);
 		}
 	}
 }
-
-this.btnBox_bfPlusBtn_onsetfocus = function(obj:Button, e:nexacro.SetFocusEventInfo)
-{
-	alert(obj);
-	this.btnName = obj;
-}
-
 
 ]]></Script>
   </Form>
