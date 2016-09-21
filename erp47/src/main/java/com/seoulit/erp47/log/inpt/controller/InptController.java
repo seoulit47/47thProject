@@ -68,4 +68,17 @@ public class InptController {
 				
 		}
 		
+       @RequestMapping("log/inpt/batchProcessSkillExmntHist.do")	
+       	public void batchProcessSkillExmnt(HttpServletRequest request,HttpServletResponse response)throws Exception{
+    	   
+    	   		System.out.println("batchskill매서드입니다."); 
+    	   		
+    	   		PlatformData inData = (PlatformData)request.getAttribute("inData");
+    	   		PlatformData outData =(PlatformData)request.getAttribute("outData");
+       
+    	   List<SkillExmntHistBean>skillExmntList=datasetBeanMapper.datasetToBeans(inData, SkillExmntHistBean.class);
+       
+    	   inptServiceFacade.batchProcessSkillExmnt(skillExmntList);
+       }
+
 }

@@ -32,5 +32,11 @@ public class InptServiceFacadeImpl implements InptServiceFacade{
 		return inptapplicationServiceFacade.findCtrtList();
 	}
 
+	@Override
+	public void batchProcessSkillExmnt(List<SkillExmntHistBean> skillExmntList) {
+		// TODO Auto-generated method stub
+		skillExmntapplicationServiceFacade.batchProcessSkillExmnt(skillExmntList);
+	}
+
 	
 }

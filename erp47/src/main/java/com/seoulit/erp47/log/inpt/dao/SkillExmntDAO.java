@@ -9,5 +9,6 @@ public interface SkillExmntDAO {
 
 	
 		public List<SkillExmntHistBean>findSkillExmntHistList(Map<String, String>argsMap);
+		public void deleteSkillExmnt(SkillExmntHistBean skillExmntBean);
 	
 }

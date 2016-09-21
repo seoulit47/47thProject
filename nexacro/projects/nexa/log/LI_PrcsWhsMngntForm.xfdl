@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LI_PrcsWhsMngntForm" classname="LI_PrcsWhsMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div04" taborder="0" left="0%" top="4" right="-62.64%" height="60" style="background:transparent URL('img::titleBar5.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="구매입고관리" left="2.46%" top="-4" right="84.06%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc00" taborder="1" text="계약일자" onclick="subCodeStc_onclick" left="2.64%" top="112" right="90.56%" height="30" style="background:cadetblue;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="startDateCal" taborder="2" left="9.92%" top="113" right="78.24%" height="30"/>
+        <Calendar id="endDateCal" taborder="3" left="23.28%" top="113" right="64.88%" height="30"/>
+        <Static id="Static02" taborder="4" text="~" left="22.08%" top="116" right="76.32%" height="23" style="color:#6c6c6cff;font:bold 9 다음_Regular;"/>
+        <Button id="searchBtn" taborder="5" left="35.76%" top="113" right="57.76%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="Grid00" taborder="6" useinputpanel="false" left="2.64%" top="148" right="58.08%" height="564" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="94"/>
+                <Column size="102"/>
+                <Column size="183"/>
+                <Column size="101"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="거래처명"/>
+                <Cell col="2" text="계약내용"/>
+                <Cell col="3" text="구매접수번호"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div" taborder="7" left="43.68%" top="148" right="2.72%" height="238" applystyletype="cascade,keep" scrollbars="autoboth" style="border:2 dotted #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc01" taborder="0" text="구매입고번호" onclick="subCodeStc_onclick" left="1.95%" top="14" right="84.98%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc15" taborder="1" text="구매입고일자" onclick="subCodeStc_onclick" left="33.03%" top="14" right="53.9%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc17" taborder="2" text="거래처명" onclick="subCodeStc_onclick" left="64.26%" top="14" right="22.67%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc20" taborder="3" text="결재상태" onclick="subCodeStc_onclick" left="1.95%" top="51" right="84.98%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc18" taborder="4" text="계약내용" onclick="subCodeStc_onclick" left="1.95%" top="135" right="84.98%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc21" taborder="5" text="계약번호" onclick="subCodeStc_onclick" left="64.26%" top="53" right="22.67%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc07" taborder="6" text="물품코드" onclick="subCodeStc_onclick" left="1.95%" top="89" right="84.98%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc19" taborder="7" text="품명" onclick="subCodeStc_onclick" left="33.03%" top="89" right="53.9%" height="32" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <TextArea id="ctrtConArea" taborder="8" left="15.77%" top="135" right="1.65%" height="78"/>
+              <Edit id="whsNoEdit" taborder="9" left="15.77%" top="14" right="67.42%" height="30"/>
+              <Calendar id="whsCalendar" taborder="10" left="46.85%" top="14" right="36.94%" height="30"/>
+              <Edit id="custEdit" taborder="11" left="78.53%" top="14" right="1.65%" height="30"/>
+              <Combo id="inptYbCombo" taborder="12" left="15.77%" top="51" right="67.42%" height="30"/>
+              <Combo id="monthYbCombo" taborder="13" left="46.85%" top="51" right="36.94%" height="30"/>
+              <Edit id="ctrtNoEdit" taborder="14" left="78.53%" top="53" right="1.65%" height="30"/>
+              <Edit id="gdsCdEdit" taborder="15" left="15.77%" top="89" right="67.42%" height="30"/>
+              <Edit id="fmNmEdit" taborder="16" left="46.85%" top="92" right="1.65%" height="29"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc16" taborder="8" text="월마감여부" onclick="subCodeStc_onclick" left="61.44%" top="200" right="31.6%" height="31" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Div id="Div2" taborder="9" left="43.68%" top="435" right="2.72%" height="277" style="border:2 dotted #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc09" taborder="0" text="수불단위" onclick="subCodeStc_onclick" left="7.81%" top="11" right="79.13%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc12" taborder="1" text="기입고량" onclick="subCodeStc_onclick" left="7.81%" top="122" right="79.13%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc11" taborder="2" text="발주단위" onclick="subCodeStc_onclick" left="7.81%" top="68" right="79.13%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc13" taborder="3" text="현입고량" onclick="subCodeStc_onclick" left="7.81%" top="179" right="79.13%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc10" taborder="4" text="환산수량" onclick="subCodeStc_onclick" left="57.66%" top="66" right="29.13%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc14" taborder="5" text="단가" onclick="subCodeStc_onclick" left="7.81%" top="233" right="79.13%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc00" taborder="6" text="창고코드" onclick="subCodeStc_onclick" left="57.96%" top="123" right="28.68%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc06" taborder="7" text="금액" onclick="subCodeStc_onclick" left="57.96%" top="177" right="28.68%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc20" taborder="8" text="결재상태" onclick="subCodeStc_onclick" left="57.66%" top="12" right="29.13%" height="30" style="background:lavender;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="inptYbCombo" taborder="9" left="71.92%" top="12" right="6.46%" height="30"/>
+              <Edit id="cngQntEdit" taborder="10" left="71.92%" top="66" right="6.46%" height="30"/>
+              <Edit id="whCdEdit" taborder="11" left="71.92%" top="122" right="6.46%" height="30"/>
+              <Edit id="amtEdit" taborder="12" left="71.92%" top="178" right="6.46%" height="30"/>
+              <Edit id="ordUnitEdit" taborder="13" left="22.07%" top="68" right="56.16%" height="30"/>
+              <Edit id="giWhsQntEdit" taborder="14" left="22.07%" top="122" right="56.16%" height="30"/>
+              <Edit id="hyunWhsEdit" taborder="15" left="22.07%" top="178" right="56.16%" height="30"/>
+              <Edit id="priceEdit" taborder="16" left="22.07%" top="234" right="56.16%" height="30"/>
+              <Edit id="subulUnitEdit" taborder="17" left="22.07%" top="10" right="56.16%" height="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc22" taborder="10" text="구매입고 정보" onclick="subCodeStc_onclick" left="43.68%" top="112" right="2.72%" height="36" style="background:azure;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc01" taborder="11" text="구매입고 내역" onclick="subCodeStc_onclick" left="43.68%" top="394" right="2.72%" height="40" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

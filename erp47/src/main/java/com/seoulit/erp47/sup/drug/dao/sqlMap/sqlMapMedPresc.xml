@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.drug.dao.MedPrescDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+    
+    <resultMap type="MedPrescBean" id="MedPrescInfo">
+        <result column="PAT_NO" property="patNo"/>
+        <result column="PRESC_DATE" property="prescDate"/>
+        <result column="DISEASE_NM" property="diseaseNm"/>
+        <result column="DISEASE_CD" property="diseaseCd"/>
+        <result column="DEPT" property="dept"/>
+        <result column="DOCT_NM" property="doctNm"/>
+        <result column="PAT_NM" property="patNm"/>
+        <result column="ADDR" property="addr"/>
+        <result column="TEL" property="tel"/>
+        <result column="FLAG" property="flag"/>
+        <collection property="prescInfoList" column="{patNo=PAT_NO,prescDate=PRESC_DATE,diseaseNm=DISEASE_NM,flag=flag}" select="com.seoulit.erp47.sup.drug.dao.MedPrescDAO.selectPrescInfo"  javaType="list"/>
+    </resultMap>
+    
+    <!-- 약국 외래약 처방 관리 - 조회 -->
+    <select id="selectOutpaPatInfo" flushCache="false"  useCache="true" resultMap="MedPrescInfo">
+        SELECT 
+            A.PAT_NO,
+            A.PRESC_DATE as PRESC_DATE,
+            A.DISEASE_NM as DISEASE_NM,
+            A.DISEASE_CD as DISEASE_CD,
+            A.DEPT as DEPT,
+            A.DOCT_NM as DOCT_NM,
+            B.PAT_NM as PAT_NM,
+            B.ADDR as ADDR,
+            B.TEL as TEL,
+            '1' as FLAG
+        FROM 
+            MC_OUT_PAIENT A
+        RIGHT OUTER JOIN 
+            WS_PAT B
+        ON 
+            A.PAT_NO = B.PAT_NO
+        GROUP BY 
+            A.PAT_NO,
+            A.PRESC_DATE,
+            A.DISEASE_NM,
+            B.PAT_NM,
+            B.ADDR,
+            B.TEL,
+            A.DEPT,
+            A.DOCT_NM,
+            A.DISEASE_CD,
+            A.MID_GRP,
+            A.MEDICATION_YN
+        HAVING 
+            A.PRESC_DATE = #{prescDate} 
+        AND 
+            mid_grp ='약제'
+        AND 
+            A.MEDICATION_YN = 'N'
+    
+        <if test="patNo != null">
+        AND 
+            A.PAT_NO = #{patNo}
+        </if>
+        
+    </select>
+    
+    <!-- 약국 병동약 처방 관리 - 조회 -->
+    <select id="selectWardPatInfo" flushCache="false"  useCache="true" resultMap="MedPrescInfo">
+        SELECT DISTINCT 
+            A.PAT_NO as PAT_NO,
+            A.PRESC_DATE as PRESC_DATE,
+            A.DISEASE_NM as DISEASE_NM,
+            A.DISEASE_CD as DISEASE_CD,
+            A.DEPT as DEPT,
+            A.DOCT_NM as DOCT_NM,
+            B.PAT_NM as PAT_NM,
+            B.ADDR as ADDR,
+            B.TEL as TEL,
+            '2' as FLAG,
+            C.WARD,
+            C.HROOM,
+            C.HOSPTLZ_DATE
+        FROM 
+            MC_IN_PAIENT A
+        RIGHT OUTER JOIN 
+            WS_PAT B
+        ON 
+            A.PAT_NO = B.PAT_NO
+        INNER JOIN 
+            WH_HOSPTLZ_RECEIPT C
+        ON 
+            A.PAT_NO = C.PAT_NO
+        WHERE 
+            A.PRESC_DATE =  #{prescDate}
+        AND 
+            mid_grp ='약제' 
+        AND 
+            A.MEDICATION_YN = 'N'
+            
+        <if test="patNo != null">
+        AND 
+            A.PAT_NO = #{patNo}
+        </if>
+        
+    </select>
+    
+    <select id="selectPrescInfo" resultType="PrescInfoBean">
+        SELECT 
+            FEE_CD,
+            FEE_NM,
+            PRESC_DATE,
+            PAT_NO,
+            DISEASE_NM,
+            DISEASE_CD
+        <if test="flag == 1">
+        FROM 
+            MC_OUT_PAIENT
+        </if>
+        <if test="flag == 2">
+        FROM 
+            MC_IN_PAIENT
+        </if>
+        WHERE 
+            mid_grp ='약제'
+        AND
+            PAT_NO = #{patNo}
+        AND 
+            PRESC_DATE=#{prescDate}
+        AND 
+            DISEASE_NM = #{diseaseNm}
+        AND 
+            MEDICATION_YN = 'N'
+    </select>
+    
+    <!-- 약국 외래약, 병동약 처방 관리 - 조제 -->
+    <select id="callProcessMedication" statementType="CALLABLE" parameterType="MedPrescBean" >
+    {call PC_SD_PROCESS_MEDICATION (
+        #{patNo, mode=IN, jdbcType=VARCHAR},
+        #{prescDate, mode=IN, jdbcType=VARCHAR},
+        #{diseaseNm, mode=IN, jdbcType=VARCHAR},
+        #{flag, mode=IN, jdbcType=VARCHAR},
+        #{errorCode, mode=OUT, jdbcType=VARCHAR},
+        #{errorMsg, mode=OUT, jdbcType=VARCHAR}
+     )}
+    </select>
+    
+</mapper>
