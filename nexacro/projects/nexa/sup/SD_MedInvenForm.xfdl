@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SD_MedInvenForm" classname="SD_MedInvenForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="-21.97%" height="60" style="background:transparent URL('img::titleBar1.jpg');"/>
+        <Static id="Static00" taborder="1" text="약 재고 관리" left="4.79%" top="-1" right="76.46%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="medInvenGrid" taborder="2" binddataset="dsMed" useinputpanel="false" autofittype="none" treeusecheckbox="false" treeinitstatus="expand,null" left="2.16%" top="129" right="2.08%" height="557" style="linetype:onlyvert;" enable="true" visible="true">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="254"/>
+                <Column size="361"/>
+                <Column size="276"/>
+                <Column size="250"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="약품코드"/>
+                <Cell col="2" text="약품명"/>
+                <Cell col="3" text="수가"/>
+                <Cell col="4" text="재고량"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:medCd"/>
+                <Cell col="2" text="bind:medNm"/>
+                <Cell col="3" text="bind:fee"/>
+                <Cell col="4" text="bind:medInven"/>
+              </Band>
+            </Format>
+            <Format id="format_copy"/>
+          </Formats>
+        </Grid>
+        <Div id="Div01" taborder="3" text="약품명" left="2.24%" top="68" right="89.76%" height="44" style="background:wheat;color:black;bordertype:round 5 5 ;font:14 다음_Regular;"/>
+        <Edit id="medNmEd" taborder="4" left="10.88%" top="68" right="75.04%" height="44"/>
+        <Button id="searchBtn" taborder="5" onclick="searchBtn_onclick" left="28.4%" top="67" right="62.8%" height="44" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="printBtn" taborder="6" onclick="printBtn_onclick" left="1119" top="705" width="105" height="49" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findMedInven</Col>
+            <Col id="URL">erp47::sup/drug/findMedInven.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsMed=dsMed</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsUseYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="name">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">Y</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMed" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="medInven" type="STRING" size="256"/>
+          <Column id="fee" type="STRING" size="256"/>
+          <Column id="medNm" type="STRING" size="256"/>
+          <Column id="medCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+//조회 버튼
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var medNm = this.medNmEd.value;
+	
+	var argument = "medNm="+medNm;
+	var row = this.dsService.findRow('serviceID' , "findMedInven");
+	this.dsService.setColumn(row,"argument",argument);
+		
+	this.gfnService("findMedInven");
+}
+
+// 출력버튼
+this.printBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert("출력기능 준비중");
+}]]></Script>
+  </Form>
+</FDL>
