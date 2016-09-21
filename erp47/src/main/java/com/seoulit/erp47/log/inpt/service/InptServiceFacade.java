@@ -12,4 +12,5 @@ public interface InptServiceFacade {
 	
 		List<SkillExmntHistBean>skillExmntList(Map<String,String>argsMap);
 		List<CtrtInfoBean>findCtrtList();
+		public void batchProcessSkillExmnt(List<SkillExmntHistBean>skillExmntList);
 }
