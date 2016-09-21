@@ -21,4 +21,23 @@ public class SkillExmntapplicationServiceFacadeImpl implements SkillExmntapplica
 		return skillexmntDAO.findSkillExmntHistList(argsMap);
 	}
 
+
+	@Override
+	public void batchProcessSkillExmnt(List<SkillExmntHistBean> skillExmntList) {
+		// TODO Auto-generated method stub
+		
+			for(SkillExmntHistBean skillExmntBean : skillExmntList){
+					
+				
+					if(skillExmntBean.getStatus()=="deleted"){
+						
+						skillexmntDAO.deleteSkillExmnt(skillExmntBean);
+						
+					}
+				
+					
+			}
+		
+	}
+
 }

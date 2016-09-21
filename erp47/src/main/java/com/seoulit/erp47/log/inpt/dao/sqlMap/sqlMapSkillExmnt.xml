@@ -27,5 +27,15 @@ SELECT * FROM LE_SKILL_EXMNT_HIST
 WHERE EXMNT_DATE 
 BETWEEN #{startDate} AND #{endDate}
 	</select>
+	
+	
+	<delete id="deleteSkillExmnt">
+		DELETE
+		  FROM LE_SKILL_EXMNT_HIST
+		 WHERE SKILL_EXMNT_NO = #{skillExmntNo}
+		       AND CTRT_NO = #{ctrtNo}
+	
+	
+	</delete>
 
 </mapper>
