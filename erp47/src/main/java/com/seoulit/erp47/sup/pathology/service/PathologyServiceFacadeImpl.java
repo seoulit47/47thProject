@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.sup.pathology.applicationService.PathologyApplicationService;
+import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
@@ -53,6 +54,13 @@ public class PathologyServiceFacadeImpl implements PathologyServiceFacade{
 	public List<SlClinspeInfoBean> findClinspeInfoBeanList(SlClinspeInfoBean clinspeInfoBean) {
 		List<SlClinspeInfoBean> clinspeInfoList = pathologyApplicationService.findClinspeInfoList(clinspeInfoBean);
 		return clinspeInfoList;
+	}
+	
+	//검체번호 조회
+	@Override
+	public List<ClinspeBean> findClinspeNoList() {
+		List<ClinspeBean> clinspeNoList = pathologyApplicationService.findClinspeNoList();
+		return clinspeNoList;
 	}
 	
 	

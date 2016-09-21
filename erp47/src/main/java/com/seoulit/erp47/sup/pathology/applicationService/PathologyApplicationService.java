@@ -2,6 +2,7 @@ package com.seoulit.erp47.sup.pathology.applicationService;
 
 import java.util.List;
 
+import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
@@ -9,10 +10,10 @@ import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
 
 
 /**
- * @Package  com.seoul.his.sup.pathology.AS
+ * @Package  com.seoulit.erp47.sup.pathology.AS
  * @Class    PathologyApplicationService.java
- * @Create   2016. 6. 1.
- * @Author   jin
+ * @Create   2016. 09. 20.
+ * @Author   김진환
  * @Description 검체 
  *
  * @LastUpdated 
@@ -28,5 +29,5 @@ public interface PathologyApplicationService {
 	//검체정보 조회
 	List<SlClinspeInfoBean> findClinspeInfoList(SlClinspeInfoBean clinspeInfoBean);
 	//검체번호 조회
-	//List<ClinspeBean> findClinspeNoList();
+	List<ClinspeBean> findClinspeNoList();
 }

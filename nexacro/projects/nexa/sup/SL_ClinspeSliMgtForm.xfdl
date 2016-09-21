@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_ClinspeSliMgtForm" classname="SL_ClinspeSliMgtForm" left="0" top="0" width="1269" height="792" titletext="검체슬라이드관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.47%" top="8" right="-32.07%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체슬라이드관리" left="3.83%" top="-4" right="81.79%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc02" taborder="1" text="검체번호" onclick="subCodeStc_onclick" left="0.87%" top="72" right="93.3%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="clinspeNoEd" taborder="2" left="7.33%" top="72" right="84.48%" height="30"/>
+        <Button id="searchBtn" taborder="3" onclick="searchBtn_onclick" cssclass="AddBtn" left="16.15%" top="70" right="81.32%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn07" taborder="4" onclick="DelBtn07_onclick" cssclass="DelBtn" left="92.51%" top="72" right="0.39%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="clinspeSliGrid" taborder="5" binddataset="dsSlClinspeSli" autoenter="select" useinputpanel="false" autofittype="col" oncellclick="test_OnCellClick" left="0.87%" top="108" right="0.87%" height="617">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="92"/>
+                <Column size="138"/>
+                <Column size="135"/>
+                <Column size="152"/>
+                <Column size="135"/>
+                <Column size="136"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검체블록 코드"/>
+                <Cell col="2" text="슬라이드 코드"/>
+                <Cell col="3" text="슬라이드 제작일"/>
+                <Cell col="4" text="슬라이드 수량"/>
+                <Cell col="5" text="슬라이드 내용"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:clinspeNo"/>
+                <Cell col="1" edittype="text" text="bind:clinspeBlokCode"/>
+                <Cell col="2" text="bind:sliCode"/>
+                <Cell col="3" edittype="date" text="bind:sliProdDay"/>
+                <Cell col="4" edittype="text" text="bind:sliQnt"/>
+                <Cell col="5" edittype="text" text="bind:sliCon"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="batchBtn" taborder="6" onclick="batchBtn_onclick" cssclass="DelBtn" left="92.04%" top="740" right="0.87%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBtn" taborder="7" onclick="addBtn_onclick" cssclass="DelBtn" left="75.73%" top="740" right="17.18%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delBtn" taborder="8" onclick="delBtn_onclick" cssclass="DelBtn" left="83.85%" top="740" right="9.06%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsSlClinspeSli" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+          <Column id="clinspeBlokCode" type="STRING" size="256"/>
+          <Column id="sliCode" type="STRING" size="256"/>
+          <Column id="sliProdDay" type="STRING" size="256"/>
+          <Column id="sliQnt" type="STRING" size="256"/>
+          <Column id="sliCon" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findClinspeSliList</Col>
+            <Col id="URL">erp47::sup/pathology/findClinspeSliList.do</Col>
+            <Col id="outData">dsSlClinspeSli=dsSlClinspeSli</Col>
+            <Col id="argument"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchClinspeSliProcess</Col>
+            <Col id="URL">erp47::sup/pathology/batchClinspeSliProcess.do</Col>
+            <Col id="inData">dsSlClinspeSli=dsSlClinspeSli:u</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 검체 슬라이드 관리															*
+*                                                                               *
+* @Path		    sup-SLclinspeSliMngntForm										*
+*																				*
+* @Description 	검체 슬라이드 관리에서 슬라이드 등록,수정,삭제,조회한다. *
+*               																*
+* @Author	    김진환    						                                *
+* 									                                            *
+* Created on 2016. 09. 20                            		                    *
+*									                                            *
+********************************************************************************/
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+
+include "scripts::commonTransaction.xjs";
+include "scripts::commonScripts.xjs";
+
+/***************************************************************************************************
+* 검체번호 조회                                     
+***************************************************************************************************/
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("SL_ClinspeBlokPopupForm","sup","","");
+}
+
+/***************************************************************************************************
+* 검체번호 조회                                     
+***************************************************************************************************/
+
+this.setClinspeNoArray = function(cliNo){
+	this.clinspeNoEd.set_value(cliNo);
+}
+
+this.DelBtn07_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var clinspeNo = this.clinspeNoEd.value;
+ 	var searchNo = "CLINSPE_NO='"+clinspeNo+"'";
+ 	
+ 	this.dsService.setColumn(0, "argument", searchNo);
+	this.gfnService("findClinspeSliList", "false");
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsSlClinspeSli.addRow();
+	
+	var sliCode;
+	var count = this.clinspeSliGrid.currentrow;
+	var codeNo = this.clinspeSliGrid.currentrow-1;
+	var code = this.clinspeSliGrid.currentrow+1;
+	
+  	var test = this.dsSlClinspeSli.getColumn(codeNo, "sliCode");
+	//슬라이드 코드 셋팅
+	if(code<10){
+		sliCode = "CS"+"00"+code;
+	}else if(code <100){
+		sliCode = "CS"+"0"+code;
+	}else if(code <1000){
+		sliCode = "CS"+code;
+	}
+	//슬라이드 코드 추가, 중복값 방지
+	if(test == sliCode){
+		var setAdd = this.clinspeSliGrid.currentrow+2;
+		if(codeNo <10){
+			sliCode = "CS"+"00"+setAdd;
+		}else if(codeNo <100){
+			sliCode = "CS"+"0"+setAdd;
+		}else if(test <1000){
+			sliCode = "CS"+setAdd;
+		}
+	}
+	
+	this.dsSlClinspeSli.setColumn(count, "clinspeNo", this.clinspeNoEd.value);
+	this.dsSlClinspeSli.setColumn(count, "sliCode", sliCode);
+}
+
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsSlClinspeSli.deleteRow(this.clinspeSliGrid.currentrow);
+}
+
+this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchClinspeSliProcess", "false");
+}
+]]></Script>
+  </Form>
+</FDL>

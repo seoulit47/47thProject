@@ -53,8 +53,8 @@ this.allCloseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		var tabCnt = this.topTab.tabpages.length;
 		for (var i = (this.topTab.tabpages.length-1); i >= 0; i--) {
 			var childName = this.topTab.tabpages[i].url;
-			var objChild = application.mainframe.vframeSet.frameSet.frames[childName];
-			application.mainframe.vframeSet.frameSet.removeChild(childName);
+			var objChild = application.mainframe.frameSet.mainFrame.frames[childName];
+			application.mainframe.frameSet.mainFrame.removeChild(childName);
 			objChild.destroy();
 			objChild = null;	
 			this.topTab.removeTabpage(i);
@@ -71,8 +71,8 @@ this.topTab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
 	var preChildName  = obj.tabpages[e.preindex].url;
 	var postChildName = obj.tabpages[e.postindex].url;
 	
-	var objPreChild  = application.mainframe.vframeSet.frameSet.frames[preChildName];
-	var objPostChild = application.mainframe.vframeSet.frameSet.frames[postChildName];
+	var objPreChild  = application.mainframe.frameSet.mainFrame.frames[preChildName];
+	var objPostChild = application.mainframe.frameSet.mainFrame.frames[postChildName];
 	
 	objPreChild.set_openstatus("minimize");
 	objPostChild.set_openstatus("maximize");
@@ -85,8 +85,8 @@ this.topTab_onextrabuttonclick = function(obj:Tab, e:nexacro.TabMouseEventInfo)
 	if (confirm(obj.tabpages[e.index].text + " 탭을 닫으시겠습니까?")) {
 		var childName = obj.tabpages[e.index].url;
 		
-		var objChild = application.mainframe.vframeSet.frameSet.frames[childName];
-		application.mainframe.vframeSet.frameSet.removeChild(childName);
+		var objChild = application.mainframe.frameSet.mainFrame.frames[childName];
+		application.mainframe.frameSet.mainFrame.removeChild(childName);
 		
 		objChild.destroy();
 		objChild = null;	

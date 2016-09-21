@@ -1,5 +1,6 @@
 package com.seoulit.erp47.sup.nutritive.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.nutritive.service.NutritiveServiceFacade;
+import com.seoulit.erp47.sup.nutritive.to.BreakfastBean;
 import com.seoulit.erp47.sup.nutritive.to.CarteBean;
 import com.seoulit.erp47.sup.nutritive.to.DCarteBean;
+import com.seoulit.erp47.sup.nutritive.to.DinnerBean;
+import com.seoulit.erp47.sup.nutritive.to.LunchBean;
 import com.seoulit.erp47.sup.nutritive.to.NCodeBean;
 
 /**
@@ -26,6 +30,7 @@ import com.seoulit.erp47.sup.nutritive.to.NCodeBean;
  *
  * @LastUpdated
  */
+
 
 @Controller
 public class CarteController {
@@ -47,7 +52,7 @@ public class CarteController {
 		dataSetBeanMapper.beansToDataset(outData, divList, NCodeBean.class);
 	}
 
-	/* 영양관리 식단 관리 - 식단조회 */
+	//영양관리 식단 관리 - 식단조회 
 	@RequestMapping("sup/nutritive/findCarteList.do")
 
 	public void findCarteList(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -74,5 +79,30 @@ public class CarteController {
         dataSetBeanMapper.beansToDataset(outData, dCarteList, DCarteBean.class);
 	}
 	
-	
+    /* 영양관리 식단 관리 -  저장 */
+    @RequestMapping("sup/nutritive/batchCarteProcess.do")
+    public void batchCarteProcess(HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        
+        List<BreakfastBean> breakfastList = dataSetBeanMapper.datasetToBeans(inData, BreakfastBean.class);
+        List<LunchBean> lunchList = dataSetBeanMapper.datasetToBeans(inData, LunchBean.class);
+        List<DinnerBean> dinnerList = dataSetBeanMapper.datasetToBeans(inData, DinnerBean.class);
+        
+        Map<String, Object> map = new HashMap<>();
+
+        if(breakfastList.size() > 0){
+            map.put("breakfast", breakfastList);
+        }
+        
+        if(lunchList.size() > 0){
+            map.put("lunch", lunchList);
+        }
+        
+        if(dinnerList.size() > 0){
+            map.put("dinner", dinnerList);
+        }
+        
+        nutritiveServiceFacade.batchCarteProcess(map);
+    }
 }

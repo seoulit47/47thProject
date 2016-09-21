@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.seoulit.erp47.sup.pathology.dao.ClinspeBlokDAO;
 import com.seoulit.erp47.sup.pathology.dao.ClinspeInfoDAO;
 import com.seoulit.erp47.sup.pathology.dao.ClinspeSliDAO;
+import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
@@ -73,5 +74,10 @@ public class PathologyApplicationServiceImpl implements PathologyApplicationServ
 		return clinspeInfoDAO.findClinspeInfoList(clinspeInfoBean);
 	}
 	
+	// 검체번호 조회
+	@Override
+	public List<ClinspeBean> findClinspeNoList() {
+		return clinspeBlokDAO.findClinspeNoList();
+	}
   
 }
