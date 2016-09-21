@@ -1,4 +1,4 @@
-package com.seoulit.erp47.log.base.dao;
+package com.seoulit.erp47.log.base.dao12;
 
 import java.util.List;
 import java.util.Map;
