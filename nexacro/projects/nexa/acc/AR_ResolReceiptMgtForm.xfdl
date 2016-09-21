@@ -850,11 +850,12 @@ this.Div01_resolBrBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 											,"showtitlebar=true showstatusbar=false"
 											, 250
 											,300);
-		alert("반려사유:"+resolBrCau);
+		
 		//팝업창에서 넘겨받은 반려사유에 값이 있을 때 실행
 		if(resolBrCau!=null){
+			alert(123);
 			//반려사유 셋팅
-			this.Div01.resolBrCauEd.value=resolBrCau;
+			//this.Div01.resolBrCauEd.set_value(resolBrCau);
 			//진행상태 결의접수반려로 셋팅
 			this.Div01.progStatDiv.value="52";
 		}		

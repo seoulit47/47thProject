@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.acc.resol.dao.AccountDAO">
+<cache flushInterval="86400000" eviction="LRU" />
+	
+	<select resultType="AccountBean" useCache="true" flushCache="false" id="selectAccount">
+		SELECT CUSTCD AS custCd ,CUSTNM AS custNm ,ADPTDT AS adptdt ,BUSSNO AS bussNo ,ZIPCD AS zipCd ,ADDR AS addr ,TELNO AS telNo ,FAXNO AS faxNo ,BANKCD AS bankCd ,ACCNO AS accNo ,BUSCTGNM AS busctgNm ,BUSSHPNM AS busshpNm ,PRSDNTNM AS prsdntNm ,RESNO AS resNo ,DPSTR AS dpstr ,USEYN AS useYn ,GPUSEYN AS gpuseYn ,GDUSEYN AS gduseYn ,CARDYN AS cardYn ,RIUSEYN AS riuseYn ,HOSPCLS AS hospcls FROM CM_ACCOUNT 
+		<where>		
+			<if test="accountCode != null"> CUSTCD=#{accountCode} </if>		
+			<if test="accountName != null"> AND CUSTNM LIKE '%${accountName}%' </if>		
+		</where>
+	</select>
+	
+	<insert id="insertAccount" parameterType="AccountBean"> 
+		INSERT INTO CM_ACCOUNT( CUSTCD ,CUSTNM ,ADPTDT ,BUSSNO ,ZIPCD ,ADDR ,TELNO ,FAXNO ,BANKCD ,ACCNO ,BUSCTGNM ,BUSSHPNM ,PRSDNTNM ,RESNO ,DPSTR ,USEYN ,GPUSEYN ,GDUSEYN ,CARDYN ,RIUSEYN ,HOSPCLS ) 
+		VALUES( #{custcd} ,#{custnm} ,#{adptdt} ,#{bussno} ,#{zipcd} ,#{addr} ,#{telno} ,#{faxno} ,#{bankcd} ,#{accno} ,#{busctgnm} ,#{busshpnm} ,#{prsdntnm} ,#{resno} ,#{dpstr} ,#{useyn} ,#{gpuseyn} ,#{gduseyn} ,#{cardyn} ,#{riuseyn} ,#{hospcls} ) 
+	</insert>
+	
+	<update id="updatedAccount" parameterType="AccountBean"> 
+		UPDATE CM_ACCOUNT SET CUSTNM=#{custnm} ,ADPTDT=#{adptdt} ,BUSSNO=#{bussno} ,ZIPCD=#{zipcd} ,ADDR=#{addr} ,TELNO=#{telno} ,FAXNO=#{faxno} ,BANKCD=#{bankcd} ,ACCNO=#{accno} ,BUSCTGNM=#{busctgnm} ,BUSSHPNM=#{busshpnm} ,PRSDNTNM=#{prsdntnm} ,RESNO=#{resno} ,DPSTR=#{dpstr} ,USEYN=#{useyn} ,GPUSEYN=#{gpuseyn} ,GDUSEYN=#{gduseyn} ,CARDYN=#{cardyn} ,RIUSEYN=#{riuseyn} ,HOSPCLS=#{hospcls} 
+		WHERE CUSTCD = #{custcd} 
+	</update>
+	
+	<delete id="deletedAccount" parameterType="AccountBean"> 
+		DELETE FROM CM_ACCOUNT 
+		WHERE CUSTCD = #{custcd} 
+	</delete>
+</mapper>

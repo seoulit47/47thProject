@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AR_ResolBrCauPopupForm" classname="AR_ResolBrCauPopupForm" left="0" top="0" width="625" height="128" titletext="결의서 반려 사유">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="-2.4%" top="-4" right="2.4%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="결의서 반려 사유" left="8.16%" top="-4" right="54.08%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" left="1.92%" top="45" right="1.44%" height="73" style="background:#edececff;">
+          <Layouts>
+            <Layout>
+              <Edit id="resolBrEd" taborder="0" left="17.55%" top="6" right="2.65%" height="27"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc" taborder="2" text="반려사유" onclick="subCodeStc_onclick" left="3.2%" top="51" right="82.08%" height="24" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Button id="resolBrBtn" taborder="3" onclick="resolBrBtn_onclick" left="66.24%" top="86" right="19.36%" height="32" style="background:@gradation URL('img::returnBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="closedBtn" taborder="4" onclick="closedBtn_onclick" left="81.6%" top="86" right="4%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[
+// 접수반려 버튼 클릭이벤트
+this.resolBrBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//반려사유를 작성하지 않았을 때 실행
+	if(this.Div01.resolBrEd.value==null){
+		alert("반려사유를 작성하여 주시기 바랍니다");
+	}else{
+		//부모창에 넘길 배열변수 선언		
+		var resolBrCau = this.Div01.resolBrEd.value;		
+		//화면닫으며 변수를 넘긴다.
+		this.opener.Div01.resolBrCauEd.set_value(resolBrCau);
+		this.close(true);
+		alert("정상적으로 반려되었습니다.");
+	}
+}
+
+// 닫기 버튼 클릭이벤트
+this.closedBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_CodepopupForm_onload" onclick="CM_CodepopupForm_onclick">
+  <Form id="CM_CodepopupForm" classname="CM_CodepopupForm" left="0" top="0" width="400" height="500" titletext="코드도움" onload="CM_CodepopupForm_onload" onclick="CM_CodepopupForm_onclick">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.25%" top="0" right="1%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="코드도움" left="13.92%" top="-4" right="58.73%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+              <Static id="Static00" taborder="0" text="코드도움" left="13.92%" top="-4" right="54.18%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -65,7 +65,9 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.0"><![CDATA[this.CdpopupGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+this.CdpopupGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
 	//그리드 셀 더블클릭시,값을 배열에 담아서 팝업폼 호출한 부모프레임에 전달한다.
 	//부모프레임에서는 같은이름의 함수를 만들어 배열값을 받아 셋팅하기만 하면된다.

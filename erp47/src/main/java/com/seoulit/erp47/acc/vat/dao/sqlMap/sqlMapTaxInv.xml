@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.seoul.his.acc.vat.dao.TaxInvDAO">
+<mapper namespace="com.seoulit.erp47.acc.vat.dao.TaxInvDAO">
 <cache flushInterval="86400000" eviction="LRU" />
 
     <!-- 세금계산서목록 조회resultMap -->
