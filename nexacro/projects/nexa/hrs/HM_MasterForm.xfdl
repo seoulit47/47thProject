@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HM_MasterForm" classname="HM_MasterForm" left="0" top="0" width="1024" height="770" titletext="New Form">
+  <Form id="HM_MasterForm" classname="HM_MasterForm" left="0" top="0" width="1024" height="770" titletext="New Form" oninit="HM_MasterForm_oninit">
     <Layouts>
       <Layout>
         <Div id="Div02" taborder="0" left="17.87%" top="67" right="1.07%" height="425" style="background:whitesmoke;border:1 solid #808080ff ;bordertype:round 5 5 ;font:9 Dotum;">
@@ -1029,7 +1029,7 @@
         <Edit id="imageEd29" taborder="81" cssclass="AreaEdt" left="86.52%" top="456" right="1.46%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
         <Spin id="payDateSpin" taborder="82" value="1" displaynulltext="1" max="31" cssclass="AreaSpin" left="92.48%" top="360" right="1.46%" height="29" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
         <Button id="Button_PDF" taborder="83" text="PDF" onclick="Div02_Button_PDF_onclick" left="85.45%" top="79" right="9.67%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
-        <Grid id="empListGrid" cssclass="AreaGrid" taborder="84" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncellclick="empListGrid_oncellclick" oncelldblclick="empListGrid_oncelldblclick" onselectchanged="empListGrid_onselectchanged" onenterdown="empListGrid_onenterdown" left="1.07%" top="160" right="82.52%" height="558" style="color:#5f5f5fff;bordertype:round 5 5 ;font:9 Dotum;opacity:100;">
+        <Grid id="empListGrid" taborder="84" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncellclick="empListGrid_oncellclick" left="1.07%" top="160" right="82.52%" height="558" style="color:#5f5f5fff;bordertype:round 5 5 ;font:9 Dotum;opacity:100;">
           <Formats>
             <Format id="default">
               <Columns>
@@ -1153,7 +1153,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">empInfo</Col>
-            <Col id="URL">his::hrs/emp/findEmpList.do</Col>
+            <Col id="URL">erp47::hrs/emp/findEmpList.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsHmEmp=gdsEmp</Col>
             <Col id="argument"/>
@@ -1161,7 +1161,7 @@
           </Row>
           <Row>
             <Col id="serviceID">empImage</Col>
-            <Col id="URL">his::hrs/emp/registerEmpImage.do</Col>
+            <Col id="URL">erp47::hrs/emp/registerEmpImage.do</Col>
             <Col id="inData">dsImage=dsImage:U</Col>
             <Col id="outData">dsImage=dsImage</Col>
             <Col id="argument"/>
@@ -1169,14 +1169,14 @@
           </Row>
           <Row>
             <Col id="serviceID">searchEmp</Col>
-            <Col id="URL">his::hrs/emp/selectEmpList.do</Col>
+            <Col id="URL">erp47::hrs/emp/selectEmpList.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsHmEmp=gdsEmp dsHmFamily=dsHmFamily dsHmEducation=dsHmEducation dsHmCareer=dsHmCareer dsHmLicense=dsHmLicense dsHmPerconaldate=dsHmPerconaldate dsHmDisability=dsHmDisability dsHmMilitary=dsHmMilitary</Col>
             <Col id="argument"/>
           </Row>
           <Row>
             <Col id="serviceID">mngntEmp</Col>
-            <Col id="URL">his::hrs/emp/mngntEmp.do</Col>
+            <Col id="URL">erp47::hrs/emp/mngntEmp.do</Col>
             <Col id="outData"/>
             <Col id="argument"/>
             <Col id="inData">gdsEmp=dsHmEmp:U dsHmFamily=dsHmFamily:U dsHmEducation=dsHmEducation:U dsHmCareer=dsHmCareer:U dsHmLicense=dsHmLicense:U dsHmPerconaldate=dsHmPerconaldate:U dsHmDisability=dsHmDisability:U dsHmMilitary=dsHmMilitary:U </Col>
@@ -2191,6 +2191,27 @@ this.btn_empPopup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		this.searchEmpNoEd.set_value(arrRtn[0]);
 		this.searchEmpNmEd.set_value(arrRtn[1]);
 	}
-}]]></Script>
+}
+this.empListGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.dsHmCareer.filter("");
+	this.dsHmPerconaldate.filter("");
+	this.dsHmFamily.filter("");
+	this.dsHmEducation.filter("");
+	this.dsHmLicense.filter("");
+	this.dsHmMilitary.filter("");
+	this.dsHmDisability.filter("");
+
+	var filterEmpNo = this.empListGrid.getCellValue(this.empListGrid.currentrow,2);
+	//alert(filterEmpNo);
+	this.dsHmCareer.filter("empNo == " + filterEmpNo);
+	this.dsHmPerconaldate.filter("empNo == " + filterEmpNo);
+	this.dsHmFamily.filter("empNo == " + filterEmpNo);
+	this.dsHmEducation.filter("empNo == " + filterEmpNo);
+	this.dsHmLicense.filter("empNo == " + filterEmpNo);
+	this.dsHmMilitary.filter("empNo == " + filterEmpNo);
+	this.dsHmDisability.filter("empNo == " + filterEmpNo);
+}
+]]></Script>
   </Form>
 </FDL>
