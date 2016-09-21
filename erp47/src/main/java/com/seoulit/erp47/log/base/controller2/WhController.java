@@ -1,4 +1,4 @@
-package com.seoulit.erp47.log.base.controller;
+package com.seoulit.erp47.log.base.controller2;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
-import com.seoulit.erp47.log.base.service.LogBaseServiceFacade;
+import com.seoulit.erp47.log.base.service24.LogBaseServiceFacade;
 import com.seoulit.erp47.log.base.to.WhBean;
 
 @Controller

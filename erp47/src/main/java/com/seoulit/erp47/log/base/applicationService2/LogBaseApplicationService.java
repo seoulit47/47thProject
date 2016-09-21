@@ -1,4 +1,4 @@
-package com.seoulit.erp47.log.base.applicationService;
+package com.seoulit.erp47.log.base.applicationService2;
 
 import java.util.List;
 import java.util.Map;
