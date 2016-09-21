@@ -10,5 +10,6 @@ public interface SkillExmntapplicationServiceFacade {
 	
 	
 			public List<SkillExmntHistBean>skillexmntList(Map<String, String>argsMap);
+	
 			public void batchProcessSkillExmnt(List<SkillExmntHistBean>skillExmntList);
 }

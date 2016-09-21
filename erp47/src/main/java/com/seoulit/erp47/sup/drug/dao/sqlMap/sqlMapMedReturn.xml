@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.drug.dao.MedReturnDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+    
+    <!-- 약국 약 반납 관리 - 조회 -->
+    <select id="selectMedicationList" flushCache="false"  useCache="true" resultType="MedicationBean">
+        SELECT 
+            A.MEDICATION_DAY AS medicationDay,
+            A.MEDICATION_QNT AS medicationQnt,
+            A.FLAG AS flag,
+            A.MEDICATION_NO AS medicationNo,
+            A.PAT_NO AS patNo,
+            C.PAT_NM AS patNm,
+            A.MED_CD AS medCd,
+            B.MED_NM AS medNm,
+            A.PRESC_DATE AS prescDate
+        FROM 
+            SD_MEDICATION A
+        INNER JOIN 
+            SD_MED B
+        ON 
+            A.MED_CD = B.MED_CD
+        INNER JOIN
+            WS_PAT C
+        ON 
+            A.PAT_NO = C.PAT_NO
+        LEFT OUTER JOIN 
+            (select * from SD_MED_RETURN) D
+        ON 
+            A.MEDICATION_NO = D.MEDICATION_NO 
+        AND 
+            A.MED_CD = D.MED_CD
+        WHERE 
+            1=1
+        AND 
+            A.MEDICATION_QNT - NVL(D.RETURN_QNT,0) 
+        NOT LIKE 
+            0
+
+        <if test="patNo != null">
+        AND A.PAT_NO = #{patNo}
+        </if>
+        
+        <if test="prescDate != null">
+        AND A.PRESC_DATE = #{prescDate}
+        </if>
+        
+        <if test="medicationNo != null">
+        AND A.MEDICATION_NO = #{medicationNo}
+        </if>
+        
+        ORDER BY 
+            A.MEDICATION_NO
+    </select>
+    
+    <!-- 약국 약 반납 관리 - 반납 -->
+    <select id="callMedReturn" statementType="CALLABLE" parameterType="MedicationBean" >
+    {call PC_SD_MED_RETURN (
+        #{medicationNo, 	mode=IN, 	jdbcType=VARCHAR},
+        #{medCd, 			mode=IN,	jdbcType=VARCHAR},
+        #{returnQnt, 		mode=IN,	jdbcType=VARCHAR},
+        #{medicationQnt,	mode=IN,	jdbcType=VARCHAR},
+        #{returnDate, 		mode=IN,	jdbcType=VARCHAR},
+        #{returner, 		mode=IN,	jdbcType=VARCHAR},
+        #{errorCode, 		mode=OUT,	jdbcType=VARCHAR},
+        #{errorMsg, 		mode=OUT,	jdbcType=VARCHAR}
+    ) }
+    </select>
+    
+</mapper>

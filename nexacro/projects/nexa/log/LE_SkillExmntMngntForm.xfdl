@@ -12,8 +12,8 @@
               <Static id="Static00" taborder="0" text="~" left="21.64%" top="22" right="75.64%" height="24" style="align:middle;"/>
               <Calendar id="startDate" taborder="1" left="9.99%" top="14" right="78.7%" height="34"/>
               <Calendar id="endDate" taborder="2" left="25.19%" top="14" right="63.5%" height="34"/>
-              <Button id="okBtn" taborder="4" text="검수확인" left="52.19%" top="11" right="41.21%" height="39" style="background:beige;" onclick="searchDiv_okBtn_onclick"/>
-              <Button id="cancelBtn" taborder="5" text="검수취소" left="45.58%" top="11" right="47.81%" height="39" style="background:beige;" onclick="searchDiv_cancelBtn_onclick"/>
+              <Button id="okBtn" taborder="4" text="검수확인" left="46.24%" top="11" right="47.15%" height="39" style="background:beige;"/>
+              <Button id="cancelBtn" taborder="5" text="검수취소" left="54.17%" top="11" right="39.22%" height="39" style="background:beige;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -63,7 +63,7 @@
         </Grid>
         <Button id="searchBtn" taborder="5" left="38.64%" top="86" right="55.84%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
         <Button id="addBtn" taborder="6" left="91.12%" top="128" right="5.76%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addBtn_onclick"/>
-        <Button id="delBtn" taborder="7" left="95.04%" top="128" right="1.84%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="delBtn_onclick"/>
+        <Button id="delBtn" taborder="7" left="95.04%" top="128" right="1.84%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -221,23 +221,6 @@ this.fn_dateTime = function()
           + (dDate.getMonth()+1).toString().padLeft(2, "0")
           +  dDate.getDate().toString().padLeft(2, "0");
     return sRtn;
-}
-
-this.searchDiv_cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
-{
-	this.dsSkillExmntHist.deleteRow(this.dsSkillExmntHist.rowposition);
-	this.gfnService("batchProcessSkillExmntHist","false");	//검수등록된거 삭제, 검수여부변경.
-	
-}
-
-this.searchDiv_okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
-{
-	this.gfnService("batchProcessSkillExmntHist","false");
-}
-
-this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
-{
-	this.dsSkillExmntHist.deleteRow(this.dsSkillExmntHist.rowposition);
 }
 ]]></Script>
   </Form>

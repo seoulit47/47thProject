@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SD_MedReturnForm" classname="SD_MedReturnForm" left="0" top="0" width="1250" height="768" titletext="약반납" onload="SD_MedReturnForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="-21.97%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
+        <Static id="Static00" taborder="1" text="약반납 관리" left="5.08%" top="-3" right="71.19%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div01" taborder="2" text="환자등록번호" left="2.24%" top="72" right="89.76%" height="40" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="patNoEd" taborder="3" left="10.88%" top="72" right="79.76%" height="40"/>
+        <Div id="Div02" taborder="4" text="조제번호" left="39.76%" top="72" right="52.24%" height="40" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="medicationEd" taborder="5" left="48.56%" top="72" right="40.24%" height="40"/>
+        <Button id="searchBtn" taborder="6" onclick="searchBtn_onclick" left="1128" top="71" width="90" height="42" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Div id="Div03" taborder="7" text="처방기간" left="64.16%" top="72" right="27.84%" height="40" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="patNmEd" taborder="8" left="20.64%" top="72" right="68.56%" height="40"/>
+        <Button id="patPopupBtn" taborder="9" onclick="patPopupBtn_onclick" left="32.24%" top="70" right="64.64%" height="42" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Calendar id="prescDateCal" taborder="10" left="72.96%" top="72" right="11.6%" height="40"/>
+        <Grid id="medicationGrid" taborder="11" binddataset="dsMedication" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" left="2.32%" top="127" right="2.56%" height="591" style="linetype:onlyvert;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="35"/>
+                <Column size="66"/>
+                <Column size="70"/>
+                <Column size="72"/>
+                <Column size="107"/>
+                <Column size="112"/>
+                <Column size="78"/>
+                <Column size="198"/>
+                <Column size="115"/>
+                <Column size="77"/>
+                <Column size="97"/>
+                <Column size="71"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="조제번호"/>
+                <Cell col="2" text="환자번호"/>
+                <Cell col="3" text="환자이름"/>
+                <Cell col="4" text="조제일자"/>
+                <Cell col="5" text="병동/외래구분"/>
+                <Cell col="6" text="약품코드"/>
+                <Cell col="7" text="약품명"/>
+                <Cell col="8" text="처방일자"/>
+                <Cell col="9" text="조제수량"/>
+                <Cell col="10" text="확인자"/>
+                <Cell col="11" text="반납수량"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:medicationNo"/>
+                <Cell col="2" text="bind:patNo"/>
+                <Cell col="3" text="bind:patNm"/>
+                <Cell col="4" text="bind:medicationDay" mask="####-##-##"/>
+                <Cell col="5" displaytype="combo" text="bind:flag" combodataset="dsDiv" combocodecol="code" combodatacol="value"/>
+                <Cell col="6" text="bind:medCd"/>
+                <Cell col="7" text="bind:medNm"/>
+                <Cell col="8" text="bind:prescDate" mask="####-##-##"/>
+                <Cell col="9" text="bind:medicationQnt"/>
+                <Cell col="10" text="bind:returner"/>
+                <Cell col="11" edittype="normal" text="bind:returnQnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="returnBtn" taborder="12" onclick="returnBtn_onclick" left="1128" top="723" width="90" height="36" style="background:@gradation URL('img::returnBtn2.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findMedicationList</Col>
+            <Col id="URL">erp47::sup/drug/findMedicationList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsMedication=dsMedication </Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">medCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">processMedReturn</Col>
+            <Col id="URL">erp47::sup/drug/processMedReturn.do</Col>
+            <Col id="inData">dsMedication=dsMedication:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">medCallback</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">외래</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">병동</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMedReturn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsMedication" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="dsMedication_cancolumnchange">
+        <ColumnInfo>
+          <Column id="medicationDay" type="STRING" size="256"/>
+          <Column id="medicationQnt" type="STRING" size="256"/>
+          <Column id="flag" type="STRING" size="256"/>
+          <Column id="medicationNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="medCd" type="STRING" size="256"/>
+          <Column id="prescDate" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="medNm" type="STRING" size="256"/>
+          <Column id="returner" type="STRING" size="256"/>
+          <Column id="returnDate" type="STRING" size="256"/>
+          <Column id="returnQnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+var today;
+var empName;
+
+this.SD_MedReturnForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	today = this.gfnDate("yyyyMMdd");
+	empName = application.gdsEmp.getColumn(0,'empNm');
+	//alert(today);
+	//alert(empName);
+}
+
+
+// 사람 찾기
+this.patPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert("준비중");
+}
+
+// 조회 버튼
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//var patNo = this.patNoEd.value;
+	var medicationNo = this.medicationEd.value;
+	var prescDate = this.prescDateCal.value;
+	
+	//if(patNo==null){
+	//	alert("환자번호를 입력하세요");
+	//}else{
+		var argument ='medicationNo='+medicationNo + ' prescDate='+prescDate;
+		var row = this.dsService.findRow('serviceID' , "findMedicationList");
+	
+		this.dsService.setColumn(row,"argument",argument);
+		this.gfnService("findMedicationList",false);
+	
+}
+
+
+
+//반납 버튼
+this.returnBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var rowSize =  this.dsMedication.rowcount;
+	//alert(rowSize);
+	
+	for(i=0; i<rowSize; i++){
+		if(this.dsMedication.getRowType(i)=='4'){
+			this.dsMedication.setColumn(e.row,"returner",empName);
+			this.dsMedication.setColumn(e.row,"returnDate",today);		
+		}
+	}
+	this.gfnService("processMedReturn",false);	
+}
+
+this.dsMedication_cancolumnchange = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid=='returnQnt'){
+		var medicationQnt = this.dsMedication.getColumn(e.row,'medicationQnt');
+		
+		if(medicationQnt-e.newvalue<0){
+			alert('반납수량이 너무 많습니다.');
+			return false;
+		}
+	}
+}
+
+
+// 콜백
+this.medCallback=function(svcID, errorCode, errorMsg){
+	if(svcID=="findMedicationList"){
+		alert("조회되었습니다.");
+	}else if(svcID=="processMedReturn"){
+		if(errorCode<0){
+			alert("반납이 실패하였습니다.");
+
+		}else{
+			alert("반납이 완료되었습니다");
+			
+			this.searchBtn_onclick(null,null);
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>
