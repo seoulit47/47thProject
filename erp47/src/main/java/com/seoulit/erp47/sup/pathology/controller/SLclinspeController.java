@@ -14,6 +14,7 @@ import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.sup.pathology.service.PathologyServiceFacade;
 import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
+import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
 
 /**
@@ -71,5 +72,19 @@ public class SLclinspeController {
 
         List<SlClinspeSliBean> clinspeSliBeanList = pathologyServiceFacade.findClinspeSliList(sliBean);
         datasetBeanMapper.beansToDataset(outData, clinspeSliBeanList, SlClinspeSliBean.class);
+    }
+    
+    // 검체정보 조회
+    @RequestMapping("sup/pathology/findClinspeInfoList.do")
+    public void findClinspeInfoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+        String clinspeNo = inData.getVariable("clinspeNo").getString();
+        SlClinspeInfoBean clinspeInfoBean = new SlClinspeInfoBean();
+        clinspeInfoBean.setClinspeNo(clinspeNo);
+
+        List<SlClinspeInfoBean> clinspeInfoBeanList = pathologyServiceFacade.findClinspeInfoBeanList(clinspeInfoBean);
+        datasetBeanMapper.beansToDataset(outData, clinspeInfoBeanList, SlClinspeInfoBean.class);
     }
 }

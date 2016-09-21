@@ -3,20 +3,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.seoulit.erp47.sup.pathology.dao.ClinspeInfoDAO">
 	<cache eviction="LRU" flushInterval="86400000"/>
-	<!-- 종합검진 검사관리 - 세부검사 조회 -->
-	<select resultType="DtInspBean" useCache="true" flushCache="false" id="selectDtInspList">
-		SELECT I.INSP_CD, I.DTL_INSP_CD AS DT_INSP_CD, I.DTL_INSP_NM AS DT_INSP_NM, I.UNIT, I.GENDER_CD, I.OCS_CD, E.EMR_NM AS OCS_NM, I.REF_HIGH_FIG, I.REF_LOW_FIG, NVL(I.RUN_YN,1) AS RUN_YN 
-		FROM SC_DTL_INSP I, SC_EMR_CODE E 
-		WHERE I.OCS_CD= E.EMR_CD 
-		<if test="inspCd != null"> AND INSP_CD = #{inspCd} </if>
+	<select resultType="SlClinspeInfoBean" id="findClinspeInfoList"> 
+		SELECT BLOK.CLINSPE_NO, CL.BLOODGET_DATE, CL.BLOODGET_EMP, CL.EXMNT_CD, CL.TRMT_DEPT, CL.RESP_DOCT, BLOK.CLINSPE_BLOK_CODE, BLOK.CLINSPE_BLOK_PROD_DAY, BLOK.CLINSPE_BLOK_PROD_TIME, BLOK.CLINSPE_BLOK_QNT, SLI.SLI_CODE, SLI.SLI_PROD_DAY, SLI.SLI_QNT, SLI.SLI_CON, BLOK.PAT_NO, BLOK.PAT_NM 
+		FROM SL_CLINSPE_SLI SLI 
+		INNER JOIN SL_CLINSPE CL ON CL.CLINSPE_NO = SLI.CLINSPE_NO 
+		INNER JOIN SL_CLINSPE_BLOK BLOK ON BLOK.CLINSPE_NO = SLI.CLINSPE_NO 
+		WHERE BLOK.CLINSPE_NO = #{clinspeNo} 
+		ORDER BY CLINSPE_NO, BLOODGET_DATE, EXMNT_CD, CLINSPE_BLOK_CODE, SLI_CODE 
 	</select>
-
-	<!-- 종합검진 세부검사관리 - 수정, 추가 -->
-	<update id="updateDtInsp"> 
-		UPDATE SC_DTL_INSP SET DTL_INSP_NM =#{dtInspNm}, UNIT =#{unit}, GENDER_CD =#{genderCd}, OCS_CD =#{ocsCd}, REF_HIGH_FIG =#{refHighFig}, REF_LOW_FIG =#{refLowFig}, RUN_YN =#{runYn}, MOD_ID =#{userId}, MOD_IP =#{userIp}, MOD_DATE =TO_CHAR(SYSDATE,'YYYY-MM-DD') WHERE INSP_CD =#{inspCd} AND DTL_INSP_CD =#{dtInspCd} 
-	</update>
-	<update id="insertDtInsp"> 
-		MERGE INTO SC_DTL_INSP USING DUAL ON (INSP_CD = #{inspCd} AND DTL_INSP_CD = #{dtInspCd}) WHEN NOT MATCHED THEN INSERT( INSP_CD, DTL_INSP_CD, DTL_INSP_NM, UNIT, GENDER_CD, OCS_CD, REF_HIGH_FIG, REF_LOW_FIG, RUN_YN, REG_ID, REG_IP, REG_DATE ) VALUES( #{inspCd}, #{dtInspCd}, #{dtInspNm}, #{unit}, #{genderCd}, #{ocsCd}, #{refHighFig}, #{refLowFig}, #{runYn}, #{userId}, #{userIp}, TO_CHAR(SYSDATE,'YYYY-MM-DD') ) 
-	</update>
-
 </mapper>

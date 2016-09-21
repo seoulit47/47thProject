@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_ClinspeInfoMgtForm" classname="SL_ClinspeInfoMgtForm" left="0" top="0" width="1267" height="783" titletext="검체정보 조회">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.47%" top="8" right="-32.28%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체정보 조회" left="3.83%" top="-4" right="82.63%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc02" taborder="1" text="검체번호" onclick="subCodeStc_onclick" left="1.5%" top="80" right="92.66%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="clinspeNoEd" taborder="2" enable="false" left="7.97%" top="80" right="83.82%" height="30"/>
+        <Button id="searchBtn" taborder="3" onclick="searchBtn_onclick" cssclass="DelBtn" left="90.53%" top="80" right="2.37%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="clinspeSearchBtn" taborder="4" onclick="clinspeSearchBtn_onclick" cssclass="AddBtn" left="16.81%" top="79" right="80.66%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="Grid00" taborder="5" binddataset="dsSlClinspeInfo" autoenter="select" useinputpanel="false" autofittype="col" left="1.5%" top="124" right="1.97%" height="649">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="85"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="127"/>
+                <Column size="148"/>
+                <Column size="173"/>
+                <Column size="133"/>
+                <Column size="134"/>
+                <Column size="146"/>
+                <Column size="128"/>
+                <Column size="127"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="채혈일"/>
+                <Cell col="2" text="채혈자"/>
+                <Cell col="3" text="검사코드"/>
+                <Cell col="4" text="진료과"/>
+                <Cell col="5" text="처방의"/>
+                <Cell col="6" text="검체블록코드"/>
+                <Cell col="7" text="검체블록 제작일"/>
+                <Cell col="8" text="검체블록 제작시간"/>
+                <Cell col="9" text="검체블록 수량"/>
+                <Cell col="10" text="슬라이드 코드"/>
+                <Cell col="11" text="슬라이드 제작일"/>
+                <Cell col="12" text="슬라이드 수량"/>
+                <Cell col="13" text="슬라이드 내용"/>
+                <Cell col="14" text="환자번호"/>
+                <Cell col="15" text="환자명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" text="bind:bloodGetDate"/>
+                <Cell col="2" text="bind:bloodGetEmp"/>
+                <Cell col="3" text="bind:exmntCd"/>
+                <Cell col="4" text="bind:trmtDept"/>
+                <Cell col="5" text="bind:respDoct"/>
+                <Cell col="6" text="bind:clinspeBlokCode"/>
+                <Cell col="7" text="bind:clinspeBlokProdDay"/>
+                <Cell col="8" text="bind:clinspeBlokProdTime"/>
+                <Cell col="9" text="bind:clinspeBlokQnt"/>
+                <Cell col="10" text="bind:sliCode"/>
+                <Cell col="11" text="bind:sliProdDay"/>
+                <Cell col="12" text="bind:sliQnt"/>
+                <Cell col="13" text="bind:sliCon"/>
+                <Cell col="14" text="bind:patNo"/>
+                <Cell col="15" text="bind:patNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsSlClinspeInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+          <Column id="bloodGetDate" type="STRING" size="256"/>
+          <Column id="bloodGetEmp" type="STRING" size="256"/>
+          <Column id="exmntCd" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="respDoct" type="STRING" size="256"/>
+          <Column id="clinspeBlokCode" type="STRING" size="256"/>
+          <Column id="clinspeBlokProdDay" type="STRING" size="256"/>
+          <Column id="clinspeBlokProdTime" type="STRING" size="256"/>
+          <Column id="clinspeBlokQnt" type="STRING" size="256"/>
+          <Column id="sliCode" type="STRING" size="256"/>
+          <Column id="sliProdDay" type="STRING" size="256"/>
+          <Column id="sliQnt" type="STRING" size="256"/>
+          <Column id="sliCon" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findClinspeInfoList</Col>
+            <Col id="URL">erp47::sup/pathology/findClinspeInfoList.do</Col>
+            <Col id="outData">dsSlClinspeInfo=dsSlClinspeInfo</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 검체 정보 관리																*
+*                                                                               *
+* @Path		    sup-SL_ClinspeInfoMngntForm								        *
+*																				*
+* @Description 	검체 정보 관리에서 검체 정보를 조회한다.				 	*
+*               																*
+* @Author	    김진환    						                                *
+* 									                                            *
+* Created on 2016. 09.21                           		                   		*
+*									                                            *
+********************************************************************************/
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+
+include "scripts::commonTransaction.xjs";
+include "scripts::commonScripts.xjs";
+
+/***************************************************************************************************
+* 검체번호 조회                                     
+***************************************************************************************************/
+
+this.clinspeSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("SL_clinspeBlokPopupForm","sup","","");
+}
+
+this.setClinspeNoArray = function(cliNo){
+	this.clinspeNoEd.set_value(cliNo);
+}
+
+/***************************************************************************************************
+* 검체정보 조회                                
+***************************************************************************************************/
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var clinspeNo = this.clinspeNoEd.value;
+ 	var searchNo = "clinspeNo='"+clinspeNo+"'";
+ 	
+/* 	alert(searchNo);*/
+ 	this.dsService.setColumn(0, "argument", searchNo);
+	this.gfnService("findClinspeInfoList", "false");
+}
+
+]]></Script>
+  </Form>
+</FDL>
