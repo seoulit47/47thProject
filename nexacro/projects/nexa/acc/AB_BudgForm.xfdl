@@ -158,6 +158,14 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnService("findBudg");
 }
 
+//*****
+//등록
+//*****
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("registerBudg");
+}
+
 //*********
 //Callback
 //*********
@@ -170,15 +178,6 @@ this.findBudgCallback = function(){
 	{
 		this.bimokListGrid.set_readonly(false);		//그리드편집불가능
 	}
-}
-
-//*****
-//등록
-//*****
-this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
-{
-	this.gfnService("registerBudg");
-}
-]]></Script>
+}]]></Script>
   </Form>
 </FDL>

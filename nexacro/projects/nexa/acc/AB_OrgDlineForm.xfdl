@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AB_OrgDlineForm" classname="AB_OrgDlineForm" left="0" top="0" width="1024" height="768" titletext="New Form" onload="AB_OrgDlineForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="4" right="0.29%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc">
+          <Layouts>
+            <Layout>
+              <Static id="titleEdt02" taborder="0" text="예산편성 마감관리" cssclass="TStc" left="4.41%" top="6" right="77.77%" height="44" style="font:bold 15 Dotum;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="stc_year" taborder="1" text="회계년도" onclick="subCodeStc_onclick" left="1.56%" top="76" right="91.41%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Spin id="yearSpin" taborder="2" value="2016" onspin="yearSpin_onspin" left="9.28%" top="74" right="81.25%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+        <Button id="searchBtn" taborder="3" left="24.22%" top="72" right="66.99%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Grid id="orgDlineGrid" taborder="4" binddataset="dsOrgDline" useinputpanel="false" autofittype="col" left="1.37%" top="161" right="1.07%" height="591" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="311"/>
+                <Column size="97"/>
+                <Column size="131"/>
+                <Column size="80"/>
+                <Column size="75"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="회계연도"/>
+                <Cell col="1" text="마감구분"/>
+                <Cell col="2" text="처리구분"/>
+                <Cell col="3" text="사유"/>
+                <Cell col="4" text="처리자"/>
+                <Cell col="5" text="처리일자"/>
+                <Cell col="6" text="수정자"/>
+                <Cell col="7" text="수정일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:accYear"/>
+                <Cell col="1" displaytype="combo" text="bind:dlineDiv" combodataset="dsGB100" combocodecol="code" combodatacol="value"/>
+                <Cell col="2" displaytype="combo" text="bind:procDiv" combodataset="dsGB101" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" text="bind:reason"/>
+                <Cell col="4" text="bind:procPerson"/>
+                <Cell col="5" text="bind:procDay"/>
+                <Cell col="6" text="bind:modifier"/>
+                <Cell col="7" text="bind:modiDay"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="stc_card_sort" taborder="5" text="마감구분" onclick="subCodeStc_onclick" left="1.56%" top="119" right="91.41%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="stc_card_sort00" taborder="7" text="처리구분" onclick="subCodeStc_onclick" left="19.73%" top="119" right="73.24%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="procDivCombo" taborder="8" left="27.44%" top="119" right="62.7%" height="26" class="AreaCombo" innerdataset="@dsGB101" codecolumn="code" datacolumn="value"/>
+        <Static id="stc_emp" taborder="9" text="사유" onclick="subCodeStc_onclick" left="37.89%" top="119" right="55.08%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="reasonEd" taborder="10" left="45.61%" top="119" right="16.02%" height="26" class="AreaEdt"/>
+        <Button id="saveBtn" taborder="11" left="34.38%" top="72" right="56.84%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="saveBtn_onclick"/>
+        <Combo id="dlineDivCombo" taborder="12" left="9.28%" top="119" right="80.86%" height="26" class="AreaCombo" innerdataset="@dsGB100" codecolumn="code" datacolumn="value"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsGB100" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findOrgDlineList</Col>
+            <Col id="URL">erp47::acc/budget/findOrgDlineList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsOrgDline=dsOrgDline</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerOrgDline</Col>
+            <Col id="URL">erp47::acc/budget/registerOrgDline.do</Col>
+            <Col id="inData">dsOrgDline=dsOrgDline:U</Col>
+            <Col id="outData">dsOrgDline=dsOrgDline</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">registerOrgDlineCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">copyBimok</Col>
+            <Col id="URL">erp47::acc/budget/copyBimok.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsBudgBimok=dsBudgBimok</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsOrgDline" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="reason" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procPerson" type="STRING" size="256"/>
+          <Column id="dlineDiv" type="STRING" size="256"/>
+          <Column id="modifier" type="STRING" size="256"/>
+          <Column id="procDiv" type="STRING" size="256"/>
+          <Column id="modiDay" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GB100</Col>
+            <Col id="dsName">dsGB100</Col>
+          </Row>
+          <Row>
+            <Col id="code">GB101</Col>
+            <Col id="dsName">dsGB101</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGB101" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+
+
+//*******
+//onload
+//*******
+this.AB_OrgDlineForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+}
+
+//*****
+//조회
+//*****
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = this.yearSpin.value;
+	var argument = "accYear="+accYear;
+	
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findOrgDlineList");
+}
+
+
+//*****
+//저장
+//*****
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var aRow = this.dsOrgDline.addRow();
+	var accYear = this.yearSpin.value;
+	var dlineDiv = this.dlineDivCombo.value;
+	var procDiv = this.procDivCombo.value;
+	var reason = this.reasonEd.value;
+	var procPerson = application.gdsEmp.getColumn(0,"empNm");
+	
+	this.dsOrgDline.setColumn(aRow,"accYear",accYear);
+	this.dsOrgDline.setColumn(aRow,"dlineDiv",dlineDiv);
+	this.dsOrgDline.setColumn(aRow,"procDiv",procDiv);
+	this.dsOrgDline.setColumn(aRow,"reason",reason);
+	this.dsOrgDline.setColumn(aRow,"procPerson",procPerson);
+	
+	this.gfnService("registerOrgDline");
+}
+
+//*********
+//callback
+//*********
+this.registerOrgDlineCallback = function(svcID, errorCode, errorMsg){
+	if(errorCode==-1)
+	{
+	alert(errorMsg);
+	this.dsOrgDline.deleteRow(this.dsOrgDline.rowcount-1);
+	}else
+	{
+	alert("마감 성공");
+	}
+
+}
+]]></Script>
+  </Form>
+</FDL>
