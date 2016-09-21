@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LB_GdsPopupForm" classname="LB_GdsPopupForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="3.81%" height="60" style="background:transparent URL('img::titleBar1.jpg');"/>
+        <Div id="cdDiv" taborder="1" left="0.98%" top="59" right="1.17%" height="430" style="background:transparent;">
+          <Layouts>
+            <Layout>
+              <Static id="gdsCdStc" taborder="10" text="물품코드" onclick="subCodeStc_onclick" left="1.2%" top="10" right="90.02%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="gdsCdEd" taborder="11" left="10.98%" top="10" right="79.04%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+              <Static id="gdsCdNmStc" taborder="12" text="물품명" onclick="subCodeStc_onclick" left="25.95%" top="10" right="65.27%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="gdsCdNmEd" taborder="13" onkeydown="edOnkeyDown" left="35.73%" top="10" right="41.32%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+              <Grid id="cdGrid" taborder="14" binddataset="dsGds" useinputpanel="false" autofittype="col" oncelldblclick="cdGrid_oncelldblclick" left="0.9%" top="47" right="1.2%" height="366">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="70"/>
+                      <Column size="330"/>
+                      <Column size="50"/>
+                      <Column size="50"/>
+                      <Column size="50"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="150"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="물품코드"/>
+                      <Cell col="1" text="물품명"/>
+                      <Cell col="2" text="대분류"/>
+                      <Cell col="3" text="중분류"/>
+                      <Cell col="4" text="소분류"/>
+                      <Cell col="5" text="EDI코드"/>
+                      <Cell col="6" text="VMI여부"/>
+                      <Cell col="7" text="규격"/>
+                      <Cell col="8" text="발주단위"/>
+                      <Cell col="9" text="수불단위"/>
+                      <Cell col="10" text="환산수량"/>
+                      <Cell col="11" text="거래처"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:gdsCd"/>
+                      <Cell col="1" text="bind:gdsNm"/>
+                      <Cell col="2" text="bind:bigGrpCd"/>
+                      <Cell col="3" text="bind:midGrpCd"/>
+                      <Cell col="4" text="bind:smGrpCd"/>
+                      <Cell col="5" text="bind:ediCd"/>
+                      <Cell col="6" text="bind:vmiYb"/>
+                      <Cell col="7" text="bind:stand"/>
+                      <Cell col="8" text="bind:ordUnit"/>
+                      <Cell col="9" text="bind:subulUnit"/>
+                      <Cell col="10" text="bind:cngQnt"/>
+                      <Cell col="11" text="bind:cust"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="searchBtn" taborder="2" onclick="clickBtn" left="86.23%" top="64" right="4.98%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+        <Static id="Static00" taborder="3" text="물품 정보" left="4.79%" top="-4" right="81.74%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsGds" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="gdsNm" type="STRING" size="256"/>
+          <Column id="ediCd" type="STRING" size="256"/>
+          <Column id="vmiYb" type="STRING" size="256"/>
+          <Column id="useDept" type="STRING" size="256"/>
+          <Column id="stand" type="STRING" size="256"/>
+          <Column id="ordUnit" type="STRING" size="256"/>
+          <Column id="subulUnit" type="STRING" size="256"/>
+          <Column id="cngQnt" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtPrice" type="STRING" size="256"/>
+          <Column id="ctrtStartDate" type="STRING" size="256"/>
+          <Column id="ctrtEndDate" type="STRING" size="256"/>
+          <Column id="spliesDiv" type="STRING" size="256"/>
+          <Column id="wh" type="STRING" size="256"/>
+          <Column id="rackNo" type="STRING" size="256"/>
+          <Column id="insurDiv" type="STRING" size="256"/>
+          <Column id="disuseDate" type="STRING" size="256"/>
+          <Column id="disuseDiv" type="STRING" size="256"/>
+          <Column id="picLoc" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="regWorkerId" type="STRING" size="256"/>
+          <Column id="regWorkerIp" type="STRING" size="256"/>
+          <Column id="regDate" type="STRING" size="256"/>
+          <Column id="modWorkerId" type="STRING" size="256"/>
+          <Column id="modWorkerIp" type="STRING" size="256"/>
+          <Column id="modDate" type="STRING" size="256"/>
+          <Column id="midGrpCd" type="STRING" size="256"/>
+          <Column id="smGrpCd" type="STRING" size="256"/>
+          <Column id="bigGrpCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findGdsList</Col>
+            <Col id="URL">erp47::log/base/findGdsList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsGds=dsGds</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">collbackLogBind</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  		// 시스템공통 스크립트
+include "scripts::logScripts.xjs";			// 물류 스크립트
+
+var gridCurRow;		//Grid의 현재 Row를 담는 변수
+
+// 버튼클릭 공통함수
+this.clickBtn = function(obj:Button) 
+{	
+	switch (obj) { 
+		// 검색버튼
+		case this.searchBtn : this.searchBtn_onclick();				
+			break;
+	}
+}
+
+// 조회버튼을 눌렀을 때 실행하는 함수
+this.searchBtn_onclick = function() {
+	var gdsCd = this.cdDiv.gdsCdEd.value;
+	var gdsNm = this.cdDiv.gdsCdNmEd.value;	
+	var argument = "gdsCd=" + gdsCd + " gdsNm=" + gdsNm;
+	this.dsService.setColumn(0, "argument", argument);
+	this.gfnService("findGdsList");
+}
+
+// 그리드 이벤트
+this.cdGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	var gdsArray = new Array();
+	gdsArray[0]  = this.dsGds.getColumn(e.row, "gdsCd");			// 물품코드
+	gdsArray[1]  = this.dsGds.getColumn(e.row, "gdsNm");			// 물품명
+	gdsArray[2]  = this.dsGds.getColumn(e.row, "bigGrpCd");			// 대분류
+	gdsArray[3]  = this.dsGds.getColumn(e.row, "midGrpCd");			// 중분류
+	gdsArray[4]  = this.dsGds.getColumn(e.row, "smGrpCd");			// 소분류
+	gdsArray[5]  = this.dsGds.getColumn(e.row, "stand");			// 규격
+	gdsArray[6]  = this.dsGds.getColumn(e.row, "ordUnit");			// 발주단위
+	gdsArray[7]  = this.dsGds.getColumn(e.row, "subulUnit");		// 수불단위
+	gdsArray[8]  = this.dsGds.getColumn(e.row, "cngQnt");			// 환산수량
+	gdsArray[9]  = this.dsGds.getColumn(e.row, "cust");				// 거래처
+	gdsArray[10] = this.dsGds.getColumn(e.row, "spliesDiv");		// 저장품구분
+	gdsArray[11] = this.dsGds.getColumn(e.row, "wh");				// 창고
+	gdsArray[12] = this.dsGds.getColumn(e.row, "ediCd");			// EDI코드
+	gdsArray[13] = this.dsGds.getColumn(e.row, "vmiYb");			// VMI여부
+	gdsArray[14] = this.dsGds.getColumn(e.row, "ctrtPrice");		// 계약단가
+	
+	// 부모에게 물품정보 보내기
+	this.opener.setLogCodeArray(this.parent.gdsCode,null,null,null,gdsArray);
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

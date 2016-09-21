@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_ClinspeBlokPopupForm" classname="SL_ClinspeBlokPopupForm" left="0" top="0" width="318" height="522" titletext="검체번호 검색">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid00" taborder="0" binddataset="dsClinspe" autoenter="select" useinputpanel="false" autofittype="col" oncelldblclick="clinspeGrid_OnCelldblClick" left="1.89%" top="110" right="2.52%" height="404">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="128"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div00" taborder="1" left="0.31%" top="8" right="1.89%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체번호 검색" left="15.11%" top="-4" right="3.54%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="searchBtn" taborder="2" onclick="searchBtn_onclick" cssclass="DelBtn" left="68.87%" top="70" right="2.83%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsClinspe" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findClinspeNoList</Col>
+            <Col id="URL">erp47::sup/pathology/findClinspeNoList.do</Col>
+            <Col id="outData">dsClinspe=dsClinspe</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/************************************************************************************
+*                                                                               	*
+* 검체번호 코드 팝업																*
+*                                                                              		*
+* @Path		    sup-SL_ClinspeBlokPopupForm											*
+*																					*
+* @Description 	검체정보 관리에 필요한 검체 관련 코드를 선택하기 위한 팝업 	*
+*               																	*
+* @Author	    김진환    						                                	*
+* 									                                            	*
+* Created on 2016. 09. 20                            		                    	*
+*									                                           	 	*
+************************************************************************************/
+
+/**************************************************************************************************
+*                                         공통 Script Include                                     *
+***************************************************************************************************/
+
+include "scripts::commonTransaction.xjs";
+
+/***************************************************************************************************
+* 검체번호 코드 Grid 이벤트                                  
+***************************************************************************************************/
+
+this.clinspeGrid_OnCelldblClick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var cliNo = this.dsClinspe.getColumn(e.row, "clinspeNo");
+	//alert(cliNo);
+	this.opener.setClinspeNoArray(cliNo);
+    //this.opener.clinspeNoEd.value(cliNo);
+	this.close();
+}
+
+/***************************************************************************************************
+* 검체번호 조회                                
+***************************************************************************************************/
+
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("findClinspeNoList", "false");
+}
+]]></Script>
+  </Form>
+</FDL>

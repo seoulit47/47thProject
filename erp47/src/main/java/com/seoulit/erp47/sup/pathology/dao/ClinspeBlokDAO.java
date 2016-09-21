@@ -2,6 +2,7 @@ package com.seoulit.erp47.sup.pathology.dao;
 
 import java.util.List;
 
+import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
 
 
@@ -15,7 +16,7 @@ public interface ClinspeBlokDAO {
 
 	void deleteClinspeBlok(SlClinspeBlokBean slClinspeBlokBean);
 
-	//List<ClinspeBean> findClinspeNoList();
+	List<ClinspeBean> findClinspeNoList();
 
     //void deleteClinspeBlok(ClinspeBean clinspeBean);
 

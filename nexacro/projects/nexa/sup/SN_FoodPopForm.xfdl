@@ -140,7 +140,52 @@ this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 
 this.okBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
+	var btnDiv = this.parent.btnDiv;
+	//alert(btnDiv);
+	this.dsFoodCopy.copyData(this.dsFood);
+	this.dsFoodCopy.filter("checkDiv == 1");
 	
+	for( var i = 0 ; i < this.dsFoodCopy.rowcount ; i++){
+		
+		switch(btnDiv){
+			case "Breakfast" : 
+				this.opener.dsBreakfast.addRow();
+				var row = this.opener.dsBreakfast.rowposition;
+				this.opener.dsBreakfast.setColumn(row, "foodCd", this.dsFoodCopy.getColumn(i, "foodCd"));
+				this.opener.dsBreakfast.setColumn(row, "foodNm", this.dsFoodCopy.getColumn(i, "foodNm"));
+				this.opener.dsBreakfast.setColumn(row, "carteDate", this.parent.carteDate);
+				this.opener.dsBreakfast.setColumn(row, "carteTime", this.parent.carteTime);	
+				this.opener.dsBreakfast.setColumn(row, "menuGrpCd", this.parent.menuGrpCd);
+
+				break;	
+
+			case "Lunch" :
+				this.opener.dsLunch.addRow();
+				var row = this.opener.dsLunch.rowposition;
+				this.opener.dsLunch.setColumn(row, "foodCd", this.dsFoodCopy.getColumn(i, "foodCd"));
+				this.opener.dsLunch.setColumn(row, "foodNm", this.dsFoodCopy.getColumn(i, "foodNm"));
+				this.opener.dsLunch.setColumn(row, "carteDate", this.parent.carteDate);
+				this.opener.dsLunch.setColumn(row, "carteTime", this.parent.carteTime);	
+				this.opener.dsLunch.setColumn(row, "menuGrpCd", this.parent.menuGrpCd);
+				
+				break;
+						
+			case "Dinner" : 
+				this.opener.dsDinner.addRow();
+				var row = this.opener.dsDinner.rowposition;
+				this.opener.dsDinner.setColumn(row, "foodCd", this.dsFoodCopy.getColumn(i, "foodCd"));
+				this.opener.dsDinner.setColumn(row, "foodNm", this.dsFoodCopy.getColumn(i, "foodNm"));
+				this.opener.dsDinner.setColumn(row, "carteDate", this.parent.carteDate);
+				this.opener.dsDinner.setColumn(row, "carteTime", this.parent.carteTime);	
+				this.opener.dsDinner.setColumn(row, "menuGrpCd", this.parent.menuGrpCd);
+				
+				break;
+
+		}
+
+	}
+			
+	this.close();
 }
 ]]></Script>
   </Form>
