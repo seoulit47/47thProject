@@ -53,18 +53,16 @@ public class EmpController {
 		datasetBeanMapper.beansToDataset(outData, empList, EmpBean.class);
 	}
 
-	/*@RequestMapping("hrs/emp/selectEmpList.do")
+	@RequestMapping("hrs/emp/selectEmpList.do")
 	public void selectEmpList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
-		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
-		System.out.println("Check" + argsMap);
-<<<<<<< HEAD
-		List<EmpBean> list = empServiceFacade.findEmpList(argsMap);
-=======
-		//List<EmpBean> list = empServiceFacade.selectEmpList(argsMap);
->>>>>>> refs/heads/160911
+		//Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
+		//System.out.println("Check" + argsMap);
 
+		List<EmpBean> list = empServiceFacade.selectEmpList();
+		//System.out.println("list:"+list);
+		
 		List<CareerBean> careerList = new ArrayList<CareerBean>();
 		List<DisabilityBean> disabilityList = new ArrayList<DisabilityBean>();
 		List<EducaBean> educationList = new ArrayList<EducaBean>();
@@ -114,5 +112,5 @@ public class EmpController {
 		datasetBeanMapper.beansToDataset(outData, militaryList, MilitaryBean.class);
 		datasetBeanMapper.beansToDataset(outData, perconaldateList, PerconaldateBean.class);
 
-	}*/
+	}
 }

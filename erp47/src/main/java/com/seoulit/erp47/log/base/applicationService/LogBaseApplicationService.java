@@ -18,6 +18,6 @@ public interface LogBaseApplicationService {
 	
 	
 
-    List<GdsBean> findGdsList(Map<String, String> argsMap);
+    List<GdsBean> findGdsList(Map<String, String> argsMap); 
 
 }

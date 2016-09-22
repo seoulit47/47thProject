@@ -19,6 +19,8 @@ import com.seoulit.erp47.hrs.emp.to.EmpBean;
 
 public interface EmpApplicationService {
 	List<EmpBean> findEmpList(Map<String, String> argsMap);
+
+	List<EmpBean> selectEmpList();
 }
 
 

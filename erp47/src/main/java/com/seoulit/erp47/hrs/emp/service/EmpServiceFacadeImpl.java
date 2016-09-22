@@ -32,6 +32,12 @@ public class EmpServiceFacadeImpl implements EmpServiceFacade {
 		return empApplicationService.findEmpList(argsMap);
 	}
 
+	@Override
+	public List<EmpBean> selectEmpList() {
+		// TODO Auto-generated method stub
+		return empApplicationService.selectEmpList();
+	}
+
 	
 
 

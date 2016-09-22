@@ -9,6 +9,6 @@ public interface BudgRegDAO {
 
 	List<BudgRegBean> selectBudg(Map<String, String> argsMap);
 
-	//void mergeIntoBudg(BudgRegBean budgRegBean);
+	void mergeIntoBudg(BudgRegBean budgRegBean);
 
 }

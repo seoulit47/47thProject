@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.budget.applicationService.AccBudgetApplicationService;
+import com.seoulit.erp47.acc.budget.applicationService.BudgetExecutionApplicationService;
 import com.seoulit.erp47.acc.budget.applicationService.BudgetPreparationApplicationService;
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
+import com.seoulit.erp47.acc.budget.exception.BudgOrgDlineException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
+import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
 
 
 @Service
@@ -21,6 +24,8 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 	AccBudgetApplicationService accBudgetApplicationService;
 	@Autowired
 	BudgetPreparationApplicationService budgetPreparationApplicationService;
+	@Autowired
+	BudgetExecutionApplicationService budgetExecutionApplicationService;
 
 	//예산비목 조회
 	@Override
@@ -56,12 +61,33 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 	}
 
 		
-	// 예산조회	
+	// 예산조회
 	@Override
 	public List<BudgRegBean> findBudg(Map<String, String> argsMap) {
 		List<BudgRegBean> budgRegList;
 		budgRegList = budgetPreparationApplicationService.findBudg(argsMap);
 		return budgRegList;
+	}
+
+	// 예산등록
+	@Override
+	public void registerBudg(List<BudgRegBean> budgRegList) {
+		budgetPreparationApplicationService.registerBudg(budgRegList);
+	}
+
+	// 예산편성 마감 조회	
+	@Override
+	public List<OrgDlineBean> findOrgDlineList(Map<String, String> argsMap) {
+		List<OrgDlineBean> orgDlineList = budgetExecutionApplicationService.findOrgDlineList(argsMap);
+		return orgDlineList;
+	}
+
+	
+	// 예산편성 마감 저장	
+	@Override
+	public List<OrgDlineBean> registerOrgDline(OrgDlineBean orgDlineBean) throws BudgOrgDlineException {
+		List<OrgDlineBean> orgDlineList = budgetExecutionApplicationService.registerOrgDline(orgDlineBean);
+		return orgDlineList;
 	}
 
 }
