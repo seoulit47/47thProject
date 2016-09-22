@@ -15,8 +15,8 @@
         <Calendar id="startDateCal" taborder="2" left="9.92%" top="113" right="78.24%" height="30"/>
         <Calendar id="endDateCal" taborder="3" left="23.28%" top="113" right="64.88%" height="30"/>
         <Static id="Static02" taborder="4" text="~" left="22.08%" top="116" right="76.32%" height="23" style="color:#6c6c6cff;font:bold 9 다음_Regular;"/>
-        <Button id="searchBtn" taborder="5" left="35.76%" top="113" right="57.76%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Grid id="Grid00" taborder="6" useinputpanel="false" left="2.64%" top="148" right="58.08%" height="564" autofittype="col">
+        <Button id="searchBtn" taborder="5" left="35.76%" top="113" right="57.76%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Grid id="ctrtGrid" taborder="6" useinputpanel="false" left="2.64%" top="148" right="58.08%" height="564" autofittype="col" binddataset="dsCtrt" oncellclick="ctrtGrid_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -36,10 +36,10 @@
                 <Cell col="3" text="구매접수번호"/>
               </Band>
               <Band id="body">
-                <Cell/>
-                <Cell col="1"/>
-                <Cell col="2"/>
-                <Cell col="3"/>
+                <Cell text="bind:ctrtNo"/>
+                <Cell col="1" text="bind:cust"/>
+                <Cell col="2" text="bind:ctrtCon"/>
+                <Cell col="3" text="bind:buyReceiptNo"/>
               </Band>
             </Format>
           </Formats>
@@ -59,7 +59,7 @@
               <Edit id="whsNoEdit" taborder="9" left="15.77%" top="14" right="67.42%" height="30"/>
               <Calendar id="whsCalendar" taborder="10" left="46.85%" top="14" right="36.94%" height="30"/>
               <Edit id="custEdit" taborder="11" left="78.53%" top="14" right="1.65%" height="30"/>
-              <Combo id="inptYbCombo" taborder="12" left="15.77%" top="51" right="67.42%" height="30"/>
+              <Combo id="inptYbCombo" taborder="12" left="15.77%" top="51" right="67.42%" height="30" innerdataset="@dsInptYn" codecolumn="inptYn" datacolumn="inptYn"/>
               <Combo id="monthYbCombo" taborder="13" left="46.85%" top="51" right="36.94%" height="30"/>
               <Edit id="ctrtNoEdit" taborder="14" left="78.53%" top="53" right="1.65%" height="30"/>
               <Edit id="gdsCdEdit" taborder="15" left="15.77%" top="89" right="67.42%" height="30"/>
@@ -94,7 +94,258 @@
         </Div>
         <Static id="subCodeStc22" taborder="10" text="구매입고 정보" onclick="subCodeStc_onclick" left="43.68%" top="112" right="2.72%" height="36" style="background:azure;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Static id="subCodeStc01" taborder="11" text="구매입고 내역" onclick="subCodeStc_onclick" left="43.68%" top="394" right="2.72%" height="40" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Button id="whsBatchBtn" taborder="12" left="80.56%" top="79" right="12.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="whsBatchBtn_onclick"/>
+        <Button id="callBtn" taborder="13" left="88.32%" top="79" right="2.88%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsCtrt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="ctrtDiv" type="STRING" size="256"/>
+          <Column id="inptYb" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtDate" type="STRING" size="256"/>
+          <Column id="ctrtTel" type="STRING" size="256"/>
+          <Column id="ctrtAddr" type="STRING" size="256"/>
+          <Column id="ctrtRespoWorker" type="STRING" size="256"/>
+          <Column id="ctrtGds" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="ctrtPrid" type="STRING" size="256"/>
+          <Column id="ctrtCon" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="bussNo" type="STRING" size="256"/>
+          <Column id="busCtgNm" type="STRING" size="256"/>
+          <Column id="prsdntNm" type="STRING" size="256"/>
+          <Column id="buyReceiptNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPrcsWhs" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="buyWhsNo" type="STRING" size="256"/>
+          <Column id="buyWhsDate" type="STRING" size="256"/>
+          <Column id="monthDlineYb" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtCon" type="STRING" size="256"/>
+          <Column id="fmNm" type="STRING" size="256"/>
+          <Column id="signStat" type="STRING" size="256"/>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPrcsWhsHist" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="buyWhsNo" type="STRING" size="256"/>
+          <Column id="buyWhsHistNo" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="subulUnit" type="STRING" size="256"/>
+          <Column id="ordUnit" type="STRING" size="256"/>
+          <Column id="cngQnt" type="STRING" size="256"/>
+          <Column id="giWhsQnt" type="STRING" size="256"/>
+          <Column id="hyunWhsQnt" type="STRING" size="256"/>
+          <Column id="price" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="whCd" type="STRING" size="256"/>
+          <Column id="signStat" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCtrtList</Col>
+            <Col id="URL">erp47::log/ctrt/findCtrtList.do</Col>
+            <Col id="outData">dsCtrt=dsCtrt</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPrcsWhsList</Col>
+            <Col id="URL">erp47::log/store/findPrcsWhsList.do</Col>
+            <Col id="outData">dsPrcsWhs=dsPrcsWhs</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchPrcsWhsProcess</Col>
+            <Col id="URL">erp47::log/store/batchPrcsWhsProcess.do</Col>
+            <Col id="inData">dsPrcsWhs=dsPrcsWhs:u</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="URL">erp47::log/store/findPrcsWhsHistList.do</Col>
+            <Col id="serviceID">findPrcsWhsHistList</Col>
+            <Col id="outData">dsPrcsWhsHist=dsPrcsWhsHist</Col>
+          </Row>
+          <Row>
+            <Col id="URL">erp47::log/store/batchPrcsWhsHistProcess.do</Col>
+            <Col id="serviceID">batchPrcsWhsHistProcess</Col>
+            <Col id="inData">dsPrcsWhsHist=dsPrcsWhsHist:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">callPcWhsPstInvenReflect</Col>
+            <Col id="URL">erp47::log/store/callPcWhsPstInvenReflect.do</Col>
+            <Col id="inData"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsInptYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inptYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="inptYn">Y</Col>
+          </Row>
+          <Row>
+            <Col id="inptYn">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div.whsNoEdit" propid="value" datasetid="dsPrcsWhs" columnid="buyWhsNo"/>
+      <BindItem id="item1" compid="Div.whsCalendar" propid="value" datasetid="dsPrcsWhs" columnid="buyWhsDate"/>
+      <BindItem id="item2" compid="Div.custEdit" propid="value" datasetid="dsPrcsWhs" columnid="cust"/>
+      <BindItem id="item3" compid="Div.inptYbCombo" propid="value" datasetid="dsPrcsWhs" columnid="signStat"/>
+      <BindItem id="item4" compid="Div.monthYbCombo" propid="value" datasetid="dsPrcsWhs" columnid="monthDlineYb"/>
+      <BindItem id="item5" compid="Div.ctrtNoEdit" propid="value" datasetid="dsPrcsWhs" columnid="ctrtNo"/>
+      <BindItem id="item6" compid="Div.gdsCdEdit" propid="value" datasetid="dsPrcsWhs" columnid="gdsCd"/>
+      <BindItem id="item7" compid="Div.fmNmEdit" propid="value" datasetid="dsPrcsWhs" columnid="fmNm"/>
+      <BindItem id="item8" compid="Div.ctrtConArea" propid="value" datasetid="dsPrcsWhs" columnid="ctrtCon"/>
+      <BindItem id="item9" compid="Div2.subulUnitEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="subulUnit"/>
+      <BindItem id="item10" compid="Div2.ordUnitEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="ordUnit"/>
+      <BindItem id="item11" compid="Div2.giWhsQntEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="giWhsQnt"/>
+      <BindItem id="item12" compid="Div2.hyunWhsEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="hyunWhsQnt"/>
+      <BindItem id="item13" compid="Div2.priceEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="price"/>
+      <BindItem id="item14" compid="Div2.inptYbCombo" propid="text" datasetid="dsPrcsWhsHist" columnid="signStat"/>
+      <BindItem id="item15" compid="Div2.inptYbCombo" propid="value" datasetid="dsPrcsWhs" columnid="signStat"/>
+      <BindItem id="item16" compid="Div2.cngQntEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="cngQnt"/>
+      <BindItem id="item17" compid="Div2.whCdEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="whCd"/>
+      <BindItem id="item18" compid="Div2.amtEdit" propid="value" datasetid="dsPrcsWhsHist" columnid="amt"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 구매입고 관리																*
+*                                                                               *
+* @Path		    LI_PrcsWhsMngntForm						    			    	*
+*																				*
+* @Description 	구매입고 관리에서 계약물품을 입고 조회, 등록,수정,삭제한다*
+* @Author	    mic    						                                *
+* 									                                            *
+* Created on 2019. 09. 22                            		                    *
+*									                                            *
+********************************************************************************/
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include	"scripts::logScripts.xjs";
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var startDate = this.startDateCal.value;
+	var endDate = this.endDateCal.value;
+	
+	var argument = "startDate='"+startDate+"'endDate='"+endDate+"'";
+
+	this.dsService.setColumn(0,"argument",argument);
+	
+
+	this.gfnService("findCtrtList",false);
+	
+	
+}
+
+this.ctrtGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+		var ctrtCount = this.ctrtGrid.currentrow;
+		
+		var ctrtNo = this.dsCtrt.getColumn(ctrtCount, "ctrtNo");
+		var cust = this.dsCtrt.getColumn(ctrtCount, "cust");
+		var ctrtCon = this.dsCtrt.getColumn(ctrtCount, "ctrtCon");
+		var ctrtGds = this.dsCtrt.getColumn(ctrtCount, "ctrtGds");
+		var gdsCd = this.dsCtrt.getColumn(ctrtCount, "gdsCd");
+	
+	
+		var arguCtrtNo ="ctrtNo='"+ctrtNo+"'";
+		
+		this.dsService.setColumn(1,"argument",arguCtrtNo);
+		this.gfnService("findPrcsWhsList",false);
+		
+		if(this.dsPrcsWhs.rowcount!=0){  //구매입고 데이터가 있을때, 입고내역도 조회!
+		
+			var buyWhsNo = this.dsPrcsWhs.getColumn(0, "buyWhsNo");
+			
+			var argument = "buyWhsNo='"+buyWhsNo+"'";
+			this.dsService.setColumn(3, "argument", argument);
+			this.dsService.setColumn(5, "argument", setWhsNo); // call 프로시저 세팅
+			this.gfnService("findPrcsWhsHistList", false);
+				
+			}else if(this.dsPrcsWhs.rowcount==0){ // 구매입고 데이터 없을 시
+		
+		trace(this.dsPrcsWhs.saveXML());
+		
+		this.dsPrcsWhs.addRow(); // 구매입고 행 추가
+		var ctrtNo = this.dsCtrt.getColumn(ctrtCount, "ctrtNo");
+		var buyWhsNo = "WHS"+ctrtNo.substr(4,7);
+		var setWhsNo = "buyWhsNo='"+buyWhsNo+"'";
+		this.dsService.setColumn(5, "argument", setWhsNo); // call 프로시저 세팅
+		var count = this.whsGrid.currentrow;
+		this.dsPrcsWhs.setColumn(count, "buyWhsNo", buyWhsNo);
+		this.dsPrcsWhs.setColumn(count, "ctrtNo", ctrtNo);
+		this.dsPrcsWhs.setColumn(count, "cust", cust);
+		this.dsPrcsWhs.setColumn(0, "ctrtCon", ctrtCon);
+		this.dsPrcsWhs.setColumn(0, "fmNm", ctrtGds);
+		this.dsPrcsWhs.setColumn(0, "gdsCd", gdsCd);
+		this.dsPrcsWhs.setColumn(0, "buyWhsDate", this.Today());
+		this.dsPrcsWhs.setColumn(0, "monthDlineYb", "N");
+		this.dsPrcsWhs.setColumn(0, "signStat", "N");
+		
+		var buyWhsNo = this.dsPrcsWhs.getColumn(0, "buyWhsNo");
+		var setWhsNo = "buyWhsNo='"+buyWhsNo+"'";
+		var setSignStat = this.dsPrcsWhs.getColumn(0, "signStat");
+		this.dsService.setColumn(3, "argument", setWhsNo);
+		this.gfnService("findPrcsWhsHistList", false);	// 입고내역 조회 
+		this.dsPrcsWhsHist.addRow();	// 입고내역 행 추가
+		this.dsPrcsWhsHist.setColumn(0, "signStat", setSignStat);	    
+		this.dsPrcsWhsHist.setColumn(0, "buyWhsNo", buyWhsNo);	    
+		this.dsPrcsWhsHist.setColumn(0, "gdsCd", gdsCd);
+		this.dsPrcsWhsHist.setColumn(0, "buyWhsHistNo", 1);
+		
+	
+	}
+}
+
+this.Today = function ()
+{
+    var sToday = "";
+    var objDate = new Date();
+    var sToday  = objDate.getFullYear() + "";
+    var sMonth = objDate.getMonth()+1;
+    var sDate = objDate.getDate();
+    
+    if(sMonth.toString().length == 1){
+      sMonth = "0" + sMonth;
+    }
+   if(sDate.toString().length == 1){
+      sDate = "0" + sDate;
+    }
+    sToday = sToday+sMonth+sDate;
+    return sToday;
+}
+
+
+this.whsBatchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchPrcsWhsProcess",false);
+}
+]]></Script>
   </Form>
 </FDL>
