@@ -178,6 +178,7 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var procPerson = application.gdsEmp.getColumn(0,"empNm");
 	
 	this.dsOrgDline.setColumn(aRow,"accYear",accYear);
+	 
 	this.dsOrgDline.setColumn(aRow,"dlineDiv",dlineDiv);
 	this.dsOrgDline.setColumn(aRow,"procDiv",procDiv);
 	this.dsOrgDline.setColumn(aRow,"reason",reason);
@@ -190,13 +191,14 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 //callback
 //*********
 this.registerOrgDlineCallback = function(svcID, errorCode, errorMsg){
-	if(errorCode==-1)
+
+	if(errorCode < 1 )
 	{
 	alert(errorMsg);
 	this.dsOrgDline.deleteRow(this.dsOrgDline.rowcount-1);
 	}else
 	{
-	alert("마감 성공");
+	//alert("마감 성공");
 	}
 
 }
