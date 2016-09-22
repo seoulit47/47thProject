@@ -1,4 +1,4 @@
-package com.seoulit.erp47.log.base.applicationService;
+package com.seoulit.erp47.log.base.applicationService1;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.seoulit.erp47.log.base.dao.CustDAO;
-import com.seoulit.erp47.log.base.dao.GdsDAO;
-import com.seoulit.erp47.log.base.dao.WhDAO;
+import com.seoulit.erp47.log.base.dao1.CustDAO;
+import com.seoulit.erp47.log.base.dao1.GdsDAO;
+import com.seoulit.erp47.log.base.dao1.WhDAO;
 import com.seoulit.erp47.log.base.to.BindLogCdBean;
 import com.seoulit.erp47.log.base.to.CustBean;
 import com.seoulit.erp47.log.base.to.GdsBean;

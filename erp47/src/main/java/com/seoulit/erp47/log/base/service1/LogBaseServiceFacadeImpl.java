@@ -1,4 +1,4 @@
-package com.seoulit.erp47.log.base.service;
+package com.seoulit.erp47.log.base.service1;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.seoulit.erp47.log.base.applicationService.LogBaseApplicationService;
+import com.seoulit.erp47.log.base.applicationService1.LogBaseApplicationService;
 import com.seoulit.erp47.log.base.to.BindLogCdBean;
 import com.seoulit.erp47.log.base.to.CustBean;
 import com.seoulit.erp47.log.base.to.GdsBean;
