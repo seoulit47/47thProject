@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.drug.dao.WorkingJournalDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+
+    <!-- 약국 근무일지 관리 - 조회 -->
+    <select id="selectWorkingJournal" flushCache="false" useCache="true" resultType="WorkingJournalBean">
+        SELECT 
+            WORK_DATE 						AS 	workDate,
+            DAY_WARD_HOSOUT_PRESC_COUNT 	AS 	dayWardHosoutPrescCount,
+            DAY_WARD_PRESC_COUNT 			AS 	dayWardPrescCount,
+            NIGHT_OUTPA_PRESC_COUNT 		AS 	nightOutpaPrescCount,
+            NIGHT_OUTPA_HOSOUT_PRESC_COUNT 	AS 	nightOutpaHosoutPrescCount,
+            NIGHT_WARD_HOSOUT_PRESC_COUNT 	AS 	nightWardHosoutPrescCount,
+            DAY_OUTPA_PRESC_COUNT 			AS 	dayOutpaPrescCount,
+            DAY_PHARMACIST2 				AS 	dayPharmacist2,
+            NIGHT_WARD_PRESC_COUNT 			AS 	nightWardPrescCount,
+            NIGHT_PHARMACIST2 				AS 	nightPharmacist2,
+            NIGHT_PHARMACIST3 				AS 	nightPharmacist3,
+            DAY_PHARMACIST1 				AS 	dayPharmacist1,
+            DAY_PHARMACIST3 				AS 	dayPharmacist3,
+            DAY_OUTPA_HOSOUT_PRESC_COUNT 	AS 	dayOutpaHosoutPrescCount,
+            TAKING_OVER 					AS 	takingOver,
+            NIGHT_PHARMACIST1 				AS 	nightPharmacist1
+        FROM 
+            SD_WORKING_JOURNAL
+        WHERE 
+            1=1
+        AND 
+            WORK_DATE = #{workDate}
+    </select>
+    
+    <select id="selectPrescErrorList" flushCache="false"  useCache="true" resultType="PrescErrorBean">
+        SELECT 
+            PAT_NO 				AS 	patNo,
+            MEDICATION_NO 		AS 	medicationNo,
+            WARD 				AS 	ward,
+            ETC_ERROR_YN 		AS 	etcErrorYn,
+            WORK_DATE 			AS 	workDate,
+            SOLVE_NOTE 			AS 	solveNote,
+            ERROR_NO 			AS 	errorNo,
+            PAT_ERROR_YN 		AS 	patErrorYn,
+            PRESC_DAY 			AS 	prescDay,
+            WEIGHING_ERROR_YN 	AS 	weighingErrorYn,
+            PRESC_ERROR_YN 		AS 	prescErrorYn,
+            PAT_NM 				AS 	patNm
+        FROM 
+            SD_PRESC_ERROR
+        WHERE 
+            1=1
+        AND 
+            WORK_DATE = #{workDate}
+
+     </select>
+     
+    <update id="mergeIntoWorkingJournal">
+        MERGE INTO SD_WORKING_JOURNAL  A
+        USING DUAL B
+        ON
+        (
+            A.WORK_DATE = #{workDate}
+        )
+
+        WHEN MATCHED THEN
+        
+        UPDATE SET  
+            DAY_WARD_HOSOUT_PRESC_COUNT = #{dayWardHosoutPrescCount},
+            DAY_WARD_PRESC_COUNT = #{dayWardPrescCount},
+            NIGHT_OUTPA_PRESC_COUNT = #{nightOutpaPrescCount},
+            NIGHT_OUTPA_HOSOUT_PRESC_COUNT = #{nightOutpaHosoutPrescCount},
+            NIGHT_WARD_HOSOUT_PRESC_COUNT = #{nightWardHosoutPrescCount},
+            DAY_OUTPA_PRESC_COUNT = #{dayOutpaPrescCount},
+            DAY_PHARMACIST2 = #{dayPharmacist2},
+            NIGHT_WARD_PRESC_COUNT = #{nightWardPrescCount},
+            NIGHT_PHARMACIST2 = #{nightPharmacist2},
+            NIGHT_PHARMACIST3 = #{nightPharmacist3},
+            DAY_PHARMACIST1 = #{dayPharmacist1},
+            DAY_PHARMACIST3 = #{dayPharmacist3},
+            DAY_OUTPA_HOSOUT_PRESC_COUNT = #{dayOutpaHosoutPrescCount},
+            TAKING_OVER = #{takingOver},
+            NIGHT_PHARMACIST1 = #{nightPharmacist1}
+        WHEN NOT MATCHED THEN
+            insert(
+                WORK_DATE,
+                DAY_WARD_HOSOUT_PRESC_COUNT,
+                DAY_WARD_PRESC_COUNT,
+                NIGHT_OUTPA_PRESC_COUNT,
+                NIGHT_OUTPA_HOSOUT_PRESC_COUNT,
+                NIGHT_WARD_HOSOUT_PRESC_COUNT,
+                DAY_OUTPA_PRESC_COUNT,
+                DAY_PHARMACIST2,
+                NIGHT_WARD_PRESC_COUNT,
+                NIGHT_PHARMACIST2,
+                NIGHT_PHARMACIST3,
+                DAY_PHARMACIST1,
+                DAY_PHARMACIST3,
+                DAY_OUTPA_HOSOUT_PRESC_COUNT,
+                TAKING_OVER,
+                NIGHT_PHARMACIST1
+            )
+            values(
+                #{workDate},
+                #{dayWardHosoutPrescCount},
+                #{dayWardPrescCount},
+                #{nightOutpaPrescCount},
+                #{nightOutpaHosoutPrescCount},
+                #{nightWardHosoutPrescCount},
+                #{dayOutpaPrescCount},
+                #{dayPharmacist2},
+                #{nightWardPrescCount},
+                #{nightPharmacist2},
+                #{nightPharmacist3},
+                #{dayPharmacist1},
+                #{dayPharmacist3},
+                #{dayOutpaHosoutPrescCount},
+                #{takingOver},
+                #{nightPharmacist1}
+            )
+    </update>
+    
+    
+    <update id="updatePrescError">
+        UPDATE 
+            SD_PRESC_ERROR 
+        SET
+            PAT_NO=#{patNo},
+            MEDICATION_NO=#{medicationNo},
+            WARD=#{ward},
+            ETC_ERROR_YN=#{etcErrorYn},
+            SOLVE_NOTE=#{solveNote},
+            PAT_ERROR_YN=#{patErrorYn},
+            PRESC_DAY=#{prescDay},
+            WEIGHING_ERROR_YN=#{weighingErrorYn},
+            PRESC_ERROR_YN=#{prescErrorYn},
+            PAT_NM=#{patNm}
+        WHERE 
+            WORK_DATE = #{workDate}
+        AND 
+            ERROR_NO = #{errorNo}
+    </update>
+    
+    <insert id="insertPrescError">
+        insert into 
+            SD_PRESC_ERROR(
+                PAT_NO,
+                MEDICATION_NO,
+                WARD,
+                ETC_ERROR_YN,
+                WORK_DATE,
+                SOLVE_NOTE,
+                ERROR_NO,
+                PAT_ERROR_YN,
+                PRESC_DAY,
+                WEIGHING_ERROR_YN,
+                PRESC_ERROR_YN,
+                PAT_NM
+            )   
+        values(
+               #{patNo},
+               #{medicationNo},
+               #{ward},
+               #{etcErrorYn},
+               #{workDate},
+               #{solveNote},
+               #{errorNo},
+               #{patErrorYn},
+               #{prescDay},
+               #{weighingErrorYn},
+               #{prescErrorYn},
+               #{patNm}
+        )
+    </insert>
+    
+    <delete id="deletePrescError">
+        DELETE FROM 
+            SD_PRESC_ERROR
+        WHERE 
+            WORK_DATE = #{workDate} 
+        AND 
+            ERROR_NO = #{errorNo}
+    </delete>
+    
+    <!-- 종합검진 검사관리 - 조회 -->
+    <select id="selectMedPrescList" flushCache="false" useCache="true" resultType="MedicationPrescBean">
+        SELECT
+            M.MEDICATION_DAY,
+            M.MEDICATION_NO,
+            M.FLAG,
+            M.PRESC_DATE,
+            M.PAT_NO,
+            P.PAT_NM
+        from 
+            SD_MEDICATION m,
+            WS_PAT p 
+        WHERE
+            M.PAT_NO=P.PAT_NO
+        <if test="medicationDay != null">
+            AND M.MEDICATION_DAY = #{medicationDay}
+        </if>
+        <if test="prescDate != null">
+            AND M.PRESC_DATE = #{prescDate}
+        </if>
+    </select>
+    
+</mapper>

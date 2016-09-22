@@ -134,12 +134,12 @@
     <!-- 약국 외래약, 병동약 처방 관리 - 조제 -->
     <select id="callProcessMedication" statementType="CALLABLE" parameterType="MedPrescBean" >
     {call PC_SD_PROCESS_MEDICATION (
-        #{patNo, mode=IN, jdbcType=VARCHAR},
-        #{prescDate, mode=IN, jdbcType=VARCHAR},
-        #{diseaseNm, mode=IN, jdbcType=VARCHAR},
-        #{flag, mode=IN, jdbcType=VARCHAR},
-        #{errorCode, mode=OUT, jdbcType=VARCHAR},
-        #{errorMsg, mode=OUT, jdbcType=VARCHAR}
+        #{patNo, 		mode=IN, 	jdbcType=VARCHAR},
+        #{prescDate, 	mode=IN, 	jdbcType=VARCHAR},
+        #{diseaseNm, 	mode=IN, 	jdbcType=VARCHAR},
+        #{flag, 		mode=IN, 	jdbcType=VARCHAR},
+        #{errorCode, 	mode=OUT, 	jdbcType=VARCHAR},
+        #{errorMsg, 	mode=OUT, 	jdbcType=VARCHAR}
      )}
     </select>
     

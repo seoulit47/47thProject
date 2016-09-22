@@ -1,9 +1,214 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SD_WorkingJournalForm" classname="SD_WorkingJournalForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+  <Form id="SD_WorkingJournalForm" classname="SD_WorkingJournalForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SD_WorkingJournalForm_onload">
     <Layouts>
-      <Layout/>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0.08%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>
+        <Static id="Static00" taborder="1" text="약국 근무일지 관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="compBox2" taborder="2" left="2.24%" top="117" right="2.08%" height="51" style="background:white;border:1 solid gainsboro ;bordertype:normal 0 0 ;">
+          <Layouts>
+            <Layout width="1197" height="51">
+              <Edit id="dayEd1" taborder="24" left="9.97%" top="10" right="78.73%" height="30" style="align:center middle;"/>
+              <Edit id="dayEd2" taborder="25" left="21.69%" top="10" right="67%" height="30" style="align:center middle;"/>
+              <Edit id="dayEd3" taborder="26" left="33.42%" top="10" right="55.28%" height="30" style="align:center middle;"/>
+              <Edit id="nightEd2" taborder="27" left="75.38%" top="10" right="13.32%" height="30" style="align:center middle;"/>
+              <Edit id="nightEd1" taborder="28" left="63.65%" top="10" right="25.04%" height="30" style="align:center middle;"/>
+              <Edit id="nightEd3" taborder="29" left="87.1%" top="10" right="1.59%" height="30" style="align:center middle;"/>
+              <Div id="Div01" taborder="30" text="주간" left="1.59%" top="9" right="90.95%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div00" taborder="31" text="야간" left="55.19%" top="10" right="37.35%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="compBox4" taborder="3" left="2.24%" top="352" right="2.08%" height="118" style="background:white;border:1 solid gainsboro ;bordertype:normal 0 0 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc00" taborder="16" text="   인계사항" onclick="subCodeStc_onclick" left="0%" top="0" right="0%" height="30" style="background:gainsboro;color:black;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+              <TextArea id="takingOverArea" taborder="17" left="0.75%" top="41" right="0.67%" height="64" style="color:black;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="compBox5" taborder="4" left="2.08%" top="478" right="2%" height="226" style="background:white;border:1 solid gainsboro ;bordertype:normal 0 0 ;">
+          <Layouts>
+            <Layout width="1199" height="226">
+              <Grid id="prescErrorGrid" taborder="62" binddataset="dsPrescError" useinputpanel="false" autofittype="col" left="1.42%" top="74" right="63.24%" height="137">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="75"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="오류번호"/>
+                      <Cell col="1" text="조제번호"/>
+                      <Cell col="2" text="처방일자"/>
+                      <Cell col="3" text="환자명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:errorNo"/>
+                      <Cell col="1" text="bind:medicationNo"/>
+                      <Cell col="2" text="bind:prescDay"/>
+                      <Cell col="3" text="bind:patNm"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="subCodeStc07" taborder="63" text="조제번호" onclick="subCodeStc_onclick" left="59.65%" top="79" right="32%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc01" taborder="64" text="환자등록번호" onclick="subCodeStc_onclick" left="69.92%" top="79" right="21.72%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc02" taborder="65" text="환자명" onclick="subCodeStc_onclick" left="80.2%" top="79" right="11.45%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc03" taborder="66" text="병동" onclick="subCodeStc_onclick" left="90.48%" top="79" right="1.17%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc04" taborder="67" text="처방일자" onclick="subCodeStc_onclick" left="49.37%" top="79" right="42.27%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc" taborder="68" text="환자내역" onclick="subCodeStc_onclick" left="38.51%" top="79" right="51.46%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc05" taborder="69" text="유형" onclick="subCodeStc_onclick" left="38.51%" top="41" right="51.46%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc06" taborder="70" text="내용 및 해결사항" onclick="subCodeStc_onclick" left="38.51%" top="152" right="51.46%" height="36" style="background:tan;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Edit id="medicationNoEd" taborder="71" oneditclick="medPresc_oneditclick" left="59.65%" top="114" right="32%" height="30" style="align:center middle;"/>
+              <Edit id="patNoEd" taborder="72" oneditclick="medPresc_oneditclick" left="69.92%" top="114" right="21.72%" height="30" style="align:center middle;"/>
+              <Edit id="patNmEd" taborder="73" oneditclick="medPresc_oneditclick" left="80.2%" top="114" right="11.45%" height="30" style="align:center middle;"/>
+              <Edit id="wardEd" taborder="74" oneditclick="medPresc_oneditclick" left="90.48%" top="114" right="1.17%" height="30" style="align:center middle;"/>
+              <CheckBox id="etcErrorYnCB" taborder="75" text="기타오류" left="86.22%" top="41" right="5.43%" height="28" style="color:black;align:center middle;"/>
+              <CheckBox id="patErrorYnCB" taborder="76" text="환자오류" left="74.19%" top="41" right="17.46%" height="28" style="color:black;align:center middle;"/>
+              <CheckBox id="weighingErrorYnCB" taborder="77" text="계수/계량오류" left="61.49%" top="41" right="30.16%" height="28" style="color:black;align:center middle;"/>
+              <CheckBox id="prescErrorYnCB" taborder="78" text="처방오류" left="49.46%" top="41" right="42.19%" height="28" style="color:black;align:center middle;"/>
+              <TextArea id="solveNoteText" taborder="79" left="49.37%" top="152" right="1.17%" height="59" style="color:black;"/>
+              <Static id="subCodeStc08" taborder="80" text="  Medication Error" onclick="subCodeStc_onclick" left="0%" top="0" right="0%" height="30" style="background:gainsboro;color:black;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Button id="addErrorBtn" taborder="81" onclick="compBox5_addErrorBtn_onclick" left="30.91%" top="38" right="66.42%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Button id="delErrorBtn" taborder="82" onclick="compBox5_delErrorBtn_onclick" left="34.25%" top="38" right="63.07%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Calendar id="prescDayCal" taborder="83" oneditclick="medPresc_oneditclick" left="49.37%" top="114" right="42.27%" height="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="compBox3" taborder="5" left="2.24%" top="175" right="2.08%" height="171" style="background:white;border:1 solid gainsboro ;bordertype:normal 0 0 ;">
+          <Layouts>
+            <Layout width="1196" height="190">
+              <Static id="subCodeStc07" taborder="59" text="주간" onclick="subCodeStc_onclick" left="18.59%" top="42" right="73.03%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc01" taborder="60" text="야간" onclick="subCodeStc_onclick" left="28.39%" top="42" right="63.23%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc02" taborder="61" text="처방조제건수" onclick="subCodeStc_onclick" left="9.05%" top="85" right="82.58%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc03" taborder="62" text="원외처방건수" onclick="subCodeStc_onclick" left="9.05%" top="125" right="82.58%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Edit id="AuthEd1" taborder="63" left="18.59%" top="85" right="73.03%" height="30" style="align:center middle;"/>
+              <Edit id="AuthEd3" taborder="64" left="28.39%" top="85" right="63.23%" height="30" style="align:center middle;"/>
+              <Edit id="AuthEd2" taborder="65" left="18.59%" top="125" right="73.03%" height="30" style="align:center middle;"/>
+              <Edit id="AuthEd4" taborder="66" left="28.39%" top="125" right="63.23%" height="30" style="align:center middle;"/>
+              <Static id="subCodeStc05" taborder="67" text="야간" onclick="subCodeStc_onclick" left="79.9%" top="42" right="12.14%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc06" taborder="68" text="주간" onclick="subCodeStc_onclick" left="70.1%" top="42" right="21.78%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc08" taborder="69" text="처방조제건수" onclick="subCodeStc_onclick" left="60.55%" top="85" right="31.32%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc09" taborder="70" text="원외처방건수" onclick="subCodeStc_onclick" left="60.55%" top="125" right="31.32%" height="30" style="background:oldlace;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Edit id="AuthEd5" taborder="71" left="70.1%" top="85" right="21.78%" height="30" style="align:center middle;"/>
+              <Edit id="AuthEd6" taborder="72" left="70.1%" top="125" right="21.78%" height="30" style="align:center middle;"/>
+              <Edit id="AuthEdt8" taborder="73" left="79.9%" top="125" right="12.14%" height="30" style="align:center middle;"/>
+              <Edit id="AuthEdt7" taborder="74" left="79.9%" top="85" right="12.14%" height="30" style="align:center middle;"/>
+              <Static id="subCodeStc10" taborder="75" text="병동처방 조제현황" onclick="subCodeStc_onclick" left="0%" top="0" right="50%" height="30" style="background:gainsboro;color:black;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+              <Static id="subCodeStc11" taborder="76" text="외래처방 조제현황" onclick="subCodeStc_onclick" left="50%" top="0" right="0%" height="30" style="background:gainsboro;color:black;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="compBox1" taborder="6" left="2.24%" top="61" right="2.08%" height="51" style="background:white;border:1 solid gainsboro ;bordertype:normal 0 0 ;">
+          <Layouts>
+            <Layout width="1197" height="45">
+              <Div id="Div01" taborder="3" text="근무일자" left="1.59%" top="10" right="90.95%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Button id="searchBtn" taborder="4" onclick="compBox1_searchBtn_onclick" left="91.62%" top="8" right="0.84%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+              <Calendar id="workDayCal" taborder="5" left="9.97%" top="9" right="76.97%" height="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="batchProcessBtn" taborder="7" onclick="batchProcessBtn_onclick" left="89.2%" top="710" right="2%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+      </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findWorkingJournal</Col>
+            <Col id="URL">his::sup/drug/findWorkingJournal.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsWorkingJournal=dsWorkingJournal dsPrescError=dsPrescError</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchWorkingJournalProcess</Col>
+            <Col id="URL">his::sup/drug/batchWorkingJournalProcess.do</Col>
+            <Col id="inData">dsWorkingJournal=dsWorkingJournal:U dsPrescError=dsPrescError:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsWorkingJournal" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dsWorkingJournal_oncolumnchanged" onload="dsWorkingJournal_onload">
+        <ColumnInfo>
+          <Column id="workDate" type="STRING" size="256"/>
+          <Column id="dayWardHosoutPrescCount" type="STRING" size="256"/>
+          <Column id="dayWardPrescCount" type="STRING" size="256"/>
+          <Column id="nightOutpaPrescCount" type="STRING" size="256"/>
+          <Column id="nightOutpaHosoutPrescCount" type="STRING" size="256"/>
+          <Column id="nightWardHosoutPrescCount" type="STRING" size="256"/>
+          <Column id="dayOutpaPrescCount" type="STRING" size="256"/>
+          <Column id="dayPharmacist2" type="STRING" size="256"/>
+          <Column id="nightWardPrescCount" type="STRING" size="256"/>
+          <Column id="nightPharmacist2" type="STRING" size="256"/>
+          <Column id="nightPharmacist3" type="STRING" size="256"/>
+          <Column id="dayPharmacist1" type="STRING" size="256"/>
+          <Column id="dayPharmacist3" type="STRING" size="256"/>
+          <Column id="dayOutpaHosoutPrescCount" type="STRING" size="256"/>
+          <Column id="takingOver" type="STRING" size="256"/>
+          <Column id="nightPharmacist1" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPrescError" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="dsPrescError_cancolumnchange">
+        <ColumnInfo>
+          <Column id="medicationNo" type="STRING" size="256"/>
+          <Column id="etcErrorYn" type="STRING" size="256"/>
+          <Column id="workDate" type="STRING" size="256"/>
+          <Column id="solveNote" type="STRING" size="256"/>
+          <Column id="errorNo" type="STRING" size="256"/>
+          <Column id="patErrorYn" type="STRING" size="256"/>
+          <Column id="weighingErrorYn" type="STRING" size="256"/>
+          <Column id="prescErrorYn" type="STRING" size="256"/>
+          <Column id="prescDay" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsMedication" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="dsMedication_cancolumnchange">
+        <ColumnInfo>
+          <Column id="medicationDay" type="STRING" size="256"/>
+          <Column id="medicationQnt" type="STRING" size="256"/>
+          <Column id="flag" type="STRING" size="256"/>
+          <Column id="medicationNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="medCd" type="STRING" size="256"/>
+          <Column id="prescDate" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="medNm" type="STRING" size="256"/>
+          <Column id="returner" type="STRING" size="256"/>
+          <Column id="returnDate" type="STRING" size="256"/>
+          <Column id="returnQnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+this.SD_WorkingJournalForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var today = this.gfnDate("yyyyMMdd");
+	this.compBox1.workDayCal.set_value(today);
+}
+
+]]></Script>
   </Form>
 </FDL>
