@@ -54,7 +54,8 @@
 		ORDER BY A.BIMOK_CD
  	</select>
 
- <!-- 	<select id="mergeIntoBudg" >
+
+ 	<select id="mergeIntoBudg" >
 		MERGE INTO AB_BUDG_ORG  A
 		USING DUAL B
 		ON
@@ -82,6 +83,6 @@
 		           #{accYear},
 		           #{calcReason}
 		          )
- 	</select> -->
+ 	</select>
  	
 </mapper>

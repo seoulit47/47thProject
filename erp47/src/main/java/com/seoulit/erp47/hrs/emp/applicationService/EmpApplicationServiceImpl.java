@@ -27,7 +27,13 @@ public class EmpApplicationServiceImpl implements EmpApplicationService {
 	
 	@Override
 	public List<EmpBean> findEmpList(Map<String, String> argsMap) {
-		return empDAO.selectEmpList(argsMap);
+		return empDAO.findEmpList(argsMap);
+	}
+
+	@Override
+	public List<EmpBean> selectEmpList() {
+		// TODO Auto-generated method stub
+		return empDAO.selectEmpList();
 	}
 	
 

@@ -45,12 +45,12 @@ public class BudgRegController {
     	//dataSetBeanMapper.beanToDataset(outData, orgDlineBean, OrgDlineBean.class);
 	}
 	
-	/*// 예산등록
+	// 예산등록
 	@RequestMapping("acc/budget/registerBudg.do")
 	public void registerBudg(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		List<BudgRegBean> budgRegList = dataSetBeanMapper.datasetToBeans(inData, BudgRegBean.class);
 		
 		budgetServiceFacade.registerBudg(budgRegList);
-	}*/
+	}
 }

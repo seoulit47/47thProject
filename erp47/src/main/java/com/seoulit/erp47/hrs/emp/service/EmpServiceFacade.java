@@ -21,4 +21,6 @@ public interface EmpServiceFacade {
  
 	List<EmpBean> findEmpList(Map<String, String> argsMap);
 
+	List<EmpBean> selectEmpList();
+
 }

@@ -22,6 +22,8 @@
     <!-- 물류 -->
     <package name="com.seoulit.erp47.log.base.to"/>
     <package name="com.seoulit.erp47.log.inpt.to"/>   
+
+
     <package name="com.seoulit.erp47.log.inven.to"/> 
     
      <!-- 인사 -->
