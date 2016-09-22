@@ -19,6 +19,8 @@ public class OrgDlineBean extends BaseBean{
 				  	, procDiv	      // 처리구분
 				  	, procDay	      // 처리일자
 				  	, reason	      // 사유
-				  	, procPerson;     // 처리자
+				  	, procPerson     // 처리자
+					, errorCode
+					, errorMsg;
 
 }

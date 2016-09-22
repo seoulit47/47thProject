@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 
 import com.seoulit.erp47.acc.budget.dao.BudgBimokDAO;
 import com.seoulit.erp47.acc.budget.dao.BudgUseDeptDAO;
+import com.seoulit.erp47.acc.budget.dao.RunBudgDAO;
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
+import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
 
 @Component
@@ -21,6 +23,8 @@ public class AccBudgetApplicationServiceImpl implements AccBudgetApplicationServ
 	BudgBimokDAO budgBimokDAO;
 	@Autowired
 	BudgUseDeptDAO budgUseDeptDAO;
+	@Autowired
+	RunBudgDAO runBudgDAO;
 
     // 예산비목 조회	
 	@Override
@@ -82,5 +86,12 @@ public class AccBudgetApplicationServiceImpl implements AccBudgetApplicationServ
 					budgUseDeptDAO.deleteBudgUseDept(budgUseDeptBean);
 				}
 			}
+		}
+
+		// 예산집행현황 조회
+		@Override
+		public List<RunBudgBean> findRunBudg(Map<String, String> argsMap) {
+			List<RunBudgBean> runBudgList = runBudgDAO.selectRunBudg(argsMap);
+			return runBudgList;
 		}
 }

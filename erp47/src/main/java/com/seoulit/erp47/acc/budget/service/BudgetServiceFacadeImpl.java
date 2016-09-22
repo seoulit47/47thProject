@@ -15,6 +15,7 @@ import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
+import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
 
 @Service
@@ -88,6 +89,13 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 	public List<OrgDlineBean> registerOrgDline(OrgDlineBean orgDlineBean) throws BudgOrgDlineException {
 		List<OrgDlineBean> orgDlineList = budgetExecutionApplicationService.registerOrgDline(orgDlineBean);
 		return orgDlineList;
+	}
+
+	// 예산집행현황 조회
+	@Override
+	public List<RunBudgBean> findRunBudg(Map<String, String> argsMap) {
+		List<RunBudgBean> runBudgList = accBudgetApplicationService.findRunBudg(argsMap);
+		return runBudgList;
 	}
 
 }

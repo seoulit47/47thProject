@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AB_BudgMisaForm" classname="AB_BudgMisaForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.1%" top="4" right="0.49%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
+        <Static id="titleEdt02" taborder="1" text="예산목간전용관리" cssclass="TStc" left="4.39%" top="10" right="77.73%" height="44" style="font:bold 15 Dotum;"/>
+        <Static id="stc_year" taborder="2" text="회계년도" onclick="subCodeStc_onclick" left="1.56%" top="76" right="91.41%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Spin id="yearSpin" taborder="3" value="2016" onspin="yearSpin_onspin" left="9.28%" top="74" right="81.25%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+        <Static id="stc_state_divide" taborder="4" text="상태구분" onclick="subCodeStc_onclick" left="19.53%" top="76" right="73.44%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="signDivCombo" taborder="5" innerdataset="dsGB102" codecolumn="code" datacolumn="value" left="27.34%" top="76" right="62.79%" height="25" class="AreaCombo"/>
+        <Static id="stc_ask_date" taborder="6" text="신청일자" onclick="subCodeStc_onclick" left="38.09%" top="76" right="54.88%" height="27" style="background:antiquewhite;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="startDateCal" taborder="7" left="45.9%" top="76" right="44.43%" height="26"/>
+        <Static id="stc_acnt_sub01" taborder="8" text="~" onclick="subCodeStc_onclick" left="55.76%" top="76" right="42.97%" height="27" style="background:transparent;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="endDateCal" taborder="9" left="57.32%" top="76" right="33.01%" height="26"/>
+        <Grid id="misaGrid" taborder="10" binddataset="dsBudgMisa" useinputpanel="false" autofittype="col" oncellclick="misaGrid_oncellclick" left="1.56%" top="120" right="66.11%" height="583" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="106"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="전용번호"/>
+                <Cell col="1" text="상태구분"/>
+                <Cell col="2" text="신청부서"/>
+                <Cell col="3" text="신청일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:misaNo"/>
+                <Cell col="1" displaytype="combo" text="bind:signDiv" combodataset="dsGB102" combocodecol="code" combodatacol="value"/>
+                <Cell col="2" displaytype="combo" text="bind:appDept" combodataset="dsGP500" combocodecol="code" combodatacol="bigValue"/>
+                <Cell col="3" text="bind:appDay"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static05" taborder="11" text="신청부서" left="34.96%" top="120" right="58.2%" height="27" style="background:antiquewhite;border:0 none #808080ff ;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;" class="AreaStc"/>
+        <Edit id="appDeptCdEd" taborder="12" left="42.29%" top="120" right="51.95%" height="25" class="AreaEdt"/>
+        <Combo id="signDivCombo2" taborder="13" usecontextmenu="false" innerdataset="dsGB102" codecolumn="code" datacolumn="value" left="42.29%" top="161" right="45.31%" height="25" class="AreaCombo"/>
+        <Static id="Static08" taborder="14" text="상태구분" left="34.96%" top="161" right="58.2%" height="27" style="background:antiquewhite;border:0 none #808080ff ;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;" class="AreaStc"/>
+        <Static id="Static09" taborder="15" text="확정의견" left="55.96%" top="161" right="37.21%" height="27" style="background:antiquewhite;border:0 none #808080ff ;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;" class="AreaStc"/>
+        <Static id="Static10" taborder="16" text="변경사유" left="34.96%" top="202" right="58.2%" height="27" style="background:antiquewhite;border:0 none #808080ff ;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;" class="AreaStc"/>
+        <Static id="Static11" taborder="17" text="확정부서" left="34.96%" top="243" right="58.2%" height="27" style="background:antiquewhite;border:0 none #808080ff ;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;" class="AreaStc"/>
+        <Edit id="deciDeptCdEd" taborder="18" enable="false" left="42.29%" top="243" right="51.95%" height="25" class="AreaEdt"/>
+        <Edit id="deciDeptNmEd" taborder="19" enable="false" left="48.63%" top="243" right="41.41%" height="25" class="AreaEdt"/>
+        <Combo id="deciDeptCombo" taborder="20" usecontextmenu="false" innerdataset="dsGP500" codecolumn="code" datacolumn="bigValue" left="51.86%" top="120" right="38.96%" height="25" class="AreaCombo"/>
+        <Edit id="deciNoteEd" taborder="21" left="63.28%" top="161" right="1.46%" height="25" class="AreaEdt"/>
+        <Static id="Static06" taborder="22" text="신청일자" left="62.21%" top="120" right="30.86%" height="27" style="background:antiquewhite;border:0 none #808080ff ;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;" class="AreaStc"/>
+        <Calendar id="appDayCal" taborder="23" onkillfocus="appDayCal_onkillfocus" left="69.73%" top="120" right="20.02%" height="26"/>
+        <Static id="Static07" taborder="24" text="확정일자" left="80.86%" top="120" right="12.21%" height="27" style="background:antiquewhite;border:0 none #808080ff ;bordertype:round 5 5 ;align:center middle;font:9 돋움;cursor:auto;" class="AreaStc"/>
+        <Calendar id="deciDayCal" taborder="25" onkillfocus="deciDayCal_onkillfocus" left="88.28%" top="120" right="1.46%" height="26"/>
+        <Grid id="misaTagetGrid" taborder="31" binddataset="dsBudgMisaTaget" useinputpanel="false" autofittype="col" oncelldblclick="misaTagetGrid_oncelldblclick" left="35.06%" top="278" right="1.56%" height="426" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="183"/>
+                <Column size="96"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="전용번호"/>
+                <Cell col="1" text="회계년도"/>
+                <Cell col="2" text="비목코드"/>
+                <Cell col="3" text="비목명"/>
+                <Cell col="4" text="전용상태"/>
+                <Cell col="5" text="전용금액"/>
+                <Cell col="6" text="예산금액"/>
+                <Cell col="7" text="예산잔액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:misaNo"/>
+                <Cell col="1" text="bind:accYear"/>
+                <Cell col="2" edittype="expand" text="bind:bimokCd" expandshow="show" expandimage="URL('img2::popup.png')"/>
+                <Cell col="3" text="bind:bimokNm"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:variationDiv" combodataset="dsGB103" combocodecol="code" combodatacol="value"/>
+                <Cell col="5" edittype="normal" text="bind:variationAmount"/>
+                <Cell col="6" text="bind:budgAmount"/>
+                <Cell col="7" text="bind:budgBal"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="calcReasonEd" taborder="35" left="42.29%" top="202" right="1.56%" height="25" class="AreaEdt"/>
+        <Button id="deptPoputBtn" taborder="36" onclick="deptPoputBtn_onclick" left="48.44%" top="118" right="48.83%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="37" onclick="searchMisaBtn_onclick" left="68.46%" top="73" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
+        <Button id="addMisaBtn" taborder="40" onclick="addMisaBtn_onclick" cssclass="ArBtn" left="17.77%" top="719" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
+        <Button id="delMisaBtn" taborder="41" onclick="delMisaBtn_onclick" cssclass="DrBtn" left="26.95%" top="719" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
+        <Button id="misaDeciBtn" taborder="42" text="전용확정" onclick="misaDeciBtn_onclick" cssclass="AddBtn" left="82.32%" top="721" right="10.84%" height="29" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="addTagetBtn" taborder="44" onclick="addTagetBtn_onclick" cssclass="ArBtn" left="83.98%" top="240" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
+        <Button id="delTagerBtn" taborder="45" onclick="delTagerBtn_onclick" cssclass="DrBtn" left="92.29%" top="240" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
+        <Button id="misaappBtn" taborder="46" onclick="misaappBtn_onclick" cssclass="SaveBtn" left="91.31%" top="720" height="30" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="appDeptCdEd" propid="value" datasetid="dsBudgMisa" columnid="appDept"/>
+      <BindItem id="item3" compid="signDivCombo2" propid="value" datasetid="dsBudgMisa" columnid="signDiv"/>
+      <BindItem id="item6" compid="deciDeptCdEd" propid="value" datasetid="dsBudgMisa" columnid="deciDept"/>
+      <BindItem id="item7" compid="deciDeptCombo" propid="value" datasetid="dsBudgMisa" columnid="appDept"/>
+      <BindItem id="item4" compid="deciNoteEd" propid="value" datasetid="dsBudgMisa" columnid="deciNote"/>
+      <BindItem id="item1" compid="appDayCal" propid="value" datasetid="dsBudgMisa" columnid="appDay"/>
+      <BindItem id="item2" compid="deciDayCal" propid="value" datasetid="dsBudgMisa" columnid="deciDay"/>
+      <BindItem id="item5" compid="calcReasonEd" propid="value" datasetid="dsBudgMisa" columnid="calcReason"/>
+    </Bind>
+  </Form>
+</FDL>

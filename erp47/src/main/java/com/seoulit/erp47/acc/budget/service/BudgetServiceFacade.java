@@ -9,6 +9,7 @@ import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
+import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
 public interface BudgetServiceFacade {
 
@@ -29,5 +30,7 @@ public interface BudgetServiceFacade {
 	List<OrgDlineBean> findOrgDlineList(Map<String, String> argsMap);
 	
 	List<OrgDlineBean> registerOrgDline(OrgDlineBean orgDlineBean) throws BudgOrgDlineException;
+	
+	List<RunBudgBean> findRunBudg(Map<String, String> argsMap);
 
 }
