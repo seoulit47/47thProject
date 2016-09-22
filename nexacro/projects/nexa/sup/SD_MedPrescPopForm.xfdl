@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SD_MedPrescPopForm" classname="SD_MedPrescPopForm" left="0" top="0" width="657" height="445" titletext="New Form">
+  <Form id="SD_MedPrescPopForm" classname="SD_MedPrescPopForm" left="0" top="0" width="657" height="445" titletext="New Form" onload="SD_MedPrescPopForm_onload">
     <Layouts>
       <Layout>
-        <Grid id="medPrescGrid" taborder="0" binddataset="dsMedPresc" useinputpanel="false" autofittype="col" oncelldblclick="medPrescGrid_oncelldblclick" left="4.26%" top="104" right="4.26%" height="312">
+        <Grid id="medPrescGrid" taborder="0" binddataset="dsMedPresc" useinputpanel="false" autofittype="col" left="4.26%" top="104" right="4.26%" height="312" oncellclick="medPrescGrid_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="33"/>
                 <Column size="163"/>
                 <Column size="131"/>
                 <Column size="127"/>
@@ -19,18 +20,20 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="조제일자"/>
-                <Cell col="1" text="조제번호"/>
-                <Cell col="2" text="환자등록번호"/>
-                <Cell col="3" text="환자명"/>
-                <Cell col="4" text="병동"/>
+                <Cell text="No"/>
+                <Cell col="1" text="조제일자"/>
+                <Cell col="2" text="조제번호"/>
+                <Cell col="3" text="환자등록번호"/>
+                <Cell col="4" text="환자명"/>
+                <Cell col="5" text="병동"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:medicationDay" mask="####-##-##"/>
-                <Cell col="1" text="bind:medicationNo"/>
-                <Cell col="2" style="font:8 arial;" text="bind:patNo"/>
-                <Cell col="3" text="bind:patNm"/>
-                <Cell col="4" text="expr:flag=='1' ? '외래' : '병동'"/>
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:medicationDay" mask="####-##-##"/>
+                <Cell col="2" text="bind:medicationNo"/>
+                <Cell col="3" style="font:8 arial;" text="bind:patNo"/>
+                <Cell col="4" text="bind:patNm"/>
+                <Cell col="5" text="expr:flag=='1' ? '외래' : '병동'"/>
               </Band>
             </Format>
           </Formats>
@@ -62,7 +65,7 @@
             <Col id="inData"/>
             <Col id="outData">dsMedPresc=dsMedicationPresc</Col>
             <Col id="argument"/>
-            <Col id="callbackFunc"/>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -77,5 +80,50 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+this.SD_MedPrescPopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findMedPrescList", false);		
+}
+
+//조회 버튼
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var medicationDay = this.medicationDayCal.value;
+	var prescDate = this.prescDateCal.value;
+	
+	var row = this.dsService.findRow("serviceID", "findMedPrescList");
+	var argument = "medicationDay="+medicationDay+" prescDate="+prescDate;
+	
+	this.dsService.setColumn(row,"argument",argument);
+	this.gfnService("findMedPrescList", false);		
+}
+
+this.medPrescGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array;
+	
+	arrRtn[0] = this.dsMedPresc.getColumn(e.row,"prescDate");
+	arrRtn[1] = this.dsMedPresc.getColumn(e.row,"medicationNo");
+	arrRtn[2] = this.dsMedPresc.getColumn(e.row,"patNo");
+	arrRtn[3] = this.dsMedPresc.getColumn(e.row,"patNm");
+	arrRtn[4] = this.dsMedPresc.getColumn(e.row,"flag");
+	
+	this.opener.setCode(this.parent.code,arrRtn);
+
+	this.close();	
+}
+
+// 콜백
+this.callBackFunc = function(svcID, errorCode, errorMsg)
+{
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	} else if(svcID=="findMedPrescList"){
+		alert("조회되었습니다.");
+	}
+}]]></Script>
   </Form>
 </FDL>

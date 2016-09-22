@@ -203,7 +203,10 @@ this.dsMedication_cancolumnchange = function(obj:Dataset, e:nexacro.DSColChangeE
 
 // 콜백
 this.medCallback=function(svcID, errorCode, errorMsg){
-	if(svcID=="findMedicationList"){
+
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	}else if(svcID=="findMedicationList"){
 		alert("조회되었습니다.");
 	}else if(svcID=="processMedReturn"){
 		if(errorCode<0){

@@ -207,10 +207,16 @@ this.callBackFunc = function(svcID, errorCode, errorMsg){
 	} else {
 		if(svcID=="findMedPresc"){
 			alert("조회되었습니다.");
-		//}else if(svcID=="processMedication"){
-		//	alert("조제되었습니다.");
+		}else if(svcID=="processMedication"){
+			alert("조제되었습니다.");
 		}
  	}
+}
+
+//조제 버튼
+this.processMedicationBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("processMedication",false);
 }
 ]]></Script>
   </Form>

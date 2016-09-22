@@ -1,9 +1,240 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SD_WardMedPrescForm" classname="SD_WardMedPrescForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+  <Form id="SD_WardMedPrescForm" classname="SD_WardMedPrescForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SD_WardMedPrescForm_onload">
     <Layouts>
-      <Layout/>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0.08%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="병동약 처방관리" left="5.12%" top="-3" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div02" taborder="2" left="2.24%" top="64" right="2.4%" height="261" style="background:white;border:1 solid gainsboro ;"/>
+        <Grid id="outpaPatInfoGrid" taborder="3" binddataset="dsMedPresc" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" oncellclick="outpaPatInfoGrid_oncellclick" left="2.32%" top="336" right="52.08%" height="374" style="linetype:onlyvert;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="v"/>
+                <Cell col="1" text="환자번호"/>
+                <Cell col="2" text="환자명"/>
+                <Cell col="3" text="처방일"/>
+                <Cell col="4" text="상병명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" text="bind:patNo"/>
+                <Cell col="2" text="bind:patNm"/>
+                <Cell col="3" text="bind:prescDate"/>
+                <Cell col="4" text="bind:diseaseNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="prescInfoGrid" taborder="4" binddataset="dsPrescInfo" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" left="48.8%" top="336" right="2.4%" height="374" style="linetype:onlyvert;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="157"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="환자번호"/>
+                <Cell col="2" text="처방코드"/>
+                <Cell col="3" text="처방명"/>
+                <Cell col="4" text="처방일"/>
+                <Cell col="5" text="상병명"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:patNo"/>
+                <Cell col="2" text="bind:feeCd"/>
+                <Cell col="3" text="bind:feeNm"/>
+                <Cell col="4" text="bind:prescDate"/>
+                <Cell col="5" text="bind:diseaseNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="processMedicationBtn" taborder="5" onclick="processMedicationBtn_onclick" left="90.48%" top="716" right="2.32%" height="32" style="background:@gradation URL('img::medicineBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Edit id="patNoEd" taborder="6" left="12.16%" top="85" right="78.56%" height="30"/>
+        <Edit id="patNmEd" taborder="7" left="21.92%" top="85" right="65.68%" height="30"/>
+        <Button id="patPopupBtn" taborder="8" onclick="patPopupBtn_onclick" left="34.64%" top="83" right="62.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Div id="Div07" taborder="9" text="처방기간" left="52.96%" top="85" right="39.04%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Calendar id="prescDateCal" taborder="10" left="61.76%" top="85" right="22.8%" height="30"/>
+        <Div id="Div06" taborder="11" text="환자등록번호" left="3.92%" top="85" right="88.48%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Button id="searchBtn" taborder="12" onclick="searchBtn_onclick" left="88.4%" top="86" right="4.4%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Div id="compBox" taborder="13" left="2.24%" top="152" right="3.36%" height="170">
+          <Layouts>
+            <Layout width="1182" height="175">
+              <Div id="Div01" taborder="67" text="환자등록번호" left="1.69%" top="12" right="90.25%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="patNoEd" taborder="68" left="10.42%" top="12" right="79.75%" height="30"/>
+              <Edit id="patNmEd" taborder="69" left="20.76%" top="12" right="66.1%" height="30"/>
+              <Div id="Div03" taborder="70" text="처방일자" left="35.68%" top="12" right="56.27%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Calendar id="prescDateCal" taborder="71" left="44.32%" top="12" right="40.34%" height="30"/>
+              <Div id="Div00" taborder="72" text="연락처" left="42.97%" top="119" right="48.98%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div02" taborder="73" text="주소" left="1.69%" top="119" right="90.25%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div04" taborder="74" text="진료과" left="22.29%" top="65" right="69.66%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div05" taborder="75" text="진료의" left="42.97%" top="65" right="48.98%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="telEd" taborder="76" left="51.78%" top="119" right="34.24%" height="30"/>
+              <Edit id="trmtDocEd" taborder="77" left="51.78%" top="65" right="38.9%" height="30"/>
+              <Edit id="trmtDeptEd" taborder="78" left="31.02%" top="65" right="59.58%" height="30"/>
+              <Edit id="addrEd" taborder="79" left="10.34%" top="119" right="59.58%" height="30"/>
+              <Div id="Div08" taborder="80" text="상병명" left="62.88%" top="65" right="28.98%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <TextArea id="diseaseNm" taborder="81" left="71.61%" top="65" right="1.19%" height="84"/>
+              <Div id="Div07" taborder="82" text="병실" left="80.76%" top="12" right="11.19%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="hroomEd" taborder="83" left="89.49%" top="12" right="1.19%" height="30"/>
+              <Edit id="wardEd" taborder="84" left="69.92%" top="12" right="20.76%" height="30"/>
+              <Div id="Div06" taborder="85" text="병동" left="61.27%" top="12" right="30.68%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Div id="Div09" taborder="86" text="입원일자" left="1.69%" top="65" right="90.34%" height="30" style="background:tan;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+              <Edit id="hosptlzDateEd" taborder="87" left="10.42%" top="65" right="80.25%" height="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findMedPresc</Col>
+            <Col id="URL">erp47::sup/drug/findMedPresc.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsMedPresc=dsMedPresc dsPrescInfo=dsPrescInfo</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">processMedication</Col>
+            <Col id="URL">erp47::sup/drug/processMedication.do</Col>
+            <Col id="inData">dsMedPresc=dsMedPresc:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMedPresc" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="prescDate" type="STRING" size="256"/>
+          <Column id="diseaseNm" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="doctNm" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="flag" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="hosptlzDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPrescInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="feeCd" type="STRING" size="256"/>
+          <Column id="feeNm" type="STRING" size="256"/>
+          <Column id="prescDate" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="diseaseNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="compBox.patNoEd" propid="value" datasetid="dsMedPresc" columnid="patNo"/>
+      <BindItem id="item1" compid="compBox.patNmEd" propid="value" datasetid="dsMedPresc" columnid="patNm"/>
+      <BindItem id="item2" compid="compBox.wardEd" propid="value" datasetid="dsMedPresc" columnid="ward"/>
+      <BindItem id="item3" compid="compBox.hosptlzDateEd" propid="value" datasetid="dsMedPresc" columnid="hosptlzDate"/>
+      <BindItem id="item4" compid="compBox.trmtDeptEd" propid="value" datasetid="dsMedPresc" columnid="dept"/>
+      <BindItem id="item5" compid="compBox.trmtDocEd" propid="value" datasetid="dsMedPresc" columnid="doctNm"/>
+      <BindItem id="item6" compid="compBox.diseaseNm" propid="value" datasetid="dsMedPresc" columnid="diseaseNm"/>
+      <BindItem id="item7" compid="compBox.addrEd" propid="value" datasetid="dsMedPresc" columnid="addr"/>
+      <BindItem id="item8" compid="compBox.telEd" propid="value" datasetid="dsMedPresc" columnid="tel"/>
+      <BindItem id="item9" compid="compBox.prescDateCal" propid="value" datasetid="dsMedPresc" columnid="prescDate"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+var today;
+//로드
+this.SD_WardMedPrescForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+		var today = this.gfnDate("yyyyMMdd");
+		this.prescDateCal.set_value(today);
+}
+
+//사람찾기
+this.patPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPatPopup();
+	
+}
+this.setPatInfo=function(arr)
+{
+	this.patNoEd.set_value(arr[0]);
+	this.patNmEd.set_value(arr[1]);
+}
+
+//조회 버튼
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var prescDate = this.prescDateCal.value;
+	var patNo = this.patNoEd.value;
+	var flag = "2" // 병동
+	
+	if(prescDate==null){
+		alert("처방일자를 선택해주세요.");
+	}else{
+		var argument = "prescDate="+prescDate+" flag="+flag;
+		var row = this.dsService.findRow("serviceID" , "findMedPresc");		
+		
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("findMedPresc",false);	
+	}
+}
+
+this.outpaPatInfoGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.dsPrescInfo.filter("diseaseNm=='"+this.dsMedPresc.getColumn(e.row,"diseaseNm")+"'");
+}
+
+// 콜백
+this.callBackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	} else {
+		if(svcID=="findMedPresc"){
+			alert("조회되었습니다.");
+		//}else if(svcID=="processMedication"){
+		//	alert("조제되었습니다.");
+		}
+ 	}
+}
+
+]]></Script>
   </Form>
 </FDL>
