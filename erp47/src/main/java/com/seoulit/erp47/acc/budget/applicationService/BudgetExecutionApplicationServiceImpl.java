@@ -33,7 +33,9 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 		orgDlineDAO.callOrgDlineReg(orgDlineBean);
 		String errorMsg = orgDlineBean.getErrorMsg();
 		String errorCode = orgDlineBean.getErrorCode();
+		
 		if(errorCode.equals("-1")){
+			
 			throw new BudgOrgDlineException(errorMsg);
 		}
 			
@@ -41,7 +43,7 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 		queryMap.put("accYear", orgDlineBean.getAccYear());
 			
 		List<OrgDlineBean> orgDlineList = orgDlineDAO.selectOrgDlineList(queryMap);
-			
+		
 		return orgDlineList;
 	}
 
