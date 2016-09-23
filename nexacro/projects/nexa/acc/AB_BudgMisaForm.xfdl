@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BudgMisaForm" classname="AB_BudgMisaForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+  <Form id="AB_BudgMisaForm" classname="AB_BudgMisaForm" left="0" top="0" width="1024" height="768" titletext="New Form" onload="AB_BudgMisaForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.1%" top="4" right="0.49%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
@@ -14,7 +14,7 @@
         <Calendar id="startDateCal" taborder="7" left="45.9%" top="76" right="44.43%" height="26"/>
         <Static id="stc_acnt_sub01" taborder="8" text="~" onclick="subCodeStc_onclick" left="55.76%" top="76" right="42.97%" height="27" style="background:transparent;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Calendar id="endDateCal" taborder="9" left="57.32%" top="76" right="33.01%" height="26"/>
-        <Grid id="misaGrid" taborder="10" binddataset="dsBudgMisa" useinputpanel="false" autofittype="col" oncellclick="misaGrid_oncellclick" left="1.56%" top="120" right="66.11%" height="583" class="AreaGrid">
+        <Grid id="misaGrid" taborder="10" binddataset="dsBudgMisa" useinputpanel="false" autofittype="col" left="1.56%" top="120" right="66.11%" height="583" class="AreaGrid">
           <Formats>
             <Format id="default">
               <Columns>
@@ -99,13 +99,13 @@
         </Grid>
         <Edit id="calcReasonEd" taborder="35" left="42.29%" top="202" right="1.56%" height="25" class="AreaEdt"/>
         <Button id="deptPoputBtn" taborder="36" onclick="deptPoputBtn_onclick" left="48.44%" top="118" right="48.83%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="searchBtn" taborder="37" onclick="searchMisaBtn_onclick" left="68.46%" top="73" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
-        <Button id="addMisaBtn" taborder="40" onclick="addMisaBtn_onclick" cssclass="ArBtn" left="17.77%" top="719" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
-        <Button id="delMisaBtn" taborder="41" onclick="delMisaBtn_onclick" cssclass="DrBtn" left="26.95%" top="719" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
-        <Button id="misaDeciBtn" taborder="42" text="전용확정" onclick="misaDeciBtn_onclick" cssclass="AddBtn" left="82.32%" top="721" right="10.84%" height="29" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
-        <Button id="addTagetBtn" taborder="44" onclick="addTagetBtn_onclick" cssclass="ArBtn" left="83.98%" top="240" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
-        <Button id="delTagerBtn" taborder="45" onclick="delTagerBtn_onclick" cssclass="DrBtn" left="92.29%" top="240" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
-        <Button id="misaappBtn" taborder="46" onclick="misaappBtn_onclick" cssclass="SaveBtn" left="91.31%" top="720" height="30" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
+        <Button id="searchBtn" taborder="37" left="68.46%" top="73" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88" onclick="searchBtn_onclick"/>
+        <Button id="addMisaBtn" taborder="40" cssclass="ArBtn" left="17.77%" top="719" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
+        <Button id="delMisaBtn" taborder="41" cssclass="DrBtn" left="26.95%" top="719" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
+        <Button id="misaDeciBtn" taborder="42" text="전용확정" cssclass="AddBtn" left="82.32%" top="721" right="10.84%" height="29" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="addTagetBtn" taborder="44" cssclass="ArBtn" left="83.98%" top="240" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
+        <Button id="delTagerBtn" taborder="45" cssclass="DrBtn" left="92.29%" top="240" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
+        <Button id="misaappBtn" taborder="46" cssclass="SaveBtn" left="91.31%" top="720" height="30" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -118,5 +118,146 @@
       <BindItem id="item2" compid="deciDayCal" propid="value" datasetid="dsBudgMisa" columnid="deciDay"/>
       <BindItem id="item5" compid="calcReasonEd" propid="value" datasetid="dsBudgMisa" columnid="calcReason"/>
     </Bind>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">getMisaNo</Col>
+            <Col id="URL">his::acc/budget/getMisaNo.do</Col>
+            <Col id="inData"/>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">getMisaNoCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">appBudgMisa</Col>
+            <Col id="URL">his::acc/budget/appBudgMisa.do</Col>
+            <Col id="inData">dsBudgMisa=dsBudgMisa:U dsBudgMisaTaget=dsBudgMisaTaget:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">deciBudgMisa</Col>
+            <Col id="URL">his::acc/budget/deciBudgMisa.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsBudgMisa=dsBudgMisa dsBudgMisaTaget=dsBudgMisaTaget</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findBudgMisaList</Col>
+            <Col id="URL">his::acc/budget/findBudgMisaList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsBudgMisa=dsBudgMisa dsBudgMisaTaget=dsBudgMisaTaget</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBudgMisa" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="deciDept" type="STRING" size="256"/>
+          <Column id="deciNote" type="STRING" size="256"/>
+          <Column id="signDiv" type="STRING" size="256"/>
+          <Column id="appDept" type="STRING" size="256"/>
+          <Column id="appDay" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="misaNo" type="STRING" size="256"/>
+          <Column id="calcReason" type="STRING" size="256"/>
+          <Column id="deciDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBudgMisaTaget" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="variationDiv" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="misaNo" type="STRING" size="256"/>
+          <Column id="variationAmount" type="STRING" size="256"/>
+          <Column id="budgAmount" type="STRING" size="256"/>
+          <Column id="budgBal" type="STRING" size="256"/>
+          <Column id="bimokNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGB103" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGB102" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGP500" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GB102</Col>
+            <Col id="dsName">dsGB102</Col>
+          </Row>
+          <Row>
+            <Col id="code">GB103</Col>
+            <Col id="dsName">dsGB103</Col>
+          </Row>
+          <Row>
+            <Col id="code">GP500</Col>
+            <Col id="dsName">dsGP500</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+
+var misaNo;    //전용번호
+
+//*******
+//Onload
+//*******
+this.AB_BudgMisaForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+}
+
+//*****
+//조회
+//*****
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert("조회"); 
+	
+	var accYear = this.yearSpin.value;			//회계년도	
+	var signDiv = this.signDivCombo.value;		//상태구분
+	var starDate = this.startDateCal.value;		//신청시작일자
+	var endDate = this.endDateCal.value;		//신청마감일자
+	
+	var argument = 'accYear='+accYear+' signDiv='+signDiv+' startDate='+startDate+' endDate='+endDate;
+	
+	this.dsServise.setColumn(3,"argument",argument);
+	this.gfnService("findBudgMisaList");
+	this.dsBudgMisaTaget.filter("misaNo =="+this.dsBudgMisa.getColumn(e.row,"misaNo"));
+}
+]]></Script>
   </Form>
 </FDL>

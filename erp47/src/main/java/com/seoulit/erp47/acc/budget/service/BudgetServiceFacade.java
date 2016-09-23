@@ -6,6 +6,7 @@ import java.util.Map;
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.exception.BudgOrgDlineException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
+import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
@@ -32,5 +33,7 @@ public interface BudgetServiceFacade {
 	List<OrgDlineBean> registerOrgDline(OrgDlineBean orgDlineBean) throws BudgOrgDlineException;
 	
 	List<RunBudgBean> findRunBudg(Map<String, String> argsMap);
+	
+	List<BudgMisaBean> findBudgMisaList(Map<String, String> argsMap);
 
 }

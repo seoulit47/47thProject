@@ -7,8 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.seoulit.erp47.acc.budget.dao.BudgMisaDAO;
 import com.seoulit.erp47.acc.budget.dao.OrgDlineDAO;
 import com.seoulit.erp47.acc.budget.exception.BudgOrgDlineException;
+import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
 
 
@@ -17,7 +19,8 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 	
 	@Autowired
 	OrgDlineDAO orgDlineDAO;
-
+	@Autowired
+	BudgMisaDAO budgMisaDAO;
 
     // 예산편성 마감 조회
 	@Override
@@ -46,6 +49,15 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 		
 		return orgDlineList;
 	}
+
+	
+	// 예산목간전용 조회   
+	@Override
+	public List<BudgMisaBean> gindbudgMisaList(Map<String, String> argsMap) {
+		List<BudgMisaBean> budgMisaList = budgMisaDAO.selectBudgMisaList(argsMap);
+		return budgMisaList;
+	}
+	
 
     
 }

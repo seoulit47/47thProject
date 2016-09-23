@@ -12,6 +12,7 @@ import com.seoulit.erp47.acc.budget.applicationService.BudgetPreparationApplicat
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.exception.BudgOrgDlineException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
+import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
@@ -96,6 +97,13 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 	public List<RunBudgBean> findRunBudg(Map<String, String> argsMap) {
 		List<RunBudgBean> runBudgList = accBudgetApplicationService.findRunBudg(argsMap);
 		return runBudgList;
+	}
+
+	// 예산목간전용 조회	
+	@Override
+	public List<BudgMisaBean> findBudgMisaList(Map<String, String> argsMap) {
+		List<BudgMisaBean> budgMisaBean = budgetExecutionApplicationService.gindbudgMisaList(argsMap);
+		return budgMisaBean;
 	}
 
 }
