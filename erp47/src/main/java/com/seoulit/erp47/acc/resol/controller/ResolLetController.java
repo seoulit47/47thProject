@@ -34,6 +34,7 @@ public class ResolLetController {
             throws Exception {
         PlatformData outData = (PlatformData)request.getAttribute("outData");
         PlatformData inData = (PlatformData)request.getAttribute("inData");
+        System.out.println(inData.saveXml());
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
         List<ResolLetBean> resolLetList = resolServiceFacade.findResolLetList(argsMap);
         dataSetBeanMapper.beansToDataset(outData, resolLetList, ResolLetBean.class);
@@ -42,11 +43,10 @@ public class ResolLetController {
     @RequestMapping("acc/resol/getResolNo.do")
     public void getResolNo(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        System.out.println("asdasdasdasdsa");
+        
         PlatformData outData = (PlatformData)request.getAttribute("outData");
         String resolNo;
         resolNo = resolServiceFacade.getResolNo();
-        System.out.println("asdasdasd"+resolNo);
         dataSetBeanMapper.addVariable(outData, "resolNo", resolNo);
     }
     

@@ -5,4 +5,4 @@
  * @author YonG
  *
  */
-package com.seoulit.erp47.acc.slip;
+package com.seoulit.erp47.acc.slip.exception;

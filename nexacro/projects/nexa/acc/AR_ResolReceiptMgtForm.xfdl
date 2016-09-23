@@ -818,7 +818,7 @@ this.setCode=function(code,array){
 this.searchResolBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	//회계기수 셋팅
-	var accPrid = this.Div01.accPridCombo.displaynulltext;	
+	var accPrid = this.Div01.accPridCombo.value;	
 	//결의구분 셋팅
 	var resolDiv = this.Div01.resolDivCombo.value;		
 	//결의부서 셋팅
@@ -853,11 +853,12 @@ this.Div01_resolBrBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		
 		//팝업창에서 넘겨받은 반려사유에 값이 있을 때 실행
 		if(resolBrCau!=null){
-			alert(123);
+			
 			//반려사유 셋팅
 			//this.Div01.resolBrCauEd.set_value(resolBrCau);
 			//진행상태 결의접수반려로 셋팅
-			this.Div01.progStatDiv.value="52";
+			
+			this.progStatDiv.set_value("52");
 		}		
 	}	
 }
