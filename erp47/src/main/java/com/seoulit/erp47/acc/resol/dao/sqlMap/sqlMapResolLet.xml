@@ -32,7 +32,7 @@
 		
 		<if test="budgCause != null"> AND RESOL_DIV IN ('1','2') AND PROG_STAT_DIV = '36' </if>
 		
-		<if test="resolutionReceipt != null"> AND PROG_STAT_DIV IN ('89','53') </if>
+		<!-- <if test="resolutionReceipt != null"> AND PROG_STAT_DIV IN ('89','53') </if> -->
 		ORDER BY RESOL_NO DESC 
 		
 	</select>

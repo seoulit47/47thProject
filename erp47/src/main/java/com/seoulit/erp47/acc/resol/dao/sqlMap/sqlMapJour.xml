@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.acc.resol.dao.JourDAO">
+<cache flushInterval="86400000" eviction="LRU" />
+
+	
+	
+<select resultType="AutoJourRuleBean" useCache="true" flushCache="false" id="selectAutoJourRuleList">
+SELECT ACC_YEAR, BUSI_DIV_CD, JOUR_DIV_NM, CRE_DEB_DIV, ACNT_CD, ASSI_SUB_CD, NOTE, JOUR_CD, PARENT_JOUR_CD, ACNT_CD_NM, ASSI_SUB_CD_NM, BIMOK_CD FROM AR_AUTO_JOUR_RULE WHERE ACC_YEAR = #{accYear} 
+<if test="parentJourCd != null"> AND PARENT_JOUR_CD IS NOT null </if>
+
+<if test="parentJourCd == null"> AND PARENT_JOUR_CD IS null </if>
+
+<if test="busiDivCd != null"> AND BUSI_DIV_CD = #{busiDivCd} </if>
+
+<if test="jourDivNm != null"> AND JOUR_DIV_NM LIKE #{jourDivNm} || '%' </if>
+
+</select>
+
+<!--상위 자동분개규칙 등록 -->
+<insert flushCache="false" id="insertParentAutoJourRule" parameterType="AutoJourRuleBean"> INSERT INTO AR_AUTO_JOUR_RULE VALUES( #{accYear } ,#{busiDivCd } ,#{jourDivNm } ,#{creDebDiv } ,#{acntCd } ,#{assiSubCd } ,#{note } ,(SELECT CD||CNT FROM (SELECT COUNT(*)+1 AS CNT FROM AR_AUTO_JOUR_RULE WHERE BUSI_DIV_CD = #{busiDivCd} ), (SELECT SUBSTR(#{busiDivCd} ,1,2) AS CD FROM DUAL ) ) ,#{parentJourCd } ,#{acntCdNm } ,#{assiSubCdNm } ,#{bimokCd } ) </insert>
+
+<!--하위 자동분개규칙 등록 -->
+<insert flushCache="false" id="insertChildAutoJourRule" parameterType="AutoJourRuleBean"> INSERT INTO AR_AUTO_JOUR_RULE VALUES( #{accYear } ,#{busiDivCd } ,#{jourDivNm } ,#{creDebDiv } ,#{acntCd } ,#{assiSubCd } ,#{note } ,CHILD_JOUR_CD_SEQ.NEXTVAL ,#{parentJourCd } ,#{acntCdNm } ,#{assiSubCdNm } ,#{bimokCd } ) </insert>
+
+<!-- 분개내역 상세 조회 -->
+<select resultType="JourBean" useCache="true" flushCache="false" id="selectJourDetail"> SELECT SEQ ,CRE_DEB_DIV ,DEB_AMT ,CRE_AMT ,TAX_DIV ,ACNT_CD ,ASSI_SUB_CD ,ACC_PRID ,RESOL_NO ,SLIP_NO ,ACNT_NM ,ASSI_SUB_NM ,BIMOK_CD ,CLOS_YB FROM AR_JOUR WHERE RESOL_NO = #{resolNo} ORDER BY SEQ </select>
+
+<!-- 분개 등록 -->
+<insert flushCache="false" id="insertJour" parameterType="JourBean"> INSERT INTO AR_JOUR( SEQ ,CRE_DEB_DIV ,DEB_AMT ,CRE_AMT ,TAX_DIV ,ACNT_CD ,ASSI_SUB_CD ,ACC_PRID ,RESOL_NO ,SLIP_NO ,ACNT_NM ,ASSI_SUB_NM ,BIMOK_CD ,CLOS_YB ) VALUES( #{seq } ,#{creDebDiv} ,#{debAmt } ,#{creAmt } ,#{taxDiv } ,#{acntCd } ,#{assiSubCd} ,#{accPrid } ,#{resolNo } ,#{slipNo } ,#{acntNm } ,#{assiSubNm} ,#{bimokCd } ,#{closYb } ) </insert>
+
+<!-- 분개 삭제 -->
+<delete flushCache="false" id="deleteJour" parameterType="string"> DELETE FROM AR_JOUR WHERE RESOL_NO=#{resolNo} </delete>
+
+<!-- 분개 수정 -->
+<update flushCache="false" id="updateJour" parameterType="JourBean"> UPDATE AR_JOUR SET CRE_DEB_DIV = #{creDebDiv} ,DEB_AMT = #{debAmt } ,CRE_AMT = #{creAmt } ,TAX_DIV = #{taxDiv } ,ACNT_CD = #{acntCd } ,ASSI_SUB_CD = #{assiSubCd} ,ACC_PRID = #{accPrid } ,SLIP_NO = #{slipNo } ,ACNT_NM = #{acntNm } ,ASSI_SUB_NM = #{assiSubNm} ,BIMOK_CD = #{bimokCd } ,CLOS_YB = #{closYb } WHERE RESOL_NO = #{resolNo } AND SEQ = #{seq } </update>
+
+</mapper>
