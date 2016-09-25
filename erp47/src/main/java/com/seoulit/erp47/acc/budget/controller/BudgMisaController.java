@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
-import com.nexacro.xapi.data.VariableList;
 import com.seoulit.erp47.acc.budget.service.BudgetServiceFacade;
 import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
 import com.seoulit.erp47.acc.budget.to.BudgMisaTagetBean;
@@ -38,6 +37,7 @@ public class BudgMisaController {
 	// 예산목간전용 조회
 	@RequestMapping("acc/budget/findBudgMisaList.do")
 	public void findBudgMisaList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		System.out.println("컨트롤러도달!");
 	    PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData); 
@@ -61,7 +61,7 @@ public class BudgMisaController {
 		String misaNo = budgetServiceFacade.getMisaNo();
 		VariableList variableList = outData.getVariableList();
 		variableList.add("misaNo", misaNo);
-	}
+	}*/
 	
 	// 전용확정
 	@RequestMapping("acc/budget/deciBudgMisa.do")
@@ -84,6 +84,7 @@ public class BudgMisaController {
 		dataSetBeanMapper.beansToDataset(outData, budgMisaTagetList, BudgMisaTagetBean.class);
 	}
 	
+	/*
 	// 예상목간전용 저장
 	@RequestMapping("acc/budget/appBudgMisa.do")
 	public void appBudgMisa(HttpServletRequest request, HttpServletResponse response) throws Exception{

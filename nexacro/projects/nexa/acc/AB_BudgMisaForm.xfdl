@@ -14,7 +14,7 @@
         <Calendar id="startDateCal" taborder="7" left="45.9%" top="76" right="44.43%" height="26"/>
         <Static id="stc_acnt_sub01" taborder="8" text="~" onclick="subCodeStc_onclick" left="55.76%" top="76" right="42.97%" height="27" style="background:transparent;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Calendar id="endDateCal" taborder="9" left="57.32%" top="76" right="33.01%" height="26"/>
-        <Grid id="misaGrid" taborder="10" binddataset="dsBudgMisa" useinputpanel="false" autofittype="col" left="1.56%" top="120" right="66.11%" height="583" class="AreaGrid">
+        <Grid id="misaGrid" taborder="10" binddataset="dsBudgMisa" useinputpanel="false" autofittype="col" left="1.56%" top="120" right="66.11%" height="583" class="AreaGrid" oncellclick="misaGrid_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -102,9 +102,9 @@
         <Button id="searchBtn" taborder="37" left="68.46%" top="73" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88" onclick="searchBtn_onclick"/>
         <Button id="addMisaBtn" taborder="40" cssclass="ArBtn" left="17.77%" top="719" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
         <Button id="delMisaBtn" taborder="41" cssclass="DrBtn" left="26.95%" top="719" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
-        <Button id="misaDeciBtn" taborder="42" text="전용확정" cssclass="AddBtn" left="82.32%" top="721" right="10.84%" height="29" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
-        <Button id="addTagetBtn" taborder="44" cssclass="ArBtn" left="83.98%" top="240" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
-        <Button id="delTagerBtn" taborder="45" cssclass="DrBtn" left="92.29%" top="240" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80"/>
+        <Button id="misaDeciBtn" taborder="42" text="전용확정" cssclass="AddBtn" left="82.32%" top="721" right="10.84%" height="29" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" onclick="misaDeciBtn_onclick"/>
+        <Button id="addTagetBtn" taborder="44" cssclass="ArBtn" left="83.98%" top="240" height="30" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80" onclick="addTagetBtn_onclick"/>
+        <Button id="delTagerBtn" taborder="45" cssclass="DrBtn" left="92.29%" top="240" height="30" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="80" onclick="delTagerBtn_onclick"/>
         <Button id="misaappBtn" taborder="46" cssclass="SaveBtn" left="91.31%" top="720" height="30" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" width="88"/>
       </Layout>
     </Layouts>
@@ -131,7 +131,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">getMisaNo</Col>
-            <Col id="URL">his::acc/budget/getMisaNo.do</Col>
+            <Col id="URL">erp47::acc/budget/getMisaNo.do</Col>
             <Col id="inData"/>
             <Col id="outData"/>
             <Col id="argument"/>
@@ -139,7 +139,7 @@
           </Row>
           <Row>
             <Col id="serviceID">appBudgMisa</Col>
-            <Col id="URL">his::acc/budget/appBudgMisa.do</Col>
+            <Col id="URL">erp47::acc/budget/appBudgMisa.do</Col>
             <Col id="inData">dsBudgMisa=dsBudgMisa:U dsBudgMisaTaget=dsBudgMisaTaget:U</Col>
             <Col id="outData"/>
             <Col id="argument"/>
@@ -147,7 +147,7 @@
           </Row>
           <Row>
             <Col id="serviceID">deciBudgMisa</Col>
-            <Col id="URL">his::acc/budget/deciBudgMisa.do</Col>
+            <Col id="URL">erp47::acc/budget/deciBudgMisa.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsBudgMisa=dsBudgMisa dsBudgMisaTaget=dsBudgMisaTaget</Col>
             <Col id="argument"/>
@@ -155,7 +155,7 @@
           </Row>
           <Row>
             <Col id="serviceID">findBudgMisaList</Col>
-            <Col id="URL">his::acc/budget/findBudgMisaList.do</Col>
+            <Col id="URL">erp47::acc/budget/findBudgMisaList.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsBudgMisa=dsBudgMisa dsBudgMisaTaget=dsBudgMisaTaget</Col>
             <Col id="argument"/>
@@ -245,18 +245,87 @@ this.AB_BudgMisaForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 //*****
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	alert("조회"); 
-	
 	var accYear = this.yearSpin.value;			//회계년도	
 	var signDiv = this.signDivCombo.value;		//상태구분
-	var starDate = this.startDateCal.value;		//신청시작일자
+	var startDate = this.startDateCal.value;		//신청시작일자
 	var endDate = this.endDateCal.value;		//신청마감일자
 	
 	var argument = 'accYear='+accYear+' signDiv='+signDiv+' startDate='+startDate+' endDate='+endDate;
 	
-	this.dsServise.setColumn(3,"argument",argument);
+	this.dsService.setColumn(3, "argument", argument);
 	this.gfnService("findBudgMisaList");
 	this.dsBudgMisaTaget.filter("misaNo =="+this.dsBudgMisa.getColumn(e.row,"misaNo"));
+}
+
+//************
+//그리드함수
+//************
+this.misaGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.dsBudgMisaTaget.filter("misaNo =="+this.dsBudgMisa.getColumn(e.row,"misaNo"));
+	
+	var deciDept = this.deciDeptCdEd.value;
+	if(deciDept != ""){
+
+		var deciDeptNm = this.dsGP500.getColumn(this.dsGP500.findRow("code",deciDept), "bigValue");
+		this.deciDeptNmEd.set_value(deciDeptNm);
+	}
+}
+
+//************
+//행추가버튼
+//************
+this.addTagetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var signDiv = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"signDiv");
+	
+	if(signDiv==null){
+	alert('전용을 선택후 추가하셔야합니다.');
+	return;
+	}
+	else if(signDiv=='2'){
+	alert('이미확정된 전용신청은 추가가 불가능합니다.');
+	return;
+	}
+	var aRow = this.dsBudgMisaTaget.addRow();
+	this.dsBudgMisaTaget.setColumn(aRow,"misaNo",this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"misaNo"));
+	this.dsBudgMisaTaget.setColumn(aRow,"accYear",this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"accYear"));
+}
+
+//************
+//행삭제버튼
+//************
+this.delTagerBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var signDiv = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"signDiv");
+	
+	if(signDiv=='2'){
+	alert("이미확정된 전용신청은 삭제가 불가능합니다.");
+	return;
+	}
+	this.dsBudgMisaTaget.deleteRow(this.dsBudgMisaTaget.rowposition);
+}
+
+//**************
+//전용확정버튼
+//**************
+this.misaDeciBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var signDiv = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"signDiv");
+	
+	if(signDiv=='2'){
+		alert('이미확정된 전용신청입니다.');
+		return;
+	}
+	
+	var misaNo = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"misaNo");
+	var accYear = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"accYear");
+	var deciDept = 100;
+	var deciNote = this.deciNoteEd.value;
+	
+	var argument = 'misaNo='+misaNo+' accYear='+accYear+' deciDept='+deciDept+' deciNote='+deciNote;
+	this.dsService.setColumn(2,"argument",argument);
+	this.gfnService("deciBudgMisa");
 }
 ]]></Script>
   </Form>

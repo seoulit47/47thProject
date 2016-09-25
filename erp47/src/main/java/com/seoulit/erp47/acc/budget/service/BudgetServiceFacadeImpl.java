@@ -106,4 +106,9 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 		return budgMisaBean;
 	}
 
+	// 전용확정	
+	@Override
+	public void deciBudgMisa(Map<String, String> argsMap) {
+		budgetExecutionApplicationService.deciBudgMisa(argsMap);
+	}
 }

@@ -58,6 +58,13 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 		return budgMisaList;
 	}
 	
-
+	
+	// 전용확정    
+	@Override
+	public void deciBudgMisa(Map<String, String> argsMap) {
+		argsMap.put("errorCode", "");
+		argsMap.put("errorMsg", "");
+		//budgMisaDAO.callDeciBudgMisa(argsMap);
+	}
     
 }
