@@ -11,5 +11,5 @@ public interface PrcsWhsDAO {
 	
 	
 		public List<PrcsWhsBean>findPrcsWhsList(Map<String, String>argsMap);
-		
+		public void updatePrcsWhs(PrcsWhsBean prcsWhsBean);
 }

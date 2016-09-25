@@ -24,6 +24,11 @@ public class StoreFacadeImpl implements StoreFacade{
 		// TODO Auto-generated method stub
 		return storeApplicationService.findPrcsWhsHistList(argsMap);
 	}
+	@Override
+	public void batchPrcsWhsProcess(List<PrcsWhsBean> prcsWhsList) {
+		// TODO Auto-generated method stub
+		storeApplicationService.batchPrcsWhsProcess(prcsWhsList);
+	}
 
 	
 	

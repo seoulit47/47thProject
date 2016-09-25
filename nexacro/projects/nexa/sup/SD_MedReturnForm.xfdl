@@ -156,13 +156,13 @@ this.patPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 // 조회 버튼
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	//var patNo = this.patNoEd.value;
+	var patNo = this.patNoEd.value;
 	var medicationNo = this.medicationEd.value;
 	var prescDate = this.prescDateCal.value;
 	
-	//if(patNo==null){
-	//	alert("환자번호를 입력하세요");
-	//}else{
+	if(patNo==null){
+		alert("환자번호를 입력하세요");
+	}else{
 		var argument ='medicationNo='+medicationNo + ' prescDate='+prescDate;
 		var row = this.dsService.findRow('serviceID' , "findMedicationList");
 	

@@ -195,7 +195,7 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 }
 this.outpaPatInfoGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	this.dsPrescInfo.filter("diseaseNm=='"+this.dsMedPresc.getColumn(e.row,"diseaseNm")+"'");	
+	this.dsPrescInfo.filter("diseaseNm=='"+this.dsMedPresc.getColumn(e.row,"diseaseNm")+"'&& patNo=='"+this.dsMedPresc.getColumn(e.row,"patNo")+"'");	
 }
 
 
