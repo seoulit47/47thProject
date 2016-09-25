@@ -60,6 +60,10 @@ public class StoreController {
 		
 		PlatformData inData = (PlatformData)request.getAttribute("inData");
 		PlatformData outData = (PlatformData)request.getAttribute("outData");
+		
+		List<PrcsWhsBean>prcsWhsList = datasetBeanMapper.datasetToBeans(inData, PrcsWhsBean.class);
+		
+		storeFacade.batchPrcsWhsProcess(prcsWhsList);
 	}
 	
 }

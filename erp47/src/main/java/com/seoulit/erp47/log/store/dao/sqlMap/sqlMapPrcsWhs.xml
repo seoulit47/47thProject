@@ -9,6 +9,23 @@
             CTRT_NO = #{ctrtNo}
         ORDER BY
             BUY_WHS_NO
-    </select>
+ </select>
+ 
+ <update id="updatePrcsWhs" flushCache="false" parameterType="PrcsWhsBean">
+ 
+ UPDATE LI_BUY_WHS SET
+            BUY_WHS_NO = #{buyWhsNo},
+            BUY_WHS_DATE = #{buyWhsDate},
+            MONTH_DLINE_YB = #{monthDlineYb},
+            CUST = #{cust},
+            CTRT_CON = #{ctrtCon},
+            FM_NM = #{fmNm},
+            SIGN_STAT = #{signStat},
+            CTRT_NO = #{ctrtNo},
+            GDS_CD = #{gdsCd}
+        WHERE
+            CTRT_NO=#{ctrtNo} AND BUY_WHS_NO=#{buyWhsNo}
+ 
+ </update>
 
 </mapper>

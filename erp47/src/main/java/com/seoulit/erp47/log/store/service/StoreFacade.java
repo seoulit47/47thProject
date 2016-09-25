@@ -11,5 +11,6 @@ public interface StoreFacade {
 	
 		public List<PrcsWhsBean>findPrcsWhsList(Map<String, String>argsMap);
 		public List<PrcsWhsHistBean>findPrcsWhsHistList(Map<String,String>argsMap);
+		public void batchPrcsWhsProcess(List<PrcsWhsBean>prcsWhsList);
 		
 }
