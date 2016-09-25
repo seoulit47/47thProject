@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SD_WorkingJournalForm" classname="SD_WorkingJournalForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SD_WorkingJournalForm_onload">
+  <Form id="SD_WorkingJournalForm" classname="SD_WorkingJournalForm" left="0" top="0" width="1250" height="768" onload="SD_WorkingJournalForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="0" right="0.08%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>
@@ -116,7 +116,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="batchProcessBtn" taborder="7" onclick="batchProcessBtn_onclick" left="89.2%" top="710" right="2%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="batchProcessBtn" taborder="7" onclick="batchProcessBtn_onclick" left="89.2%" top="710" right="2%" height="37" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -132,15 +132,15 @@
         <Rows>
           <Row>
             <Col id="serviceID">findWorkingJournal</Col>
-            <Col id="URL">his::sup/drug/findWorkingJournal.do</Col>
+            <Col id="URL">erp47::sup/drug/findWorkingJournal.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsWorkingJournal=dsWorkingJournal dsPrescError=dsPrescError</Col>
             <Col id="argument"/>
-            <Col id="callbackFunc"/>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
           <Row>
             <Col id="serviceID">batchWorkingJournalProcess</Col>
-            <Col id="URL">his::sup/drug/batchWorkingJournalProcess.do</Col>
+            <Col id="URL">erp47::sup/drug/batchWorkingJournalProcess.do</Col>
             <Col id="inData">dsWorkingJournal=dsWorkingJournal:U dsPrescError=dsPrescError:U</Col>
             <Col id="outData"/>
             <Col id="argument"/>
@@ -201,12 +201,110 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="compBox2.dayEd1" propid="value" datasetid="dsWorkingJournal" columnid="dayPharmacist1"/>
+      <BindItem id="item1" compid="compBox2.dayEd2" propid="value" datasetid="dsWorkingJournal" columnid="dayPharmacist2"/>
+      <BindItem id="item2" compid="compBox2.dayEd3" propid="value" datasetid="dsWorkingJournal" columnid="nightPharmacist3"/>
+      <BindItem id="item3" compid="compBox2.nightEd1" propid="value" datasetid="dsWorkingJournal" columnid="nightPharmacist1"/>
+      <BindItem id="item4" compid="compBox2.nightEd2" propid="value" datasetid="dsWorkingJournal" columnid="nightPharmacist2"/>
+      <BindItem id="item5" compid="compBox2.nightEd3" propid="value" datasetid="dsWorkingJournal" columnid="nightPharmacist3"/>
+      <BindItem id="item6" compid="compBox3.AuthEd5" propid="value" datasetid="dsWorkingJournal" columnid="nightOutpaPrescCount"/>
+      <BindItem id="item7" compid="compBox3.AuthEd6" propid="value" datasetid="dsWorkingJournal" columnid="nightOutpaHosoutPrescCount"/>
+      <BindItem id="item8" compid="compBox3.AuthEdt7" propid="value" datasetid="dsWorkingJournal" columnid="nightOutpaPrescCount"/>
+      <BindItem id="item9" compid="compBox3.AuthEdt8" propid="value" datasetid="dsWorkingJournal" columnid="nightOutpaHosoutPrescCount"/>
+      <BindItem id="item10" compid="compBox3.AuthEd1" propid="value" datasetid="dsWorkingJournal" columnid="dayWardPrescCount"/>
+      <BindItem id="item11" compid="compBox3.AuthEd2" propid="value" datasetid="dsWorkingJournal" columnid="dayWardHosoutPrescCount"/>
+      <BindItem id="item15" compid="compBox3.AuthEd4" propid="value" datasetid="dsWorkingJournal" columnid="nightWardHosoutPrescCount"/>
+      <BindItem id="item12" compid="compBox3.AuthEd3" propid="value" datasetid="dsWorkingJournal" columnid="nightWardPrescCount"/>
+      <BindItem id="item13" compid="compBox4.takingOverArea" propid="value" datasetid="dsWorkingJournal" columnid="takingOver"/>
+      <BindItem id="item14" compid="compBox5.prescDayCal" propid="value" datasetid="dsPrescError" columnid="prescDay"/>
+      <BindItem id="item16" compid="compBox5.medicationNoEd" propid="value" datasetid="dsPrescError" columnid="medicationNo"/>
+      <BindItem id="item17" compid="compBox5.patNoEd" propid="value" datasetid="dsPrescError" columnid="patNo"/>
+      <BindItem id="item18" compid="compBox5.patNmEd" propid="value" datasetid="dsPrescError" columnid="patNm"/>
+      <BindItem id="item19" compid="compBox5.wardEd" propid="value" datasetid="dsPrescError" columnid="ward"/>
+      <BindItem id="item20" compid="compBox5.solveNoteText" propid="value" datasetid="dsPrescError" columnid="solveNote"/>
+      <BindItem id="item21" compid="compBox5.etcErrorYnCB" propid="value" datasetid="dsPrescError" columnid="etcErrorYn"/>
+      <BindItem id="item22" compid="compBox5.patErrorYnCB" propid="value" datasetid="dsPrescError" columnid="patErrorYn"/>
+      <BindItem id="item23" compid="compBox5.weighingErrorYnCB" propid="value" datasetid="dsPrescError" columnid="weighingErrorYn"/>
+      <BindItem id="item24" compid="compBox5.prescErrorYnCB" propid="value" datasetid="dsPrescError" columnid="prescErrorYn"/>
+    </Bind>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
 this.SD_WorkingJournalForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	var today = this.gfnDate("yyyyMMdd");
 	this.compBox1.workDayCal.set_value(today);
+}
+
+
+//조회 버튼
+this.compBox1_searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var workDate = this.compBox1.workDayCal.value;
+	var argument = 'workDate='+workDate;
+		
+	var row = this.dsService.findRow('serviceID' , "findWorkingJournal");
+	
+	this.dsService.setColumn(row,"argument",argument);
+	this.gfnService("findWorkingJournal");
+}
+
+//플러스 버튼
+this.compBox5_addErrorBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var errorNo = this.dsPrescError.getColumn(this.dsPrescError.rowcount-1,"errorNo");
+	var aRow = this.dsPrescError.addRow();
+	alert(errorNo);
+	alert(aRow);
+	
+	if(errorNo == null){
+		errorNo = 0;
+	}
+	
+	this.dsPrescError.setColumn(aRow,"errorNo",parseInt(errorNo)+1);
+	this.dsPrescError.setColumn(aRow,"workDate",this.compBox1.workDayCal.value);	
+}
+
+//마이너스 버튼
+this.compBox5_delErrorBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsPrescError.deleteRow(this.dsPrescError.rowposition);
+}
+
+// 팝업 셋팅
+this.medPresc_oneditclick = function(obj:MaskEdit,  e:nexacro.EditClickEventInfo)
+{
+	var param = {'':''};
+	
+	this.gfnPopup("SD_MedPrescPopForm","sup",param);	
+}
+this.setCode = function(code, arrRtn)
+{
+	this.compBox5.prescDayCal.set_value(arrRtn[0]);
+	this.compBox5.medicationNoEd.set_value(arrRtn[1]);
+	this.compBox5.patNoEd.set_value(arrRtn[2]);
+	this.compBox5.patNmEd.set_value(arrRtn[3]);
+	this.compBox5.wardEd.set_value(arrRtn[4]);
+}
+
+//일괄처리 버튼
+this.batchProcessBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsWorkingJournal.setColumn(0,"workDate",this.compBox1.workDayCal.value);
+	this.gfnService("batchWorkingJournalProcess");
+}
+
+// 콜백함수
+this.callBackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 0) {
+		alert("[" + svcID + "] 에러코드 : " + errorCode + "/n" + errorMsg);
+	} else {
+		if(svcID=="batchWorkingJournalProcess"){
+			alert("처리 되었습니다.");
+		}else if(svcID=="findWorkingJournal"){
+			alert("조회 되었습니다.");
+		}
+	}
 }
 
 ]]></Script>

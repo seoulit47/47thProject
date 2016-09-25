@@ -38,8 +38,7 @@ public class WorkingJournalController {
 
     /* 약국 근무일지 관리 - 조회 */
     @RequestMapping("sup/drug/findWorkingJournal.do")
-    public void findWorkingJournal(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+    public void findWorkingJournal(HttpServletRequest request, HttpServletResponse response)throws Exception {
 
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");

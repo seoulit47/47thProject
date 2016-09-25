@@ -160,7 +160,7 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="dsDetailTaxInv">
+      <Dataset id="dsDetailTaxInv" onvaluechanged="dsAtDetailTaxinv_onvaluechanged">
         <ColumnInfo>
           <Column id="no" type="undefined" size="100"/>
           <Column id="pubDate" type="undefined" size="100"/>
@@ -191,6 +191,92 @@
           <Column id="billDiv" type="undefined" size="100"/>
           <Column id="purchSalesDiv" type="undefined" size="100"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnspDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBillDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA074</Col>
+            <Col id="dsName">dsBillDiv</Col>
+          </Row>
+          <Row>
+            <Col id="dsName">dsAnspDiv</Col>
+            <Col id="code">GA087</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA073</Col>
+            <Col id="dsName">dsPubDiv</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA075</Col>
+            <Col id="dsName">dsPurchSalesDiv</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPubDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPurchSalesDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAccount" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="adptdt" type="STRING" size="256"/>
+          <Column id="bussNo" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="accNo" type="STRING" size="256"/>
+          <Column id="busctgNm" type="STRING" size="256"/>
+          <Column id="busshpNm" type="STRING" size="256"/>
+          <Column id="prsdntNm" type="STRING" size="256"/>
+          <Column id="resNo" type="STRING" size="256"/>
+          <Column id="dpstr" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="gpuseYn" type="STRING" size="256"/>
+          <Column id="gduseYn" type="STRING" size="256"/>
+          <Column id="cardYn" type="STRING" size="256"/>
+          <Column id="riuseYn" type="STRING" size="256"/>
+          <Column id="hospcls" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="YN" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="YN">Y</Col>
+          </Row>
+          <Row>
+            <Col id="YN">N</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[]]></Script>
