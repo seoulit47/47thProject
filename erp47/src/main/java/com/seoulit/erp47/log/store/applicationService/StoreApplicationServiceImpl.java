@@ -33,4 +33,20 @@ public class StoreApplicationServiceImpl implements StoreApplicationService{
 		return prcsWhsHistDAO.findPrcsWhsHistList(argsMap);
 	}
 
+	@Override
+	public void batchPrcsWhsProcess(List<PrcsWhsBean> prcsWhsList) {
+		// TODO Auto-generated method stub
+		for(PrcsWhsBean prcsWhsBean : prcsWhsList){
+			
+				switch(prcsWhsBean.getStatus()){
+				
+						case "updated":
+							prcsWhsDAO.updatePrcsWhs(prcsWhsBean);
+					
+					
+				}
+			
+		}
+	}
+
 }
