@@ -47,7 +47,7 @@
 
   	<!-- <select id="getMisaNo" flushCache="false"  useCache="true" resultType="string">
 		SELECT AB_MISA_SEQ.NEXTVAL FROM DUAL
-  	</select>
+  	</select> -->
 
 	<insert id="insertBudgMisa">
     	insert into AB_BUDG_MISA(
@@ -89,7 +89,7 @@
 	<delete id="deleteBudgMisa">
 		DELETE FROM AB_BUDG_MISA
     	WHERE ACC_YEAR = #{accYear} AND MISA_NO = #{misaNo}
-	</delete>
+	</delete> 
 
  	<select id="callDeciBudgMisa" statementType="CALLABLE" parameterType="map" resultType="map">
      	{call PC_AB_DECI_BUDG_MISA (
@@ -100,6 +100,6 @@
       		, #{errorCode, mode=OUT, jdbcType=VARCHAR}
       		, #{errorMsg, mode=OUT, jdbcType=VARCHAR}
      	) }
- 	</select> -->
+ 	</select> 
  	
 </mapper>
