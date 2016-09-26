@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LD_GdsReturnMngntForm" classname="LD_GdsReturnMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.08%" top="4" right="-42%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="반품 관리" left="3.1%" top="-4" right="83.37%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="searchDiv" taborder="1" left="1.28%" top="69" right="0.56%" height="177" style="background:beige;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Radio id="GdsRadio" taborder="28" columncount="3" codecolumn="codecolumn" datacolumn="datacolumn" left="9.47%" top="95" right="79.76%" height="22">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">승인</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">2</Col>
+                      <Col id="datacolumn">미결</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Static id="subCodeStc01" taborder="29" text="승인여부" onclick="subCodeStc_onclick" left="1.06%" top="92" right="92.24%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="reGdsDeptEd" taborder="30" left="8.9%" top="13" right="81.63%" height="30"/>
+              <Static id="subCodeStc00" taborder="31" text="반품부서" onclick="subCodeStc_onclick" left="1.06%" top="13" right="92.24%" height="30" style="background:darkseagreen;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Button id="searchCustBtn" taborder="32" left="18.94%" top="12" right="78.53%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDiv_searchCustBtn_onclick"/>
+              <Edit id="regdsAnspNmEd" taborder="33" left="40.65%" top="8" right="48.24%" height="32"/>
+              <Static id="subCodeStc02" taborder="34" text="반품물품명" onclick="subCodeStc_onclick" left="34.37%" top="10" right="60.08%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="returnCauEd" taborder="35" left="40.65%" top="49" right="48.24%" height="32"/>
+              <Static id="subCodeStc03" taborder="36" text="반품사유" onclick="subCodeStc_onclick" left="34.37%" top="50" right="60.08%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Calendar id="whsDateEd" taborder="37" innerdataset="dsGdsReturn" textcolorcolumn="whsDate" onchanged="searchDiv_whsDateEd_onchanged" left="40.65%" top="92" right="49.06%" height="30"/>
+              <Static id="subCodeStc06" taborder="38" text="입고일" onclick="subCodeStc_onclick" left="34.45%" top="91" right="60%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc07" taborder="39" text="유효기간" onclick="subCodeStc_onclick" left="34.45%" top="131" right="60%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Calendar id="vaildPridEd" taborder="40" innerdataset="dsGdsReturn" textcolorcolumn="vaildPrid" onchanged="searchDiv_vaildPridEd_onchanged" left="40.65%" top="132" right="49.06%" height="30"/>
+              <Edit id="renGdsUnitEd" taborder="41" left="68.41%" top="6" right="22.04%" height="32"/>
+              <Static id="subCodeStc08" taborder="42" text="반품단위" onclick="subCodeStc_onclick" left="62.29%" top="7" right="32.16%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="reGdsQntEd" taborder="43" left="68.41%" top="46" right="22.04%" height="32"/>
+              <Static id="subCodeStc09" taborder="44" text="반품수량" onclick="subCodeStc_onclick" left="62.29%" top="47" right="32.16%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc10" taborder="45" text="반품단가" onclick="subCodeStc_onclick" left="62.29%" top="90" right="32.16%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="edGdsPriceEd" taborder="46" left="68.41%" top="89" right="22.04%" height="32"/>
+              <Edit id="reGdsCauEd" taborder="47" left="68.41%" top="129" right="7.43%" height="32"/>
+              <Static id="subCodeStc11" taborder="48" text="반품내용" onclick="subCodeStc_onclick" left="62.29%" top="129" right="32.16%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc12" taborder="49" text="반품부서코드" onclick="subCodeStc_onclick" left="1.06%" top="53" right="92.24%" height="30" style="background:darkseagreen;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="reGdsDeptCdEd" taborder="50" left="8.98%" top="53" right="81.55%" height="30"/>
+              <Button id="searchBtn" taborder="51" cssclass="searchBtn" left="23.35%" top="13" right="68.73%" height="31" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsGdsReturn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="returnSeq" type="STRING" size="256"/>
+          <Column id="returnDate" type="STRING" size="256"/>
+          <Column id="returnWhCd" type="STRING" size="256"/>
+          <Column id="regdsDept" type="STRING" size="256"/>
+          <Column id="regdsAnspName" type="STRING" size="256"/>
+          <Column id="returnCau" type="STRING" size="256"/>
+          <Column id="whsSeq" type="STRING" size="256"/>
+          <Column id="whsDate" type="STRING" size="256"/>
+          <Column id="vaildPrid" type="STRING" size="256"/>
+          <Column id="returnDeptCd" type="STRING" size="256"/>
+          <Column id="returnStatCd" type="STRING" size="256"/>
+          <Column id="regdsUnit" type="STRING" size="256"/>
+          <Column id="regdsQnt" type="STRING" size="256"/>
+          <Column id="regdsPrice" type="STRING" size="256"/>
+          <Column id="regdsCau" type="STRING" size="256"/>
+          <Column id="aprvYn" type="STRING" size="256"/>
+          <Column id="AprvWorker" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findGdsReturnList</Col>
+            <Col id="URL">his::log/demd/findGdsReturnList.do</Col>
+            <Col id="outData">dsGdsReturn=dsGdsReturn</Col>
+            <Col id="callbackFunc">findGdsReturnListCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchGdsReturnProcess</Col>
+            <Col id="URL">his::log/demd/batchGdsReturnProcess.do</Col>
+            <Col id="inData">dsGdsReturn=dsGdsReturn:u</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGdsReturnHist" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="returnSeq" type="STRING" size="256"/>
+          <Column id="returnHistSeq" type="STRING" size="256"/>
+          <Column id="returnDate" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="gdsNm" type="STRING" size="256"/>
+          <Column id="unit" type="STRING" size="256"/>
+          <Column id="qnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="searchDiv.regdsAnspNmEd" propid="value" datasetid="dsGdsReturn" columnid="regdsAnspName"/>
+      <BindItem id="item1" compid="searchDiv.returnCauEd" propid="value" datasetid="dsGdsReturn" columnid="returnCau"/>
+      <BindItem id="item2" compid="searchDiv.whsDateEd" propid="value" datasetid="dsGdsReturn" columnid="whsDate"/>
+      <BindItem id="item3" compid="searchDiv.vaildPridEd" propid="value" datasetid="dsGdsReturn" columnid="vaildPrid"/>
+      <BindItem id="item4" compid="searchDiv.renGdsUnitEd" propid="value" datasetid="dsGdsReturn" columnid="regdsUnit"/>
+      <BindItem id="item5" compid="searchDiv.reGdsQntEd" propid="value" datasetid="dsGdsReturn" columnid="regdsQnt"/>
+      <BindItem id="item6" compid="searchDiv.edGdsPriceEd" propid="value" datasetid="dsGdsReturn" columnid="regdsPrice"/>
+      <BindItem id="item7" compid="searchDiv.reGdsCauEd" propid="value" datasetid="dsGdsReturn" columnid="regdsCau"/>
+      <BindItem id="item8" compid="searchDiv.reGdsDeptEd" propid="value" datasetid="dsGdsReturn" columnid="regdsDept"/>
+      <BindItem id="item9" compid="searchDiv.reGdsDeptCdEd" propid="value" datasetid="dsGdsReturn" columnid="returnDeptCd"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+
+/********************************************************************************
+*                                                                               *
+* 물품 반납관리																	*
+*                                                                               *
+* @Path		    log-LD_gdsReturnMngntForm										*
+*																				*
+* @Description 	물품 반납관리에서 물품 반납 등록,수정,삭제,조회한다.			*
+*               																*
+* @Author	        						                                *
+* 									                                            *
+* Created on 2016. 09. 26                            		                    *
+*									                                            *
+********************************************************************************/
+
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+
+
+
+
+
+this.searchDiv_searchCustBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnCodePopup("GP500", "false");
+}
+]]></Script>
+  </Form>
+</FDL>

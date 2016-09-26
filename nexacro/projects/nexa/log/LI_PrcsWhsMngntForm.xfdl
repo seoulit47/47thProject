@@ -94,8 +94,7 @@
         </Div>
         <Static id="subCodeStc22" taborder="10" text="구매입고 정보" onclick="subCodeStc_onclick" left="43.68%" top="112" right="2.72%" height="36" style="background:azure;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Static id="subCodeStc01" taborder="11" text="구매입고 내역" onclick="subCodeStc_onclick" left="43.68%" top="394" right="2.72%" height="40" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Button id="whsBatchBtn" taborder="12" left="80.56%" top="79" right="12.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="whsBatchBtn_onclick"/>
-        <Button id="callBtn" taborder="13" left="88.32%" top="79" right="2.88%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="callBtn_onclick"/>
+        <Button id="whsBatchBtn" taborder="12" left="89.52%" top="79" right="3.36%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="whsBatchBtn_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -347,10 +346,7 @@ this.whsBatchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnService("batchPrcsWhsProcess",false);
 }
 
-this.callBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
-{
-	
-}
+
 ]]></Script>
   </Form>
 </FDL>
