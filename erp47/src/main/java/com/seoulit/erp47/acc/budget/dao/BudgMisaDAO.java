@@ -11,7 +11,7 @@ public interface BudgMisaDAO {
 
 	void callDeciBudgMisa(Map<String, String> argsMap);
 	
-	//String getMisaNo();
+	String getMisaNo();
 
 	void insertBudgMisa(BudgMisaBean budgMisaBean);
 

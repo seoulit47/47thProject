@@ -45,9 +45,9 @@
 		ORDER BY MISA_NO
  	</select>
 
-  	<!-- <select id="getMisaNo" flushCache="false"  useCache="true" resultType="string">
+  	<select id="getMisaNo" flushCache="false"  useCache="true" resultType="string">
 		SELECT AB_MISA_SEQ.NEXTVAL FROM DUAL
-  	</select> -->
+  	</select>
 
 	<insert id="insertBudgMisa">
     	insert into AB_BUDG_MISA(

@@ -9,7 +9,7 @@
         <Div id="Div03" taborder="2" left="1.26%" top="71" right="1.01%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
         <Static id="stc_bimok" taborder="3" text="비목명" onclick="subCodeStc_onclick" left="26.3%" top="85" right="60.56%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="bimokNmEd" taborder="4" left="41.09%" top="85" right="42.23%" height="27" class="AreaEdt"/>
-        <Grid id="bimokListGrid" taborder="5" binddataset="dsRunBudg" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" left="1.26%" top="140" right="1.01%" height="612" style="linetype:onlyvert;" class="AreaGrid">
+        <Grid id="bimokListGrid" taborder="5" binddataset="dsRunBudg" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" left="0.76%" top="148" right="1.52%" height="612" style="linetype:onlyvert;" class="AreaGrid" oncelldblclick="bimokListGrid_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -90,6 +90,23 @@ this.searchBimokBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.dsService.setColumn(0,"argument",argument);
 	this.gfnService("findRunBudgList");
 }
+
+this.bimokListGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array;
+	var i=0;
+	
+	arrRtn[i++] = this.dsRunBudg.getColumn(e.row,"accYear");
+	arrRtn[i++] = this.dsRunBudg.getColumn(e.row,"bimokCd");
+	arrRtn[i++] = this.dsRunBudg.getColumn(e.row,"bimokNm");
+	arrRtn[i++] = this.dsRunBudg.getColumn(e.row,"budgAmunt");
+	arrRtn[i++] = this.dsRunBudg.getColumn(e.row,"budgBal");
+
+	this.opener.setCode("bimokHelp",arrRtn);
+	this.close();
+}
+
+
 ]]></Script>
   </Form>
 </FDL>

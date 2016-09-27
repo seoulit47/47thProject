@@ -125,4 +125,10 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 		List<RunBudgBean> runBudgList = budgetPreparationApplicationService.findRunBudgList(argsMap);
 		return runBudgList;
 	}
+	
+	@Override
+	public String getMisaNo() {
+		String misaNo = budgetExecutionApplicationService.getMisaNo();
+		return misaNo;
+	}
 }

@@ -97,7 +97,13 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 				budgMisaTagetDAO.deleteBudgMisaTaget(budgMisaTagetBean);
 			}
 		}
-		
 	}
+	
+	@Override
+	public String getMisaNo() {
+		String misaNo = budgMisaDAO.getMisaNo();
+		return misaNo;
+	}
+	
     
 }

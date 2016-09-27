@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.seoulit.erp47.acc.budget.dao.BudgRegDAO;
+import com.seoulit.erp47.acc.budget.dao.RunBudgDAO;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
@@ -25,8 +26,8 @@ public class BudgetPreparationApplicationServiceImpl implements BudgetPreparatio
 	
 	@Autowired
 	BudgRegDAO budgRegDAO;
-	/*@Autowired
-	RunBudgDAO runBudgDAO;*/
+	@Autowired
+	RunBudgDAO runBudgDAO;
 
     // 예산조회
 	@Override
