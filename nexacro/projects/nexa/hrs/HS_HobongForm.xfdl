@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HS_HobongForm" classname="HS_HobongForm" left="0" top="0" width="1256" height="802" titletext="New Form" onload="HS_HobongForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="8" right="1.11%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="호봉관리" left="4.78%" top="4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Button id="saveBtn" taborder="2" onclick="saveBtn_onclick" cssclass="saveBtn" left="91.32%" top="76" right="1.51%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="saveBtn"/>
+        <Grid id="hobongHistoryGrid" taborder="3" binddataset="dsHobongHistory" useinputpanel="false" autofittype="col" left="2.39%" top="442" right="59.08%" height="310">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="88"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="호봉이력"/>
+                <Cell row="1" text="적용시작"/>
+                <Cell row="1" col="1" text="적용종료"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" edittype="date" text="bind:applyStartDate"/>
+                <Cell col="1" displaytype="date" edittype="date" text="bind:applyEndDate"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="hobongGrid" taborder="4" binddataset="dsHobong" useinputpanel="false" autofittype="col" left="42.44%" top="114" right="1.27%" height="638">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="호봉"/>
+                <Cell col="1" colspan="3" text="호봉테이블"/>
+                <Cell col="4" rowspan="2" text="합계"/>
+                <Cell row="1" col="1" text="기본급"/>
+                <Cell row="1" col="2" text="급호수당"/>
+                <Cell row="1" col="3" text="연장수당"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:hobong"/>
+                <Cell col="1" displaytype="number" edittype="normal" text="bind:basicSal" mask="###,###"/>
+                <Cell col="2" displaytype="number" edittype="normal" text="bind:gubhoAllowance" mask="###,###"/>
+                <Cell col="3" displaytype="number" edittype="normal" text="bind:overWorkAllowanceo" mask="###,###"/>
+                <Cell col="4" displaytype="number" edittype="normal" text="expr:parseInt(basicSal)+ parseInt(gubhoAllowance)+parseInt(overWorkAllowance)" mask="###,###"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="jobGrid" taborder="5" binddataset="dsJob" useinputpanel="false" autofittype="col" oncellclick="jobGrid_oncellclick" left="2.39%" top="114" right="59.08%" height="310">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="88"/>
+                <Column size="101"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="3" text="대상직급"/>
+                <Cell row="1" text="순번"/>
+                <Cell row="1" col="1" colspan="2" text="직급"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" colspan="2" text="bind:detailCodeName"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addHisBtn" taborder="6" onclick="addHisBtn_onclick" cssclass="addHisBtn" left="34%" top="760" right="63.46%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addHisBtn"/>
+        <Button id="delHisBtn" taborder="7" onclick="delHisBtn_onclick" cssclass="delHisBtn" left="37.18%" top="760" right="60.27%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delHisBtn"/>
+        <Button id="addHoBtn" taborder="8" onclick="addHoBtn_onclick" cssclass="addHoBtn" left="92.6%" top="759" right="4.86%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addHoBtn"/>
+        <Button id="delHoBtn" taborder="9" onclick="delHoBtn_onclick" cssclass="delHoBtn" left="95.78%" top="759" right="1.67%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delHoBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsJob">
+        <ColumnInfo>
+          <Column id="detailCodeName" type="STRING" size="256"/>
+          <Column id="detailCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsHobong">
+        <ColumnInfo>
+          <Column id="positionCd" type="STRING" size="256"/>
+          <Column id="hobong" type="STRING" size="256"/>
+          <Column id="basicSal" type="STRING" size="256"/>
+          <Column id="gubhoAllowance" type="STRING" size="256"/>
+          <Column id="overWorkAllowance" type="STRING" size="256"/>
+          <Column id="applyStartDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findJobList</Col>
+            <Col id="URL">erp47::hrs/salBase/findJobList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsJob=dsJob</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"></Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findHobongList</Col>
+            <Col id="URL">erp47::hrs/salBase/findHobongList.do</Col>
+            <Col id="outData">dsHobong=dsHobong</Col>
+            <Col id="callbackFunc"></Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findHobongHistoryList</Col>
+            <Col id="URL">erp47::hrs/salBase/findHobongHistoryList.do</Col>
+            <Col id="outData">dsHobongHistory=dsHobongHistory</Col>
+            <Col id="callbackFunc"></Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchHobongProcess</Col>
+            <Col id="URL">erp47::hrs/salBase/batchHobongProcess.do</Col>
+            <Col id="inData">dsHobong=dsHobong:u dsHobongHistory=dsHobongHistory:u</Col>
+            <Col id="callbackFunc"></Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHobongHistory">
+        <ColumnInfo>
+          <Column id="applyStartDate" type="STRING" size="256"/>
+          <Column id="applyEndDate" type="STRING" size="256"/>
+          <Column id="detailCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 일근퇴 관리                                                              	*
+*                                                                               *
+* @Path		    hrs-HS_HobongForm                           	                *
+* @Description  직급별 호봉 관리                       		   	            *
+* @Author	    박영희					                                		*
+* 									                                            *
+* Created on 2016. 9. 26.                             		                    *
+*									                                            *
+********************************************************************************/
+
+
+/***************************************************************************************************
+*                                         import                                                   *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include "scripts::commonPopup.xjs";
+
+
+
+/***************************************************************************************************
+*                                         변수 선언부                                             *
+***************************************************************************************************/
+
+
+
+/***************************************************************************************************
+*                                         onload event                                             *
+***************************************************************************************************/
+this.HS_HobongForm_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	this.gfnService("findJobList");
+}
+
+
+
+/***************************************************************************************************
+*                                         jobGrid click event                                      *
+***************************************************************************************************/
+this.jobGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	//필터로 처리한다.
+	var positionCode=this.dsJob.getColumn(this.jobGrid.currentrow,"detailCodeName");
+	this.dsService.setColumn(1,4,"positionCode="+positionCode);
+	this.gfnService("findHobongList",false);	
+		
+	var detailCode=this.dsJob.getColumn(this.jobGrid.currentrow,"detailCode");
+	this.dsService.setColumn(2,4,"detailCode="+detailCode);
+	this.gfnService("findHobongHistoryList",false);
+}
+
+
+
+
+/***************************************************************************************************
+*                                  호봉이력추가 버튼  click event                                *
+***************************************************************************************************/
+this.addHisBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.dsHobongHistory.addRow();
+}
+
+
+
+/***************************************************************************************************
+*                                  호봉이력삭제 버튼  click event                                *
+***************************************************************************************************/
+this.delHisBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.dsHobongHistory.deleteRow(this.hobongHistoryGrid.currentrow);
+}
+
+
+
+/***************************************************************************************************
+*                                    호봉추가 버튼  click event                                  *
+***************************************************************************************************/
+this.addHoBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) { 
+	this.dsHobong.addRow();
+}
+
+
+
+/***************************************************************************************************
+*                                    호봉삭제 버튼  click event                                  *
+***************************************************************************************************/
+this.delHoBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.dsHobong.deleteRow(this.hobongGrid.currentrow);
+}
+
+
+
+/***************************************************************************************************
+*                                    저장 버튼  click event                                       *
+***************************************************************************************************/
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	if(confirm("저장 하시겠습니까?")){
+		var detailCode= this.dsJob.getColumn(this.jobGrid.currentrow,"detailCode");
+		this.dsService.setColumn(3,4,"detailCode="+detailCode);
+		this.gfnService("batchHobongProcess");
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                       콜백 함수 셋팅                                           *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)	{	
+		this.gfn_errorPopup(svcID, errorMsg);
+		return;
+	
+	}else{			
+		if(svcID=="findJobList") {		
+			var rowCount = this.dsJob.getRowCount();
+			
+			if(rowCount== 0){	
+				alert("조회할 직급정보가 없습니다.");
+				return;	
+			}		
+		}
+		else if(svcID=="findHobongList"){
+			alert("123123");
+			var rowCount = this.dsHobong.getRowCount();
+			
+			if(rowCount == 0) {
+				alert("조회할 호봉정보가 없습니다.");
+				return;
+			}
+		}
+		else if(svcID=="findHobongHistoryList"){
+			var rowCount = this.dsHobongHistory.getRowCount();
+			
+			if(rowCount == 0) {
+				alert("조회할 호봉이력이 없습니다.");
+				return;
+			}
+		}
+	}	
+}]]></Script>
+  </Form>
+</FDL>
