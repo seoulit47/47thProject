@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HT_PopupRetAppForm" classname="HT_PopupRetAppForm" left="0" top="0" width="810" height="330" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div02" taborder="0" left="0.74%" top="24" right="97.78%" height="38" style="background:transparent URL('img::formBar.png');border:0 none #808080ff ;color:black;bordertype:round 10 10 ;" cssclass="TStc"/>
+        <Div id="Div03" taborder="1" left="0.74%" top="64" right="2.59%" height="252" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc" taborder="42" text="퇴직 호수" onclick="subCodeStc_onclick" left="3.71%" top="10" right="86.04%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="appSeqEdt" taborder="43" left="15.36%" top="10" right="72.6%" height="26" class="AreaEdt"/>
+              <Static id="subCodeStc00" taborder="44" text="부서번호" onclick="subCodeStc_onclick" left="3.71%" top="44" right="86.04%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="retDeptCdEdt" taborder="45" left="15.36%" top="44" right="72.6%" height="26" class="AreaEdt"/>
+              <Static id="subCodeStc01" taborder="46" text="사원번호" onclick="subCodeStc_onclick" left="3.71%" top="78" right="86.04%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="47" text="퇴직구분" onclick="subCodeStc_onclick" left="3.71%" top="112" right="86.04%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc03" taborder="48" text="발신부서" onclick="subCodeStc_onclick" left="3.71%" top="146" right="86.04%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc04" taborder="49" text="발령적용일자" onclick="subCodeStc_onclick" left="3.71%" top="180" right="86.04%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="retEmpNoEdt" taborder="50" left="15.36%" top="78" right="72.6%" height="26" style="align:middle;" class="AreaEdt"/>
+              <Edit id="appNameEdt" taborder="51" left="15.36%" top="112" right="72.6%" height="26" style="align:middle;" class="AreaEdt"/>
+              <Edit id="appDeptCdEdt" taborder="52" left="15.36%" top="146" right="72.6%" height="26" style="align:middle;" class="AreaEdt"/>
+              <Calendar id="retCal" taborder="53" left="15.36%" top="180" right="72.98%" height="26" style="align:middle;"/>
+              <Static id="subCodeStc05" taborder="54" text="퇴직 사유" onclick="subCodeStc_onclick" left="45.84%" top="10" right="44.43%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <TextArea id="retReasonArea" taborder="55" left="56.21%" top="7" right="4.1%" height="178" style="background:#dfdfdfb3;"/>
+              <Button id="retAppBtn" taborder="56" text="퇴직발령" onclick="retAppBtn_onclick" left="87.2%" top="193" right="3.97%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+              <Edit id="appDeptNmEdt" taborder="57" left="28.17%" top="146" right="59.8%" height="26" style="align:middle;" class="AreaEdt"/>
+              <Combo id="retAppCombo" taborder="58" codecolumn="codecolumn" datacolumn="datacolumn" oncloseup="retAppCombo_oncloseup" left="28.17%" top="112" right="59.8%" height="26" style="align:middle;" class="AreaCombo">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn"/>
+                      <Col id="datacolumn"/>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">34</Col>
+                      <Col id="datacolumn">해임</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">35</Col>
+                      <Col id="datacolumn">파면</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">41</Col>
+                      <Col id="datacolumn">의원면직</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">42</Col>
+                      <Col id="datacolumn">명예퇴직</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">43</Col>
+                      <Col id="datacolumn">희망퇴직</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">47</Col>
+                      <Col id="datacolumn">위원회위촉</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">49</Col>
+                      <Col id="datacolumn">임기만료</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Edit id="retEmpNmEdt" taborder="59" left="28.17%" top="78" right="59.8%" height="26" style="align:middle;" class="AreaEdt"/>
+              <Edit id="retDeptNmEdt" taborder="60" left="28.17%" top="44" right="59.8%" height="26" class="AreaEdt"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="2" left="0%" top="8" right="2.59%" height="51" style="background:transparent URL('img::titleBar1.jpg');"/>
+        <Static id="Static00" taborder="3" text="퇴직발령" left="8.27%" top="5" right="37.16%" height="51" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">registerApp</Col>
+            <Col id="URL">erp47::hrs/appoint/registerAppoint.do</Col>
+            <Col id="inData">dsAppoint=dsAppoint</Col>
+            <Col id="outData"/>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">[Undefined]</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findcheckAppList</Col>
+            <Col id="URL">erp47::hrs/appoint/findcheckAppList.do</Col>
+            <Col id="outData">dsAppointCk=dsAppointCk</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAppoint" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="appmtSeq" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="appmtDiv" type="STRING" size="256"/>
+          <Column id="appmtSubject" type="STRING" size="256"/>
+          <Column id="appmtDate" type="STRING" size="256"/>
+          <Column id="transDept" type="STRING" size="256"/>
+          <Column id="transDeptNm" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="appmtyn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAppointCk" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="appmtDate" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="appmtSubject" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 퇴직예정자 퇴직발령                                            *
+*                                                                   *
+* @Path		    퇴직예정자 퇴직발령      	                        *
+* @Description  퇴직예정자를 퇴직 발령하며 발령대기상태로 만든다 *
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 9. 08.                             		        *
+*								                                    *
+********************************************************************/
+
+
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+include "scripts::commonTran.xjs";
+include "scripts::commonScripts.xjs";  
+
+
+/********************************************************************************
+ 변수
+********************************************************************************/
+var culRow;
+var deptCd;
+var deptNm;
+var empNo;
+var empName;
+
+
+/********************************************************************************
+  Load On 이벤트
+********************************************************************************/
+this.HT_PopupRetAppForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{	
+	culRow = this.dsAppoint.addRow();								//행추가
+	
+	deptCd = this.parent.deptCd;
+	deptNm = this.parent.deptNm;
+	empNo = this.parent.empNo;
+	empNm = this.parent.empNm;
+	
+	this.Div03.retDeptCdEdt.set_value(deptCd);
+	this.Div03.retDeptNmEdt.set_value(deptNm);
+	this.Div03.retEmpNoEdt.set_value(empNo);
+	this.Div03.retEmpNmEdt.set_value(empNm);
+	trace(deptCd+','+deptNm+','+empNo+','+empNm);
+	//발령자 중복체크 dsSet
+	this.gfnService("findcheckAppList"); 
+}
+
+
+/********************************************************************************
+  콤보 드롭다운리스트가 닫힐 때 발생하는 이벤트
+********************************************************************************/
+this.retAppCombo_oncloseup = function(obj:Combo, e:nexacro.ComboCloseUpEventInfo)
+{
+	var code = this.Div03.retAppCombo.value; 	//코드
+	var value = this.Div03.retAppCombo.text;	//값
+	
+	this.Div03.appNameEdt.set_value(value);
+	
+	this.dsAppoint.setColumn(0, "appmtDiv", code);
+	this.dsAppoint.setColumn(0, "appmtSubject", value);
+}
+
+
+/********************************************************************************
+  퇴직발령 버튼 이벤트
+********************************************************************************/
+this.retAppBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	// lookup 첫번째 : 데이터셋의 검색할 열 ID
+	// lookup 두번째 : 검색하고싶은 값
+	// lookup 세번째 : 구하려는 열 ID
+	
+	// checkEmpNo 리턴값이 undefined 경우는  
+	// 현재 발령처리하려는 empNo와 DB data의 empNo 가 중복 안된다는 뜻
+	var checkEmpNo = this.dsAppointCk.lookup("empNo", empNo, "empNo");
+
+	if(checkEmpNo == undefined)
+	{
+		//변수 = value
+		var date = this.Div03.appSeqEdt.value;
+		var appDeptCd = this.Div03.appDeptCdEdt.value;					//발신부서번호
+		var appDeptNm = this.Div03.appDeptNmEdt.value;					//발신부서명
+		var retCal = this.Div03.retCal.value;							//발령적용일자
+		
+		//dsAppoint set
+		this.dsAppoint.setColumn(0, "deptCd", deptCd);					//부서번호
+		this.dsAppoint.setColumn(0, "deptNm", deptNm);					//부서명
+		this.dsAppoint.setColumn(0, "empNo", empNo);					//사원번호
+		this.dsAppoint.setColumn(0, "empNm", empNm);					//사원명
+		
+		this.dsAppoint.setColumn(0, "appmtSeq", date);					//시퀀스번호
+		this.dsAppoint.setColumn(0, "transDept", appDeptCd);			//발신부서번호
+		this.dsAppoint.setColumn(0, "transDeptNm", appDeptNm);			//발신부서명
+		this.dsAppoint.setColumn(0, "appmtDate", retCal);				//발령적용일자
+		this.dsAppoint.setColumn(0, "appmtyn", 'Y');					//발령상세유무
+		
+		if(confirm("해당사원의 퇴직발령을 진행하시겠습니까?"))
+		{
+			var argument= 'empno='+empNo;
+			this.dsService.setColumn(0,"argument",argument);
+
+			this.gfnService("registerApp");
+			
+		}
+	}else{
+		alert("이미 해당 사원은 퇴직발령처리가 된 상태입니다");
+		return;
+	}
+
+	
+	
+}
+
+
+/********************************************************************************
+  콜백 함수
+********************************************************************************/
+this.CallbackFunc = function(trid, errcd, errmsg)
+{
+	if(errcd<0)
+	{
+		alert(errmsg);
+		return;
+	}
+	
+	if(trid == 'registerApp')
+	{
+		alert("퇴직발령이 완료되었습니다");
+		alert("현재창을 종료합니다.");
+		close();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HT_RetPlanForm" classname="HT_RetPlanForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.08%" top="62" right="1.52%" height="40" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;" dragscrolltype="none">
+          <Layouts>
+            <Layout>
+              <Static id="Static03" taborder="21" text="~" left="56.46%" top="4" right="40.41%" height="30" style="align:center;font:bold 12 Arial;"/>
+              <Static id="subCodeStc" taborder="22" text="부서코드" onclick="subCodeStc_onclick" left="0.58%" top="4" right="92.35%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="deptnoEdt" taborder="23" left="7.82%" top="4" right="82.22%" height="26" class="AreaEdt"/>
+              <Edit id="deptnmEdt" taborder="24" left="28.48%" top="4" right="61.56%" height="26" class="AreaEdt"/>
+              <Static id="subCodeStc00" taborder="25" text="퇴직예정일" onclick="subCodeStc_onclick" left="40.16%" top="4" right="52.92%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Calendar id="sDateCal" taborder="26" left="47.24%" top="4" right="42.88%" height="25"/>
+              <Calendar id="eDateCal" taborder="27" left="59.26%" top="4" right="31.03%" height="25"/>
+              <Static id="subCodeStc01" taborder="28" text="부서명" onclick="subCodeStc_onclick" left="21.23%" top="4" right="71.69%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Button id="DelBtn10" taborder="29" onclick="DelBtn_onclick" cssclass="DelBtn" left="32.26%" top="305" right="65.1%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" left="0.08%" top="105" right="1.52%" height="617" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Grid id="empGrid" taborder="28" binddataset="dsRetPlanEmp" useinputpanel="false" autofittype="col" oncellclick="Div01_empGrid_oncellclick" left="1.95%" top="48" right="60.1%" height="407">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사원번호"/>
+                      <Cell col="1" text="사원명"/>
+                      <Cell col="2" text="부서명"/>
+                      <Cell col="3" text="직급"/>
+                      <Cell col="4" text="퇴직예정일"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:empNo"/>
+                      <Cell col="1" text="bind:empNm"/>
+                      <Cell col="2" text="bind:deptNm"/>
+                      <Cell col="3" text="bind:jobtt"/>
+                      <Cell col="4" text="bind:retMonthWorkingdays"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="returnItemGrid" taborder="29" binddataset="dsReturnItem" useinputpanel="false" autofittype="col" oncellclick="Div01_returnItemGrid_oncellclick" onselectchanged="Div01_returnItemGrid_onselectchanged" left="42.83%" top="48" right="1.3%" height="284">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="139"/>
+                      <Column size="95"/>
+                      <Column size="78"/>
+                      <Column size="67"/>
+                      <Column size="79"/>
+                      <Column size="127"/>
+                      <Column size="101"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="반납항목일련번호"/>
+                      <Cell col="1" text="반납항목명"/>
+                      <Cell col="2" text="담당부서"/>
+                      <Cell col="3" text="반납유무"/>
+                      <Cell col="4" text="확인자"/>
+                      <Cell col="5" text="비고"/>
+                      <Cell col="6" text="반납사원번호"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:returnItemNo"/>
+                      <Cell col="1" text="bind:returnItemNm"/>
+                      <Cell col="2" text="bind:responsivilityDept"/>
+                      <Cell col="3" edittype="combo" text="bind:returnYn" combodataset="dsReturnYN" combocodecol="code" combodatacol="value"/>
+                      <Cell col="4" text="bind:confirmor"/>
+                      <Cell col="5" text="bind:note"/>
+                      <Cell col="6" text="bind:empNo"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <TextArea id="noteArea" taborder="30" left="50.57%" top="444" right="23.94%" height="97"/>
+              <Static id="subCodeStc01" taborder="31" text="퇴직예정자 리스트" onclick="subCodeStc_onclick" left="1.87%" top="13" right="81.11%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="32" text="반납 리스트" onclick="subCodeStc_onclick" left="42.75%" top="13" right="40.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc03" taborder="33" text="확인사항" onclick="subCodeStc_onclick" left="42.83%" top="339" right="50.08%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc04" taborder="34" text="담당부서" onclick="subCodeStc_onclick" left="42.83%" top="374" right="50.08%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc05" taborder="35" text="확인자" onclick="subCodeStc_onclick" left="42.83%" top="409" right="50.08%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc06" taborder="36" text="비고" onclick="subCodeStc_onclick" left="42.83%" top="444" right="50.08%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="returnItemEdt" taborder="37" enable="false" left="50.57%" top="339" right="39.5%" height="26" class="AreaEdt"/>
+              <Edit id="deptEdt" taborder="38" enable="false" left="50.57%" top="374" right="39.5%" height="26" class="AreaEdt"/>
+              <Edit id="resolverEdt" taborder="39" left="50.57%" top="409" right="39.5%" height="26" class="AreaEdt"/>
+              <Button id="appointBtn" taborder="40" text="퇴직발령" onclick="appointBtn_onclick" left="83.96%" top="566" right="8.96%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="empSearchBtn" taborder="2" onclick="empSearchBtn_onclick" cssclass="DelBtn" left="69.12%" top="64" right="23.68%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="saveBtn" taborder="3" onclick="saveBtn_onclick" cssclass="DelBtn" left="90.48%" top="671" right="2.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="deptSearchBtn" taborder="4" onclick="deptSearchBtn_onclick" cssclass="DelBtn" left="17.92%" top="64" right="79.52%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div02" taborder="5" left="0%" top="0" right="1.68%" height="58" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="퇴직예정자 관리" left="5.21%" top="0" right="41.01%" height="48" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsHmEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTempReturnInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">인수인계</Col>
+            <Col id="code">RI100</Col>
+            <Col id="dept">인사과</Col>
+          </Row>
+          <Row>
+            <Col id="value">주차권</Col>
+            <Col id="code">RI200</Col>
+            <Col id="dept">중앙공급실</Col>
+          </Row>
+          <Row>
+            <Col id="value">PC</Col>
+            <Col id="code">RI300</Col>
+            <Col id="dept">회계팀</Col>
+          </Row>
+          <Row>
+            <Col id="value">유니폼</Col>
+            <Col id="code">RI400</Col>
+            <Col id="dept">홍보실</Col>
+          </Row>
+          <Row>
+            <Col id="value">식대권</Col>
+            <Col id="code">RI500</Col>
+            <Col id="dept">회계팀</Col>
+          </Row>
+          <Row>
+            <Col id="value">복지카드</Col>
+            <Col id="code">RI600</Col>
+            <Col id="dept">감사과</Col>
+          </Row>
+          <Row>
+            <Col id="value">사원카드</Col>
+            <Col id="code">RI700</Col>
+            <Col id="dept">인사과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsRetPlanEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="dsReturnYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">확인</Col>
+            <Col id="code">Y</Col>
+          </Row>
+          <Row>
+            <Col id="value">미확인</Col>
+            <Col id="code">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsReturnItem" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="returnItemNo" type="STRING" size="256"/>
+          <Column id="returnYn" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="returnItemNm" type="STRING" size="256"/>
+          <Column id="responsivilityDept" type="STRING" size="256"/>
+          <Column id="confirmor" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findreturnItem</Col>
+            <Col id="URL">erp47::hrs/ret/findReturnItemList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsReturnItem=dsReturnItem</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findCodeList</Col>
+            <Col id="URL">erp47::com/findCodePopupList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">dsCode=dsCode</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">[Undefined]</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchReturnItemProcess</Col>
+            <Col id="URL">erp47::hrs/ret/batchReturnItemProcess.do</Col>
+            <Col id="inData">dsReturnItem=dsReturnItem:U</Col>
+            <Col id="outData">[Undefined]</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">[Undefined]</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findRetPlanEmpList</Col>
+            <Col id="URL">erp47::hrs/ret/findRetPlanEmpList.do</Col>
+            <Col id="outData">dsRetPlanEmp=dsRetPlanEmp</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/************************************************************************
+*                                                                       *
+* 퇴직예정자 관리                                                     *
+*                                                                       *
+* @Path		    퇴직예정자 관리        	                            *
+* @Description  퇴직예정자가 반납해야될 물품들은 관리하며          *
+*				반납확인이 완료된 사원은 퇴직발령이가능하다	     *
+*				추가적으로 퇴직예정자의 퇴직금계산실행이 가능하다 *
+* @Author		김봉진  					                             *
+* 								                                         *
+* Created on 2016. 9. 12.                             		             *
+*								                                         *
+*************************************************************************/
+
+
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+include "scripts::commonScripts.xjs";  
+
+
+/********************************************************************************
+  변수 선언
+********************************************************************************/
+var deptCd;
+var deptNm;
+var empNo;
+var empNm;
+var sDate;
+var dDate;
+var currentRow;
+
+
+/********************************************************************************
+  부서 조회 버튼 이벤트
+********************************************************************************/
+this.deptSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnCodePopup("GP500");
+	
+}
+
+this.setCode = function(code,arrRtn)
+{
+	this.Div00.deptnoEdt.set_value(arrRtn[0]);  
+	this.Div00.deptnmEdt.set_value(arrRtn[1]);
+}
+
+/********************************************************************************
+  퇴직예정자 조회 버튼 이벤트
+********************************************************************************/
+this.empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	deptCd = this.Div00.deptnoEdt.value;
+	deptNm = this.Div00.deptnmEdt.value;
+	sDate = this.Div00.sDateCal.value;
+	eDate = this.Div00.eDateCal.value;
+	
+	var argument = "deptCd="+deptCd +" sDate="+sDate +" eDate="+eDate;
+	
+	this.dsService.setColumn(3,"argument",argument);	//퇴직예정사원
+	this.gfnService("findRetPlanEmpList");
+
+	this.dsService.setColumn(0,"argument",argument);	//반납목록리스트
+	this.gfnService("findreturnItem");
+
+
+
+}
+
+
+/********************************************************************************
+  퇴직발령 버튼 이벤트
+********************************************************************************/
+this.appointBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//반납완료 확인
+	for(var i = 0 ; i < this.dsReturnItem.getRowCount() ; i++){
+		
+		if(this.dsReturnItem.getColumn(i,"returnYn") == 'N'){
+			alert('반납되지 않은 항목이 있습니다.');
+			return;
+		}
+	}
+	
+	var param = {deptCd:deptCd,deptNm:deptNm,empNo:empNo,empNm:empNm};
+	this.gfnPopup("HT_PopupRetAppForm", "hrs", param); 
+	
+	//application.open("HT_PopupRetAppForm","hrs::HT_PopupRetAppForm.xfdl", this.getOwnerFrame(), {deptCd:deptCd,deptNm:deptNm,empNo:empNo,empNm:empNm} );
+}
+
+
+/********************************************************************************
+  일괄처리 버튼 이벤트
+********************************************************************************/
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		if(confirm("변경된 사항을 저장하시겠습니까?"))
+	{
+		alert(33);
+		//var returnItemNo = this.dsReturnItem.getColumn(this.dsReturnItem.rowposition, "returnItemNo");
+		//var argument = "empNo="+empNo+" returnItemNo="+returnItemNo;
+		
+		//this.dsService.setColumn(3, "argument", argument);
+		this.gfnService("batchReturnItemProcess");
+	}
+}
+
+
+/********************************************************************************
+  퇴직예정자리스트 셀클릭 이벤트
+********************************************************************************/
+this.Div01_empGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	//변수 = row(행)의 값 담기
+	//this.dsHmEmp 에 있는것 가지고 오는거임
+	deptCd = this.dsRetPlanEmp.getColumn(e.row, "deptCd");		//부서번호
+	deptNm = this.dsRetPlanEmp.getColumn(e.row, "deptNm");		//부서명
+	empNo = this.dsRetPlanEmp.getColumn(e.row, "empNo");		//사원번호
+	empNm = this.dsRetPlanEmp.getColumn(e.row, "empNm");		//사원명
+	
+	//글로벌 dsHmEmp 에 set 해줌(다른 폼에서 글로벌 변수에 있는 사원정보를 사용할 수 있도록 만듬)
+	//application.dsHmEmp.setColumn(0, "deptCd", deptCd);
+	//application.dsHmEmp.setColumn(0, "deptNm", deptNm);
+	//application.dsHmEmp.setColumn(0, "empNo", empNo);
+	//application.dsHmEmp.setColumn(0, "empNm", empNm);
+	
+	//반납리스트 dsReturnItem 필터(사원번호)
+	this.dsReturnItem.filter("empNo=='"+empNo+"'");	
+	var rowCount = this.dsReturnItem.getRowCount();
+	
+	if(rowCount == 0)
+	{
+		alert("정보가 입력되지 않았습니다");
+		this.dsReturnItemGridFilter();
+	}
+}
+
+
+/********************************************************************************
+  반납목록필터 함수
+********************************************************************************/
+this.dsReturnItemGridFilter = function()
+{
+	//반납아이템 항목 갯수
+	var index = this.dsTempReturnInfo.getRowCount();
+	
+	for(var i=0; i<index; i++)
+	{
+		currentRow = this.dsReturnItem.addRow();
+		
+		var value = this.dsTempReturnInfo.getColumn(i, "value");
+		var code = this.dsTempReturnInfo.getColumn(i, "code");
+		var dept = this.dsTempReturnInfo.getColumn(i, "dept");
+		var returnYn = this.dsReturnItem.getColumn(i, "returnYn");
+		
+		this.dsReturnItem.setColumn(currentRow, "empNo", empNo);
+		this.dsReturnItem.setColumn(currentRow, "returnItemNm", value);
+		this.dsReturnItem.setColumn(currentRow, "returnItemNo", code);
+		this.dsReturnItem.setColumn(currentRow, "responsivilityDept", dept);
+		
+		if(returnYn == null)
+		{
+			this.dsReturnItem.setColumn(currentRow, "returnYn", "N");
+		}
+	}
+	
+}
+
+this.Div01_returnItemGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	
+}
+/********************************************************************************
+  콜백 함수
+********************************************************************************/
+this.CallbackFunc=function(trid,errcd,errmsg){	
+	if(trid =="findreturnItem"){
+		if(errcd == 1){ 
+		
+	//변수 = row(행)의 값 담기
+	//this.dsHmEmp 에 있는것 가지고 오는거임
+	deptCd = this.dsRetPlanEmp.getColumn(this.dsRetPlanEmp.rowposition, "deptCd");		//부서번호
+	deptNm = this.dsRetPlanEmp.getColumn(this.dsRetPlanEmp.rowposition, "deptNm");		//부서명
+	empNo = this.dsRetPlanEmp.getColumn(this.dsRetPlanEmp.rowposition, "empNo");		//사원번호
+	empNm = this.dsRetPlanEmp.getColumn(this.dsRetPlanEmp.rowposition, "empNm");		//사원명
+	
+
+	//반납리스트 dsReturnItem 필터(사원번호)
+	this.dsReturnItem.filter("empNo=='"+empNo+"'");	
+	var rowCount = this.dsReturnItem.getRowCount();
+	
+	if(rowCount == 0)
+	{
+		alert("정보가 입력되지 않았습니다");
+		this.dsReturnItemGridFilter();
+	}
+               
+		}else{
+			alert("반납항목 불러오기 에러");
+		}
+}
+
+	if(trid =="batchReturnItemProcess"){
+		if(errcd == 1){
+				alert("성공");
+		}
+		else{ 
+				alert("실패");
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

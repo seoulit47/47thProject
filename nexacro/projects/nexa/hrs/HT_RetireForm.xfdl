@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HT_RetireForm" classname="HT_RetireForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="62" right="1.6%" height="42" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc" taborder="18" text="사원명" onclick="subCodeStc_onclick" left="1.95%" top="6" right="90.72%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="empNoEdt" taborder="19" left="9.61%" top="6" right="80.62%" height="26" class="AreaEdt"/>
+              <Edit id="empNameEdt" taborder="20" left="19.87%" top="6" right="70.36%" height="26" class="AreaEdt"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" left="0%" top="105" right="1.6%" height="599" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Grid id="empGrid" taborder="4" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncellclick="empGrid_oncellclick" left="1.22%" top="6" right="74.51%" height="586" class="AreaGrid">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="84"/>
+                      <Column size="87"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사번"/>
+                      <Cell col="1" text="성명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="none" text="bind:empNo"/>
+                      <Cell col="1" style="align:center middle;" text="bind:empNm"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="retApproPayGrid" taborder="5" binddataset="dsRetApproPay" useinputpanel="false" autofittype="col" left="26.06%" top="6" right="0.81%" height="586" class="AreaGrid">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="87"/>
+                      <Column size="100"/>
+                      <Column size="86"/>
+                      <Column size="67"/>
+                      <Column size="128"/>
+                      <Column size="149"/>
+                      <Column size="152"/>
+                      <Column size="94"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="회차"/>
+                      <Cell col="1" text="납부월"/>
+                      <Cell col="2" text="납부일"/>
+                      <Cell col="3" text="등급"/>
+                      <Cell col="4" text="본인부담금"/>
+                      <Cell col="5" text="사용자부담금"/>
+                      <Cell col="6" text="퇴직전임금"/>
+                      <Cell col="7" text="납부여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="normal" text="bind:th"/>
+                      <Cell col="1" edittype="normal" text="bind:paymentMonth"/>
+                      <Cell col="2" edittype="normal" text="bind:paymentDate"/>
+                      <Cell col="3" edittype="normal" text="bind:grade"/>
+                      <Cell col="4" displaytype="normal" edittype="normal" text="bind:myselfBurdenAmount"/>
+                      <Cell col="5" displaytype="normal" edittype="normal" text="bind:userBurdenAmount"/>
+                      <Cell col="6" displaytype="normal" edittype="normal" text="bind:retirementBeforeSalary"/>
+                      <Cell col="7" edittype="normal" text="bind:payYN"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+          <InitValue>
+            <Grid id="empGrid" binddataset="dsHmEmp"/>
+          </InitValue>
+        </Div>
+        <Div id="Div03" taborder="2" left="0%" top="706" right="1.6%" height="50" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Button id="empNoSearchBtn" taborder="3" onclick="empNoSearchBtn_onclick" cssclass="DelBtn" left="29.44%" top="66" right="68%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="empSearchBtn" taborder="4" onclick="empSearchBtn_onclick" cssclass="DelBtn" left="89.84%" top="66" right="2.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="saveBtn" taborder="5" onclick="saveBtn_onclick" cssclass="DelBtn" left="88.32%" top="715" right="2.88%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div02" taborder="6" left="0%" top="0" right="1.68%" height="58" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="퇴직충당금 관리" left="5.21%" top="0" right="41.01%" height="48" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">retApproPayInfo</Col>
+            <Col id="URL">erp47::hrs/ret/findRetApproPayList.do</Col>
+            <Col id="inData">dsRetApproPay=dsRetApproPay</Col>
+            <Col id="outData">dsRetApproPay=dsRetApproPay</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">empInfo</Col>
+            <Col id="URL">erp47::hrs/emp/findEmpList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsHmEmp=gdsEmp</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchRetApproPayProcess</Col>
+            <Col id="URL">erp47::hrs/ret/batchRetApproPayProcess.do</Col>
+            <Col id="inData">dsRetApproPay=dsRetApproPay:U</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_emp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRetApproPay" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="th" type="STRING" size="256"/>
+          <Column id="paymentMonth" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="myselfBurdenAmount" type="STRING" size="256"/>
+          <Column id="retirementBeforeSalary" type="STRING" size="256"/>
+          <Column id="payYN" type="STRING" size="256"/>
+          <Column id="paymentDate" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="userBurdenAmount" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 사원의 퇴직충당금을 관리                                       *
+*                                                                   *
+* @Path		    사원의 퇴직충당금 관리   	                    *
+* @Description  사원의 퇴직충당금을 조회한다                    *
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 9. 12.                             		        *
+*								                                    *
+********************************************************************/
+
+
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+include "scripts::commonScripts.xjs"; 
+include "scripts::commonHrsPopup.xjs";
+
+/********************************************************************************
+ 검색 조건 변수
+********************************************************************************/
+
+
+/********************************************************************************
+  부서 조회 버튼 이벤트
+********************************************************************************/
+this.empNoSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var arr = this.gfnEmpPopup();
+	
+	this.setEmpInfo = function(arrRtn)
+    { 
+		empNo = arrRtn[0];
+		this.Div00.empNoEdt.set_value(arrRtn[0]);
+		this.Div00.empNameEdt.set_value(arrRtn[1]);
+	}	
+	
+}
+
+
+/********************************************************************************
+  사원 조회 버튼 이벤트
+********************************************************************************/
+this.empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var empNm = this.Div00.empNameEdt.value;
+	var empNo = this.Div00.empNoEdt.value;
+	
+	if(empNo == null){
+	 if(confirm("전체조회를 하시겠습니까?")){
+	 }
+	 else{
+	 alert('사원번호를 입력하세요');return;}}
+	var argument = "empNo="+empNo;
+	this.dsService.setColumn(1, "argument", argument);
+	this.gfnService("empInfo");
+	this.gfnService("retApproPayInfo",true);
+	this.dsRetApproPay.filter("empNo=='"+empNo+"'");
+}
+
+
+/********************************************************************************
+  사원목록 셀클릭 이벤트
+********************************************************************************/
+this.empGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	empNo = this.dsHmEmp.getColumn(e.row,"empNo");
+	empNm = this.dsHmEmp.getColumn(e.row,"empNm");
+	this.dsRetApproPay.filter("empNo=='"+empNo+"'");
+	
+	//cell 클릭한 행의 값이 0 일때 addRow
+	var count = this.dsRetApproPay.rowcount;
+	
+	if(count == 0)
+	{
+		this.dsRetApproPay.addRow();
+		this.dsRetApproPay.setColumn(this.dsRetApproPay.rowposition,"empNo",empNo);
+		this.dsRetApproPay.setColumn(this.dsRetApproPay.rowposition,"empNm",empNm);
+		
+		//회차 ex) 2016.substring(4,2) = 16
+		var th = this.gfnGetTime().substring(4,2);
+		this.dsRetApproPay.setColumn(this.dsRetApproPay.rowposition,"th",th);
+	}
+}
+
+
+
+/********************************************************************************
+  일괄처리 버튼 이벤트
+********************************************************************************/
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		if(confirm("저장하시겠습니까?"))
+	{
+		this.gfnService("batchRetApproPayProcess");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>
