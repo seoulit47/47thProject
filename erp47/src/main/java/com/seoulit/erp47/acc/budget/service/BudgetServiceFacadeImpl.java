@@ -118,4 +118,11 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 	public void appBudgMisa(List<BudgMisaBean> budgMisaList, List<BudgMisaTagetBean> budgMisaTagetList) {
 		budgetExecutionApplicationService.appBudgMisa(budgMisaList, budgMisaTagetList);
 	}
+
+	// 비목코드 조회	
+	@Override
+	public List<RunBudgBean> findRunBudgList(Map<String, String> argsMap) {
+		List<RunBudgBean> runBudgList = budgetPreparationApplicationService.findRunBudgList(argsMap);
+		return runBudgList;
+	}
 }

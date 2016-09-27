@@ -40,5 +40,7 @@ public interface BudgetServiceFacade {
 	void deciBudgMisa(Map<String, String> argsMap);
 	
 	void appBudgMisa(List<BudgMisaBean> budgMisaList, List<BudgMisaTagetBean> budgMisaTagetList);
+	
+	List<RunBudgBean> findRunBudgList(Map<String, String> argsMap);
 
 }

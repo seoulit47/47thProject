@@ -34,7 +34,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="searchBimokBtn" taborder="6" cssclass="SearchBtn" left="58.79%" top="82" right="29.84%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBimokBtn" taborder="6" cssclass="SearchBtn" left="58.79%" top="82" right="29.84%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBimokBtn_onclick"/>
         <Div id="stc_year" taborder="7" text="회계년도" left="3.29%" top="85" right="88.75%" height="26" style="background:antiquewhite;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
         <Spin id="yearSpin" taborder="8" value="2016" onspin="yearSpin_onspin" left="12.64%" top="84" right="75.85%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
       </Layout>
@@ -52,7 +52,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">findRunBudgList</Col>
-            <Col id="URL">his::acc/budget/findRunBudgList.do</Col>
+            <Col id="URL">erp47::acc/budget/findRunBudgList.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsRunBudg=dsRunBudg</Col>
             <Col id="argument"/>
@@ -75,5 +75,21 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+include "scripts::commonTransaction.xjs";
+include "scripts::commonUtil.xjs";
+
+// 비목코드 조회
+this.searchBimokBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = this.yearSpin.value;
+	var bimokNm = this.bimokNmEd.value;
+	
+	argument = "accYear="+accYear + " bimokNm="+bimokNm;
+	
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findRunBudgList");
+}
+]]></Script>
   </Form>
 </FDL>
