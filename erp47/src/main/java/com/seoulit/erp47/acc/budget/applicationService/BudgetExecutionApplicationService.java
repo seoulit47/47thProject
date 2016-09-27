@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.seoulit.erp47.acc.budget.exception.BudgOrgDlineException;
 import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
+import com.seoulit.erp47.acc.budget.to.BudgMisaTagetBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
 
 public interface BudgetExecutionApplicationService {
@@ -16,4 +17,6 @@ public interface BudgetExecutionApplicationService {
 	List<BudgMisaBean> gindbudgMisaList(Map<String, String> argsMap);
 
 	void deciBudgMisa(Map<String, String> argsMap);
+	
+	void appBudgMisa(List<BudgMisaBean> budgMisaList, List<BudgMisaTagetBean> budgMisaTagetList);
 }

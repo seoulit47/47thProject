@@ -23,7 +23,7 @@
 	 	AND A.MISA_NO = #{misaNo}
  	</select>
  	
-	<!-- <insert id="insertBudgMisaTaget">
+	<insert id="insertBudgMisaTaget">
     	insert into AB_BUDG_MISA_TAGET(
            		BIMOK_CD
      			, VARIATION_DIV
@@ -62,6 +62,6 @@
 	  	WHERE BIMOK_CD = #{bimokCd}
     		AND ACC_YEAR = #{accYear}
       		AND MISA_NO = #{misaNo}
-	</update> -->
+	</update>
 	
 </mapper>

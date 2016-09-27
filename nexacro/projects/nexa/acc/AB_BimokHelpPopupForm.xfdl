@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AB_BimokHelpPopupForm" classname="AB_BimokHelpPopupForm" left="0" top="0" width="791" height="775" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div05" taborder="0" left="0%" top="4" right="0.13%" height="60" style="background:transparent URL('img::titleBar6.jpg');"/>
+        <Static id="Static00" taborder="1" text="비목코드조회" left="7.59%" top="10" right="74.59%" height="44" style="font:bold 15 Dotum;"/>
+        <Div id="Div03" taborder="2" left="1.26%" top="71" right="1.01%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="stc_bimok" taborder="3" text="비목명" onclick="subCodeStc_onclick" left="26.3%" top="85" right="60.56%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="bimokNmEd" taborder="4" left="41.09%" top="85" right="42.23%" height="27" class="AreaEdt"/>
+        <Grid id="bimokListGrid" taborder="5" binddataset="dsRunBudg" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" left="1.26%" top="140" right="1.01%" height="612" style="linetype:onlyvert;" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="293"/>
+                <Column size="90"/>
+                <Column size="97"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="예산비목"/>
+                <Cell col="1" text="예산액"/>
+                <Cell col="2" text="예산잔액"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="tree" edittype="tree" text="bind:bimokNm" treestartlevel="1" treelevel="bind:bimokLevel"/>
+                <Cell col="1" text="bind:budgAmount"/>
+                <Cell col="2" text="bind:budgBal"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchBimokBtn" taborder="6" cssclass="SearchBtn" left="58.79%" top="82" right="29.84%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="stc_year" taborder="7" text="회계년도" left="3.29%" top="85" right="88.75%" height="26" style="background:antiquewhite;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Spin id="yearSpin" taborder="8" value="2016" onspin="yearSpin_onspin" left="12.64%" top="84" right="75.85%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findRunBudgList</Col>
+            <Col id="URL">his::acc/budget/findRunBudgList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsRunBudg=dsRunBudg</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsRunBudg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cngAmount" type="STRING" size="256"/>
+          <Column id="allotPlanAmount" type="STRING" size="256"/>
+          <Column id="bimokCode" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="causeAmount" type="STRING" size="256"/>
+          <Column id="budgAmount" type="STRING" size="256"/>
+          <Column id="budgBal" type="STRING" size="256"/>
+          <Column id="bimokNm" type="STRING" size="256"/>
+          <Column id="AcntNm" type="STRING" size="256"/>
+          <Column id="bimokLevel" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

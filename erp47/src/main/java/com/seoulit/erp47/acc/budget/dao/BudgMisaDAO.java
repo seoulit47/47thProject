@@ -9,14 +9,14 @@ public interface BudgMisaDAO {
 
 	List<BudgMisaBean> selectBudgMisaList(Map<String, String> argsMap);
 
-/*	String getMisaNo();
-
 	void callDeciBudgMisa(Map<String, String> argsMap);
+	
+	//String getMisaNo();
 
 	void insertBudgMisa(BudgMisaBean budgMisaBean);
 
 	void updateBudgMisa(BudgMisaBean budgMisaBean);
 
-	void deleteBudgMisa(BudgMisaBean budgMisaBean);*/
+	void deleteBudgMisa(BudgMisaBean budgMisaBean);
 
 }

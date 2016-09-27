@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.seoulit.erp47.acc.budget.dao.BudgMisaDAO;
+import com.seoulit.erp47.acc.budget.dao.BudgMisaTagetDAO;
 import com.seoulit.erp47.acc.budget.dao.OrgDlineDAO;
 import com.seoulit.erp47.acc.budget.exception.BudgOrgDlineException;
 import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
+import com.seoulit.erp47.acc.budget.to.BudgMisaTagetBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
 
 
@@ -21,6 +23,8 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 	OrgDlineDAO orgDlineDAO;
 	@Autowired
 	BudgMisaDAO budgMisaDAO;
+	@Autowired
+	BudgMisaTagetDAO budgMisaTagetDAO;
 
     // 예산편성 마감 조회
 	@Override
@@ -64,7 +68,36 @@ public class BudgetExecutionApplicationServiceImpl implements BudgetExecutionApp
 	public void deciBudgMisa(Map<String, String> argsMap) {
 		argsMap.put("errorCode", "");
 		argsMap.put("errorMsg", "");
-		//budgMisaDAO.callDeciBudgMisa(argsMap);
+		budgMisaDAO.callDeciBudgMisa(argsMap);
+	}
+
+
+	@Override
+	public void appBudgMisa(List<BudgMisaBean> budgMisaList, List<BudgMisaTagetBean> budgMisaTagetList) {
+		for(BudgMisaBean budgMisaBean : budgMisaList){
+			String status = budgMisaBean.getStatus();
+			if(status.equals("inserted")){
+				budgMisaDAO.insertBudgMisa(budgMisaBean);
+			}else if(status.equals("updated")){
+				budgMisaDAO.updateBudgMisa(budgMisaBean);
+			}else if(status.equals("deleted")){
+				budgMisaTagetDAO.deleteBudgMisaTagetCascade(budgMisaBean);
+				budgMisaDAO.deleteBudgMisa(budgMisaBean);
+			}
+		}
+		
+		for(BudgMisaTagetBean budgMisaTagetBean : budgMisaTagetList){
+			String status = budgMisaTagetBean.getStatus();
+			
+			if(status.equals("inserted")){
+				budgMisaTagetDAO.insertBudgMisaTaget(budgMisaTagetBean);
+			}else if(status.equals("updated")){
+				budgMisaTagetDAO.updateBudgMisaTaget(budgMisaTagetBean);
+			}else if(status.equals("deleted")){
+				budgMisaTagetDAO.deleteBudgMisaTaget(budgMisaTagetBean);
+			}
+		}
+		
 	}
     
 }

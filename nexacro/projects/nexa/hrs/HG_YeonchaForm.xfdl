@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HG_YeonchaForm" classname="HG_YeonchaForm" left="0" top="0" width="1256" height="759" titletext="New Form" onload="HG_YeonchaForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleDiv" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="연차발생" left="4.78%" top="-4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="mainDiv" taborder="1" left="0.8%" top="55" right="1.11%" height="697" style="background:#edececff;" enableevent="false">
+          <Layouts>
+            <Layout width="1233" height="721">
+              <Grid id="holidayRequestGrid" taborder="70" binddataset="dsYeoncha" useinputpanel="false" autofittype="col" oncellclick="mainDiv_holidayRequestGrid_oncellclick" left="0.65%" top="40" right="1.22%" height="649">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="105"/>
+                      <Column size="124"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell rowspan="2" colspan="2" text="사원"/>
+                      <Cell col="2" rowspan="2" colspan="2" text="부서"/>
+                      <Cell col="4" rowspan="2" text="연차기준일"/>
+                      <Cell col="5" colspan="3" text="발생"/>
+                      <Cell col="8" rowspan="2" text="만근시 휴가일수"/>
+                      <Cell col="9" colspan="2" text="휴가보상 가능일수"/>
+                      <Cell col="11" rowspan="2" text="연월차 보전일수"/>
+                      <Cell row="1" col="5" text="연차"/>
+                      <Cell row="1" col="6" text="근속"/>
+                      <Cell row="1" col="7" text="조정"/>
+                      <Cell row="1" col="9" text="연차"/>
+                      <Cell row="1" col="10" text="보전"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:empNo"/>
+                      <Cell col="1" text="bind:empNm"/>
+                      <Cell col="2" text="bind:deptCd"/>
+                      <Cell col="3" text="bind:deptNm"/>
+                      <Cell col="4" text="bind:standardYeoncha" mask="####.##.##"/>
+                      <Cell col="5" displaytype="number" text="bind:yeonchaDays" mask="##일"/>
+                      <Cell col="6" displaytype="number" text="bind:gunsokDays" mask="##일"/>
+                      <Cell col="7" displaytype="number" text="bind:jojeongDays" mask="##일"/>
+                      <Cell col="8" displaytype="number" text="bind:totalHolidays" mask="##일"/>
+                      <Cell col="9" displaytype="number" text="bind:compsYeoncha" mask="##일"/>
+                      <Cell col="10" displaytype="number" edittype="masknumber" text="bind:compsBojeonDays" mask="##일"/>
+                      <Cell col="11" displaytype="number" text="bind:yeonwolchaBojeonDays" mask="##일"/>
+                    </Band>
+                  </Format>
+                  <Format id="format_copy"/>
+                </Formats>
+              </Grid>
+              <Static id="empnoStc" taborder="71" text="사번" onclick="subCodeStc_onclick" left="51.14%" top="6" right="45.37%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="empNoEd" taborder="72" enable="false" left="55.11%" top="7" right="37.99%" height="26"/>
+              <Edit id="empNmEd" taborder="73" enable="false" left="70.62%" top="7" right="22.32%" height="26"/>
+              <Static id="empnmStc" taborder="74" text="성명" onclick="subCodeStc_onclick" left="66.64%" top="7" right="29.87%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="hdateStc" taborder="75" text="기간" left="1.22%" top="6" right="91.72%" height="28" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+              <Spin id="yearSpin" taborder="76" value="2016" onspin="yearSpin_onspin" left="9.01%" top="5" right="84.82%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+              <Static id="Static02" taborder="77" text="년" left="15.75%" top="7" right="82.06%" height="24"/>
+              <Button id="yeonchaCreateBtn" taborder="78" text="자료생성" onclick="mainDiv_yeonchaCreateBtn_onclick" enable="false" left="78.41%" top="8" right="14.69%" height="25" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+              <Button id="empSearchBtn" taborder="79" onclick="mainDiv_empSearchBtn_onclick" cssclass="AddBtn" left="62.58%" top="7" right="34.9%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchYeonchaBtn" taborder="80" onclick="mainDiv_searchYeonchaBtn_onclick" cssclass="SearchBtn" left="89.45%" top="4" right="3.17%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsYeoncha">
+        <ColumnInfo>
+          <Column id="belongYear" type="STRING" size="256"/>
+          <Column id="standardYeoncha" type="STRING" size="256"/>
+          <Column id="yeonchaDays" type="STRING" size="256"/>
+          <Column id="gunsokDays" type="STRING" size="256"/>
+          <Column id="jojeongDays" type="STRING" size="256"/>
+          <Column id="totalHolidays" type="STRING" size="256"/>
+          <Column id="compsYeoncha" type="STRING" size="256"/>
+          <Column id="compsBojeonDays" type="STRING" size="256"/>
+          <Column id="yeonwolchaBojeonDays" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">searchYeonchaList</Col>
+            <Col id="URL">erp47::hrs/guntae/findYeonchaList.do</Col>
+            <Col id="outData">dsYeoncha=dsYeoncha</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">createYeoncha</Col>
+            <Col id="URL">erp47::hrs/guntae/createYeoncha.do</Col>
+            <Col id="inData">dsYeoncha=dsYeoncha:u</Col>
+            <Col id="outData">dsYeoncha=dsYeoncha</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 연차관리                                                         *
+*                                                                   *
+* @Path		    연차발생           	                        	*
+* @Description  연차조회, 발생 									*
+* @Author		박 영 희  					                        *
+* 								                                    *
+* Created on 2016. 09. 20.                             		        *
+*								                                    *
+********************************************************************/
+
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScript.xjs";
+include "scripts::hrsScripts.xjs";
+include "scripts::commonTransaction.xjs";
+include "scripts::commonPopup.xjs";
+
+
+
+/***************************************************************************************************
+*                                          변수 선언부                                            *
+***************************************************************************************************/
+var belongYear;
+var empNo;
+var empNm;
+var deptCd;
+var deptNm;
+var crrentRow;
+var countEmp;
+var pms;
+var deptNm;
+
+
+
+
+/***************************************************************************************************
+*                                         callBack                                                 *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)	{	
+		this.gfn_errorPopup(svcID, errorMsg);
+		return;
+	
+	}else{	
+		if(svcID=="searchYeonchaList"){
+			var rowCount = this.dsYeoncha.getRowCount();
+			
+			if(rowCount== 0){
+				alert("조회 내용이 없습니다.");
+				return;
+		
+			}
+		}
+		
+		if(svcID=="createYeoncha"){
+			alert("정상 처리되었습니다.");
+		}
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                         onload Event                                      	   *
+***************************************************************************************************/
+this.HG_YeonchaForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	belongYear = this.mainDiv.yearSpin.value;
+	empNo = application.gdsEmp.getColumn(0,"empNo");
+	empNm = application.gdsEmp.getColumn(0,"empNm");
+	deptCd = application.gdsEmp.getColumn(0,"deptCd");
+	deptNm = application.gdsEmp.getColumn(0,"deptNm");
+	
+	this.mainDiv.empNoEd.set_value(empNo);
+	this.mainDiv.empNmEd.set_value(empNm);
+	
+	pms = application.gdsEmp.getColumn(0, "pms");
+	
+	if(pms == 'admmin' && deptNm == '인사팀') {
+		this.mainDiv.yeonchaCreateBtn.set_enable(true);
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                         사원조회  버튼 클릭 Event	                       	   *
+***************************************************************************************************/
+this.mainDiv_empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnEmpPopup();
+}
+
+
+
+/***************************************************************************************************
+*                                         사원 셋팅	                                       	   *
+***************************************************************************************************/
+this.setEmpInfo=function(empNo,empNm){
+	this.mainDiv.empNmEd.set_value(empNm);
+	this.mainDiv.empNoEd.set_value(empNo);
+}
+
+
+
+/***************************************************************************************************
+*                                         조회 버튼 클릭 Event     		                       *
+***************************************************************************************************/
+this.mainDiv_searchYeonchaBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var argument = 'empNo='+empNo+' belongYear='+belongYear;
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("searchYeonchaList");
+}
+
+
+
+/***************************************************************************************************
+*                                         자료생성 버튼 클릭 Event     		                   *
+***************************************************************************************************/
+this.mainDiv_yeonchaCreateBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var argument = 'empNo='+empNo+' belongYear='+belongYear;
+	this.dsService.setColumn(1,"argument",argument);
+	this.gfnService("createYeoncha");
+}
+]]></Script>
+  </Form>
+</FDL>

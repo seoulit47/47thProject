@@ -37,7 +37,7 @@ public class BudgMisaController {
 	// 예산목간전용 조회
 	@RequestMapping("acc/budget/findBudgMisaList.do")
 	public void findBudgMisaList(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println("컨트롤러도달!");
+		
 	    PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData); 
@@ -84,7 +84,7 @@ public class BudgMisaController {
 		dataSetBeanMapper.beansToDataset(outData, budgMisaTagetList, BudgMisaTagetBean.class);
 	}
 	
-	/*
+	
 	// 예상목간전용 저장
 	@RequestMapping("acc/budget/appBudgMisa.do")
 	public void appBudgMisa(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -92,5 +92,5 @@ public class BudgMisaController {
 		List<BudgMisaBean> budgMisaList = dataSetBeanMapper.datasetToBeans(inData, BudgMisaBean.class);
 		List<BudgMisaTagetBean> budgMisaTagetList = dataSetBeanMapper.datasetToBeans(inData, BudgMisaTagetBean.class);
 		budgetServiceFacade.appBudgMisa(budgMisaList, budgMisaTagetList);
-	}*/
+	}
 }
