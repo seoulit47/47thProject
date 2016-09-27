@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HM_ReportForm" classname="HM_ReportForm" left="0" top="0" width="552" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="main" taborder="0" left="1.09%" top="57" right="1.63%" height="699" style="background:whitesmoke;border:1 solid indigo ;bordertype:round 5 5 ;" cssclass="AreaShp">
+          <Layouts>
+            <Layout>
+              <WebBrowser id="WebBrowser00" left="0.93%" top="7" right="1.31%" height="714" taborder="0"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" left="0%" top="0" right="0%" height="48" style="background:transparent URL('img::titleBar1.jpg');"/>
+        <Static id="Static01" taborder="2" text="인사기록카드" left="8.33%" top="-3" right="37.14%" height="48" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 인사기록카드                                                    *
+*                                                                   *
+* @Path		    인사기록카드 출력                                 *
+* @Description  인사기록카드 팝업 화면                           *
+* @Author		김봉진  				                            *
+* 								                                    *
+* Created on 2016. 9. 07.                             		        *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonTran.xjs";
+include "scripts::commonScripts.xjs";  
+include "scripts::commonUtil.xjs";
+include "scripts::commonHrsPopup.xjs";
+include "scripts::commonDrPopup.xjs";
+
+
+this.HM_ReportForm_oninit = function(obj:Form, e:nexacro.InitEventInfo)
+{
+
+alert(this.parent.selectEmp);
+//this.main.WebBrowser00.set_url("http://192.168.1.135/his/hrs/emp/findEmpReport.do?empCode="+this.parent.selectEmp);
+this.main.WebBrowser00.set_url("http://localhost:8282/his/hrs/emp/findEmpReport.do?empCode="+this.parent.selectEmp);
+}
+]]></Script>
+  </Form>
+</FDL>
