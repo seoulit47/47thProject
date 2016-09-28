@@ -33,7 +33,7 @@
                 </Dataset>
               </Radio>
               <Static id="subCodeStc01" taborder="29" text="승인여부" onclick="subCodeStc_onclick" left="1.06%" top="92" right="92.24%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="reGdsDeptEd" taborder="30" left="8.9%" top="13" right="81.63%" height="30"/>
+              <Edit id="reGdsDeptEd" taborder="30" left="8.9%" top="13" right="81.63%" height="30" enable="true"/>
               <Static id="subCodeStc00" taborder="31" text="반품부서" onclick="subCodeStc_onclick" left="1.06%" top="13" right="92.24%" height="30" style="background:darkseagreen;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Button id="searchCustBtn" taborder="32" left="18.94%" top="12" right="78.53%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDiv_searchCustBtn_onclick"/>
               <Edit id="regdsAnspNmEd" taborder="33" left="40.65%" top="8" right="48.24%" height="32"/>
@@ -54,10 +54,79 @@
               <Static id="subCodeStc11" taborder="48" text="반품내용" onclick="subCodeStc_onclick" left="62.29%" top="129" right="32.16%" height="30" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="subCodeStc12" taborder="49" text="반품부서코드" onclick="subCodeStc_onclick" left="1.06%" top="53" right="92.24%" height="30" style="background:darkseagreen;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Edit id="reGdsDeptCdEd" taborder="50" left="8.98%" top="53" right="81.55%" height="30"/>
-              <Button id="searchBtn" taborder="51" cssclass="searchBtn" left="23.35%" top="13" right="68.73%" height="31" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchBtn" taborder="51" cssclass="searchBtn" left="23.35%" top="13" right="68.73%" height="31" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDiv_searchBtn_onclick"/>
             </Layout>
           </Layouts>
         </Div>
+        <Grid id="gdsReturnGrid" taborder="2" binddataset="dsGdsReturn" autoenter="select" useinputpanel="false" left="0.96%" top="252" right="0.64%" height="408">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="78"/>
+                <Column size="79"/>
+                <Column size="117"/>
+                <Column size="105"/>
+                <Column size="81"/>
+                <Column size="89"/>
+                <Column size="87"/>
+                <Column size="81"/>
+                <Column size="84"/>
+                <Column size="80"/>
+                <Column size="87"/>
+                <Column size="88"/>
+                <Column size="105"/>
+                <Column size="112"/>
+                <Column size="83"/>
+                <Column size="106"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="반품순번"/>
+                <Cell col="1" text="반품일"/>
+                <Cell col="2" text="반품창고 코드"/>
+                <Cell col="3" text="반품부서코드"/>
+                <Cell col="4" text="반품부서"/>
+                <Cell col="5" text="반품 물품명"/>
+                <Cell col="6" text="반품 사유"/>
+                <Cell col="7" text="입고순번"/>
+                <Cell col="8" text="입고일"/>
+                <Cell col="9" text="유효기간"/>
+                <Cell col="10" text="반품단위"/>
+                <Cell col="11" text="반품수량"/>
+                <Cell col="12" edittype="normal" text="반품단가"/>
+                <Cell col="13" edittype="normal" text="반품내용"/>
+                <Cell col="14" text="승인처리"/>
+                <Cell col="15" text="승인자"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:returnSeq"/>
+                <Cell col="1" text="bind:returnDate"/>
+                <Cell col="2" edittype="none" text="bind:returnWhCd"/>
+                <Cell col="3" text="bind:returnDeptCd"/>
+                <Cell col="4" edittype="none" text="bind:regdsDept"/>
+                <Cell col="5" edittype="none" text="bind:regdsAnspName"/>
+                <Cell col="6" edittype="none" text="bind:returnCau"/>
+                <Cell col="7" text="bind:whsSeq"/>
+                <Cell col="8" edittype="none" text="bind:whsDate"/>
+                <Cell col="9" edittype="none" text="bind:vaildPrid"/>
+                <Cell col="10" edittype="none" text="bind:regdsUnit"/>
+                <Cell col="11" edittype="none" text="bind:regdsQnt"/>
+                <Cell col="12" text="bind:regdsPrice"/>
+                <Cell col="13" text="bind:regdsCau"/>
+                <Cell col="14" text="bind:aprvYn"/>
+                <Cell col="15" text="bind:AprvWorker"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="gdsSuccesBtn" taborder="3" cssclass="GdsSuccesBtn" left="0.96%" top="664" right="91.76%" height="32" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="GdsSuccesBtn" onclick="gdsSuccesBtn_onclick"/>
+        <Button id="gdsReturnBtn" taborder="4" cssclass="GdsReturnBtn" left="9.28%" top="664" right="83.44%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="gdsReturnBtn" onclick="gdsReturnBtn_onclick"/>
+        <Button id="batchBtn" taborder="5" cssclass="batchBtn" left="84.24%" top="669" right="8.72%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="batchBtn" onclick="batchBtn_onclick"/>
+        <Button id="addBtn" taborder="6" cssclass="addBtn" left="92.8%" top="669" right="4.88%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addBtn" onclick="addBtn_onclick"/>
+        <Button id="delBtn" taborder="7" cssclass="delBtn" left="95.84%" top="669" right="1.6%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delBtn" onclick="delBtn_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -94,13 +163,13 @@
         <Rows>
           <Row>
             <Col id="serviceID">findGdsReturnList</Col>
-            <Col id="URL">his::log/demd/findGdsReturnList.do</Col>
+            <Col id="URL">erp47::log/demd/findGdsReturnList.do</Col>
             <Col id="outData">dsGdsReturn=dsGdsReturn</Col>
             <Col id="callbackFunc">findGdsReturnListCallback</Col>
           </Row>
           <Row>
             <Col id="serviceID">batchGdsReturnProcess</Col>
-            <Col id="URL">his::log/demd/batchGdsReturnProcess.do</Col>
+            <Col id="URL">erp47::log/demd/batchGdsReturnProcess.do</Col>
             <Col id="inData">dsGdsReturn=dsGdsReturn:u</Col>
           </Row>
         </Rows>
@@ -126,8 +195,6 @@
       <BindItem id="item5" compid="searchDiv.reGdsQntEd" propid="value" datasetid="dsGdsReturn" columnid="regdsQnt"/>
       <BindItem id="item6" compid="searchDiv.edGdsPriceEd" propid="value" datasetid="dsGdsReturn" columnid="regdsPrice"/>
       <BindItem id="item7" compid="searchDiv.reGdsCauEd" propid="value" datasetid="dsGdsReturn" columnid="regdsCau"/>
-      <BindItem id="item8" compid="searchDiv.reGdsDeptEd" propid="value" datasetid="dsGdsReturn" columnid="regdsDept"/>
-      <BindItem id="item9" compid="searchDiv.reGdsDeptCdEd" propid="value" datasetid="dsGdsReturn" columnid="returnDeptCd"/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[
 
@@ -154,10 +221,125 @@ include "scripts::commonScripts.xjs";
 
 
 
-
+var radio;
 this.searchDiv_searchCustBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnCodePopup("GP500", "false");
+}
+
+this.searchDiv_searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	radio=this.searchDiv.GdsRadio.value;
+	this.gfnService("findGdsReturnList",false);
+}
+
+this.findGdsReturnListCallback = function(svcID, errorCode, errorMsg)
+{
+	
+	//trace(this.dsGdsReturn.saveXML());
+	if(radio == 1)
+	{
+		this.dsGdsReturn.filter("");
+		this.dsGdsReturn.filter("aprvYn=='Y'");
+	}
+	else if(radio == 2)
+	{
+	    this.dsGdsReturn.filter("");
+	    this.dsGdsReturn.filter("aprvYn=='N'");  
+	}
+	
+	
+}
+
+this.Today = function ()
+{
+    var sToday = "";
+    var objDate = new Date();
+    var sToday  = objDate.getFullYear() + "";
+    var sMonth = objDate.getMonth()+1;
+    var sDate = objDate.getDate();
+    
+    if(sMonth.toString().length == 1){
+      sMonth = "0" + sMonth;
+    }
+   if(sDate.toString().length == 1){
+      sDate = "0" + sDate;
+    }
+    sToday = sToday+sMonth+sDate;
+    return sToday;
+}
+
+
+this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchGdsReturnProcess", "false");
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsGdsReturn.addRow();
+	var count = this.gdsReturnGrid.currentrow;
+	var setNo = this.gdsReturnGrid.currentrow+1;
+	
+	var objDate = new Date();
+	var year = objDate.getFullYear() +"";
+	var cutYear = year.substr(2,3);
+	
+	var setDownCount = "RE"+cutYear+"0"+setNo;
+	var setUpCount = "RE"+cutYear+setNo;
+	
+	var setSeq = this.gdsReturnGrid.currentrow+1;
+	
+	
+	if(setNo < 10){
+		this.dsGdsReturn.setColumn(count, "returnSeq", setDownCount);
+	}else{
+		this.dsGdsReturn.setColumn(count, "returnSeq", setUpCount);
+	}
+		
+	if(setSeq < 10){
+		var setWhsSeq = "WHS"+"000"+setSeq;
+		this.dsGdsReturn.setColumn(count, "whsSeq", setWhsSeq);
+	}else if(setSeq < 100){
+		var setWhsSeq = "WHS"+"00"+setSeq;
+		this.dsGdsReturn.setColumn(count, "whsSeq", setWhsSeq);
+	}else if(setSeq < 1000){
+		var setWhsSeq = "WHS"+"0"+setSeq;
+		this.dsGdsReturn.setColumn(count, "whsSeq", setWhsSeq);
+	}else if(setSeq >= 1000){
+		var setWhsSeq = "WHS"+setSeq;
+		this.dsGdsReturn.setColumn(count, "whsSeq", setWhsSeq);
+	}
+
+	
+	this.dsGdsReturn.setColumn(count, "returnDate", this.Today());
+	this.dsGdsReturn.setColumn(count, "returnHistSeq", setNo+1);
+	this.dsGdsReturn.setColumn(count, "aprvYn", "N");
+}
+
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsGdsReturn.deleteRow(this.gdsReturnGrid.currentrow);
+}
+
+this.gdsSuccesBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var selCount = this.gdsReturnGrid.currentrow;
+	this.dsGdsReturn.setColumn(selCount,"aprvYn", "Y");
+}
+
+this.gdsReturnBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var cancelCount = this.gdsReturnGrid.currentrow;
+	this.dsGdsReturn.setColumn(cancelCount,"aprvYn", "N");
+}
+this.setCode = function(parentCode, arrRtn, args){
+
+		
+		
+				this.searchDiv.reGdsDeptEd.set_value(arrRtn[1]);
+				this.searchDiv.reGdsDeptCdEd.set_value(arrRtn[0]);
+
 }
 ]]></Script>
   </Form>
