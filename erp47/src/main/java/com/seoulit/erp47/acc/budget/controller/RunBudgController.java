@@ -42,7 +42,7 @@ public class RunBudgController {
 		dataSetBeanMapper.beansToDataset(outData, runBudgList, RunBudgBean.class);
 	}
 	
-	/*// 비목코드조회
+	// 비목코드조회
 	@RequestMapping("acc/budget/findRunBudgList.do")
 	public void findRunBudgList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 	    PlatformData inData = (PlatformData)request.getAttribute("inData");
@@ -50,7 +50,7 @@ public class RunBudgController {
 	    Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);   
 		List<RunBudgBean> runBudgList = budgetServiceFacade.findRunBudgList(argsMap);
 		dataSetBeanMapper.beansToDataset(outData, runBudgList, RunBudgBean.class);
-	}*/
+	}
 }
 
 

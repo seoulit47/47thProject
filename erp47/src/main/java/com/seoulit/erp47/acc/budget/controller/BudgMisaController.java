@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
+import com.nexacro.xapi.data.VariableList;
 import com.seoulit.erp47.acc.budget.service.BudgetServiceFacade;
 import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
 import com.seoulit.erp47.acc.budget.to.BudgMisaTagetBean;
@@ -55,13 +56,13 @@ public class BudgMisaController {
 		dataSetBeanMapper.beansToDataset(outData, budgMisaTagetList, BudgMisaTagetBean.class);
 	}
 	
-	/*@RequestMapping("acc/budget/getMisaNo.do")
+	@RequestMapping("acc/budget/getMisaNo.do")
 	public void getMisaNo(HttpServletRequest request, HttpServletResponse response){
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		String misaNo = budgetServiceFacade.getMisaNo();
 		VariableList variableList = outData.getVariableList();
 		variableList.add("misaNo", misaNo);
-	}*/
+	}
 	
 	// 전용확정
 	@RequestMapping("acc/budget/deciBudgMisa.do")

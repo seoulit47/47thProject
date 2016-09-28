@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BimokUseDeptForm" classname="AB_BimokUseDeptForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+  <Form id="AB_BimokUseDeptForm" classname="AB_BimokUseDeptForm" left="0" top="0" width="1250" height="768" titletext="New Form">
     <Layouts>
       <Layout>
-        <Div id="Div00" taborder="0" left="0.68%" top="2" right="0.88%" height="63" style="background:#35363bff URL('img::titleBar6.jpg') stretch;"/>
+        <Div id="Div00" taborder="0" left="0.48%" top="2" right="0.08%" height="63" style="background:#35363bff URL('img::titleBar6.jpg') stretch;"/>
         <Static id="Static00" taborder="1" text="예산사용부서등록" left="5.37%" top="4" right="75.39%" height="51" style="color:black;font:bold 15 arial;"/>
         <Div id="Div01" taborder="2" left="0.68%" top="73" right="0.88%" height="56" style="background:#edececff;border:1 solid lightsteelblue ;color:#444444ff;"/>
         <Static id="stc_year" taborder="3" text="회계년도" onclick="subCodeStc_onclick" left="3.03%" top="84" right="89.94%" height="35" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>

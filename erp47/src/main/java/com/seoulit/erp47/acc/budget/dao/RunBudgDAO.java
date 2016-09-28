@@ -9,8 +9,8 @@ public interface RunBudgDAO {
 
 	List<RunBudgBean> selectRunBudg(Map<String, String> argsMap);
 
-	/*List<RunBudgBean> selectRunBudgList(Map<String, String> argsMap);
+	List<RunBudgBean> selectRunBudgList(Map<String, String> argsMap);
 
-	RunBudgBean selectRunBimok(Map<String, String> argsMap);
-	*/
+	//RunBudgBean selectRunBimok(Map<String, String> argsMap);
+	
 }

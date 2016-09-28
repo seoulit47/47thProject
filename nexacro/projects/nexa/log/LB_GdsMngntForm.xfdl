@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LB_GdsMngntForm" classname="LB_GdsMngntForm" left="0" top="0" width="1250" height="768" titletext="물품 관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="0.24%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="물품 관리" left="4.8%" top="-4" right="81.68%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+        <Static id="bigGrpCdStc" taborder="2" text="대분류" onclick="subCodeStc_onclick" left="1.36%" top="61" right="91.68%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="searchGdsCdStc" taborder="3" text="물품코드" onclick="subCodeStc_onclick" left="1.36%" top="101" right="91.68%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="searchBigGrpCdEd" taborder="4" left="8.56%" top="61" right="85.04%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Edit id="searchGdsCdEd" taborder="5" left="8.56%" top="101" right="85.04%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Edit id="searchBigGrpCdNmEd" taborder="6" left="18%" top="61" right="70%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="searchGdsNmStc" taborder="7" text="물품명" onclick="subCodeStc_onclick" left="18%" top="101" right="75.04%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="searchGdsNmEd" taborder="8" left="25.2%" top="101" right="56.4%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="midGrpCdStc" taborder="9" text="중분류" onclick="subCodeStc_onclick" left="30.88%" top="61" right="62.16%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="searchMidGrpCdEd" taborder="10" left="38.08%" top="61" right="55.52%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Edit id="searchMidGrpCdNmEd" taborder="11" left="47.52%" top="61" right="40.48%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="smGrpCdStc" taborder="12" text="소분류" onclick="subCodeStc_onclick" left="60.4%" top="61" right="32.64%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="searchSmGrpCdEd" taborder="13" left="67.6%" top="61" right="26%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Edit id="searchSmGrpCdNmEd" taborder="14" left="77.04%" top="61" right="10.96%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Grid id="gdsGrid" taborder="15" binddataset="dsGds" useinputpanel="false" autofittype="col" oncellclick="gdsGrid_oncellclick" left="1.36%" top="141" right="1.36%" height="283">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="300"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="대분류"/>
+                <Cell col="1" text="중분류"/>
+                <Cell col="2" text="소분류"/>
+                <Cell col="3" text="물품코드"/>
+                <Cell col="4" text="물품명"/>
+                <Cell col="5" text="EDI코드"/>
+                <Cell col="6" text="수불단위"/>
+                <Cell col="7" text="저장품"/>
+                <Cell col="8" text="창고"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="text" text="bind:bigGrpCd"/>
+                <Cell col="1" displaytype="text" edittype="text" text="bind:midGrpCd"/>
+                <Cell col="2" displaytype="text" edittype="text" text="bind:smGrpCd"/>
+                <Cell col="3" displaytype="text" edittype="text" text="bind:gdsCd"/>
+                <Cell col="4" displaytype="text" edittype="text" text="bind:gdsNm"/>
+                <Cell col="5" text="bind:ediCd"/>
+                <Cell col="6" text="bind:subulUnit"/>
+                <Cell col="7" text="bind:spliesDiv"/>
+                <Cell col="8" text="bind:wh"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="gdsBigGrpCdStc" taborder="16" text="대분류 코드" onclick="subCodeStc_onclick" left="20.56%" top="451" right="72.48%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="gdsBigGrpCdEd" taborder="17" enable="false" left="27.68%" top="451" right="65.92%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="gdsMidGrpCdStc" taborder="18" text="중분류 코드" onclick="subCodeStc_onclick" left="38.48%" top="451" right="54.56%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="gdsMidGrpCdEd" taborder="19" enable="false" left="45.6%" top="451" right="48%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="gdsSmGrpCdStc" taborder="20" text="소분류 코드" onclick="subCodeStc_onclick" left="56.4%" top="451" right="36.64%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="gdsSmGrpCdEd" taborder="21" enable="false" left="63.52%" top="451" right="30.08%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="gdsCdStc" taborder="22" text="물품코드" onclick="subCodeStc_onclick" left="20.56%" top="499" right="72.48%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="gdsCdEd" taborder="23" enable="false" left="27.68%" top="499" right="63.36%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="gdsNmStc" taborder="24" text="물품명" onclick="subCodeStc_onclick" left="38.4%" top="499" right="54.64%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="gdsNmEd" taborder="25" left="45.68%" top="499" right="27.6%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="ediCdStc" taborder="26" text="EDI 코드" onclick="subCodeStc_onclick" left="74.32%" top="451" right="18.72%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="ediCdEd" taborder="27" left="81.44%" top="451" right="9.76%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="vmiCdStc" taborder="28" text="VMI코드 여부" onclick="subCodeStc_onclick" left="74.32%" top="499" right="14.24%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="standStc" taborder="29" text="규격" onclick="subCodeStc_onclick" left="20.56%" top="547" right="72.48%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="standEd" taborder="30" left="27.68%" top="547" right="63.36%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="ordUnitStc" taborder="31" text="발주단위" onclick="subCodeStc_onclick" left="38.48%" top="547" right="54.56%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="ordUnitEd" taborder="32" left="45.6%" top="547" right="45.44%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="subulUnitStc" taborder="33" text="수불단위" onclick="subCodeStc_onclick" left="20.56%" top="595" right="72.48%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="subulUnitEd" taborder="34" left="27.68%" top="595" right="63.36%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="cngQntStc" taborder="35" text="환산수량" onclick="subCodeStc_onclick" left="38.48%" top="595" right="54.56%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="cngQntEd" taborder="36" left="45.6%" top="595" right="45.44%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="useDeptStc" taborder="37" text="사용부서" onclick="subCodeStc_onclick" left="56.32%" top="547" right="36.64%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="useDeptCombo" taborder="38" innerdataset="dsUseDept" codecolumn="value" datacolumn="value" left="63.6%" top="547" right="27.52%" height="27" class="AreaCombo"/>
+        <Static id="insurDivStc" taborder="39" text="보험구분" onclick="subCodeStc_onclick" left="74.24%" top="547" right="18.64%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="insurDivCombo" taborder="40" innerdataset="dsInsurDiv" codecolumn="value" datacolumn="value" left="81.52%" top="547" right="9.6%" height="27" class="AreaCombo"/>
+        <Static id="disuseDivStc" taborder="41" text="불용구분" onclick="subCodeStc_onclick" left="74.24%" top="595" right="18.64%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="disuseDivCombo" taborder="42" innerdataset="dsDisuseDiv" codecolumn="value" datacolumn="value" left="81.52%" top="595" right="9.6%" height="27" class="AreaCombo"/>
+        <Static id="disuseDateStc" taborder="43" text="불용일자" onclick="subCodeStc_onclick" left="56.32%" top="595" right="36.64%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="spliesDivStc" taborder="44" text="저장품구분" onclick="subCodeStc_onclick" left="20.56%" top="643" right="72.32%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="spliesDivCombo" taborder="45" innerdataset="dsSpliesDiv" codecolumn="value" datacolumn="value" oncloseup="spliesCombo_oncloseup" left="27.84%" top="643" right="63.28%" height="27" class="AreaCombo"/>
+        <Static id="whStc" taborder="46" text="창고" onclick="subCodeStc_onclick" left="38.48%" top="643" right="54.56%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="whEd" taborder="47" enable="false" left="45.6%" top="643" right="48%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <ImageViewer id="goodsImg" taborder="48" stretch="fit" left="1.36%" top="440" right="81.92%" height="241" style="bordertype:round 25 25 ;"/>
+        <Button id="searchGdsImgBtn" taborder="49" text="사진 찾아보기" onclick="clickBtn" left="5.12%" top="696" right="86.88%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="searchBigGrpCdBtn" taborder="50" onclick="clickBtn" left="15.2%" top="59" right="82.24%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchMidGrpCdBtn" taborder="51" onclick="clickBtn" left="44.72%" top="59" right="52.72%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchGdsCdBtn" taborder="52" onclick="clickBtn" left="15.2%" top="99" right="82.24%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchSmGrpCdBtn" taborder="53" onclick="clickBtn" left="74.24%" top="59" right="23.2%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="54" onclick="clickBtn" left="91.52%" top="59" right="1.28%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBtn" taborder="55" onclick="clickBtn" left="72.16%" top="704" right="20.64%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchBtn" taborder="56" onclick="clickBtn" left="89.44%" top="704" right="3.36%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delBtn" taborder="57" onclick="clickBtn" left="80.88%" top="704" right="11.92%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchGdsBigGrpBtn" taborder="58" onclick="clickBtn" left="34.72%" top="449" right="62.72%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchGdsMidGrpBtn" taborder="59" onclick="clickBtn" left="52.64%" top="448" right="44.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchGdsSmGrpBtn" taborder="60" onclick="clickBtn" left="70.56%" top="449" right="26.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchWhBtn" taborder="61" onclick="clickBtn" left="52.64%" top="640" right="44.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Calendar id="disuseDateCal" taborder="62" left="63.6%" top="595" right="27.52%" height="27"/>
+        <CheckBox id="vmiCdCheck" taborder="63" left="86.4%" top="498" right="11.28%" height="28" style="buttonalign:center middle;buttonsize:20;align:center middle;font:12 arial;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="gdsBigGrpCdEd" propid="value" datasetid="dsGds" columnid="bigGrpCd"/>
+      <BindItem id="item1" compid="gdsMidGrpCdEd" propid="value" datasetid="dsGds" columnid="midGrpCd"/>
+      <BindItem id="item2" compid="gdsSmGrpCdEd" propid="value" datasetid="dsGds" columnid="smGrpCd"/>
+      <BindItem id="item3" compid="gdsCdEd" propid="value" datasetid="dsGds" columnid="gdsCd"/>
+      <BindItem id="item4" compid="gdsNmEd" propid="value" datasetid="dsGds" columnid="gdsNm"/>
+      <BindItem id="item6" compid="standEd" propid="value" datasetid="dsGds" columnid="stand"/>
+      <BindItem id="item7" compid="ordUnitEd" propid="value" datasetid="dsGds" columnid="ordUnit"/>
+      <BindItem id="item10" compid="subulUnitEd" propid="value" datasetid="dsGds" columnid="subulUnit"/>
+      <BindItem id="item11" compid="cngQntEd" propid="value" datasetid="dsGds" columnid="cngQnt"/>
+      <BindItem id="item8" compid="useDeptCombo" propid="value" datasetid="dsGds" columnid="useDept"/>
+      <BindItem id="item9" compid="insurDivCombo" propid="value" datasetid="dsGds" columnid="insurDiv"/>
+      <BindItem id="item13" compid="disuseDivCombo" propid="value" datasetid="dsGds" columnid="disuseDiv"/>
+      <BindItem id="item14" compid="spliesDivCombo" propid="value" datasetid="dsGds" columnid="spliesDiv"/>
+      <BindItem id="item15" compid="whEd" propid="value" datasetid="dsGds" columnid="wh"/>
+      <BindItem id="item12" compid="disuseDateCal" propid="value" datasetid="dsGds" columnid="disuseDate"/>
+      <BindItem id="item5" compid="vmiCdCheck" propid="value" datasetid="dsGds" columnid="vmiYb"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsGds" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="gdsNm" type="STRING" size="256"/>
+          <Column id="ediCd" type="STRING" size="256"/>
+          <Column id="vmiYb" type="STRING" size="256"/>
+          <Column id="useDept" type="STRING" size="256"/>
+          <Column id="stand" type="STRING" size="256"/>
+          <Column id="ordUnit" type="STRING" size="256"/>
+          <Column id="subulUnit" type="STRING" size="256"/>
+          <Column id="cngQnt" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtPrice" type="STRING" size="256"/>
+          <Column id="ctrtStartDate" type="STRING" size="256"/>
+          <Column id="ctrtEndDate" type="STRING" size="256"/>
+          <Column id="spliesDiv" type="STRING" size="256"/>
+          <Column id="wh" type="STRING" size="0"/>
+          <Column id="rackNo" type="STRING" size="256"/>
+          <Column id="insurDiv" type="STRING" size="256"/>
+          <Column id="disuseDate" type="STRING" size="256"/>
+          <Column id="disuseDiv" type="STRING" size="256"/>
+          <Column id="picLoc" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="regWorkerId" type="STRING" size="256"/>
+          <Column id="regWorkerIp" type="STRING" size="256"/>
+          <Column id="regDate" type="STRING" size="256"/>
+          <Column id="modWorkerId" type="STRING" size="256"/>
+          <Column id="modWorkerIp" type="STRING" size="256"/>
+          <Column id="modDate" type="STRING" size="256"/>
+          <Column id="midGrpCd" type="STRING" size="256"/>
+          <Column id="smGrpCd" type="STRING" size="256"/>
+          <Column id="bigGrpCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findGdsList</Col>
+            <Col id="URL">erp47::log/base/findGdsList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsGds=dsGds</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">LCgdsMngtCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">saveImg</Col>
+            <Col id="URL">erp47::log/base/saveImg.do</Col>
+            <Col id="inData">dsImg=dsImg:u</Col>
+            <Col id="callbackFunc">LCgdsMngtCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">callGdsCd</Col>
+            <Col id="URL">erp47::log/base/callGdsCd.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">postCode=postCode</Col>
+            <Col id="callbackFunc">LCgdsMngtCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchGdsProcess</Col>
+            <Col id="URL">erp47::log/base/batchGdsProcess.do</Col>
+            <Col id="inData">dsGds=dsGds:u</Col>
+            <Col id="callbackFunc">LCgdsMngtCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsUseDept" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">기획부</Col>
+          </Row>
+          <Row>
+            <Col id="value">원무팀</Col>
+          </Row>
+          <Row>
+            <Col id="value">연구센터</Col>
+          </Row>
+          <Row>
+            <Col id="value">방사선치료연구팀</Col>
+          </Row>
+          <Row>
+            <Col id="value">비뇨기과</Col>
+          </Row>
+          <Row>
+            <Col id="value">회계팀</Col>
+          </Row>
+          <Row>
+            <Col id="value">정형외과</Col>
+          </Row>
+          <Row>
+            <Col id="value">마취통증의학과</Col>
+          </Row>
+          <Row>
+            <Col id="value">순환기내과</Col>
+          </Row>
+          <Row>
+            <Col id="value">병리과</Col>
+          </Row>
+          <Row>
+            <Col id="value">가정의학과</Col>
+          </Row>
+          <Row>
+            <Col id="value">인사총무팀</Col>
+          </Row>
+          <Row>
+            <Col id="value">안과</Col>
+          </Row>
+          <Row>
+            <Col id="value">피부과</Col>
+          </Row>
+          <Row>
+            <Col id="value">임상연구실</Col>
+          </Row>
+          <Row>
+            <Col id="value">소아청소년과</Col>
+          </Row>
+          <Row>
+            <Col id="value">신경정신과</Col>
+          </Row>
+          <Row>
+            <Col id="value">외과</Col>
+          </Row>
+          <Row>
+            <Col id="value">병동간호과</Col>
+          </Row>
+          <Row>
+            <Col id="value">핵의학과</Col>
+          </Row>
+          <Row>
+            <Col id="value">실험방사선연구실</Col>
+          </Row>
+          <Row>
+            <Col id="value">수술실</Col>
+          </Row>
+          <Row>
+            <Col id="value">흉부외과</Col>
+          </Row>
+          <Row>
+            <Col id="value">산부인과</Col>
+          </Row>
+          <Row>
+            <Col id="value">방사선종양학과</Col>
+          </Row>
+          <Row>
+            <Col id="value">신경과</Col>
+          </Row>
+          <Row>
+            <Col id="value">신경외과</Col>
+          </Row>
+          <Row>
+            <Col id="value">치과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsInsurDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">보험</Col>
+          </Row>
+          <Row>
+            <Col id="value">비보험</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSpliesDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">저장품</Col>
+          </Row>
+          <Row>
+            <Col id="value">비저장품</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDisuseDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">생산중단</Col>
+          </Row>
+          <Row>
+            <Col id="value">일시품절</Col>
+          </Row>
+          <Row>
+            <Col id="value">거래처폐쇄</Col>
+          </Row>
+          <Row>
+            <Col id="value">사용중지</Col>
+          </Row>
+          <Row>
+            <Col id="value">품목대체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsImg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="imgName" type="STRING" size="256"/>
+          <Column id="imgData" type="BLOB" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDialog id="fileDialog" filter="All(*.*)|*.*|" filterindex="0" defaultextension="false" onclose="fileDialog_onclose"/>
+      <VirtualFile id="virtualFile" onsuccess="virtualFile_onsuccess" onerror="virtualFile_onerror"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+물품 관리 화면                                             						                                                                         
+@Path			물류공통(Logistics Base)              				   				
+@Description	물품을 관리하기 위한 화면							
+@Author	  		김성호				    			                        								                                            
+@Create         날짜 xx.xx.xx                       
+      		                    				                                            
+TODO : 물품사진 저장경로 수정하기
+********************************************************************************/
+
+include "scripts::commonScripts.xjs";  		//공통 스크립트
+include "scripts::logScripts.xjs";			//물류 스크립트
+
+var saveImageName = "";
+var setGdsCd;								//생성될 물품코드
+var preCode;
+
+
+this.clickBtn = function(obj:Button,  e:ClickEventInfo){
+	switch(obj){ 
+		case this.searchBigGrpCdBtn: 		//대분류 검색
+				this.clickSearchBigGrpCdBtn();	
+				break;
+		case this.searchMidGrpCdBtn:		//중분류 검색
+				this.clickSearchMidGrpCdBtn();
+				break;
+		case this.searchSmGrpCdBtn:			//소분류 검색
+				this.clickSearchSmGrpCdBtn();
+				break;
+		case this.searchGdsCdBtn:			//물품코드 검색
+				this.clickSearchGdsCdBtn();
+				break;
+		case this.searchBtn:				//조회
+				this.clickSearchBtn();
+				break;
+		case this.searchGdsBigGrpCdBtn:		//등록할 대분류 검색
+				this.clickSearchGdsBigGrpGdsBtn();
+				break;
+		case this.searchGdsMidGrpCdBtn:		//등록할 중분류 검색
+				this.clickSearchGdsMidGrpGdsBtn();
+				break;
+		case this.searchGdsSmGrpCdBtn:		//등록할 소분류 검색
+				this.clickSearchGdsSmGrpGdsBtn();
+				break;
+		case this.searchWhBtn:				//창고검색
+				this.clickSearchGdsWhBtn();
+				break;
+		case this.searchGdsImgBtn:			//이미지 저장
+				this.clickSearchgoodsImgBtn();
+				break;		
+		case this.addBtn:					//물품추가
+				this.clickAddBtn();
+				break;
+		case this.delBtn:					//물품삭제
+				this.clickDelBtn();
+				break;				
+		case this.batchBtn:					//저장
+				this.clickBatchBtn();
+				break;		
+	}
+}
+
+
+this.clickSearchBigGrpCdBtn = function() {	//대분류코드 버튼
+	this.logOpenCdDialog("searchBigGrp");
+}
+this.clickSearchMidGrpCdBtn = function() {	//중분류코드 버튼
+	var secCd = this.searchBigGrpCdEd.value;
+	this.logOpenCdDialog("searchMidGrp", null, secCd);
+}
+this.clickSearchSmGrpCdBtn = function() {	//소분류코드 버튼
+	var secCd = this.searchMidGrpCdEd.value;
+	var thrCd = this.searchBigGrpCdEd.value;
+	this.logOpenCdDialog("searchSmGrp", null, secCd, thrCd);
+}
+this.clickSearchGdsCdBtn = function() {		//물품코드버튼
+	this.logOpenCdDialog("gds");
+}
+this.clickSearchGdsWhBtn = function() {		//창고버튼
+	this.logOpenCdDialog("wh");
+}
+this.clickSearchBtn = function() {			//조회버튼
+	var bGrpCd = this.searchBigGrpCdEd.value;
+	var mGrpCd = this.searchMidGrpCdEd.value;
+	var sGrpCd = this.searchSmGrpCdEd.value;
+	var gdsCd = this.searchGdsCdEd.value;
+	var gdsNm = this.searchGdsNmEd.value;	
+	var argument = 'gdsCd=' + gdsCd + ' gdsNm=' + gdsNm + ' bGrpCd=' + bGrpCd
+					+ ' mGrpCd=' + mGrpCd + ' sGrpCd=' + sGrpCd;
+	this.dsService.setColumn(0, "argument", argument);
+	this.gfnService("findGdsList");		
+}
+
+
+this.clickAddBtn = function() {				//추가버튼
+	this.dsGds.addRow();
+	this.goodsImg.set_image("");
+	this.searchGdsBigGrpCdBtn.set_visible(true);
+	this.searchGdsMidGrpCdBtn.set_visible(true);
+	this.searchGdsSmGrpCdBtn.set_visible(true);
+	this.searchWhBtn.set_visible(true);
+}
+this.clickSearchGdsBigGrpGdsBtn = function() {  //대분류등록 버튼
+	this.logOpenCdDialog("addBigGrp");
+}
+this.clickSearchGdsMidGrpGdsBtn = function() {	//중분류등록 버튼
+	var secCd = this.gdsBigGrpCdEd.value;
+	if (this.gfnIsNull(secCd)){
+		alert("대분류를 선택하십시오.");
+		return;
+	}
+	this.logOpenCdDialog("addMidGrp", null, secCd);
+}
+this.clickSearchGdsSmGrpGdsBtn = function() {	//소분류등록 버튼
+	var secCd = this.gdsMidGrpCdEd.value;
+	var thrCd = this.gdsBigGrpCdEd.value;
+	if (this.gfnIsNull(thrCd)){					// NULL 체크
+		alert("대분류를 선택하십시오.");
+		return;
+	} else if (this.gfnIsNull(secCd)) {
+		alert("중분류를 선택하십시오.");
+		return;
+	}
+	this.logOpenCdDialog("addSmGrp", null, secCd, thrCd);
+}
+
+this.setGdsCd = function() {					// 물품코드 생성
+	var bigGrpCd = this.gdsBigGrpCdEd.value;	// 대분류코드 값
+	var midGrpCd = this.gdsMidGrpCdEd.value;	// 중분류코드 값
+	var smGrpCd = this.gdsSmGrpCdEd.value;		// 소분류코드 값
+	preCode = bigGrpCd + midGrpCd + smGrpCd;	// 대중소 합친 코드 값
+	var argument = 'preCode=' + preCode;
+	this.dsService.setColumn(2, "argument", argument);
+	application.setVariable("postCode", "");	// Variable만 던질려면 객체 생성 필요
+	this.gfnService("callGdsCd", false);	
+}
+
+
+this.clickDelBtn = function() {	//삭제버튼
+	this.dsGds.deleteRow(this.dsGds.rowposition);
+}
+
+
+
+this.setLogCodeArray = function(divCode,logCode,secCode,thrCode,arr) {
+	switch (divCode) {
+		case "searchBigGrp":
+			this.searchBigGrpCdEd.set_value(arr[0]);
+			this.searchBigGrpCdNmEd.set_value(arr[1]);
+			break;
+		case "searchMidGrp":
+			this.searchMidGrpCdEd.set_value(arr[0]);
+			this.searchMidGrpCdNmEd.set_value(arr[1]);
+			break;
+		case "searchSmGrp":
+			this.searchSmGrpCdEd.set_value(arr[0]);
+			this.searchSmGrpCdNmEd.set_value(arr[1]);
+			break;
+		case "addBigGrp":
+			this.gdsBigGrpCdEd.set_value(arr[0]);
+			break;
+		case "addMidGrp":
+			this.gdsMidGrpCdEd.set_value(arr[0]);
+			break;
+		case "addSmGrp":
+			this.gdsSmGrpCdEd.set_value(arr[0]);
+			if (this.gfnIsNull(this.gdsSmGrpCdEd.value)) {
+				return;		
+			} else {
+				this.setGdsCd();
+			}
+			break;
+		case "gds":
+			this.searchGdsCdEd.set_value(arr[0]);
+			this.searchGdsNmEd.set_value(arr[1]);
+			break;
+		case "wh":
+			this.whEd.set_value(arr[1]);
+			break;
+	}
+}
+
+
+// 이미지
+this.clickSearchgoodsImgBtn = function(obj:Button, e:ClickEventInfo) {
+	if (this.gfnIsNull(this.gdsCdEd.value)) {
+		alert("물품 코드를 먼저 등록해 주세요");
+	} else {
+		this.fileDialog.open("FileOpen", FileDialog.LOAD); 
+	}
+}
+this.fileDialog_onclose = function(obj:FileDialog, e:FileDialogEventInfo)
+{
+	if (e.virtualfiles.length == 0) {
+		alert("사진을 다시 선택해 주세요");
+	} else {
+		var fileName = e.virtualfiles[0].filename; 
+		saveImageName = this.dsGds.getColumn(this.dsGds.rowposition, "gdsCd") + "." + fileName.split(".")[1];
+		var realpath = system.convertRealPath(e.virtualfiles[0].fullpath);
+		this.goodsImg.set_image("file://" + realpath);
+		this.dsGds.setColumn(this.dsGds.rowposition, "picLoc", saveImageName);
+		this.virtualFile.open(e.virtualfiles[0].fullpath, VirtualFile.openRead|VirtualFile.openBinary);
+	}
+}
+
+//	VirtualFile이 정상적으로 close될 경우 자동 호출
+this.virtualFile_onsuccess = function(obj:VirtualFile, e:VirtualFileEventInfo)
+{
+	switch (e.reason) {
+		case 1 : // open
+			this.virtualFile.read();
+			break;
+		case 2 : // close
+			this.gfnService("saveImg", false);
+			this.dsImg.deleteAll();
+			this.dsGds.setColumn(this.dsGds.rowposition, "picLoc", saveImageName);
+			break;
+		case 3 : // read
+			this.dsImgRow = this.dsImg.getRowCount();
+			this.dsImg.addRow();
+			this.dsImg.setColumn(this.dsImgRow, "imgName", saveImageName);
+			this.dsImg.setColumn(this.dsImgRow, "imgData", e.binarydata);
+			obj.getFileSize();
+			this.virtualFile.close();
+			break;
+	}
+}
+
+this.virtualFile_onerror = function(obj:VirtualFile, e:VirtualFileErrorEventInfo)
+{
+	trace(e.errormsg);
+}
+
+// 일괄처리
+this.clickBatchBtn = function() {
+	var modiTime = this.gfnLocalDate() + " " + this.gfnLocalTime();
+	var modiIp = this.gfnUserIP();
+	var modiId = application.gdsEmp.getColumn(0, "empNo");	
+	for (var i = 0; i < this.dsGds.rowcount; i++) {
+		if (this.dsGds.getRowType(i) == 4) {		//수정일때
+			this.dsGds.setColumn(i, "modWorkerId", modiId);
+			this.dsGds.setColumn(i, "modWorkerIp", modiIp);
+			this.dsGds.setColumn(i, "modDate", modiTime);	
+		} else if (this.dsGds.getRowType(i)==2) {	//추가일때
+			this.dsGds.setColumn(i, "regWorkerId", modiId);
+			this.dsGds.setColumn(i, "regWorkerIp", modiIp);
+			this.dsGds.setColumn(i, "regDate", modiTime);		
+		}
+	}
+	this.gfnService("batchGdsProcess", false);	
+}
+// 물품 그리드 셀 클릭시 이미지 변경
+this.gdsGrid_oncellclick = function(obj:Grid, e:GridClickEventInfo) {
+	this.img = this.dsGds.getColumn(this.dsGds.rowposition, "picLoc");		
+	if (this.gfnIsNull(this.img)) {
+		this.goodsImg.image = "";
+		this.goodsImg.set_image(null);
+	} else {
+		this.goodsImg.set_image("pic::goods/" + this.img);
+	}	
+}
+
+// 콤보 이벤트
+this.spliesCombo_oncloseup = function(obj:Combo, e:ComboCloseUpEventInfo) {
+	if (e.postvalue == '저장품') {
+		this.clickSearchGdsWhBtn();
+	}
+}
+
+
+// 콜백함수
+this.LCgdsMngtCallbackFunc = function(svcID, errorCode, errorMsg) {
+	if (errorCode < 0) {
+		this.gfnErrorPopup(svcID, errorMsg)
+	} else {
+		if (svcID == "findGdsList") {
+			if (this.dsGds.getRowCount()==0) {
+				alert("검색된 결과가 없습니다.");
+			}
+		} else if (svcID == "callGdsCd") {
+			alert(application.postCode);
+			if (application.postCode.length == 1) {
+				setGdsCd = preCode+"000"+application.postCode;
+			} else if (application.postCode.length == 2) {
+				setGdsCd = preCode+"00"+application.postCode;
+			} else if (application.postCode.length == 3) {
+				setGdsCd = preCode+"0"+application.postCode;
+			}
+			alert(setGdsCd);
+			this.gdsCdEd.set_value(setGdsCd);
+		}
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HM_ApplyInfoSystemForm" classname="HM_ApplyInfoSystemForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="0" left="0.72%" top="719" right="0.8%" height="40" style="border:1 solid black ;bordertype:round 5 5 ;" cssclass="TStc"/>
+        <Div id="Div02" taborder="1" text="Div01" left="0.72%" top="60" right="0.8%" height="651" style="background:whitesmoke;border:1 solid black ;bordertype:round 5 5 ;"/>
+        <Static id="01Stc" taborder="2" text="채용년도" left="1.2%" top="66" right="90.8%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;margin:0 0 2 0;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Spin id="applySpin" taborder="3" value="0" left="9.68%" top="66" right="84.16%" height="30" style="margin:1 0 2 0;font:9 Dotum;" class="AreaSpin"/>
+        <Grid id="Grid00" taborder="4" binddataset="dsHmJoinCandi" useinputpanel="false" autofittype="col" oncellclick="Div01_Grid00_oncellclick" left="1.2%" top="99" right="34.88%" height="606" style="font:9 Dotum;" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="24"/>
+                <Column size="189"/>
+                <Column size="64"/>
+                <Column size="61"/>
+                <Column size="139"/>
+                <Column size="148"/>
+                <Column size="51"/>
+                <Column size="51"/>
+                <Column size="71"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="color: ;" text="No"/>
+                <Cell col="1" style="color: ;" text="채용명"/>
+                <Cell col="2" style="color: ;" text="응시번호"/>
+                <Cell col="3" style="color: ;" text="성명"/>
+                <Cell col="4" style="color: ;" text="주소"/>
+                <Cell col="5" text="상세주소"/>
+                <Cell col="6" style="color: ;" text="보훈여부"/>
+                <Cell col="7" style="color: ;" text="장애여부"/>
+                <Cell col="8" style="color: ;" text="채용시퀀스"/>
+              </Band>
+              <Band id="body">
+                <Cell style="background:azure;background2:antiquewhite;" expr="currow+1"/>
+                <Cell col="1" edittype="normal" style="background:azure;background2:antiquewhite;" text="bind:employNm" editdisplay="edit"/>
+                <Cell col="2" edittype="normal" style="background:azure;background2:antiquewhite;" text="bind:takeNum"/>
+                <Cell col="3" edittype="normal" style="background:azure;background2:antiquewhite;" text="bind:empNm"/>
+                <Cell col="4" edittype="none" style="background:azure;background2:antiquewhite;" text="bind:addr"/>
+                <Cell col="5" style="background:azure;background2:antiquewhite;" text="bind:addrDetail"/>
+                <Cell col="6" displaytype="combo" edittype="combo" style="background:azure;background2:antiquewhite;" text="bind:vtrYn" combodataset="YnType" combocodecol="license_type" combodatacol="license_type"/>
+                <Cell col="7" displaytype="combo" edittype="combo" style="background:azure;background2:antiquewhite;" text="bind:disperYn" combodataset="YnType" combocodecol="license_type" combodatacol="license_type"/>
+                <Cell col="8" edittype="normal" style="align:center;background:azure;background2:antiquewhite;" text="bind:employSeq"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="02Stc" taborder="5" text="채용년도" left="65.76%" top="136" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Spin id="employYearSpin" taborder="6" value="0" left="72.72%" top="136" right="19.44%" height="30" style="margin:1 0 2 0;font:9 Dotum;" class="AreaSpin"/>
+        <Static id="07Stc" taborder="7" text="성  별" left="82.48%" top="199" right="10.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Static id="09Stc" taborder="8" text="생년월일" left="65.76%" top="230" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Grid id="Grid02" taborder="9" binddataset="dsHmJoinCandiScore" useinputpanel="false" autofittype="col" left="72.8%" top="464" right="4.24%" height="241" style="font:9 Dotum;" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="25"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="77"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="color: ;" text="No"/>
+                <Cell col="1" style="color: ;" text="응시번호"/>
+                <Cell col="2" style="color: ;" text="면접점수"/>
+                <Cell col="3" style="color: ;" text="과목점수"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:center;" expr="currow+1"/>
+                <Cell col="1" displaytype="text" edittype="text" text="bind:takeNum"/>
+                <Cell col="2" displaytype="text" edittype="text" text="bind:itverScore"/>
+                <Cell col="3" displaytype="text" edittype="text" text="bind:subjectScore"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="04Stc" taborder="10" text="채용명" left="65.76%" top="104" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Static id="03Stc" taborder="11" text="고용구분" left="82.48%" top="136" right="10.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Static id="06Stc" taborder="12" text="주민번호" left="65.76%" top="199" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Static id="05Stc" taborder="13" text="성  명" left="65.76%" top="168" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Radio id="genderRadio" taborder="14" tabstop="false" columncount="3" codecolumn="codecolumn" datacolumn="datacolumn" onitemclick="Div01_Div02_Radio00_onitemclick" left="89.84%" top="199" right="3.6%" height="30" style="font:9 Dotum;" class="AreaRadio">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">남</Col>
+                <Col id="datacolumn">남</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">여</Col>
+                <Col id="datacolumn">여</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="08Stc" taborder="15" text="출신학교" left="65.76%" top="261" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Static id="10Stc" taborder="16" text="주  소" left="65.76%" top="323" right="27.36%" height="77" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Radio id="vtrYnRadio" taborder="17" tabstop="false" columncount="3" codecolumn="codecolumn" datacolumn="datacolumn" onitemclick="Div01_Div02_Radio00_onitemclick" left="73.12%" top="402" right="21.2%" height="30" style="font:9 Dotum;" class="AreaRadio">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">Y</Col>
+                <Col id="datacolumn">Y</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">N</Col>
+                <Col id="datacolumn">N</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="11Stc" taborder="18" text="장애 여부" left="82.48%" top="401" right="10.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Static id="12Stc" taborder="19" text="보훈 여부" left="65.76%" top="401" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Radio id="disperYnRadio" taborder="20" tabstop="false" columncount="3" codecolumn="codecolumn" datacolumn="datacolumn" onitemclick="Div01_Div02_Radio00_onitemclick" left="89.84%" top="402" right="4.56%" height="30" style="font:9 Dotum;" class="AreaRadio">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">Y</Col>
+                <Col id="datacolumn">Y</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">N</Col>
+                <Col id="datacolumn">N</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="14Stc" taborder="21" text="가산점" left="82.48%" top="432" right="10.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Edit id="addScoreEd" taborder="22" left="89.44%" top="432" right="4.24%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Static id="15Stc" taborder="23" text="점  수" left="65.76%" top="464" right="27.36%" height="241" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Edit id="empNameEd" taborder="24" oneditclick="empNameEd_oneditclick" left="72.72%" top="168" right="19.44%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Edit id="employNameEd" taborder="25" left="72.72%" top="104" right="1.84%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Edit id="takeNumEd" taborder="26" left="89.44%" top="168" right="1.84%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Static id="16Stc" taborder="27" text="채용시퀀스" left="65.76%" top="432" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Edit id="employSeqEd" taborder="28" oneditclick="Div01_Div02_astCodeEdt10_oneditclick" left="72.8%" top="432" right="18.88%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Static id="13Stc" taborder="29" text="휴대전화번호" left="82.48%" top="230" right="10.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Edit id="phoneEd" taborder="30" oneditclick="Div01_Div02_astCodeEdt14_oneditclick" left="89.44%" top="230" right="1.84%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Calendar id="birthdayCal" taborder="31" left="72.72%" top="230" right="18.24%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;" class="AreaCal"/>
+        <Combo id="hireDivCombo" taborder="32" codecolumn="codecolumn" datacolumn="datacolumn" left="89.44%" top="136" right="1.76%" height="30" style="font:9 Dotum;" class="AreaCombo">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">정규직</Col>
+                <Col id="datacolumn">정규직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">비정규직</Col>
+                <Col id="datacolumn">비정규직</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">별정직</Col>
+                <Col id="datacolumn">별정직</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="mjEd" taborder="33" left="72.72%" top="292" right="4.32%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Edit id="mjEd001" taborder="34" left="72.72%" top="261" right="4.32%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Static id="07Stc00" taborder="35" text="전 공" left="65.76%" top="292" right="27.36%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Edit id="editZip01" taborder="36" left="72.72%" top="368" right="1.68%" height="31" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <Edit id="editZip" taborder="37" value="주소와상세주소값 두줄을 한줄저장을위한텍스트" visible="false" left="72.72%" top="66" right="3.2%" height="31"/>
+        <Edit id="editZip00" taborder="38" left="79.36%" top="331" right="4.32%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+        <MaskEdit id="rrnEd" taborder="39" type="string" mask="######'-'#######" left="72.72%" top="199" right="19.44%" height="30" style="border:1 solid #a6a6a9ff ;color:#46463dff;align:center middle;"/>
+        <Static id="05Stc00" taborder="40" text="응시번호" left="82.48%" top="168" right="10.64%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
+        <Button id="remove" taborder="41" onclick="remove_onclick" cssclass="DelBtn" left="71.44%" top="723" right="21.36%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="register" taborder="42" onclick="register_onclick" cssclass="DelBtn" left="62.56%" top="723" right="30.24%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="btnClose" taborder="43" onclick="btnClose_onclick" cssclass="DelBtn" left="90.8%" top="723" right="2%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="btn_findZip" taborder="44" onclick="btn_findZip_onclick" cssclass="DelBtn" left="96%" top="332" right="1.76%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="btn_joinCandiSch" taborder="45" onclick="btn_joinCandiSch_onclick" cssclass="DelBtn" left="16.24%" top="64" right="76.56%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="majorPopup" taborder="46" onclick="majorPopup_onclick" cssclass="DelBtn" left="96%" top="293" right="1.76%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="empMajorPopup" taborder="47" onclick="empMajorPopup_onclick" cssclass="DelBtn" left="96%" top="262" right="1.76%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="mngnt" taborder="48" onclick="mngnt_onclick" cssclass="DelBtn" left="80.32%" top="723" right="10.88%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="scoreAdd" taborder="49" onclick="scoreAdd_onclick" cssclass="DelBtn" left="96%" top="464" right="1.44%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div03" taborder="50" left="0%" top="0" right="-33.6%" height="60" style="background:transparent URL('img::titleBar2.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="입사지원자 관리" left="3.17%" top="12" right="88.08%" height="28" style="font:13 Berlin Sans FB Demi;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Edit id="editZip02" taborder="51" left="72.8%" top="331" right="21.04%" height="30" style="border:1 solid #a6a6a9ff ;margin:0 0 2 0;font:9 Dotum;" class="AreaEdt"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item43" compid="employYearSpin" propid="value" datasetid="dsHmJoinCandi" columnid="employYear"/>
+      <BindItem id="item48" compid="genderRadio" propid="value" datasetid="dsHmJoinCandi" columnid="gender"/>
+      <BindItem id="item52" compid="vtrYnRadio" propid="value" datasetid="dsHmJoinCandi" columnid="vtrYn"/>
+      <BindItem id="item51" compid="disperYnRadio" propid="value" datasetid="dsHmJoinCandi" columnid="disperYn"/>
+      <BindItem id="item56" compid="addScoreEd" propid="value" datasetid="dsHmJoinCandi" columnid="addScore"/>
+      <BindItem id="item45" compid="empNameEd" propid="value" datasetid="dsHmJoinCandi" columnid="empNm"/>
+      <BindItem id="item44" compid="employNameEd" propid="value" datasetid="dsHmJoinCandi" columnid="employNm"/>
+      <BindItem id="item46" compid="takeNumEd" propid="value" datasetid="dsHmJoinCandi" columnid="takeNum"/>
+      <BindItem id="item55" compid="employSeqEd" propid="value" datasetid="dsHmJoinCandi" columnid="employSeq"/>
+      <BindItem id="item54" compid="phoneEd" propid="value" datasetid="dsHmJoinCandi" columnid="phone"/>
+      <BindItem id="item53" compid="birthdayCal" propid="value" datasetid="dsHmJoinCandi" columnid="birthday"/>
+      <BindItem id="item57" compid="hireDivCombo" propid="value" datasetid="dsHmJoinCandi" columnid="hireDiv"/>
+      <BindItem id="item50" compid="mjEd" propid="value" datasetid="dsHmJoinCandi" columnid="major"/>
+      <BindItem id="item49" compid="mjEd001" propid="value" datasetid="dsHmJoinCandi" columnid="originSchool"/>
+      <BindItem id="item3" compid="editZip01" propid="value" datasetid="dsHmJoinCandi" columnid="addrDetail"/>
+      <BindItem id="item1" compid="editZip" propid="value" datasetid="dsHmJoinCandi" columnid="addr"/>
+      <BindItem id="item5" compid="editZip00" propid="value" datasetid="dsHmJoinCandi" columnid="addr"/>
+      <BindItem id="item0" compid="rrnEd" propid="value" datasetid="dsHmJoinCandi" columnid="rrn"/>
+      <BindItem id="item2" compid="rrnEd" propid="visible" datasetid="dsHmJoinCandi" columnid="rrn"/>
+      <BindItem id="item4" compid="editZip02" propid="value" datasetid="dsHmJoinCandi" columnid="zipCd"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">joincandiList</Col>
+            <Col id="URL">erp47::hrs/emp/findJoinCandiList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsHmJoinCandi=dsHmJoinCandi</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">joinCandiScoreList</Col>
+            <Col id="URL">erp47::hrs/emp/findJoinCandiScore.do</Col>
+            <Col id="outData">dsHmJoinCandiScore=dsHmJoinCandiScore</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">mngntJoinCandi</Col>
+            <Col id="URL">erp47::hrs/emp/mngntJoinCandi.do</Col>
+            <Col id="inData">dsHmJoinCandi=dsHmJoinCandi:U dsHmJoinCandiScore=dsHmJoinCandiScore:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmJoinCandiScore" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="takeNum" type="STRING" size="256"/>
+          <Column id="employSeq" type="STRING" size="256"/>
+          <Column id="subjectCd" type="STRING" size="256"/>
+          <Column id="itverScore" type="STRING" size="256"/>
+          <Column id="subjectScore" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsHmJoinCandi" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="employYear" type="STRING" size="256"/>
+          <Column id="employNm" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="takeNum" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="major" type="STRING" size="256"/>
+          <Column id="originSchool" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="vtrYn" type="STRING" size="256"/>
+          <Column id="disperYn" type="STRING" size="256"/>
+          <Column id="addScore" type="STRING" size="256"/>
+          <Column id="docScrScore" type="STRING" size="256"/>
+          <Column id="prgsPhase" type="STRING" size="256"/>
+          <Column id="exp" type="STRING" size="256"/>
+          <Column id="employSeq" type="STRING" size="256"/>
+          <Column id="addrDetail" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="YnType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="license_type" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="license_type">Y</Col>
+          </Row>
+          <Row>
+            <Col id="license_type">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 입사지원자관리                                                  *
+*                                                                   *
+* @Path		    입사지원 정보관리        	                        *
+* @Description  입사지원정보 조회,등록,수정,삭제 화면          *
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 9. 7.                             		        *
+*								                                    *
+********************************************************************/
+include "scripts::commonTran.xjs";
+include "scripts::commonScripts.xjs";  
+include "scripts::commonUtil.xjs";
+include "scripts::commonScripts.xjs";  
+
+//날짜받아오는 구문========================================================================================================================
+var sDate;//지금의 날짜임          여기선언하고 아래에 가져다쓴다
+var sYear;//지금의 년도임
+///날짜관련부분임 많이쓰임 
+//이부분 추가 시켰음 엑플은 그냥되는데 넥사는 이거 추가해둬야함 날짜 가져오는 함수 이부분 좋음 기억합시당
+this.toFormatString = function(dt, fmt) {    
+      return fmt.replace(/(Y|y|m|d|h|H|i|s|am|pm)/gi,
+          function($1){
+              switch ($1){	 
+                  case 'Y' :   return dt.getFullYear();
+                  case 'y' :   return dt.getFullYear().toString().substr(2);
+                  case 'm' :   return (dt.getMonth()+1).toString().padLeft(2,"0");//끝자리 01이면 1만 나와서 저렇게 적어주었다
+                  case 'd' :   return dt.getDate().toString().padLeft(2,"0");     //끝자리 01이면 1만 나와서 저렇게 적어주었다
+                  case 'h' :   return (h = dt.getHours() % 12) ? h : 12;
+                  case 'H' :   return dt.getHours();
+                  case 'i' :   return dt.getMinutes();
+                  case 's' :   return dt.getSeconds();
+                  case 'am':   return dt.getHours() < 12 ? 'am' : 'pm';
+                  case 'pm':   return dt.getHours() < 12 ? 'am' : 'pm';
+            }
+        } 
+    );
+}
+//=============================================================================================================================================
+
+//주소조회
+this.btn_findZip_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{  var arr = this.gfnPostPopup();    // alert(arr);//문법맞으면 트루펄스 나옴
+  this.setPost = function(postNum,addr,detailAddr){
+   this.editZip02.set_value(postNum);
+   this.editZip00.set_value(addr);
+   this.editZip01.set_value(detailAddr);						 
+  }
+}
+
+
+//조회버튼
+// function vrfcFxAstBtn_onclick(obj:Button,  e:ClickEventInfo) {  gfnService("joincandiList"); }
+this.vrfcFxAstBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	 }
+
+
+//그리드 클릭시
+this.Div01_Grid00_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+		
+		var employSeq = this.dsHmJoinCandi.getColumn(this.dsHmJoinCandi.rowposition,"employSeq");
+		
+		var argument = 'employSeq='+employSeq;
+		this.dsService.setColumn(1,"argument",argument);
+		//alert(argument);
+		this.gfnService("joinCandiScoreList");
+	
+	  
+}
+
+
+
+// 행추가
+this.Div01_Div02_Button11_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	this.dsHmJoinCandiScore.addRow(); 
+	this.dsHmJoinCandiScore.setColumn(this.dsHmJoinCandiScore.rowposition, "employSeq", sDate);//날짜들어간다
+
+}
+ 
+// 행삭제
+
+this.Div01_Div02_Button13_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{  } 
+
+// 콜백
+this.CallbackFunc=function(trid,errcd,errmsg){	
+	if(trid =="joincandiList"){
+		if(errcd == 1){ 
+		
+                var employSeq = this.dsHmJoinCandi.getColumn(this.dsHmJoinCandi.rowposition,"employSeq");
+		
+				var argument = 'employSeq='+employSeq;
+				this.dsService.setColumn(1,"argument",argument);
+				//alert(argument);
+				this.gfnService("joinCandiScoreList");
+               
+		}else{
+			alert("지원자정보가 존재하지 않습니다");
+		}
+	}else if(trid == "joinCandiScoreList"){
+		if(errcd == 1){
+
+			}else{
+			alert("선택한 지원자의 정보가 존재하지 않습니다");
+		}
+	}else if(trid == "mngntJoinCandi"){
+		if(errcd == 1){
+			alert("입사지원자정보가 일괄처리 되었습니다");
+			}else{
+			alert("변경된 사항이 처리되지 못했습니다");
+		}
+	}	
+} 
+
+// 전공버튼 GP090
+this.majorPopup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	 var arr = this.gfnCodePopup("GP090"/*,"1"*/);// 뒤에칸에는 시퀀스가 가야하는데 여기선 안쓰니 비워도되는듯
+     this.setCode = function(code,arrRtn){this.mjEd.set_value(arrRtn[1]);}//이부분 안되면 뒤에 팝업안뜬다 안뜰땐 뒷부분 다 주석하고해보자
+}
+
+
+// 학교버튼 GP052 갑자기 넥사 화면이 꺼질때 디비에서 특수키를 찾는다
+this.empMajorPopup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	 var arr = this.gfnCodePopup("GP052"/*,"1"*/);// 뒤에칸에는 시퀀스가 가야하는데 여기선 안쓰니 비워도되는듯
+ 	 this.setCode = function(code,arrRtn){this.mjEd001.set_value(arrRtn[1]);}//이부분 안되면 뒤에 팝업안뜬다 안뜰땐 뒷부분 다 주석하고해보자
+// 학교쪽 디비에서 특수기호가 있으면 오류가난다 여기에서는 & 키가 있어서 오류남 고치기위해서는 아래처럼 &기호를 찾아서 오류안나는 기호로 인터넷 찾아서 고쳐주면된다
+// Texas A&M Univ.(보건물리) 가운데 &를 넥사로 가져올때 xml로 변환시키는데 이때 오류나면서 꺼진다  
+// Texas A&AMP;M Univ.(보건물리)  이걸 xml파일로 변환시킬때 사용하려면 &AMP; 이걸로 앞에처럼 적어주면 잘나온다.
+}
+
+this.btn_joinCandiSch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("joincandiList");
+}
+
+this.HM_ApplyInfoSystemForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+		var objDate = new Date();
+    //var sDate = this.toFormatString(objDate,"%Y%m%d");//원래는 이렇게있었다 이렇게 위에다가 선언안하고 여기 적으면 아래서 사용못다고 여기함수부분 다른 실행부분도  다 실행안된다 	                                                                                                                                               
+        sDate = this.toFormatString(objDate,"Ymd"); //"Y"+"m"+"d"이렇게 적어도되고 앞처럼적어도되고  현재 또는 지정한 로케일, 지정한 형식의 문자열로 변환된 날짜를 반환합니다
+        sYear = this.toFormatString(objDate,"Y");  //alert(sYear);     alert(sDate);
+   this.applySpin.set_value(sYear);  //년도넣는곳에 지금의 년도를 미리 넣어둔다 
+}
+
+this.register_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	if(this.dsHmJoinCandi.findRow("employSeq",sDate) == -1){
+	this.dsHmJoinCandi.addRow(); 
+	this.dsHmJoinCandi.setColumn(this.dsHmJoinCandi.rowposition, "employSeq", sDate);
+	this.employYearSpin.set_value(sYear); //년도넣는곳에 지금의 년도를 미리 넣어둔다 
+    this.editZip00.set_value("");   this.editZip01.set_value(""); // /가 없으면 빈칸이 나와서if문적었고 데이터셋이 아니라 주소상세부분이 빌때는 빈칸나오면 전값이 남아있기 때문에 임의로 지워줘야 한다
+	              var employSeq = this.dsHmJoinCandi.getColumn(this.dsHmJoinCandi.rowposition,"employSeq");
+		
+				var argument = 'employSeq='+employSeq;
+				this.dsService.setColumn(1,"argument",argument);
+				//alert(argument);
+				this.gfnService("joinCandiScoreList"); 
+	}
+}
+
+this.remove_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsHmJoinCandi.deleteRow(this.dsHmJoinCandi.rowposition); 
+	              var employSeq = this.dsHmJoinCandi.getColumn(this.dsHmJoinCandi.rowposition,"employSeq");
+		
+				var argument = 'employSeq='+employSeq;
+				this.dsService.setColumn(1,"argument",argument);
+				//alert(argument);
+				this.gfnService("joinCandiScoreList"); 
+}
+
+this.mngnt_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		confirm("입사지원정보를 처리하시겠습니까?");
+	this.gfnService("mngntJoinCandi");
+}
+
+this.btnClose_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+//점수행추가
+this.scoreAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.dsHmJoinCandiScore.getRowCount() == 0){
+	var takeNum = this.dsHmJoinCandi.getColumn(this.dsHmJoinCandi.rowposition,"takeNum");
+	if(takeNum == null){alert("응시번호를 입력하세요"); return;}
+	this.dsHmJoinCandiScore.addRow(); 
+	this.dsHmJoinCandiScore.setColumn(this.dsHmJoinCandiScore.rowposition, "employSeq", sDate);//날짜들어간다
+	this.dsHmJoinCandiScore.setColumn(this.dsHmJoinCandiScore.rowposition, "takeNum", takeNum);//응시번호들어간다
+	//var seq = this.dsHmJoinCandiScore.getColumn(this.dsHmJoinCandiScore.rowposition, "employSeq");//alert(seq);// //오늘날짜 들어갔는지 확인
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LE_GdsInputMngntForm" classname="LE_GdsInputMngntForm" left="0" top="0" width="1250" height="768" titletext="물품 검수 관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.2%" top="4" right="-41.89%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="물품검수관리" left="3.1%" top="-4" right="83.39%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc00" taborder="1" text="게약일자" onclick="subCodeStc_onclick" left="1.27%" top="64" right="93.16%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="startCtrtDateCal" taborder="2" autoskip="true" left="7.52%" top="64" right="81.74%" height="30" style="padding:0 0 0 0;"/>
+        <Static id="Static00" taborder="3" text="~" left="18.07%" top="68" right="79.2%" height="24" style="align:middle;"/>
+        <Calendar id="endCtrtDateCal" taborder="4" autoskip="true" left="20.51%" top="64" right="68.85%" height="30" style="padding:0 0 0 0;"/>
+        <Static id="subCodeStc01" taborder="5" text="검수여부" onclick="subCodeStc_onclick" left="31.84%" top="64" right="63.96%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Radio id="inptRadio" taborder="6" columncount="3" codecolumn="codecolumn" datacolumn="datacolumn" left="36.52%" top="69" right="52.73%" height="22">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">검수</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">미검수</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Div id="searchDiv" taborder="7" left="53.81%" top="61" right="0.98%" height="145" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc01" taborder="12" text="계약일자" onclick="subCodeStc_onclick" left="2.6%" top="11" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc00" taborder="13" text="품  명" onclick="subCodeStc_onclick" left="2.6%" top="54" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="14" text="납품일" onclick="subCodeStc_onclick" left="2.6%" top="97" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Calendar id="CtrtDateCal" taborder="15" autoskip="true" innerdataset="dsCtrtInfo" textcolorcolumn="ctrtDate" left="17.35%" top="10" right="57.27%" height="30" style="padding:0 0 0 0;"/>
+              <Edit id="ctrtSeqEd" taborder="16" left="43.38%" top="10" right="47.29%" height="28"/>
+              <Static id="subCodeStc03" taborder="17" text="계약담당자" onclick="subCodeStc_onclick" left="55.1%" top="11" right="30.15%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="ctrtRespoWorkerEd" taborder="18" left="70.72%" top="10" right="17.14%" height="28"/>
+              <Edit id="ctrtRespoWorkerNmEd" taborder="19" left="83.51%" top="10" right="1.52%" height="28"/>
+              <Edit id="fmNmEd" taborder="20" left="17.35%" top="50" right="1.52%" height="36"/>
+              <Calendar id="delivDayCal" taborder="21" autoskip="true" innerdataset="dsGdsInpt" textcolorcolumn="delayDays" left="17.14%" top="96" right="57.48%" height="30" style="padding:0 0 0 0;"/>
+              <Static id="subCodeStc04" taborder="22" text="수량" onclick="subCodeStc_onclick" left="46.64%" top="97" right="40.13%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="ctrtQntEd" taborder="23" left="61.39%" top="97" right="23.86%" height="28"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="searchDiv00" taborder="8" left="53.81%" top="221" right="0.98%" height="145" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc01" taborder="24" text="검수일" onclick="subCodeStc_onclick" left="2.6%" top="11" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc00" taborder="25" text="지 체 일" onclick="subCodeStc_onclick" left="2.82%" top="55" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="26" text="지체비율" onclick="subCodeStc_onclick" left="2.6%" top="97" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Calendar id="inptDateCal" taborder="27" autoskip="true" innerdataset="dsGdsInpt" textcolorcolumn="inptDate" left="17.35%" top="10" right="57.27%" height="30" style="padding:0 0 0 0;"/>
+              <Static id="subCodeStc03" taborder="28" text="지체기준액" onclick="subCodeStc_onclick" left="55.1%" top="35" right="30.15%" height="38" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="delayGijunPayEd" taborder="29" left="71.8%" top="35" right="4.77%" height="36"/>
+              <Edit id="delayPrzAmtEd" taborder="30" left="71.58%" top="91" right="4.99%" height="36"/>
+              <Edit id="delayDaysEd" taborder="31" left="17.35%" top="50" right="56.83%" height="36"/>
+              <Static id="subCodeStc04" taborder="32" text="지체상금" onclick="subCodeStc_onclick" left="55.1%" top="91" right="30.15%" height="38" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="Static00" taborder="33" text="일" left="43.17%" top="52" right="53.8%" height="36" style="font:10 arial;"/>
+              <Static id="Static01" taborder="34" text="%" left="43.17%" top="95" right="53.8%" height="36" style="font:10 arial;"/>
+              <Edit id="delayRateEd" taborder="35" left="17.35%" top="92" right="56.83%" height="36"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="inptGrid" taborder="9" binddataset="dsCtrtInfo" useinputpanel="false" oncelldblclick="inptGrid_oncelldblclick" left="1.27%" top="103" right="47.17%" height="612">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="116"/>
+                <Column size="109"/>
+                <Column size="169"/>
+                <Column size="89"/>
+                <Column size="77"/>
+                <Column size="78"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="거래처"/>
+                <Cell col="2" text="품  명"/>
+                <Cell col="3" text="계약일자"/>
+                <Cell col="4" text="검수여부"/>
+                <Cell col="5" text="계약금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ctrtNo"/>
+                <Cell col="1" text="bind:cust"/>
+                <Cell col="2" text="bind:ctrtGds"/>
+                <Cell col="3" text="bind:ctrtDate" mask="####/##/##"/>
+                <Cell col="4" text="bind:inptYb"/>
+                <Cell col="5" text="bind:ctrtAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="CtrtDtlHistGrid" taborder="10" binddataset="dsCtrtInfoDetail" useinputpanel="false" left="53.52%" top="379" right="1.07%" height="333">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="123"/>
+                <Column size="206"/>
+                <Column size="65"/>
+                <Column size="69"/>
+                <Column size="97"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="물품코드"/>
+                <Cell col="1" text="물품명"/>
+                <Cell col="2" text="수량"/>
+                <Cell col="3" text="단위"/>
+                <Cell col="4" text="계약단가"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:gdsCd"/>
+                <Cell col="1" text="bind:gdsNm"/>
+                <Cell col="2" text="bind:ctrtQnt"/>
+                <Cell col="3" text="bind:ordUnit"/>
+                <Cell col="4" text="bind:ctrtPrice"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="inptCancelBtn" taborder="11" onclick="inptCancelBtn_onclick" left="75.68%" top="720" right="17.09%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="ProcessBtn"/>
+        <Button id="printStateBtn" taborder="12" onclick="printStateBtn_onclick" cssclass="PrintBtn" left="91.41%" top="720" right="1.37%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="PrintBtn"/>
+        <Button id="inptCheckBtn" taborder="13" onclick="inptCheckBtn_onclick" left="83.5%" top="720" right="9.28%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="ProcessBtn"/>
+        <Button id="searchBtn" taborder="14" onclick="searchBtn_onclick" cssclass="SearchBtn" left="47.27%" top="64" right="46.78%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="SearchBtn"/>
+        <Button id="inptYnBtn" taborder="15" onclick="inptYnBtn_onclick" cssclass="InptYnBtn" left="0.98%" top="723" right="91.8%" height="32" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="InptYnBtn"/>
+        <Button id="inptYnCancelBtn" taborder="16" onclick="inptYnCancelBtn_onclick" cssclass="InptYnCancelBtn" left="9.28%" top="723" right="83.4%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="InptYnCancelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCtrtList</Col>
+            <Col id="URL">erp47::log/inpt/findCtrtList.do</Col>
+            <Col id="outData">dsCtrtInfo=dsCtrtInfo</Col>
+            <Col id="callbackFunc">findCtrtListCallback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findCtrtHistList</Col>
+            <Col id="URL">erp47::log/inpt/findCtrtHistList.do</Col>
+            <Col id="outData">dsCtrtInfoDetail=dsCtrtInfoDetail</Col>
+          </Row>
+          <Row>
+            <Col id="outData">dsGdsInpt=dsGdsInpt</Col>
+            <Col id="serviceID">findGdsInptList</Col>
+            <Col id="URL">erp47::log/inpt/findGdsInptList.do</Col>
+          </Row>
+          <Row>
+            <Col id="outData">dsBuyDemd=dsBuyDemd</Col>
+            <Col id="URL">erp47::log/inpt/findDelivDay.do</Col>
+            <Col id="serviceID">findDelivDay</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerGdsInpt</Col>
+            <Col id="outData">[Undefined]</Col>
+            <Col id="URL">erp47::log/inpt/registerGdsInpt.do</Col>
+            <Col id="inData">dsGdsInpt=dsGdsInpt:u dsCtrtInfo=dsCtrtInfo:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">cancelGdsInpt</Col>
+            <Col id="URL">erp47::log/inpt/cancelGdsInpt.do</Col>
+            <Col id="inData">dsGdsInpt=dsGdsInpt:u dsCtrtInfo=dsCtrtInfo:u</Col>
+            <Col id="outData">[Undefined]</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGdsInpt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="delayDays" type="STRING" size="256"/>
+          <Column id="delayGijunPay" type="STRING" size="256"/>
+          <Column id="delayPrzAmt" type="STRING" size="256"/>
+          <Column id="delayRate" type="STRING" size="256"/>
+          <Column id="delivDay" type="STRING" size="256"/>
+          <Column id="gdsInptNo" type="STRING" size="256"/>
+          <Column id="inptDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCtrtInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="false" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="ctrtDate" type="STRING" size="256"/>
+          <Column id="ctrtDiv" type="STRING" size="256"/>
+          <Column id="ctrtStart" type="STRING" size="256"/>
+          <Column id="ctrtEnd" type="STRING" size="256"/>
+          <Column id="ctrtSeq" type="STRING" size="256"/>
+          <Column id="ctrtRespoWorker" type="STRING" size="256"/>
+          <Column id="ctrtRespoWorkerNm" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtStat" type="STRING" size="256"/>
+          <Column id="buyAprvYb" type="STRING" size="256"/>
+          <Column id="signSsYb" type="STRING" size="256"/>
+          <Column id="ctrtCon" type="STRING" size="256"/>
+          <Column id="ctrtStand" type="STRING" size="256"/>
+          <Column id="ctrtQnt" type="STRING" size="256"/>
+          <Column id="ctrtPrice" type="STRING" size="256"/>
+          <Column id="ctrtAmt" type="STRING" size="256"/>
+          <Column id="buyReceiptNo" type="STRING" size="256"/>
+          <Column id="inptYb" type="STRING" size="256"/>
+          <Column id="fm" type="STRING" size="256"/>
+          <Column id="ctrtGds" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCtrtInfoDetail" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="acntSeq" type="STRING" size="256"/>
+          <Column id="asstSubCd" type="STRING" size="256"/>
+          <Column id="cngQnt" type="STRING" size="256"/>
+          <Column id="ctrtAmt" type="STRING" size="256"/>
+          <Column id="ctrtDate" type="STRING" size="256"/>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="ctrtPrice" type="STRING" size="256"/>
+          <Column id="ctrtQnt" type="STRING" size="256"/>
+          <Column id="ctrtSeq" type="STRING" size="256"/>
+          <Column id="demdDate" type="STRING" size="256"/>
+          <Column id="demdSeq" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="gdsNm" type="STRING" size="256"/>
+          <Column id="gdsStand" type="STRING" size="256"/>
+          <Column id="mngntAtcCode" type="STRING" size="256"/>
+          <Column id="nsNo" type="STRING" size="256"/>
+          <Column id="ordUnit" type="STRING" size="256"/>
+          <Column id="receiptNo" type="STRING" size="256"/>
+          <Column id="respoWorker" type="STRING" size="256"/>
+          <Column id="subul" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBuyDemd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="buyDemdDate" type="STRING" size="256"/>
+          <Column id="receiptNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+*물품검수 관리																*
+*                                                                               *
+* @Path		    log-LE_gdsInptMngntForm											*
+*																				*
+* @Description 	물품검수관리에서 구매한 무룸을 수정,삭제,조회 하고		*
+*               등록된 물품을 승인완료,승인취소를 한다.					*
+*               																*
+* @Author	    김성호    						                                *
+* 									                                            *
+* Created on 날짜 !  	                             		                    *
+*									                                            *
+********************************************************************************/
+include "scripts::commonScripts.xjs";
+
+var startDate;   //검색시작일
+var endDate;     //검색종료일
+var radio;  //라디오버튼값
+var selectCtrtNo;  //선택된데이터의 계약번호
+
+//계약된 물품내역 조회Btn
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsCtrtInfo.clearData();
+    this.dsBuyDemd.clearData();
+    this.dsCtrtInfoDetail.clearData();
+    this.dsGdsInpt.clearData();
+    
+	startDate=this.startCtrtDateCal.value;  	
+	endDate=this.endCtrtDateCal.value;      
+	radio=this.inptRadio.value;      	
+	
+	//조회 검색조건
+	if(startDate==null){   
+	    alert("검색시작일 선택하세요.");		
+	}else if(endDate==null){
+		alert("검색종료일 선택하세요.");
+	}else if(startDate > endDate){
+	    alert("검색종료일이 확인 후 다시 선택하세요.");
+	}else if(radio==null){
+		alert("검수여부 선택하세요");
+	}else{	
+		this.gfnService("findCtrtList", false);
+	}	
+	
+}
+//콜백함수
+this.findCtrtListCallback = function(svcID, errorCode, errorMsg){
+	trace(this.dsCtrtInfo.saveXML());
+	 if(radio == 1){
+		this.dsCtrtInfo.filter("");
+		//this.dsCtrtInfo.filter("ctrtDate >="+startDate+"&& ctrtDate <="+endDate+"&& inptYb=='Y'");
+	    this.inptCancelBtn.set_visible(true);
+	 }else if(radio == 2){
+		
+	    this.dsCtrtInfo.filter("");
+	    //this.dsCtrtInfo.filter("ctrtDate >="+startDate+"&& ctrtDate <="+endDate+"&& inptYb=='N'");
+	    this.inptCheckBtn.set_visible(true);	   
+	    //this.Data(this.dsCtrtInfo,0);  전송 받아오는 데이터셋정보를 alert으로 표시하는 함수.	   
+	 }
+}
+//오늘날짜함수
+this.fn_dateTime = function() 
+{
+    var dDate = new Date();     
+    var sRtn =  dDate.getFullYear()
+          + (dDate.getMonth()+1).toString().padLeft(2, "0")
+          +  dDate.getDate().toString().padLeft(2, "0");
+    return sRtn;
+}
+
+
+//검수취소Btn
+this.inptCancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsCtrtInfo.setColumn(this.dsCtrtInfo.currentrow,"inptYb","N");  //검수상태(Y->N) 변경
+	this.dsGdsInpt.deleteRow(this.dsCtrtInfo.rowposition);
+	
+	this.gfnService("cancelGdsInpt","false");  //검수확인취소, 검수여부변경.
+}
+
+//저장 Btn
+this.inptCheckBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsGdsInpt.addRow();   
+	
+    this.dsCtrtInfo.setColumn(this.dsCtrtInfo.rowposition,"inptYb","Y");  //검수상태 currentrow,rowposition 현재 row
+    this.dsGdsInpt.setColumn(this.dsCtrtInfo.rowposition,"gdsInptNo",this.ctrtSeqEd.value);   //물품검수번호
+    this.dsGdsInpt.setColumn(this.dsCtrtInfo.rowposition,"ctrtNo",selectCtrtNo);    //계약번호
+    this.dsGdsInpt.setColumn(this.dsBuyDemd.rowposition,"delivDay",this.delivDayCal.value);  //납품일      
+ 	this.dsGdsInpt.setColumn(this.dsGdsInpt.rowposition,"inptDate",this.fn_dateTime() ); //오늘날짜검수일자 셋팅   
+	this.dsGdsInpt.setColumn(this.dsCtrtInfo.rowposition,"amt",this.dsCtrtInfo.getColumn(this.dsCtrtInfo.rowposition,"ctrtAmt"));//계약금액 셋팅
+    this.dsGdsInpt.setColumn(this.dsCtrtInfo.rowposition,"delayGijunPay",this.dsCtrtInfo.getColumn(this.dsCtrtInfo.rowposition,"ctrtAmt"));//지체기준액  셋팅	
+	this.dsGdsInpt.setColumn(this.dsGdsInpt.rowposition,"delayRate","0.15");//지체비율 셋팅    
+       
+   //지체일, 지체상금 구하기.
+   var delivDay = this.delivDayCal.value;  //납품일
+   var inptDay = this.inptDateCal.value;    //검수일
+   
+   if(delivDay<inptDay){
+		this.dsGdsInpt.setColumn(this.dsGdsInpt.rowposition,"delayDays","0");  //지체일   
+		this.dsGdsInpt.setColumn(this.dsGdsInpt.rowposition,"delayPrzAmt","0");  //지체상금
+   }else{
+		this.dsGdsInpt.setColumn(this.dsGdsInpt.rowposition,"delayDays",delivDay-inptDay);  //지체일   		
+		this.dsGdsInpt.setColumn(this.dsGdsInpt.rowposition,"delayPrzAmt",this.delayGijunPayEd.value*0.15*this.delayDaysEd.value);  //지체상금		
+   } 
+	this.gfnService("registerGdsInpt","false");   //검수확인등록, 검수여부변경.
+}
+//프린트버튼이벤트
+this.printStateBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+}
+
+//그리드 셀클릭 이벤트
+this.inptGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	selectCtrtNo = this.dsCtrtInfo.getColumn(this.dsCtrtInfo.rowposition,"ctrtNo");   
+	var selectBuyReceiptNo=this.dsCtrtInfo.getColumn(this.dsCtrtInfo.rowposition,"buyReceiptNo");   //선택된 구매접수번호
+
+	this.dsService.setColumn(1,"argument","selectCtrtNo="+selectCtrtNo);
+	this.dsService.setColumn(2,"argument","selectCtrtNo="+selectCtrtNo);
+	this.dsService.setColumn(3,"argument","selectBuyReceiptNo="+selectBuyReceiptNo);
+	    
+	this.gfnService("findCtrtHistList","false");   //계약번호에 해당하는 계약상세정보만 불러옴.
+	this.gfnService("findGdsInptList","false");   //계약번호에 해당하는 검수내역만 불러옴.	 
+	this.gfnService("findDelivDay","false");   //계약번호에 해당하는 납품일만 불러옴.
+}
+
+//승인버튼
+this.inptYnBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var recStat = "Y";
+	var selCount = this.inptGrid.currentrow;
+	this.dsCtrtInfo.setColumn(selCount, "inptYn", recStat);
+}
+//승인취소버튼
+this.inptYnCancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var recStat = "N";
+	var selCount = this.inptGrid.currentrow;
+	this.dsCtrtInfo.setColumn(selCount, "inptYn", recStat);
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -21,9 +21,10 @@
 	<package name="com.seoulit.erp47.com.util.to"/>
     <!-- 물류 -->
     <package name="com.seoulit.erp47.log.base.to"/>
-    <package name="com.seoulit.erp47.log.inpt.to"/>   
 	<package name="com.seoulit.erp47.log.ctrt.to"/>
 
+    <package name="com.seoulit.erp47.log.inpt.to"/>
+    <package name="com.seoulit.erp47.log.demd.to"/>   
     <package name="com.seoulit.erp47.log.inven.to"/> 
     <package name="com.seoulit.erp47.log.store.to"/>
      <!-- 인사 -->

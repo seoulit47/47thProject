@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BudgMisaForm" classname="AB_BudgMisaForm" left="0" top="0" width="1024" height="768" titletext="New Form" onload="AB_BudgMisaForm_onload">
+  <Form id="AB_BudgMisaForm" classname="AB_BudgMisaForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AB_BudgMisaForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.1%" top="4" right="0.49%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
@@ -266,10 +266,13 @@ this.addMisaBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var addRow = this.dsBudgMisa.addRow();
 	if(rowCount == 0){
 		this.dsBudgMisa.setColumn(addRow, "misaNo", 10000);
+		this.dsBudgMisa.setColumn(addRow,"appDay",this.gfnDate("YYYYMMDD"));
 	}else{
-		this.dsBudgMisa.setColumn(addRow, "misaNo", parseInt(this.dsBudgMisa.getColumn(addRow-1,"misaNo"))+1);
+		this.dsBudgMisa.setColumn(addRow, "misaNo",parseInt(this.dsBudgMisa.getColumn(addRow-1,"misaNo"))+1);
+		this.dsBudgMisa.setColumn(addRow,"appDay",this.gfnDate("YYYYMMDD"));
 	}
-	this.dsBudgMisa.setColumn(addRow, "accYear", this.yearSpin.value);
+	this.dsBudgMisa.setColumn(addRow, "accYear",this.yearSpin.value);
+	//this.gfnService("getMisaNo");	
 }
 
 //**************
@@ -325,7 +328,7 @@ this.delTagerBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 //**************
 this.misaDeciBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	var signDiv = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"signDiv");
+	var signDiv = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition, "signDiv");
 	
 	if(signDiv=='2'){
 		alert('이미확정된 전용신청입니다.');
@@ -334,7 +337,8 @@ this.misaDeciBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	
 	var misaNo = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"misaNo");
 	var accYear = this.dsBudgMisa.getColumn(this.dsBudgMisa.rowposition,"accYear");
-	var deciDept = 100; //임시로 부서지정...(원장)
+//	var deciDept = application.dsEmp.getColumn(0,"deptCd");	//확정자 부서가져오기
+	var deciDept = 100;	//임시로 부서지정...(원장)
 	var deciNote = this.deciNoteEd.value;
 	
 	var argument = 'misaNo='+misaNo+' accYear='+accYear+' deciDept='+deciDept+' deciNote='+deciNote;
@@ -392,8 +396,41 @@ this.misaTagetGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventI
 //*********
 this.deptPoputBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	
+	var arr = this.gfnCodePopup("GP500");
+	this.appDeptCdEd.set_value(arr[0]);
 }
+
+this.setCode = function(code,arrRtn){
+	alert(code);
+	if(code == "bimokHelp"){
+		var bimokNm = this.dsBudgMisa.findRow("bimokNm",arrRtn[2]);
+	
+		if(bimokNm = -1){
+			this.dsBudgMisaTaget.setColumn(this.dsBudgMisaTaget.rowposition,"accYear",arrRtn[0]);
+			this.dsBudgMisaTaget.setColumn(this.dsBudgMisaTaget.rowposition,"bimokCd",arrRtn[1]);
+			this.dsBudgMisaTaget.setColumn(this.dsBudgMisaTaget.rowposition,"bimokNm",arrRtn[2]);
+			this.dsBudgMisaTaget.setColumn(this.dsBudgMisaTaget.rowposition,"budgAmount",arrRtn[3]);
+			this.dsBudgMisaTaget.setColumn(this.dsBudgMisaTaget.rowposition,"budgBal",arrRtn[4]);
+		}else{
+			alert("같은비목이 존재합니다.");
+		}
+	}else{
+		this.appDeptCdEd.set_value(arrRtn[0]);
+	}
+}
+
+//*********
+//Callback
+//*********
+this.getMisaNoCallback = function(){
+	
+	var aRow = this.dsBudgMisa.addRow();
+	this.dsBudgMisa.setColumn(aRow,"signDiv",1);
+	this.dsBudgMisa.setColumn(aRow,"misaNo",misaNo);
+	this.dsBudgMisa.setColumn(aRow,"accYear",this.yearSpin.value);
+	this.dsBudgMisa.setColumn(aRow,"appDay",this.gfn_date("YYYY-MM-DD"));
+}
+
 ]]></Script>
   </Form>
 </FDL>

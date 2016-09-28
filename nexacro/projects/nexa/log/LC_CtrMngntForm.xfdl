@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LC_CtrMngntForm" classname="LC_CtrMngntForm" left="0" top="0" width="1250" height="768" titletext="계약 관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0.2%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="계약관리" left="4.79%" top="-4" right="81.7%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="ctrtGrid" taborder="1" binddataset="dsCtrt" useinputpanel="false" autofittype="col" oncellclick="ctrtGrid_oncellclick" left="1.37%" top="520" right="1.46%" height="230">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="78"/>
+                <Column size="71"/>
+                <Column size="99"/>
+                <Column size="73"/>
+                <Column size="109"/>
+                <Column size="93"/>
+                <Column size="299"/>
+                <Column size="61"/>
+                <Column size="210"/>
+                <Column size="99"/>
+                <Column size="20"/>
+                <Column size="106"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="계약구분"/>
+                <Cell col="2" text="구매접수번호"/>
+                <Cell col="3" text="거래처"/>
+                <Cell col="4" text="계약일"/>
+                <Cell col="5" text="연락처"/>
+                <Cell col="6" text="거래처 주소"/>
+                <Cell col="7" text="담당자"/>
+                <Cell col="8" text="계약물품"/>
+                <Cell col="9" colspan="3" text="계약기간"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ctrtNo"/>
+                <Cell col="1" text="bind:ctrtDiv"/>
+                <Cell col="2" text="bind:buyReceiptNo"/>
+                <Cell col="3" text="bind:cust"/>
+                <Cell col="4" text="bind:ctrtDate" mask="####년##월##일"/>
+                <Cell col="5" text="bind:ctrtTel"/>
+                <Cell col="6" text="bind:ctrtAddr"/>
+                <Cell col="7" text="bind:ctrtRespoWorker"/>
+                <Cell col="8" text="bind:ctrtGds"/>
+                <Cell col="9" text="bind:ctrtStart" mask="####년##월##일"/>
+                <Cell col="10" text="~"/>
+                <Cell col="11" text="bind:ctrtEnd" mask="####년##월##일"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="menuDiv" taborder="2" left="1.46%" top="70" right="1.56%" height="186" style="border:1 solid cadetblue ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc01" taborder="51" text="거래처" left="0.4%" top="4" right="93.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 다음_Regular;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc00" taborder="52" text="계약물품" left="0.4%" top="40" right="93.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc06" taborder="53" text="물품코드" left="0.4%" top="76" right="93.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc14" taborder="54" text="계약구분" left="22.5%" top="112" right="71.24%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc11" taborder="55" text="계약담당자" left="22.5%" top="76" right="71.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="custCd" taborder="56" text="거래처코드" left="22.5%" top="40" right="71.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc05" taborder="57" text="계약일" left="22.5%" top="4" right="71.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="busCtGnm" taborder="58" text="업종명" left="41.17%" top="112" right="52.57%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="prsdntnm" taborder="59" text="대표자명" left="41.17%" top="76" right="52.47%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="60" text="연락처" left="41.17%" top="40" right="52.47%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc04" taborder="61" text="계약기간" left="41.17%" top="4" right="52.47%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc03" taborder="62" text="거래처 주소" left="60.75%" top="40" right="31.58%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc12" taborder="63" text="계약내용" left="60.75%" top="76" right="31.58%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="bussNo" taborder="64" text="사업자등록번호" left="70.23%" top="4" right="21.59%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="custEd" taborder="65" left="7.37%" top="4" right="85.47%" height="30"/>
+              <Edit id="busCtgNmEd" taborder="66" left="48.03%" top="112" right="40.67%" height="30"/>
+              <Edit id="ctrtGdsEd" taborder="67" left="7.37%" top="40" right="85.47%" height="30"/>
+              <Edit id="gdsCdEd" taborder="68" left="7.37%" top="76" right="81.43%" height="30"/>
+              <Edit id="custCdEd" taborder="69" left="29.26%" top="40" right="59.43%" height="30"/>
+              <Edit id="ctrtRespoWorkerEd" taborder="70" left="29.26%" top="76" right="59.43%" height="30"/>
+              <Edit id="telNoEd" taborder="71" left="48.13%" top="40" right="40.57%" height="30"/>
+              <Edit id="prsdntNmEd" taborder="72" left="48.13%" top="76" right="40.57%" height="30"/>
+              <Static id="Static01" taborder="73" text="~" left="58.22%" top="9" right="40.26%" height="23" style="color:#6c6c6cff;font:bold 9 다음_Regular;"/>
+              <Edit id="ctrtAddrEd" taborder="74" left="69.02%" top="40" right="1.31%" height="30"/>
+              <Combo id="ctrtDivCombo" taborder="75" innerdataset="dsCtrtDiv" codecolumn="ctrtDiv" left="29.36%" top="111" right="59.33%" height="30"/>
+              <Calendar id="ctrtCal" taborder="76" autoskip="true" onchanged="menuDiv_ctrtCal_onchanged" left="29.26%" top="4" right="59.43%" height="30" style="padding:0 0 0 0;"/>
+              <Calendar id="ctrtStartPridCal" taborder="77" autoskip="true" onchanged="menuDiv_ctrtStartPridCal_onchanged" left="48.13%" top="4" right="42.48%" height="30" style="padding:0 0 0 0;"/>
+              <Calendar id="ctrtEndPridCal" taborder="78" autoskip="true" onchanged="menuDiv_ctrtEndPridCal_onchanged" left="59.84%" top="4" right="30.78%" height="30" style="padding:0 0 0 0;"/>
+              <Button id="searchCtrtGdsBtn" taborder="79" onclick="menuDiv_searchCtrtGdsBtn_onclick" cssclass="DelBtn" left="14.93%" top="39" right="77.9%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchCustBtn" taborder="80" onclick="menuDiv_searchCustBtn_onclick" cssclass="DelBtn" left="14.93%" top="3" right="77.9%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <MaskEdit id="bussNoEd" taborder="81" type="string" mask="##-###-#####" left="79.01%" top="4" right="8.98%" height="30" style="align:left middle;"/>
+              <TextArea id="ctrtConArea" taborder="82" left="69.12%" top="78" right="1.31%" height="101"/>
+              <Static id="inptYb" taborder="83" text="계약수량" left="0.4%" top="113" right="93.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="inptYb00" taborder="84" text="계약단가" left="0.4%" top="150" right="93.34%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc07" taborder="85" text="계약금액" left="22.5%" top="149" right="71.24%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="ctrtQntEd" taborder="86" left="7.47%" top="113" right="85.47%" height="30"/>
+              <Edit id="ctrtAmt" taborder="87" left="29.26%" top="149" right="59.43%" height="30"/>
+              <Edit id="ctrtPrice" taborder="88" left="7.47%" top="150" right="81.33%" height="30"/>
+              <Static id="inptYb01" taborder="89" text="승인여부" left="41.17%" top="149" right="52.47%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="inptYbCombo" taborder="90" enable="false" left="48.03%" top="148" right="46.01%" height="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="ctrtBatchBtn" taborder="3" onclick="ctrtBatchBtn_onclick" cssclass="ctrtBatchBtn" left="8.98%" top="487" right="83.89%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addCtrtBtn" taborder="4" onclick="addCtrtBtn_onclick" cssclass="addCtrtBtn" left="1.27%" top="487" right="91.5%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delCtrtBtn" taborder="5" onclick="delCtrtBtn_onclick" cssclass="delCtrtBtn" left="1.27%" top="450" right="91.5%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Calendar id="buyReceiptStartCal" taborder="6" autoskip="true" left="1.66%" top="305" right="89.06%" height="30" style="padding:0 0 0 0;"/>
+        <Calendar id="buyReceiptEndCal" taborder="7" autoskip="true" onchanged="menuDiv_ctrtEndPridCal_onchanged" oneditclick="menuDiv_ctrtEndPridCal_oneditclick" left="4.69%" top="343" right="85.94%" height="30" style="padding:0 0 0 0;"/>
+        <Button id="ctrtSearchBtn" taborder="8" onclick="anspListBtn_onclick" cssclass="DelBtn" left="9.28%" top="263" right="83.4%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Static id="Static02" taborder="9" text="~" left="2.83%" top="347" right="95.51%" height="23" style="color:#6c6c6cff;font:bold 9 다음_Regular;"/>
+        <Static id="subCodeStc00" taborder="10" text="구매접수일" onclick="subCodeStc_onclick" left="1.86%" top="265" right="91.41%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Grid id="prcsReceiptGrid" taborder="11" binddataset="gdsPrcsReceipt" autoenter="select" useinputpanel="false" autofittype="col" oncellclick="prcsReceiptGrid_oncellclick" left="17.29%" top="267" right="1.56%" height="245">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="94"/>
+                <Column size="66"/>
+                <Column size="102"/>
+                <Column size="98"/>
+                <Column size="83"/>
+                <Column size="136"/>
+                <Column size="83"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="221"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="청구번호"/>
+                <Cell col="1" text="상세번호"/>
+                <Cell col="2" text="접수번호"/>
+                <Cell col="3" text="접수일"/>
+                <Cell col="4" text="접수담당"/>
+                <Cell col="5" text="거래처"/>
+                <Cell col="6" text="구매종류"/>
+                <Cell col="7" text="수량"/>
+                <Cell col="8" text="물품코드"/>
+                <Cell col="9" text="물품명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="normal" text="bind:gdsAnspNo"/>
+                <Cell col="1" edittype="normal" text="bind:anspHistNo"/>
+                <Cell col="2" text="bind:buyReceiptNo"/>
+                <Cell col="3" text="bind:buyReceiptDate"/>
+                <Cell col="4" text="bind:buyReceiptRespoWorker"/>
+                <Cell col="5" text="bind:cust"/>
+                <Cell col="6" text="bind:buyKind"/>
+                <Cell col="7" text="bind:prcsQnt"/>
+                <Cell col="8" text="bind:gdsCd"/>
+                <Cell col="9" text="bind:gdsNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCtrt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="ctrtDiv" type="STRING" size="256"/>
+          <Column id="inptYb" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtDate" type="STRING" size="256"/>
+          <Column id="ctrtTel" type="STRING" size="256"/>
+          <Column id="ctrtAddr" type="STRING" size="256"/>
+          <Column id="ctrtRespoWorker" type="STRING" size="256"/>
+          <Column id="ctrtGds" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="ctrtCon" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="bussNo" type="STRING" size="256"/>
+          <Column id="busCtgNm" type="STRING" size="256"/>
+          <Column id="prsdntNm" type="STRING" size="256"/>
+          <Column id="buyReceiptNo" type="STRING" size="256"/>
+          <Column id="ctrtQnt" type="STRING" size="256"/>
+          <Column id="ctrtPrice" type="STRING" size="256"/>
+          <Column id="ctrtAmt" type="STRING" size="256"/>
+          <Column id="ctrtStart" type="STRING" size="256"/>
+          <Column id="ctrtEnd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCtrtList</Col>
+            <Col id="URL">erp47::log/ctrt/findCtrtList.do</Col>
+            <Col id="outData">dsCtrt=dsCtrt</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchCtrtProcess</Col>
+            <Col id="URL">erp47::log/ctrt/batchCtrtProcess.do</Col>
+            <Col id="outData"/>
+            <Col id="inData">dsCtrt=dsCtrt:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findCustInfo</Col>
+            <Col id="URL">erp47::log/base/findCustList.do</Col>
+            <Col id="outData">dsCust=dsCust</Col>
+            <Col id="callbackFunc">custCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPrcsReceiptList</Col>
+            <Col id="URL">erp47::log/prcs/findPrcsReceiptList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">gdsPrcsReceipt=dsPrcsReceipt</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">[Undefined]</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsInptYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="inptYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="inptYn">Y</Col>
+          </Row>
+          <Row>
+            <Col id="inptYn">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCtrtDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ctrtDiv" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ctrtDiv">약품</Col>
+          </Row>
+          <Row>
+            <Col id="ctrtDiv">재료</Col>
+          </Row>
+          <Row>
+            <Col id="ctrtDiv">도서</Col>
+          </Row>
+          <Row>
+            <Col id="ctrtDiv">사무</Col>
+          </Row>
+          <Row>
+            <Col id="ctrtDiv">전산</Col>
+          </Row>
+          <Row>
+            <Col id="ctrtDiv">수입</Col>
+          </Row>
+          <Row>
+            <Col id="ctrtDiv">기타</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCust" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="bussNo" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="busCtgNm" type="STRING" size="256"/>
+          <Column id="prsdntNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPrcsReceipt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="gdsAnspNo" type="STRING" size="256"/>
+          <Column id="anspHistNo" type="STRING" size="256"/>
+          <Column id="buyReceiptNo" type="STRING" size="256"/>
+          <Column id="buyReceiptDate" type="STRING" size="256"/>
+          <Column id="buyReceiptRespoWorker" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="buyKind" type="STRING" size="256"/>
+          <Column id="inptYn" type="STRING" size="256"/>
+          <Column id="prcsQnt" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="gdsNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 물품 계약관리																*
+*                                                                               *
+* @Path		    LC_CtrtMngntForm											*
+*																				*
+* @Description 	물품 계약관리에서 물품 계약 등록,수정,삭제,조회한다.		*
+*               																*
+* @Author	    김성호    						                                *
+* 									                                            *
+* Created on 날짜	                          		                    *
+*									                                            *
+********************************************************************************/
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include "scripts::logScripts.xjs";
+
+/***************************************************************************************************
+*                                           구매접수 조회                                         *
+***************************************************************************************************/
+
+this.anspListBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var buyReceiptStartCal = this.buyReceiptStartCal.value;
+	var buyReceiptEndCal = this.buyReceiptEndCal.value;
+	var buyReceiptCal = "buyReceiptStartCal='"+buyReceiptStartCal+"' buyReceiptEndCal='"+buyReceiptEndCal+"'";
+	this.dsService.setColumn(3, "argument", buyReceiptCal);
+	this.gfnService("findPrcsReceiptList", false);
+}
+
+
+/***************************************************************************************************
+*                                         계약관리  조회                                          *
+***************************************************************************************************/
+var buyReceiptNo;
+this.prcsReceiptGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var prcsReceiptCount = this.prcsReceiptGrid.currentrow;
+ 	buyReceiptNo = application.gdsPrcsReceipt.getColumn(prcsReceiptCount, "buyReceiptNo");
+ 	alert(buyReceiptNo);
+ 	var setDsPrcsReceipt = "buyReceiptNo='"+buyReceiptNo+"'";
+ 	this.dsService.setColumn(0, "argument", setDsPrcsReceipt);
+ 	alert(this.dsService.getColumn(0, "argument"));
+	this.gfnService("findCtrtList", false);	
+	this.ctrtSet();	
+}
+
+/***************************************************************************************************
+*                                         계약관리  추가                                          *
+***************************************************************************************************/
+var count;
+
+this.Today = function ()
+{
+    var sToday = "";
+    var objDate = new Date();
+    var sToday  = objDate.getFullYear() + "";
+    var sMonth = objDate.getMonth()+1;
+    var sDate = objDate.getDate();
+    
+    if(sMonth.toString().length == 1){
+      sMonth = "0" + sMonth;
+    }
+   if(sDate.toString().length == 1){
+      sDate = "0" + sDate;
+    }
+    sToday = sToday+sMonth+sDate;
+    return sToday;
+}
+
+this.addCtrtBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsCtrt.addRow();
+	var ctrtNo = this.ctrtGrid.currentrow;
+	count = this.ctrtGrid.currentrow;
+
+	var objDate = new Date();
+	var year = objDate.getFullYear() +"";
+	var cutYear = year.substr(2,3);
+	var setDownCount = "CTRT"+cutYear+"0"+ctrtNo;
+	var setUpCount = "CTRT"+cutYear+ctrtNo;
+	if(ctrtNo < 10){
+		this.dsCtrt.setColumn(count, "ctrtNo", setDownCount);
+	}else{
+		this.dsCtrt.setColumn(count, "ctrtNo", setUpCount);
+	}
+	this.dsCtrt.setColumn(count, "buyReceiptNo", buyReceiptNo);
+	this.dsCtrt.setColumn(count, "ctrtDate", this.Today());
+	this.dsCtrt.setColumn(count, "inptYb", "N");
+}
+
+/***************************************************************************************************
+*                                         계약관리  삭제                                          *
+***************************************************************************************************/
+this.delCtrtBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsCtrt.deleteRow(this.ctrtGrid.currentrow);
+}
+
+/***************************************************************************************************
+*                                        계약관리 일괄저장                                       *
+***************************************************************************************************/
+this.ctrtBatchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchCtrtProcess", "false");
+}
+
+/***************************************************************************************************
+*                                          달력 값 변경                                           *
+***************************************************************************************************/
+this.menuDiv_ctrtCal_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	var no = this.ctrtGrid.currentrow;
+	var setCalendar = this.menuDiv.ctrtCal.value;
+	this.dsCtrt.setColumn(no, "ctrtDate", setCalendar)	
+}
+
+this.menuDiv_ctrtStartPridCal_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	var count = this.ctrtGrid.currentrow;
+	var frontValue = this.menuDiv.ctrtStartPridCal.value;
+	this.dsCtrt.setColumn(count, "ctrtStart", frontValue);
+}
+
+this.menuDiv_ctrtEndPridCal_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	var count = this.ctrtGrid.currentrow;
+	var backValue = this.menuDiv.ctrtEndPridCal.value;		
+	this.dsCtrt.setColumn(count, "ctrtEnd", backValue);
+}
+
+/***************************************************************************************************
+*                                         거래처 조회                                             *
+***************************************************************************************************/
+this.menuDiv_searchCustBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+ {
+ 	this.logOpenCdDialog("cust");
+ }
+
+/***************************************************************************************************
+*                                        계약물품 조회                                            *
+***************************************************************************************************/
+this.menuDiv_searchCtrtGdsBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+ 	this.logOpenGdsDialog("gds");
+ 	
+	var custCd = this.menuDiv.custCdEd.value;
+	var bussNo = this.menuDiv.bussNoEd.value;
+	var busCtgNm = this.menuDiv.busCtgNmEd.value;
+	var prsdntNm = this.menuDiv.prsdntNmEd.value;
+	var ctrtTel = this.menuDiv.telNoEd.value;
+	var ctrtAddr = this.menuDiv.ctrtAddrEd.value;
+	
+	this.dsCtrt.setColumn(count, "custCd", custCd);
+	this.dsCtrt.setColumn(count, "bussNo", bussNo);
+	this.dsCtrt.setColumn(count, "busCtgNm", busCtgNm);
+	this.dsCtrt.setColumn(count, "prsdntNm", prsdntNm);
+	this.dsCtrt.setColumn(count, "ctrtTel", ctrtTel);
+	this.dsCtrt.setColumn(count, "ctrtAddr", ctrtAddr);
+}
+// 계약물품 조회역할 자식 팝업창에서 호출
+ this.setLogCodeArray = function(divCode,logCode,secCode,thrCode,arr){
+//  	trace(arr[0]+"aasdfas="+divCode);
+  	switch(divCode){
+  		case "cust" :
+// 			alert("aa");
+  			this.menuDiv.custEd.set_value(arr[1]);
+  			var custCd = "custCd='"+arr[0]+"'";
+  			this.dsService.setColumn(2, "argument", custCd);
+			this.gfnService("findCustInfo");
+			
+			
+  			break;
+  		case "gds" :
+// 			trace("+++++++"+arr);
+   			this.menuDiv.ctrtGdsEd.set_value(arr[1]);
+   			this.menuDiv.gdsCdEd.set_value(arr[0]);
+   			break;
+ 	}
+}
+this.addAuthBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{ 
+	var custCd = this.menuDiv.custCdEd.value;
+ 	this.dsCtrt.setColumn(count, "custCd", custCd);
+}
+/***************************************************************************************************
+*                                          계약 기간 출력                                         *
+***************************************************************************************************/
+this.ctrtGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	this.ctrtSet();
+}
+
+this.ctrtSet = function() {
+	var count = this.ctrtGrid.currentrow;
+	this.menuDiv.ctrtStartPridCal.set_value("");
+	this.menuDiv.ctrtEndPridCal.set_value("");
+	var ctrtPridStart = this.dsCtrt.getColumn(count, "ctrtStart");
+	var ctrtPridEnd = this.dsCtrt.getColumn(count, "ctrtEnd");
+	this.menuDiv.ctrtStartPridCal.set_value(ctrtPridStart);
+	this.menuDiv.ctrtEndPridCal.set_value(ctrtPridEnd);
+}
+
+
+this.custCallbackFunc = function()
+{
+	this.menuDiv.bussNoEd.set_value(this.dsCust.getColumn(0, "bussNo"));
+	this.menuDiv.custCdEd.set_value(this.dsCust.getColumn(0, "custCd"));
+	this.menuDiv.prsdntNmEd.set_value(this.dsCust.getColumn(0, "prsdntNm"));
+	this.menuDiv.ctrtAddrEd.set_value(this.dsCust.getColumn(0, "addr"));
+	this.menuDiv.busCtgNmEd.set_value(this.dsCust.getColumn(0, "busCtgNm"));
+	this.menuDiv.telNoEd.set_value(this.dsCust.getColumn(0, "telNo"));
+}
+
+
+
+]]></Script>
+  </Form>
+</FDL>

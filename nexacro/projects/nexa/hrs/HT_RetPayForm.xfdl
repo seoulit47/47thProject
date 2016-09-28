@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HT_RetPayForm" classname="HT_RetPayForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="62" right="1.6%" height="42" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc" taborder="13" text="사원명" onclick="subCodeStc_onclick" left="1.95%" top="6" right="90.72%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="empNoEdt" taborder="14" left="9.61%" top="6" right="80.62%" height="26" class="AreaEdt"/>
+              <Edit id="empNameEdt" taborder="15" left="19.87%" top="6" right="70.36%" height="26" class="AreaEdt"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" left="0%" top="105" right="1.6%" height="471" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Grid id="retEmpGrid" taborder="0" binddataset="dsRetPay" useinputpanel="false" autofittype="col" left="2.04%" top="7" right="0.73%" height="453">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="98"/>
+                      <Column size="98"/>
+                      <Column size="142"/>
+                      <Column size="112"/>
+                      <Column size="160"/>
+                      <Column size="139"/>
+                      <Column size="109"/>
+                      <Column size="126"/>
+                      <Column size="92"/>
+                      <Column size="129"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사원번호"/>
+                      <Cell col="1" text="사원명"/>
+                      <Cell col="2" text="퇴직소득금액"/>
+                      <Cell col="3" text="퇴직소득공제"/>
+                      <Cell col="4" text="퇴직소득과세표준"/>
+                      <Cell col="5" text="퇴직소득결정세액"/>
+                      <Cell col="6" text="주민세"/>
+                      <Cell col="7" text="실지급 퇴직금"/>
+                      <Cell col="8" text="퇴직충당금"/>
+                      <Cell col="9" text="근속일수"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:empNo"/>
+                      <Cell col="1" text="bind:empNm"/>
+                      <Cell col="2" text="bind:retIncomeAmt"/>
+                      <Cell col="3" text="bind:retIncomeDeduction"/>
+                      <Cell col="4" text="bind:retIncomeAsseStandard"/>
+                      <Cell col="5" text="bind:retIncomeDecidedTaxAmt"/>
+                      <Cell col="6" text="bind:residenceTax"/>
+                      <Cell col="7" text="bind:actualRetPay"/>
+                      <Cell col="8" text="bind:retIncomeAppropriation"/>
+                      <Cell col="9" text="bind:workingdays"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div03" taborder="2" left="0%" top="582" right="1.6%" height="50" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Button id="empSearchBtn" taborder="3" onclick="empSearchBtn_onclick" cssclass="DelBtn" left="29.44%" top="66" right="68%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div02" taborder="4" left="0%" top="0" right="1.68%" height="58" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="퇴직금 지급내역 확인" left="5.21%" top="0" right="41.01%" height="48" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="DelBtn07" taborder="5" onclick="searchBtn_onclick" cssclass="DelBtn" left="89.6%" top="66" right="3.2%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsRetPay" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="retIncomeAmt" type="STRING" size="256"/>
+          <Column id="retIncomeDeduction" type="STRING" size="256"/>
+          <Column id="retIncomeAsseStandard" type="STRING" size="256"/>
+          <Column id="retIncomeDecidedTaxAmt" type="STRING" size="256"/>
+          <Column id="residenceTax" type="STRING" size="256"/>
+          <Column id="actualRetPay" type="STRING" size="256"/>
+          <Column id="retIncomeAppropriation" type="STRING" size="256"/>
+          <Column id="workingdays" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="retIncomeCalcTaxAmt" type="STRING" size="256"/>
+          <Column id="salAmount" type="STRING" size="256"/>
+          <Column id="salDays" type="STRING" size="256"/>
+          <Column id="recentWorkingdays" type="STRING" size="256"/>
+          <Column id="recentSalAmount" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="taxRate" type="STRING" size="256"/>
+          <Column id="progressiveTaxDeduction" type="STRING" size="256"/>
+          <Column id="singleRateDeduction" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findRetPayList</Col>
+            <Col id="URL">erp47::hrs/ret/findRetPayList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsRetPay=dsRetPay</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 퇴직금 지급내역확인                                            *
+*                                                                   *
+* @Path		    퇴직금 지급내역 확인     	                        *
+* @Description  사원의 퇴직금지급내역과, 지급여부를 조회한다  *
+* @Author		김봉진 					                        *
+* 								                                    *
+* Created on 2016. 9. 12.                             		        *
+*								                                    *
+********************************************************************/
+
+
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+include "scripts::commonScripts.xjs";  
+include "scripts::commonHrsPopup.xjs";
+
+
+/********************************************************************************
+ 검색 조건 변수
+********************************************************************************/
+var empNo;
+
+
+/********************************************************************************
+  사원 조회 버튼 이벤트
+********************************************************************************/
+this.empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	var arr = this.gfnEmpPopup();
+    
+    this.setEmpInfo = function(arrRtn)
+    { 
+		empNo = arrRtn[0];
+		this.Div00.empNoEdt.set_value(arrRtn[0]);
+		this.Div00.empNameEdt.set_value(arrRtn[1]);
+	}	
+}
+
+
+
+/********************************************************************************
+  퇴직금지금내역 조회 버튼 이벤트
+********************************************************************************/
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var argument = "empNo="+empNo;
+	
+	this.dsService.setColumn(0, "argument", argument);
+	
+	this.gfnService("findRetPayList");
+
+}
+
+]]></Script>
+  </Form>
+</FDL>

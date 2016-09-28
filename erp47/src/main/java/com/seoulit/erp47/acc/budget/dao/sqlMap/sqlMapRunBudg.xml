@@ -74,7 +74,7 @@
 		 	) AAAA
  	</select>
  	
-	<!-- <select id="selectRunBudgList" flushCache="false"  useCache="true" resultType="RunBudgBean">
+	<select id="selectRunBudgList" flushCache="false"  useCache="true" resultType="RunBudgBean">
 		SELECT 	A.BUDG_AMOUNT
 			   	, A.BUDG_BAL
 			   	, B.ACC_YEAR
@@ -95,7 +95,8 @@
 		ORDER BY B.BIMOK_CD
 
  	</select>
-    
+ 	
+    <!--
     <select id="selectRunBimok" flushCache="false"  useCache="true" resultType="RunBudgBean">
         SELECT A.CAUSE_AMOUNT,
                A.BUDG_BAL,

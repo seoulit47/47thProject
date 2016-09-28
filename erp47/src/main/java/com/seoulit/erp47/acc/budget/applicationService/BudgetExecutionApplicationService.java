@@ -19,4 +19,6 @@ public interface BudgetExecutionApplicationService {
 	void deciBudgMisa(Map<String, String> argsMap);
 	
 	void appBudgMisa(List<BudgMisaBean> budgMisaList, List<BudgMisaTagetBean> budgMisaTagetList);
+	
+	String getMisaNo();
 }

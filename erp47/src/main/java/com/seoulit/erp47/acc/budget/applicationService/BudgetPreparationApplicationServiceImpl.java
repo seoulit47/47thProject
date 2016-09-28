@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.seoulit.erp47.acc.budget.dao.BudgRegDAO;
+import com.seoulit.erp47.acc.budget.dao.RunBudgDAO;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
+import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
 /**
  * @Package  com.seoul.his.acc.budget.applicationService
@@ -24,8 +26,8 @@ public class BudgetPreparationApplicationServiceImpl implements BudgetPreparatio
 	
 	@Autowired
 	BudgRegDAO budgRegDAO;
-	/*@Autowired
-	RunBudgDAO runBudgDAO;*/
+	@Autowired
+	RunBudgDAO runBudgDAO;
 
     // 예산조회
 	@Override
@@ -41,4 +43,10 @@ public class BudgetPreparationApplicationServiceImpl implements BudgetPreparatio
 		}
 	}
 	
+	// 비목코드 조회
+	@Override
+	public List<RunBudgBean> findRunBudgList(Map<String, String> argsMap) {
+		List<RunBudgBean> runBudgList = runBudgDAO.selectRunBudgList(argsMap);
+		return runBudgList;
+	}
 }

@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HT_DoRetPayCalculationForm" classname="HT_DoRetPayCalculationForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="606" right="1.6%" height="148" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Edit id="empNoEdt00" taborder="37" enable="false" left="1.95%" top="95" right="88.27%" height="25" style=":disabled {align:center middle;}" class="AreaEdt"/>
+              <Edit id="empNoEdt01" taborder="38" enable="false" left="17.83%" top="95" right="72.39%" height="25" style=":disabled {align:center middle;}" class="AreaEdt"/>
+              <Edit id="empNoEdt02" taborder="39" enable="false" left="33.96%" top="95" right="56.27%" height="25" style=":disabled {align:center middle;}" class="AreaEdt"/>
+              <Edit id="empNoEdt03" taborder="40" enable="false" left="49.51%" top="95" right="40.72%" height="25" style=":disabled {align:center middle;}" class="AreaEdt"/>
+              <Edit id="actualRetPayEdt" taborder="41" enable="false" left="82.33%" top="95" right="5.46%" height="25" style=":disabled {align:center middle;}" class="AreaEdt"/>
+              <Static id="Static00" taborder="42" text="+" left="14.5%" top="95" right="83.88%" height="25" style="font:bold 18 Dotum;"/>
+              <Static id="Static01" taborder="43" text="+" left="30.13%" top="97" right="67.18%" height="25" style="font:bold 18 Dotum;"/>
+              <Static id="Static02" taborder="44" text="-" left="46.09%" top="97" right="51.22%" height="25" style="font:bold 18 Dotum;"/>
+              <Static id="Static03" taborder="45" text="-" left="62.21%" top="95" right="35.18%" height="25" style="font:bold 18 Dotum;"/>
+              <Static id="Static04" taborder="46" text="=" left="79.8%" top="94" right="17.51%" height="25" style="font:bold 18 Dotum;"/>
+              <Edit id="empNoEdt05" taborder="47" enable="false" left="66.21%" top="95" right="24.02%" height="25" style=":disabled {align:center middle;}" class="AreaEdt"/>
+              <Static id="subCodeStc07" taborder="48" text="퇴직급여액" onclick="subCodeStc_onclick" left="1.95%" top="64" right="88.27%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc00" taborder="49" text="근속연수공제액" onclick="subCodeStc_onclick" left="17.83%" top="64" right="72.39%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc01" taborder="50" text="퇴직충당금" onclick="subCodeStc_onclick" left="33.96%" top="64" right="56.27%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="51" text="퇴직소득 결정세액" onclick="subCodeStc_onclick" left="49.51%" top="64" right="40.72%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc03" taborder="52" text="주민세" onclick="subCodeStc_onclick" left="66.21%" top="64" right="24.02%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc05" taborder="53" text=" 실 지급 퇴직급여 계산" onclick="subCodeStc_onclick" left="0%" top="-1" right="-0.16%" height="25" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:left middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc04" taborder="54" text="실 지급 퇴직급여" onclick="subCodeStc_onclick" left="82.33%" top="64" right="5.46%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div02" taborder="1" left="0%" top="109" right="1.6%" height="443" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc01" taborder="19" text="사원 리스트" onclick="subCodeStc_onclick" left="0.57%" top="5" right="82.41%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Grid id="empGrid" taborder="20" binddataset="dsRetPlanEmp" useinputpanel="false" autofittype="col" oncellclick="Div02_empGrid_oncellclick" left="0.57%" top="35" right="61.48%" height="400">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="75"/>
+                      <Column size="73"/>
+                      <Column size="80"/>
+                      <Column size="96"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사원번호"/>
+                      <Cell col="1" text="사원명"/>
+                      <Cell col="2" text="부서명"/>
+                      <Cell col="3" text="직급"/>
+                      <Cell col="4" text="퇴직예정일"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:empNo"/>
+                      <Cell col="1" text="bind:empNm"/>
+                      <Cell col="2" text="bind:deptNm"/>
+                      <Cell col="3" text="bind:jobtt"/>
+                      <Cell col="4" text="bind:retMonthWorkingdays"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="subCodeStc02" taborder="21" text="사원 퇴직금 정보" onclick="subCodeStc_onclick" left="39.5%" top="5" right="43.49%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Grid id="retPayInfoGrid" taborder="22" binddataset="dsRetPay" useinputpanel="false" autofittype="col" left="39.5%" top="35" right="1.06%" height="400">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="109"/>
+                      <Column size="123"/>
+                      <Column size="130"/>
+                      <Column size="196"/>
+                      <Column size="146"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="퇴직급여액"/>
+                      <Cell col="1" text="근속연수공제액"/>
+                      <Cell col="2" text="퇴직충당금"/>
+                      <Cell col="3" text="퇴직소득 결정새액"/>
+                      <Cell col="4" text="주민세"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:retIncomeAmt" mask="###,###,###"/>
+                      <Cell col="1" text="bind:retIncomeDeduction"/>
+                      <Cell col="2" text="bind:retIncomeAppropriation"/>
+                      <Cell col="3" text="bind:retIncomeDecidedTaxAmt"/>
+                      <Cell col="4" text="bind:residenceTax"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="2" left="0%" top="64" right="1.6%" height="40" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc" taborder="26" text="사원번호" onclick="subCodeStc_onclick" left="0.57%" top="4" right="92.35%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="empNoEdt" taborder="27" left="7.82%" top="4" right="82.25%" height="26" class="AreaEdt"/>
+              <Edit id="empNmEdt" taborder="28" left="28.5%" top="4" right="61.56%" height="26" class="AreaEdt"/>
+              <Static id="subCodeStc01" taborder="29" text="사원명" onclick="subCodeStc_onclick" left="21.25%" top="4" right="71.66%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div04" taborder="3" left="0%" top="560" right="1.6%" height="40" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Button id="retPayBtn" taborder="0" text="퇴직금 계산" onclick="Div04_retPayBtn_onclick" left="84.36%" top="7" right="1.14%" height="26" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="empSearchBtn" taborder="4" onclick="empSearchBtn_onclick" cssclass="DelBtn" left="89.84%" top="69" right="2.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div00" taborder="5" left="0%" top="0" right="1.68%" height="58" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="퇴직금 계산" left="5.21%" top="0" right="41.01%" height="48" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="DelBtn10" taborder="6" onclick="Div01_empNoSearchBtn_onclick" cssclass="DelBtn" left="17.92%" top="68" right="79.84%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsHmEmp" onrowposchanged="dsHmEmp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="payDate" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+          <Column id="lunar" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRetPay" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="retIncomeAmt" type="STRING" size="256"/>
+          <Column id="retIncomeDeduction" type="STRING" size="256"/>
+          <Column id="retIncomeAsseStandard" type="STRING" size="256"/>
+          <Column id="retIncomeCalcTaxAmt" type="STRING" size="256"/>
+          <Column id="retIncomeDecidedTaxAmt" type="STRING" size="256"/>
+          <Column id="residenceTax" type="STRING" size="256"/>
+          <Column id="actualRetPay" type="STRING" size="256"/>
+          <Column id="retIncomeAppropriation" type="STRING" size="256"/>
+          <Column id="salAmount" type="STRING" size="256"/>
+          <Column id="workingdays" type="STRING" size="256"/>
+          <Column id="salDays" type="STRING" size="256"/>
+          <Column id="recentWorkingdays" type="STRING" size="256"/>
+          <Column id="recentSalAmount" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="taxRate" type="STRING" size="256"/>
+          <Column id="progressiveTaxDeduction" type="STRING" size="256"/>
+          <Column id="singleRateDeduction" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">calcRetPayProcess</Col>
+            <Col id="URL">erp47::hrs/ret/calcRetPayProcess.do</Col>
+          </Row>
+          <Row>
+            <Col id="URL">erp47::hrs/ret/findRetPayList.do</Col>
+            <Col id="serviceID">findRetPayList</Col>
+            <Col id="outData">dsRetPay=dsRetPay</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">searchEmp</Col>
+            <Col id="URL">erp47::hrs/emp/selectEmpList.do</Col>
+            <Col id="outData">dsHmEmp=gdsEmp</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findRetPlanEmpList</Col>
+            <Col id="URL">erp47::hrs/ret/findRetPlanEmpList.do</Col>
+            <Col id="outData">dsRetPlanEmp=dsRetPlanEmp</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsRetPlanEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 퇴직예정자 퇴직금계산                                          *
+*                                                                   *
+* @Path		    퇴직예정자 퇴직금계산   	                        *
+* @Description  퇴직예정자의 퇴직금을 계산하고 저장한다        *
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 9. 05.                             		        *
+*								                                    *
+********************************************************************/
+
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+
+include "scripts::commonScripts.xjs"; 
+include "scripts::hrsScripts.xjs";
+
+/********************************************************************************
+ 검색조건 변수 선언
+********************************************************************************/
+var empNo;			//사원번호
+var empNm;			//사원명
+var currentRow;		//클릭한 행의 위치
+var actPay;			//퇴직금 값
+
+
+/********************************************************************************
+  사원번호조회 버튼 이벤트
+********************************************************************************/
+this.Div01_empNoSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var arr = this.gfn_EmpPopup();
+    
+    this.setEmpInfo = function(arrRtn)
+    { 
+		this.Div01.empNoEdt.set_value(arrRtn[0]);
+		this.Div01.empNmEdt.set_value(arrRtn[1]);
+	}
+}
+
+
+/********************************************************************************
+  사원전체조회 버튼 이벤트
+********************************************************************************/
+this.empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		empNo = this.Div01.empNoEdt.value;
+	empNm = this.Div01.empNmEdt.value;
+	trace(empNo+empNm);
+	//변수 argument
+	var argument = "empNo="+empNo+" empNm="+empNm;
+	
+	
+	//사원정보 argument Setting
+	this.dsService.setColumn(3,"argument",argument);
+	
+	
+	//사원정보 트랜잭션처리
+	
+	this.gfnService("findRetPlanEmpList");
+	
+	//퇴직금정보 트랜잭션처리
+	this.gfnService("findRetPayList");
+	
+	
+}
+
+/********************************************************************************
+  퇴직금계산 버튼 이벤트
+********************************************************************************/
+this.Div04_retPayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	//변수 argument
+	var argument = "empNo="+empNo;
+	
+	
+	//퇴직금계산 argument Setting
+	this.dsService.setColumn(0,"argument",argument);
+
+
+	//퇴직금계산 트랜잭션처리
+	this.gfnService("calcRetPayProcess");
+	
+	
+	//새로고침 역할
+	this.gfnService("findRetPayList");
+
+}
+
+
+/********************************************************************************
+  사원리스트 셀 클릭 이벤트
+********************************************************************************/
+this.Div02_empGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{	
+
+	//선택한 행의 empNo 값  
+	empNo = this.dsRetPlanEmp.getColumn(this.dsRetPlanEmp.rowposition, "empNo");	
+	
+	
+	//dsRetPay = empNo 값으로 필터링
+	this.dsRetPay.filter("empNo=='"+empNo+"'");
+	
+	
+	//check 함수 호출
+	this.chek();
+}
+
+
+/********************************************************************************
+  퇴직금 계산 사용 유무 함수 set
+********************************************************************************/
+this.chek = function()
+{
+	var count = this.dsRetPay.getRowCount();
+	
+	if(count == 0)
+	{
+		alert("퇴직금 계산이 가능합니다.");
+	}
+	else
+	{
+		alert("이미 퇴직금 계산이 완료된 사원입니다");
+	}
+
+}
+/********************************************************************************
+	콜백
+********************************************************************************/
+this.CallbackFunc=function(trid,errcd,errmsg){	
+	if(trid =="findRetPlanEmpList"){
+		if(errcd == 1){
+				//alert("성공");
+					empNo = this.dsRetPlanEmp.getColumn(this.dsRetPlanEmp.rowposition, "empNo");		
+					//dsRetPay = empNo 값으로 필터링
+					this.dsRetPay.filter("empNo=='"+empNo+"'");
+		}
+		else{ 
+				alert("실패");
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

@@ -27,7 +27,7 @@ public class StoreController {
 	@RequestMapping("log/store/findPrcsWhsList.do")
 	public void findPrcsWhsList(HttpServletRequest request, HttpServletResponse response)throws Exception{
 			//구매입고정보조회
-			System.out.println("findPrcsWhsList 매서드입니다");
+			System.out.println("findPrcsWhsList 매서드입니다"); 
 		
 			PlatformData inData = (PlatformData)request.getAttribute("inData");
 			PlatformData outData = (PlatformData)request.getAttribute("outData");

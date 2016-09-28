@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_OrgDlineForm" classname="AB_OrgDlineForm" left="0" top="0" width="1024" height="768" titletext="New Form" onload="AB_OrgDlineForm_onload">
+  <Form id="AB_OrgDlineForm" classname="AB_OrgDlineForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AB_OrgDlineForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="4" right="0.29%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc">
