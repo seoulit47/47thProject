@@ -1,0 +1,923 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AR_ResolLetMgtForm" classname="AR_ResolLetMgtForm" left="0" top="0" width="1250" height="768" titletext="결의서 관리" onload="AR_ResolLetMgtForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0.8%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="결의서 관리" left="4.76%" top="-4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="DelBtn02" taborder="1" onclick="DelBtn_onclick" cssclass="DelBtn" left="90.56%" top="728" right="2.24%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn15" taborder="2" onclick="DelBtn_onclick" cssclass="DelBtn" left="75.12%" top="728" right="17.68%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="DelBtn00" taborder="3" onclick="DelBtn_onclick" cssclass="DelBtn" left="82.72%" top="728" right="10.08%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="resolMngmt" taborder="4" left="2%" top="58" right="1.2%" height="702" style="background:#edececff;" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="subCodeStc01" taborder="277" text="결의서 상세정보" onclick="subCodeStc_onclick" left="33.72%" top="7" right="1.07%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc" taborder="278" text="결의구분" onclick="subCodeStc_onclick" left="0.25%" top="39" right="92.73%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc00" taborder="279" text="회계기수" onclick="subCodeStc_onclick" left="16.28%" top="39" right="76.69%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="280" text="결의부서" onclick="subCodeStc_onclick" left="0.25%" top="134" right="92.73%" height="30" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc03" taborder="281" text="결의번호" onclick="subCodeStc_onclick" left="0.25%" top="104" right="92.73%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc04" taborder="282" text="결의일자" onclick="subCodeStc_onclick" left="0.25%" top="71" right="92.73%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc07" taborder="283" text="결의번호" onclick="subCodeStc_onclick" left="33.72%" top="36" right="59.34%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc05" taborder="284" text="결의일자" onclick="subCodeStc_onclick" left="33.72%" top="63" right="59.34%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc06" taborder="285" text="거래처" onclick="subCodeStc_onclick" left="33.72%" top="91" right="59.34%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc08" taborder="286" text="결의금액" onclick="subCodeStc_onclick" left="50.08%" top="63" right="42.98%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc09" taborder="287" text="결의구분" onclick="subCodeStc_onclick" left="50.08%" top="36" right="42.98%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc10" taborder="288" text="진행상태" onclick="subCodeStc_onclick" left="33.72%" top="119" right="59.34%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc11" taborder="289" text="요구부서" onclick="subCodeStc_onclick" left="66.45%" top="36" right="26.61%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc12" taborder="290" text="사업자번호" onclick="subCodeStc_onclick" left="50.08%" top="91" right="42.98%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc13" taborder="291" text="결의부서" onclick="subCodeStc_onclick" left="82.73%" top="36" right="10.25%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc14" taborder="292" text="결의부서전화" onclick="subCodeStc_onclick" left="82.73%" top="90" right="10.25%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc15" taborder="293" text="원인번호" onclick="subCodeStc_onclick" left="82.73%" top="117" right="10.25%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc16" taborder="294" text="결의자" onclick="subCodeStc_onclick" left="82.73%" top="63" right="10.25%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc17" taborder="295" text="결의서 목록" onclick="subCodeStc_onclick" left="0.25%" top="7" right="68.1%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc18" taborder="296" text="계약번호" onclick="subCodeStc_onclick" left="66.45%" top="63" right="26.61%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc19" taborder="297" text="접수번호" onclick="subCodeStc_onclick" left="66.45%" top="90" right="26.61%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="resolDivCombo" taborder="298" innerdataset="dsResolDiv" codecolumn="code" datacolumn="value" onitemchanged="resolMngmt_resolDivCombo_onitemchanged" left="7.6%" top="37" right="84.05%" height="30" class="AreaCombo"/>
+              <Combo id="accPridCombo" taborder="299" innerdataset="dsAccPrid" codecolumn="accPrid" datacolumn="accPrid" left="23.72%" top="36" right="67.93%" height="30" class="AreaCombo"/>
+              <Edit id="endResolNoEd" taborder="300" left="22.07%" top="104" right="67.93%" height="30" class="AreaEdt"/>
+              <Edit id="startResolNoEd" taborder="301" left="7.69%" top="104" right="82.31%" height="30" class="AreaEdt"/>
+              <Edit id="resolDeptCdEd" taborder="302" left="7.69%" top="136" right="84.55%" height="30" class="AreaEdt"/>
+              <Edit id="resolNoEd" taborder="303" enable="false" left="41.16%" top="35" right="50.08%" height="25" class="AreaEdt"/>
+              <Edit id="resolDate" taborder="304" enable="false" left="41.16%" top="62" right="50.08%" height="25" class="AreaEdt"/>
+              <Edit id="AuthEdt09" taborder="305" enable="false" left="57.44%" top="90" right="33.8%" height="25" class="AreaEdt"/>
+              <Edit id="AuthEdt10" taborder="306" enable="false" left="57.44%" top="63" right="33.8%" height="25" class="AreaEdt"/>
+              <Edit id="AuthEdt12" taborder="307" enable="false" left="73.72%" top="90" right="17.52%" height="25" class="AreaEdt"/>
+              <Edit id="AuthEdt13" taborder="308" enable="false" left="73.72%" top="63" right="17.52%" height="25" class="AreaEdt"/>
+              <Edit id="resolerCdEd" taborder="309" enable="false" left="90.25%" top="63" right="1.07%" height="25" class="AreaEdt"/>
+              <Edit id="AuthEdt17" taborder="310" enable="false" left="90.25%" top="90" right="1.07%" height="25" class="AreaEdt"/>
+              <Edit id="AuthEdt18" taborder="311" enable="false" left="90.25%" top="117" right="1.07%" height="25" class="AreaEdt"/>
+              <Static id="subCodeStc20" taborder="312" text="~" onclick="subCodeStc_onclick" left="18.35%" top="104" right="78.84%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc21" taborder="313" text="~" onclick="subCodeStc_onclick" left="18.35%" top="71" right="78.84%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Calendar id="resolStartDateCal" taborder="314" left="7.69%" top="71" right="82.48%" height="30"/>
+              <Calendar id="resolEndDateCal" taborder="315" left="22.07%" top="71" right="68.1%" height="30"/>
+              <Grid id="resolListGrid" taborder="316" binddataset="dsResolLet" useinputpanel="false" autofittype="col" oncellclick="fn_cellClickResolLiGrid" left="0.58%" top="172" right="68.1%" height="494" class="AreaGrid">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="결의번호"/>
+                      <Cell col="1" text="결의구분"/>
+                      <Cell col="2" text="결의부서"/>
+                      <Cell col="3" text="진행상태"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:resolNo"/>
+                      <Cell col="1" displaytype="combo" edittype="none" style="align:right;" text="bind:resolDiv" maskchar=" " combodataset="dsResolDiv" combocodecol="code" combodatacol="value"/>
+                      <Cell col="2" displaytype="combo" text="bind:resolDeptCd" combodataset="dsDept" combocodecol="code" combodatacol="bigValue"/>
+                      <Cell col="3" displaytype="combo" text="bind:progStatDiv" combodataset="dsProgDiv" combocodecol="code" combodatacol="value"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="Grid00" taborder="317" binddataset="dsRunBudg" useinputpanel="false" autofittype="col" left="33.72%" top="201" right="1.07%" height="50">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="50"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="19" band="head"/>
+                      <Row size="20"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell colspan="2" text="비목명"/>
+                      <Cell col="2" text="배정예산금액"/>
+                      <Cell col="3" text="예산금액"/>
+                      <Cell col="4" text="결의가능금액"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:bimokCd"/>
+                      <Cell col="1" text="bind:bimokNm"/>
+                      <Cell col="2" text="bind:allotPlanAmount"/>
+                      <Cell col="3" text="bind:budgAmount"/>
+                      <Cell col="4" text="bind:budgBal"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="taxInvGrid" taborder="318" binddataset="dsTaxInv" useinputpanel="false" autofittype="col" left="33.72%" top="503" right="1.07%" height="162">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="40"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="21" band="head"/>
+                      <Row size="21" band="head"/>
+                      <Row size="19" band="head"/>
+                      <Row size="19"/>
+                      <Row size="18"/>
+                      <Row size="20"/>
+                      <Row size="24" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell rowspan="3" text="순번"/>
+                      <Cell col="1" text="발행일"/>
+                      <Cell col="2" text="계산서구분"/>
+                      <Cell col="3" text="매입/매출"/>
+                      <Cell col="4" colspan="2" text="금액"/>
+                      <Cell col="6" text="공금가액"/>
+                      <Cell col="7" text="세액"/>
+                      <Cell row="1" col="1" text="거래처"/>
+                      <Cell row="1" col="2" text="거래처명"/>
+                      <Cell row="1" col="3" text="사업자번호"/>
+                      <Cell row="1" col="4" text="대표자"/>
+                      <Cell row="1" col="5" text="업태"/>
+                      <Cell row="1" col="6" colspan="2" text="종목"/>
+                      <Cell row="2" col="1" colspan="7" text="품목"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell rowspan="3" celltype="head"/>
+                      <Cell col="1"/>
+                      <Cell col="2"/>
+                      <Cell col="3"/>
+                      <Cell col="4" colspan="2"/>
+                      <Cell col="6"/>
+                      <Cell col="7"/>
+                      <Cell row="1" col="1"/>
+                      <Cell row="1" col="2"/>
+                      <Cell row="1" col="3"/>
+                      <Cell row="1" col="4"/>
+                      <Cell row="1" col="5"/>
+                      <Cell row="1" col="6" colspan="2"/>
+                      <Cell row="2" col="1" colspan="7"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell/>
+                      <Cell col="1" colspan="3" text="합계"/>
+                      <Cell col="4" colspan="2" displaytype="number" expr="expr:getSum(&quot;sumPrice*1&quot;)"/>
+                      <Cell col="6" displaytype="number" expr="expr:getSum(&quot;splyPrice*1&quot;)"/>
+                      <Cell col="7" displaytype="number" expr="expr:getSum(&quot;taxAmt*1&quot;)"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="subCodeStc22" taborder="319" text="출력양식" onclick="subCodeStc_onclick" left="33.72%" top="147" right="59.34%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc23" taborder="320" text="계정과목" onclick="subCodeStc_onclick" left="50.08%" top="119" right="42.98%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc24" taborder="321" text="보조과목" onclick="subCodeStc_onclick" left="50.08%" top="147" right="42.98%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc25" taborder="322" text="적요" onclick="subCodeStc_onclick" left="33.72%" top="175" right="59.34%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc26" taborder="323" text="반려사유" onclick="subCodeStc_onclick" left="66.45%" top="145" right="26.61%" height="25" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="AuthEdt05" taborder="324" enable="false" left="73.72%" top="145" right="1.07%" height="25" class="AreaEdt"/>
+              <Edit id="assiSubNmEd" taborder="325" enable="false" left="57.44%" top="146" right="33.8%" height="25" class="AreaEdt"/>
+              <Edit id="AuthEdt20" taborder="326" enable="false" left="57.44%" top="118" right="33.8%" height="25" class="AreaEdt"/>
+              <Edit id="resolNoEd09" taborder="327" enable="false" left="41.16%" top="145" right="50.08%" height="25" class="AreaEdt"/>
+              <Edit id="acntNmEd" taborder="328" enable="false" left="66.45%" top="118" right="17.52%" height="25" class="AreaEdt"/>
+              <Grid id="JourGrid" taborder="329" binddataset="dsJour" useinputpanel="false" autofittype="col" left="33.72%" top="253" right="1.07%" height="90">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="40"/>
+                      <Column size="100"/>
+                      <Column size="92"/>
+                      <Column size="18"/>
+                      <Column size="100"/>
+                      <Column size="102"/>
+                      <Column size="19"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="16" band="head"/>
+                      <Row size="18"/>
+                      <Row size="24" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="순번"/>
+                      <Cell col="1" text="차대구분"/>
+                      <Cell col="2" colspan="2" text="계정코드"/>
+                      <Cell col="4" text="계정코드명"/>
+                      <Cell col="5" colspan="2" text="보조과목코드"/>
+                      <Cell col="7" text="보조과목명"/>
+                      <Cell col="8" text="차변금액"/>
+                      <Cell col="9" text="대변금액"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell celltype="none" text="bind:seq"/>
+                      <Cell col="1" displaytype="combo" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;combo&quot;" text="bind:creDebDiv" combodataset="dsCreDebDiv" combocodecol="code" combodatacol="value"/>
+                      <Cell col="2" text="bind:acntCd"/>
+                      <Cell col="3" displaytype="button" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;button&quot;" style="color:black;color2:black;selectcolor:black;" text="+"/>
+                      <Cell col="4" text="bind:acntNm"/>
+                      <Cell col="5" text="bind:assiSubCd"/>
+                      <Cell col="6" displaytype="button" edittype="button" style="color:black;color2:black;selectcolor:black;" text="+"/>
+                      <Cell col="7" text="bind:assiSubNm"/>
+                      <Cell col="8" displaytype="number" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;normal&quot;" text="bind:debAmt"/>
+                      <Cell col="9" displaytype="number" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;normal&quot;" text="bind:creAmt"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell/>
+                      <Cell col="1" colspan="7" text="합계"/>
+                      <Cell col="8" displaytype="number" style="align:right;padding:0 10 0 0;" expr="expr:getSum(!isNaN(debAmt)== true? debAmt: &quot;0&quot;')"/>
+                      <Cell col="9" displaytype="number" style="align:right;padding:0 10 0 0;" expr="expr:getSum('!isNaN(creAmt)== true? creAmt: &quot;0&quot;')"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <TextArea id="abs" taborder="330" enable="false" left="41.16%" top="174" right="1.07%" height="25"/>
+              <Combo id="progStatDiv" taborder="331" innerdataset="dsProgDiv" codecolumn="code" datacolumn="value" enable="false" left="41.16%" top="117" right="50.08%" height="25" class="AreaCombo"/>
+              <Combo id="resolDivCombo01" taborder="332" innerdataset="dsResolDiv" codecolumn="code" datacolumn="value" enable="false" left="57.44%" top="37" right="33.8%" height="25" class="AreaCombo"/>
+              <Combo id="resolDivCombo02" taborder="333" innerdataset="dsCust" codecolumn="code" datacolumn="bigValue" enable="false" left="41.16%" top="89" right="50.08%" height="25" class="AreaCombo"/>
+              <Combo id="resolDivCombo03" taborder="334" innerdataset="dsDept" codecolumn="code" datacolumn="bigValue" enable="false" left="73.72%" top="36" right="17.52%" height="25" class="AreaCombo"/>
+              <Combo id="resolDeptCdCombo" taborder="335" innerdataset="dsDept" codecolumn="code" datacolumn="bigValue" enable="false" left="90.25%" top="36" right="1.07%" height="25" class="AreaCombo"/>
+              <Edit id="resolDeptNameEd" taborder="336" enable="false" left="18.35%" top="136" right="73.31%" height="30" class="AreaEdt"/>
+              <Grid id="payGrid" taborder="337" binddataset="dsPayRec" useinputpanel="false" autofittype="col" left="33.72%" top="345" right="1.07%" height="157">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="40"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                      <Column size="70"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="20" band="head"/>
+                      <Row size="20" band="head"/>
+                      <Row size="21" band="head"/>
+                      <Row size="18"/>
+                      <Row size="19"/>
+                      <Row size="19"/>
+                      <Row size="24" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell rowspan="3" text="순번"/>
+                      <Cell col="1" text="지불구분"/>
+                      <Cell col="2" colspan="2" text="연구과제"/>
+                      <Cell col="4" text="연구비목"/>
+                      <Cell col="5" text="카드번호"/>
+                      <Cell col="6" text="카드사용일"/>
+                      <Cell col="7" text="승인번호"/>
+                      <Cell col="8" text="거래처명"/>
+                      <Cell col="9" colspan="2" text="사업자번호"/>
+                      <Cell col="11" text="주소"/>
+                      <Cell row="1" col="1" text="예금주"/>
+                      <Cell row="1" col="2" text="이체일"/>
+                      <Cell row="1" col="3" text="이체은행"/>
+                      <Cell row="1" col="4" text="계좌번호"/>
+                      <Cell row="1" col="5" colspan="6" text="집행목적"/>
+                      <Cell row="1" col="11" text="금액"/>
+                      <Cell row="2" col="1" text="사용자"/>
+                      <Cell row="2" col="2" text="참석인원"/>
+                      <Cell row="2" col="3" colspan="6" text="참석자"/>
+                      <Cell row="2" col="9" text="식비"/>
+                      <Cell row="2" col="10" text="계산서"/>
+                      <Cell row="2" col="11" text="사유/비고"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell rowspan="3" celltype="none" text="bind:seq"/>
+                      <Cell col="1" displaytype="combo" edittype="combo" text="bind:payDiv" combodataset="dsJibulDiv" combocodecol="code" combodatacol="value"/>
+                      <Cell col="2" colspan="2" text="bind:stdTask"/>
+                      <Cell col="4" text="bind:stdBimok"/>
+                      <Cell col="5" edittype="expand" text="bind:cardNo"/>
+                      <Cell col="6" text="bind:cardUseDate"/>
+                      <Cell col="7" text="bind:aprvNo"/>
+                      <Cell col="8" displaytype="combo" text="bind:custCd" combodataset="dsAccount" combocodecol="custcd" combodatacol="custnm"/>
+                      <Cell col="9" colspan="2" edittype="normal" text="bind:operNo"/>
+                      <Cell col="11" edittype="normal" text="bind:addr"/>
+                      <Cell row="1" col="1" text="bind:depoOwner"/>
+                      <Cell row="1" col="2" edittype="date" text="bind:transDate"/>
+                      <Cell row="1" col="3" displaytype="combo" text="bind:transBank" combodataset="dsBank" combocodecol="code" combodatacol="value"/>
+                      <Cell row="1" col="4" text="bind:accountNo"/>
+                      <Cell row="1" col="5" colspan="6" edittype="normal" text="bind:exePurp"/>
+                      <Cell row="1" col="11" displaytype="number" edittype="normal" text="bind:price"/>
+                      <Cell row="2" col="1" displaytype="combo" edittype="expand" text="bind:users" combodataset="dsHmEmp" combocodecol="empNo" combodatacol="empNm"/>
+                      <Cell row="2" col="2" edittype="normal" text="bind:cttInwon"/>
+                      <Cell row="2" col="3" colspan="6" text="bind:att"/>
+                      <Cell row="2" col="9" displaytype="checkbox" edittype="checkbox" text="bind:foodCostYb"/>
+                      <Cell row="2" col="10" displaytype="checkbox" edittype="checkbox" text="bind:taxinvYb"/>
+                      <Cell row="2" col="11" edittype="normal" text="bind:note"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell/>
+                      <Cell col="1" colspan="10" text="합계"/>
+                      <Cell col="11" displaytype="number" expr="expr:getSum(&quot;price*1&quot;)"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="searchDeptBtn" taborder="338" onclick="resolMngmt_searchDeptBtn_onclick" left="15.45%" top="137" right="82.23%" height="29" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="searchResolBtn" taborder="339" onclick="resolMngmt_searchResolBtn_onclick" left="26.86%" top="136" right="68.26%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="modiBtn" taborder="5" onclick="modiBtn_onclick" left="90.56%" top="731" right="2.24%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBtn" taborder="6" onclick="addBtn_onclick" left="75.52%" top="731" right="17.28%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+        <Button id="deleteBtn" taborder="7" onclick="deleteBtn_onclick" left="82.96%" top="731" right="9.84%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsAccount" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="adptdt" type="STRING" size="256"/>
+          <Column id="bussNo" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="accNo" type="STRING" size="256"/>
+          <Column id="busctgNm" type="STRING" size="256"/>
+          <Column id="busshpNm" type="STRING" size="256"/>
+          <Column id="prsdntNm" type="STRING" size="256"/>
+          <Column id="resNo" type="STRING" size="256"/>
+          <Column id="dpstr" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="gpuseYn" type="STRING" size="256"/>
+          <Column id="gduseYn" type="STRING" size="256"/>
+          <Column id="cardYn" type="STRING" size="256"/>
+          <Column id="riuseYn" type="STRING" size="256"/>
+          <Column id="hospcls" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTaxInv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" canrowposchange="dsTaxInv_canrowposchange">
+        <ColumnInfo>
+          <Column id="pubNo" type="STRING" size="256"/>
+          <Column id="pubDate" type="STRING" size="256"/>
+          <Column id="pubDiv" type="STRING" size="256"/>
+          <Column id="slipNo" type="STRING" size="256"/>
+          <Column id="billDiv" type="STRING" size="256"/>
+          <Column id="purchSalesDiv" type="STRING" size="256"/>
+          <Column id="anspDiv" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="aBS" type="STRING" size="256"/>
+          <Column id="splyPrice" type="STRING" size="256"/>
+          <Column id="taxAmt" type="STRING" size="256"/>
+          <Column id="resolNo" type="STRING" size="256"/>
+          <Column id="gipyoDate" type="STRING" size="256"/>
+          <Column id="sumPrice" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAppendFile" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="fileSaveLoc" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+          <Column id="fileSaveName" type="STRING" size="256"/>
+          <Column id="resolNo" type="STRING" size="256"/>
+          <Column id="slipNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsJibulDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBank" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBillDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCreDebDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsProgDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsJour" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="debAmt" type="STRING" size="256"/>
+          <Column id="creAmt" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="resolNo" type="STRING" size="256"/>
+          <Column id="slipNo" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="assiSubNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="closYb" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCust" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA039</Col>
+            <Col id="dsName">dsResolDiv</Col>
+          </Row>
+          <Row>
+            <Col id="code">CM001</Col>
+            <Col id="dsName">dsCust</Col>
+          </Row>
+          <Row>
+            <Col id="code">GP500</Col>
+            <Col id="dsName">dsDept</Col>
+          </Row>
+          <Row>
+            <Col id="code">GB010</Col>
+            <Col id="dsName">dsProgDiv</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA061</Col>
+            <Col id="dsName">dsJibulDiv</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA003</Col>
+            <Col id="dsName">dsBank</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA075</Col>
+            <Col id="dsName">dsPurchSalesDiv</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA074</Col>
+            <Col id="dsName">dsBillDiv</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA049</Col>
+            <Col id="dsName">dsCreDebDiv</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsResolDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAccPridList</Col>
+            <Col id="URL">erp47::acc/elementary/findAccPridList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAccPrid=dsAccPrid</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findResolLetList</Col>
+            <Col id="outData">dsResolLet=dsResolLet</Col>
+            <Col id="URL">erp47::acc/resol/findResolLetList.do</Col>
+            <Col id="callbackFunc">callback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findResolLetDetail</Col>
+            <Col id="URL">erp47::acc/resol/findResolLetDetailList.do</Col>
+            <Col id="outData">dsJour=dsJour dsPayRec=dsPayRec dsAppendFile=dsAppendFile</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findRunBimok</Col>
+            <Col id="URL">erp47::acc/budget/findRunBimok.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsRunBudg=dsRunBudg</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">searchTaxInvoiceList</Col>
+            <Col id="URL">erp47::acc/vat/findTaxInvList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsTaxInv=dsTaxinv dsDetailTaxInv=dsDetailTaxinv</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findAccount</Col>
+            <Col id="URL">erp47::acc/resol/findAccount.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAccount=dsAccount</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">empInfo</Col>
+            <Col id="URL">erp47::hrs/emp/findEmpList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsHmEmp=gdsEmp</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">modifyResolLet</Col>
+            <Col id="URL">erp47::acc/resol/modifyResolLet.do</Col>
+            <Col id="inData">dsResolLet=dsResolLet:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">removeResolLet</Col>
+            <Col id="URL">erp47::acc/resol/removeResolLet.do</Col>
+            <Col id="inData">dsResolLet=dsResolLet:u</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsResolLet" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="resolNo" type="STRING" size="256"/>
+          <Column id="resolDiv" type="STRING" size="256"/>
+          <Column id="resolDate" type="STRING" size="256"/>
+          <Column id="resoler" type="STRING" size="256"/>
+          <Column id="resolDeptCd" type="STRING" size="256"/>
+          <Column id="progStatDiv" type="STRING" size="256"/>
+          <Column id="sakNo" type="STRING" size="256"/>
+          <Column id="receiptNo" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="operNo" type="STRING" size="256"/>
+          <Column id="resolAmt" type="STRING" size="256"/>
+          <Column id="brCau" type="STRING" size="256"/>
+          <Column id="abs" type="STRING" size="256"/>
+          <Column id="demdDeptCd" type="STRING" size="256"/>
+          <Column id="autoJourYb" type="STRING" size="256"/>
+          <Column id="modWorker" type="STRING" size="256"/>
+          <Column id="modDate" type="STRING" size="256"/>
+          <Column id="danDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="surtaxYb" type="STRING" size="256"/>
+          <Column id="resolDeptExtsn" type="STRING" size="256"/>
+          <Column id="closYb" type="STRING" size="256"/>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="resolerNm" type="STRING" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="acntCdNm" type="STRING" size="256"/>
+          <Column id="assiSubCdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDept" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPayRec" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="payDiv" type="STRING" size="256"/>
+          <Column id="stdTask" type="STRING" size="256"/>
+          <Column id="stdBimok" type="STRING" size="256"/>
+          <Column id="cardUseDate" type="STRING" size="256"/>
+          <Column id="aprvNo" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="operNo" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="depoOwner" type="STRING" size="256"/>
+          <Column id="transDate" type="STRING" size="256"/>
+          <Column id="transBank" type="STRING" size="256"/>
+          <Column id="accountNo" type="STRING" size="256"/>
+          <Column id="price" type="STRING" size="256"/>
+          <Column id="att" type="STRING" size="256"/>
+          <Column id="cttInwon" type="STRING" size="256"/>
+          <Column id="users" type="STRING" size="256"/>
+          <Column id="foodCostYb" type="STRING" size="256"/>
+          <Column id="taxinvYb" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="resolNo" type="STRING" size="256"/>
+          <Column id="slipNo" type="STRING" size="256"/>
+          <Column id="exePurp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRunBudg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cngAmount" type="STRING" size="256"/>
+          <Column id="allotPlanAmount" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="causeAmount" type="STRING" size="256"/>
+          <Column id="budgAmount" type="STRING" size="256"/>
+          <Column id="budgBal" type="STRING" size="256"/>
+          <Column id="bimokNm" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="bimokLevel" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPurchSalesDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsHmEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_emp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAccPrid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsAccYear_onrowposchanged">
+        <ColumnInfo>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="endDate" type="STRING" size="256"/>
+          <Column id="dlineYn" type="STRING" size="256"/>
+          <Column id="dlineDate" type="STRING" size="256"/>
+          <Column id="dlineManCd" type="STRING" size="256"/>
+          <Column id="carrforYn" type="STRING" size="256"/>
+          <Column id="carrforManCd" type="STRING" size="256"/>
+          <Column id="carrforDate" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regIp" type="STRING" size="256"/>
+          <Column id="regDate" type="STRING" size="256"/>
+          <Column id="modId" type="STRING" size="256"/>
+          <Column id="modIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAccPrid54654">
+        <ColumnInfo>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="endDate" type="STRING" size="256"/>
+          <Column id="dlineYn" type="STRING" size="256"/>
+          <Column id="dlineDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+//결의서 번호
+var autoJourYes;
+//회계년도
+var accYear;
+
+//   폼 로드 이벤트
+this.AR_ResolLetMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind(); // 코드 바인딩
+	this.gfnService("findAccPridList",false); // 회계기수 호출
+
+//   	this.resolMngmt.accPridCombo.displaynulltext = this.dsAccPrid.getColumn(0,"accPrid"); //회계기수 accPrid변수에 셋팅
+//   	var accPrid = this.resolMngmt.accPridCombo.displaynulltext; 
+  	
+  	var accPrid = this.dsAccPrid.getColumn(0,"accPrid");
+  	var argument ='accPrid='+'4'; //회계기수 argument에 셋팅
+ 	
+  	this.dsService.setColumn(1,"argument",argument); ////결의서 조회 메서드에 argument에 셋팅
+  	this.gfnService("findResolLetList"); // 결의서 조회
+	
+	//trace(this.dsResolLet.saveXML()); 데이터셋 로그 확인용
+ 	this.gfnService("findAccount",false); //거래처 데이터셋
+ 	this.dsAccount.filter("custcd==''");	
+ 	this.gfnService("empInfo"); //사원정보 데이터셋
+
+}
+
+
+//  콜백 함수
+this.callback = function(trid, ErrorCode, ErrorMsg){
+	//자동분개 일시 실행		
+	if(autoJourYes=="true"){			
+		//분개의 차변 예산비목 값을 bimokCd 셋팅
+		var bimokCd = this.dsJour.getColumn(0,"bimokCd");
+		this.resolMngmt.acntNmEd.set_value(this.dsJour.getColumn(0,"acntNm"));
+		//보조과목명이 있을 때만 실행
+		if(this.dsJour.getColumn(0,"assiSubNm")!=null){
+			//보조과목명 assiSubNmEd에 셋팅				
+			this.resolMngmt.assiSubNmEd.set_value(this.dsJour.getColumn(0,"assiSubNm"));
+		}	
+		//회계년도 
+		var argument ='accYear='+accYear;
+		//비목코드
+		argument +=' bimokCd='+bimokCd;
+		var nRow = this.dsService.findRow( "ServiceID", "findRunBimok" );
+		this.dsService.setColumn(nRow,"argument",argument);
+		//예산비목 조회 메서드 호출
+		this.gfnService("findRunBimok");	
+	}
+}
+
+// 결의부서 조회 버튼 클릭이벤트
+this.resolMngmt_searchDeptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnCodePopup('GP500');
+}
+//setCode 함수
+this.setCode=function(code,array){
+	if(code=="ACC"){
+		this.resolMngmt.resolDivCombo02.set_value(array[0]);	//거래처코드 셋팅
+	}else{
+		this.resolMngmt.resolDeptCdEd.set_value(array[0]);	    //결의부서코드 셋팅
+		this.resolMngmt.resolDeptNameEd.set_value(array[1]);    //결의부서명 셋팅
+	}
+}
+
+// 결의서 조회 버튼 클릭이벤트
+this.resolMngmt_searchResolBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.resolMngmt.resolStartDateCal.value==null && this.resolMngmt.resolEndDateCal.value==null
+	   ||this.resolMngmt.resolStartDateCal.value > this.resolMngmt.resolEndDateCal.value){	   
+		alert("결의일자 기간을 제대로 입력하시길 바랍니다.");
+	}else if(this.resolMngmt.startResolNoEd.value==null&&this.resolMngmt.endResolNoEd.value==null){
+		alert("결의번호를 제대로 입력하시길 바랍니다.");
+	}else{
+		//회계기수 셋팅
+		var accPrid = this.resolMngmt.accPridCombo.value;	
+		//결의구분 셋팅
+		var resolDiv = this.resolMngmt.resolDivCombo.value;		
+		//시작일자 셋팅
+		var startDate = this.resolMngmt.resolStartDateCal.value;	
+		//끝일자 셋팅
+		var endDate = this.resolMngmt.resolEndDateCal.value;
+		//결의시작번호 셋팅
+		var startResolNo = this.resolMngmt.startResolNoEd.value;
+		//결의끝번호 셋팅
+		var endResolNo = this.resolMngmt.endResolNoEd.value;
+		//결의부서 셋팅
+		var resolDeptCd = this.resolMngmt.resolDeptCdEd.value;
+		//argument에 변수들 셋팅
+		var argument ='accPrid='+accPrid;
+			argument +=' resolDiv='+resolDiv;
+			argument +=' startDate='+startDate;
+			argument +=' endDate='+endDate;
+			argument +=' startResolNo='+startResolNo;
+			argument +=' endResolNo='+endResolNo;
+			argument +=' resolDeptCd='+resolDeptCd;			
+		
+		var nRow = this.dsService.findRow( "serviceID", "findResolLetList" );
+		this.dsService.setColumn(nRow,"argument",argument);
+		//조회 메서드 호출
+		this.gfnService("findResolLetList");	
+	}	
+}
+
+// 결의서 추가 버튼
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert("결의서 추가~");
+	application.open("resolRegPopupForm"
+						,"acc::AR_ResolRegistPopupForm.xfdl"
+						,this.parent
+						,{gubun:'reg', resol:""}
+						,"showtitlebar=true showstatusbar=false"
+						, 0
+						,0);
+}
+
+this.deleteBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//이후 팀장으로 변경 할것.
+	if(this.dsHmEmp.getColumn(0,"jobtt")=="수간호사"){	
+		//체크된 결의서가 있을때 실행
+		if(this.dsResolLet.lookup("check","1","check")!=null){
+			//결의서 삭제 메서드 호출
+			this.gfnService("removeResolLet","false");
+			reload();
+		//체크된 결의서가 없을때 실행		
+		}else{
+			alert("삭제할 결의서를 선택하시기 바랍니다.");
+		}
+		
+	//팀장이 아닐때 실행
+	}else{
+		alert("당신은 권한이 없습니다.");
+	}
+}
+
+this.modiBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//접속 부서 추출
+	var deptCd=this.dsHmEmp.getColumn(0,"deptCd");
+	//진행상태 추출
+	var progStatDiv=this.dsResolLet.getColumn(this.dsResolLet.rowposition,"progStatDiv");
+	//결의부서 추출
+	var resolDeptCd=this.dsResolLet.getColumn(this.dsResolLet.rowposition,"resolDeptCd");
+	//진행상태가 결의등록중 예산원인반려 결의접수반려 중 하나이면서 결의부서가 접속부서와 같을 때 실행
+	if((progStatDiv=="16" || progStatDiv=="82" || progStatDiv=="52")){
+	    //&& resolDeptCd==deptd
+		application.open("resolRegPopupForm"
+						,"acc::AR_ResolRegistPopupForm.xfdl"
+						,this.parent						
+						,{gubun:"modi", pResolNo:this.dsResolLet.getColumn(this.dsResolLet.rowposition,"resolNo")}
+						,"showtitlebar=true showstatusbar=false"
+						, 0
+						,0);
+	}else{
+		alert("해당 결의서는 수정이 불가능 합니다.");
+	}
+}
+
+// 그리드 셀 클릭이벤트
+this.fn_cellClickResolLiGrid = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	//자동분개 된 결의서
+	if(this.dsResolLet.getColumn(e.row,"autoJourYb")){
+		//자동분개 여부
+		autoJourYes=this.dsResolLet.getColumn(e.row,"autoJourYb");
+		//회계년도
+		accYear=2016;
+		//전역변수에 회계년도 셋팅	
+	}	
+	//클릭한 결의변호 변수에 셋팅	
+	var resolNo=this.dsResolLet.getColumn(this.dsResolLet.rowposition,"resolNo");
+	//argument에 변수 셋팅
+	var argument ='resolNo='+resolNo;		
+	//dsService에서 findResolLetDetail 메서드 row 얻기
+	var nRow = this.dsService.findRow( "serviceID", "findResolLetDetail");
+	//findResolLetDetail메서드에 argument 셋팅
+	this.dsService.setColumn(nRow,"argument",argument);
+	//findResolLetDetail메서드 호출
+	this.gfnService("findResolLetDetail",false);
+	
+	//부가세 조회	
+	var argument = 'resolNo='+resolNo;
+	var nRow = this.dsService.findRow( "serviceID", "searchTaxInvoiceList" );
+	this.dsService.setColumn(nRow,"argument",argument);
+	this.gfnService("searchTaxInvoiceList",false);
+	trace(this.dsTaxInv.saveXML());
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_DebAcntCodePopupForm" classname="AE_DebAcntCodePopupForm" left="0" top="0" width="548" height="595" titletext="예산비목 조회">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="-3.47%" top="-4" right="0.36%" height="60" style="background:transparent URL('img::titleBar7.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="예산비목 조회" left="13.45%" top="15" right="42.12%" height="29" style="font:bold 20 나눔스퀘어 Bold;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="1" text="예산비목명" left="1.46%" top="53" right="82.85%" height="27" style="background:wheat;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
+        <Edit id="bimokNmEd" taborder="2" left="18.25%" top="53" right="60.58%" height="27" class="AreaEdt"/>
+        <Static id="s" taborder="3" text="계정코드명" left="42.52%" top="53" right="41.79%" height="27" style="background:wheat;bordertype:round 5 5 ;align:center middle;" class="AreaStc"/>
+        <Edit id="acntNmEd" taborder="4" left="59.31%" top="53" right="19.53%" height="27" class="AreaEdt"/>
+        <Grid id="Grid00" taborder="5" binddataset="dsBudgBimok" useinputpanel="false" autofittype="col" oncellclick="Grid00_oncellclick" left="1.46%" top="87" right="2.01%" height="513">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="170"/>
+                <Column size="80"/>
+                <Column size="170"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="예산비목명"/>
+                <Cell col="1" text="계정코드"/>
+                <Cell col="2" text="계정코드명"/>
+                <Cell col="3" text="보조과목명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:bimokNm"/>
+                <Cell col="1" text="bind:acntCd"/>
+                <Cell col="2" text="bind:acntNm"/>
+                <Cell col="3" text="bind:assiSubNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchAcntBtn" taborder="6" onclick="searchAcntBtn_onclick" left="82.66%" top="53" right="2.01%" height="29" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findBimokDetail</Col>
+            <Col id="URL">erp47::acc/budget/findBudgBimokList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsBudgBimok=dsBudgBimok</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBudgBimok" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="bimokNm" type="STRING" size="256"/>
+          <Column id="parentBimok" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="assiSubNm" type="STRING" size="256"/>
+          <Column id="bimokLevel" type="STRING" size="256"/>
+          <Column id="finYn" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="goveAprcYn" type="STRING" size="256"/>
+          <Column id="budgGuide" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"; 
+
+//조회버튼 클릭이벤트
+this.searchAcntBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = '2016';
+	var bimokNm = this.bimokNmEd.value;
+	var accAcntNm = this.acntNmEd.value;	
+	var finYn = "Y";
+	var argument = 'accYear='+accYear+' bimokNm='+bimokNm+' accAcntNm='+accAcntNm+' finYn='+finYn+' deptCd='+this.parent.deptCd;//deptCd부모창에서 보낸값
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findBimokDetail");
+}
+
+//그리드 클릭이벤트
+this.Grid00_oncellclick=function(obj:Grid, e:GridClickEventInfo)
+{
+	var arrRtn = new Array;
+	var i=0;
+	
+	arrRtn[i++] = this.dsBudgBimok.getColumn(e.row,"bimokCd");
+	arrRtn[i++] = this.dsBudgBimok.getColumn(e.row,"acntCd");
+	arrRtn[i++] = this.dsBudgBimok.getColumn(e.row,"acntNm");
+	arrRtn[i++] = this.dsBudgBimok.getColumn(e.row,"assiSubCd");
+	arrRtn[i++] = this.dsBudgBimok.getColumn(e.row,"assiSubNm");
+
+	this.opener.setCode("ACCD",arrRtn);
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

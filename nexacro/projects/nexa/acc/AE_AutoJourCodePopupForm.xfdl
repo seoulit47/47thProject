@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AutoJourCodePopupForm" classname="AE_AutoJourCodePopupForm" left="0" top="0" width="877" height="309" titletext="계정과목 조회" onload="AE_autoJourCodePopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" left="-2.28%" top="0" right="0.46%" height="60" style="background:transparent URL('img::titleBar5.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="계정과목 조회" onclick="Div04_Static00_onclick" left="6.27%" top="13" right="60.69%" height="35" style="font:bold 20 나눔스퀘어 Bold;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="1" binddataset="dsChildAutoJourRule" useinputpanel="false" autofittype="col" oncelldblclick="Grid00_oncelldblclick" left="0.91%" top="56" right="0.11%" height="250">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="분개구분명"/>
+                <Cell col="1" text="계정과목코드"/>
+                <Cell col="2" text="계정과목명"/>
+                <Cell col="3" text="보조과목코드"/>
+                <Cell col="4" text="보조과목명"/>
+                <Cell col="5" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:jourDivNm"/>
+                <Cell col="1" text="bind:acntCd"/>
+                <Cell col="2" text="bind:acntCdNm"/>
+                <Cell col="3" text="bind:assiSubCd"/>
+                <Cell col="4" text="bind:assiSubCdNm"/>
+                <Cell col="5" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findChildAutoJourRuleList</Col>
+            <Col id="URL">erp47::/acc/resol/findAutoJourRuleList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsChildAutoJourRule=dsAutoJourRule</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findParentAutoJourRuleList</Col>
+            <Col id="URL">erp47::/acc/resol/findAutoJourRuleList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsParentAutoJourRule=dsAutoJourRule</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsParentAutoJourRule" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="busiDivCd" type="STRING" size="256"/>
+          <Column id="jourDivNm" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="jourCd" type="STRING" size="256"/>
+          <Column id="parentJourCd" type="STRING" size="256"/>
+          <Column id="acntCdNm" type="STRING" size="256"/>
+          <Column id="assiSubCdNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCreDebDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearchAutoJourRule" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="busiDivCd" type="STRING" size="256"/>
+          <Column id="jourDivNm" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="jourCd" type="STRING" size="256"/>
+          <Column id="parentJourCd" type="STRING" size="256"/>
+          <Column id="acntCdNm" type="STRING" size="256"/>
+          <Column id="assiSubCdNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA052</Col>
+            <Col id="dsName">dsBusiDiv</Col>
+          </Row>
+          <Row>
+            <Col id="dsName">dsCreDebDiv</Col>
+            <Col id="code">GA049</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBusiDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChildAutoJourRule" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="busiDivCd" type="STRING" size="256"/>
+          <Column id="jourDivNm" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="jourCd" type="STRING" size="256"/>
+          <Column id="parentJourCd" type="STRING" size="256"/>
+          <Column id="acntCdNm" type="STRING" size="256"/>
+          <Column id="assiSubCdNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+// 폼 로드 이벤트
+this.AE_autoJourCodePopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+	this.dsSearchAutoJourRule.setColumn(0,"accYear","2016");
+	this.dsSearchAutoJourRule.setColumn(0,"parentJourCd","Y");	
+	this.dsSearchAutoJourRule.setColumn(0,"busiDivCd",this.parent.busiDivCd);	
+	
+	var argument = 'accYear=2016'+' parentJourCd=Y'+' busiDivCd='+this.parent.busiDivCd;
+	var findChildAutoJourRuleListnRow = this.dsService.findRow( "serviceID", "findChildAutoJourRuleList");	
+	this.dsService.setColumn(findChildAutoJourRuleListnRow,"argument",argument);
+	this.gfnService("findChildAutoJourRuleList",false);	
+	this.dsChildAutoJourRule.filter("creDebDiv=='1'");
+	
+	this.dsSearchAutoJourRule.setColumn(0,"parentJourCd",null);
+	this.gfnService("findParentAutoJourRuleList");
+}
+
+this.Grid00_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var parentJourCd=this.dsChildAutoJourRule.getColumn(e.row,"parentJourCd");
+	this.dsParentAutoJourRule.filter("jourCd=='"+parentJourCd+"'");
+	
+	var arrRtn = new Array;
+	var i=0;
+	//차변 셋팅
+	arrRtn[i++] = this.dsChildAutoJourRule.getColumn(e.row,"acntCd");
+	arrRtn[i++] = this.dsChildAutoJourRule.getColumn(e.row,"acntCdNm");
+	arrRtn[i++] = this.dsChildAutoJourRule.getColumn(e.row,"assiSubCd");
+	arrRtn[i++] = this.dsChildAutoJourRule.getColumn(e.row,"assiSubCdNm");
+	arrRtn[i++] = this.dsChildAutoJourRule.getColumn(e.row,"bimokCd");
+	//대변 셋팅
+	arrRtn[i++] = this.dsParentAutoJourRule.getColumn(0,"acntCd");
+	arrRtn[i++] = this.dsParentAutoJourRule.getColumn(0,"acntCdNm");
+	arrRtn[i++] = this.dsParentAutoJourRule.getColumn(0,"assiSubCd");
+	arrRtn[i++] = this.dsParentAutoJourRule.getColumn(0,"assiSubCdNm");
+
+	this.opener.setCode("ACCK",arrRtn); 
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

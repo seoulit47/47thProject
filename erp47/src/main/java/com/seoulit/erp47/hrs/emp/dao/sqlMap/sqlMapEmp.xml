@@ -81,7 +81,12 @@
 		e.emp_nm ,
 		<!-- 비밀번호 -->
 		e.password ,
-		e.pms
+		<!-- 권한코드 -->
+		e.pms , 
+		<!-- 부서명 -->
+		e.dept_nm ,
+		<!-- 직급 -->
+		e.jobrk
 		from hm_emp e
 		where emp_no = #{empNo}
 
