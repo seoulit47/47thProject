@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="LP_PrcsReceiptMngntForm" classname="LP_PrcsReceiptMngntForm" left="0" top="0" width="1250" height="768" titletext="구매 접수 관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="0" right="0.78%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="구매접수관리" left="4.72%" top="-4" right="68.5%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="formDiv" taborder="1" left="0.59%" top="64" right="1.27%" height="701" style="background:transparent;color:#444444ff;">
+          <Layouts>
+            <Layout width="1232" height="701">
+              <Div id="menuDiv" taborder="65" left="29.45%" top="5" right="0.5%" height="81" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+                <Layouts>
+                  <Layout>
+                    <Calendar id="prcsReceiptNoCal" taborder="7" onchanged="prcsReceiptNoCal_OnChanged" left="10.54%" top="2" right="77.64%" height="30"/>
+                    <Button id="searchCustBtn" taborder="8" onclick="formDiv_searchCustBtn_onclick" cssclass="DelBtn" left="44.59%" top="2" right="48.01%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+                    <Edit id="Edit00" taborder="9" left="81.2%" top="41" right="10.68%" height="30"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Static id="subCodeStc00" taborder="66" text="구매접수일" onclick="subCodeStc_onclick" left="29.75%" top="8" right="63.38%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc01" taborder="67" text="구매수량" onclick="subCodeStc_onclick" left="79.6%" top="47" right="14.53%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc02" taborder="68" text="구매종류" onclick="subCodeStc_onclick" left="45.67%" top="47" right="48.46%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc03" taborder="69" text="구매접수 담당자" onclick="subCodeStc_onclick" left="60.4%" top="47" right="30.85%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="prcsReResWorkerEd" taborder="70" left="69.85%" top="47" right="21.79%" height="30"/>
+              <Grid id="prcsReceiptGrid" taborder="71" binddataset="gdsPrcsReceipt" autoenter="select" useinputpanel="false" autofittype="col" left="29.45%" top="93" right="0.6%" height="279">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="86"/>
+                      <Column size="80"/>
+                      <Column size="141"/>
+                      <Column size="93"/>
+                      <Column size="101"/>
+                      <Column size="105"/>
+                      <Column size="92"/>
+                      <Column size="67"/>
+                      <Column size="69"/>
+                      <Column size="64"/>
+                      <Column size="107"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="청구번호"/>
+                      <Cell col="1" text="청구상세"/>
+                      <Cell col="2" text="구매접수번호"/>
+                      <Cell col="3" text="구매접수일"/>
+                      <Cell col="4" text="접수담당자"/>
+                      <Cell col="5" text="거래처"/>
+                      <Cell col="6" text="거래처코드"/>
+                      <Cell col="7" text="구매종류"/>
+                      <Cell col="8" text="수량"/>
+                      <Cell col="9" text="물품코드"/>
+                      <Cell col="10" text="물품명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="normal" edittype="normal" text="bind:gdsAnspNo"/>
+                      <Cell col="1" edittype="normal" text="bind:anspHistNo"/>
+                      <Cell col="2" text="bind:buyReceiptNo"/>
+                      <Cell col="3" text="bind:buyReceiptDate"/>
+                      <Cell col="4" text="bind:buyReceiptRespoWorker"/>
+                      <Cell col="5" text="bind:cust"/>
+                      <Cell col="6" text="bind:custCd"/>
+                      <Cell col="7" text="bind:buyKind"/>
+                      <Cell col="8" text="bind:prcsQnt"/>
+                      <Cell col="9" text="bind:gdsCd"/>
+                      <Cell col="10" text="bind:gdsNm"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="subCodeStc05" taborder="72" text="거래처" onclick="subCodeStc_onclick" left="45.67%" top="7" right="48.46%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="custEd" taborder="73" left="51.94%" top="8" right="39.7%" height="30"/>
+              <Static id="subCodeStc06" taborder="74" text="거래처코드" onclick="subCodeStc_onclick" left="66.47%" top="9" right="27.66%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="custCdEd" taborder="75" left="72.74%" top="9" right="18.91%" height="30"/>
+              <Grid id="anspHistGrid" taborder="76" binddataset="dsAnspHist" useinputpanel="false" autofittype="col" oncellclick="formDiv_anspHistGrid_oncellclick" left="29.45%" top="415" right="0.6%" height="279">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="107"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="85"/>
+                      <Column size="74"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="청구상세번호"/>
+                      <Cell col="1" text="물품코드"/>
+                      <Cell col="2" text="물품명"/>
+                      <Cell col="3" text="청구담당자"/>
+                      <Cell col="4" text="청구수량"/>
+                      <Cell col="5" text="청구단위"/>
+                      <Cell col="6" text="청구구분"/>
+                      <Cell col="7" text="청구내용"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:anspHistNo"/>
+                      <Cell col="1" text="bind:gdsCd"/>
+                      <Cell col="2" text="bind:gdsNm"/>
+                      <Cell col="3" text="bind:histRespoWorker"/>
+                      <Cell col="4" text="bind:histAnspQnt"/>
+                      <Cell col="5" text="bind:unit"/>
+                      <Cell col="6" text="bind:histAnspDiv"/>
+                      <Cell col="7" text="bind:histAnspCon"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="subCodeStc04" taborder="77" text="구매접수번호" onclick="subCodeStc_onclick" left="29.75%" top="48" right="63.38%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="prcsReceiptNoEd" taborder="78" left="36.82%" top="48" right="54.83%" height="30"/>
+              <Button id="batchBtn" taborder="79" onclick="batchBtn_OnClick" cssclass="DelBtn" left="92.04%" top="380" right="0.8%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Grid id="anspGrid" taborder="80" binddataset="dsAnsp" useinputpanel="false" autofittype="col" oncellclick="anspGrid_oncellclick" left="0.5%" top="45" right="71.24%" height="650">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="130"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="물품청구번호"/>
+                      <Cell col="1" text="청구일"/>
+                      <Cell col="2" text="청구부서"/>
+                      <Cell col="3" text="진행상태"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:gdsAnspNo"/>
+                      <Cell col="1" text="bind:anspDate"/>
+                      <Cell col="2" displaytype="combo" text="bind:anspDept" combodataset="dsDept" combocodecol="code" combodatacol="bigValue" combodisplay="edit"/>
+                      <Cell col="3" text="bind:progStat"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="anspListBtn" taborder="81" onclick="anspListBtn_onclick" cssclass="DelBtn" left="21.59%" top="7" right="71.04%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="addBtn" taborder="82" onclick="addBtn_onclick" cssclass="DelBtn" left="29.25%" top="380" right="63.38%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="DelBtn" taborder="83" onclick="DelBtn_onclick" cssclass="DelBtn" left="36.82%" top="380" right="56.02%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Static id="Static01" taborder="84" text="~" left="-45.57%" top="-71" right="145.57%" height="23" style="color:#6c6c6cff;font:bold 9 다음_Regular;"/>
+              <Calendar id="ctrtStartPridCal" taborder="85" autoskip="true" left="-51.14%" top="-76" right="150.95%" height="30" style="padding:0 0 0 0;"/>
+              <Calendar id="ctrtEndPridCal" taborder="86" autoskip="true" onchanged="menuDiv_ctrtEndPridCal_onchanged" oneditclick="menuDiv_ctrtEndPridCal_oneditclick" left="-41.09%" top="-76" right="139.3%" height="30" style="padding:0 0 0 0;"/>
+              <Static id="Static00" taborder="87" text="~" left="-23.28%" top="97" right="123.18%" height="23" style="color:#6c6c6cff;font:bold 9 다음_Regular;"/>
+              <Calendar id="ctrtStartPridCal00" taborder="88" autoskip="true" left="-28.76%" top="92" right="128.76%" height="30" style="padding:0 0 0 0;"/>
+              <Calendar id="ctrtEndPridCal00" taborder="89" autoskip="true" onchanged="menuDiv_ctrtEndPridCal_onchanged" oneditclick="menuDiv_ctrtEndPridCal_oneditclick" left="-18.61%" top="92" right="117.11%" height="30" style="padding:0 0 0 0;"/>
+              <Static id="Static02" taborder="90" text="~" left="10.55%" top="13" right="87.96%" height="23" style="color:#6c6c6cff;font:bold 9 다음_Regular;"/>
+              <Calendar id="prcsStartCal" taborder="91" autoskip="true" left="0.6%" top="8" right="90.15%" height="30" style="padding:0 0 0 0;"/>
+              <Calendar id="prcsEndCal" taborder="92" autoskip="true" onchanged="menuDiv_ctrtEndPridCal_onchanged" oneditclick="menuDiv_ctrtEndPridCal_oneditclick" left="11.94%" top="8" right="78.61%" height="30" style="padding:0 0 0 0;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Combo id="prcsKindCombo" taborder="2" innerdataset="dsPrcsKind" codecolumn="kind" left="51.56%" top="110" right="40.92%" height="30"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item6" compid="prcsKindCombo" propid="value" datasetid="gdsPrcsReceipt" columnid="buyKind"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsAnspHist" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="anspHistNo" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="gdsNm" type="STRING" size="256"/>
+          <Column id="histRespoWorker" type="STRING" size="256"/>
+          <Column id="histAnspQnt" type="STRING" size="256"/>
+          <Column id="unit" type="STRING" size="256"/>
+          <Column id="histAnspDiv" type="STRING" size="256"/>
+          <Column id="histAnspCon" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDept" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsInptYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="YN" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="YN">Y</Col>
+          </Row>
+          <Row>
+            <Col id="YN">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAnspList</Col>
+            <Col id="URL">erp47::log/prcs/findAnspList.do</Col>
+            <Col id="outData">dsAnsp=dsGdsAnsp</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findAnspHistList</Col>
+            <Col id="URL">erp47::log/prcs/findAnspHistList.do</Col>
+            <Col id="outData">dsAnspHist=dsGdsAnspHist</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchPrcsReceiptProcess</Col>
+            <Col id="URL">erp47::log/prcs/batchPrcsReceiptProcess.do</Col>
+            <Col id="inData">dsPrcsReceipt=gdsPrcsReceipt:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPrcsReceiptList</Col>
+            <Col id="URL">erp47::log/prcs/findPrcsReceiptList.do</Col>
+            <Col id="outData">gdsPrcsReceipt=dsPrcsReceipt</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPrcsKind" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="kind" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="kind">위생재료</Col>
+          </Row>
+          <Row>
+            <Col id="kind">사무용품</Col>
+          </Row>
+          <Row>
+            <Col id="kind">인쇄품</Col>
+          </Row>
+          <Row>
+            <Col id="kind">전산소모품</Col>
+          </Row>
+          <Row>
+            <Col id="kind">의약품</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GP500</Col>
+            <Col id="dsName">dsDept</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAnsp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="gdsAnspNo" type="STRING" size="256"/>
+          <Column id="anspDate" type="STRING" size="256"/>
+          <Column id="anspDept" type="STRING" size="256"/>
+          <Column id="progStat" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPrcsReceipt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="gdsAnspNo" type="STRING" size="256"/>
+          <Column id="anspHistNo" type="STRING" size="256"/>
+          <Column id="buyReceiptNo" type="STRING" size="256"/>
+          <Column id="buyReceiptDate" type="STRING" size="256"/>
+          <Column id="buyReceiptRespoWorker" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="buyKind" type="STRING" size="256"/>
+          <Column id="inptYn" type="STRING" size="256"/>
+          <Column id="prcsQnt" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
+          <Column id="gdsNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 구매접수  관리																*
+*                                                                               *
+* @Path		    LP_PrcsReceiptMngntform											*
+*																				*
+* @Description 	구매접수 관리에서 구매접수 물품을 등록,수정,삭제,조회한다*
+* @Author	    김성호    						                                *
+* 									                                            *
+* Created on 날짜 ~                            		                    *
+*									                                            *
+********************************************************************************/
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include	"scripts::logScripts.xjs";
+
+/***************************************************************************************************
+*                                      폼 EVENT START                                        	   *
+/*-------------------------------------------------------------------------------------------------+
+>>  onload 이벤트
++-------------------------------------------------------------------------------------------------*/
+this.LP_PrcsReceiptMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	application.gdsPrcsReceipt.clear();
+	this.gfnBind();
+	
+}
+/***************************************************************************************************
+*                                         물품청구 조회                                            *
+***************************************************************************************************/
+this.anspListBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.gdsPrcsReceipt.clear();
+	this.dsAnspHist.clear();
+	var prcsStartCal = this.formDiv.prcsStartCal.value;
+	var prcsEndCal = this.formDiv.prcsEndCal.value;
+	var prcsCal = "prcsStartCal='"+prcsStartCal+"' prcsEndCal='"+prcsEndCal+"'";
+//	var progStat = "progStat='"+'접수대기'+"'";
+	this.dsService.setColumn(0, "argument", prcsCal);
+	this.gfnService("findAnspList", false);
+	
+	
+}
+/***************************************************************************************************
+*                                         물품청구 상세 조회                                       *
+***************************************************************************************************/
+
+this.anspGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	application.gdsPrcsReceipt.clear();
+	var gdsAnspNo = this.dsAnsp.getColumn(this.formDiv.anspGrid.currentrow, "gdsAnspNo");
+	var setGdsAnspNo = "GDS_ANSP_NO='"+gdsAnspNo+"'";
+
+	this.dsService.setColumn(1, "argument", setGdsAnspNo);
+	this.gfnService("findAnspHistList", "false");
+	
+
+}
+
+/***************************************************************************************************
+*                                         구매접수 추가                                            *
+***************************************************************************************************/
+this.Today = function ()
+{
+    var sToday = "";
+    var objDate = new Date();
+    var sToday  = objDate.getFullYear() + "";
+    var sMonth = objDate.getMonth()+1;
+    var sDate = objDate.getDate();
+    
+    if(sMonth.toString().length == 1){
+      sMonth = "0" + sMonth;
+    }
+   if(sDate.toString().length == 1){
+      sDate = "0" + sDate;
+    }
+    sToday = sToday+sMonth+sDate;
+    return sToday;
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.gdsPrcsReceipt.addRow();
+	
+	var receiptNo = this.formDiv.prcsReceiptGrid.currentrow+1;
+	var no = this.formDiv.prcsReceiptGrid.currentrow;
+	
+	var objDate = new Date();
+	var year = objDate.getFullYear() +"";
+	var cutYear = year.substr(2,3);
+	
+	var anspNo = this.formDiv.anspGrid.currentrow;
+	var anspHistNo = this.formDiv.anspHistGrid.currentrow;
+	
+	var setGdsAnspNo = this.dsAnsp.getColumn(anspNo,"gdsAnspNo");
+	var cutGdsAnspNo = setGdsAnspNo.substr(3,5);
+	var setGdsAnspHistNo = this.dsAnspHist.getColumn(anspHistNo, "anspHistNo");
+	var setDownNo = "BUY"+cutGdsAnspNo+setGdsAnspHistNo+cutYear+"0"+receiptNo;
+	var setUpNo = "BUY"+cutGdsAnspNo+setGdsAnspHistNo+cutYear+receiptNo;
+		
+	var setGdsCd = this.dsAnspHist.getColumn(anspHistNo, "gdsCd");
+	var setGdsNm = this.dsAnspHist.getColumn(anspHistNo, "gdsNm");
+	if(receiptNo < 10){
+		application.gdsPrcsReceipt.setColumn(no, "buyReceiptNo", setDownNo);
+	}else{
+		application.gdsPrcsReceipt.setColumn(no, "buyReceiptNo", setUpNo);
+	}
+	
+	application.gdsPrcsReceipt.setColumn(no, "buyReceiptDate", this.Today());
+	application.gdsPrcsReceipt.setColumn(no, "gdsAnspNo", setGdsAnspNo);
+	application.gdsPrcsReceipt.setColumn(no, "anspHistNo", setGdsAnspHistNo);
+	application.gdsPrcsReceipt.setColumn(no, "gdsCd", setGdsCd);
+	application.gdsPrcsReceipt.setColumn(no, "gdsNm", setGdsNm);
+}
+
+this.prcsReceiptNoCal_OnChanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	var prcsReceiptCalendar = this.formDiv.menuDiv.prcsReceiptNoCal.value;
+//	alert(buyReceiptCalendar);
+	var count = this.formDiv.prcsReceiptGrid.currentrow;
+	application.gdsPrcsReceipt.setColumn(count, "buyReceiptDate", prcsReceiptCalendar);
+}
+/***************************************************************************************************
+*                                         구매접수 삭제                                            *
+***************************************************************************************************/
+this.DelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.gdsPrcsReceipt.deleteRow(this.formDiv.prcsReceiptGrid.currentrow);
+}
+
+/***************************************************************************************************
+*                                         구매접수 일괄처리                                        *
+***************************************************************************************************/
+this.batchBtn_OnClick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchPrcsReceiptProcess","false");
+}
+
+/***************************************************************************************************
+*                                         구매접수 조회                                           *
+***************************************************************************************************/
+this.formDiv_anspHistGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+ 	var count = this.formDiv.anspGrid.currentrow;
+ 	var histCount = this.formDiv.anspHistGrid.currentrow;
+ 	var gdsAnspNo = this.dsAnsp.getColumn(count, "gdsAnspNo");
+ 	var anspHistNo = this.dsAnspHist.getColumn(histCount, "anspHistNo");
+ 	var setGdsAnsp = "gdsAnspNo='"+gdsAnspNo+"' "+"anspHistNo='"+anspHistNo+"'";
+ 	this.dsService.setColumn(3, "argument", setGdsAnsp);
+ 	alert(this.dsService.getColumn(3, "argument"));
+	this.gfnService("findPrcsReceiptList");	
+}
+
+this.formDiv_searchCustBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.logOpenCdDialog("cust");
+}
+
+this.setLogCodeArray = function(divCode,logCode,secCode,thrCode,arr){
+ 	switch(divCode){
+ 		case "cust" :
+ 			this.formDiv.custEd.set_value(arr[1]);
+ 			this.formDiv.custCdEd.set_value(arr[0]);
+	}
+}
+]]></Script>
+  </Form>
+</FDL>
