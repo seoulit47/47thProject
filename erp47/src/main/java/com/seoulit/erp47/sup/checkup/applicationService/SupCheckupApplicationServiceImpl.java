@@ -386,4 +386,13 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
             rsltDAO.updateRslt(rsltBean);
         }
     }
+
+    /* 종합검진 예약관리 - 예약번호 생성*/
+	@Override
+	public String createNewRsvtNo(Map<String, String> argsMap) {
+		
+		rsvtDAO.callCreateNewRsvtNo(argsMap);
+		System.out.println(argsMap.get("date"));
+		return null;
+	}
 }

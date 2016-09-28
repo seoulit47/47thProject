@@ -86,6 +86,7 @@
             <Format id="default">
               <Columns>
                 <Column size="89"/>
+                <Column size="40"/>
                 <Column size="72"/>
                 <Column size="69"/>
                 <Column size="39"/>
@@ -98,21 +99,23 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell colspan="6" text="예약자 목록"/>
+                <Cell colspan="7" text="예약자 목록"/>
                 <Cell row="1" text="검진예정일"/>
-                <Cell row="1" col="1" text="예약번호"/>
-                <Cell row="1" col="2" text="검진자명"/>
-                <Cell row="1" col="3" text="성별"/>
-                <Cell row="1" col="4" text="검진시간"/>
-                <Cell row="1" col="5" text="예약취소"/>
+                <Cell row="1" col="1"/>
+                <Cell row="1" col="2" text="예약번호"/>
+                <Cell row="1" col="3" text="검진자명"/>
+                <Cell row="1" col="4" text="성별"/>
+                <Cell row="1" col="5" text="검진시간"/>
+                <Cell row="1" col="6" text="예약취소"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="date" text="bind:inspPlnDate"/>
-                <Cell col="1" text="bind:rsvtNo"/>
-                <Cell col="2" text="bind:patNm"/>
-                <Cell col="3" text="bind:gender"/>
-                <Cell col="4" displaytype="normal" text="bind:inspPlnTime" mask="##:##"/>
-                <Cell col="5" displaytype="normal" edittype="none" text="bind:cancelYn"/>
+                <Cell displaytype="text" text="bind:inspPlnDate"/>
+                <Cell col="1"/>
+                <Cell col="2" text="bind:rsvtNo"/>
+                <Cell col="3" text="bind:patNm"/>
+                <Cell col="4" text="bind:gender"/>
+                <Cell col="5" displaytype="normal" text="bind:inspPlnTime" mask="##:##"/>
+                <Cell col="6" displaytype="normal" edittype="none" text="bind:cancelYn"/>
               </Band>
             </Format>
           </Formats>
@@ -292,6 +295,13 @@
             <Col id="URL">erp47::sup/checkup/cancelRsvt.do</Col>
             <Col id="callbackFunc">callBackFunc</Col>
             <Col id="outData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">createNewRsvtNo</Col>
+            <Col id="URL">erp47::sup/checkup/createNewRsvtNo.do</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="inData"></Col>
+            <Col id="outData">dsRsvt=dsRsvt</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -632,6 +642,13 @@ this.newRsvtNo=function()
 	this.choInspGrid.setCellProperty("Body", 2, "edittype", "normal"); 
 	
 	addFlag = true;
+	
+	var arguDate = date[0].replace(/-/g,""); //모든 '-'를 ""(공백)으로 바꿈
+	row = this.dsService.findRow('serviceID' , "createNewRsvtNo");
+	this.dsService.setColumn(row, "argument", "date="+arguDate);
+	this.gfnService("createNewRsvtNo",false);
+	
+	alert(application.rsvtNo);
 }
 
 /* 예약 취소 */

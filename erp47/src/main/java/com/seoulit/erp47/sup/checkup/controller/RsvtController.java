@@ -58,7 +58,7 @@ public class RsvtController {
     }
     
     /* 종합검진 예약관리 - 저장*/
-    @RequestMapping("sup/checkup/batchRsvtProcess")
+    @RequestMapping("sup/checkup/batchRsvtProcess.do")
     public void batchRsvtProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
     	 PlatformData inData = (PlatformData) request.getAttribute("inData");
          
@@ -77,6 +77,18 @@ public class RsvtController {
          }
          
          supCheckupServiceFacade.batchRsvtProcess(map);
+    }
+    
+    /* 종합검진 예약관리  - 예약번호생성*/
+    @RequestMapping("sup/checkup/createNewRsvtNo.do")
+    public void createNewRsvtNo(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	PlatformData inData = (PlatformData)request.getAttribute("inData");
+    	PlatformData outData = (PlatformData) request.getAttribute("outData");
+    	
+    	Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+    	supCheckupServiceFacade.createNewRsvtNo(argsMap);
+    	//System.out.println(argsMap.get("date"));
+    	//dataSetBeanMapper.addVariable(outData, "rsvtNo", "zz111");
     }
     
 }

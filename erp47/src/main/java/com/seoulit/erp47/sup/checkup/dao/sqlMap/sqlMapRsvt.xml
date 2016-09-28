@@ -43,5 +43,13 @@
 		INSERT (PAT_NO, RSVT_NO, RSVT_DATE, RSVT_AMT, INSP_PLN_TIME, RSVT_RESP, PAY_MAN, RSHIP, CHO_INSP_AMT, INSP_PLN_DATE, APL_MAN_TEL, MEMO, REDUC_AMT, INSP_SUM_AMT, CANCEL_YN, PCK_CD, RSVT_TIME, BASIC_INSP_AMT, BASIC_INSP_SUM_AMT, REDUC_CD, APL_MAN, REG_ID, REG_IP, REG_DATE ) 
 		values( #{patNo}, #{rsvtNo}, #{rsvtDate}, #{rsvtAmt}, #{inspPlnTime}, #{userId}, #{payMan}, #{rship}, #{choInspAmt}, #{inspPlnDate}, #{aplManTel}, #{memo}, #{reducAmt}, #{inspSumAmt}, #{cancelYn}, #{pckCd}, #{rsvtTime}, #{basicInspAmt}, #{basicInspSumAmt}, #{reducCd}, #{aplMan}, #{userId}, #{userIp}, TO_CHAR(SYSDATE,'YYYY-MM-DD') ) 
 	</update>
+	
+	<select id="callCreateNewRsvtNo" statementType="CALLABLE" parameterType="Map">
+		CALL PC_SP_RSVTNO_CREATE(
+			#{date, mode=INOUT, jdbcType=VARCHAR, javaType=string}
+		, 	#{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string}
+		, 	#{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
+		)
+	</select>
 </mapper>
 		

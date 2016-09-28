@@ -99,6 +99,8 @@ public interface SupCheckupApplicationService {
     /* 종합검진 결과관리 - 저장 */
     public void registerRslt(List<RsltBean> rsltList);
 
+    /* 종합검진 예약관리 - 예약번호 생성*/
+    public String createNewRsvtNo(Map<String, String> argsMap);
     
     
 }

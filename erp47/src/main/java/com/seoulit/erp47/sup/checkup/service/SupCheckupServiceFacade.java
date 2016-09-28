@@ -28,6 +28,9 @@ public interface SupCheckupServiceFacade {
     /* 종합검진 예약관리 - 저장 */
     void batchRsvtProcess(Map<String, Object> map);
     
+    /* 종합검진 예약관리 - 예약번호 생성*/
+    String createNewRsvtNo(Map<String, String> map);
+    
     /* 종합검진 세부검사관리 - 검사 조회 */
     List<InspBean> findSimpleInspList(Map<String, String> argsMap);
 

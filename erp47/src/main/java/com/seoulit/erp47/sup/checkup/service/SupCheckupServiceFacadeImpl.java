@@ -219,5 +219,11 @@ public class SupCheckupServiceFacadeImpl implements SupCheckupServiceFacade{
     public void registerRslt(List<RsltBean> rsltList) {
         supCheckupApplicationService.registerRslt(rsltList);
     }
+
+    /* 종합검진 예약관리 - 예약번호 생성*/
+	@Override
+	public String createNewRsvtNo(Map<String, String> map) {
+		return supCheckupApplicationService.createNewRsvtNo(map);
+	}
     
 }
