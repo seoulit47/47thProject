@@ -81,7 +81,7 @@ this.CdpopupGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInf
 		//부모프레임에서 setCode 라는 Function을 만들어서 받자.
 		//여기서 this.parent.code 는 부모프레임에서의 변수 code 를 뜻한다.
 		
-		alert(arrRtn[0]);
+		alert("코드팝업폼"+arrRtn[0]);
 		this.close();
 	
 }
