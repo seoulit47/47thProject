@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HY_ExcuteYtaForm" classname="HY_ExcuteYtaForm" left="0" top="0" width="483" height="160" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" text="            연말정산 실행" left="0%" top="0" right="1.04%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');"/>
+        <Radio id="hireTypeRadio" taborder="1" innerdataset="dsHireType" codecolumn="hireType" datacolumn="hireType" direction="vertical" left="4.97%" top="70" right="0%" height="34" style="font:bold 10 맑은고딕;"/>
+        <Spin id="yearSpin" taborder="2" value="2015" left="4.97%" top="112" right="55.49%" height="32" style="align:center middle;font:bold 15 맑은고딕;"/>
+        <Button id="executeBtn" taborder="3" text="실행" onclick="executeBtn_onclick" left="59.63%" top="113" right="5.8%" height="31"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsHireType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="hireType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="hireType">정규직</Col>
+          </Row>
+          <Row>
+            <Col id="hireType">비정규직</Col>
+          </Row>
+          <Row>
+            <Col id="hireType">기타</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">executeYta</Col>
+            <Col id="URL">erp47::hrs/yeta/executeYta.do</Col>
+            <Col id="outData"/>
+            <Col id="callbackFunc">callback</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 공통 스트립트관리                                                          	*
+*                                                                               *
+* @Path		    hrs-HY_ExcuteYtaForm                   	                        *
+* @Description 	연말정산 실행									   	            *
+* @Author	    					                                		*
+* 									                                            *
+* Created on 2016. .  .                          		                        *
+*									                                            *
+********************************************************************************/
+include "scripts::commonScripts.xjs";
+this.executeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var hireType = this.hireTypeRadio.text;
+	var belongYear = this.yearSpin.value;
+	var argument="hireType='"+hireType+"' caculation_year='"+belongYear+"'";
+	this.dsService.setColumn(0, "argument", argument);
+	this.gfnService("executeYta");
+}
+]]></Script>
+  </Form>
+</FDL>
