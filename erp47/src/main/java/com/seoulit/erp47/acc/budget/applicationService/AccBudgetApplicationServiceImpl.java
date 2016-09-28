@@ -9,10 +9,12 @@ import org.springframework.stereotype.Component;
 
 import com.seoulit.erp47.acc.budget.dao.BudgBimokDAO;
 import com.seoulit.erp47.acc.budget.dao.BudgUseDeptDAO;
+import com.seoulit.erp47.acc.budget.dao.JobLimitDAO;
 import com.seoulit.erp47.acc.budget.dao.RunBudgDAO;
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
+import com.seoulit.erp47.acc.budget.to.JobLimitBean;
 import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
 
@@ -25,6 +27,8 @@ public class AccBudgetApplicationServiceImpl implements AccBudgetApplicationServ
 	BudgUseDeptDAO budgUseDeptDAO;
 	@Autowired
 	RunBudgDAO runBudgDAO;
+	@Autowired
+	JobLimitDAO jobLimitDAO;
 
     // 예산비목 조회	
 	@Override
@@ -93,5 +97,19 @@ public class AccBudgetApplicationServiceImpl implements AccBudgetApplicationServ
 		public List<RunBudgBean> findRunBudg(Map<String, String> argsMap) {
 			List<RunBudgBean> runBudgList = runBudgDAO.selectRunBudg(argsMap);
 			return runBudgList;
+		}
+
+		// 부서별 적정인원 조회
+		@Override
+		public List<JobLimitBean> findJobLimit(Map<String, String> argsMap) {
+			List<JobLimitBean> jobLimitList = jobLimitDAO.selectJobLimitList(argsMap);
+			return jobLimitList;
+		}
+
+	    // 부서별 적정인원 저장
+		@Override
+		public void modifyJobLimit(List<JobLimitBean> jobLimitList) {
+			for(JobLimitBean jobLimitBean : jobLimitList)
+				jobLimitDAO.updateJobLimit(jobLimitBean);
 		}
 }

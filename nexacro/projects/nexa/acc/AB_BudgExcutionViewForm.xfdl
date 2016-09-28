@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AB_BudgExcutionViewForm" classname="AB_BudgExcutionViewForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="titleEdt02" taborder="0" text="예산사용부서등록" cssclass="TStc" left="4.4%" top="10" right="77.76%" height="44" style="font:bold 15 Dotum;"/>
+        <Div id="Div05" taborder="1" left="0%" top="4" right="0.32%" height="60" style="background:transparent URL('img::titleBar6.jpg');"/>
+        <Static id="titleEdt00" taborder="2" text="예산집행현황조회" cssclass="TStc" left="5.04%" top="10" right="77.12%" height="44" style="font:bold 15 Dotum;"/>
+        <Div id="Div03" taborder="3" left="1.28%" top="71" right="1.04%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="stc_year" taborder="4" text="회계년도" onclick="subCodeStc_onclick" left="2.16%" top="84" right="90.8%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Spin id="yearSpin" taborder="5" value="2016" onspin="yearSpin_onspin" left="9.92%" top="82" right="80.64%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
+        <Static id="stc_bimok" taborder="6" text="예산비목" onclick="subCodeStc_onclick" left="20.64%" top="84" right="72.32%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="bimokEd" taborder="7" left="28.4%" top="83" right="61.6%" height="26" class="AreaEdt"/>
+        <Button id="searchBtn" taborder="8" onclick="searchBtn_onclick" left="39.6%" top="80" right="53.2%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="budgGrid" taborder="9" binddataset="dsRunBudg" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" left="1.28%" top="139" right="1.04%" height="576" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="219"/>
+                <Column size="119"/>
+                <Column size="202"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="72"/>
+                <Column size="58"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="비목명"/>
+                <Cell col="1" text="비목코드"/>
+                <Cell col="2" text="계정명"/>
+                <Cell col="3" text="계획배정금액"/>
+                <Cell col="4" text="예산금액"/>
+                <Cell col="5" text="변경금액"/>
+                <Cell col="6" text="총원인금액"/>
+                <Cell col="7" text="예산잔액"/>
+                <Cell col="8" text="집행률"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="tree" edittype="tree" text="bind:bimokNm" treestartlevel="1" treelevel="bind:bimokLevel"/>
+                <Cell col="1" text="bind:bimokCd"/>
+                <Cell col="2" text="bind:acntNm"/>
+                <Cell col="3" text="bind:allotPlanAmount"/>
+                <Cell col="4" text="bind:budgAmount"/>
+                <Cell col="5" text="bind:cngAmount"/>
+                <Cell col="6" text="bind:causeAmount"/>
+                <Cell col="7" text="bind:budgBal"/>
+                <Cell col="8" text="bind:executionPercent"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsRunBudg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cngAmount" type="STRING" size="256"/>
+          <Column id="allotPlanAmount" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="causeAmount" type="STRING" size="256"/>
+          <Column id="budgAmount" type="STRING" size="256"/>
+          <Column id="budgBal" type="STRING" size="256"/>
+          <Column id="bimokNm" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="bimokLevel" type="STRING" size="256"/>
+          <Column id="executionPercent" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsUseYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="name">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">Y</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findRunBudg</Col>
+            <Col id="URL">erp47::acc/budget/findRunBudg.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsRunBudg=dsRunBudg</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+//*****
+//조회
+//*****
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var accYear = this.yearSpin.value;
+	var bimokNm = this.bimokEd.value;
+	
+	var argument = 'accYear='+accYear+' bimokNm='+bimokNm;
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findRunBudg");
+}
+]]></Script>
+  </Form>
+</FDL>

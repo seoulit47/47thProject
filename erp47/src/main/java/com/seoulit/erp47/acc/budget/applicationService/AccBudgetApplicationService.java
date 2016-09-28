@@ -6,6 +6,7 @@ import java.util.Map;
 import com.seoulit.erp47.acc.budget.exception.BimokCopyException;
 import com.seoulit.erp47.acc.budget.to.BudgBimokBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
+import com.seoulit.erp47.acc.budget.to.JobLimitBean;
 import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
 public interface AccBudgetApplicationService {
@@ -22,4 +23,8 @@ public interface AccBudgetApplicationService {
 	
 	List<RunBudgBean> findRunBudg(Map<String, String> argsMap);
 	
+	List<JobLimitBean> findJobLimit(Map<String, String> argsMap);
+
+	void modifyJobLimit(List<JobLimitBean> jobLimitList);
+
 }

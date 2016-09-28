@@ -10,6 +10,7 @@ import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
 import com.seoulit.erp47.acc.budget.to.BudgMisaTagetBean;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
+import com.seoulit.erp47.acc.budget.to.JobLimitBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
 import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
@@ -44,5 +45,9 @@ public interface BudgetServiceFacade {
 	List<RunBudgBean> findRunBudgList(Map<String, String> argsMap);
 	
 	String getMisaNo();
+	
+	List<JobLimitBean> findJobLimit(Map<String, String> argsMap);
+	
+	void modifyJobLimit(List<JobLimitBean> jobLimitList);
 
 }

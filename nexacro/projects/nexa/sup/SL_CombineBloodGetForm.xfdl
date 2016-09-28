@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_CombineBloodGetForm" classname="SL_CombineBloodGetForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SL_CombineBloodGetForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="1.76%" top="77" right="1.68%" height="91" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="patNoStatic" taborder="1" text="환자 검색" left="2.64%" top="88" right="87.76%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="Static01" taborder="2" text="검사 항목" left="2.64%" top="128" right="87.76%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Edit id="searchPatNoEd" taborder="3" left="12.88%" top="88" right="75.92%" height="28"/>
+        <Edit id="searchPatNmEd" taborder="4" left="27.6%" top="88" right="61.2%" height="28"/>
+        <Combo id="exmntCombo" taborder="5" innerdataset="dsExmntCd" codecolumn="code" datacolumn="data" left="12.88%" top="128" right="75.76%" height="28" style="background:transparent;"/>
+        <Static id="bloodgetEmpStatic" taborder="6" text="채취자 검색" left="40.72%" top="88" right="49.68%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Edit id="searchDoctNoEd" taborder="7" left="50.96%" top="88" right="37.84%" height="28"/>
+        <Edit id="searchDoctNmEd" taborder="8" left="65.68%" top="88" right="23.12%" height="28"/>
+        <Static id="patNoStatic01" taborder="9" text="검체명" left="25.44%" top="128" right="64.96%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="clinspeNmCombo" taborder="10" innerdataset="dsClinspeNm" codecolumn="code" datacolumn="data" left="35.76%" top="128" right="52.88%" height="28" style="background:transparent;"/>
+        <Static id="patNoStatic02" taborder="11" text="채취일자" left="48.96%" top="128" right="41.44%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Calendar id="bloodGetStartDateCal" taborder="12" left="59.2%" top="129" right="30.08%" height="28"/>
+        <Calendar id="bloodGetEndDateCal" taborder="13" left="72.32%" top="129" right="16.96%" height="28"/>
+        <Static id="Static02" taborder="14" text="~" left="70.4%" top="130" right="27.44%" height="31" style="border:1 none #808080ff ;color:black;font:bold 15 Dotum;"/>
+        <Button id="comboResetBtn" taborder="15" text="조건초기화" left="83.68%" top="129" right="10.56%" height="28" onclick="comboResetBtn_onclick"/>
+        <Grid id="clinspeGrid" taborder="16" binddataset="dsClinspe" useinputpanel="false" autofittype="col" oncelldblclick="clinspeGrid_oncelldblclick" left="1.76%" top="185" right="1.76%" height="524">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="처방번호"/>
+                <Cell col="2" text="진료의사"/>
+                <Cell col="3" text="검사항목"/>
+                <Cell col="4" text="검체명"/>
+                <Cell col="5" text="채취일시"/>
+                <Cell col="6" text="채취자"/>
+                <Cell col="7" text="환자등록번호"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:clinspeNo"/>
+                <Cell col="1" edittype="text" text="bind:prescNo"/>
+                <Cell col="2" edittype="text" text="bind:respDoct"/>
+                <Cell col="3" edittype="text" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="4" edittype="text" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="5" displaytype="normal" edittype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="6" edittype="none" text="bind:bloodgetEmp"/>
+                <Cell col="7" edittype="text" text="bind:patNo"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="deleteClinspeBtn" taborder="17" left="82.16%" top="723" right="10.64%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchClinspeBtn" taborder="18" left="91.04%" top="723" right="1.76%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchClinspeBtn" taborder="19" left="89.84%" top="127" right="2.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchClinspeBtn_onclick"/>
+        <Button id="addClinspeBtn" taborder="20" left="73.44%" top="723" right="19.36%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchPatBtn" taborder="21" left="24.56%" top="86" right="72.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchDoctBtn" taborder="22" left="62.64%" top="86" right="34.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div01" taborder="23" left="0.48%" top="8" right="0.16%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체채취관리" left="3.83%" top="-4" right="82.63%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findClinspeList</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findClinspeList.do</Col>
+            <Col id="outData">dsClinspe=dsClinspe</Col>
+            <Col id="callbackFunc">clinspeCallBack</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findMaxClinspeNo</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findMaxClinspeNo.do</Col>
+            <Col id="outData">dsClinspeSequence=dsClinspeSequence</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">clinspeCallBack</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchClinspeProcess</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/batchClinspeProcess.do</Col>
+            <Col id="inData">dsClinspe=dsClinspe:U</Col>
+            <Col id="callbackFunc">clinspeCallBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsClinspeSequence">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsClinspe">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+          <Column id="prescNo" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="respDoct" type="STRING" size="256"/>
+          <Column id="dgnsNm" type="STRING" size="256"/>
+          <Column id="exmntCd" type="STRING" size="256"/>
+          <Column id="clinspeNm" type="STRING" size="256"/>
+          <Column id="bloodgetDate" type="STRING" size="256"/>
+          <Column id="bloodgetEmp" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="receiptCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsExmntCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">혈액</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">소변</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">세포</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">조직</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsClinspeNm">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">혈액</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">수액</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">흉수</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">복수</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">관절액</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="data">농</Col>
+          </Row>
+          <Row>
+            <Col id="code">7</Col>
+            <Col id="data">분비액</Col>
+          </Row>
+          <Row>
+            <Col id="code">8</Col>
+            <Col id="data">담</Col>
+          </Row>
+          <Row>
+            <Col id="code">9</Col>
+            <Col id="data">인두점액</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="data">요</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="data">담즙</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="data">대변</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+include "scripts::commonScripts.xjs";
+include "scripts::Scripts.xjs";
+
+//폼 로드 이벤트
+this.SL_CombineBloodGetForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findMaxClinspeNo");
+	
+}
+
+//콜백함수
+this.clinspeCallBack = function clinspeCallBack(strSvcID, nErrorCode, strErrorMag)
+ {
+ 	if(strSvcID == "findClinspeList"){
+ 		if(nErrorCode==-1)
+ 			alert(strErrorMag);
+ 		else{
+ 				
+ 		}
+ 	}else if(strSvcID == "batchClinspeProcess"){
+ 		if(nErrorCode==-1)
+ 			alert(strErrorMag);
+ 		else{
+ 			alert("정상처리 되었습니다.");	
+ 		}
+ 	}
+ }	
+ 
+//조건초기화
+this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.searchPatNoEd.set_value(null);
+	this.searchPatNmEd.set_value(null);
+	this.searchDoctNoEd.set_value(null);
+	this.searchDoctNmEd.set_value(null);
+	this.exmntCombo.set_value(null);
+	this.clinspeNmCombo.set_value(null);
+	this.bloodGetStartDateCal.set_value(null);
+	this.bloodGetEndDateCal.set_value(null);
+}
+
+//검체채취 조회
+this.searchClinspeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var bloodGetStartDate = "19000101";
+	var bloodGetEndDate = "21000101";
+	if(this.bloodGetStartDateCal.value != null){
+		bloodGetStartDate = this.bloodGetStartDateCal.value;
+	}
+	if(this.bloodGetEndDateCal.value != null){
+		bloodGetEndDate = this.bloodGetEndDateCal.value;
+	}
+	var argument = "bloodGetStartDate='"+bloodGetStartDate+"' bloodGetEndDate='"+bloodGetEndDate+"' exmntCd='"+this.exmntCombo.value+"' clinspeNm='"+this.clinspeNmCombo.value+"' patNo='"+this.searchPatNoEd.value+"' bloodgetEmp='"+this.searchDoctNmEd.value+"'";
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findClinspeList",false);
+	//alert(this.dsClinspe.getColCount());
+	trace(this.dsClinspe.saveXML());
+}
+]]></Script>
+  </Form>
+</FDL>
