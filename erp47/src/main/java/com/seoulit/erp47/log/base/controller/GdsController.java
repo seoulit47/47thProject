@@ -1,5 +1,7 @@
 package com.seoulit.erp47.log.base.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.nexacro.xapi.data.DataSet;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.log.base.service.LogBaseServiceFacade;
@@ -45,8 +48,8 @@ public class GdsController {
 
 		dataSetBeanMapper.beansToDataset(outData, gdsList, GdsBean.class);
 	}
-/*
-    // 물품사진 저장
+
+	// 물품사진 저장
     @RequestMapping("log/base/saveImg.do")
     public void saveImg(HttpServletRequest request, HttpServletResponse response) throws Exception {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
@@ -73,8 +76,8 @@ public class GdsController {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-        String postCode = logBaseServiceFacade.callGdsCd(argsMap);
-        dataSetBeanMapper.addVariable(outData, "postCode", postCode);
+        //String postCode = logBaseServiceFacade.callGdsCd(argsMap);
+        //dataSetBeanMapper.addVariable(outData, "postCode", postCode);
     }
 
     // 물품 CRUD (등록, 수정, 삭제)
@@ -82,7 +85,6 @@ public class GdsController {
     public void batchGdsProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         List<GdsBean> GdsList = dataSetBeanMapper.datasetToBeans(inData, GdsBean.class);
-        logBaseServiceFacade.batchGdsProcess(GdsList);
+        //logBaseServiceFacade.batchGdsProcess(GdsList);
     }
-*/
 }

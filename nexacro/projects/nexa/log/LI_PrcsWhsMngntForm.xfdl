@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LI_PrcsWhsMngntForm" classname="LI_PrcsWhsMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="LI_PrcsWhsMngntForm" classname="LI_PrcsWhsMngntForm" left="0" top="0" width="1250" height="768" titletext="구매 입고 관리">
     <Layouts>
       <Layout>
         <Div id="Div04" taborder="0" left="0%" top="4" right="-62.64%" height="60" style="background:transparent URL('img::titleBar5.jpg');">
@@ -96,5 +96,6 @@
         <Static id="subCodeStc01" taborder="11" text="구매입고 내역" onclick="subCodeStc_onclick" left="43.68%" top="394" right="2.72%" height="40" style="background:bisque;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
       </Layout>
     </Layouts>
+    <Objects/>
   </Form>
 </FDL>

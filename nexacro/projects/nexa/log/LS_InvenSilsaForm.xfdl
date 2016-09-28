@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LS_InvenSilsaForm" classname="LS_InvenSilsaForm" left="0" top="0" width="1024" height="768" titletext="New Form" onload="LS_InvenSilsaForm_onload">
+  <Form id="LS_InvenSilsaForm" classname="LS_InvenSilsaForm" left="0" top="0" width="1250" height="768" titletext="재고 실사" onload="LS_InvenSilsaForm_onload">
     <Layouts>
       <Layout>
         <Static id="Static00" taborder="0" text="공급실 SET 구성품 관리" left="4.79%" top="-4" right="62.21%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>

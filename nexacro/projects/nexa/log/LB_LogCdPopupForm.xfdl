@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LB_LogCdPopupForm" classname="LB_LogCdPopupForm" left="0" top="0" width="339" height="442" titletext="New Form" onload="LB_LogCdPopupForm_onload">
+  <Form id="LB_LogCdPopupForm" classname="LB_LogCdPopupForm" left="0" top="0" width="339" height="442" titletext="물류 코드 관리" onload="LB_LogCdPopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="-2.36%" top="4" right="4.13%" height="60" style="background:transparent URL('img::titleBar4.jpg');">

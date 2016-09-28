@@ -6,6 +6,5 @@ import com.seoulit.erp47.log.inpt.to.CtrtInfoBean;
 
 public interface InptDAO {
 
-	
-	List<CtrtInfoBean>findCtrtList();
+	List<CtrtInfoBean> findCtrtList();
 }

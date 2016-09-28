@@ -23,9 +23,9 @@
 
 <!-- 기술검사내역조회 -->
 	<select id="findSkillExmntHistList" resultMap="resultMapfindSkillExmntHist" parameterType="map">
-SELECT * FROM LE_SKILL_EXMNT_HIST
-WHERE EXMNT_DATE 
-BETWEEN #{startDate} AND #{endDate}
+		SELECT * FROM LE_SKILL_EXMNT_HIST
+		WHERE EXMNT_DATE 
+		BETWEEN #{startDate} AND #{endDate}
 	</select>
 	
 	
@@ -34,8 +34,5 @@ BETWEEN #{startDate} AND #{endDate}
 		  FROM LE_SKILL_EXMNT_HIST
 		 WHERE SKILL_EXMNT_NO = #{skillExmntNo}
 		       AND CTRT_NO = #{ctrtNo}
-	
-	
 	</delete>
-
 </mapper>
