@@ -62,7 +62,7 @@ public class RsvtController {
     public void batchRsvtProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
     	 PlatformData inData = (PlatformData) request.getAttribute("inData");
          
-    	 
+    	 System.out.println(inData.saveXml());
          List<RsvtBean> rsvtList  = dataSetBeanMapper.datasetToBeans(inData, RsvtBean.class);
          List<ChoInspBean> choInspList = dataSetBeanMapper.datasetToBeans(inData, ChoInspBean.class);
 
@@ -86,9 +86,8 @@ public class RsvtController {
     	PlatformData outData = (PlatformData) request.getAttribute("outData");
     	
     	Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-    	supCheckupServiceFacade.createNewRsvtNo(argsMap);
-    	//System.out.println(argsMap.get("date"));
-    	//dataSetBeanMapper.addVariable(outData, "rsvtNo", "zz111");
+    	String rsvtNo = supCheckupServiceFacade.createNewRsvtNo(argsMap);
+    	dataSetBeanMapper.addVariable(outData, "rsvtNo", rsvtNo);
     }
     
 }

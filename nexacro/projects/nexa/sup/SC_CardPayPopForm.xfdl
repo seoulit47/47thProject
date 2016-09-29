@@ -111,6 +111,10 @@
     </Objects>
     <Bind>
       <BindItem id="item0" compid="compBox.payAmtMask" propid="value" datasetid="dsRece" columnid="payAmt"/>
+      <BindItem id="item1" compid="compBox.cardNoMask" propid="value" datasetid="dsRece" columnid="cardNo"/>
+      <BindItem id="item2" compid="compBox.payBalMask" propid="value" datasetid="dsRece" columnid="befReceAmt"/>
+      <BindItem id="item3" compid="compBox.instmPridEd" propid="value" datasetid="dsRece" columnid="instmPrid"/>
+      <BindItem id="item4" compid="compBox.valPridMask" propid="value" datasetid="dsRece" columnid="valPrid"/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[
 // 공통 스크립트

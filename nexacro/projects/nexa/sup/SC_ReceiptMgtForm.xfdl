@@ -76,7 +76,7 @@
                 <Column size="38"/>
                 <Column size="65"/>
                 <Column size="85"/>
-                <Column size="40"/>
+                <Column size="71"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -85,14 +85,16 @@
                 <Row size="24" band="summ"/>
               </Rows>
               <Band id="head">
-                <Cell colspan="5" text="정밀검사 목록"/>
-                <Cell col="5"/>
+                <Cell colspan="6">
+                  <Cell colspan="5" text="정밀검사 목록"/>
+                  <Cell col="5"/>
+                </Cell>
                 <Cell row="1" text="코드"/>
                 <Cell row="1" col="1" text="검사명"/>
                 <Cell row="1" col="2" text="수량"/>
                 <Cell row="1" col="3" text="금액"/>
                 <Cell row="1" col="4" text="검사예정일"/>
-                <Cell row="1" col="5"/>
+                <Cell row="1" col="5" text="예약번호"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:inspCd"/>
@@ -604,6 +606,7 @@ this.findRsvtInspList=function(rsvtNo)
 {
 	if(rsvtNo!=null)		
 	{
+		alert(123);
 		var argument = 'rsvtNo='+rsvtNo;
 		var row = this.dsService.findRow('serviceID' , "findRsvtInspList");
 		this.dsService.setColumn(row, "argument", argument);

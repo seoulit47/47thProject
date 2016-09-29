@@ -100,6 +100,8 @@
         </Grid>
         <Button id="saveBtn" taborder="11" onclick="saveBtn_onclick" left="90.48%" top="707" right="2.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
         <Button id="patPopupBtn" taborder="12" onclick="patPopupBtn_onclick" left="31.04%" top="71" right="66.4%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="addBtn" taborder="13" onclick="addBtn_onclick" left="74.48%" top="707" right="18.32%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="modBtn" taborder="14" onclick="modBtn_onclick" left="82.48%" top="707" right="10.32%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -279,11 +281,25 @@ this.rsltTab_onchanged=function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
 	this.dsRslt.filter("rsltDeptCd == '"+rsltDeptCd+"'");
 }
 
-// 등록, 수정
-this.rsltGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+
+
+// 저장버튼
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.rsltGrid.setCellProperty("Body", 2, "edittype", "normal");
+	this.gfnService("registerRslt",false);
+	
+	alert(this.MSG_SUP_SAVE);
 }
+
+
+// 등록, 수정
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert(123);
+	var flag = this.rsltGrid.setCellProperty("Body", 2, "edittype", "normal");
+	alert(flag);
+}
+
 
 this.rsltGrid_onenterdown = function(obj:Grid, e:nexacro.GridEditEventInfo)
 {
@@ -295,14 +311,10 @@ this.rsltGrid_onenterdown = function(obj:Grid, e:nexacro.GridEditEventInfo)
 	}
 }
 
-// 저장버튼
-this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+this.rsltGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	this.gfnService("registerRslt",false);
 	
-	alert(this.MSG_SUP_SAVE);
 }
-
 ]]></Script>
   </Form>
 </FDL>

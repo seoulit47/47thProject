@@ -12,5 +12,8 @@ public interface RsltDAO {
     
     /* 종합검진 결과관리 - 저장 */
     void updateRslt(RsltBean rsltBean);
+    
+    /* 종합검진 결과관리 - 기초결과정보생성*/
+    void insertBaseRsltList(String rsvtNo);
 
 }

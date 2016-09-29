@@ -213,7 +213,7 @@ var param;
 // 화면 로드
 this.SC_RecePopForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	alert(this.gfnDate("yyyymmdd"));
+	
 	this.compBox.inspPlnDateCal.set_value(this.gfnDate("yyyymmdd"));
 	this.dsRece.copyData(this.parent.dsRece);
 	rsvtNo = this.dsRece.getColumn(0, "rsvtNo");

@@ -91,6 +91,7 @@ public class ReceiptController {
         } else {
             pckInspList = rsvtBean.getPckInspList();
             choInspList = rsvtBean.getChoInspList();
+            
         }
         
         dataSetBeanMapper.beansToDataset(outData, pckInspList, InspBean.class);

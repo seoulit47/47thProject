@@ -47,6 +47,7 @@
 	<select id="callCreateNewRsvtNo" statementType="CALLABLE" parameterType="Map">
 		CALL PC_SP_RSVTNO_CREATE(
 			#{date, mode=INOUT, jdbcType=VARCHAR, javaType=string}
+		,	#{rsvtNo, mode=OUT, jdbcType=VARCHAR, javaType=string}
 		, 	#{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string}
 		, 	#{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
 		)

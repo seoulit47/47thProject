@@ -21,5 +21,16 @@
 		AND INSP_CD = #{inspCd} 
 		AND DTL_INSP_CD = #{dtlInspCd} 
 	</update>
+	
+	<!-- 종합검진 결과관리 - 기초결과정보 생성 -->
+	<update id="insertBaseRsltList">
+		INSERT INTO SC_INSP_RSLT (RSVT_NO,INSP_CD,DTL_INSP_CD)
+		SELECT RSVT.rsvt_no,PCKINSP.INSP_CD,DTLINSP.DTL_INSP_CD 
+		FROM SC_PCK_INSP PCKINSP,
+			 SC_DTL_INSP DTLINSP,
+			 (SELECT pck_cd,rsvt_no FROM SC_RSVT  WHERE RSVT_NO = #{rsvtNo}) RSVT 
+		WHERE PCKINSP.pck_cd = RSVT.pck_cd
+		AND PCKINSP.INSP_CD = DTLINSP.INSP_CD
+	</update>
 
 </mapper>
