@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HY_AddEducationForm" classname="HY_AddEducationForm" left="0" top="0" width="852" height="316" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" text="            교육비 내역 등록" left="0%" top="0" right="1.41%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');"/>
+        <Grid id="addEducationGrid" taborder="1" useinputpanel="false" autofittype="col" left="1.41%" top="87" right="1.53%" height="216">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="180"/>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="font:10 맑은고딕;" text="이름"/>
+                <Cell col="1" style="font:10 맑은고딕;" text="생년월일"/>
+                <Cell col="2" style="font:10 맑은고딕;" text="발생구분"/>
+                <Cell col="3" style="font:10 맑은고딕;" text="교육비구분"/>
+                <Cell col="4" style="font:10 맑은고딕;" text="교육비"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:name"/>
+                <Cell col="1" edittype="text" text="bind:regiNo"/>
+                <Cell col="2" edittype="text" text="bind:occGubun"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:eduGubun" combodataset="dsEducationType" combocodecol="code" combodatacol="data"/>
+                <Cell col="4" displaytype="number" edittype="masknumber" text="bind:eduAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addBtn" taborder="2" text="추가" onclick="addBtn_onclick" left="57.75%" top="56" right="32.51%" height="27"/>
+        <Button id="delBtn" taborder="3" text="삭제" onclick="delBtn_onclick" left="68.19%" top="56" right="22.18%" height="27"/>
+        <Button id="saveBtn" taborder="4" text="등록" onclick="saveBtn_onclick" left="78.52%" top="56" right="11.74%" height="27"/>
+        <Button id="cancelBtn" taborder="5" text="취소" onclick="cancelBtn_onclick" left="88.97%" top="56" right="1.76%" height="27"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsHyDependentEducationCopy" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="occGubun" type="STRING" size="256"/>
+          <Column id="eduGubun" type="STRING" size="256"/>
+          <Column id="eduAmt" type="STRING" size="256"/>
+          <Column id="regiNo" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsEducationType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">근로자 본인</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">초중고생</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">대학생</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">장애인</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 공통 스트립트관리                                                          	*
+*                                                                               *
+* @Path		    hrs-HY_addEducationForm                  	                    *
+* @Description 	교육비  내역등록       									    *
+* @Author	    					                                		*
+* 									                                            *
+* Created on 2016. . .                             		                    *
+*									                                            *
+********************************************************************************/
+include "scripts::commonScripts.xjs";
+
+var empNo;
+this.HY_AddEducationForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.addEducationGrid.set_binddataset(this.parent.dsHyDependentEducation);
+	this.dsHyDependentEducationCopy.copyData(this.parent.dsHyDependentEducation);
+	empNo = this.parent.empNo;
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.parent.dsHyDependentEducation.addRow();
+	var lastRow = this.parent.dsHyDependentEducation.rowcount-1;
+	this.parent.dsHyDependentEducation.setColumn(lastRow, "empNo", empNo);
+	this.parent.dsHyDependentEducation.setColumn(lastRow, "eduAmt", 0);
+	this.parent.dsHyDependentEducation.setColumn(lastRow, "occGubun", 1);
+	this.parent.dsHyDependentEducation.setColumn(lastRow, "regiNo", "");
+	this.parent.dsHyDependentEducation.setColumn(lastRow, "eduGubun", 0);
+}
+
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var currentRow = this.addEducationGrid.currentrow;
+	this.parent.dsHyDependentEducation.deleteRow(currentRow);
+}
+
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnClearInvalidData(this.parent.dsHyDependentEducation, 0);
+	
+	this.parent.dsHyDeductionData.setColumn(0, "eduOwnCostDdt", this.parent.dsHyDependentEducation.getCaseSum("eduGubun==1","eduAmt",0,-1));
+	
+	this.parent.dsHyDeductionData.setColumn(0, "eduUnder20CostDdt", this.parent.dsHyDependentEducation.getCaseSum("eduGubun==2","eduAmt",0,-1));
+	this.parent.dsHyDeductionData.setColumn(0, "eduUnder20Cnt", this.parent.dsHyDependentEducation.getCaseCount("eduGubun==2"));
+	
+	this.parent.dsHyDeductionData.setColumn(0, "eduOver20CostDdt", this.parent.dsHyDependentEducation.getCaseSum("eduGubun==3","eduAmt",0,-1));
+	this.parent.dsHyDeductionData.setColumn(0, "eduOver20Cnt", this.parent.dsHyDependentEducation.getCaseCount("eduGubun==3"));
+	
+	this.parent.dsHyDeductionData.setColumn(0, "eduHandicappedCostDdt", this.parent.dsHyDependentEducation.getCaseSum("eduGubun==4","eduAmt",0,-1));
+	this.close();
+}
+
+this.cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.parent.dsHyDependentEducation.copyData(this.dsHyDependentEducationCopy);
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

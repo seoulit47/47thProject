@@ -35,7 +35,9 @@ public class GdsReturnController {
 	@RequestMapping("log/demd/findGdsReturnList.do")
 	public void findGdsReturnList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
-
+		System.out.println("1234567");
+		
+		
 		List<GdsReturnBean> GdsReturnBeanList = demdServiceFacade.findGdsReturnList();
 		datasetBeanMapper.beansToDataset(outData, GdsReturnBeanList, GdsReturnBean.class);
 	}

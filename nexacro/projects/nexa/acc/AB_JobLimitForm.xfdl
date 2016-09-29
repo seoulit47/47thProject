@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AB_JobLimitForm" classname="AB_JobLimitForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="4" right="0.24%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc">
+          <Layouts>
+            <Layout>
+              <Static id="titleEdt02" taborder="0" text="부서별 적정인원 관리" cssclass="TStc" left="4.41%" top="6" right="77.77%" height="44" style="font:bold 15 Dotum;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Calendar id="preDateCal" taborder="1" left="9.92%" top="72" right="78.24%" height="26"/>
+        <Static id="stc_receive_date" taborder="2" text="기준일자" onclick="subCodeStc_onclick" left="1.6%" top="72" right="91.36%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Button id="searchBtn" taborder="3" onclick="searchBtn_onclick" left="23.12%" top="69" right="69.68%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="job_grid" taborder="4" binddataset="dsJobLimit" useinputpanel="false" autofittype="col" left="1.36%" top="115" right="1.36%" height="613" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="96"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="98"/>
+                <Column size="191"/>
+                <Column size="254"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="직종"/>
+                <Cell col="1" text="정원"/>
+                <Cell col="2" text="현원"/>
+                <Cell col="3" text="정원대비"/>
+                <Cell col="4" text="수정자"/>
+                <Cell col="5" text="수정일"/>
+                <Cell col="6" text="수정사유"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:jobcl"/>
+                <Cell col="1" edittype="text" text="bind:limit"/>
+                <Cell col="2" text="bind:prePersonnel"/>
+                <Cell col="3" text="bind:preLimit"/>
+                <Cell col="4" text="bind:modifier"/>
+                <Cell col="5" text="bind:chgDay"/>
+                <Cell col="6" edittype="text" text="bind:chgCau"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="saveBtn" taborder="5" onclick="saveBtn_onclick" left="31.36%" top="69" right="61.44%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findJobLimitList</Col>
+            <Col id="URL">erp47::acc/budget/findJobLimitList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsJobLimit=dsJobLimit</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">modifyJobLimit</Col>
+            <Col id="URL">erp47::acc/budget/modifyJobLimit.do</Col>
+            <Col id="inData">dsJobLimit=dsJobLimit:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsJobLimit" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dsJobLimit_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="chgCau" type="STRING" size="256"/>
+          <Column id="chgDay" type="STRING" size="256"/>
+          <Column id="modifier" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="limit" type="STRING" size="256"/>
+          <Column id="prePersonnel" type="STRING" size="256"/>
+          <Column id="preLimit" type="STRING" size="256"/>
+          <Column id="preDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"; 
+
+//*****
+//조회
+//*****
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.gfnService("findJobLimitList");
+}
+
+//*****
+//저장
+//*****
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+
+	var empNm = application.gdsEmp.getColumn(0,"empNm");
+
+	for(var i=-0; i<this.dsJobLimit.rowcount; i++){
+		var rowType = this.dsJobLimit.getRowType(i);
+		if(rowType == '4'){
+			this.dsJobLimit.setColumn(i, "modifier", empNm);
+		}
+	}
+	this.gfnService("modifyJobLimit");
+}
+
+//********
+//그리드
+//********
+this.dsJobLimit_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo){
+	if(e.col=='1'){
+		var limit = this.dsJobLimit.getColumn(e.row,"limit");
+		var prePersonnel = this.dsJobLimit.getColumn(e.row,"prePersonnel");
+		
+		this.dsJobLimit.setColumn(e.row,"preLimit",parseInt(limit)-parseInt(prePersonnel));
+	}
+	this.dsJobLimit.setColumn(e.row,"modifier", application.gdsEmp.getColumn(0,"empNm"));
+}
+
+//*************
+//Callback함수
+//*************
+this.CallbackFunc = function(serviceID, errorCode, errorMsg){
+	if(serviceID == "ModifyJobMit"){
+		if(errorCode < 0){
+			alert("저장실패 : "+errorMsg);
+		}else{
+			alert("성공!");
+			this.searchBtn_onclick();
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

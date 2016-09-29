@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HY_AddMedicalForm" classname="HY_AddMedicalForm" left="0" top="0" width="852" height="316" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" text="            의료비 내역 등록" left="0%" top="0" right="1.41%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');"/>
+        <Grid id="addMedicalGrid" taborder="1" useinputpanel="false" autofittype="col" left="1.41%" top="87" right="1.53%" height="216">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="180"/>
+                <Column size="180"/>
+                <Column size="180"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="font:10 맑은고딕;" text="이름"/>
+                <Cell col="1" style="font:10 맑은고딕;" text="생년월일"/>
+                <Cell col="2" style="font:10 맑은고딕;" text="발생구분"/>
+                <Cell col="3" style="font:10 맑은고딕;" text="의료증빙"/>
+                <Cell col="4" style="font:10 맑은고딕;" text="지급법인명"/>
+                <Cell col="5" style="font:10 맑은고딕;" text="의료비구분"/>
+                <Cell col="6" style="font:10 맑은고딕;" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:name"/>
+                <Cell col="1" edittype="text" text="bind:regiNo"/>
+                <Cell col="2" edittype="text" text="bind:occGubun"/>
+                <Cell col="3" displaytype="normal" edittype="text" text="bind:medicalProofCode"/>
+                <Cell col="4" displaytype="normal" edittype="text" text="bind:medicalCompanyName"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:medicalGubun" combodataset="dsMedicalType" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="number" edittype="masknumber" text="bind:medicalAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addBtn" taborder="2" text="추가" onclick="addBtn_onclick" left="57.75%" top="56" right="32.51%" height="27"/>
+        <Button id="delBtn" taborder="3" text="삭제" onclick="delBtn_onclick" left="68.19%" top="56" right="22.18%" height="27"/>
+        <Button id="saveBtn" taborder="4" text="등록" onclick="saveBtn_onclick" left="78.52%" top="56" right="11.74%" height="27"/>
+        <Button id="cancelBtn" taborder="5" text="취소" onclick="cancelBtn_onclick" left="88.97%" top="56" right="1.76%" height="27"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsMedicalType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">근로자 본인</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">65세 이상 부양가족</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">장애인</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">난임시술비</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">그 외 부양비</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHyDependentMedicalCopy" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="occGubun" type="STRING" size="256"/>
+          <Column id="medicalProofCode" type="STRING" size="256"/>
+          <Column id="medicalCompanyName" type="STRING" size="256"/>
+          <Column id="medicalGubun" type="STRING" size="256"/>
+          <Column id="medicalAmt" type="STRING" size="256"/>
+          <Column id="regiNo" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 공통 스트립트관리                                                          	*
+*                                                                               *
+* @Path		    hrs-HY_addMedicalForm                   	                    *
+* @Description 	의료비 내역등록       									    *
+* @Author	    					                                		*
+* 									                                            *
+* Created on 2016. . .                             		                    *
+*									                                            *
+********************************************************************************/
+include "scripts::commonScripts.xjs";
+
+var empNo;
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.parent.dsHyDependentMedical.addRow();
+	var lastRow = this.parent.dsHyDependentMedical.rowcount-1;
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "empNo", empNo);
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "medicalAmt",0);
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "occGubun",1);	
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "name","");
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "medicalProofCode","");
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "regiNo","");
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "medicalGubun",0);
+	this.parent.dsHyDependentMedical.setColumn(lastRow, "medicalCompanyName","");
+}
+
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var currentRow = this.addMedicalGrid.currentrow;
+	this.parent.dsHyDependentMedical.deleteRow(currentRow);
+	
+}
+
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnClearInvalidData(this.parent.dsHyDependentMedical, 0);
+	this.parent.dsHyDeductionData.setColumn(0, "medicalOwnCostDdt", this.parent.dsHyDependentMedical.getCaseSum("medicalGubun==1","medicalAmt",0,-1));
+	this.parent.dsHyDeductionData.setColumn(0, "medical65overCostDdt", this.parent.dsHyDependentMedical.getCaseSum("medicalGubun==2","medicalAmt",0,-1));
+	this.parent.dsHyDeductionData.setColumn(0, "medicalHandicappedCostDdt", this.parent.dsHyDependentMedical.getCaseSum("medicalGubun==3","medicalAmt",0,-1));
+	this.parent.dsHyDeductionData.setColumn(0, "medicalInfertilityCostDdt", this.parent.dsHyDependentMedical.getCaseSum("medicalGubun==4","medicalAmt",0,-1));
+	this.parent.dsHyDeductionData.setColumn(0, "medicalBasicCostDdt", this.parent.dsHyDependentMedical.getCaseSum("medicalGubun==5","medicalAmt",0,-1));
+	
+	
+	this.close();
+}
+
+this.cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.parent.dsHyDependentMedical.copyData(this.dsHyDependentMedicalCopy);
+	this.close();
+}
+
+this.HY_AddMedicalForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.addMedicalGrid.set_binddataset(this.parent.dsHyDependentMedical);
+	this.dsHyDependentMedicalCopy.copyData(this.parent.dsHyDependentMedical);
+	empNo = this.parent.empNo;
+}
+]]></Script>
+  </Form>
+</FDL>

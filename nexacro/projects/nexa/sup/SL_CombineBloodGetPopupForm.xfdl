@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_CombineBloodGetPopupForm" classname="SL_CombineBloodGetPopupForm" left="0" top="0" width="725" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.55%" top="8" right="1.38%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="미접수 검체 검색" left="8.02%" top="-4" right="56.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc02" taborder="1" text="환자검색" onclick="subCodeStc_onclick" left="0.97%" top="73" right="90.76%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="bloodGetEndDateCal" taborder="2" expr="expr:Date()" left="29.66%" top="109" right="56.55%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Static id="Static00" taborder="3" text="~" left="26.62%" top="117" right="68.97%" height="19" style="border:1 none #808080ff ;color:black;font:bold 11 arial;"/>
+        <Calendar id="bloodGetStartDateCal" taborder="4" expr="expr:Date()" left="10.48%" top="109" right="75.72%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Static id="subCodeStc04" taborder="5" text="채취일자" onclick="subCodeStc_onclick" left="1.38%" top="112" right="90.34%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc03" taborder="6" text="검체명" onclick="subCodeStc_onclick" left="45.24%" top="109" right="46.34%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="searchPatNoEd" taborder="7" enable="false" left="10.48%" top="73" right="75.72%" height="30"/>
+        <Edit id="searchPatNmEd" taborder="8" enable="false" left="29.38%" top="73" right="56.83%" height="30"/>
+        <Static id="subCodeStc00" taborder="9" text="채취자 검색" onclick="subCodeStc_onclick" left="45.52%" top="73" right="41.93%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="searchDoctNoEd" taborder="10" enable="false" left="58.62%" top="73" right="27.59%" height="30"/>
+        <Edit id="searchDoctNmEd" taborder="11" enable="false" left="77.38%" top="73" right="8.83%" height="30"/>
+        <Combo id="clinspeNmCombo" taborder="12" innerdataset="dsClinspeNm" codecolumn="code" datacolumn="data" left="55.17%" top="108" right="26.9%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Button id="comboResetBtn" taborder="13" text="조건초기화" left="75.03%" top="109" right="14.48%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
+        <Grid id="clinspeGrid" taborder="14" binddataset="dsClinspe" useinputpanel="false" autofittype="col" oncelldblclick="clinspeGrid_oncelldblclick" left="0.83%" top="144" right="1.38%" height="529">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="110"/>
+                <Column size="60"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="진료의사"/>
+                <Cell col="2" text="검사항목"/>
+                <Cell col="3" text="검체명"/>
+                <Cell col="4" text="채혈일시"/>
+                <Cell col="5" text="채혈자"/>
+                <Cell col="6" text="환자"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="none" text="bind:clinspeNo"/>
+                <Cell col="1" edittype="none" text="bind:respDoct"/>
+                <Cell col="2" displaytype="combo" edittype="none" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="combo" edittype="none" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="4" displaytype="date" edittype="none" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="5" edittype="none" text="bind:bloodgetEmp"/>
+                <Cell col="6" edittype="none" text="bind:patNo"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchPatBtn" taborder="15" cssclass="DelBtn" left="24.28%" top="72" right="71.31%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchDoctBtn" taborder="16" cssclass="DelBtn" left="72.83%" top="71" right="22.76%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchClinspeBtn" taborder="17" cssclass="DelBtn" left="86.21%" top="109" right="1.38%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="cancelBtn" taborder="18" left="51.86%" top="688" right="35.72%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="completeBtn" taborder="19" left="38.21%" top="688" right="49.38%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

@@ -16,6 +16,7 @@ import com.seoulit.erp47.acc.budget.to.BudgMisaBean;
 import com.seoulit.erp47.acc.budget.to.BudgMisaTagetBean;
 import com.seoulit.erp47.acc.budget.to.BudgRegBean;
 import com.seoulit.erp47.acc.budget.to.BudgUseDeptBean;
+import com.seoulit.erp47.acc.budget.to.JobLimitBean;
 import com.seoulit.erp47.acc.budget.to.OrgDlineBean;
 import com.seoulit.erp47.acc.budget.to.RunBudgBean;
 
@@ -130,5 +131,18 @@ public class BudgetServiceFacadeImpl implements BudgetServiceFacade{
 	public String getMisaNo() {
 		String misaNo = budgetExecutionApplicationService.getMisaNo();
 		return misaNo;
+	}
+
+	// 부서별 적정인원 조회	
+	@Override
+	public List<JobLimitBean> findJobLimit(Map<String, String> argsMap) {
+		List<JobLimitBean> jobLimitList = accBudgetApplicationService.findJobLimit(argsMap);
+		return jobLimitList;
+	}
+
+    // 부서별 적정인원 저장	
+	@Override
+	public void modifyJobLimit(List<JobLimitBean> jobLimitList) {
+	    accBudgetApplicationService.modifyJobLimit(jobLimitList);
 	}
 }

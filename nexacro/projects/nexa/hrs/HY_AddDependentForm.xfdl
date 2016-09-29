@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HY_AddDependentForm" classname="HY_AddDependentForm" left="0" top="0" width="762" height="316" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" text="            부양가족 등록" left="0%" top="0" right="0.39%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');"/>
+        <Grid id="addDependentGrid" taborder="1" useinputpanel="false" autofittype="col" left="1.84%" top="88" right="1.05%" height="216">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="font:10 맑은고딕;" text="이름"/>
+                <Cell col="1" style="font:10 맑은고딕;" text="생년월일"/>
+                <Cell col="2" style="font:10 맑은고딕;" text="관계구분"/>
+                <Cell col="3" style="font:10 맑은고딕;" text="경로우대공제"/>
+                <Cell col="4" style="font:10 맑은고딕;" text="장애인공제"/>
+                <Cell col="5" style="font:10 맑은고딕;" text="부녀자공제"/>
+                <Cell col="6" style="font:10 맑은고딕;" text="한부모공제"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:name"/>
+                <Cell col="1" edittype="text" text="bind:regiNo"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:relationGubun" combodataset="dsRelationType" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="checkbox" edittype="checkbox" text="bind:senior70yearoverDdt" expr="expr:senior70yearoverDdt!=1? 0 : 1"/>
+                <Cell col="4" displaytype="checkbox" edittype="checkbox" text="bind:handicappedPersonDdt"/>
+                <Cell col="5" displaytype="checkbox" edittype="checkbox" text="bind:womenDdt"/>
+                <Cell col="6" displaytype="checkbox" edittype="checkbox" text="bind:singleParentDdt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addBtn" taborder="2" text="추가" onclick="addBtn_onclick" left="57.74%" top="56" right="32.55%" height="27"/>
+        <Button id="delBtn" taborder="3" text="삭제" onclick="delBtn_onclick" left="68.37%" top="56" right="21.92%" height="27"/>
+        <Button id="saveBtn" taborder="4" text="등록" onclick="saveBtn_onclick" left="79%" top="56" right="11.29%" height="27"/>
+        <Button id="cancelBtn" taborder="5" text="취소" onclick="cancelBtn_onclick" left="89.63%" top="56" right="1.05%" height="27"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsHyDependentCopy" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsRelationType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">배우자</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">직계존속</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">직계비속</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">형제자매</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">위탁아동</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="data">수급자</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 공통 스트립트관리                                                          	*
+*                                                                               *
+* @Path		    hrs-HY_addDependentForm                     	                *
+* @Description 	부양가족등록 									   	            *
+* @Author	    					                                		*
+* 									                                            *
+* Created on 2016. . .                             		                    *
+*									                                            *
+********************************************************************************/
+include "scripts::commonScripts.xjs";
+
+var empNo;
+var belongYear;
+this.cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.parent.dsHyDependent.copyData(this.dsHyDependentCopy);
+	this.close();
+}
+
+this.HY_AddDependentForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	empNo = this.parent.empNo;
+	belongYear = this.parent.belongYear;
+	this.addDependentGrid.set_binddataset(this.parent.dsHyDependent);
+	this.dsHyDependentCopy.copyData(this.parent.dsHyDependent);
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.parent.dsHyDependent.addRow();
+	var lastRow = this.parent.dsHyDependent.rowcount-1;
+	
+	
+	this.parent.dsHyDependent.setColumn(lastRow, "empNo", empNo);
+	this.parent.dsHyDependent.setColumn(lastRow, "belongYear", belongYear);
+	this.parent.dsHyDependent.setColumn(lastRow, "pensionerDdt", 0);
+	this.parent.dsHyDependent.setColumn(lastRow, "foChdDdt", 0);
+	this.parent.dsHyDependent.setColumn(lastRow, "regiNo", "");
+	this.parent.dsHyDependent.setColumn(lastRow, "basicDdt", 1);
+	this.parent.dsHyDependent.setColumn(lastRow, "relationGubun", 0);
+	this.parent.dsHyDependent.setColumn(lastRow, "singleParentDdt", 0);
+	this.parent.dsHyDependent.setColumn(lastRow, "senior70yearoverDdt", 0);
+	this.parent.dsHyDependent.setColumn(lastRow, "handicappedPersonDdt", 0);
+	this.parent.dsHyDependent.setColumn(lastRow, "womenDdt", 0);
+}
+
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var currentRow = this.addDependentGrid.currentrow;
+	this.parent.dsHyDependent.deleteRow(currentRow);
+}
+
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	this.gfnClearInvalidData(this.parent.dsHyDependent, 0);
+	
+	this.parent.dsHyDeductionData.setColumn(0, "spouseDdt", this.parent.dsHyDependent.getCaseCount("relationGubun==1"));
+	this.parent.dsHyDeductionData.setColumn(0, "linAscDdt", this.parent.dsHyDependent.getCaseCount("relationGubun==2"));
+	this.parent.dsHyDeductionData.setColumn(0, "linDescChdDdt", this.parent.dsHyDependent.getCaseCount("relationGubun==3"));
+	this.parent.dsHyDeductionData.setColumn(0, "sibilingDdt", this.parent.dsHyDependent.getCaseCount("relationGubun==4"));
+	this.parent.dsHyDeductionData.setColumn(0, "pensionerDdt", this.parent.dsHyDependent.getCaseCount("relationGubun==5"));
+	this.parent.dsHyDeductionData.setColumn(0, "foChdDdt", this.parent.dsHyDependent.getCaseCount("relationGubun==6"));
+	
+	this.parent.dsHyDeductionData.setColumn(0, "senior70yearoverDdt", this.parent.dsHyDependent.getCaseCount("senior70yearoverDdt==1"));
+	this.parent.dsHyDeductionData.setColumn(0, "handicappedPersonDdt", this.parent.dsHyDependent.getCaseCount("handicappedPersonDdt==1"));
+	this.parent.dsHyDeductionData.setColumn(0, "womanDdt", this.parent.dsHyDependent.getCaseCount("womenDdt==1"));
+	this.parent.dsHyDeductionData.setColumn(0, "singleParentDdt", this.parent.dsHyDependent.getCaseCount("singleParentDdt==1"));
+	
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>
