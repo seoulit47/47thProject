@@ -15,6 +15,16 @@ import com.seoulit.erp47.acc.elementary.service.AccElementaryServiceFacade;
 import com.seoulit.erp47.acc.elementary.to.AccAcntBean;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 
+/**
+ * @Package  		com.seoulit.erp47.acc.elementary.controller
+ * @Class    		AccAcntController.java
+ * @Create   		2016. 09. 29.
+ * @Author   		YonG
+ * @Description   	계정과목 조회
+ *
+ * @LastUpdated   
+ */
+
 @Controller
 public class AccAcntController {
     @Autowired
@@ -24,8 +34,8 @@ public class AccAcntController {
 
     // 회계 계정과목 조회
     @RequestMapping("acc/elementary/findAccAcntList.do")
-    public void findAccAcntList(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+    public void findAccAcntList(HttpServletRequest request, HttpServletResponse response)throws Exception {
+    	
         PlatformData outData = (PlatformData)request.getAttribute("outData");
         PlatformData inData = (PlatformData)request.getAttribute("inData");
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
