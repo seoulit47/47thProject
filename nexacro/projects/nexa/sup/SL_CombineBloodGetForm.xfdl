@@ -63,7 +63,7 @@
         <Button id="deleteClinspeBtn" taborder="17" left="82.16%" top="723" right="10.64%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="batchClinspeBtn" taborder="18" left="91.04%" top="723" right="1.76%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="searchClinspeBtn" taborder="19" left="89.84%" top="127" right="2.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchClinspeBtn_onclick"/>
-        <Button id="addClinspeBtn" taborder="20" left="73.44%" top="723" right="19.36%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addClinspeBtn" taborder="20" left="73.44%" top="723" right="19.36%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addClinspeBtn_onclick"/>
         <Button id="searchPatBtn" taborder="21" left="24.56%" top="86" right="72.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="searchDoctBtn" taborder="22" left="62.64%" top="86" right="34.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Div id="Div01" taborder="23" left="0.48%" top="8" right="0.16%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
@@ -271,6 +271,28 @@ this.searchClinspeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	//alert(this.dsClinspe.getColCount());
 	trace(this.dsClinspe.saveXML());
 }
+
+//검체채취 추가
+this.addClinspeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsClinspe.addRow;
+	var maxClinspeNo = this.dsClinspeSequence.getColumn(0,"clinspeNo");
+		if(maxClinspeNo != null){
+			var newClinspeNo = nexacro.toNumber(maxClinspeNo.substr(4))+1;
+			this.dsClinspe.setColumn(nRow,"clinspeNo",maxClinspeNo.substr(0,4)+newClinspeNo.toString());
+			this.dsClinspeSequence.setColumn(0,"clinspeNo",maxClinspeNo.substr(0,4)+newClinspeNo.toString());
+		}else{
+			this.dsClinspe.setColumn(nRow,"clinspeNo","CL001");
+		}
+	this.dsClinspe.setColumn(nRow,"receiptCd","RE000");
+	//처방전 팝업 후  의사, 환자 정보 셋팅
+	
+	this.gfnPopup("MB_PrscDtlPopupForm","med","","");
+	
+	
+}
+
+
 ]]></Script>
   </Form>
 </FDL>

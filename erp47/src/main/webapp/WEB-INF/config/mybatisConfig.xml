@@ -54,10 +54,10 @@
 	
 	
 	
-		
      
     <!-- 진료처방 -->
     <package name="com.seoulit.erp47.med.request.to"/>
+    <package name="com.seoulit.erp47.med.base.to"/>
   
 
    </typeAliases>
