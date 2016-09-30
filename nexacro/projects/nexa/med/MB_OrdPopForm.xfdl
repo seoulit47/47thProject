@@ -4,7 +4,7 @@
   <Form id="MB_OrdPopForm" classname="MB_OrdPopForm" left="0" top="0" width="600" height="400" titletext="처방조회">
     <Layouts>
       <Layout>
-        <Div id="Div03" taborder="0" left="0%" top="0" right="0.5%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="0.67%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
         <Static id="Static00" taborder="1" text="처방 조회" left="11.83%" top="-4" right="51.5%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
         <Static id="stDiv08" taborder="2" text="처방코드" onclick="subCodeStc_onclick" left="2.83%" top="66" right="83.67%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Static id="stDiv4" taborder="3" text="처방 이름" left="42.33%" top="66" right="44.17%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
