@@ -20,7 +20,7 @@ public class CodeApplicationServiceImpl implements CodeApplicationService{
 	@Override
 	public List<CodeBean> findCodeList(Map<String, String> argsMap) {
 	
-		return codeDAO.findCodeList(argsMap);
+		return codeDAO.selectCodeList(argsMap);
 	}
 
 
