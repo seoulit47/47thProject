@@ -15,7 +15,7 @@ import com.seoulit.erp47.log.demd.service.DemdServiceFacade;
 import com.seoulit.erp47.log.demd.to.GdsReturnBean;
 
 /**
- * @Package com.seoul.his.log.demd.controller
+ * @Package com.seoulit.erp47.log.demd.controller
  * @Class GdsReturnController.java
  * @Create
  * @Author 김성호
@@ -35,9 +35,6 @@ public class GdsReturnController {
 	@RequestMapping("log/demd/findGdsReturnList.do")
 	public void findGdsReturnList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
-		System.out.println("1234567");
-		
-		
 		List<GdsReturnBean> GdsReturnBeanList = demdServiceFacade.findGdsReturnList();
 		datasetBeanMapper.beansToDataset(outData, GdsReturnBeanList, GdsReturnBean.class);
 	}

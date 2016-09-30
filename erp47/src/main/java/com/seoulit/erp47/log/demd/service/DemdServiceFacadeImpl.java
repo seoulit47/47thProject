@@ -55,7 +55,7 @@ public class DemdServiceFacadeImpl implements DemdServiceFacade{
     }
 
 	@Override
-	public GdsAnspHistBean findGdsAnspHistList(Map<String, String> argsMap) {
+	public List<GdsAnspHistBean> findGdsAnspHistList(Map<String, String> argsMap) {
 		return demdApplicationService.findGdsAnspHistList(argsMap);
 	}
 }

@@ -16,5 +16,5 @@ public interface DemdApplicationService {
 	public void batchGdsAnspProcess(List<GdsAnspBean> GdsAnspBeanList);
 	public void batchGdsAnspHistProcess(List<GdsAnspBean> GdsAnspBeanList, List<GdsAnspHistBean> GdsAnspHistBeanList);
 	public List<GdsAnspBean> findGdsAnspList(Map<String, String> argsMap);
-	public GdsAnspHistBean findGdsAnspHistList(Map<String, String> argsMap);
+	public List<GdsAnspHistBean> findGdsAnspHistList(Map<String, String> argsMap);
 }
