@@ -9,7 +9,7 @@ import com.seoulit.erp47.com.base.to.CodeNmBean;
 public interface CodeDAO {
 
 	
-		public List<CodeBean> findCodeList(Map<String,String>argsMap);
+		public List<CodeBean> selectCodeList(Map<String,String>argsMap);
 		public List<CodeNmBean> findCode(Map<String,String>argsMap);
 		public void insertCode(CodeBean codeBean);
 		public void deleteCode(CodeBean codeBean);

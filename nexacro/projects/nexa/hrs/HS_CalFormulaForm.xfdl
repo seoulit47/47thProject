@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HS_CalFormulaForm" classname="HS_CalFormulaForm" left="0" top="0" width="1250" height="768" titletext="급여 계산식">
+  <Form id="HS_CalFormulaForm" classname="HS_CalFormulaForm" left="0" top="0" width="1250" height="768" titletext="급여 계산식" onload="HS_CalFormulaForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="2" left="0%" top="8" right="1.12%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
@@ -81,5 +81,11 @@
         </Div>
       </Layout>
     </Layouts>
+    <Script type="xscript5.0"><![CDATA[
+this.HS_CalFormulaForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	
+}
+]]></Script>
   </Form>
 </FDL>
