@@ -15,7 +15,7 @@ import com.seoulit.erp47.log.demd.service.DemdServiceFacade;
 import com.seoulit.erp47.log.demd.to.GdsReturnBean;
 
 /**
- * @Package com.seoul.his.log.demd.controller
+ * @Package com.seoulit.erp47.log.demd.controller
  * @Class GdsReturnController.java
  * @Create
  * @Author 김성호

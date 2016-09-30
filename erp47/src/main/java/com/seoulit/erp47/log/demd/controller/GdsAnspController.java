@@ -3,7 +3,6 @@ package com.seoulit.erp47.log.demd.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +26,7 @@ import com.seoulit.erp47.log.demd.to.GdsAnspHistBean;
  *
  * @LastUpdated
  */
+
 @Controller
 public class GdsAnspController {
 
@@ -64,23 +64,9 @@ public class GdsAnspController {
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-		
-		for (Entry<String, String> entry : argsMap.entrySet()) {
-			System.out.println("키키키 : " + entry.getKey());
-			System.out.println("밸밸밸 : " + entry.getValue());
-		}
-		
-		GdsAnspHistBean test = demdServiceFacade.findGdsAnspHistList(argsMap);
-		
-		System.out.println("testtesttesttesttesttesttesttesttesttesttest");
-		
-		System.out.println("getAmt : " + test.getAmt());
-		System.out.println("getAnspHistNo : " + test.getAnspHistNo());
-		System.out.println("getGdsAnspNo : " + test.getGdsAnspNo());
-		System.out.println("getGdsCd : " + test.getGdsCd());
-		System.out.println("getGdsNm : " + test.getGdsNm());
 
-		//dataSetBeanMapper.beansToDataset(outData, gdsAnspHistList, GdsAnspHistBean.class);
+		List<GdsAnspHistBean> gdsAnspHistList = demdServiceFacade.findGdsAnspHistList(argsMap);
+		dataSetBeanMapper.beansToDataset(outData, gdsAnspHistList, GdsAnspHistBean.class);
 	}
 
 	// 안씀
@@ -96,14 +82,18 @@ public class GdsAnspController {
 	@RequestMapping("log/demd/batchGdsAnspHistProcess.do")
 	public void batchGdsAnspHistProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
-
+		System.out.println("??????????come here ?");
+		
 		List<GdsAnspBean> GdsAnspBeanList = dataSetBeanMapper.datasetToBeans(inData, GdsAnspBean.class);
 		List<GdsAnspHistBean> GdsAnspHistBeanList = dataSetBeanMapper.datasetToBeans(inData, GdsAnspHistBean.class);
-
+		
+		System.out.println("come here ?");
 		if (GdsAnspBeanList.size() != 0) {
+			System.out.println("come here ? 111111111111111");
 			for (GdsAnspBean anspBean : GdsAnspBeanList) {
 				List<GdsAnspHistBean> tempGdsAnspHistList = new ArrayList<GdsAnspHistBean>();
 				if (GdsAnspHistBeanList.size() != 0) {
+					System.out.println("come here ? 22222222222222");
 					for (int i = 0; i < GdsAnspHistBeanList.size(); i++) {
 						if (anspBean.getGdsAnspNo().equals(GdsAnspHistBeanList.get(i))) {
 							tempGdsAnspHistList.add(GdsAnspHistBeanList.get(i));
@@ -115,6 +105,7 @@ public class GdsAnspController {
 			}
 		}
 		
+		System.out.println("the End ???");
 		demdServiceFacade.batchGdsAnspHistProcess(GdsAnspBeanList, GdsAnspHistBeanList);
 	}
 }
