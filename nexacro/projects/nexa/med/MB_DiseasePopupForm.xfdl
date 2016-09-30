@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="MB_DiseasePopupForm" classname="MB_DiseasePopupForm" left="0" top="0" width="600" height="400" titletext="상병조회">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="0.5%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="상병 조회" left="11.83%" top="-4" right="51.5%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+        <Static id="stDiv08" taborder="2" text="분류" onclick="subCodeStc_onclick" left="2.83%" top="66" right="83.67%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="pCodeCombo" taborder="3" innerdataset="dsPCodeDiv" codecolumn="code" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="17.5%" top="67" right="61.5%" height="25" class="AreaCombo"/>
+        <Static id="stDiv4" taborder="4" text="상병 이름" left="42.33%" top="66" right="44.17%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="diseaseNmEd" taborder="5" left="56.83%" top="65" right="20.67%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Grid id="diseaseGrid" taborder="6" binddataset="dsDisease" useinputpanel="false" autofittype="col" oncelldblclick="diseaseGrid_oncelldblclick" left="2.67%" top="104" right="2.17%" height="285">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상병코드"/>
+                <Cell col="1" text="상병 이름"/>
+                <Cell col="2" text="분류코드"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:code"/>
+                <Cell col="1" text="bind:codeNm"/>
+                <Cell col="2" text="bind:pCode"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchDiseaseBtn" taborder="7" onclick="searchDiseaseBtn_onclick" left="82.83%" top="64" right="2.17%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item1" compid="pCodeCombo" propid="value" datasetid="dsAtTaxinv" columnid="purchSalesDiv"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsDisease">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="codeNm" type="STRING" size="256"/>
+          <Column id="pCode" type="STRING" size="256"/>
+          <Column id="lv" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPCodeDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">a1</Col>
+            <Col id="value">G-I</Col>
+          </Row>
+          <Row>
+            <Col id="code">h1</Col>
+            <Col id="value">Mental &amp; Behavioral</Col>
+          </Row>
+          <Row>
+            <Col id="code">d1</Col>
+            <Col id="value">CAROI</Col>
+          </Row>
+          <Row>
+            <Col id="code">g1</Col>
+            <Col id="value">Hematology, endo &amp; metabolism</Col>
+          </Row>
+          <Row>
+            <Col id="code">l1</Col>
+            <Col id="value">타박상</Col>
+          </Row>
+          <Row>
+            <Col id="code">b1</Col>
+            <Col id="value">SKIN AND APPENDAGE</Col>
+          </Row>
+          <Row>
+            <Col id="code">c1</Col>
+            <Col id="value">Resp</Col>
+          </Row>
+          <Row>
+            <Col id="code">k1</Col>
+            <Col id="value">외과</Col>
+          </Row>
+          <Row>
+            <Col id="code">f1</Col>
+            <Col id="value">MUSCULO-SKELETAL</Col>
+          </Row>
+          <Row>
+            <Col id="code">j1</Col>
+            <Col id="value">EYE</Col>
+          </Row>
+          <Row>
+            <Col id="code">e1</Col>
+            <Col id="value">GENITOUIRNARY</Col>
+          </Row>
+          <Row>
+            <Col id="code">i1</Col>
+            <Col id="value">기타</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findDiseaseList</Col>
+            <Col id="URL">erp47::med/base/findDiseaseList.do</Col>
+            <Col id="outData">dsDisease=dsDisease</Col>
+            <Col id="callbackFunc">diseaseCallback</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+상병 조회화면                                           						                                                                         
+@Path			진료처방 공통(Medication Base)              				   				
+@Description	상병 조회 다이얼로그						
+@Author	  						    			                        								                                            
+@Create                                  		                    				                                            
+********************************************************************************/
+include "scripts::commonScripts.xjs";  
+
+this.searchDiseaseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsService.setColumn(0, 4, "pCode=" + this.pCodeCombo.value + " codeNm=" + this.diseaseNmEd.value);
+	
+	this.gfnService("findDiseaseList");
+}
+
+this.diseaseGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array();
+	arrRtn[0] = this.dsDisease.getColumn(this.dsDisease.rowposition, "code");
+	arrRtn[1] = this.dsDisease.getColumn(this.dsDisease.rowposition, "codeNm");
+	this.opener.setDsCode(arrRtn, "disease");
+	this.close();
+//	var object = application.getActiveForm();	
+// 	if(application.getActiveForm().name == "MpPrescSearchForm"){
+// 		var inOut = application.getActiveForm().dsPaientDiv.getColumn(application.getActiveForm().dsPaientDiv.rowposition,"inOut");
+// 		if(inOut == "내래"){
+// 			object = application.getActiveForm().prescTab.inTab;
+// 		}else if(inOut == "외래"){
+// 			object = application.getActiveForm().prescTab.outTab;
+// 		}
+// 	}
+// 	object.mpPrescDtlDiv.diseaseCdEd.set_value(code);
+// 	object.mpPrescDtlDiv.diseaseNmEd.set_value(codeName);
+// 	
+// 	this.parent.destroy();
+}
+]]></Script>
+  </Form>
+</FDL>
