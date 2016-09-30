@@ -64,7 +64,7 @@
             <Tabpage id="tpgDRG" text="약국"/>
           </Tabpages>
         </Tab>
-        <Grid id="rsltGrid" taborder="10" binddataset="dsRslt" useinputpanel="false" cellsizingtype="col" autofittype="col" oncelldblclick="rsltGrid_oncelldblclick" onenterdown="rsltGrid_onenterdown" left="40.96%" top="109" right="3.36%" height="576">
+        <Grid id="rsltGrid" taborder="10" binddataset="dsRslt" useinputpanel="false" cellsizingtype="col" autofittype="col" oncelldblclick="rsltGrid_oncelldblclick" onenterdown="rsltGrid_onenterdown" left="40.96%" top="109" right="3.36%" height="576" enable="true">
           <Formats>
             <Format id="default">
               <Columns>
@@ -100,8 +100,7 @@
         </Grid>
         <Button id="saveBtn" taborder="11" onclick="saveBtn_onclick" left="90.48%" top="707" right="2.32%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
         <Button id="patPopupBtn" taborder="12" onclick="patPopupBtn_onclick" left="31.04%" top="71" right="66.4%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-        <Button id="addBtn" taborder="13" onclick="addBtn_onclick" left="74.48%" top="707" right="18.32%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
-        <Button id="modBtn" taborder="14" onclick="modBtn_onclick" left="82.48%" top="707" right="10.32%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
+        <Button id="modBtn" taborder="13" onclick="modBtn_onclick" left="82.48%" top="707" right="10.32%" height="32" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -291,16 +290,6 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	alert(this.MSG_SUP_SAVE);
 }
 
-
-// 등록, 수정
-this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
-{
-	alert(123);
-	var flag = this.rsltGrid.setCellProperty("Body", 2, "edittype", "normal");
-	alert(flag);
-}
-
-
 this.rsltGrid_onenterdown = function(obj:Grid, e:nexacro.GridEditEventInfo)
 {
 	//this.fn_setUserData(this.dsRslt);
@@ -311,9 +300,18 @@ this.rsltGrid_onenterdown = function(obj:Grid, e:nexacro.GridEditEventInfo)
 	}
 }
 
+// 등록, 수정
+this.modBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.rsltGrid.setCellProperty("Body", 2, "edittype", "normal");
+	alert("검사 결과 입력가능");
+}
+
 this.rsltGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	
+	if(this.rsltGrid.getCellProperty("Body",2,"edittype")=="none"){
+		alert("검사 결과를 입력하시려면 수정버튼을 눌러주세요");
+	}
 }
 ]]></Script>
   </Form>
