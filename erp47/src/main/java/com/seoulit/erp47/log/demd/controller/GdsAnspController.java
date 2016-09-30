@@ -70,7 +70,7 @@ public class GdsAnspController {
 			System.out.println("밸밸밸 : " + entry.getValue());
 		}
 		
-		GdsAnspHistBean test = demdServiceFacade.findGdsAnspHistList(argsMap);
+		GdsAnspHistBean test = (GdsAnspHistBean)demdServiceFacade.findGdsAnspHistList(argsMap);
 		
 		System.out.println("testtesttesttesttesttesttesttesttesttesttest");
 		

@@ -37,17 +37,17 @@
     </resultMap>
 
 
-   <select id="selectGdsAnspList" parameterType="GdsAnspBean" resultMap="GdsAnspResult">
-        SELECT * FROM LW_GDS_ANSP
-          <trim prefix="WHERE" prefixOverrides="AND">
-       <if test="anspDept != null">
-          AND ANSP_DEPT = ${anspDept}
-       </if>
-       <if test="startDay != null or endDay != null">
-          AND ANSP_DATE BETWEEN ${startDay} AND ${endDay}
-       </if>
-       </trim>
-        ORDER BY GDS_ANSP_NO
+   <select id="selectGdsAnspList" parameterType="map" resultMap="GdsAnspResult">
+		SELECT * FROM LW_GDS_ANSP
+		<trim prefix="WHERE" prefixOverrides="AND">
+		<if test="ANSP_DEPT != null">
+			AND ANSP_DEPT = ${ANSP_DEPT}
+		</if>
+		<if test="startDay != null or endDay != null">
+			AND ANSP_DATE BETWEEN ${startDay} AND ${endDay}
+		</if>
+		</trim>
+			ORDER BY GDS_ANSP_NO
     </select>
 
     <insert id="insertGdsAnsp" parameterType="GdsAnspBean">
@@ -92,16 +92,25 @@
         GDS_ANSP_NO = #{gdsAnspNo}
     </delete>
 
+
+
+
     <!-- 상세 -->
-    <select id="selectGdsAnspHistList" parameterType="GdsAnspBean" resultMap="GdsAnspHistResult">
+    <select id="selectGdsAnspHistList" parameterType="map" resultMap="GdsAnspHistResult">
+        <!-- 
         SELECT * FROM LW_GDS_ANSP LGA
         JOIN LW_GDS_ANSP_HIST LGAH
         ON LGA.GDS_ANSP_NO = LGAH.GDS_ANSP_NO
         WHERE 
         	LGA.GDS_ANSP_NO = #{gdsAnspNo}
-        ORDER BY
+        	
+        	ORDER BY
             LGAH.GDS_ANSP_NO
             ,LGAH.ANSP_HIST_NO
+		-->
+         
+		select * from lw_gds_ansp_hist
+		where GDS_ANSP_NO = #{GDS_ANSP_NO}
     </select>
     
     <insert id="insertGdsAnspHist" parameterType="GdsAnspHistBean">

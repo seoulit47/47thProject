@@ -91,7 +91,7 @@ this.menuFrame_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 
 this.menu_onmenuclick = function(obj:Menu, e:nexacro.MenuClickEventInfo)
 {
-alert(application.gdsMenu.getRowCount());
+
 	this.dsData.setColumn(0, 0, e.id);
 	this.dsData.setColumn(0, 1, e.userdata);
 	

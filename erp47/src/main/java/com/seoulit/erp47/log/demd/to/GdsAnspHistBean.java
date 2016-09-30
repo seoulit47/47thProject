@@ -10,8 +10,8 @@ import lombok.ToString;
 /**
  * @Package  com.seoul.his.log.demd.to
  * @Class    GdsAnspHistBean.java
- * @Create   2016. 7. 6.
- * @Author   Bohyun
+ * @Create   날쫘
+ * @Author   김성호
  * @Description 물품청구상세 빈
  *
  * @LastUpdated 
@@ -21,7 +21,6 @@ import lombok.ToString;
 @Setter
 @Dataset(name = "dsGdsAnspHist")
 public class GdsAnspHistBean extends BaseBean{
-
     String
     gdsAnspNo,       //물품청구번호
     anspHistNo,      //청구내역번호
@@ -35,8 +34,6 @@ public class GdsAnspHistBean extends BaseBean{
     histRlsWh,       //출고창고
     histAnspCon,     //청구내용
     histRespoWorker; //청구담당자
-
-
 
 }
 

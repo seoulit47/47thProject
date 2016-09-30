@@ -1,0 +1,1260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="MB_DoctTrmtSchdMngntForm" classname="MB_DoctTrmtSchdMngntForm" left="0" top="0" width="1250" height="768" titletext="의사진료일정">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="0.72%" top="2" right="63.36%" height="60" style="background:transparent URL('img::miniTitleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="0" text="의사진료일정" left="14.48%" top="5" right="15.14%" height="46" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="doctschdDiv" taborder="1" left="0.48%" top="67" right="0.88%" height="701" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout width="1228" height="45">
+              <Button id="saveTrmtTypeBtn" taborder="67" onclick="saveTrmtTypeBtn_onclick" left="15.52%" top="147" right="79.37%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Grid id="typeGrid" taborder="68" binddataset="dsTrmtSchdType" useinputpanel="false" autofittype="col" oncellclick="typeGrid_oncellclick" left="1.46%" top="183" right="79.04%" height="200" style="border:1 solid #808080ff ;color:black;" class="AreaGrid">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="123"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell style="color: ;" text="등록된 Type명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="normal" style="align:left;color:black;color2:black;" text="bind:trmtTypeNm" expandshow="hide" expandsize="15"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="applyHistoryGrid" taborder="69" binddataset="dsApplyHistory" useinputpanel="false" autofittype="col" left="1.46%" top="394" right="78.96%" height="200" style="border:1px solid #808080ff ;" class="AreaGrid">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="40"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell style="color: ;" text="type적용이력"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="text" text="bind:day" mask="@@@@-@@-@@"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Calendar id="sdayCal" taborder="70" left="1.87%" top="615" right="89.36%" height="29" class="AreaCal"/>
+              <Calendar id="edayCal" taborder="71" left="11.94%" top="615" right="79.2%" height="29" class="AreaCal"/>
+              <Static id="Static06" taborder="72" text="~" left="10.56%" top="614" right="87.57%" height="29" style="background:transparent;font:돋움,15,antialias;"/>
+              <Static id="stDiv01" taborder="73" text="오전" wordwrap="char" onclick="subCodeStc_onclick" left="23.31%" top="45" right="73.44%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="Static00" taborder="74" text="진료가능인원" left="22.18%" top="6" right="61.58%" height="21" style="background:#99ccffff;border:3 solid black ;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="stDiv02" taborder="75" text="오후" wordwrap="char" onclick="subCodeStc_onclick" left="23.31%" top="77" right="73.44%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <CheckBox id="AMuseCheckBox" taborder="76" value="0" truevalue="1" falsevalue="0" left="27.13%" top="45" right="70.19%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+              <CheckBox id="FMuseCheckBox" taborder="77" value="0" truevalue="1" falsevalue="0" left="27.13%" top="83" right="70.19%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+              <Static id="stDiv03" taborder="78" text="시간" wordwrap="char" onclick="subCodeStc_onclick" left="30.46%" top="43" right="66.29%" height="56" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <MaskEdit id="amStimeMaskEdt" taborder="79" type="string" mask="##:##" onkeydown="timeMaskEdt_onkeydown" left="34.61%" top="40" right="61.66%" height="32" style="background:#ffffffff;border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;bordertype:round 5 5 ;align:right middle;font:9 맑은 고딕 Semilight;"/>
+              <MaskEdit id="fmStimeMaskEdt" taborder="80" type="string" mask="##:##" onkeydown="timeMaskEdt_onkeydown" left="34.61%" top="78" right="61.66%" height="32"/>
+              <MaskEdit id="amEtimeMaskEdt" taborder="81" type="string" mask="##:##" onkeydown="timeMaskEdt_onkeydown" left="39.89%" top="40" right="56.38%" height="32"/>
+              <MaskEdit id="fmEtimeMaskEdt" taborder="82" type="string" mask="##:##" onkeydown="timeMaskEdt_onkeydown" left="39.89%" top="77" right="56.46%" height="32"/>
+              <Static id="Static01" taborder="83" text="~" left="38.51%" top="46" right="59.63%" height="29" style="background:transparent;font:돋움,15,antialias;"/>
+              <Static id="Static02" taborder="84" text="~" left="38.51%" top="80" right="59.63%" height="29" style="background:transparent;font:돋움,15,antialias;"/>
+              <Static id="stDiv04" taborder="85" text="간격" wordwrap="char" onclick="subCodeStc_onclick" left="44.76%" top="43" right="51.99%" height="56" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="AMintvEdt" taborder="86" onkeydown="edt_onkeydown" left="48.5%" top="41" right="48.5%" height="30" style="align:right;font:돋움,9,bold antialias;" class="AreaEdt"/>
+              <Edit id="FMintvEdt" taborder="87" onkeydown="edt_onkeydown" left="48.5%" top="76" right="48.5%" height="30" style="align:right;font:돋움,9,bold antialias;" class="AreaEdt"/>
+              <Static id="Static04" taborder="88" text="분" left="51.58%" top="41" right="47.28%" height="67" style="align:center middle;" class="AreaStc"/>
+              <Static id="stDiv05" taborder="89" text="총원" wordwrap="char" onclick="subCodeStc_onclick" left="53.78%" top="43" right="42.97%" height="56" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="Static03" taborder="90" text="명" left="61.33%" top="41" right="37.53%" height="67" style="align:center middle;" class="AreaStc"/>
+              <Edit id="AMhandleEdt" taborder="91" onkeydown="edt_onkeydown" left="57.6%" top="41" right="38.83%" height="30" style="align:right;font:돋움,9,bold antialias;" class="AreaEdt"/>
+              <Edit id="FMhandleEdt" taborder="92" onkeydown="edt_onkeydown" left="57.6%" top="79" right="38.83%" height="30" style="align:right;font:돋움,9,bold antialias;" class="AreaEdt"/>
+              <Static id="stDiv06" taborder="93" text="타과&#13;&#10;예약 가능" wordwrap="char" onclick="subCodeStc_onclick" left="63.53%" top="43" right="31.76%" height="56" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <CheckBox id="diffReserCheckBox" taborder="94" value="0" truevalue="1" falsevalue="0" left="69.05%" top="61" right="29.57%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+              <Static id="Static05" taborder="95" text="적용할 요일" left="22.34%" top="141" right="61.41%" height="21" style="background:#99ccffff;border:3 solid black ;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static07" taborder="96" text="진료일정 상세 기준" left="22.75%" top="270" right="61.01%" height="21" style="background:#99ccffff;border:3 solid black ;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static08" taborder="97" text="일별 예약현황" left="71.81%" top="7" right="11.94%" height="21" style="background:#99ccffff;border:3 solid black ;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 Dotum;"/>
+              <Div id="Div01" taborder="98" text="Div00" left="72.3%" top="34" right="0.73%" height="331" style="background:white;border:1 none darkgray transparent;bordertype:normal 5 5  leftbottom rightbottom;">
+                <Layouts>
+                  <Layout width="628" height="751">
+                    <Static id="stYear" taborder="10" text="2015" left="20.91%" top="5" right="53.64%" height="41" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
+                    <Static id="Static00" taborder="11" text="년" left="44.24%" top="5" right="46.97%" height="41" style="background:transparent;font:Bodoni Bd BT,14,bold;"/>
+                    <Static id="stMonth" taborder="12" text="06" left="52.12%" top="4" right="30.91%" height="43" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
+                    <Static id="Static01" taborder="13" text="월" left="63.94%" top="4" right="23.03%" height="43" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
+                    <Button id="btnRightMonth" taborder="14" text="&gt;" onclick="Div01_btnRightMonth_onclick" left="77.88%" top="12" right="11.52%" height="27" style="background:cornflowerblue stretch;color:black;font:돋움,15,bold;" class="Btn_rightArrow_min"/>
+                    <Button id="btnLettMonth" taborder="15" text="&lt;" onclick="Div01_btnLettMonth_onclick" left="10.3%" top="12" right="79.39%" height="26" style="background:cornflowerblue stretch;color:black;font:돋움,15,bold;" class="Btn_leftArrow_min"/>
+                    <Grid id="calendarGrid" taborder="16" binddataset="dsCalendar" useinputpanel="false" selecttype="cell" autofittype="col" oncellclick="Div01_calendarGrid_oncellclick" left="2.73%" top="47" right="4.55%" height="274" style="border:1px solid #808080ff ;" class="AreaGrid">
+                      <Formats>
+                        <Format id="default">
+                          <Columns>
+                            <Column size="40"/>
+                            <Column size="40"/>
+                            <Column size="40"/>
+                            <Column size="40"/>
+                            <Column size="40"/>
+                            <Column size="40"/>
+                            <Column size="40"/>
+                          </Columns>
+                          <Rows>
+                            <Row size="38" band="head"/>
+                            <Row size="30"/>
+                          </Rows>
+                          <Band id="head">
+                            <Cell style="background:salmon;background2:salmon;font: ;" text="일"/>
+                            <Cell col="1" style="font: ;" text="월"/>
+                            <Cell col="2" style="font: ;" text="화"/>
+                            <Cell col="3" style="font: ;" text="수"/>
+                            <Cell col="4" style="font: ;" text="목"/>
+                            <Cell col="5" style="font: ;" text="금"/>
+                            <Cell col="6" style="background:paleturquoise;background2:paleturquoise;font: ;" text="토"/>
+                          </Band>
+                          <Band id="body">
+                            <Cell celltype="none" edittype="none" editfilter="none" style="background:salmon;background2:salmon;accessibility: ;" expr="expr:sun.substr(6,2)" wordwrap="none" maskchar="_" editlimit="-1" editscrollbar="none" editautoselect="false" editdisplay="edit" editlimitbymask="decimal" editlengthunit="utf16" suppress="0" suppressalign="first" combodisplayrowcount="5" combodisplay="display" calendardisplay="edit" calendardisplaynulltype="default" autosizerow="default" autosizecol="default"/>
+                            <Cell col="1" style="background:azure;background2:azure;font: ;" expr="expr:mon.substr(6,2)"/>
+                            <Cell col="2" style="background:azure;background2:azure;font: ;" expr="expr:thu.substr(6,2)"/>
+                            <Cell col="3" style="background:azure;background2:azure;font: ;" expr="expr:wed.substr(6,2)"/>
+                            <Cell col="4" style="background:azure;background2:azure;font: ;" expr="expr:thurs.substr(6,2)"/>
+                            <Cell col="5" style="background:azure;background2:azure;font: ;" expr="expr:fri.substr(6,2)"/>
+                            <Cell col="6" style="background:paleturquoise;background2:paleturquoise;font: ;" expr="expr:sat.substr(6,2)"/>
+                          </Band>
+                        </Format>
+                      </Formats>
+                    </Grid>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Grid id="reserGrid" taborder="99" binddataset="dsTrmtSchd" useinputpanel="false" autofittype="col" left="72.3%" top="369" right="0.41%" height="306" style="border:1px solid #808080ff ;" class="AreaGrid">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell style="background: ;" text="날짜"/>
+                      <Cell col="1" style="background: ;" text="시간"/>
+                      <Cell col="2" style="background: ;" text="오전총원"/>
+                      <Cell col="3" style="background: ;" text="오후총원"/>
+                      <Cell col="4" style="background: ;" text="타과예약"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="text" style="background2: ;" text="bind:day" mask="@@@@-@@-@@"/>
+                      <Cell col="1" displaytype="text" style="background2: ;" text="bind:time" mask="@@:@@"/>
+                      <Cell col="2" style="background2: ;" expr="expr:comp.parent.parent.dsTrmtSchdTypeDetailAM.getColumn(0, &quot;handle&quot;)"/>
+                      <Cell col="3" style="background2: ;" expr="expr:comp.parent.parent.dsTrmtSchdTypeDetailFM.getColumn(0, &quot;handle&quot;)"/>
+                      <Cell col="4" displaytype="checkbox" style="background2: ;" text="bind:reser"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Div id="Div00" taborder="100" left="1.95%" top="23" right="79.94%" height="93" style="align:center middle;border:3 solid #808080ff ;color:#dcdeffff;bordertype:round 5 5 ;font:9 Dotum;" cssclass="TStc">
+                <Layouts>
+                  <Layout>
+                    <CheckBox id="allCheckBox" taborder="34" text="전체" value="0" truevalue="1" falsevalue="0" onchanged="allCheckBox_onchanged" left="23.5%" top="-34" right="72.35%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+                    <CheckBox id="sunCheckBox" taborder="35" text="일" value="0" truevalue="1" falsevalue="0" left="29.49%" top="-34" right="67.28%" height="20" style="color:#ff0000ff;align:left middle;"/>
+                    <CheckBox id="monCheckBox" taborder="36" text="월" value="0" truevalue="1" falsevalue="0" left="35.02%" top="-34" right="61.75%" height="20" style="align:left middle;"/>
+                    <CheckBox id="tueCheckBox" taborder="37" text="화" value="0" truevalue="1" falsevalue="0" left="41.01%" top="-34" right="55.76%" height="20" style="align:center middle;"/>
+                    <CheckBox id="wedCheckBox" taborder="38" text="수" value="0" truevalue="1" falsevalue="0" left="47.93%" top="-34" right="48.85%" height="20" style="align:center middle;"/>
+                    <CheckBox id="thursCheckBox" taborder="39" text="목" value="0" truevalue="1" falsevalue="0" left="53.92%" top="-34" right="42.86%" height="20" style="align:center middle;"/>
+                    <CheckBox id="friCheckBox" taborder="40" text="금" value="0" truevalue="1" falsevalue="0" left="59.91%" top="-34" right="37.33%" height="20" style="align:center middle;"/>
+                    <CheckBox id="satCheckBox" taborder="41" text="토" value="0" truevalue="1" falsevalue="0" left="65.9%" top="-34" right="31.34%" height="20" style="align:center middle;"/>
+                    <Div id="Div02" taborder="42" left="23.96%" top="-56" right="28.11%" height="29" style="align:center middle;border:1 solid #808080ff ;color:#dcdeffff;bordertype:round 5 5 ;font:9 Dotum;" cssclass="TStc">
+                      <Layouts>
+                        <Layout>
+                          <CheckBox id="allCheckBox" taborder="48" text="전체" value="0" truevalue="1" falsevalue="0" onchanged="allCheckBox_onchanged" left="23.53%" top="-34" right="72.55%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+                          <CheckBox id="sunCheckBox" taborder="49" text="일" value="0" truevalue="1" falsevalue="0" left="29.41%" top="-34" right="66.67%" height="20" style="color:#ff0000ff;align:left middle;"/>
+                          <CheckBox id="monCheckBox" taborder="50" text="월" value="0" truevalue="1" falsevalue="0" left="35.29%" top="-34" right="61.76%" height="20" style="align:left middle;"/>
+                          <CheckBox id="tueCheckBox" taborder="51" text="화" value="0" truevalue="1" falsevalue="0" left="41.18%" top="-34" right="55.88%" height="20" style="align:center middle;"/>
+                          <CheckBox id="wedCheckBox" taborder="52" text="수" value="0" truevalue="1" falsevalue="0" left="48.04%" top="-34" right="49.02%" height="20" style="align:center middle;"/>
+                          <CheckBox id="thursCheckBox" taborder="53" text="목" value="0" truevalue="1" falsevalue="0" left="53.92%" top="-34" right="43.14%" height="20" style="align:center middle;"/>
+                          <CheckBox id="friCheckBox" taborder="54" text="금" value="0" truevalue="1" falsevalue="0" left="59.8%" top="-34" right="37.25%" height="20" style="align:center middle;"/>
+                          <CheckBox id="satCheckBox" taborder="55" text="토" value="0" truevalue="1" falsevalue="0" left="65.69%" top="-34" right="31.37%" height="20" style="align:center middle;"/>
+                          <CheckBox id="satCheckBox00" taborder="56" text="토" value="0" truevalue="1" falsevalue="0" left="86.27%" top="6" right="5.88%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="friCheckBox00" taborder="57" text="금" value="0" truevalue="1" falsevalue="0" left="74.51%" top="6" right="16.67%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="thursCheckBox00" taborder="58" text="목" value="0" truevalue="1" falsevalue="0" left="63.73%" top="6" right="28.43%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="wedCheckBox00" taborder="59" text="수" value="0" truevalue="1" falsevalue="0" left="51.96%" top="6" right="39.22%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="tueCheckBox00" taborder="60" text="화" value="0" truevalue="1" falsevalue="0" left="40.2%" top="6" right="50.98%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="monCheckBox00" taborder="61" text="월" value="0" truevalue="1" falsevalue="0" left="29.41%" top="6" right="61.76%" height="20" style="color:#000000ff;align:left middle;"/>
+                          <CheckBox id="sunCheckBox00" taborder="62" text="일" value="0" truevalue="1" falsevalue="0" left="17.65%" top="6" right="73.53%" height="20" style="color:#ff0000ff;align:left middle;"/>
+                          <CheckBox id="allCheckBox00" taborder="63" text="전체" value="0" truevalue="1" falsevalue="0" onchanged="allCheckBox_onchanged" left="6.86%" top="6" right="85.29%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="searchEmpBtn" taborder="101" onclick="searchEmpBtn_onclick" left="16.9%" top="70" right="80.67%" height="30" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Edit id="deptNmEd" taborder="102" readonly="true" left="7.96%" top="36" right="83.92%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Edit id="empNmEd" taborder="103" readonly="true" left="7.96%" top="71" right="83.92%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Static id="stDiv00" taborder="104" text="진료의" wordwrap="char" onclick="subCodeStc_onclick" left="3.17%" top="72" right="92.77%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="stDiv14" taborder="105" text="진료과" wordwrap="char" onclick="subCodeStc_onclick" left="3.17%" top="37" right="92.77%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Button id="typeAddBtn" taborder="106" onclick="typeAddBtn_onclick" left="1.54%" top="147" right="93.34%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="delTypeBtn" taborder="107" onclick="delTypeBtn_onclick" left="6.9%" top="147" right="87.98%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="createDeatailTypeBtn" taborder="108" onclick="createDeatailTypeBtn_onclick" left="58.81%" top="168" right="35.91%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="deleteAllDetailBtn" taborder="109" onclick="deleteAllDetailBtn_onclick" left="64.42%" top="168" right="29.49%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="DelBtn03" taborder="110" onclick="applyTypeBtn_onclick" cssclass="DelBtn" left="7.47%" top="656" right="85.22%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Div id="Div02" taborder="111" left="22.42%" top="162" right="29%" height="94" style="align:center middle;border:3 solid #808080ff ;color:#dcdeffff;bordertype:round 5 5 ;font:9 Dotum;" cssclass="TStc">
+                <Layouts>
+                  <Layout width="594" height="94">
+                    <CheckBox id="allCheckBox" taborder="42" text="전체" value="0" truevalue="1" falsevalue="0" onchanged="allCheckBox_onchanged" left="23.31%" top="-34" right="72.3%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+                    <CheckBox id="sunCheckBox" taborder="43" text="일" value="0" truevalue="1" falsevalue="0" left="29.73%" top="-34" right="67.06%" height="20" style="color:#ff0000ff;align:left middle;"/>
+                    <CheckBox id="monCheckBox" taborder="44" text="월" value="0" truevalue="1" falsevalue="0" left="34.97%" top="-34" right="61.66%" height="20" style="align:left middle;"/>
+                    <CheckBox id="tueCheckBox" taborder="45" text="화" value="0" truevalue="1" falsevalue="0" left="41.05%" top="-34" right="55.74%" height="20" style="align:center middle;"/>
+                    <CheckBox id="wedCheckBox" taborder="46" text="수" value="0" truevalue="1" falsevalue="0" left="47.8%" top="-34" right="48.82%" height="20" style="align:center middle;"/>
+                    <CheckBox id="thursCheckBox" taborder="47" text="목" value="0" truevalue="1" falsevalue="0" left="53.89%" top="-34" right="42.91%" height="20" style="align:center middle;"/>
+                    <CheckBox id="friCheckBox" taborder="48" text="금" value="0" truevalue="1" falsevalue="0" left="59.63%" top="-34" right="37.16%" height="20" style="align:center middle;"/>
+                    <CheckBox id="satCheckBox" taborder="49" text="토" value="0" truevalue="1" falsevalue="0" left="65.88%" top="-34" right="31.08%" height="20" style="align:center middle;"/>
+                    <Div id="Div02" taborder="50" left="23.82%" top="-56" right="28.38%" height="29" style="align:center middle;border:1 solid #808080ff ;color:#dcdeffff;bordertype:round 5 5 ;font:9 Dotum;" cssclass="TStc">
+                      <Layouts>
+                        <Layout>
+                          <CheckBox id="allCheckBox" taborder="48" text="전체" value="0" truevalue="1" falsevalue="0" onchanged="allCheckBox_onchanged" left="23.13%" top="-34" right="72.24%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+                          <CheckBox id="sunCheckBox" taborder="49" text="일" value="0" truevalue="1" falsevalue="0" left="29.89%" top="-34" right="66.9%" height="20" style="color:#ff0000ff;align:left middle;"/>
+                          <CheckBox id="monCheckBox" taborder="50" text="월" value="0" truevalue="1" falsevalue="0" left="34.88%" top="-34" right="61.57%" height="20" style="align:left middle;"/>
+                          <CheckBox id="tueCheckBox" taborder="51" text="화" value="0" truevalue="1" falsevalue="0" left="40.93%" top="-34" right="55.87%" height="20" style="align:center middle;"/>
+                          <CheckBox id="wedCheckBox" taborder="52" text="수" value="0" truevalue="1" falsevalue="0" left="47.69%" top="-34" right="48.75%" height="20" style="align:center middle;"/>
+                          <CheckBox id="thursCheckBox" taborder="53" text="목" value="0" truevalue="1" falsevalue="0" left="54.09%" top="-34" right="42.7%" height="20" style="align:center middle;"/>
+                          <CheckBox id="friCheckBox" taborder="54" text="금" value="0" truevalue="1" falsevalue="0" left="59.79%" top="-34" right="37.01%" height="20" style="align:center middle;"/>
+                          <CheckBox id="satCheckBox" taborder="55" text="토" value="0" truevalue="1" falsevalue="0" left="65.84%" top="-34" right="31.32%" height="20" style="align:center middle;"/>
+                          <CheckBox id="satCheckBox00" taborder="56" text="토" value="0" truevalue="1" falsevalue="0" left="86.48%" top="6" right="5.34%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="friCheckBox00" taborder="57" text="금" value="0" truevalue="1" falsevalue="0" left="74.73%" top="6" right="16.37%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="thursCheckBox00" taborder="58" text="목" value="0" truevalue="1" falsevalue="0" left="63.35%" top="6" right="28.11%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="wedCheckBox00" taborder="59" text="수" value="0" truevalue="1" falsevalue="0" left="52.31%" top="6" right="39.5%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="tueCheckBox00" taborder="60" text="화" value="0" truevalue="1" falsevalue="0" left="40.57%" top="6" right="50.89%" height="20" style="color:#000000ff;align:center middle;"/>
+                          <CheckBox id="monCheckBox00" taborder="61" text="월" value="0" truevalue="1" falsevalue="0" left="29.54%" top="6" right="62.28%" height="20" style="color:#000000ff;align:left middle;"/>
+                          <CheckBox id="sunCheckBox00" taborder="62" text="일" value="0" truevalue="1" falsevalue="0" left="17.79%" top="6" right="73.31%" height="20" style="color:#ff0000ff;align:left middle;"/>
+                          <CheckBox id="allCheckBox00" taborder="63" text="전체" value="0" truevalue="1" falsevalue="0" onchanged="allCheckBox_onchanged" left="6.76%" top="6" right="85.05%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <CheckBox id="allCheckBox00" taborder="51" text="전체" value="0" truevalue="1" falsevalue="0" onchanged="allCheckBox_onchanged" left="6.59%" top="46" right="84.63%" height="20" style="buttonsize:15;color:#223762ff;font:돋움,9,bold;" class="AreaCheck"/>
+                    <CheckBox id="sunCheckBox00" taborder="52" text="일" value="0" truevalue="1" falsevalue="0" left="18.24%" top="46" right="73.31%" height="20" style="color:#ff0000ff;align:left middle;"/>
+                    <CheckBox id="monCheckBox00" taborder="53" text="월" value="0" truevalue="1" falsevalue="0" left="29.39%" top="46" right="61.99%" height="20" style="color:#000000ff;align:left middle;"/>
+                    <CheckBox id="tueCheckBox00" taborder="54" text="화" value="0" truevalue="1" falsevalue="0" left="40.88%" top="46" right="50.68%" height="20" style="color:#000000ff;align:center middle;"/>
+                    <CheckBox id="wedCheckBox00" taborder="55" text="수" value="0" truevalue="1" falsevalue="0" left="52.03%" top="46" right="39.53%" height="20" style="color:#000000ff;align:center middle;"/>
+                    <CheckBox id="thursCheckBox00" taborder="56" text="목" value="0" truevalue="1" falsevalue="0" left="63.51%" top="46" right="28.04%" height="20" style="color:#000000ff;align:center middle;"/>
+                    <CheckBox id="friCheckBox00" taborder="57" text="금" value="0" truevalue="1" falsevalue="0" left="74.83%" top="46" right="16.72%" height="20" style="color:#000000ff;align:center middle;"/>
+                    <CheckBox id="satCheckBox00" taborder="58" text="토" value="0" truevalue="1" falsevalue="0" left="86.15%" top="46" right="5.41%" height="20" style="color:#000000ff;align:center middle;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="2" binddataset="trmtStandard" useinputpanel="false" autofittype="col" oncellclick="dayGrid_oncellclick" left="22.88%" top="374" right="65.84%" height="364">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="60"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="요일"/>
+                <Cell col="1" text="A"/>
+                <Cell col="2" text="P"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" text="bind:day" combodataset="dsDayOfWeek" combocodecol="code" combodatacol="value"/>
+                <Cell col="1" displaytype="normal" edittype="none" expr="expr:comp.parent.dsTrmtSchd.getColumn(0, &quot;amHandle&quot;)"/>
+                <Cell col="2" displaytype="normal" edittype="none" expr="expr:comp.parent.dsTrmtSchd.getColumn(0, &quot;fmHandle&quot;)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="3" binddataset="dsTrmtSchdTypeDetailFM" useinputpanel="false" autofittype="col" left="52.4%" top="374" right="29.92%" height="364">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="오후시간"/>
+                <Cell col="1" text="총원"/>
+                <Cell col="2" text="타과예약"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="normal" text="bind:time" mask="@@:@@"/>
+                <Cell col="1" text="bind:handle"/>
+                <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:diffDeptReser"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="오후합계"/>
+                <Cell col="2" expr="expr:dataset.getSum(&quot;parseInt(handle)&quot;)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid02" taborder="4" binddataset="dsTrmtSchdTypeDetailAM" useinputpanel="false" autofittype="col" left="34.32%" top="374" right="47.76%" height="363">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="오전시간"/>
+                <Cell col="1" text="총원"/>
+                <Cell col="2" text="타과예약"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="normal" text="bind:time" mask="@@:@@"/>
+                <Cell col="1" displaytype="normal" edittype="normal" text="bind:handle"/>
+                <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:diffDeptReser"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="오전합계"/>
+                <Cell col="2" expr="expr:dataset.getSum(&quot;parseInt(handle)&quot;)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="cfrnTrmtRespBtn" taborder="5" text="협의진료 회신 처리 알림" onclick="cfrnTrmtRespBtn_onclick" left="38.16%" top="11" right="46.96%" height="48" style="background:#ffcc00ff;border:1 solid #000000ff ;color:#999999ff;font:bold 12 휴먼모음T;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="trmtStandard" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="day" type="STRING" size="256"/>
+          <Column id="a" type="STRING" size="256"/>
+          <Column id="p" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTrmtSchdType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="trmtTypeNo" type="STRING" size="256"/>
+          <Column id="trmtTypeNm" type="STRING" size="256"/>
+          <Column id="amUseYn" type="STRING" size="256"/>
+          <Column id="fmUseYn" type="STRING" size="256"/>
+          <Column id="amStime" type="STRING" size="256"/>
+          <Column id="amEtime" type="STRING" size="256"/>
+          <Column id="fmStime" type="STRING" size="256"/>
+          <Column id="fmEtime" type="STRING" size="256"/>
+          <Column id="amIntv" type="STRING" size="256"/>
+          <Column id="fmIntv" type="STRING" size="256"/>
+          <Column id="amHandle" type="STRING" size="256"/>
+          <Column id="diffDeptReser" type="STRING" size="256"/>
+          <Column id="fmHandle" type="INT" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
+          <Column id="mon" type="STRING" size="256"/>
+          <Column id="tue" type="STRING" size="256"/>
+          <Column id="wed" type="STRING" size="256"/>
+          <Column id="thurs" type="STRING" size="256"/>
+          <Column id="fri" type="STRING" size="256"/>
+          <Column id="sat" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTrmtSchdTypeDetail" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="amFmDiv" type="STRING" size="256"/>
+          <Column id="time" type="STRING" size="256"/>
+          <Column id="handle" type="STRING" size="256"/>
+          <Column id="diffDeptReser" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="trmtTypeNo" type="STRING" size="256"/>
+          <Column id="dayOfWeek" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTrmtSchdTypeDetailAM" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="amFmDiv" type="STRING" size="256"/>
+          <Column id="time" type="STRING" size="256"/>
+          <Column id="handle" type="STRING" size="256"/>
+          <Column id="diffDeptReser" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="trmtTypeNo" type="STRING" size="256"/>
+          <Column id="dayOfWeek" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTrmtSchdTypeDetailFM" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="amFmDiv" type="STRING" size="256"/>
+          <Column id="time" type="STRING" size="256"/>
+          <Column id="handle" type="STRING" size="256"/>
+          <Column id="diffDeptReser" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="trmtTypeNo" type="STRING" size="256"/>
+          <Column id="dayOfWeek" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">batchTrmtTypeProcess</Col>
+            <Col id="URL">erp47::med/base/batchTrmtTypeProcess.do</Col>
+            <Col id="inData">dsTrmtSchdType=dsTrmtSchdType:u</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchTrmtTypeDetailAMProcess</Col>
+            <Col id="URL">erp47::med/base/batchTrmtTypeDetailAMProcess.do</Col>
+            <Col id="inData">dsTrmtSchdTypeDetail=dsTrmtSchdTypeDetailAM:u</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="inData">dsTrmtSchdTypeDetail=dsTrmtSchdTypeDetailFM:u</Col>
+            <Col id="URL">erp47::med/base/batchTrmtTypeDetailFMProcess.do</Col>
+            <Col id="serviceID">batchTrmtTypeDetailFMProcess</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findTrmtTypeList</Col>
+            <Col id="URL">erp47::med/base/findTrmtTypeList.do</Col>
+            <Col id="outData">dsTrmtSchdType=dsTrmtSchdType dsTrmtSchdTypeDetail=dsTrmtSchdTypeDetail</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">applyType</Col>
+            <Col id="URL">erp47::med/base/callApplyType.do</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findCalendarList</Col>
+            <Col id="URL">erp47::med/base/findCalendarList.do</Col>
+            <Col id="outData">dsCalendar=dsCalendar</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findTrmtSchdList</Col>
+            <Col id="URL">erp47::med/base/findTrmtSchdList.do</Col>
+            <Col id="outData">dsTrmtSchd=dsTrmtSchd</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findApplyHistoryList</Col>
+            <Col id="URL">erp47::med/base/findApplyHistoryList.do</Col>
+            <Col id="outData">dsApplyHistory=dsApplyHistory</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDoctResptMsgList</Col>
+            <Col id="URL">erp47::med/request/findDoctResptMsgList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsCfrnTrmt=dsCfrnTrmt</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">[Undefined]</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCalendar" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="sun" type="STRING" size="256"/>
+          <Column id="mon" type="STRING" size="256"/>
+          <Column id="thu" type="STRING" size="256"/>
+          <Column id="wed" type="STRING" size="256"/>
+          <Column id="thurs" type="STRING" size="256"/>
+          <Column id="fri" type="STRING" size="256"/>
+          <Column id="sat" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTrmtSchd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="dayOfWeek" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="trmtTypeNo" type="STRING" size="256"/>
+          <Column id="amHandle" type="STRING" size="256"/>
+          <Column id="fmHandle" type="STRING" size="256"/>
+          <Column id="doctCtRe" type="STRING" size="256"/>
+          <Column id="time" type="STRING" size="256"/>
+          <Column id="reser" type="STRING" size="256"/>
+          <Column id="day" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsApplyHistory" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="day" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDayOfWeek" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">일</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">월</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="value">화</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="value">수</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="value">목</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="value">금</Col>
+          </Row>
+          <Row>
+            <Col id="code">7</Col>
+            <Col id="value">토</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCfrnTrmt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patDiv" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="cfrnTrmtNo" type="STRING" size="256"/>
+          <Column id="trmtDeptNm" type="STRING" size="256"/>
+          <Column id="trmtDate" type="STRING" size="256"/>
+          <Column id="trmtTime" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="mtDoct" type="STRING" size="256"/>
+          <Column id="hopeDoctNm" type="STRING" size="256"/>
+          <Column id="hopeDate" type="STRING" size="256"/>
+          <Column id="hopeDoct" type="STRING" size="256"/>
+          <Column id="callYN" type="STRING" size="256"/>
+          <Column id="adrYN" type="STRING" size="256"/>
+          <Column id="emeYN" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="respDoctNm" type="STRING" size="256"/>
+          <Column id="RespDoct" type="STRING" size="256"/>
+          <Column id="respDate" type="STRING" size="256"/>
+          <Column id="respCon" type="STRING" size="256"/>
+          <Column id="respType" type="STRING" size="256"/>
+          <Column id="askingDoct" type="STRING" size="256"/>
+          <Column id="askingDept" type="STRING" size="256"/>
+          <Column id="askingDeptNm" type="STRING" size="256"/>
+          <Column id="askingDate" type="STRING" size="256"/>
+          <Column id="askingDiv" type="STRING" size="256"/>
+          <Column id="askingCon" type="STRING" size="256"/>
+          <Column id="askingCau" type="STRING" size="256"/>
+          <Column id="askingDoctNm" type="STRING" size="256"/>
+          <Column id="respDept" type="STRING" size="256"/>
+          <Column id="respDeptNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="doctschdDiv.Div02.sunCheckBox00" propid="value" datasetid="dsTrmtSchdType" columnid="sun"/>
+      <BindItem id="item1" compid="doctschdDiv.Div02.monCheckBox00" propid="value" datasetid="dsTrmtSchdType" columnid="mon"/>
+      <BindItem id="item2" compid="doctschdDiv.Div02.tueCheckBox00" propid="value" datasetid="dsTrmtSchdType" columnid="tue"/>
+      <BindItem id="item3" compid="doctschdDiv.Div02.wedCheckBox00" propid="value" datasetid="dsTrmtSchdType" columnid="wed"/>
+      <BindItem id="item4" compid="doctschdDiv.Div02.thursCheckBox00" propid="value" datasetid="dsTrmtSchdType" columnid="thurs"/>
+      <BindItem id="item5" compid="doctschdDiv.Div02.friCheckBox00" propid="value" datasetid="dsTrmtSchdType" columnid="fri"/>
+      <BindItem id="item6" compid="doctschdDiv.Div02.satCheckBox00" propid="value" datasetid="dsTrmtSchdType" columnid="sat"/>
+      <BindItem id="item7" compid="doctschdDiv.AMuseCheckBox" propid="value" datasetid="dsTrmtSchdType" columnid="amHandle"/>
+      <BindItem id="item8" compid="doctschdDiv.FMuseCheckBox" propid="value" datasetid="dsTrmtSchdType" columnid="fmUseYn"/>
+      <BindItem id="item9" compid="doctschdDiv.amStimeMaskEdt" propid="value" datasetid="dsTrmtSchdType" columnid="amStime"/>
+      <BindItem id="item10" compid="doctschdDiv.amEtimeMaskEdt" propid="value" datasetid="dsTrmtSchdType" columnid="amEtime"/>
+      <BindItem id="item11" compid="doctschdDiv.AMintvEdt" propid="value" datasetid="dsTrmtSchdType" columnid="amIntv"/>
+      <BindItem id="item12" compid="doctschdDiv.AMhandleEdt" propid="value" datasetid="dsTrmtSchdType" columnid="amHandle"/>
+      <BindItem id="item13" compid="doctschdDiv.diffReserCheckBox" propid="value" datasetid="dsTrmtSchdType" columnid="diffDeptReser"/>
+      <BindItem id="item14" compid="doctschdDiv.FMhandleEdt" propid="value" datasetid="dsTrmtSchdType" columnid="fmHandle"/>
+      <BindItem id="item15" compid="doctschdDiv.FMintvEdt" propid="value" datasetid="dsTrmtSchdType" columnid="fmIntv"/>
+      <BindItem id="item16" compid="doctschdDiv.fmEtimeMaskEdt" propid="value" datasetid="dsTrmtSchdType" columnid="fmEtime"/>
+      <BindItem id="item17" compid="doctschdDiv.fmStimeMaskEdt" propid="value" datasetid="dsTrmtSchdType" columnid="amStime"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 진단처방 EMR                                                     *
+*                                                                   *
+* @Path		    병원 EMR                     	                    *
+* @Description  EMR(처방내역, 상병내역)조회및일괄처리 화면     *
+* @Author		 				                                    *
+* 								                                    *
+* Created on                                		                *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonTransaction.xjs";
+include "scripts::commonScripts.xjs";  
+include "scripts::commonUtil.xjs";
+include "scripts::commonPopup.xjs";
+include "scripts::supScripts.xjs";
+include "scripts::wonScripts.xjs";
+
+var deptno;
+var deptnm;
+var empno;
+var empnm;
+
+/********************************************************************************
+@Description 	트랜잭션 콜백
+********************************************************************************/
+this.CallbackFunc = function(trid,errcd,errmsg)
+{
+	//alert(trid)
+	if(errcd<0)
+	{
+	    alert(errcd+errmsg)
+		//this.gfnErrorPopup(trid, errmsg);
+		return;
+	//}
+	//if(trid=="batchTrmtTypeProcess"){
+	//alert("batchTrmtTypeDetailAMProcess받아오기")
+	//	this.gfnService("batchTrmtTypeDetailAMProcess");
+	}else if(trid=="batchTrmtTypeDetailAMProcess"){
+		this.gfnService("batchTrmtTypeDetailFMProcess");
+	}else if(trid=="batchTrmtTypeDetailFMProcess"){
+		this.gfnService("findTrmtTypeList");
+	}else if(trid=="findTrmtTypeList"){
+		this.dsTrmtSchdTypeDetail.filter("amFmDiv=='오전'");
+		this.dsTrmtSchdTypeDetailAM.copyData(this.dsTrmtSchdTypeDetail,true);
+		this.dsTrmtSchdTypeDetail.filter("amFmDiv=='오후'");
+		this.dsTrmtSchdTypeDetailFM.copyData(this.dsTrmtSchdTypeDetail,true);
+		this.allfilter();
+		
+		
+	}else if(trid=="applyType"){
+		if(empno!=null||empno!=undefined){
+			this.findTrmtSchd();
+			this.findApplyHistory();
+		}
+	}else if(trid=="findCalendarList"){
+	
+	}else if(trid=="findTrmtSchdList"){
+		this.dsTrmtSchd.filter("day=='바보'");
+	}
+}
+
+
+/********************************************************************************
+@Description 	trmtstandard새로 생성 am,fm필터링
+********************************************************************************/
+
+this.allfilter = function()
+{
+	this.trmtStandard.deleteAll();
+	var typeNo=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"trmtTypeNo");
+	this.addTrmtStandard(typeNo);
+	var tsrow=this.trmtStandard.rowposition;
+	if(tsrow==-1)
+		return;
+	var day=this.trmtStandard.getColumn(tsrow,"day");
+	this.dsTrmtSchdTypeDetailAM.filter("trmtTypeNo=='"+typeNo+"' && dayOfWeek=='"+day+"'");
+	this.dsTrmtSchdTypeDetailFM.filter("trmtTypeNo=='"+typeNo+"' && dayOfWeek=='"+day+"'");
+}
+
+
+/********************************************************************************
+@Description 	trmtstandard 추가
+********************************************************************************/
+
+this.addTrmtStandard = function(typeNo)
+{
+	for(var i=1;i<8;i++){
+		this.dsTrmtSchdTypeDetailAM.filter("trmtTypeNo=='"+typeNo+"' && dayOfWeek=='"+i+"'");
+		this.dsTrmtSchdTypeDetailFM.filter("trmtTypeNo=='"+typeNo+"' && dayOfWeek=='"+i+"'");
+		var amCount=this.dsTrmtSchdTypeDetailAM.rowcount;
+		var fmCount=this.dsTrmtSchdTypeDetailFM.rowcount;
+		if(amCount!=0 || fmCount!=0){
+			var addedRow=this.trmtStandard.addRow();
+			this.trmtStandard.setColumn(addedRow,"day",i);
+		}
+	}
+}
+
+/********************************************************************************
+@Description 	type 추가
+********************************************************************************/
+
+this.typeAddBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	//if(deptno==undefined){
+	//	alert("부서를 선택해주세요");
+	//	return;
+	//}
+	if(empno==undefined){
+	//	alert("사원을 선택해주세요");
+	//	return;
+	}
+	var addedrow=this.dsTrmtSchdType.addRow();
+	var date=this.gfnDate("yymmddmiss");
+	var typeno=empno+""+date;
+	this.dsTrmtSchdType.setColumn(addedrow,"trmtTypeNo",typeno);
+	this.dsTrmtSchdType.setColumn(addedrow,"empNo",empno);
+	this.dsTrmtSchdType.setColumn(addedrow,"empNm",empnm);
+	this.dsTrmtSchdType.setColumn(addedrow,"amUseYn","0");
+	this.dsTrmtSchdType.setColumn(addedrow,"fmUseYn","0");
+	this.dsTrmtSchdType.setColumn(addedrow,"diffDeptReser","0");
+	this.dayCheckChange(addedrow,"0");
+	this.dsTrmtSchdType.setColumn(addedrow,"amStime","0900");
+	this.dsTrmtSchdType.setColumn(addedrow,"amEtime","1200");
+	this.dsTrmtSchdType.setColumn(addedrow,"fmStime","1330");
+	this.dsTrmtSchdType.setColumn(addedrow,"fmEtime","1700");
+	this.dsTrmtSchdType.setColumn(addedrow,"amIntv","10");
+	this.dsTrmtSchdType.setColumn(addedrow,"fmIntv","10");
+	this.dsTrmtSchdType.setColumn(addedrow,"amHandle","1");
+	this.dsTrmtSchdType.setColumn(addedrow,"fmHandle","1");
+}
+
+
+/********************************************************************************
+@Description 	emp 조회 선택된 emp정보 들고오기
+********************************************************************************/
+
+this.searchEmpBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		this.gfnDoctPopup();
+		this.setDoct = function(arrRtn){ 
+		empno=arrRtn[0];
+		empnm=arrRtn[1];
+		this.doctschdDiv.empNmEd.set_value(arrRtn[1]);
+		this.doctschdDiv.deptNmEd.set_value(arrRtn[2]);
+		alert(empnm);
+		this.dsService.setColumn(3,"argument","empNo="+empno);
+		this.gfnService("findTrmtTypeList"); //진료일정타입 조회
+		this.findTrmtSchd();
+		this.findApplyHistory();
+		}
+
+	
+}
+
+/********************************************************************************
+@Description 	type적용이력 가져오기
+********************************************************************************/
+
+this.findApplyHistory = function()
+{
+	if(empno==null||empno==undefined)
+		return;
+	this.dsService.setColumn(7,"argument","empNo="+empno);
+	this.gfnService("findApplyHistoryList"); //날짜조회
+	//trace(this.dsApplyHistory.saveXML());
+
+
+}
+
+/********************************************************************************
+@Description 	스케줄 조회
+********************************************************************************/
+
+this.findTrmtSchd = function (){
+	 var year=this.doctschdDiv.Div01.stYear.text;
+	var month=this.doctschdDiv.Div01.stMonth.text;
+	var yearMonth=year+""+month;
+	alert(yearMonth);
+	var param="empNo="+empno+" yearMonth="+yearMonth;
+	this.dsService.setColumn(6,"argument",param);
+    this.gfnService("findTrmtSchdList");//진료일정 조회
+}
+
+/********************************************************************************
+@Description 	allCheckBox이벤트
+********************************************************************************/
+//전체
+this.allCheckBox_onchanged = function(obj:CheckBox, e:nexacro.CheckBoxChangeEventInfo)
+{
+	var addedrow=this.dsTrmtSchdType.rowposition;
+	if(addedrow==-1)
+		return;
+	if(obj.value==0)
+		this.dayCheckChange(addedrow,"0");
+	else
+		this.dayCheckChange(addedrow,"1");
+}
+
+/********************************************************************************
+@Description 	월~일 체크박스 체인지
+********************************************************************************/
+
+this.dayCheckChange = function (addedrow,value){
+	this.dsTrmtSchdType.setColumn(addedrow,"sun",value);
+	this.dsTrmtSchdType.setColumn(addedrow,"mon",value);
+	this.dsTrmtSchdType.setColumn(addedrow,"tue",value);
+	this.dsTrmtSchdType.setColumn(addedrow,"wed",value);
+	this.dsTrmtSchdType.setColumn(addedrow,"thurs",value);
+	this.dsTrmtSchdType.setColumn(addedrow,"fri",value);
+	this.dsTrmtSchdType.setColumn(addedrow,"sat",value);
+}
+
+/********************************************************************************
+@Description 	타임 입력시 숫자만 입력하도록 이벤트
+********************************************************************************/
+
+this.timeMaskEdt_onkeydown = function(obj:MaskEdit, e:nexacro.KeyEventInfo)
+{
+	var keycode=e.keycode;
+	if(keycode<48||keycode>57)
+		return;
+}
+
+/********************************************************************************
+@Description 	간격 총원 입력시 숫자만 입력하도록 이벤트
+********************************************************************************/
+
+this.edt_onkeydown = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	var keycode=e.keycode;
+	if(keycode<48||keycode>57)
+		return;
+}
+
+/********************************************************************************
+@Description 	상세기준 생성
+********************************************************************************/
+//확인버튼
+this.createDeatailTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsTrmtSchdTypeDetailFM.deleteAll();
+	this.dsTrmtSchdTypeDetailAM.deleteAll();
+	this.trmtStandard.deleteAll();
+	var typeRow=this.dsTrmtSchdType.rowposition;
+	//alert("타입로우"+typeRow)
+	if(typeRow==-1)
+		return;
+	var typenm=this.dsTrmtSchdType.getColumn(typeRow,"trmtTypeNm");	
+	var typeno=this.dsTrmtSchdType.getColumn(typeRow,"trmtTypeNo");
+	alert(typenm + typeno)
+	if(typenm==undefined || typenm==""){
+		alert("타입명을 먼저 기입해주세요");
+		return;
+	}
+	var checkam=this.dsTrmtSchdType.getColumn(typeRow,"amUseYn");
+	var checkfm=this.dsTrmtSchdType.getColumn(typeRow,"fmUseYn");
+	var arr=new Array();
+	var index=0;
+	var checksun=this.dsTrmtSchdType.getColumn(typeRow,"sun");
+	var checkmon=this.dsTrmtSchdType.getColumn(typeRow,"mon");
+	var checktue=this.dsTrmtSchdType.getColumn(typeRow,"tue");
+	var checkwed=this.dsTrmtSchdType.getColumn(typeRow,"wed");
+	var checkthurs=this.dsTrmtSchdType.getColumn(typeRow,"thurs");
+	var checkfri=this.dsTrmtSchdType.getColumn(typeRow,"fri");
+	var checksat=this.dsTrmtSchdType.getColumn(typeRow,"sat");
+	if(checksun=="1"){
+		arr[index]=1;
+		var row=this.trmtStandard.addRow();
+		this.trmtStandard.setColumn(row,"day","1");
+	
+
+		index++;
+	}
+	if(checkmon=="1"){
+		arr[index]=2;
+		var row=this.trmtStandard.addRow();
+		this.trmtStandard.setColumn(row,"day","2");
+		index++;
+	}
+	if(checktue=="1"){
+		arr[index]=3;
+		var row=this.trmtStandard.addRow();
+		this.trmtStandard.setColumn(row,"day","3");
+		index++;
+	}
+	if(checkwed=="1"){
+		arr[index]=4;
+		var row=this.trmtStandard.addRow();
+		this.trmtStandard.setColumn(row,"day","4");
+		index++;
+	}
+	if(checkthurs=="1"){
+		arr[index]=5;
+		var row=this.trmtStandard.addRow();
+		this.trmtStandard.setColumn(row,"day","5");
+		index++;
+	}
+	if(checkfri=="1"){
+		arr[index]=6;
+		var row=this.trmtStandard.addRow();
+		this.trmtStandard.setColumn(row,"day","6");
+		index++;
+	}
+	if(checksat=="1"){
+		arr[index]=7;
+		var row=this.trmtStandard.addRow();
+		this.trmtStandard.setColumn(row,"day","7");
+		index++;
+	}
+	if(checkam=="1")
+		this.createAmGrid(arr);
+	if(checkfm=="1")
+		this.createFmGrid(arr);
+		
+	this.detailFilter();
+	
+	//this.Grid00.setCellProperty("Body", 2, "expr", "expr:comp.parent.dsTrmtSchdTypeDetailFM.getColumn(row2, '2')");
+}
+
+/********************************************************************************
+@Description 	am fm 필터
+********************************************************************************/
+
+this.detailFilter = function(){
+	var day=this.trmtStandard.getColumn(this.trmtStandard.rowposition,"day");
+	alert("데이"+day)
+	var trmtno=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"trmtTypeNo");
+	this.dsTrmtSchdTypeDetailAM.filter("dayOfWeek=='"+day+"' && trmtTypeNo=='"+trmtno+"'");
+	this.dsTrmtSchdTypeDetailFM.filter("dayOfWeek=='"+day+"' && trmtTypeNo=='"+trmtno+"'");
+}
+
+/********************************************************************************
+@Description 	am생성
+********************************************************************************/
+
+this.createAmGrid = function(arr)
+ {
+	var len = arr.length;
+	var statTime=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"amStime");
+	var endTime=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"amEtime");
+	var intv=parseInt(this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"amIntv"));
+	if(intv==undefined || intv>60 || intv==0){
+		alert("오전 간격을 수정하십시오");
+		return;
+	}
+	var shour=parseInt(statTime.substr(0,2));
+	var smi=parseInt(statTime.substr(2,2));
+	var ehour=parseInt(endTime.substr(0,2));
+	var emi=parseInt(endTime.substr(2,2));
+	if(shour==undefined || shour>12){
+		alert("오전시작시간을 수정하십시오 0~12");
+		return;
+	}
+	if(ehour==undefined || ehour>12){
+		alert("오전종료시간을 수정하십시오 0~12");
+		return;
+	}
+	if(smi==undefined || smi>60){
+		alert("오전시작 분을 수정하십시오 0~60");
+		return;
+	}
+	if(emi==undefined || emi>60){
+		alert("오전종료 분을 수정하십시오 0~60");
+		return;
+	}
+	var startTime=(shour*60)+smi;
+	var worktime = (ehour*60)+emi-(shour*60)-smi;
+	
+	if(worktime<0 || worktime==0){
+		alert("오전시간설정을 다시 시작해주세용");
+		return;
+	}
+	var handle = this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"amHandle");
+	var trmtTypeNo = this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"trmtTypeNo");
+	if(handle==undefined||handle==""){
+		alert("총원을 설정해주세요");
+		return;
+	}
+	for(var i=0;i<len;i++){
+		for(var incresedTime=0;incresedTime<worktime;incresedTime+=intv){
+			var uptime=startTime+incresedTime;
+			var hour=Math.floor(uptime/60);
+			var mi=uptime%60;
+			
+			var strHour=(hour+"").padLeft(2, "0");
+			var strMi=(mi+"").padLeft(2, "0");
+			var hourmi=strHour+strMi;
+			var amrow=this.dsTrmtSchdTypeDetailAM.addRow();
+			this.dsTrmtSchdTypeDetailAM.setColumn(amrow,"dayOfWeek",arr[i]);
+			this.dsTrmtSchdTypeDetailAM.setColumn(amrow,"time",hourmi);
+			this.dsTrmtSchdTypeDetailAM.setColumn(amrow,"trmtTypeNo",trmtTypeNo);
+			this.dsTrmtSchdTypeDetailAM.setColumn(amrow,"amFmDiv","오전");
+			this.dsTrmtSchdTypeDetailAM.setColumn(amrow,"handle",handle);
+			this.dsTrmtSchdTypeDetailAM.setColumn(amrow,"diffDeptReser","0");
+			this.dsTrmtSchdTypeDetailAM.setColumn(amrow,"empNo",empno);
+		}
+	}
+ }
+
+ /********************************************************************************
+@Description 	fm 생성
+********************************************************************************/
+
+this.createFmGrid = function (arr)
+{
+	var len = arr.length;
+	var statTime=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"fmStime");
+	var endTime=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"fmEtime");
+	var intv=parseInt(this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"fmIntv"));
+	if(intv==undefined || intv>60 || intv==0){
+		alert("오후 간격을 수정하십시오");
+		return;
+	}
+	var shour=parseInt(statTime.substr(0,2));
+	var smi=parseInt(statTime.substr(2,2));
+	var ehour=parseInt(endTime.substr(0,2));
+	var emi=parseInt(endTime.substr(2,2));
+	if(shour==undefined || shour>23 || shour<12){
+		alert("오후시작시간을 수정하십시오 12~24");
+		return;
+	}
+	if(ehour==undefined || ehour>24 || ehour<12){
+		alert("오후종료시간을 수정하십시오 12~24");
+		return;
+	}
+	if(smi==undefined || smi>60){
+		alert("오후시작 분을 수정하십시오 0~60");
+		return;
+	}
+	if(emi==undefined || emi>60){
+		alert("오후종료 분을 수정하십시오 0~60");
+		return;
+	}
+	var startTime=(shour*60)+smi;
+	var worktime = (ehour*60)+emi-(shour*60)-smi;
+	
+	if(worktime<0 || worktime==0){
+		alert("오전시간설정을 다시 시작해주세용");
+		return;
+	}
+	var handle = this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"fmHandle");
+	var trmtTypeNo = this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"trmtTypeNo");
+	if(handle==undefined||handle==""){
+		alert("총원을 설정해주세요");
+		return;
+	}
+	for(var i=0;i<len;i++){
+		for(var incresedTime=0;incresedTime<worktime;incresedTime+=intv){
+			var uptime=startTime+incresedTime;
+			var hour=Math.floor(uptime/60);
+			var mi=uptime%60;
+			
+			var strHour=(hour+"").padLeft(2, "0");
+			var strMi=(mi+"").padLeft(2, "0");
+			var hourmi=strHour+strMi;
+			var amrow=this.dsTrmtSchdTypeDetailFM.addRow();
+			this.dsTrmtSchdTypeDetailFM.setColumn(amrow,"dayOfWeek",arr[i]);
+			this.dsTrmtSchdTypeDetailFM.setColumn(amrow,"time",hourmi);
+			this.dsTrmtSchdTypeDetailFM.setColumn(amrow,"trmtTypeNo",trmtTypeNo);
+			this.dsTrmtSchdTypeDetailFM.setColumn(amrow,"amFmDiv","오후");
+			this.dsTrmtSchdTypeDetailFM.setColumn(amrow,"handle",handle);
+			this.dsTrmtSchdTypeDetailFM.setColumn(amrow,"diffDeptReser","0");
+			this.dsTrmtSchdTypeDetailFM.setColumn(amrow,"empNo",empno);
+		}
+	}
+
+}
+
+/********************************************************************************
+@Description 	clear버튼 클릭 시 이벤트
+********************************************************************************/
+//요일 초기화
+this.deleteAllDetailBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsTrmtSchdTypeDetailFM.deleteAll();
+	this.dsTrmtSchdTypeDetailAM.deleteAll();
+	this.trmtStandard.deleteAll();
+}
+
+/********************************************************************************
+@Description 	그리드 클릭시 필터
+********************************************************************************/
+//진료별 상세 기준 그리드
+this.dayGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.detailFilter();
+}
+
+/********************************************************************************
+@Description 	type베치
+********************************************************************************/
+
+this.saveTrmtTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+    
+	this.gfnService("batchTrmtTypeProcess");
+	trace(this.dsTrmtSchdType.saveXML());
+}
+
+/********************************************************************************
+@Description 	type삭제
+********************************************************************************/
+
+this.delTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsTrmtSchdType.deleteRow(this.dsTrmtSchdType.rowposition);
+}
+
+
+/********************************************************************************
+@Description 	type선택시 필터
+********************************************************************************/
+
+this.typeGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.allfilter();
+}
+
+/********************************************************************************
+@Description 	type을 실 일정에 적용
+********************************************************************************/
+
+this.applyTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var typeNo=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"trmtTypeNo");
+	alert(typeNo)
+	var sday=this.doctschdDiv.sdayCal.value;
+	alert(sday)
+	var eday=this.doctschdDiv.edayCal.value;
+	if(sday>=eday){
+		alert("기간설정을 다시해주세요");
+		return;
+	}
+	if(sday==undefined||eday==undefined){
+		alert("기간설정을 다시해주세요");
+		return;
+	}
+	if(typeNo==undefined){
+		alert("타입을 선택하여 적용하십시오");
+		return;
+	}
+	var param="sday="+sday+" eday="+eday+" typeNo="+typeNo+" empNo="+empno;
+	this.dsService.setColumn(4,"argument",param);
+	this.gfnService("applyType");
+	
+}
+
+/********************************************************************************
+@Description 	폼 온로드시 이벤트
+********************************************************************************/
+this.MB_DoctTrmtSchdMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+		var gdsEmpNo = application.gdsEmp.getColumn(0, "empNo");
+		//alert(gdsEmpNo+"gdsEmpNo");
+		var argument = 'gdsEmpNo='+gdsEmpNo;
+		this.dsService.setColumn(8,"argument",argument);
+		this.gfnService("findDoctResptMsgList", false);
+		
+	if(this.dsCfrnTrmt.rowcount==0){
+            alert("조건에 맞는 회신 결과가 없습니다.");
+            this.cfrnTrmtRespBtn.set_visible(false);
+         }else{
+			alert("되는가?");
+            this.cfrnTrmtRespBtn.set_visible(true);
+ 
+            }
+     
+
+	
+	var yearMonth=this.gfnDate("yyyymm");
+	var year=yearMonth.substr(0,4);
+	var month=yearMonth.substr(4,2);
+	this.doctschdDiv.Div01.stYear.set_text(year);
+	this.doctschdDiv.Div01.stMonth.set_text(month);
+	this.dsService.setColumn(5,"argument","yearMonth="+yearMonth);
+	
+	this.gfnService("findCalendarList");
+
+}
+
+/********************************************************************************
+@Description 	달력 변화이벤트
+********************************************************************************/
+
+this.Div01_btnLettMonth_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var year=parseInt(this.doctschdDiv.Div01.stYear.text);
+	var month=parseInt(this.doctschdDiv.Div01.stMonth.text);
+	if(month==1){
+		year=year-1;
+		month=12
+	}else{
+		month=month-1;
+	}
+	year=year+"";
+	month=(month+"").padLeft(2,"0");
+	var ymstr=year+month;
+	this.doctschdDiv.Div01.stYear.set_text(year);
+	this.doctschdDiv.Div01.stMonth.set_text(month);
+	this.dsService.setColumn(5,"argument","yearMonth="+ymstr);
+	this.gfnService("findCalendarList");
+	if(empno!=null||empno!=undefined){
+		this.findTrmtSchd();
+	}
+}
+
+/********************************************************************************
+@Description 	달력 변화 이벤트
+********************************************************************************/
+
+this.Div01_btnRightMonth_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var year=parseInt(this.doctschdDiv.Div01.stYear.text);
+	var month=parseInt(this.doctschdDiv.Div01.stMonth.text);
+	if(month==12){
+		year=year+1;
+		month=1
+	}else{
+		month=month+1;
+	}
+	year=year+"";
+	month=(month+"").padLeft(2,"0");
+	var ymstr=year+month;
+	this.doctschdDiv.Div01.stYear.set_text(year);
+	this.doctschdDiv.Div01.stMonth.set_text(month);
+	this.dsService.setColumn(5,"argument","yearMonth="+ymstr);
+	this.gfnService("findCalendarList");
+	if(empno!=null||empno!=undefined){
+		this.findTrmtSchd();
+	}
+}
+
+/********************************************************************************
+@Description 	달력 클릭시 일정 필터
+********************************************************************************/
+
+this.Div01_calendarGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	
+	var day=obj.getCellText(e.row,e.col);
+	var year=this.doctschdDiv.Div01.stYear.text;
+	var month=this.doctschdDiv.Div01.stMonth.text;
+	var date=year+""+month+day;
+	//alert(date)
+	this.dsTrmtSchd.filter("day=='"+date+"'");
+	trace(this.dsTrmtSchd.saveXML());
+}
+
+
+
+
+
+this.cfrnTrmtRespBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+  application.open("MQ_CfrnTrmtRespForm","med::MQ_CfrnTrmtRespForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false", 0, 0, 800, 443, this);
+}
+]]></Script>
+  </Form>
+</FDL>

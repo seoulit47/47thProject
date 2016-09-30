@@ -33,7 +33,17 @@ public class DemdApplicationServiceImpl implements DemdApplicationService{
     @Autowired
     GdsAnspDAO gdsAnspDao;
 
+    @Override
+    public List<GdsAnspBean> findGdsAnspList(Map<String, String> argsMap)
+    {
+        return gdsAnspDao.selectGdsAnspList(argsMap);
+    }
 
+	@Override
+	public List<GdsAnspHistBean> findGdsAnspHistList(Map<String, String> argsMap) {
+		return gdsAnspDao.selectGdsAnspHistList(argsMap);
+	}
+    
     @Override
     public List<GdsReturnBean> findGdsReturnList()
     {
@@ -72,11 +82,7 @@ public class DemdApplicationServiceImpl implements DemdApplicationService{
             }
         }
     }
-    @Override
-    public List<GdsAnspBean> findGdsAnspList(Map<String, String> argsMap)
-    {
-        return gdsAnspDao.selectGdsAnspList(argsMap);
-    }
+  
     @Override
     public void batchGdsAnspProcess(List<GdsAnspBean> GdsAnspBeanList)
     {
@@ -114,9 +120,4 @@ public class DemdApplicationServiceImpl implements DemdApplicationService{
             }
         }
     }
-
-	@Override
-	public GdsAnspHistBean findGdsAnspHistList(Map<String, String> argsMap) {
-		return gdsAnspDao.selectGdsAnspHistList(argsMap);
-	}
 }
