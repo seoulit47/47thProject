@@ -1,4 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
   <Form id="MB_OrdPopForm" classname="MB_OrdPopForm" left="0" top="0" width="600" height="400" titletext="처방조회">

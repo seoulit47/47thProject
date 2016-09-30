@@ -1,12 +1,12 @@
 # 2016-09-02 (21:40) Merge with branch '2016/09/02' 
 # 2016-09-04 (10:10) Merge with branch '2016/09/03' 
-# 2016-09-05 (09:47) Merge with branch '2016/09/04'
+# 2016-09-05 (09:47) Merge with branch '2016/09/04'2
 # 2016-09-06 (09:10) Merge with branch '2016/09/05'
 # 2016-09-07 (09:10) Merge with branch '2016/09/06'
 # 2016-09-08 (09:24) Merge with branch '2016/09/07#'
 # 2016-09-09 (09:04) Merge with branch '2016/09/08'
 # 2016-09-11 (10:06) Merge with branch '2016/09/09'
-# 2016-09-12 (10:00) Merge with branch '2016/09/11'.
+# 2016-09-12 (10:00) Merge with branch '2016/09/11'.1
 # 2016-09-13 (10:00) Merge with branch '2016/09/12'
 
 # 2016-09-19 (09:00) Merge with branch '2016/09/18'-
@@ -18,4 +18,4 @@
 # 2016-09-27 (09:00) Merge with branch '2016/09/26'..
 # 2016-09-28 (09:00) Merge with branch '2016/09/27'....
 # 2016-09-29 (09:00) Merge with branch '2016/09/28'....
-# 2016-09-30 (09:00) Merge with branch '2016/09/29'....
+# 2016-09-30 (09:00) Merge with branch '2016/09/29'.....

@@ -182,7 +182,7 @@
             <Col id="serviceID">batchGdsAnspHistProcess</Col>
             <Col id="URL">erp47::log/demd/batchGdsAnspHistProcess.do</Col>
             <Col id="outData"/>
-            <Col id="inData">dsGdsAnsp=dsGdsAnsp:u dsGdsAnspHist=dsGdsAnspHist:u</Col>
+            <Col id="inData">dsGdsAnspHist=dsGdsAnspHist:u</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -372,7 +372,9 @@ this.histAddBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var setAnspHistNo = this.lwGdsAnspHistGrid.currentrow+1;
 	
 	var test = this.lwGdsAnspGrid.currentrow;
+//	alert("aaa==="+test);
 	var setGdsAnspNo = this.dsGdsAnsp.getColumn(test, "gdsAnspNo");
+//	alert(setGdsAnspNo);
 	              
 	     
 	this.dsGdsAnspHist.setColumn(selCount, "gdsAnspNo", setGdsAnspNo);
@@ -398,6 +400,7 @@ this.DelBtn02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 this.addDeptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	//this.gfnCodePopup("GP500", "false");
+	//gfnCodePopup
 	this.gfnCodePopup("GP500");
 }
 

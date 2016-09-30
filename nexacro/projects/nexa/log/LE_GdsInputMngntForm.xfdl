@@ -70,7 +70,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="inptGrid" taborder="9" binddataset="dsCtrtInfo" useinputpanel="false" oncelldblclick="inptGrid_oncelldblclick" left="1.27%" top="103" right="47.17%" height="612">
+        <Grid id="inptGrid" taborder="9" binddataset="dsCtrtInfo" useinputpanel="false" oncelldblclick="inptGrid_oncelldblclick" left="1.28%" top="103" right="47.2%" height="204">
           <Formats>
             <Format id="default">
               <Columns>
@@ -141,6 +141,88 @@
         <Button id="searchBtn" taborder="14" onclick="searchBtn_onclick" cssclass="SearchBtn" left="47.27%" top="64" right="46.78%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="SearchBtn"/>
         <Button id="inptYnBtn" taborder="15" onclick="inptYnBtn_onclick" cssclass="InptYnBtn" left="0.98%" top="723" right="91.8%" height="32" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="InptYnBtn"/>
         <Button id="inptYnCancelBtn" taborder="16" onclick="inptYnCancelBtn_onclick" cssclass="InptYnCancelBtn" left="9.28%" top="723" right="83.4%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="InptYnCancelBtn"/>
+        <Grid id="Grid00" taborder="17" useinputpanel="false" left="1.28%" top="383" right="47.2%" height="204" binddataset="dsCtrtInfo">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="ctrtNo"/>
+                <Cell col="1" disptype="normal" text="ctrtDate"/>
+                <Cell col="2" disptype="normal" text="ctrtDiv"/>
+                <Cell col="3" disptype="normal" text="ctrtStart"/>
+                <Cell col="4" disptype="normal" text="ctrtEnd"/>
+                <Cell col="5" disptype="normal" text="ctrtSeq"/>
+                <Cell col="6" disptype="normal" text="ctrtRespoWorker"/>
+                <Cell col="7" disptype="normal" text="ctrtRespoWorkerNm"/>
+                <Cell col="8" disptype="normal" text="cust"/>
+                <Cell col="9" disptype="normal" text="ctrtStat"/>
+                <Cell col="10" disptype="normal" text="buyAprvYb"/>
+                <Cell col="11" disptype="normal" text="signSsYb"/>
+                <Cell col="12" disptype="normal" text="ctrtCon"/>
+                <Cell col="13" disptype="normal" text="ctrtStand"/>
+                <Cell col="14" disptype="normal" text="ctrtQnt"/>
+                <Cell col="15" disptype="normal" text="ctrtPrice"/>
+                <Cell col="16" disptype="normal" text="ctrtAmt"/>
+                <Cell col="17" disptype="normal" text="buyReceiptNo"/>
+                <Cell col="18" disptype="normal" text="inptYb"/>
+                <Cell col="19" disptype="normal" text="fm"/>
+                <Cell col="20" disptype="normal" text="ctrtGds"/>
+                <Cell col="21" disptype="normal" text="gdsCd"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:ctrtNo"/>
+                <Cell col="1" disptype="normal" text="bind:ctrtDate"/>
+                <Cell col="2" disptype="normal" text="bind:ctrtDiv"/>
+                <Cell col="3" disptype="normal" text="bind:ctrtStart"/>
+                <Cell col="4" disptype="normal" text="bind:ctrtEnd"/>
+                <Cell col="5" disptype="normal" text="bind:ctrtSeq"/>
+                <Cell col="6" disptype="normal" text="bind:ctrtRespoWorker"/>
+                <Cell col="7" disptype="normal" text="bind:ctrtRespoWorkerNm"/>
+                <Cell col="8" disptype="normal" text="bind:cust"/>
+                <Cell col="9" disptype="normal" text="bind:ctrtStat"/>
+                <Cell col="10" disptype="normal" text="bind:buyAprvYb"/>
+                <Cell col="11" disptype="normal" text="bind:signSsYb"/>
+                <Cell col="12" disptype="normal" text="bind:ctrtCon"/>
+                <Cell col="13" disptype="normal" text="bind:ctrtStand"/>
+                <Cell col="14" disptype="normal" text="bind:ctrtQnt"/>
+                <Cell col="15" disptype="normal" text="bind:ctrtPrice"/>
+                <Cell col="16" disptype="normal" text="bind:ctrtAmt"/>
+                <Cell col="17" disptype="normal" text="bind:buyReceiptNo"/>
+                <Cell col="18" disptype="normal" text="bind:inptYb"/>
+                <Cell col="19" disptype="normal" text="bind:fm"/>
+                <Cell col="20" disptype="normal" text="bind:ctrtGds"/>
+                <Cell col="21" disptype="normal" text="bind:gdsCd"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Objects>
@@ -295,7 +377,7 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	radio=this.inptRadio.value;      	
 	
 	//조회 검색조건
-	if(startDate==null){   
+	/*if(startDate==null){   
 	    alert("검색시작일 선택하세요.");		
 	}else if(endDate==null){
 		alert("검색종료일 선택하세요.");
@@ -305,7 +387,8 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		alert("검수여부 선택하세요");
 	}else{	
 		this.gfnService("findCtrtList", false);
-	}	
+	}*/	
+	this.gfnService("findCtrtList", false);
 	
 }
 //콜백함수

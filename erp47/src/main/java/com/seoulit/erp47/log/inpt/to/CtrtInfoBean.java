@@ -8,10 +8,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.log.inpt.to
+ * @Package  com.seoulit.erp47.log.inpt.to
  * @Class    CtrtInfoBean.java
- * @Create   2016. 7. 6.
- * @Author   Bohyun
+ * @Create   
+ * @Author   김성호
  * @Description 계약관리 빈
  *
  * @LastUpdated 
@@ -43,7 +43,4 @@ public class CtrtInfoBean extends BaseBean{
     ,fm                 //품목
     ,ctrtGds            //계약물품
     ,gdsCd;             //물품코드
-
-
-    
 }
