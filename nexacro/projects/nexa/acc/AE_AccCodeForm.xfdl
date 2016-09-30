@@ -226,6 +226,28 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnService("findAccAcnt");
 }
 
+// 코드 등록
+this.regBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var acntNm = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "acntNm");	//계정과목명 얻기
+	var acntCd = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "acntCd");	//계정과목코드 얻기
+	var lev = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "lev");			//계정레벨 얻기
+	var parentAcntCd = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "parentAcntCd");	//부모코드 얻기
+	//alert(parentAcntCd);
+	
+	if( acntNm == null){
+		alert("계정과목을 선택해주세요~");
+		return;
+	}else{
+		application.open("CodePupupForm"
+						, "acc::AE_accCodePopupForm.xfdl"
+						, obj.parent
+						, {acntNm:acntNm,acntCd:acntCd,lev:lev,parentAcntCd:parentAcntCd, accYear:accYear, dsAccAcnt:this.dsAccAcnt}
+						, ''
+						, 100
+						, 100);
+	}
+}
 ]]></Script>
   </Form>
 </FDL>

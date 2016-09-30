@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_accCodePopupForm" classname="AE_accCodePopupForm" left="0" top="0" width="400" height="129" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="Div00" left="1.5%" top="4" right="1.75%" height="124" style="background:#bbffbbff;color:azure;bordertype:round 5 5 ;"/>
+        <TextArea id="descriptionArea" taborder="1" oneditclick="descriptionArea_oneditclick" enable="false" left="7.5%" top="13" right="10.25%" height="66" class="AreaArea"/>
+        <Button id="regSameLevBtn" taborder="2" text="동일수준입력" onclick="regSameLevBtn_onclick" left="9.25%" top="88" right="66%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;cursor:hand;" class="ProcessBtn"/>
+        <Button id="regLowerLevBtn" taborder="3" text="하위수준입력" onclick="regLowerLevBtn_onclick" left="38.25%" top="88" right="37%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;cursor:hand;" class="ProcessBtn"/>
+        <Button id="closeBtn" taborder="4" text="닫  기" onclick="closeBtn_onclick" left="67.25%" top="88" right="10%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;cursor:hand;" class="ProcessBtn"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>
