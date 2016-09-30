@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CM_DoctPopupForm" classname="CM_DoctPopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_DoctPopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="                 의사검색" left="0%" top="0" right="1%" height="60" style="align:left middle;background:transparent URL('img::titleBar1.jpg');"/>
+        <Static id="deptStc" taborder="1" text="진료부서코드" onclick="subCodeStc_onclick" left="3.25%" top="64" right="75%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="deptNmEd" taborder="2" left="32.5%" top="64" right="28.5%" height="26" class="AreaEdt"/>
+        <Button id="searchBtn" taborder="3" text="조회" onclick="searchBtn_onclick" left="74.25%" top="65" right="6.75%" height="25"/>
+        <Grid id="doctGrid" taborder="4" binddataset="gdsEmp" useinputpanel="false" autofittype="col" oncelldblclick="doctGrid_oncelldblclick" left="3.25%" top="96" right="2.5%" height="389" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호"/>
+                <Cell col="1" text="사원명"/>
+                <Cell col="2" text="진료과"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:empNo"/>
+                <Cell col="1" text="bind:empNm"/>
+                <Cell col="2" text="bind:deptNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="gdsEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findEmpList</Col>
+            <Col id="URL">erp47::hrs/emp/findEmpList.do</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callback</Col>
+            <Col id="outData">gdsEmp=gdsEmp</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"
+
+//의사 조회
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsService.setColumn(0,"argument","deptCd="+this.deptNmEd.value+" jobrk=의사");
+	this.gfnService("findEmpList");
+}
+
+
+this.CM_DoctPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.deptNmEd.set_value(this.parent.deptCd);
+}
+
+
+this.doctGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arr = new Array;
+	var i=0;
+	arr[i++] = this.gdsEmp.getColumn(e.row,"empNo");
+	arr[i++] = this.gdsEmp.getColumn(e.row,"empNm");
+	arr[i++] = this.gdsEmp.getColumn(e.row,"deptNm");
+	this.opener.setDoct(arr);
+	this.close();
+}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -40,11 +40,11 @@ public class LaboratoryMedicineServiceFacadeImpl implements LaboratoryMedicineSe
 		return LaboratoryMedicineApplicationService.findClinspeList(argsMap);
 	}
 	
-	/*// 검체채취 일괄처리 
+	// 검체채취 일괄처리 
 	@Override
 	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList){
 	    LaboratoryMedicineApplicationService.batchClinspeProcess(clinspeBeanList);
-	}*/
+	}
 
 	// 검체접수
 	@Override

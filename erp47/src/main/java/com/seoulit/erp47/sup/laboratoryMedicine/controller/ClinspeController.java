@@ -54,7 +54,7 @@ public class ClinspeController {
 		dataSetBeanMapper.beansToDataset(outData, clinspeBeanList, ClinspeBean.class);
     }
 
-	/*// 검체채취 일괄처리
+	// 검체채취 일괄처리
 	@RequestMapping("sup/laboratoryMedicine/batchClinspeProcess.do")
 	public void batchClinspeProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    PlatformData inData = (PlatformData)request.getAttribute("inData");
@@ -62,5 +62,5 @@ public class ClinspeController {
 		List<ClinspeBean> clinspeBeanList = dataSetBeanMapper.datasetToBeans(inData, ClinspeBean.class);
 		laboratoryMedicineServiceFacade.batchClinspeProcess(clinspeBeanList);
 		dataSetBeanMapper.beanToDataset(outData, new ClinspeBean(), ClinspeBean.class);
-	}*/
+	}
 }

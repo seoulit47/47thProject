@@ -18,6 +18,6 @@ public interface ClinspeBlokDAO {
 
 	List<ClinspeBean> findClinspeNoList();
 
-    //void deleteClinspeBlok(ClinspeBean clinspeBean);
+    void deleteClinspeBlok(ClinspeBean clinspeBean);
 
 }

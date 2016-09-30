@@ -24,7 +24,7 @@ public interface LaboratoryMedicineServiceFacade {
 
 	public List<ClinspeBean> findClinspeList(Map<String, String> argsMap);
 
-	/*public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList);
+	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList);
 
-	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList);*/
+	//public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList);
 }

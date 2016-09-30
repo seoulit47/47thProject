@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="MB_CutnRltnExmntMngntForm" classname="MB_CutnRltnExmntMngntForm" left="0" top="0" width="1250" height="768" titletext="주의사항관련검사관리">
+    <Layouts>
+      <Layout>
+        <Div id="Div04" taborder="0" left="0%" top="4" right="0%" height="60" style="background:transparent URL('img::titleBar5.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="주의사항 관련검사 관리" left="4.8%" top="-4" right="63.52%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="categoryGrid" taborder="1" binddataset="dsCategory" useinputpanel="false" autofittype="col" oncellclick="categoryGrid_oncellclick" left="1.28%" top="72" right="92%" height="682">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="21"/>
+                <Column size="63"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="분류"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="none" text="bind:check" combodisplayrowcount="-1"/>
+                <Cell col="1" text="bind:name"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="cutnRltnExmntGrid" taborder="2" binddataset="dsCutnRltnExmnt" useinputpanel="false" autofittype="col" left="8.4%" top="71" right="34.72%" height="683">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="74"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="107"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="74"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="분류코드"/>
+                <Cell col="1" text="분류명"/>
+                <Cell col="2" text="항목코드"/>
+                <Cell col="3" text="항목명"/>
+                <Cell col="4" text="관련검사코드"/>
+                <Cell col="5" text="검사결과"/>
+                <Cell col="6" text="균속"/>
+                <Cell col="7" text="균"/>
+                <Cell col="8" text="항균제"/>
+                <Cell col="9" text="감수성결과"/>
+                <Cell col="10" text="관련상병"/>
+                <Cell col="11" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:cutnCategoryCd" suppress="1"/>
+                <Cell col="1" text="bind:cutnCategoryNm" suppress="1"/>
+                <Cell col="2" text="bind:cautionCd" suppress="1"/>
+                <Cell col="3" text="bind:cautionNm" suppress="1"/>
+                <Cell col="4" text="bind:relationExmntCd"/>
+                <Cell col="5" text="bind:cheakResult"/>
+                <Cell col="6" text="bind:speciesVirus"/>
+                <Cell col="7" text="bind:virus"/>
+                <Cell col="8" text="bind:antimicrobial"/>
+                <Cell col="9" text="bind:sensitivityResult"/>
+                <Cell col="10" text="bind:relationDisease"/>
+                <Cell col="11" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="relationExmntDiv" taborder="3" text="Div00" left="65.76%" top="72" right="1.2%" height="680" style="border:1 solid #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="30" text="Caution 항목" left="3.65%" top="15" right="70.32%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+              <Div id="div01" taborder="31" left="2.68%" top="62" right="2.68%" height="94" style="border:1 solid #808080ff ;">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="16" text="검사결과" left="1.29%" top="50" right="71.58%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+                    <Static id="Static01" taborder="17" text="관련검사" left="1.29%" top="10" right="71.58%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+                    <Edit id="relationExmntCdEd" taborder="18" onchanged="relationExmntDiv_div01_relationExmntCdEd_onchanged" left="30.23%" top="10" right="50.13%" height="30"/>
+                    <Edit id="cheakResultEd" taborder="19" left="30.23%" top="50" right="17.05%" height="30"/>
+                    <Button id="relationExmntSearchBtn" taborder="20" onclick="relationExmntDiv_div01_relationExmntSearchBtn_onclick" left="51.16%" top="9" right="41.6%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+                    <Edit id="relationExmntNmEd" taborder="21" left="59.43%" top="10" right="1.81%" height="30"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="div02" taborder="32" text="Div00" left="2.68%" top="166" right="2.68%" height="198" style="border:1 solid #808080ff ;">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static01" taborder="38" text="균속" left="1.29%" top="10" right="71.58%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+                    <Static id="Static00" taborder="39" text="감수성결과" left="1.29%" top="154" right="71.58%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+                    <Static id="Static02" taborder="40" text="항균제" left="1.29%" top="106" right="71.58%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+                    <Static id="Static03" taborder="41" text="균" left="1.29%" top="58" right="71.58%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+                    <Edit id="speciesVirusCdEd" taborder="42" onchanged="relationExmntDiv_div02_speciesVirusCdEd_onchanged" left="30.23%" top="10" right="50.13%" height="30"/>
+                    <Edit id="virusCdEd" taborder="43" onchanged="relationExmntDiv_div02_virusCdEd_onchanged" left="30.23%" top="59" right="50.13%" height="30"/>
+                    <Edit id="antimicrobialCdEd" taborder="44" onchanged="relationExmntDiv_div02_antimicrobialCdEd_onchanged" left="30.23%" top="106" right="50.13%" height="30"/>
+                    <Edit id="sensitivityResultEd" taborder="45" left="30.23%" top="154" right="17.05%" height="30"/>
+                    <Button id="speciesVirusSearchBtn" taborder="46" onclick="relationExmntDiv_div02_speciesVirusSearchBtn_onclick" left="51.16%" top="9" right="41.6%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+                    <Button id="antimicrobialSearchBtn" taborder="47" onclick="relationExmntDiv_div02_antimicrobialSearchBtn_onclick" left="51.16%" top="105" right="41.6%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+                    <Button id="virusSearchBtn" taborder="48" onclick="relationExmntDiv_div02_virusSearchBtn_onclick" left="51.16%" top="58" right="41.6%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+                    <Edit id="speciesVirusNmEd" taborder="49" left="59.43%" top="10" right="1.81%" height="30"/>
+                    <Edit id="antimicrobialNmEd" taborder="50" left="59.43%" top="106" right="2.07%" height="30"/>
+                    <Edit id="virusNmEd" taborder="51" left="59.43%" top="58" right="2.07%" height="30"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="div03" taborder="33" text="Div00" left="2.68%" top="374" right="2.68%" height="50" style="border:1 solid #808080ff ;">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="10" text="관련상병" left="1.29%" top="10" right="71.58%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+                    <Edit id="relationDiseaseCdEd" taborder="11" onchanged="relationExmntDiv_div03_relationDiseaseCdEd_onchanged" left="30.23%" top="10" right="50.13%" height="30"/>
+                    <Button id="relationDiseaseSearchBtn" taborder="12" onclick="relationExmntDiv_div03_relationDiseaseSearchBtn_onclick" left="51.16%" top="9" right="41.6%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+                    <Edit id="relationDiseaseNmEd" taborder="13" left="59.43%" top="10" right="1.81%" height="30"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Static id="Static01" taborder="34" text="비고사항" left="3.65%" top="438" right="70.32%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
+              <Button id="relationSearchBtn" taborder="35" onclick="relationExmntDiv_relationSearchBtn_onclick" left="74.7%" top="16" right="2.19%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <TextArea id="noteTextArea" taborder="36" left="31.63%" top="439" right="2.68%" height="76"/>
+              <Button id="addBtn" taborder="37" onclick="relationExmntDiv_addBtn_onclick" left="74.7%" top="524" right="2.19%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="delBtn" taborder="38" onclick="relationExmntDiv_delBtn_onclick" left="49.88%" top="524" right="27.01%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Div id="Div03" taborder="39" left="3.16%" top="583" right="2.92%" height="83" style="border:1 solid #808080ff ;">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="8" text="※ 코드 추가방법 : 1. 내용 입력 후 [저장] 버튼 클릭" left="2.08%" top="9" right="0%" height="34" style="color:darkblue;font:11 Dotum;"/>
+                    <Static id="Static01" taborder="9" text="(수정은 없고, 저장할 때마다 내용이 추가됩니다.)" left="7.29%" top="41" right="1.04%" height="34" style="color:darkblue;font:11 Dotum;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCutnRltnExmnt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cutnCategoryCd" type="STRING" size="256"/>
+          <Column id="cutnCategoryNm" type="STRING" size="256"/>
+          <Column id="cautionCd" type="STRING" size="256"/>
+          <Column id="cautionNm" type="STRING" size="256"/>
+          <Column id="relationExmntCd" type="STRING" size="256"/>
+          <Column id="ordnm" type="STRING" size="256"/>
+          <Column id="cheakResult" type="STRING" size="256"/>
+          <Column id="speciesVirus" type="STRING" size="256"/>
+          <Column id="bacgennm" type="STRING" size="256"/>
+          <Column id="virus" type="STRING" size="256"/>
+          <Column id="bacnm" type="STRING" size="256"/>
+          <Column id="antimicrobial" type="STRING" size="256"/>
+          <Column id="antinm" type="STRING" size="256"/>
+          <Column id="sensitivityResult" type="STRING" size="256"/>
+          <Column id="relationDisease" type="STRING" size="256"/>
+          <Column id="codeNm" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="relationExmntSeqNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCutnRltnExmntList</Col>
+            <Col id="URL">erp47::med/base/findCutnRltnExmntList.do</Col>
+            <Col id="outData">dsCutnRltnExmnt=dsCutnRltnExmnt</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchCutnRltnExmntProcess</Col>
+            <Col id="URL">erp47::med/base/batchCutnRltnExmntProcess.do</Col>
+            <Col id="inData">dsCutnRltnExmnt=dsCutnRltnExmnt:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findOrdList</Col>
+            <Col id="URL">erp47::med/base/findOrdList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">dsOrd=dsOrd</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findSpeciesVirusList</Col>
+            <Col id="URL">erp47::med/base/findSpeciesVirusList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">dsSpeciesVirus=dsSpeciesVirus</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findVirusList</Col>
+            <Col id="URL">erp47::med/base/findVirusList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">dsVirus=dsVirus</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findAntimicrobialList</Col>
+            <Col id="URL">erp47::med/base/findAntimicrobialList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">dsAntimicrobial=dsAntimicrobial</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDiseaseList</Col>
+            <Col id="URL">erp47::med/base/findDiseaseList.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData">dsDisease=dsDisease</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCategory" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">B</Col>
+            <Col id="name">혈액주의</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="name">접촉주의</Col>
+            <Col id="code">T</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="name">호흡기주의</Col>
+            <Col id="code">R</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="name">격리</Col>
+            <Col id="code">S</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="name">수혈부작용</Col>
+            <Col id="code">BT</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="name">기타</Col>
+            <Col id="code">C</Col>
+            <Col id="check">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsOrd">
+        <ColumnInfo>
+          <Column id="ordcd" type="STRING" size="256"/>
+          <Column id="ordnm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSpeciesVirus">
+        <ColumnInfo>
+          <Column id="bacgencd" type="STRING" size="256"/>
+          <Column id="bacgennm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsVirus">
+        <ColumnInfo>
+          <Column id="baccd" type="STRING" size="256"/>
+          <Column id="bacnm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAntimicrobial">
+        <ColumnInfo>
+          <Column id="anticd" type="STRING" size="256"/>
+          <Column id="antinm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDisease">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="codeNm" type="STRING" size="256"/>
+          <Column id="pCode" type="STRING" size="256"/>
+          <Column id="lv" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="relationExmntDiv.div01.relationExmntCdEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="relationExmntCd"/>
+      <BindItem id="item1" compid="relationExmntDiv.div01.relationExmntNmEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="ordnm"/>
+      <BindItem id="item2" compid="relationExmntDiv.div01.cheakResultEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="cheakResult"/>
+      <BindItem id="item3" compid="relationExmntDiv.div02.speciesVirusCdEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="speciesVirus"/>
+      <BindItem id="item4" compid="relationExmntDiv.div02.speciesVirusNmEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="bacgennm"/>
+      <BindItem id="item5" compid="relationExmntDiv.div02.virusCdEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="virus"/>
+      <BindItem id="item6" compid="relationExmntDiv.div02.virusNmEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="bacnm"/>
+      <BindItem id="item7" compid="relationExmntDiv.div02.antimicrobialCdEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="antimicrobial"/>
+      <BindItem id="item8" compid="relationExmntDiv.div02.antimicrobialNmEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="antinm"/>
+      <BindItem id="item9" compid="relationExmntDiv.div02.sensitivityResultEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="sensitivityResult"/>
+      <BindItem id="item10" compid="relationExmntDiv.div03.relationDiseaseCdEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="relationDisease"/>
+      <BindItem id="item11" compid="relationExmntDiv.div03.relationDiseaseNmEd" propid="value" datasetid="dsCutnRltnExmnt" columnid="codeNm"/>
+      <BindItem id="item12" compid="relationExmntDiv.noteTextArea" propid="value" datasetid="dsCutnRltnExmnt" columnid="note"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************************
+*                                                                               			*
+* 주의사항 관련검사 관리  																*
+*                                                                               			*
+* @Path		    MB_CntnArticleMngntForm														*
+*																							*
+* @Description 	환자 주의사항 관련검사관리에에서   등록,삭제,조회한다.				*
+*               																			*
+* @Author	        						                                			    *
+* 									                                            			*
+* Created on .	                          		                    			            *
+*									                                            			*
+********************************************************************************************/
+
+/***************************************************************************************************
+*                                         공통 Script Include                                      *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+
+/***************************************************************************************************
+*                                      폼 EVENT START                                        	   *
+/*-------------------------------------------------------------------------------------------------+
+>>  onload 이벤트
++-------------------------------------------------------------------------------------------------*/
+this.MB_CutnRltnCheakMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findCutnRltnExmntList");
+	//var strXml = this.dsSpeciesVirus.saveXML("dsSpeciesVirus");
+	//trace(strXml);
+
+}
+
+/***************************************************************************************************
+*                                         기타 	바인딩                                             *
+***************************************************************************************************/
+
+
+/***************************************************************************************************
+*                                     주의사항 관련검사 삭제                                     *
+***************************************************************************************************/
+this.relationExmntDiv_delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsCutnRltnExmnt.deleteRow(this.cutnRltnExmntGrid.currentrow);
+	this.gfnService("batchCutnRltnExmntProcess", false);
+}
+
+/***************************************************************************************************
+*                                    주의사항 관련검사 추가                                      *
+***************************************************************************************************/
+this.relationExmntDiv_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var no = this.cutnRltnExmntGrid.currentrow;
+	var setCutnCategoryCd = this.dsCutnRltnExmnt.getColumn(no, "cutnCategoryCd");
+	var setCutnCategoryNm = this.dsCutnRltnExmnt.getColumn(no, "cutnCategoryNm");
+	var setCautionCd = this.dsCutnRltnExmnt.getColumn(no, "cautionCd");	
+	var setCautionNm = this.dsCutnRltnExmnt.getColumn(no, "cautionNm");
+	var setRelationExmntCd = this.relationExmntDiv.div01.relationExmntCdEd.value;
+	var setRelationExmntNm = this.relationExmntDiv.div01.relationExmntNmEd.value;
+	var setCheakResult = this.relationExmntDiv.div01.cheakResultEd.value;
+	var setSpeciesVirusCd = this.relationExmntDiv.div02.speciesVirusCdEd.value;
+	var setSpeciesVirusNm = this.relationExmntDiv.div02.speciesVirusNmEd.value;
+	var setVirusCd = this.relationExmntDiv.div02.virusCdEd.value;
+	var setVirusNm = this.relationExmntDiv.div02.virusNmEd.value;
+	var setAntimicrobialCd = this.relationExmntDiv.div02.antimicrobialCdEd.value;
+	var setAntimicrobialNm = this.relationExmntDiv.div02.antimicrobialNmEd.value;
+	var setSensitivityResult = this.relationExmntDiv.div02.sensitivityResultEd.value;
+	var setRelationDiseaseCd = this.relationExmntDiv.div03.relationDiseaseCdEd.value;
+	var setRelationDiseaseNm = this.relationExmntDiv.div03.relationDiseaseNmEd.value;
+	var setNote = this.relationExmntDiv.noteTextArea.value;
+// addRow 전 입력할 값 세팅
+	this.dsCutnRltnExmnt.addRow();
+	no = this.cutnRltnExmntGrid.currentrow;	
+	this.dsCutnRltnExmnt.setColumn(no, "cutnCategoryCd", setCutnCategoryCd);
+	this.dsCutnRltnExmnt.setColumn(no, "cutnCategoryNm", setCutnCategoryNm);
+	this.dsCutnRltnExmnt.setColumn(no, "cautionCd", setCautionCd);
+	this.dsCutnRltnExmnt.setColumn(no, "cautionNm", setCautionNm);
+	this.dsCutnRltnExmnt.setColumn(no, "relationExmntCd", setRelationExmntCd);
+	this.dsCutnRltnExmnt.setColumn(no, "ordcd", setRelationExmntNm);	
+	this.dsCutnRltnExmnt.setColumn(no, "cheakResult", setCheakResult);
+	this.dsCutnRltnExmnt.setColumn(no, "speciesVirus", setSpeciesVirusCd);
+	this.dsCutnRltnExmnt.setColumn(no, "bacgennm", setSpeciesVirusNm);	
+	this.dsCutnRltnExmnt.setColumn(no, "virus", setVirusCd);
+	this.dsCutnRltnExmnt.setColumn(no, "bacnm", setVirusNm);
+	this.dsCutnRltnExmnt.setColumn(no, "antimicrobial", setAntimicrobialCd);
+	this.dsCutnRltnExmnt.setColumn(no, "antinm", setAntimicrobialNm);	
+	this.dsCutnRltnExmnt.setColumn(no, "sensitivityResult", setSensitivityResult);
+	this.dsCutnRltnExmnt.setColumn(no, "relationDisease", setRelationDiseaseCd);
+	this.dsCutnRltnExmnt.setColumn(no, "codeNm", setRelationDiseaseNm);	
+	this.dsCutnRltnExmnt.setColumn(no, "note", setNote);
+	
+	this.gfnService("batchCutnRltnExmntProcess", false);
+//	this.dsCutnRltnExmnt.setColumn(no, "cutnCategoryNm", setCutnCategoryCd);
+}
+
+/***************************************************************************************************
+*                                주의사항 관련검사 새로고침                                     *
+***************************************************************************************************/
+this.relationExmntDiv_relationSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("findCutnRltnExmntList", false);
+}
+
+/***************************************************************************************************
+*                                				POPUP		                                       *
+***************************************************************************************************/
+// 자식창에서 param 받을때 onload함수에서 this.parent.empNo 형식으로 받으면되요. 
+// 데이터셋일경우 this.parent.dsHyDependentInsurance 로 받아서 copy데이터 처리하면됩니다.
+var param="";
+//처방
+this.relationExmntDiv_div01_relationExmntSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("MB_OrdCdPopupForm", "med");
+}
+//균속
+this.relationExmntDiv_div02_speciesVirusSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("MB_SpeciesVirusCdPopupForm", "med");
+}
+//균
+this.relationExmntDiv_div02_virusSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var no = this.cutnRltnExmntGrid.currentrow;
+	param = {"speciesVirus":this.dsCutnRltnExmnt.getColumn(no, "speciesVirus")};
+	this.gfnPopup("MB_VirusCdPopupForm", "med", param);
+}
+//항균제
+this.relationExmntDiv_div02_antimicrobialSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var no = this.cutnRltnExmntGrid.currentrow;
+	param = {"speciesVirus":this.dsCutnRltnExmnt.getColumn(no, "speciesVirus")};
+	this.gfnPopup("MB_AntimicrobialCdPopupForm", "med", param);
+}
+//상병
+this.relationExmntDiv_div03_relationDiseaseSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("MB_DiseasePopupForm", "med");
+}
+
+// 자식 팝업창에서 호출
+ this.setDsCode = function(arr, divCode){
+//  	trace(arr[0]+"aasdfas="+divCode);
+  	switch(divCode){
+  		case "disease" :
+			this.relationExmntDiv.div03.relationDiseaseCdEd.set_value(arr[0]);
+			this.relationExmntDiv.div03.relationDiseaseNmEd.set_value(arr[1]);
+  			break;
+  		case "ord" :
+   			this.relationExmntDiv.div01.relationExmntCdEd.set_value(arr[0]);
+			this.relationExmntDiv.div01.relationExmntNmEd.set_value(arr[1]);
+   			break;
+   		case "speciesVirus" :
+   			this.relationExmntDiv.div02.speciesVirusCdEd.set_value(arr[0]);
+			this.relationExmntDiv.div02.speciesVirusNmEd.set_value(arr[1]);
+   			break;
+   		case "virus" :
+			this.relationExmntDiv.div02.virusCdEd.set_value(arr[0]);
+			this.relationExmntDiv.div02.virusNmEd.set_value(arr[1]);
+   			break;
+   		case "antimicrobial" :
+			this.relationExmntDiv.div02.antimicrobialCdEd.set_value(arr[0]);
+			this.relationExmntDiv.div02.antimicrobialNmEd.set_value(arr[1]);
+   			break;
+ 	}
+}
+/***************************************************************************************************
+*                                 			 	필터	 		                                   *
+***************************************************************************************************/
+//	var no = this.dsCutnRltnExmnt.rowposition;
+//var ordnm = this.dsOrd.lookup("ordcd", ordcd, "ordnm");
+this.categoryGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{	
+	var setFilter = "";
+	
+	if(this.dsCategory.getColumn(obj.currentrow,"check")==1)
+		this.dsCategory.setColumn(obj.currentrow, "check", 0);
+	else
+		this.dsCategory.setColumn(obj.currentrow, "check", 1);
+			
+	for(i=0; i<this.dsCategory.rowcount; i++){
+		if(this.dsCategory.getColumn(i,"check")==1){
+			var code = this.dsCategory.getColumn(i,"code");
+			if(setFilter=="")
+				setFilter += "cutnCategoryCd=='"+code+"'";
+			else
+				setFilter += " || cutnCategoryCd=='"+code+"'";
+		}
+	}
+	this.dsCutnRltnExmnt.filter(setFilter);
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -10,13 +10,14 @@ import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeDAO;
 import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeReceiptDAO;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeSequenceBean;
+import com.seoulit.erp47.sup.pathology.dao.ClinspeBlokDAO;
 import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 
 /**
- * @Package  com.seoul.his.sup.laboratoryMedicine.applicationService
+ * @Package  com.seoulit.erp47.sup.laboratoryMedicine.applicationService
  * @Class    LaboratoryMediApplicationServiceImpl.java
- * @Create   2016. 5. 26.
- * @Author   jeong
+ * @Create   
+ * @Author   
  * @Description
  *
  * @LastUpdated 
@@ -29,8 +30,8 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 	ClinspeDAO clinspeDAO;
 	@Autowired
 	ClinspeReceiptDAO clinspeReceiptDAO;
-	//@Autowired
-	//ClinspeBlokDAO clinspeBlokDAO;
+	@Autowired
+	ClinspeBlokDAO clinspeBlokDAO;
 	
 	// 검체채취(검체번호조회)
 	@Override
@@ -44,7 +45,7 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 		return clinspeDAO.selectClinspeList(argsMap);
 	}
 	
-	/*// 검체채취 일괄처리 
+	// 검체채취 일괄처리 
 	@Override
 	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList){
 		for(ClinspeBean clinspeBean : clinspeBeanList){
@@ -57,7 +58,7 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 				case "updated" : { clinspeDAO.updateClinspe(clinspeBean); break; }
 			}	
 		}
-	}*/
+	}
 
 	// 검체접수 조회
 	@Override
