@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="MB_AntimicrobialCdPopupForm" classname="MB_AntimicrobialCdPopupForm" left="0" top="0" width="600" height="400" titletext="항생제조회">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="0.5%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="항생제 조회" left="11.83%" top="-4" right="51.5%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
+        <Grid id="grid" taborder="2" binddataset="dsAntimicrobial" useinputpanel="false" autofittype="col" oncelldblclick="grid_oncelldblclick" left="2.67%" top="80" right="2.17%" height="309">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="항생제 코드"/>
+                <Cell col="1" text="항생제명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:anticd"/>
+                <Cell col="1" text="bind:antinm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsAntimicrobial">
+        <ColumnInfo>
+          <Column id="anticd" type="STRING" size="256"/>
+          <Column id="antinm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAntimicrobialList</Col>
+            <Col id="URL">erp47::med/base/findAntimicrobialList.do</Col>
+            <Col id="outData">dsAntimicrobial=dsAntimicrobial</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
+항생제 조회화면                                           						                                                                         
+@Path			진료처방 공통(Medication Base)              				   				
+@Description	항생제 조회 다이얼로그						
+@Author	  				    			                        								                                            
+@Create                                		                    				                                            
+********************************************************************************/
+include "scripts::commonScripts.xjs";  
+
+this.MB_AntimicrobialCdPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var speciesVirusCd = "bacgencd="+this.parent.speciesVirus;
+	this.dsService.setColumn(0, "argument", speciesVirusCd);
+	this.gfnService("findAntimicrobialList", false);
+}
+
+this.grid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arr = new Array();
+	arr[0] = this.dsAntimicrobial.getColumn(this.dsAntimicrobial.rowposition, "anticd");
+	arr[1] = this.dsAntimicrobial.getColumn(this.dsAntimicrobial.rowposition, "antinm");
+	this.opener.setDsCode(arr,"antimicrobial");
+	this.close();	
+}]]></Script>
+  </Form>
+</FDL>
