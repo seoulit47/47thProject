@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seoulit.erp47.log.inpt.dao.SkillExmntDAO">
-<!-- mapper의 namespace는  Interface인  실제 DAO의 경로로 설정한다. -->
-<cache flushInterval="86400000" eviction="LRU" />
-<resultMap type="SkillExmntHistBean" id="resultMapfindSkillExmntHist">
+	<!-- mapper의 namespace는 Interface인 실제 DAO의 경로로 설정한다. -->
+	<cache flushInterval="86400000" eviction="LRU" />
+	<resultMap type="SkillExmntHistBean" id="resultMapfindSkillExmntHist">
 		<result property="assetGrpCd" column="ASSET_GRP_CD" />        <!-- 자산분류코드 -->
 		<result property="assetNm" column="ASSET_NM" />               <!-- 자산명 -->
 		<result property="bigGrpCd" column="BIG_GRP_CD" />            <!-- 대분류코드 -->
@@ -21,21 +21,22 @@
 	</resultMap>
 
 
-<!-- 기술검사내역조회 -->
-	<select id="findSkillExmntHistList" resultMap="resultMapfindSkillExmntHist" parameterType="map">
-SELECT * FROM LE_SKILL_EXMNT_HIST
-WHERE EXMNT_DATE 
-BETWEEN #{startDate} AND #{endDate}
+	<!-- 기술검사내역조회 -->
+	<select id="findSkillExmntHistList" resultMap="resultMapfindSkillExmntHist"
+		parameterType="map">
+		SELECT * FROM LE_SKILL_EXMNT_HIST
+		WHERE EXMNT_DATE
+		BETWEEN #{startDate} AND #{endDate}
 	</select>
-	
-	
+
+
 	<delete id="deleteSkillExmnt">
 		DELETE
-		  FROM LE_SKILL_EXMNT_HIST
-		 WHERE SKILL_EXMNT_NO = #{skillExmntNo}
-		       AND CTRT_NO = #{ctrtNo}
-	
-	
+		FROM LE_SKILL_EXMNT_HIST
+		WHERE SKILL_EXMNT_NO = #{skillExmntNo}
+		AND CTRT_NO = #{ctrtNo}
+
+
 	</delete>
 
 </mapper>

@@ -19,31 +19,24 @@ import com.seoulit.erp47.log.base.to.OutLogCdBean;
 @Controller
 public class BindLogCdController {
 
-@Autowired
-private LogBaseServiceFacade logBaseServiceFacade;
+	@Autowired
+	private LogBaseServiceFacade logBaseServiceFacade;
 
-@Autowired
-private DataSetBeanMapper datasetBeanMapper;
+	@Autowired
+	private DataSetBeanMapper datasetBeanMapper;
 
-	
-	
 	@RequestMapping("/log/base/bindLogCd.do")
-	public void bindLogCd(HttpServletRequest request, HttpServletResponse response)throws Exception{
-		
-		
-					PlatformData inData = (PlatformData)request.getAttribute("inData");
-					PlatformData outData =(PlatformData)request.getAttribute("outData");
-				
-		
-		List<BindLogCdBean>bindLogCdList=datasetBeanMapper.datasetToBeans(inData, BindLogCdBean.class);
-					
-		Map<String,List<OutLogCdBean>>bindLogCdMap=logBaseServiceFacade.BindLogCd(bindLogCdList);
-		
+	public void bindLogCd(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+		List<BindLogCdBean> bindLogCdList = datasetBeanMapper.datasetToBeans(inData, BindLogCdBean.class);
+
+		Map<String, List<OutLogCdBean>> bindLogCdMap = logBaseServiceFacade.BindLogCd(bindLogCdList);
+
 		datasetBeanMapper.bindLogCd(outData, bindLogCdMap, bindLogCdList, OutLogCdBean.class);
-			
-		
+
 	}
 
-	
-	
 }
