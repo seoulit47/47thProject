@@ -10,8 +10,8 @@ import lombok.ToString;
 /**
  * @Package  com.seoulit.erp47.log.base.to
  * @Class    BindLogCdBean.java
- * @Create   2016. 08. 26.
- * @Author   godseop
+ * @Create   
+ * @Author   김성호
  * @Description 코드바인드
  *
  * @LastUpdated 

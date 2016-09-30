@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.log.base.applicationService.LogBaseApplicationService;
+import com.seoulit.erp47.log.base.to.BigGrpCdBean;
 import com.seoulit.erp47.log.base.to.BindLogCdBean;
 import com.seoulit.erp47.log.base.to.CustBean;
 import com.seoulit.erp47.log.base.to.GdsBean;
+import com.seoulit.erp47.log.base.to.MidGrpCdBean;
 import com.seoulit.erp47.log.base.to.OutLogCdBean;
+import com.seoulit.erp47.log.base.to.SmGrpCdBean;
 import com.seoulit.erp47.log.base.to.WhBean;
 @Service
 public class LogBaseServiceFacadeImpl implements LogBaseServiceFacade{
@@ -52,6 +55,47 @@ public class LogBaseServiceFacadeImpl implements LogBaseServiceFacade{
 	public List<GdsBean> findGdsList(Map<String, String> argsMap) {
 		List<GdsBean> gdsList = logBaseApplicationService.findGdsList(argsMap);
         return gdsList;
+	}
+
+
+	@Override
+	public void batchGdsProcess(List<GdsBean> gdsList) {
+		logBaseApplicationService.batchGdsProcess(gdsList);
+	}
+
+
+	@Override
+	public Map<String, List<OutLogCdBean>> bindLogCd(List<BindLogCdBean> bindLogCdList) {
+		Map<String, List<OutLogCdBean>> bindLogCdMap = logBaseApplicationService.bindLogCd(bindLogCdList);
+        return bindLogCdMap;
+	}
+
+
+	@Override
+	public void modifyWh(List<WhBean> whList) {
+		logBaseApplicationService.modifyWh(whList);
+	}
+
+
+	@Override
+	public String callGdsCd(Map<String, String> argsMap) {
+		String postCode = logBaseApplicationService.callGdsCd(argsMap);
+        return postCode;
+	}
+
+
+	@Override
+	public void batchGdsGrpCdProcess(List<BigGrpCdBean> bigGrpCdList, List<MidGrpCdBean> midGrpCdList,
+			List<SmGrpCdBean> smGrpCdList) {
+		logBaseApplicationService.batchGdsGrpCdProcess(bigGrpCdList, midGrpCdList, smGrpCdList);
+		
+	}
+
+
+	@Override
+	public List<BigGrpCdBean> findGrpList(Map<String, String> argsMap) {
+		List<BigGrpCdBean> bigGrpList = logBaseApplicationService.findGrpList(argsMap);
+        return bigGrpList;
 	}
 
 }

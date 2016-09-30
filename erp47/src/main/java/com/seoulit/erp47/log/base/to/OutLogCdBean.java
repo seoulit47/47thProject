@@ -8,10 +8,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.log.base.to
+ * @Package  com.seoulit.erp47.log.base.to
  * @Class    OutLogCdBean.java
- * @Create   2016. 5. 25.
- * @Author   godseop
+ * @Create   
+ * @Author   김성호
  * @Description 바인드된 코드 출력용
  *
  * @LastUpdated 

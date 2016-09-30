@@ -8,9 +8,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.log.base.to
+ * @Package  com.seoulit.erp47.log.base.to
  * @Class    CustBean.java
- * @Create   2016. 5. 24.
+ * @Create   
  * @Author   
  * @Description 거래처
  *
