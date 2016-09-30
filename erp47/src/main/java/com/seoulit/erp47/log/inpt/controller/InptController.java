@@ -2,6 +2,7 @@ package com.seoulit.erp47.log.inpt.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,11 +34,33 @@ public class InptController {
 	@Autowired
 	InptServiceFacade inptServiceFacade;
 
+	@RequestMapping("log/inpt/findCtrtList.do")
+	public void findCtrtList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		
+		
+		System.out.println("******************************************************************************");
+		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
+		for (Entry<String, String> entry : argsMap.entrySet()) {
+			System.out.println("키키키 : " + entry.getKey());
+			System.out.println("밸밸밸 : " + entry.getKey());
+		}
+		System.out.println("******************************************************************************");
+
+		
+		List<CtrtInfoBean> ctrtList = inptServiceFacade.findCtrtList();
+		
+		for(CtrtInfoBean bean : ctrtList){
+			System.out.println("getCtrtNo : " + bean.getCtrtNo());
+		}
+		
+		
+		datasetBeanMapper.beansToDataset(outData, ctrtList, CtrtInfoBean.class);
+	}
+	
 	@RequestMapping("log/inpt/findSkillExmntList.do")
 	public void FindSkillExmntMngnt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("기술검사조회 매서드입니다.");
-
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
@@ -51,25 +74,8 @@ public class InptController {
 		datasetBeanMapper.beansToDataset(outData, SkillExmntHistlist, SkillExmntHistBean.class);
 	}
 
-	@RequestMapping("log/inpt/findCtrtList.do")
-	public void findCtrtList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("findCtrt매서드 입니다.");
-
-		PlatformData inData = (PlatformData) request.getAttribute("inData");
-		PlatformData outData = (PlatformData) request.getAttribute("outData");
-
-		List<CtrtInfoBean> CtrtList = inptServiceFacade.findCtrtList();
-
-		datasetBeanMapper.beansToDataset(outData, CtrtList, CtrtInfoBean.class);
-
-	}
-
 	@RequestMapping("log/inpt/batchProcessSkillExmntHist.do")
 	public void batchProcessSkillExmnt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("batchskill매서드입니다.");
-
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 

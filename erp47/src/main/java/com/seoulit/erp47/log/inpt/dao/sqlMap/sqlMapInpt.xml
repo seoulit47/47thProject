@@ -49,12 +49,8 @@
             ,GDS_CD
             ,CTRT_GDS
             ,FM
-            
         FROM LP_CTRT
             ORDER BY
             CTRT_NO
     </select>
-
-
-
 </mapper>

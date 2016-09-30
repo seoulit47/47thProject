@@ -16,7 +16,6 @@ public class InptapplicationServiceFacadeImpl implements InptapplicationServiceF
 	
 	@Override
 	public List<CtrtInfoBean> findCtrtList() {
-		// TODO Auto-generated method stub
 		return inptDAO.findCtrtList();
 	}
 
