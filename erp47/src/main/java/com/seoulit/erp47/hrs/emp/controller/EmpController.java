@@ -49,7 +49,10 @@ public class EmpController {
 
 		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
 
+		System.out.println("[empNo]"+argsMap.get("empNo"));
+		System.out.println("[empNm]"+argsMap.get("empNm"));
 		List<EmpBean> empList = empServiceFacade.findEmpList(argsMap);
+		
 		datasetBeanMapper.beansToDataset(outData, empList, EmpBean.class);
 	}
 

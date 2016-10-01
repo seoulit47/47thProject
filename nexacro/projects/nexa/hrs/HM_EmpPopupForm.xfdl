@@ -133,7 +133,7 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		
 	}else{
 		//사원명
-		argument="empNamm="+this.searchEd.value;
+		argument="empNm="+this.searchEd.value;
 	}
 	this.dsService.setColumn(0,"argument",argument);
 	trace(this.dsService.saveXML());

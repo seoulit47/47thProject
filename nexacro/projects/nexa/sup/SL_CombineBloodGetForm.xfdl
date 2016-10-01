@@ -351,7 +351,12 @@ this.searchDoctBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 //Grid 이벤트
 this.clinspeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	
+	if(e.cell == 6 ){
+		this.gfnPopup("HM_EmpPopupForm","hrs","","");
+		this.setEmpInfo = function(empNo,empNm){ 
+			this.dsClinspe.setColumn(this.dsClinspe.rowposition,"bloodgetEmp",empNm);
+		}
+	}
 }
 ]]></Script>
   </Form>
