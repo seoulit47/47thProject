@@ -8,5 +8,6 @@ import com.seoulit.erp47.med.base.to.OrdBean;
 public interface OrdDAO {
     
     List<OrdBean> selectOrdList(Map<String, String> argsMap);
+    List<OrdBean> findOrdList(Map<String,String>argsMap);
 
 }
