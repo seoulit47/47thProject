@@ -5,10 +5,68 @@
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="2" left="0%" top="8" right="1.12%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
-        <Tab id="Tab00" taborder="0" left="1.44%" top="69" right="1.44%" height="247" tabindex="0" scrollbars="autoboth">
+        <Tab id="itemTab" taborder="0" left="1.44%" top="69" right="1.44%" height="247" tabindex="0" scrollbars="autoboth" onchanged="itemTab_onchanged">
           <Tabpages>
-            <Tabpage id="tabpage1" text="근태관련코드"/>
-            <Tabpage id="tabpage2" text="tabpage2"/>
+            <Tabpage id="HSP002" text="근태관련코드">
+              <Layouts>
+                <Layout>
+                  <Grid id="itemGrid" taborder="0" useinputpanel="false" left="0.58%" top="4" right="80.94%" height="206" autofittype="col" binddataset="dsCode" oncelldblclick="itemTab_itemGrid_oncelldblclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="62"/>
+                          <Column size="83"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell colspan="2" text="총근태일수/시간"/>
+                          <Cell row="1" text="코드"/>
+                          <Cell row="1" col="1" text="명칭"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:code"/>
+                          <Cell col="1" text="bind:codeName"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="HSP001" text="급여관련코드">
+              <Layouts>
+                <Layout>
+                  <Grid id="itemGrid" taborder="0" binddataset="dsCode" useinputpanel="false" autofittype="col" left="0.58%" top="4" right="80.94%" height="206" oncelldblclick="itemTab_itemGrid_oncelldblclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="62"/>
+                          <Column size="83"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell colspan="2" text="호봉관리"/>
+                          <Cell row="1" text="코드"/>
+                          <Cell row="1" col="1" text="명칭"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:code"/>
+                          <Cell col="1" text="bind:codeName"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
           </Tabpages>
         </Tab>
         <Static id="Static00" taborder="1" text="급여계산식" left="4.8%" top="4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
@@ -81,10 +139,70 @@
         </Div>
       </Layout>
     </Layouts>
-    <Script type="xscript5.0"><![CDATA[
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findCalFormulaCodeList</Col>
+            <Col id="URL">erp47::com/findCodeList.do</Col>
+            <Col id="argument">subCode="HSP"</Col>
+            <Col id="outData">dsCode=dsCode</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="detailCode" type="STRING" size="256"/>
+          <Column id="codeName" type="STRING" size="256"/>
+          <Column id="subCode" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="editId" type="STRING" size="256"/>
+          <Column id="editIp" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regIp" type="STRING" size="256"/>
+          <Column id="detailCodeName" type="STRING" size="256"/>
+          <Column id="modiyn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 일근퇴 관리                                                              	*
+*                                                                               *
+* @Path		    hrs-HS_CalFormulaForm                          	                *
+* @Description  급여계산식설정 	                      		   	            *
+* @Author	    김진환					                                		*
+* 									                                            *
+* Created on 2016. 10. 1.                             		                    *
+*									                                            *
+********************************************************************************/
+
+include "scripts::commonScripts.xjs";
+
 this.HS_CalFormulaForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	
+	this.gfnService("findCalFormulaCodeList",false);
+	this.dsCode.filter("code == 'HSP002'");
+}
+
+this.itemTab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
+{
+	var code = this.itemTab.tabpages[e.postindex].name;
+	this.dsCode.filter("code == '"+code+"'");
+}
+
+this.itemTab_itemGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	alert(e.row);
 }
 ]]></Script>
   </Form>

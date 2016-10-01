@@ -35,7 +35,7 @@ public class CodeController {
 	    	PlatformData inData = (PlatformData)request.getAttribute("inData");
 	    	PlatformData outData =(PlatformData)request.getAttribute("outData");
 	    	
-	    	
+	    	System.out.println(inData.saveXml());
 	    	Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
 	    	
 	    	
@@ -45,7 +45,6 @@ public class CodeController {
 	    	//요걸 써가지구 한방에 가져오고 map 에다가 넣자.!!!!
 	    	 
 	    	List<CodeBean>codeList = comBaseServiceFacade.findCodeList(argsMap);
-	    	System.out.println(codeList.size());
 	    	datasetBeanMapper.beansToDataset(outData, codeList, CodeBean.class);
     	
 	    }
