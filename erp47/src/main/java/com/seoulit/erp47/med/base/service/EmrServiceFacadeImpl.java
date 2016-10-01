@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.seoulit.erp47.med.base.applicationService.CautionApplicationSerevice;
 import com.seoulit.erp47.med.base.applicationService.EmrApplicationService;
+import com.seoulit.erp47.med.base.to.OrdBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 
@@ -28,9 +30,9 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
     /*@Autowired
     private TrmtSchdTypeApplicationService trmtSchdTypeApplicationService;
     @Autowired
-    private TrmtSchdApplicationService trmtSchdApplicationService;
+    private TrmtSchdApplicationService trmtSchdApplicationService;*/
     @Autowired
-    private CautionApplicationService cautionApplicationService;*/
+    private CautionApplicationSerevice cautionApplicationService;
 
 
     @Override
@@ -42,5 +44,11 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
     public List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap) {
         return emrApplicationService.findPrscDtlList(argsMap);
     }
+
+	@Override
+	public List<OrdBean> findOrdList(Map<String, String> argsMap) {
+		
+		return cautionApplicationService.findOrdList(argsMap);
+	}
 
 }
