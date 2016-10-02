@@ -105,6 +105,7 @@
 		<!-- 사원정보 -->
 		from hm_emp e
 		<!-- where -->
+		WHERE 1=1
 		<if test="empNo != null">
 			AND emp_no = #{empNo}
 		</if>

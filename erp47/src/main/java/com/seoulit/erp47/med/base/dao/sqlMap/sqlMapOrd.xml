@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.med.base.dao.OrdDAO">
+
+
+<select resultType="OrdBean" useCache="true" flushCache="false" id="findOrdList">
+
+SELECT ORDCD, ORDNM FROM MB_ORD_CD 
+
+<trim prefixOverrides="AND" prefix="WHERE">
+
+<if test="ordcd != '' and ordcd != null"> AND ORDCD = #{ordcd} </if>
+
+<if test="ordnm != '' and ordnm != null"> AND ORDNM LIKE '%' || #{ordnm} || '%' </if>
+
+</trim>
+
+</select>
+
+
+</mapper>
