@@ -44,11 +44,10 @@ public class EmrController {
         System.out.println("타나?2");
         List<PrscBean> prscList = emrServiceFacade.findPrscList(argsMap);
         System.out.println("타나?3");
-        List<PrscDtlBean> prscDtlList = emrServiceFacade.findPrscDtlList(argsMap);
-        System.out.println("타나?4");
+        
         
         dataSetBeanMapper.beansToDataset(outData, prscList, PrscBean.class);
-        dataSetBeanMapper.beansToDataset(outData, prscDtlList, PrscDtlBean.class);
+       
     }
 
 }
