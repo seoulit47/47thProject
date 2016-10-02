@@ -57,6 +57,7 @@ public class ClinspeController {
 	// 검체채취 일괄처리
 	@RequestMapping("sup/laboratoryMedicine/batchClinspeProcess.do")
 	public void batchClinspeProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("컨트롤러 도달??");
 	    PlatformData inData = (PlatformData)request.getAttribute("inData");
 		PlatformData outData = (PlatformData)request.getAttribute("outData");
 		List<ClinspeBean> clinspeBeanList = dataSetBeanMapper.datasetToBeans(inData, ClinspeBean.class);

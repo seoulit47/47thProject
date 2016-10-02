@@ -23,7 +23,7 @@
         <Edit id="searchDoctNoEd" taborder="10" enable="false" left="58.62%" top="73" right="27.59%" height="30"/>
         <Edit id="searchDoctNmEd" taborder="11" enable="false" left="77.38%" top="73" right="8.83%" height="30"/>
         <Combo id="clinspeNmCombo" taborder="12" innerdataset="dsClinspeNm" codecolumn="code" datacolumn="data" left="55.17%" top="108" right="26.9%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
-        <Button id="comboResetBtn" taborder="13" text="조건초기화" left="75.03%" top="109" right="14.48%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
+        <Button id="comboResetBtn" taborder="13" text="조건초기화" left="75.03%" top="109" right="14.48%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn" onclick="comboResetBtn_onclick"/>
         <Grid id="clinspeGrid" taborder="14" binddataset="dsClinspe" useinputpanel="false" autofittype="col" oncelldblclick="clinspeGrid_oncelldblclick" left="0.83%" top="144" right="1.38%" height="529">
           <Formats>
             <Format id="default">
@@ -61,12 +61,240 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="searchPatBtn" taborder="15" cssclass="DelBtn" left="24.28%" top="72" right="71.31%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="searchDoctBtn" taborder="16" cssclass="DelBtn" left="72.83%" top="71" right="22.76%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="searchClinspeBtn" taborder="17" cssclass="DelBtn" left="86.21%" top="109" right="1.38%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="cancelBtn" taborder="18" left="51.86%" top="688" right="35.72%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="completeBtn" taborder="19" left="38.21%" top="688" right="49.38%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchPatBtn" taborder="15" cssclass="DelBtn" left="24.28%" top="72" right="71.31%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchPatBtn_onclick"/>
+        <Button id="searchDoctBtn" taborder="16" cssclass="DelBtn" left="72.83%" top="71" right="22.76%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDoctBtn_onclick"/>
+        <Button id="searchClinspeBtn" taborder="17" cssclass="DelBtn" left="86.21%" top="109" right="1.38%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchClinspeBtn_onclick"/>
+        <Button id="cancelBtn" taborder="18" left="51.86%" top="688" right="35.72%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="cancelBtn_onclick"/>
+        <Button id="completeBtn" taborder="19" left="38.21%" top="688" right="49.38%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="clinspeGrid_oncelldblclick"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findClinspeList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findClinspeList.do</Col>
+            <Col id="callbackFunc"/>
+            <Col id="outData">dsClinspe=dsClinspe</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchClinspeProcess</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/batchClinspeProcess.do</Col>
+            <Col id="inData">dsClinspe=dsClinspe:U</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findMaxClinspeNo</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findMaxClinspeNo.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsClinspeSequence=dsClinspeSequence</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsClinspeNm">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">혈액</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">수액</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">흉수</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">복수</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">관절액</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="data">농</Col>
+          </Row>
+          <Row>
+            <Col id="code">7</Col>
+            <Col id="data">분비액</Col>
+          </Row>
+          <Row>
+            <Col id="code">8</Col>
+            <Col id="data">담</Col>
+          </Row>
+          <Row>
+            <Col id="code">9</Col>
+            <Col id="data">인두점액</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="data">요</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="data">담즙</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="data">대변</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsClinspe">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+          <Column id="prescNo" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="respDoct" type="STRING" size="256"/>
+          <Column id="dgnsNm" type="STRING" size="256"/>
+          <Column id="exmntCd" type="STRING" size="256"/>
+          <Column id="clinspeNm" type="STRING" size="256"/>
+          <Column id="bloodgetDate" type="STRING" size="256"/>
+          <Column id="bloodgetEmp" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="receiptCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsExmntCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">혈액</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">소변</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">세포</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">조직</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+include "scripts::commonScripts.xjs";
+include "scripts::Scripts.xjs";
+
+//미접수검체 조회
+this.searchClinspeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var bloodGetStartDate = "19000101";
+	var bloodGetEndDate = "21000101";
+	
+	if(this.bloodGetStartDateCal.value != null){
+		bloodGetStartDate = this.bloodGetStartDateCal.value;
+	}
+	if(this.bloodGetEndDateCal.value != null){
+		bloodGetEndDate = this.bloodGetEndDateCal.value;
+	}
+	
+	var argument = "bloodGetStartDate='"+bloodGetStartDate+"' bloodGetEndDate='"+bloodGetEndDate+"' exmntCd='"+null+"' clinspeNm='"+this.clinspeNmCombo.value+"' patNo='"+this.searchPatNoEd.value+"' bloodgetEmp='"+this.searchDoctNmEd.value+"'";
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findClinspeList");
+}
+
+//조건초기화
+this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.searchPatNoEd.set_value(null);
+	this.searchPatNmEd.set_value(null);
+	this.searchDoctNoEd.set_value(null);
+	this.searchDoctNmEd.set_value(null);
+	this.clinspeNmCombo.set_value(null);
+	this.bloodGetStartDateCal.set_value(null);
+	this.bloodGetEndDateCal.set_value(null);
+}
+
+//미접수검체 확인
+this.clinspeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+		if(this.parent.parentReason == "searchClinspe"){
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"clinspeNo",this.dsClinspe.getColumn(e.row,"clinspeNo"));
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"dgnsNm",this.dsClinspe.getColumn(e.row,"dgnsNm"));
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"exmntCd",this.dsClinspe.getColumn(e.row,"exmntCd"));
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"clinspeNm",this.dsClinspe.getColumn(e.row,"clinspeNm"));
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"bloodgetDate",this.dsClinspe.getColumn(e.row,"bloodgetDate"));
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"bloodgetEmp",this.dsClinspe.getColumn(e.row,"bloodgetEmp"));
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"receiptCd","RE000");
+			this.close();
+		} 
+	
+}
+
+//콜백 함수
+this.clinspeCallBack = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(strSvcID == "findClinspeList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.dsClinspe.filter("receiptCd==null");
+			this.clinspeGrid.set_binddataset("dsClinspe");
+		}
+	}
+}
+
+//미접수검체 취소
+this.cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.parent.parentReason == "searchClinspe"){
+		this.opener.dsClinspeReceipt.deleteRow(this.opener.dsClinspeReceipt.rowcount-1);
+		this.close();	
+	} 
+}
+
+//환자검색
+this.searchPatBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("WS_PatPopupForm","won","","");
+	
+		this.setPatInfo= function(arrRtn){ 
+		this.searchPatNoEd.set_value(arrRtn[0]);  	
+		this.searchPatNmEd.set_value(arrRtn[1]);  
+	}
+}
+
+//채취자검색
+this.searchDoctBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("CM_DoctPopupForm","com","","");
+
+		this.setDoct= function(arr){ 
+		this.searchDoctNoEd.set_value(arr[0]); 
+		this.searchDoctNmEd.set_value(arr[1]);  
+	}
+}
+]]></Script>
   </Form>
 </FDL>

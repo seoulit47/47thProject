@@ -144,13 +144,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="batchClinspeReceiptBtn" taborder="12" cssclass="DelBtn" left="91.68%" top="728" right="1.28%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchClinspeReceiptBtn" taborder="12" cssclass="DelBtn" left="91.68%" top="728" right="1.28%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="batchClinspeReceiptBtn_onclick"/>
         <Button id="addClinspeReceiptBtn" taborder="13" cssclass="DelBtn" left="75.04%" top="729" right="17.76%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addClinspeReceiptBtn_onclick"/>
-        <Button id="deleteClinspeReceiptBtn" taborder="14" cssclass="DelBtn" left="83.36%" top="728" right="9.44%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="deleteClinspeReceiptBtn" taborder="14" cssclass="DelBtn" left="83.36%" top="728" right="9.44%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="deleteClinspeReceiptBtn_onclick"/>
         <Div id="Div00" taborder="15" left="0.48%" top="8" right="0.08%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="검체접수관리" left="3.38%" top="-4" right="82.3%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+              <Static id="Static00" taborder="0" text="검체접수관리" left="4.02%" top="-4" right="81.66%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -318,13 +318,30 @@
 include "scripts::commonScripts.xjs";
 include "scripts::Scripts.xjs";
 
-// 조건초기화 이벤트
+//조건초기화 이벤트
 this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.clinspeReceiptStartDateCal.set_value(null);
 	this.clinspeReceiptEndDateCal.set_value(null);
 	this.emeYnCombo.set_value(null);
 	this.receiptCombo.set_value(null);
+}
+
+this.clinspeReceiptCallBack = function clinspeReceiptCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findClinspeReceiptList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			alert("정상처리 되었습니다.");
+		}
+	}else if(strSvcID == "batchClinspeReceiptProcess"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			alert("정상처리 되었습니다.");	
+		}
+	}
 }
 
 //검체접수 조회
@@ -351,9 +368,53 @@ this.addClinspeReceiptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventIn
 	this.nRow = this.dsClinspeReceipt.addRow();
 	//this.gfnPopup("SL_CombineBloodGetPopupForm","sup","","");
 	application.open("combineBloodGetPopup","sup::SL_CombineBloodGetPopupForm.xfdl",this.parent,{parentReason:'searchClinspe'},"showtitlebar=true showstatusbar=false",0,0,780,550);
-}		//추가 어플리케이션 오픈부터 안함/ 일단  체취부터 먼저하기로..
+}		
 
+//검체접수 삭제
+this.deleteClinspeReceiptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	  var receiptCd = this.dsClinspeReceipt.getColumn(this.dsClinspeReceipt.rowposition,"receiptCd");
+     if(receiptCd == "RE001"){
+		alert("검사중인 접수정보는 삭제할 수 없습니다.");
+     }else{
+		this.dsClinspeReceipt.deleteRow(this.dsClinspeReceipt.rowposition);
+     }
+}
 
+//검체접수 일괄처리
+this.batchClinspeReceiptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var flag = 0;
+		
+	for(var i=0; i<this.dsClinspeReceipt.rowcount; i++){
+		var clinspeReceiptDate = this.dsClinspeReceipt.getColumn(i,"clinspeReceiptDate");
+		var emeYn = this.dsClinspeReceipt.getColumn(i,"emeYn");
+		var receiptCd = this.dsClinspeReceipt.getColumn(i,"receiptCd");
+		var receiptCancelCau = this.dsClinspeReceipt.getColumn(i,"receiptCancelCau");
+		var receiptCancelDate = this.dsClinspeReceipt.getColumn(i,"receiptCancelDate");
+
+		if(clinspeReceiptDate == null || emeYn == null ){
+			flag = 1;
+			break;
+		}
+		
+		if(receiptCd == "RE002"){
+			if(receiptCancelCau == null || receiptCancelDate == null){
+				flag = 2;
+				break;
+			}
+		}
+	}
+	
+	if(flag == 1){
+		alert("검체접수일 및 응급여부를 입력하시오.");
+	}else if(flag == 2){
+		alert("접수취소 사유 및 일자를 입력하시오.");
+	}else{
+		this.gfnService("batchClinspeReceiptProcess");
+	}
+////////////////////////저장에서 아직에러남
+}
 ]]></Script>
   </Form>
 </FDL>
