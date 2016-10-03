@@ -63,6 +63,7 @@
     <package name="com.seoulit.erp47.med.request.to"/>
     <package name="com.seoulit.erp47.med.base.to"/>
     <package name="com.seoulit.erp47.med.adr.to"/>
+    <package name="com.seoulit.erp47.med.recipe.to"/>
   
 
    </typeAliases>

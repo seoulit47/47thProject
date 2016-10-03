@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.seoulit.erp47.med.base.dao.DiseaseDAO;
 import com.seoulit.erp47.med.base.dao.PrscDAO;
+import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 
@@ -17,14 +19,15 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
     private ReceiptInfoDAO receiptInfoDAO;
     @Autowired
     private BaseExamDAO baseExamDAO;
-    @Autowired
-    private DiseaseDAO diseaseDAO;
+   
     @Autowired
     private PatientDsDAO patientDsDAO;
     @Autowired
     private PatientPrscDAO patientPrscDAO;*/
     @Autowired
     private PrscDAO prscDAO;
+    @Autowired
+    private DiseaseDAO diseaseDAO;
 
     
     @Override
@@ -36,6 +39,12 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
     public List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap) {
         return prscDAO.selectPrscDtlList(argsMap);
     }
+
+	@Override
+	public List<DiseaseBean> findDiseaseList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return diseaseDAO.findDiseaseList(argsMap);
+	}
 
 
 }
