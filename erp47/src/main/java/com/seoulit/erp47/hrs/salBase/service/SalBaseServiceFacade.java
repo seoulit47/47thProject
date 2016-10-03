@@ -6,6 +6,8 @@ import java.util.Map;
 import com.seoulit.erp47.hrs.salBase.to.HobongBean;
 import com.seoulit.erp47.hrs.salBase.to.HobongHistoryBean;
 import com.seoulit.erp47.hrs.salBase.to.JobBean;
+import com.seoulit.erp47.hrs.salBase.to.PayDeduBean;
+import com.seoulit.erp47.hrs.salBase.to.PayDeduSectBean;
 
 /**
  * @Package  com.seoul.his.hrs.salBase.service
@@ -34,6 +36,13 @@ public interface SalBaseServiceFacade {
     //호봉이력일괄처리
     public void batchHobongHisProcess(List<HobongHistoryBean> hobongHisList);
     
+    //지급공제항목설정
+    public List<PayDeduBean> findPayDeduList(Map<String, String> argsMap);
+    public void magamCancel(List<PayDeduBean> payDeduList);
+    public void magam(List<PayDeduBean> payDeduList);
+    public void batchPayDeduProcess(List<PayDeduBean> payDeduList);
+    public void batchPayDeduSectProcess(List<PayDeduSectBean> payDeduSectList);
+    
 /*
      소득.세액환경설정 
     public List<IncomeTaxSetBean> findTaxChartList(Map<String, String> argsMap);
@@ -47,12 +56,7 @@ public interface SalBaseServiceFacade {
     public List<PaydayBean> findPaydaySubList(Map<String, String> argsMap);
     public void batchPaydayProcess(List<PaydayBean> paydayList);
     
-    지급공제항목설정
-    public List<PayDeduBean> findPayDeduList(Map<String, String> argsMap);
-    public void magamCancel(List<PayDeduBean> payDeduList);
-    public void magam(List<PayDeduBean> payDeduList);
-    public void batchPayDeduProcess(List<PayDeduBean> payDeduList);
-    public void batchPayDeduSectProcess(List<PayDeduSectBean> payDeduSectList);
+ 
     
     사회보험설정
     public List<SocialInsureBean> findsocialInsureList(Map<String, String> argsMap);

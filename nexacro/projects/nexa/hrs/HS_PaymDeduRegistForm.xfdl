@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HS_PaymDeduRegistForm" classname="HS_PaymDeduRegistForm" left="0" top="0" width="1250" height="768" titletext="지급/공제항목 등록">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="0" text="급/상여 지급일자 관리" left="4.8%" top="4" right="71.2%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div03" taborder="1" left="0%" top="8" right="4%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="2" text="지급/공제항목 등록" left="4.8%" top="4" right="73.76%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Static id="belongStatic" taborder="3" text="귀속연월" left="2.64%" top="80" right="87.76%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Div id="baseDiv" taborder="4" left="2.24%" top="69" right="1.68%" height="51" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Spin id="yearSpin" taborder="5" value="2016" onspin="yearSpin_onspin" left="50.88%" top="80" right="42.4%" height="30" style="margin:1 0 2 0;" class="yearSpin"/>
+        <Static id="yearStatic" taborder="6" text="년" left="57.68%" top="80" right="40.56%" height="28" style="border:1 none #808080ff ;color:black;font:bold 10 arial;"/>
+        <Button id="searchPayDeduBtn" taborder="7" onclick="searchPaydayBtn_onclick" cssclass="searchPayDeduBtn" left="59.76%" top="80" right="33.04%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchPayDeduBtn"/>
+        <Static id="slaStc" taborder="8" text="급여구분" left="3.28%" top="80" right="87.12%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="deducCombo" taborder="9" innerdataset="dsPayDeduGubun" codecolumn="value" datacolumn="value" left="31.84%" top="80" right="60.16%" height="28" style="background:transparent;"/>
+        <Static id="deducStc" taborder="10" text="지급공제구분" left="21.6%" top="80" right="68.8%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="belongStc" taborder="11" text="귀속년도" left="40.88%" top="80" right="49.52%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="salCombo" taborder="12" innerdataset="dsSalGubun" codecolumn="value" datacolumn="value" left="13.12%" top="80" right="78.88%" height="28" style="background:transparent;"/>
+        <Div id="Div00" taborder="13" left="2.24%" top="127" right="1.68%" height="627" style="background:#edececff;border:0 none lightsteelblue ;">
+          <Layouts>
+            <Layout>
+              <GroupBox id="GroupBox00" text="지급/공제항목설정" taborder="0" left="35.64%" top="16" right="1.17%" height="555" style="border:1 solid lightslategray ;"/>
+              <Button id="Button00" taborder="1" text="금액/계산식 변경" left="40.38%" top="499" right="49.29%" height="24" style="background:antiquewhite;font:bold 9 Dotum;" wordwrap="none" onclick="Div00_Button00_onclick"/>
+              <TextArea id="calFormulaTextArea" taborder="2" left="51.87%" top="499" right="3.75%" height="56"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="addPayDaduBtn" taborder="14" onclick="addPayDaduBtn_onclick" cssclass="addPayDaduBtn" left="28.4%" top="656" right="69.04%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addPayDaduBtn"/>
+        <Button id="delPayDaduBtn" taborder="15" onclick="delPayDaduBtn_onclick" cssclass="delPayDaduBtn" left="31.6%" top="656" right="65.84%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delPayDaduBtn"/>
+        <Static id="taxStc" taborder="16" text="과세구분" left="40.8%" top="184" right="49.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="taxCombo" taborder="17" innerdataset="dsTaxGubun" codecolumn="value" datacolumn="value" oncloseup="taxCombo_oncloseup" left="51.04%" top="184" right="37.6%" height="28" style="background:transparent;"/>
+        <Static id="taxTypeNmStc" taborder="18" text="과세유형" left="40.8%" top="216" right="49.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="probationApplyStc" taborder="19" text="수습적용" left="40.8%" top="248" right="49.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="probationApplyCombo" taborder="20" innerdataset="dsApplyItem" codecolumn="value" datacolumn="value" left="51.04%" top="248" right="37.6%" height="28" style="background:transparent;"/>
+        <Static id="monthSalStc" taborder="21" text="월정급여" left="40.8%" top="280" right="49.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="monthSalCombo" taborder="22" innerdataset="dsMonthSal" codecolumn="value" datacolumn="value" left="51.04%" top="280" right="37.6%" height="28" style="background:transparent;"/>
+        <Static id="divYnStc" taborder="23" text="분류여부" left="40.8%" top="312" right="49.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="divYnCombo" taborder="24" innerdataset="dsYnGubun" codecolumn="value" datacolumn="value" left="51.04%" top="312" right="37.6%" height="28" style="background:transparent;"/>
+        <Static id="inOutApplyStc" taborder="25" text="입퇴사자적용" left="73.44%" top="280" right="16.96%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="hireInsurStc" taborder="26" text="고용보험(임금)" left="73.44%" top="312" right="16.96%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="inOutApplyCombo" taborder="27" innerdataset="dsInOutApply" codecolumn="value" datacolumn="value" left="83.68%" top="280" right="4.96%" height="28" style="background:transparent;"/>
+        <Static id="divStc" taborder="28" text="분류항목" left="40.8%" top="364" right="49.6%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Button id="addPayDaduSectBtn" taborder="29" onclick="addPayDaduSectBtn_onclick" cssclass="addPayDaduSectBtn" left="89.84%" top="579" right="7.6%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addPayDaduSectBtn"/>
+        <Button id="delPayDaduSectBtn" taborder="30" onclick="delPayDaduSectBtn_onclick" cssclass="delPayDaduSectBtn" left="92.4%" top="579" right="5.04%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delPayDaduSectBtn"/>
+        <Edit id="taxTypeNmEd" taborder="31" left="51.04%" top="216" right="37.76%" height="30"/>
+        <Button id="searchTaxTypeBtn" taborder="32" onclick="searchTaxTypeBtn_onclick" cssclass="searchTaxTypeBtn" left="62.32%" top="216" right="35.12%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchTaxTypeBtn"/>
+        <Grid id="paymDeducGrid" taborder="33" binddataset="dsPayDedu" useinputpanel="false" autofittype="col" oncellclick="paymDeducGrid_oncellclick" left="3.44%" top="144" right="64.72%" height="501">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="코드"/>
+                <Cell col="1" text="항목명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:paymDeducCd"/>
+                <Cell col="1" text="bind:paymDeducNm" combodataset="dsHangmok" combocodecol="paymDeducNm" combodatacol="paymDeducNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="paymDeducSectGrid" taborder="34" binddataset="dsPayDeduSect" useinputpanel="false" autofittype="col" onkeydown="paymDeducSectGrid_onkeydown" left="40.88%" top="396" right="5.12%" height="180">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="분류구분코드명"/>
+                <Cell col="1" text="분류코드"/>
+                <Cell col="2" text="분류명"/>
+                <Cell col="3" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:divSectCdNm"/>
+                <Cell col="1" edittype="none" text="bind:divCd"/>
+                <Cell col="2" edittype="normal" text="bind:divNm"/>
+                <Cell col="3" displaytype="number" edittype="normal" text="bind:amt" mask="###,###"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="hireInsurEd" taborder="35" left="83.68%" top="312" right="5.12%" height="30"/>
+        <Button id="deducBatchBtn" taborder="36" onclick="deducBatchBtn_onclick" cssclass="deducBatchBtn" left="62.08%" top="706" right="29.12%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="deducBatchBtn"/>
+        <Button id="dlineBtn" taborder="37" onclick="dlineBtn_onclick" cssclass="dlineBtn" left="71.36%" top="706" right="21.44%" height="32" style="background:@gradation URL('img::dLineBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="dlineBtn"/>
+        <Button id="dlineCancelBtn" taborder="38" onclick="dlineCancelBtn_onclick" cssclass="dlineCancelBtn" left="79.04%" top="706" right="12.16%" height="32" style="background:@gradation URL('img::dLineXBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="dlineCancelBtn"/>
+        <Button id="payDeduCancelBtn" taborder="39" onclick="payDeduCancleBtn_onclick" cssclass="payDeduCancelBtn" left="88.32%" top="706" right="4.48%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="payDeduCancelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findPayDeduList</Col>
+            <Col id="URL">erp47::hrs/salBase/findPayDeduList.do</Col>
+            <Col id="outData">dsPayDedu=dsPayDedu dsPayDeduSect=dsPayDeduSect</Col>
+            <Col id="callbackFunc">findPayDeduListCB</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">magam</Col>
+            <Col id="URL">erp47::hrs/salBase/magam.do</Col>
+            <Col id="inData">dsPayDedu=dsPayDedu dsPayDeduSect=dsPayDeduSect</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">magamCancel</Col>
+            <Col id="URL">erp47::hrs/salBase/magamCancel.do</Col>
+            <Col id="inData">dsPayDedu=dsPayDedu dsPayDeduSect=dsPayDeduSect</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchPayDeduProcess</Col>
+            <Col id="URL">erp47::hrs/salBase/batchPayDeduProcess.do</Col>
+            <Col id="inData">dsPayDedu=dsPayDedu:u dsPayDeduSect=dsPayDeduSect:u</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSalGubun" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">급여</Col>
+          </Row>
+          <Row>
+            <Col id="value">상여</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPayDeduGubun" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">지급</Col>
+          </Row>
+          <Row>
+            <Col id="value">공제</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsTaxGubun" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">과세</Col>
+          </Row>
+          <Row>
+            <Col id="value">비과세</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsApplyItem" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">환경등록적용</Col>
+          </Row>
+          <Row>
+            <Col id="value">정상적용</Col>
+          </Row>
+          <Row>
+            <Col id="value">일할적용</Col>
+          </Row>
+          <Row>
+            <Col id="value">미지급</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMonthSal" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">포함</Col>
+          </Row>
+          <Row>
+            <Col id="value">제외</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsYnGubun" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">분류</Col>
+          </Row>
+          <Row>
+            <Col id="value">무분류</Col>
+            <Col id="code"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsInOutApply" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">환경등록적용</Col>
+          </Row>
+          <Row>
+            <Col id="value">정상적용</Col>
+          </Row>
+          <Row>
+            <Col id="value">일할적용</Col>
+          </Row>
+          <Row>
+            <Col id="value">미지급</Col>
+          </Row>
+          <Row>
+            <Col id="value">미지급(입사자만)</Col>
+          </Row>
+          <Row>
+            <Col id="value">미지급(퇴사자만)</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPayDedu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="salDiv" type="STRING" size="256"/>
+          <Column id="paymDeducDiv" type="STRING" size="256"/>
+          <Column id="belongYear" type="STRING" size="256"/>
+          <Column id="taxDiv" type="STRING" size="256"/>
+          <Column id="probationApply" type="STRING" size="256"/>
+          <Column id="inOutApply" type="STRING" size="256"/>
+          <Column id="monthSal" type="STRING" size="256"/>
+          <Column id="hireInsur" type="STRING" size="256"/>
+          <Column id="divYn" type="STRING" size="256"/>
+          <Column id="paymDeducCd" type="STRING" size="256"/>
+          <Column id="divSectCd" type="STRING" size="256"/>
+          <Column id="dicSectNm" type="STRING" size="256"/>
+          <Column id="dline" type="STRING" size="256"/>
+          <Column id="paymDeducNm" type="STRING" size="256"/>
+          <Column id="taxType" type="STRING" size="256"/>
+          <Column id="calFormula" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPayDeduSect" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="paymDeducCd" type="STRING" size="256"/>
+          <Column id="paymDeducNm" type="STRING" size="256"/>
+          <Column id="divSectCd" type="STRING" size="256"/>
+          <Column id="divSectCdNm" type="STRING" size="256"/>
+          <Column id="divCd" type="STRING" size="256"/>
+          <Column id="divNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsHangmok" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="paymDeducNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="paymDeducNm">기본급</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">상여</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">자격수당</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">연장근로수당</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">식대보조비</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">야간근로수당</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">국민연금</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">건강보험</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">고용보험</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">장기요양보험료</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">소득세</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">주민세</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">농특세</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">사우회비</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">교통비</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">퇴직충당금</Col>
+          </Row>
+          <Row>
+            <Col id="paymDeducNm">상여</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.calFormulaTextArea" propid="value" datasetid="dsPayDedu" columnid="calFormula"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 인사 지급/공제항목 등록 관리                          			*
+*                                                                   *
+* @Path		    지급/공제항목 등록      							*
+* @Description  지급/공제항목 등록과 세부 설정을 할 수 있다.	*
+* @Author		  					                        		*
+* 								                                    *
+* Created on 2016. 10. 02                             		        *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonScripts.xjs";
+
+this.searchPaydayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var salDiv = this.salCombo.text;
+	var payDeduDiv = this.deducCombo.text;	
+	var year = this.yearSpin.text;
+	
+	this.dsService.setColumn(0,4,"salDiv="+salDiv+" payDeduDiv="+payDeduDiv+" year="+year);
+	this.gfnService("findPayDeduList", false);
+	
+	var paymDeducCd = this.dsPayDedu.getColumn(0,"paymDeducCd");
+	this.dsPayDeduSect.filter(this.gfnLike("paymDeducCd", paymDeducCd));
+	
+	this.setValue(0);
+}
+
+this.findPayDeduListCB = function(svcID, errorCode, errorMsg){
+	if (errorCode < 1) {
+		trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+		this.gfnErrorPopup(svcID, errorMsg);
+	} else {
+		// 트랜잭션 완료
+		trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+		var dline = this.dsPayDedu.getColumn(this.paymDeducGrid.currentrow,"dline");
+		if(this.dsPayDedu.getRowCount() == 0){
+			alert("등록된 지급/공제 항목이 없습니다.");
+		}
+		
+		//해당연월의 지급공제항목이 마감되지 않은 상태
+		if( dline == 0 || dline == null){ 		
+			var code=true;
+			this.setBoolean(code);
+		}else{
+			var code=false;
+			this.setBoolean(code);
+		}
+	}
+}
+
+//버튼비활성화여부
+this.setBoolean=function(code){ 
+	this.taxCombo.set_enable(code); 					//과세구분	
+	this.taxTypeNmEd.set_enable(code); 					//과세유형
+	this.searchTaxTypeBtn.set_enable(code);  			//과세유형버튼
+	this.probationApplyCombo.set_enable(code);  		//수습적용
+	this.monthSalCombo.set_enable(code);				//월정급여
+	this.divYnCombo.set_enable(code);					//분류여부
+	this.inOutApplyCombo.set_enable(code);				//입퇴사자적용
+	this.hireInsurEd.set_enable(code);					//고용보험
+	this.dlineBtn.set_enable(code);
+	this.addPayDaduSectBtn.set_enable(code);
+	this.delPayDaduSectBtn.set_enable(code);
+	this.paymDeducSectGrid.set_enable(code);
+	this.addPayDaduBtn.set_enable(code);
+	this.delPayDaduBtn.set_enable(code);
+	this.deducBatchBtn.set_enable(code);	
+}
+
+this.paymDeducGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	if(e.keycode!=113){	
+		if(this.dsPayDedu.getColumn(e.row, "paymDeducCd") == null){
+			if(this.deducCombo.text == "지급"){
+					this.gfnCodePopup("HS001");	
+			}else if(this.deducCombo.text == "공제"){				
+				this.gfnCodePopup("HS002");
+			}
+		}
+	}
+}
+
+//과세구분에 따른 활성화여부
+this.taxCombo_oncloseup = function(obj:Combo, e:nexacro.ComboCloseUpEventInfo){
+	if(this.taxCombo.text == "비과세"){
+		this.searchTaxTypeBtn.set_enable(true);
+	}else{
+		this.searchTaxTypeBtn.set_enable(false);
+	}
+}
+
+//과세유형선택
+this.searchTaxTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	//수당구분
+	this.gfnCodePopup("GP127");
+}
+
+//payDedu add
+this.addPayDaduBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(this.salCombo.text == "" && this.deducCombo.text == ""){
+		alert("조회 후 추가 하십시오.");
+	}else{
+		var aRow = this.dsPayDedu.addRow();
+		this.dsPayDedu.setColumn(aRow,"salDiv",this.salCombo.text);
+		this.dsPayDedu.setColumn(aRow,"paymDeducDiv",this.deducCombo.text);
+		this.dsPayDedu.setColumn(aRow,"belongYear",this.yearSpin.text);	
+	}
+}
+
+//코드셋팅
+this.setCode=function(code,arr){ 
+	if(code == "GP127"){
+		this.taxTypeNmEd.set_value(arr[0]+" "+arr[1]);
+	}else if(code == "HS003"){
+		this.dsPayDedu.setColumn(this.dsPayDedu.rowposition,"divSectCd",arr[0]);
+		this.dsPayDedu.setColumn(this.dsPayDedu.rowposition,"divSectCdNm",arr[1]);
+		this.dsPayDeduSect.setColumn(this.dsPayDeduSect.rowposition,"divSectCd",arr[0]);
+		this.dsPayDeduSect.setColumn(this.dsPayDeduSect.rowposition,"divSectCdNm",arr[1]);
+	}else if(code == "GP025"){
+		this.dsPayDedu.setColumn(this.dsPayDedu.rowposition,"divCd",arr[0]);
+		this.dsPayDedu.setColumn(this.dsPayDedu.rowposition,"divNm",arr[1]);	
+		this.dsPayDeduSect.setColumn(this.dsPayDeduSect.rowposition,"divCd",arr[0]);
+		this.dsPayDeduSect.setColumn(this.dsPayDeduSect.rowposition,"divNm",arr[1]);
+	}else{
+		this.dsPayDedu.setColumn(this.dsPayDedu.rowposition,"paymDeducCd",arr[0]);
+		this.dsPayDedu.setColumn(this.dsPayDedu.rowposition,"paymDeducNm",arr[1]);
+	}
+}
+
+//값셋팅
+this.setValue=function(row){ 
+	this.taxCombo.set_value(this.dsPayDedu.getColumn(row, "taxDiv")); 							//과세구분
+	this.taxTypeNmEd.set_value(this.dsPayDedu.getColumn(row, "taxType"));						//과세유형
+	this.probationApplyCombo.set_value(this.dsPayDedu.getColumn(row, "probationApply"));  		//수습적용
+	this.monthSalCombo.set_value(this.dsPayDedu.getColumn(row, "monthSal"));					//월정급여
+	this.divYnCombo.set_value(this.dsPayDedu.getColumn(row, "divYn"));							//분류여부
+	this.inOutApplyCombo.set_value(this.dsPayDedu.getColumn(row, "inOutApply"));				//입퇴사자적용
+	this.hireInsurEd.set_value(this.dsPayDedu.getColumn(row, "hireInsur"));						//고용보험		
+}
+
+//payDedu del
+this.delPayDaduBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsPayDedu.deleteRow(this.paymDeducGrid.currentrow);
+}
+
+//구분그리드추가
+this.addPayDaduSectBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var divYn=this.divYnCombo.value;
+	if(this.salCombo.text == "" && this.deducCombo.text == ""){
+		alert("조회 후 추가 하십시오.");
+	}else if(divYn!="분류"){
+		alert("무분류항목입니다.");
+	}else{
+		this.dsPayDeduSect.addRow();
+		var paymDeducCd = this.dsPayDedu.getColumn(this.paymDeducGrid.currentrow,"paymDeducCd");
+		var paymDeducNm = this.dsPayDedu.getColumn(this.paymDeducGrid.currentrow,"paymDeducNm");
+		
+		this.dsPayDeduSect.setColumn(this.paymDeducSectGrid.currentrow,"paymDeducCd",paymDeducCd);
+		this.dsPayDeduSect.setColumn(this.paymDeducSectGrid.currentrow,"paymDeducNm",paymDeducNm);		
+	}
+}
+
+//구분그리드삭제
+this.delPayDaduSectBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsPayDeduSect.deleteRow(this.paymDeducSectGrid.currentrow);
+}
+
+//구분그리드 코드팝업
+this.paymDeducSectGrid_onkeydown = function(obj:Grid, e:nexacro.KeyEventInfo){
+	var col=this.paymDeducSectGrid.getCellPos();
+	if(col == 0){
+		//지급공제분류구분
+		this.gfnCodePopup("HS003");
+	}else if(col == 1 || col == 2){
+		//자격/면허코드
+		this.gfnCodePopup("GP025");
+	}
+}
+
+//일괄처리
+this.deducBatchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("일괄처리 하시겠습니까?")){
+		this.dsPayDedu.setColumn(this.paymDeducGrid.currentrow,"taxDiv",this.taxCombo.text);
+		this.dsPayDedu.setColumn(this.paymDeducGrid.currentrow,"taxType",this.taxTypeNmEd.text);
+		this.dsPayDedu.setColumn(this.paymDeducGrid.currentrow,"probationApply",this.probationApplyCombo.text);
+		this.dsPayDedu.setColumn(this.paymDeducGrid.currentrow,"monthSal",this.monthSalCombo.text);
+		this.dsPayDedu.setColumn(this.paymDeducGrid.currentrow,"divYn",this.divYnCombo.text);
+		this.dsPayDedu.setColumn(this.paymDeducGrid.currentrow,"inOutApply",this.inOutApplyCombo.text);
+		this.dsPayDedu.setColumn(this.paymDeducGrid.currentrow,"hireInsur",this.hireInsurEd.text);
+	
+		if(this.deducCombo.text == "지급"){
+			if(this.taxCombo.text == ""){
+				alert("과세구분을 설정한 후 진행할 수 있습니다.");
+			}else{
+				this.gfnService("batchPayDeduProcess");
+			}
+		}else{
+			this.gfnService("batchPayDeduProcess");
+		}
+	}
+}
+
+//마감
+this.dlineBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("변경된 정보를 저장 후 마감등록 하여주십시오.")){
+		if(confirm("해당연월에 등록된 지급/공제항목에 대한 마감을 등록하시겠습니까?")){
+			this.gfnService("magam");
+		}
+	}
+}
+
+//마감취소
+this.dlineCancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("해당연월에 등록된 지급/공제항목에 대한 마감을 취소하시겠습니까?")){
+		this.gfnService("magamCancel");
+	}
+}
+
+//취소
+this.payDeduCancleBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("작성중인 데이터는 저장되지 않습니다. 취소하시겠습니까?")){
+		this.reload();
+	}
+}
+
+//계산식변경팝업
+this.Div00_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("HS_CalFormulaPopupForm","hrs","","");
+}
+]]></Script>
+  </Form>
+</FDL>

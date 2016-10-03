@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.hrs.salBase.applicationService.HobongApplicationService;
+import com.seoulit.erp47.hrs.salBase.applicationService.PayDeduApplicationService;
 import com.seoulit.erp47.hrs.salBase.to.HobongBean;
 import com.seoulit.erp47.hrs.salBase.to.HobongHistoryBean;
 import com.seoulit.erp47.hrs.salBase.to.JobBean;
+import com.seoulit.erp47.hrs.salBase.to.PayDeduBean;
+import com.seoulit.erp47.hrs.salBase.to.PayDeduSectBean;
 
 /**
  * @Package  com.seoul.his.hrs.salBase.service
@@ -27,14 +30,16 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
 	@Autowired
     public  HobongApplicationService  hobongApplicationService;
     
+	@Autowired
+    public  PayDeduApplicationService  payDeduApplicationService;
+	
     /*@Autowired
     public  IncomeTaxSetApplicationService  incomeTaxSetApplicationService;
     
     @Autowired
     public  PaydayApplicationService  paydayApplicationService;
     
-    @Autowired
-    public  PayDeduApplicationService  payDeduApplicationService;
+    
     
     @Autowired
     public  SalStandardSetApplicationService  salStandardSetApplicationService;
@@ -65,6 +70,32 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
     @Override
     public void batchHobongHisProcess(List<HobongHistoryBean> hobongHisList) {
         hobongApplicationService.batchHobongHisProcess(hobongHisList);
+    }
+    
+    //지급공제항목설정
+    @Override
+    public List<PayDeduBean> findPayDeduList(Map<String, String> argsMap) {
+        return payDeduApplicationService.findPayDeduList(argsMap);
+    }
+
+    @Override
+    public void magamCancel(List<PayDeduBean> payDeduList) {
+        payDeduApplicationService.magamCancel(payDeduList);
+    }
+
+    @Override
+    public void magam(List<PayDeduBean> payDeduList) {
+        payDeduApplicationService.magam(payDeduList);
+    }
+
+    @Override
+    public void batchPayDeduProcess(List<PayDeduBean> payDeduList) {
+        payDeduApplicationService.batchPayDeduProcess(payDeduList);
+    }
+
+    @Override
+    public void batchPayDeduSectProcess(List<PayDeduSectBean> payDeduSectList) {
+        payDeduApplicationService.batchPayDeduSectProcess(payDeduSectList);
     }
  /*   
      소득세액공제설정 
@@ -109,31 +140,7 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
         paydayApplicationService.batchPaydayProcess(paydayList);
     }
 
-    지급공제항목설정
-    @Override
-    public List<PayDeduBean> findPayDeduList(Map<String, String> argsMap) {
-        return payDeduApplicationService.findPayDeduList(argsMap);
-    }
-
-    @Override
-    public void magamCancel(List<PayDeduBean> payDeduList) {
-        payDeduApplicationService.magamCancel(payDeduList);
-    }
-
-    @Override
-    public void magam(List<PayDeduBean> payDeduList) {
-        payDeduApplicationService.magam(payDeduList);
-    }
-
-    @Override
-    public void batchPayDeduProcess(List<PayDeduBean> payDeduList) {
-        payDeduApplicationService.batchPayDeduProcess(payDeduList);
-    }
-
-    @Override
-    public void batchPayDeduSectProcess(List<PayDeduSectBean> payDeduSectList) {
-        payDeduApplicationService.batchPayDeduSectProcess(payDeduSectList);
-    }
+    
     
      사회보험설정 
     @Override

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HS_CalFormulaForm" classname="HS_CalFormulaForm" left="0" top="0" width="1250" height="768" titletext="급여 계산식" onload="HS_CalFormulaForm_onload">
+  <Form id="HS_CalFormulaForm" classname="HS_CalFormulaForm" left="0" top="0" width="1024" height="768" titletext="급여 계산식" onload="HS_CalFormulaForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="2" left="0%" top="8" right="1.12%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
@@ -69,35 +69,35 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Static id="Static00" taborder="1" text="급여계산식" left="4.8%" top="4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Static id="Static00" taborder="1" text="급여계산식" left="4.79%" top="4" right="79.49%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
         <Div id="CalculatorDiv" taborder="22" left="85.04%" top="348" right="0.72%" height="177" style="background:transparent;">
           <Layouts>
             <Layout>
-              <Button id="Button00" taborder="0" text="(" left="1.12%" top="4" right="76.97%" height="33"/>
-              <Button id="Button01" taborder="1" text=")" left="23.6%" top="4" right="54.49%" height="33"/>
-              <Button id="Button02" taborder="2" text="CLEAR" left="46.07%" top="4" right="9.55%" height="33"/>
-              <Button id="Button03" taborder="3" text="2" left="1.12%" top="38" right="76.97%" height="33"/>
-              <Button id="Button04" taborder="4" text="8" left="23.6%" top="38" right="54.49%" height="33"/>
-              <Button id="Button05" taborder="5" text="9" left="46.07%" top="38" right="32.02%" height="33"/>
-              <Button id="Button06" taborder="6" text="/" left="68.54%" top="38" right="9.55%" height="33"/>
-              <Button id="Button07" taborder="7" text="4" left="1.12%" top="72" right="76.97%" height="33"/>
-              <Button id="Button08" taborder="8" text="5" left="23.6%" top="72" right="54.49%" height="33"/>
-              <Button id="Button09" taborder="9" text="6" left="46.07%" top="72" right="32.02%" height="33"/>
-              <Button id="Button10" taborder="10" text="*" left="68.54%" top="72" right="9.55%" height="33"/>
-              <Button id="Button11" taborder="11" text="1" left="1.12%" top="106" right="76.97%" height="33"/>
-              <Button id="Button12" taborder="12" text="2" left="23.6%" top="106" right="54.49%" height="33"/>
-              <Button id="Button13" taborder="13" text="3" left="46.07%" top="106" right="32.02%" height="33"/>
-              <Button id="Button14" taborder="14" text="-" left="68.54%" top="106" right="9.55%" height="33"/>
-              <Button id="Button15" taborder="15" text="+" left="68.54%" top="140" right="9.55%" height="33"/>
-              <Button id="Button16" taborder="16" text="." left="46.07%" top="140" right="32.02%" height="33"/>
-              <Button id="Button17" taborder="17" text="0" left="1.12%" top="140" right="54.49%" height="33"/>
+              <Button id="Button00" taborder="0" text="(" left="1.12%" top="4" right="76.97%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button01" taborder="1" text=")" left="23.6%" top="4" right="54.49%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="clearBtn" taborder="2" text="CLEAR" left="46.07%" top="4" right="9.55%" height="33" onclick="CalculatorDiv_clearBtn_onclick"/>
+              <Button id="Button03" taborder="3" text="2" left="1.12%" top="38" right="76.97%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button04" taborder="4" text="8" left="23.6%" top="38" right="54.49%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button05" taborder="5" text="9" left="46.07%" top="38" right="32.02%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button06" taborder="6" text="/" left="68.54%" top="38" right="9.55%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button07" taborder="7" text="4" left="1.12%" top="72" right="76.97%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button08" taborder="8" text="5" left="23.6%" top="72" right="54.49%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button09" taborder="9" text="6" left="46.07%" top="72" right="32.02%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button10" taborder="10" text="*" left="68.54%" top="72" right="9.55%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button11" taborder="11" text="1" left="1.12%" top="106" right="76.97%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button12" taborder="12" text="2" left="23.6%" top="106" right="54.49%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button13" taborder="13" text="3" left="46.07%" top="106" right="32.02%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button14" taborder="14" text="-" left="68.54%" top="106" right="9.55%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button15" taborder="15" text="+" left="68.54%" top="140" right="9.55%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button16" taborder="16" text="." left="46.07%" top="140" right="32.02%" height="33" onclick="CalculatorDiv_Button_onclick"/>
+              <Button id="Button17" taborder="17" text="0" left="1.12%" top="140" right="54.49%" height="33" onclick="CalculatorDiv_Button_onclick"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div00" taborder="23" left="1.36%" top="353" right="15.68%" height="42" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+        <Div id="nomalDiv" taborder="23" left="1.36%" top="353" right="15.68%" height="42" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
             <Layout>
-              <Edit id="empNoEdt" taborder="17" left="9.47%" top="6" right="3.57%" height="29" class="AreaEdt"/>
+              <Edit id="nomalEdt" taborder="17" left="9.45%" top="6" right="1.65%" height="29" class="AreaEdt"/>
             </Layout>
           </Layouts>
         </Div>
@@ -106,20 +106,20 @@
         <Div id="Div01" taborder="26" left="1.36%" top="433" right="15.68%" height="89" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
             <Layout>
-              <Edit id="empNoEdt" taborder="0" left="9.47%" top="6" right="3.57%" height="29" class="AreaEdt"/>
-              <Static id="Static00" taborder="1" text="조건" left="6.09%" top="10" right="91.4%" height="23" style="font:bold 9 돋움;"/>
-              <Static id="Static01" taborder="2" text="만족할때" left="3.57%" top="48" right="91.4%" height="23" style="font:bold 9 돋움;"/>
-              <Edit id="empNoEdt00" taborder="3" left="9.47%" top="44" right="56.81%" height="29" class="AreaEdt"/>
-              <Static id="Static02" taborder="4" text="만족 하지 않을때" left="45.41%" top="48" right="44.15%" height="23" style="font:bold 9 돋움;"/>
-              <Edit id="empNoEdt01" taborder="5" left="55.85%" top="44" right="3.57%" height="29" class="AreaEdt"/>
+              <Edit id="empNoEdt" taborder="0" left="9.45%" top="6" right="1.77%" height="29" class="AreaEdt"/>
+              <Static id="Static00" taborder="1" text="조건" left="5.19%" top="10" right="91.26%" height="23" style="font:bold 9 돋움;"/>
+              <Static id="Static01" taborder="2" text="만족할때" left="2.6%" top="48" right="89.49%" height="23" style="font:bold 9 돋움;"/>
+              <Edit id="empNoEdt00" taborder="3" left="9.45%" top="44" right="56.79%" height="29" class="AreaEdt"/>
+              <Static id="Static02" taborder="4" text="만족 하지 않을때" left="45.45%" top="48" right="42.38%" height="23" style="font:bold 9 돋움;"/>
+              <Edit id="empNoEdt01" taborder="5" left="57.73%" top="44" right="1.65%" height="29" class="AreaEdt"/>
             </Layout>
           </Layouts>
         </Div>
         <Static id="subCodeStc01" taborder="27" text="최종 계산식" onclick="subCodeStc_onclick" left="1.36%" top="557" right="91.36%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Div id="Div02" taborder="28" left="1.36%" top="585" right="15.68%" height="100" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+        <Div id="resultDiv" taborder="28" left="1.36%" top="585" right="15.68%" height="100" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
             <Layout>
-              <Edit id="empNoEdt" taborder="0" left="0.48%" top="6" right="0.58%" height="87" class="AreaEdt"/>
+              <Edit id="resultEdt" taborder="0" left="0.48%" top="6" right="0.58%" height="87" class="AreaEdt"/>
             </Layout>
           </Layouts>
         </Div>
@@ -137,6 +137,7 @@
             </Layout>
           </Layouts>
         </Div>
+        <Button id="OkBtn" taborder="30" cssclass="OkBtn" left="75.49%" top="693" right="15.72%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="OkBtn_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -176,7 +177,7 @@
     </Objects>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************
 *                                                                               *
-* 일근퇴 관리                                                              	*
+* 급여계산식설정                                                              *
 *                                                                               *
 * @Path		    hrs-HS_CalFormulaForm                          	                *
 * @Description  급여계산식설정 	                      		   	            *
@@ -187,6 +188,9 @@
 ********************************************************************************/
 
 include "scripts::commonScripts.xjs";
+
+var nomal="";
+var result="";
 
 this.HS_CalFormulaForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
@@ -202,7 +206,43 @@ this.itemTab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
 
 this.itemTab_itemGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	alert(e.row);
+	var itemCode = obj.getCellValue(e.row,0); //코드
+	var itemNm = obj.getCellValue(e.row,1); //명칭
+	
+	nomal = nomal + itemCode;
+	result = result + itemNm;
+	
+	this.nomalDiv.nomalEdt.set_value(nomal);
+	this.resultDiv.resultEdt.set_value(result);
+}
+
+this.CalculatorDiv_clearBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.nomalDiv.nomalEdt.set_value("");
+	this.resultDiv.resultEdt.set_value("");
+	nomal="";
+	result="";
+}
+
+this.CalculatorDiv_Button_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var btnText=obj.text;
+	
+	nomal = nomal+btnText;
+	result = result+btnText;
+	this.nomalDiv.nomalEdt.set_value(nomal);
+	this.resultDiv.resultEdt.set_value(result);
+
+	
+
+}
+
+
+
+this.OkBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{ 
+	this.opener.Div00.calFormulaTextArea.set_value(result);
+	this.close();
 }
 ]]></Script>
   </Form>
