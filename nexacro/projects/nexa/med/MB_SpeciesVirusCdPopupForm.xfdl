@@ -72,7 +72,11 @@ include "scripts::commonScripts.xjs";
 
 this.searchDiseaseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.dsService.setColumn(0, "argument", "bacgencd=" + this.codeEd.value + " bacgennm=" + this.codeNmEd.value);
+var code = this.codeEd.value; //균속코드
+var codeNm = this.codeNmEd.value; //균속명
+
+
+	this.dsService.setColumn(0, "argument", "bacgencd=" + code + " bacgennm=" +codeNm);
 	
 	this.gfnService("findSpeciesVirusList");
 }
