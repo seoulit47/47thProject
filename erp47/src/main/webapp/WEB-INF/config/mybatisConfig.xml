@@ -42,6 +42,7 @@
 	<package name="com.seoulit.erp47.acc.resol.to" />
 	<package name="com.seoulit.erp47.acc.vat.to" />
 	<package name="com.seoulit.erp47.acc.slip.to" />
+	<package name="com.seoulit.erp47.acc.closing.to" />
 
     <!-- 원무 -->
     <package name="com.seoulit.erp47.won.outPatMgt.to" />	  

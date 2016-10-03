@@ -40,13 +40,11 @@ public class ClinspeReceiptController {
 		PlatformData inData = (PlatformData)request.getAttribute("inData");
 	    PlatformData outData = (PlatformData)request.getAttribute("outData");
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-		System.out.println("타긴타나3??");
     	List<ClinspeReceiptBean> clinspeReceiptBeanList = laboratoryMedicineServiceFacade.findClinspeReceiptList(argsMap);
-    	System.out.println("타긴타나4??");
     	dataSetBeanMapper.beansToDataset(outData, clinspeReceiptBeanList, ClinspeReceiptBean.class);
 	}
 
-	/*// 검체접수 일괄처리
+	// 검체접수 일괄처리
 	@RequestMapping("sup/laboratoryMedicine/batchClinspeReceiptProcess.do")
 	public void batchClinspeReceiptProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData)request.getAttribute("inData");
@@ -54,5 +52,5 @@ public class ClinspeReceiptController {
 		List<ClinspeReceiptBean> clinspeReceiptBeanList = dataSetBeanMapper.datasetToBeans(inData, ClinspeReceiptBean.class);
 		laboratoryMedicineServiceFacade.batchClinspeReceiptProcess(clinspeReceiptBeanList);
 		dataSetBeanMapper.beanToDataset(outData, new ClinspeReceiptBean(), ClinspeReceiptBean.class);
-	}*/
+	}
 }

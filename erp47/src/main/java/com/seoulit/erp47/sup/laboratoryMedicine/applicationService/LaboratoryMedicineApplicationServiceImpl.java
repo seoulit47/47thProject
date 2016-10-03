@@ -66,7 +66,7 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 		return clinspeReceiptDAO.selectClinspeReceiptList(argsMap);
 	}
 	
-	/*// 검체접수 일괄처리 
+	// 검체접수 일괄처리 
 	@Override
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList){
 		for(ClinspeReceiptBean clinspeReceiptBean : clinspeReceiptBeanList){
@@ -82,5 +82,5 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 				                     break; }
 			}	
 		}
-	}*/
+	}
 }
