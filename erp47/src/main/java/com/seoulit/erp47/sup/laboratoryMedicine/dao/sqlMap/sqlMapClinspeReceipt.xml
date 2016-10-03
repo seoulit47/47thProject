@@ -34,7 +34,7 @@
              </trim>   
     </select>
     
-  <!-- <insert id="insertClinspeReceipt" parameterType="ClinspeReceiptBean">
+  <insert id="insertClinspeReceipt" parameterType="ClinspeReceiptBean">
         INSERT 
           INTO SL_CLINSPE_RECEIPT
                ( 
@@ -93,6 +93,6 @@
         DELETE 
           FROM SL_CLINSPE_RECEIPT_CANCEL 
          WHERE CLINSPE_NO=#{clinspeNo}
-    </delete> -->
+    </delete>
  
 </mapper>

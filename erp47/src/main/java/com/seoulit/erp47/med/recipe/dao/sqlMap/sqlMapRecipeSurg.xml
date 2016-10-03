@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.med.recipe.dao.RecipeDAO">
+
+
+
+<select id="findSurgList" parameterType="map" resultType="SurgCdBean">
+
+SELECT CODE ,CODE_DETAIL ,CODE_RANGE ,SURG_NM ,SURG_NAME 
+FROM MP_SURG_CD
+<trim prefix="WHERE" prefixOverrides="AND">
+
+		<if test="rage != null">
+		
+			AND CODE_RANGE =#{rage}
+		</if>
+		<if test="surgName != null">
+		
+			AND SURG_NAME =#{surgName}
+		</if>
+
+</trim>
+
+</select>
+
+
+</mapper>
