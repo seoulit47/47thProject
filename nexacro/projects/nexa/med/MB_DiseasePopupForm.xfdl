@@ -129,14 +129,17 @@
 상병 조회화면                                           						                                                                         
 @Path			진료처방 공통(Medication Base)              				   				
 @Description	상병 조회 다이얼로그						
-@Author	  						    			                        								                                            
-@Create                                  		                    				                                            
+@Author	  		mickey				    			                        								                                            
+@Create         2016  -  10 - 03                 		                    				                                            
 ********************************************************************************/
 include "scripts::commonScripts.xjs";  
 
 this.searchDiseaseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
-{
-	this.dsService.setColumn(0, 4, "pCode=" + this.pCodeCombo.value + " codeNm=" + this.diseaseNmEd.value);
+{  
+	var pCode = this.pCodeCombo.value;
+	var codeNm = this.diseaseNmEd.value;
+
+	this.dsService.setColumn(0, 4, "pCode=" + pCode + " codeNm=" + codeNm);
 	
 	this.gfnService("findDiseaseList");
 }

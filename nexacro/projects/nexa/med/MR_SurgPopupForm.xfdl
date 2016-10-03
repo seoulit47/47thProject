@@ -113,7 +113,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">findMpSurgCdList</Col>
-            <Col id="inData">dsSearchCondition=dsSearchCondition</Col>
+            <Col id="inData"></Col>
             <Col id="URL">erp47::med/recipe/findMpSurgCdList.do</Col>
             <Col id="outData">dsMpSurgCd=dsMpSurgCd</Col>
             <Col id="callbackFunc"/>
@@ -139,25 +139,16 @@ include "scripts::commonBind.xjs";
 // 조회
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.dsSearchCondition.deleteAll();
+
 	
 	var rage = this.rangeCombo.value;
 	var name = this.surgName.value;
-	if(rage != null){
-		var row1 = this.dsSearchCondition.addRow();
-		this.dsSearchCondition.setColumn(row1,"tableName","MP_SURG_CD");
-		this.dsSearchCondition.setColumn(row1,"columnName","CODE_RANGE");
-		this.dsSearchCondition.setColumn(row1,"columnValue", rage);
-		this.dsSearchCondition.setColumn(row1,"operator","=");
-	}
+
+	//this.dsMpSurgCd.setColumn(0,"codeRange",rage);
+	//this.dsMpSurgCd.setColumn(0,"surgName",name);
 	
-	if(name != null){
-		var row2 = this.dsSearchCondition.addRow();
-		this.dsSearchCondition.setColumn(row2,"tableName","MP_SURG_CD");
-		this.dsSearchCondition.setColumn(row2,"columnName","SURG_NAME");
-		this.dsSearchCondition.setColumn(row2,"columnValue", "%"+name+"%");
-		this.dsSearchCondition.setColumn(row2,"operator","LIKE");
-	}
+	this.dsService.setColumn(0,"argument","rage='"+rage+"' surgName='"+name+"'");
+	
 	
 	this.gfnService("findMpSurgCdList");
 }
