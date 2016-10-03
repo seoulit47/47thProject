@@ -25,7 +25,7 @@ this.hrsOpenPaydayDialog = function(belongYm, seq) {
 this.gfn_EmpPopup = function(hr){
 	application.open(
 		"empPopupForm",
-		"hrs::HM_EmpSearchPopup.xfdl",
+		"hrs::HM_EmpPopupForm.xfdl",
 		this.parent,
 		{hrs:hr},
 		"showtitlebar=true showstatusbar=false",

@@ -229,9 +229,9 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 // 코드 등록
 this.regBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	var acntNm = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "acntNm");	//계정과목명 얻기
-	var acntCd = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "acntCd");	//계정과목코드 얻기
-	var lev = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "lev");			//계정레벨 얻기
+	var acntNm = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "acntNm");				//계정과목명 얻기
+	var acntCd = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "acntCd");				//계정과목코드 얻기
+	var lev = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "lev");						//계정레벨 얻기
 	var parentAcntCd = this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition, "parentAcntCd");	//부모코드 얻기
 	//alert(parentAcntCd);
 	
@@ -248,6 +248,77 @@ this.regBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 						, 100);
 	}
 }
+
+
+//전년도 코드 복사
+this.copyBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		var year = this.yearSpin.value-1;
+	var codeCp = application.confirm(year + "년도 계정과목코드를 복사하시겠습니까?", "전년도코드복사");
+	
+	if(codeCp == true){
+		year++;
+		this.dsService.setColumn(2, "argument", "year="+year);
+		this.gfnService("lastYearAcntCopy");
+	}else{
+		return;
+	}
+}
+
+
+
+// 코드 삭제
+this.removeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		var acntNm=this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition ,"acntNm");
+	var inputYN=this.dsAccAcnt.getColumn(this.dsAccAcnt.rowposition ,"inputYn");
+	
+	if(inputYN=='N'){
+		alert("하위데이터가 있는 코드는 삭제할수 없습니다");
+	}else{
+		var codeDel=application.confirm(acntNm +" 을 삭제하시겠습니까?","코드삭제");
+		if(codeDel){
+			this.dsAccAcnt.deleteRow(this.acntGrid.currentrow);
+		}
+	}
+}
+
+
+//코드 저장
+this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchAccAcntListProcess");
+}
+
+
+
+//Callback함수
+
+this.CalbackFunc = function(serviceID,errorCode,errorMsg){
+	if(serviceID=="findAccAcnt"){
+		if(errorCode < 0){
+			alert(errorMsg+"회계계정과목을 불러오는데 실패했습니다");
+		}
+	}else if(serviceID=="batchAccAcntListProcess"){
+		if(errorCode == 0){
+			alert("회계계정과목 일괄처리를 완료했습니다.");
+			this.reload();
+			//form.reload();
+		}else if(errorCode < 0){
+			alert(errorMsg+"회계계정과목 일괄처리를 실패했습니다.");
+		}
+	}else if(serviceID=="lastYearAcntCopy"){
+		if(errorCode == 0){
+			alert("전년도 회계계정과목코드 복사 성공");
+			this.reload();
+			//form.reload();
+		}else if(errorCode < 0){
+			alert(errorMsg+"전년도 회계계정과목코드 복사 실패.")
+		}
+
+	}
+}
+
 ]]></Script>
   </Form>
 </FDL>

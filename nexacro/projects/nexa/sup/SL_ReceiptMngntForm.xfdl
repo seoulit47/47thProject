@@ -14,7 +14,7 @@
         <Combo id="receiptCombo" taborder="8" innerdataset="dsReceiptCd" codecolumn="code" datacolumn="data" left="66.16%" top="72" right="25.84%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
         <Button id="comboResetBtn" taborder="9" text="조건초기화" left="75.52%" top="73" right="18.4%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn" onclick="comboResetBtn_onclick"/>
         <Button id="searchFixedAssetMovBtn" taborder="10" cssclass="DelBtn" left="91.36%" top="72" right="1.44%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchFixedAssetMovBtn_onclick"/>
-        <Grid id="clinspeReceiptGrid" taborder="11" binddataset="dsClinspeReceipt" useinputpanel="false" autofittype="col" left="1.04%" top="110" right="1.2%" height="610">
+        <Grid id="clinspeReceiptGrid" taborder="11" binddataset="dsClinspeReceipt" useinputpanel="false" autofittype="col" left="1.04%" top="110" right="1.2%" height="610" oncellclick="clinspeReceiptGrid_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -397,7 +397,6 @@ this.batchClinspeReceiptBtn_onclick = function(obj:Button,  e:nexacro.ClickEvent
 			flag = 1;
 			break;
 		}
-		
 		if(receiptCd == "RE002"){
 			if(receiptCancelCau == null || receiptCancelDate == null){
 				flag = 2;
@@ -413,8 +412,27 @@ this.batchClinspeReceiptBtn_onclick = function(obj:Button,  e:nexacro.ClickEvent
 	}else{
 		this.gfnService("batchClinspeReceiptProcess");
 	}
-////////////////////////저장에서 아직에러남
 }
+
+//그리드 클릭 이벤트
+this.clinspeReceiptGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var selectRow = this.dsClinspeReceipt.getRowType(e.row);
+	
+		if(selectRow == 2){
+			this.clinspeReceiptGrid.set_formatid("insert");
+		}else{
+			var receiptCd = this.dsClinspeReceipt.getColumn(e.row,"receiptCd");
+			
+			if(receiptCd == "RE002"){
+					this.clinspeReceiptGrid.set_formatid("cancel");
+			}else{
+					this.clinspeReceiptGrid.set_formatid("default");
+			}
+		}
+}
+
+
 ]]></Script>
   </Form>
 </FDL>

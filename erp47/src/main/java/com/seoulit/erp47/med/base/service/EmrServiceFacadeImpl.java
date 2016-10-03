@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.med.base.applicationService.CautionApplicationSerevice;
 import com.seoulit.erp47.med.base.applicationService.EmrApplicationService;
+import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
+import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 
 /**
  * @Package  com.seoul.his.med.base.service
@@ -49,6 +51,18 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	public List<OrdBean> findOrdList(Map<String, String> argsMap) {
 		
 		return cautionApplicationService.findOrdList(argsMap);
+	}
+
+	@Override
+	public List<SpeciesVirusBean> findVirusList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return cautionApplicationService.findVirusList(argsMap);
+	}
+
+	@Override
+	public List<DiseaseBean> findDiseaseList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return emrApplicationService.findDiseaseList(argsMap);
 	}
 
 }

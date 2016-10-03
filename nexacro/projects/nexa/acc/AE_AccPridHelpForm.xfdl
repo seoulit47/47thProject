@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AccPridHelpForm" classname="AE_AccPridHelpForm" left="0" top="0" width="347" height="501" titletext="New Form" onload="AE_AccPridHelpForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div04" taborder="0" left="0%" top="0" right="0.29%" height="60" style="background:transparent URL('img::miniTitleBar6.jpg');"/>
+        <Static id="Static00" taborder="1" text="회계기수 도움" left="11.53%" top="-4" right="27.67%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="accPridGrid" taborder="2" binddataset="dsAccPrid" useinputpanel="false" autofittype="col" oncelldblclick="accPridGrid_oncelldblclick" left="4.9%" top="62" right="4.03%" height="430" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="55"/>
+                <Column size="85"/>
+                <Column size="85"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="회계기수"/>
+                <Cell col="1" text="시작일자"/>
+                <Cell col="2" text="종료일자"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:accPrid"/>
+                <Cell col="1" text="bind:startDate"/>
+                <Cell col="2" text="bind:endDate"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsAccPrid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsAccYear_onrowposchanged">
+        <ColumnInfo>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="endDate" type="STRING" size="256"/>
+          <Column id="dlineYn" type="STRING" size="256"/>
+          <Column id="dlineDate" type="STRING" size="256"/>
+          <Column id="dlineManCd" type="STRING" size="256"/>
+          <Column id="carrforYn" type="STRING" size="256"/>
+          <Column id="carrforManCd" type="STRING" size="256"/>
+          <Column id="carrforDate" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regIp" type="STRING" size="256"/>
+          <Column id="regDate" type="STRING" size="256"/>
+          <Column id="modId" type="STRING" size="256"/>
+          <Column id="modIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAccPridList</Col>
+            <Col id="URL">erp47::acc/elementary/findAccPridList.do</Col>
+            <Col id="inData">dsAccPrid=dsAccPrid</Col>
+            <Col id="outData">dsAccPrid=dsAccPrid</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+
+//폼 온로드 이벤트
+this.AE_AccPridHelpForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findAccPridList");
+}
+
+//그리드 셀 더블클릭 이벤트
+this.accPridGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array;
+	var i=0;
+
+	arrRtn[i++] = this.dsAccPrid.getColumn(e.row,"accPrid");
+	arrRtn[i++] = this.dsAccPrid.getColumn(e.row,"startDate");
+	arrRtn[i++] = this.dsAccPrid.getColumn(e.row,"endDate");
+	
+	this.opener.setArrRtn(arrRtn);
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

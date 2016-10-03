@@ -13,7 +13,7 @@ import lombok.ToString;
 /**
  * @Package  com.seoul.his.med.recipe.to
  * @Class    MpSurgCdBean.java
- * @Create   2016. 6. 10.
+ * @Create   2016. 10. 3.
  * @Author   Chun
  * @Description 수술코드 빈
  *

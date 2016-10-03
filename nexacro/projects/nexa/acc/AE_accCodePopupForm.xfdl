@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AE_accCodePopupForm" classname="AE_accCodePopupForm" left="0" top="0" width="400" height="129" titletext="New Form">
+  <Form id="AE_accCodePopupForm" classname="AE_accCodePopupForm" left="0" top="0" width="400" height="129" titletext="New Form" onload="AE_accCodePopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" text="Div00" left="1.5%" top="4" right="1.75%" height="124" style="background:#bbffbbff;color:azure;bordertype:round 5 5 ;"/>
@@ -11,5 +11,98 @@
         <Button id="closeBtn" taborder="4" text="닫  기" onclick="closeBtn_onclick" left="67.25%" top="88" right="10%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;cursor:hand;" class="ProcessBtn"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsAccAcnt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="parentAcntCd" type="STRING" size="256"/>
+          <Column id="acntDiv" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="assiTypeCd" type="STRING" size="256"/>
+          <Column id="assiTypeNm" type="STRING" size="256"/>
+          <Column id="budgYn" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="incomArtiCd" type="STRING" size="256"/>
+          <Column id="cashArtiCd" type="STRING" size="256"/>
+          <Column id="inputYn" type="STRING" size="256"/>
+          <Column id="deductYn" type="STRING" size="256"/>
+          <Column id="lev" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[var acntCd;
+var acntNm;
+var lev;
+var parentAcntCd;
+var accYear;
+
+this.AE_accCodePopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.descriptionArea.insertText(this.parent.acntNm + "을 선택하셨습니다 \n 처리방법을 선택해주세요");
+	this.dsAccAcnt.copyData(this.parent.dsAccAcnt);	//넘어온 데이터셋 복사
+	acntCd = this.parent.acntCd;
+	acntNm = this.parent.acntNm;
+	lev = this.parent.lev;
+	accYear = this.parent.accYear;
+	parentAcntCd = this.parent.parentAcntCd;
+	//alert(accYear);
+}
+
+//동일수준
+this.regSameLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert("동일수준");
+	
+	var nRow = this.dsAccAcnt.findRow('acntCd', acntCd);
+	
+	if(lev==1){
+		var Row = this.dsAccAcnt.findRow("lev",lev,nRow+1);
+	}else{
+		var Row = this.dsAccAcnt.findRow('lev',lev-1,nRow+1);
+	}
+	
+	if(Row==-1){
+		var iRow = this.parent.dsAccAcnt.insertRow(nRow+1);
+	}else{
+		var iRow = this.parent.dsAccAcnt.insertRow(Row);
+	}
+
+	this.parent.dsAccAcnt.setColumn(iRow ,"lev" , lev);
+	this.parent.dsAccAcnt.setColumn(iRow ,"parentAcntCd" , parentAcntCd);
+	this.parent.dsAccAcnt.setColumn(iRow ,"accYear" , accYear);
+	
+	this.close();
+}
+
+
+//하위수준
+this.regLowerLevBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		alert("하위수준");
+	var nRow = this.dsAccAcnt.findRow('acntCd',acntCd);
+	var Row = this.dsAccAcnt.findRow('lev',lev,nRow+1);
+	
+	if(Row==-1){
+		var iRow = this.parent.dsAccAcnt.insertRow(nRow+1);
+	}else{
+		var iRow = this.parent.dsAccAcnt.insertRow(Row);
+	}
+	
+	this.parent.dsAccAcnt.setColumn(iRow ,"lev" , parseInt(lev)+1);
+	this.parent.dsAccAcnt.setColumn(iRow ,"parentAcntCd" , acntCd);
+	this.parent.dsAccAcnt.setColumn(iRow ,"accYear" , accYear);
+
+	this.close();
+}
+
+
+
+this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+]]></Script>
   </Form>
 </FDL>

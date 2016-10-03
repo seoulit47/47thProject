@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.med.base.service.EmrServiceFacade;
+import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 
@@ -48,6 +49,35 @@ public class EmrController {
         
         dataSetBeanMapper.beansToDataset(outData, prscList, PrscBean.class);
        
+    }
+    
+    @RequestMapping("med/base/findDiseaseList.do") 
+    public void findDiseaseList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+    	//상병조회 
+    		System.out.println("med findDiseaseList 매서드 입니다");
+    	
+    		PlatformData inData = (PlatformData)request.getAttribute("inData");
+    		PlatformData outData =(PlatformData) request.getAttribute("outData");
+    	
+    		Map<String,String>argsMap=dataSetBeanMapper.variablesToMap(inData);
+    		
+    		List<DiseaseBean>diseaseList = emrServiceFacade.findDiseaseList(argsMap);
+    	
+    		dataSetBeanMapper.beansToDataset(outData, diseaseList, DiseaseBean.class);
+    }
+    
+    @RequestMapping("med/base/findDiseaseCdList.do")
+    public void findDiseaseCdList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+    	//상병코드조회
+    		System.out.println("med findDiseaseCdList 매서드 입니다");
+    	
+    		PlatformData inData = (PlatformData)request.getAttribute("inData");
+    		PlatformData outData =(PlatformData) request.getAttribute("outData");
+    		
+    		Map<String,String>argsMap=dataSetBeanMapper.variablesToMap(inData);
+    		
+    		//10월4일에 할게요 mickey
+	
     }
 
 }

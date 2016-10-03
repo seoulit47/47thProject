@@ -51,10 +51,10 @@ public class LaboratoryMedicineServiceFacadeImpl implements LaboratoryMedicineSe
 	public List<ClinspeReceiptBean> findClinspeReceiptList(Map<String, String> argsMap){
 		return LaboratoryMedicineApplicationService.findClinspeReceiptList(argsMap);
 	}
-	
-	/*// 검체접수 일괄처리
+
+	// 검체접수 일괄처리
 	@Override
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList){
 	    LaboratoryMedicineApplicationService.batchClinspeReceiptProcess(clinspeReceiptBeanList);
-	}*/
+	}
 }

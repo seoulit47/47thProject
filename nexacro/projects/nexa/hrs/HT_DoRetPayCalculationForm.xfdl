@@ -68,10 +68,10 @@
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="109"/>
-                      <Column size="123"/>
+                      <Column size="128"/>
+                      <Column size="133"/>
                       <Column size="130"/>
-                      <Column size="196"/>
+                      <Column size="169"/>
                       <Column size="146"/>
                     </Columns>
                     <Rows>
@@ -86,7 +86,7 @@
                       <Cell col="4" text="주민세"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:retIncomeAmt" mask="###,###,###"/>
+                      <Cell text="bind:retIncomeAmt"/>
                       <Cell col="1" text="bind:retIncomeDeduction"/>
                       <Cell col="2" text="bind:retIncomeAppropriation"/>
                       <Cell col="3" text="bind:retIncomeDecidedTaxAmt"/>
@@ -272,10 +272,10 @@ this.Div01_empNoSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventIn
 {
 	var arr = this.gfn_EmpPopup();
     
-    this.setEmpInfo = function(arrRtn)
+    this.setEmpInfo = function(popupEmpNo,popupEmpNm)
     { 
-		this.Div01.empNoEdt.set_value(arrRtn[0]);
-		this.Div01.empNmEdt.set_value(arrRtn[1]);
+		this.Div01.empNoEdt.set_value(popupEmpNo);
+		this.Div01.empNmEdt.set_value(popupEmpNm);
 	}
 }
 
@@ -285,7 +285,7 @@ this.Div01_empNoSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventIn
 ********************************************************************************/
 this.empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-		empNo = this.Div01.empNoEdt.value;
+	empNo = this.Div01.empNoEdt.value;
 	empNm = this.Div01.empNmEdt.value;
 	trace(empNo+empNm);
 	//변수 argument

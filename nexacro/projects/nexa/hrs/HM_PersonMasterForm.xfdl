@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HM_MasterForm" classname="HM_MasterForm" left="0" top="0" width="1024" height="770" titletext="New Form" oninit="HM_MasterForm_oninit">
+  <Form id="HM_MasterForm" classname="HM_MasterForm" left="0" top="0" width="1024" height="770" titletext="New Form" oninit="HM_PersonMasterForm_oninit">
     <Layouts>
       <Layout>
         <Div id="Div02" taborder="0" left="17.87%" top="67" right="1.07%" height="425" style="background:whitesmoke;border:1 solid #808080ff ;bordertype:round 5 5 ;font:9 Dotum;">
           <Layouts>
-            <Layout>
-              <Button id="Button_EXL" taborder="0" text="EXL" onclick="Div02_Button_EXL_onclick" left="90.46%" top="11" right="3.62%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
-              <Static id="Static26" taborder="1" text="원내전화" onclick="Static01_onclick" left="50.36%" top="227" right="42.63%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
-              <Static id="Static15" taborder="2" text="imgName" onclick="Static01_onclick" left="1.09%" top="294" right="90.22%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
-              <Spin id="workperiodSpin" taborder="3" value="1" displaynulltext="1" cssclass="AreaSpin" left="57.73%" top="34" right="33.33%" height="29" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
+            <Layout width="839" height="425">
+              <Button id="Button_EXL" taborder="81" text="EXL" onclick="Div02_Button_EXL_onclick" left="90.46%" top="11" right="3.62%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Static id="Static26" taborder="82" text="원내전화" onclick="Static01_onclick" left="50.36%" top="227" right="42.63%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+              <Static id="Static15" taborder="83" text="imgName" onclick="Static01_onclick" left="1.09%" top="294" right="90.22%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+              <Spin id="workperiodSpin" taborder="84" value="1" displaynulltext="1" cssclass="AreaSpin" left="57.73%" top="34" right="33.33%" height="29" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -52,8 +52,8 @@
         <Div id="Div01" taborder="36" tabstop="false" text="Div01" left="0.68%" top="68" right="82.03%" height="655" style="background:whitesmoke;border:1 solid black ;bordertype:round 5 5 ;font:9 Dotum;">
           <Layouts>
             <Layout>
-              <Button id="btn_empcheck" taborder="0" onclick="Div02_Button_PDF_onclick" cssclass="DelBtn" left="78.86%" top="57" right="3.43%" height="28" style="background:@gradation URL('img::miniBtn2.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Static id="Static00" taborder="1" text="사원탐색" left="1.71%" top="7" right="26.86%" height="15"/>
+              <Button id="btn_empcheck" taborder="2" onclick="Div02_Button_PDF_onclick" cssclass="DelBtn" left="78.86%" top="57" right="3.43%" height="28" style="background:@gradation URL('img::miniBtn2.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Static id="Static00" taborder="3" text="사원탐색" left="1.71%" top="7" right="26.86%" height="15"/>
             </Layout>
           </Layouts>
         </Div>
@@ -90,6 +90,7 @@
         <MaskEdit id="faxMaskEd" taborder="46" type="string" mask="###'-'###'-'####" cssclass="AreaMaskEdt" left="64.55%" top="328" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
         <Calendar id="retMonthWorkingdaysCal" taborder="47" expr="expr:Date()" cssclass="AreaCal" left="64.55%" top="200" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
         <Calendar id="empRetDateCal" taborder="48" expr="expr:Date()" cssclass="AreaCal" left="64.55%" top="168" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Calendar id="hireDateCal" taborder="49" expr="expr:Date()" cssclass="AreaCal" left="64.55%" top="136" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
         <CheckBox id="frignSingleTxrateCheck" taborder="50" cssclass="AreaCheck" left="96.78%" top="264" right="1.07%" height="30" style="font:9 Dotum;"/>
         <Static id="Static02" taborder="51" text="외국인세율" onclick="Static01_onclick" left="87.99%" top="264" right="3.91%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
         <Static id="Static03" taborder="52" text="외국인" onclick="Static01_onclick" left="78.42%" top="264" right="15.72%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
@@ -148,7 +149,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="hireDivCombo" taborder="55" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="328" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;" onitemchanged="hireDivCombo_onitemchanged">
+        <Combo id="hireDivCombo" taborder="55" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="328" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -490,7 +491,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="jobttlCombo" taborder="58" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="232" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;" onitemchanged="jobttlCombo_onitemchanged">
+        <Combo id="jobttlCombo" taborder="58" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="AreaCombo" left="42.68%" top="232" right="42.19%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -641,7 +642,7 @@
           <Tabpages>
             <Tabpage id="tpg_perconaldate" text="인적사항">
               <Layouts>
-                <Layout>
+                <Layout width="1075" height="193">
                   <Grid id="Grid00" taborder="0" binddataset="dsHmPerconaldate" useinputpanel="false" autofittype="col" oncelldblclick="tab_empInfo_tpg_perconaldate_Grid00_oncelldblclick" left="0.24%" top="2" right="0%" height="187" style="font:9 Dotum;">
                     <Formats>
                       <Format id="default">
@@ -697,10 +698,10 @@
             <Tabpage id="tpg_family" text="가족">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" useinputpanel="false" autofittype="col" left="0.36%" top="2" right="0.12%" height="187">
+                  <Grid id="Grid00" taborder="12" useinputpanel="false" autofittype="col" left="0.36%" top="2" right="0.12%" height="187">
                     <Formats/>
                   </Grid>
-                  <Grid id="Grid01" taborder="1" binddataset="dsHmFamily" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
+                  <Grid id="Grid01" taborder="13" binddataset="dsHmFamily" useinputpanel="false" autofittype="col" left="0.24%" top="2" right="0.24%" height="187">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -1029,7 +1030,7 @@
         <Edit id="imageEd29" taborder="81" cssclass="AreaEdt" left="86.52%" top="456" right="1.46%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
         <Spin id="payDateSpin" taborder="82" value="1" displaynulltext="1" max="31" cssclass="AreaSpin" left="92.48%" top="360" right="1.46%" height="29" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
         <Button id="Button_PDF" taborder="83" text="PDF" onclick="Div02_Button_PDF_onclick" left="85.45%" top="79" right="9.67%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
-        <Grid id="empListGrid" taborder="84" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncellclick="empListGrid_oncellclick" left="1.07%" top="160" right="82.52%" height="558" style="color:#5f5f5fff;bordertype:round 5 5 ;font:9 Dotum;opacity:100;">
+        <Grid id="empListGrid" cssclass="AreaGrid" taborder="84" binddataset="dsHmEmp" useinputpanel="false" autofittype="col" oncellclick="empListGrid_oncellclick" oncelldblclick="empListGrid_oncelldblclick" onselectchanged="empListGrid_onselectchanged" onenterdown="empListGrid_onenterdown" left="1.07%" top="160" right="82.52%" height="558" style="color:#5f5f5fff;bordertype:round 5 5 ;font:9 Dotum;opacity:100;">
           <Formats>
             <Format id="default">
               <Columns>
@@ -1072,17 +1073,11 @@
         <Button id="DelBtn00" taborder="92" onclick="btn_deleteEmp_onclick" cssclass="DelBtn" left="69.34%" top="728" right="21.88%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="DelBtn19" taborder="93" onclick="btn_saveAll_onclick" cssclass="DelBtn" left="78.52%" top="728" right="10.74%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="DelBtn17" taborder="94" onclick="exitFxAstBtn_onclick" cssclass="DelBtn" left="89.65%" top="728" right="1.56%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Div id="Div05" taborder="95" left="0%" top="0" right="1.07%" height="60" style="background:transparent URL('img::titleBar2.jpg');">
-          <Layouts>
-            <Layout/>
-          </Layouts>
-        </Div>
+        <Div id="Div05" taborder="95" left="0%" top="0" right="1.07%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>
         <Static id="Static01" taborder="96" text="인사마스터" left="5.57%" top="-1" right="39.84%" height="51" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
-        <Calendar id="hireDateCal" taborder="98" cssclass="AreaCal" left="64.55%" top="136" right="24.12%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;" dateformat="yyyy-MM-dd ddd" value="null"/>
       </Layout>
     </Layouts>
     <Bind>
-      <BindItem id="item26" compid="hireDateCal" propid="value" datasetid="dsHmEmp" columnid="hireDate"/>
       <BindItem id="item0" compid="imageEd" propid="value" datasetid="dsHmEmp" columnid="image"/>
       <BindItem id="item12" compid="empBirthdayEd" propid="value" datasetid="dsHmEmp" columnid="birthday"/>
       <BindItem id="item11" compid="empRrnEd" propid="value" datasetid="dsHmEmp" columnid="rrn"/>
@@ -1093,6 +1088,7 @@
       <BindItem id="item31" compid="faxMaskEd" propid="value" datasetid="dsHmEmp" columnid="fax"/>
       <BindItem id="item28" compid="retMonthWorkingdaysCal" propid="value" datasetid="dsHmEmp" columnid="retMonthWorkingdays"/>
       <BindItem id="item27" compid="empRetDateCal" propid="value" datasetid="dsHmEmp" columnid="retDate"/>
+      <BindItem id="item26" compid="hireDateCal" propid="value" datasetid="dsHmEmp" columnid="hireDate"/>
       <BindItem id="item33" compid="frignSingleTxrateCheck" propid="value" datasetid="dsHmEmp" columnid="frignSingleTxrate"/>
       <BindItem id="item1" compid="bankNmCombo" propid="value" datasetid="dsHmEmp" columnid="bankNm"/>
       <BindItem id="item17" compid="hireDivCombo" propid="value" datasetid="dsHmEmp" columnid="hireDiv"/>
@@ -1121,6 +1117,57 @@
       <BindItem id="item36" compid="payDateSpin" propid="visible" datasetid="dsHmEmp" columnid="payDate"/>
     </Bind>
     <Objects>
+      <Dataset id="dsDegreeType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="degreeType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="degreeType">학사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">석사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">박사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">전문학사</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">석사수료</Col>
+          </Row>
+          <Row>
+            <Col id="degreeType">박사수료</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmMilitary" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="physiqueGrade" type="STRING" size="256"/>
+          <Column id="mgroup" type="STRING" size="256"/>
+          <Column id="branch" type="STRING" size="256"/>
+          <Column id="hierarachy" type="STRING" size="256"/>
+          <Column id="msn" type="STRING" size="256"/>
+          <Column id="joinArmyDay" type="STRING" size="256"/>
+          <Column id="dischargeDay" type="STRING" size="256"/>
+          <Column id="militarySeq" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">16001</Col>
+            <Col id="physiqueGrade">1</Col>
+            <Col id="mgroup">2</Col>
+            <Col id="branch">3</Col>
+            <Col id="hierarachy">4</Col>
+            <Col id="msn">5</Col>
+            <Col id="joinArmyDay">6</Col>
+            <Col id="dischargeDay">7</Col>
+            <Col id="militarySeq">8</Col>
+          </Row>
+        </Rows>
+      </Dataset>
       <Dataset id="dsHmFamily" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="empNo" type="STRING" size="256"/>
@@ -1234,7 +1281,7 @@
             <Col id="image">160012.jpg</Col>
             <Col id="hireDiv">정규직</Col>
             <Col id="gender">M</Col>
-            <Col id="hireDate">2006-01-01</Col>
+            <Col id="hireDate">20060101</Col>
             <Col id="fax">0551231234</Col>
             <Col id="empNo">16001</Col>
             <Col id="birthday">19820101</Col>
@@ -1275,252 +1322,37 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="dsFamiliyType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+      <Dataset id="dsMgroupType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
-          <Column id="familyType" type="STRING" size="256"/>
+          <Column id="mgType" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="familyType">본인</Col>
+            <Col id="mgType">육군</Col>
           </Row>
           <Row>
-            <Col id="familyType">부</Col>
+            <Col id="mgType">해군</Col>
           </Row>
           <Row>
-            <Col id="familyType">손자녀</Col>
+            <Col id="mgType">공군</Col>
           </Row>
           <Row>
-            <Col id="familyType">사촌이내</Col>
+            <Col id="mgType">해병</Col>
           </Row>
           <Row>
-            <Col id="familyType">자부</Col>
+            <Col id="mgType">전투경찰</Col>
           </Row>
           <Row>
-            <Col id="familyType">자녀(셋째이상)</Col>
+            <Col id="mgType">의무경찰</Col>
           </Row>
           <Row>
-            <Col id="familyType">모</Col>
+            <Col id="mgType">기타</Col>
           </Row>
           <Row>
-            <Col id="familyType">배우자</Col>
+            <Col id="mgType">카츄사</Col>
           </Row>
           <Row>
-            <Col id="familyType">자녀</Col>
-          </Row>
-          <Row>
-            <Col id="familyType">배우자(부)</Col>
-          </Row>
-          <Row>
-            <Col id="familyType">배우자(모)</Col>
-          </Row>
-          <Row>
-            <Col id="familyType">형제자매</Col>
-          </Row>
-          <Row>
-            <Col id="familyType">조부</Col>
-          </Row>
-          <Row>
-            <Col id="familyType">조모</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="dsDegreeType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="degreeType" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="degreeType">학사</Col>
-          </Row>
-          <Row>
-            <Col id="degreeType">석사</Col>
-          </Row>
-          <Row>
-            <Col id="degreeType">박사</Col>
-          </Row>
-          <Row>
-            <Col id="degreeType">전문학사</Col>
-          </Row>
-          <Row>
-            <Col id="degreeType">석사수료</Col>
-          </Row>
-          <Row>
-            <Col id="degreeType">박사수료</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="dsHmPerconaldate" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="height" type="STRING" size="256"/>
-          <Column id="weight" type="STRING" size="256"/>
-          <Column id="eyeseght" type="STRING" size="256"/>
-          <Column id="colorblind" type="STRING" size="256"/>
-          <Column id="bloodType" type="STRING" size="256"/>
-          <Column id="medicalHistory" type="STRING" size="256"/>
-          <Column id="religion" type="STRING" size="256"/>
-          <Column id="empNo" type="STRING" size="256"/>
-          <Column id="hobby" type="STRING" size="256"/>
-          <Column id="talent" type="STRING" size="256"/>
-          <Column id="realestate" type="STRING" size="256"/>
-          <Column id="lifeLevel" type="STRING" size="256"/>
-          <Column id="living" type="STRING" size="256"/>
-          <Column id="citizenship" type="STRING" size="256"/>
-          <Column id="perresi" type="STRING" size="256"/>
-          <Column id="ctyName" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="height">1</Col>
-            <Col id="weight">2</Col>
-            <Col id="eyeseght">3</Col>
-            <Col id="colorblind">5</Col>
-            <Col id="bloodType">6</Col>
-            <Col id="medicalHistory">4</Col>
-            <Col id="religion">7</Col>
-            <Col id="empNo">16001</Col>
-            <Col id="hobby">8</Col>
-            <Col id="talent">9</Col>
-            <Col id="realestate">0</Col>
-            <Col id="lifeLevel">11</Col>
-            <Col id="living">12</Col>
-            <Col id="citizenship">13</Col>
-            <Col id="perresi">14</Col>
-            <Col id="ctyName">15</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="dsHmMilitary" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="empNo" type="STRING" size="256"/>
-          <Column id="physiqueGrade" type="STRING" size="256"/>
-          <Column id="mgroup" type="STRING" size="256"/>
-          <Column id="branch" type="STRING" size="256"/>
-          <Column id="hierarachy" type="STRING" size="256"/>
-          <Column id="msn" type="STRING" size="256"/>
-          <Column id="joinArmyDay" type="STRING" size="256"/>
-          <Column id="dischargeDay" type="STRING" size="256"/>
-          <Column id="militarySeq" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="empNo">16001</Col>
-            <Col id="physiqueGrade">1</Col>
-            <Col id="mgroup">2</Col>
-            <Col id="branch">3</Col>
-            <Col id="hierarachy">4</Col>
-            <Col id="msn">5</Col>
-            <Col id="joinArmyDay">6</Col>
-            <Col id="dischargeDay">7</Col>
-            <Col id="militarySeq">8</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <VirtualFile id="fileImg" onsuccess="fileImg_onsuccess" onerror="fileImg_onerror"/>
-      <Dataset id="dsHmEducation">
-        <ColumnInfo>
-          <Column id="empNo" type="STRING" size="256"/>
-          <Column id="admDay" type="STRING" size="256"/>
-          <Column id="graduDay" type="STRING" size="256"/>
-          <Column id="schoolName" type="STRING" size="256"/>
-          <Column id="major" type="STRING" size="256"/>
-          <Column id="degree" type="STRING" size="256"/>
-          <Column id="educationSeq" type="STRING" size="256"/>
-          <Column id="finYn" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="empNo">16001</Col>
-            <Col id="admDay">1</Col>
-            <Col id="graduDay">2</Col>
-            <Col id="schoolName">3</Col>
-            <Col id="major">4</Col>
-            <Col id="degree">5</Col>
-            <Col id="educationSeq">6</Col>
-            <Col id="finYn">7</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="dsHmLicense">
-        <ColumnInfo>
-          <Column id="licenseSeq" type="STRING" size="256"/>
-          <Column id="empNo" type="STRING" size="256"/>
-          <Column id="acqDay" type="STRING" size="256"/>
-          <Column id="licenseType" type="STRING" size="256"/>
-          <Column id="licenseNo" type="STRING" size="256"/>
-          <Column id="issue" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="licenseSeq">0001</Col>
-            <Col id="empNo">16001</Col>
-            <Col id="acqDay">20060101</Col>
-            <Col id="licenseNo">01-232626-02</Col>
-            <Col id="issue">자동차판매소</Col>
-            <Col id="licenseType">운전면허</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="dsHierarachyType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="hierarachyType" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="hierarachyType">대장</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">중장</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">소장</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">준장</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">대령</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">중령</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">소령</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">대위</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">중위</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">소위</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">준위</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">원사</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">상사</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">중사</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">하사</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">병장</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">상병</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">일병</Col>
-          </Row>
-          <Row>
-            <Col id="hierarachyType">이병</Col>
+            <Col id="mgType">공익근무요원</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -1607,37 +1439,201 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="dsMgroupType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+      <Dataset id="dsHierarachyType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
-          <Column id="mgType" type="STRING" size="256"/>
+          <Column id="hierarachyType" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="mgType">육군</Col>
+            <Col id="hierarachyType">대장</Col>
           </Row>
           <Row>
-            <Col id="mgType">해군</Col>
+            <Col id="hierarachyType">중장</Col>
           </Row>
           <Row>
-            <Col id="mgType">공군</Col>
+            <Col id="hierarachyType">소장</Col>
           </Row>
           <Row>
-            <Col id="mgType">해병</Col>
+            <Col id="hierarachyType">준장</Col>
           </Row>
           <Row>
-            <Col id="mgType">전투경찰</Col>
+            <Col id="hierarachyType">대령</Col>
           </Row>
           <Row>
-            <Col id="mgType">의무경찰</Col>
+            <Col id="hierarachyType">중령</Col>
           </Row>
           <Row>
-            <Col id="mgType">기타</Col>
+            <Col id="hierarachyType">소령</Col>
           </Row>
           <Row>
-            <Col id="mgType">카츄사</Col>
+            <Col id="hierarachyType">대위</Col>
           </Row>
           <Row>
-            <Col id="mgType">공익근무요원</Col>
+            <Col id="hierarachyType">중위</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">소위</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">준위</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">원사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">상사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">중사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">하사</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">병장</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">상병</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">일병</Col>
+          </Row>
+          <Row>
+            <Col id="hierarachyType">이병</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFamiliyType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="familyType" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="familyType">본인</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">부</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">손자녀</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">사촌이내</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">자부</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">자녀(셋째이상)</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">모</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">배우자</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">자녀</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">배우자(부)</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">배우자(모)</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">형제자매</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">조부</Col>
+          </Row>
+          <Row>
+            <Col id="familyType">조모</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmPerconaldate" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="height" type="STRING" size="256"/>
+          <Column id="weight" type="STRING" size="256"/>
+          <Column id="eyeseght" type="STRING" size="256"/>
+          <Column id="colorblind" type="STRING" size="256"/>
+          <Column id="bloodType" type="STRING" size="256"/>
+          <Column id="medicalHistory" type="STRING" size="256"/>
+          <Column id="religion" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="hobby" type="STRING" size="256"/>
+          <Column id="talent" type="STRING" size="256"/>
+          <Column id="realestate" type="STRING" size="256"/>
+          <Column id="lifeLevel" type="STRING" size="256"/>
+          <Column id="living" type="STRING" size="256"/>
+          <Column id="citizenship" type="STRING" size="256"/>
+          <Column id="perresi" type="STRING" size="256"/>
+          <Column id="ctyName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="height">1</Col>
+            <Col id="weight">2</Col>
+            <Col id="eyeseght">3</Col>
+            <Col id="colorblind">5</Col>
+            <Col id="bloodType">6</Col>
+            <Col id="medicalHistory">4</Col>
+            <Col id="religion">7</Col>
+            <Col id="empNo">16001</Col>
+            <Col id="hobby">8</Col>
+            <Col id="talent">9</Col>
+            <Col id="realestate">0</Col>
+            <Col id="lifeLevel">11</Col>
+            <Col id="living">12</Col>
+            <Col id="citizenship">13</Col>
+            <Col id="perresi">14</Col>
+            <Col id="ctyName">15</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <VirtualFile id="fileImg" onsuccess="fileImg_onsuccess" onerror="fileImg_onerror"/>
+      <Dataset id="dsHmEducation">
+        <ColumnInfo>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="admDay" type="STRING" size="256"/>
+          <Column id="graduDay" type="STRING" size="256"/>
+          <Column id="schoolName" type="STRING" size="256"/>
+          <Column id="major" type="STRING" size="256"/>
+          <Column id="degree" type="STRING" size="256"/>
+          <Column id="educationSeq" type="STRING" size="256"/>
+          <Column id="finYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="empNo">16001</Col>
+            <Col id="admDay">1</Col>
+            <Col id="graduDay">2</Col>
+            <Col id="schoolName">3</Col>
+            <Col id="major">4</Col>
+            <Col id="degree">5</Col>
+            <Col id="educationSeq">6</Col>
+            <Col id="finYn">7</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHmLicense">
+        <ColumnInfo>
+          <Column id="licenseSeq" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="acqDay" type="STRING" size="256"/>
+          <Column id="licenseType" type="STRING" size="256"/>
+          <Column id="licenseNo" type="STRING" size="256"/>
+          <Column id="issue" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="licenseSeq">0001</Col>
+            <Col id="empNo">16001</Col>
+            <Col id="acqDay">20060101</Col>
+            <Col id="licenseNo">01-232626-02</Col>
+            <Col id="issue">자동차판매소</Col>
+            <Col id="licenseType">운전면허</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -2176,41 +2172,275 @@ var image = "";
 var imgName = "";
 
 //화면 초기화작업
-this.HM_MasterForm_oninit = function(obj:Form, e:nexacro.InitEventInfo)
+this.HM_PersonMasterForm_oninit = function(obj:Form, e:nexacro.InitEventInfo)
 {
 	this.gfnService("searchEmp");
 }
+
+//사원의 상세정보 조회
+this.btn_searchEmp_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		if(this.searchEmpNoEd.value==null && this.searchEmpNmEd.value==null)  { alert("사원번호, 사원명을 선택해주세요"); return false; }
+ 		empNo = this.searchEmpNoEd.value;  // 사번
+		empNm = this.searchEmpNmEd.value;  // 성명
+
+		
+		var argument = 'empNo='+empNo+' empNm='+empNm;
+		this.dsService.setColumn(2,"argument",argument);
+		alert(argument);
+		var check = confirm("해당사원의 상세정보를 조회하하시겠습니까?");
+		if(check)
+		this.gfnService("searchEmp");
+}
+
 
 //사원 검색 팝업
 this.btn_empPopup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfn_EmpPopup();
 	
-	this.setEmpInfo = function(arrRtn){
-		//set_value 해야 들어감
-		this.searchEmpNoEd.set_value(arrRtn[0]);
-		this.searchEmpNmEd.set_value(arrRtn[1]);
+	this.setEmpInfo = function(empNo,empNm){//set_value 해야 들어감
+		this.searchEmpNoEd.set_value(empNo);
+		this.searchEmpNmEd.set_value(empNm);
 	}
 }
+
+//그리드내 사원 탐색
+this.btn_empcheck_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var enm = this.searchEmpNmEd.value;
+	var eno = this.searchEmpNoEd.value;
+	
+	if(enm!=""){ var selNo = this.dsHmEmp.findRowAs("empNm",enm,this.dsHmEmp.rowposition+1); //일단 밑에꺼찾고
+					if(selNo==-1)selNo = this.dsHmEmp.findRowAs("empNm",enm); //없으면 전체로 찾는다.
+	}else{
+		var selNo = this.dsHmEmp.findRowAs("empNo",eno,this.dsHmEmp.rowposition+1);
+					if(selNo==-1)selNo = this.dsHmEmp.findRowAs("empNo",eno);
+	}
+		this.dsHmEmp.set_rowposition(selNo); //해당 로우 선택
+}
+
+//주소검색
+this.btn_findZip_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPostPopup();
+		this.setPost = function(arrRtn){ 
+									this.edit_fzip.set_value(arrRtn[2]); 
+									this.edit_empAddr.set_value(arrRtn[0]); 
+									this.detailAddrEd.set_value(arrRtn[1]);
+									}
+}
+
+//사진등록
+this.findImageBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	trace("사진찾아보기");
+	this.fileDialog.open("FileOpen",FileDialog.LOAD);
+}
+
+//다이알로그 닫을시
+this.fileDialog_onclose = function(obj:FileDialog, e:nexacro.FileDialogEventInfo)
+{
+	trace("닫기");
+	if(e.virtualfiles.length == 0 ){return;}
+	trace(e.virtualfiles[0].fullpath);
+			var realpath = system.convertRealPath(e.virtualfiles[0].fullpath);
+		this.goodsImg.set_image("file://" + realpath);
+	 this.fileImg.open(e.virtualfiles[0].fullpath,VirtualFile.openRead | VirtualFile.openBinary);
+	
+}
+
+this.fileImg_onerror = function(obj:VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
+{
+	alert("버쳐파일실패");
+}
+
+this.fileImg_onsuccess = function(obj:VirtualFile, e:nexacro.VirtualFileEventInfo)
+{
+	imgName=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNo")+obj.filename; 
+	application.gdsEmp.setColumn(this.dsHmEmp.rowposition,"image",imgName);
+	trace(imgName);
+	trace(e.reason);//reason : 이벤트가 발생한 이유?에 따른 결과번호
+	
+	switch(e.reason){
+		case 1 : trace("이미지 open"); this.fileImg.read(); break;
+		case 2 : trace("이미지 close"); break;
+		case 3 : trace("이미지 read");
+		this.dsImage.clearData();
+		this.dsImage.addRow();
+		this.dsImage.setColumn(0, "imgNm", imgName);
+		this.dsImage.setColumn(0, "imgBinary", e.binarydata);
+		obj.getFileSize(); 
+		this.fileImg.close(); 
+		this.gfnService("empImage");//db에 저장한뒤 저장한 경로로 보여준다.
+		
+		break;
+		
+		case 9 : trace("파일사이즈"); trace("파일사이즈 : " + e.filesize); break;
+		}
+}
+
+//이미지 보여주기 (이미지 등록시 콜백함수)
+this.fn_imageSet = function(){
+	this.dsHmEmp.setColumn(this.dsHmEmp.rowposition,"image", imgName);
+	this.imgName = this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"image");
+	trace(imgName);
+	if(this.gfnIsNull(this.imgName)){
+		this.imageViewer.set_image(null);
+		this.imageEd.set_value("");
+	}
+	
+	this.imageViewer.set_image("http://localhost:8282/img/"+this.imgName);
+}
+
+
+
+
+
+this.dsHmEmp_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	var empNo = this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNo");
+		 	this.dsHmFamily.filter("empNo=='"+empNo+"'");  
+			this.dsHmEducation.filter("empNo=='"+empNo+"'");
+			this.dsHmCareer.filter("empNo=='"+empNo+"'");
+			this.dsHmLicense.filter("empNo=='"+empNo+"'");
+			this.dsHmPerconaldate.filter("empNo=='"+empNo+"'");
+			this.dsHmDisability.filter("empNo=='"+empNo+"'");
+			this.dsHmMilitary.filter("empNo=='"+empNo+"'");
+			//alert(empNo);
+			//alert(dsHmFamily.getColumn(1));
+}
+
+//사원추가
+this.btn_insertEmp_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	 this.dsHmEmp.addRow(); 
+	this.dsHmEmp.setColumn(this.dsHmEmp.rowposition,"sts","insert");//줄하나더만들고 sts자리에  insert 새긴다
+	empSeqNo = (this.dsHmEmp.getRowCount()).toString().padLeft(3,"0");//사원넘버 자동 생성  //3자리고 그줄번호 앞에 0을 붙인다
+	newNo = "45" + empSeqNo;     alert(empSeqNo);   //첫반째줄이면 45+001 이런식으로 만든다    
+	this.dsHmEmp.setColumn(this.dsHmEmp.rowposition,"empNo",newNo);//선택줄에 만든사번 넣는다
+}
+
+// 사원정보(사원번호, 사원명) 행삭제 [삭제]
+this.btn_deleteEmp_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsHmEmp.deleteRow(this.dsHmEmp.rowposition);}
+	
+	
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var empNo = this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNo"); 
+		//alert(this.tab_empInfo.tabindex);
+	switch (this.tab_empInfo.tabindex){ //인적사항 체크tabindex붙이면 탭번호를 뜻한다
+		case 0 : if(this.dsHmPerconaldate.rowcount=='0'){ 
+														this.dsHmPerconaldate.addRow(); 
+														this.dsHmPerconaldate.setColumn(this.dsHmPerconaldate.rowposition,"empNo",empNo);
+														}
+				 else { alert("한명의 사원당 인적사항은 하나입니다"); }break; 
+		
+		case 1 : this.dsHmFamily.addRow(); 
+					this.dsHmFamily.setColumn(this.dsHmFamily.rowposition,"empNo",empNo); break;
+		case 2 : this.dsHmEducation.addRow(); 
+					this.dsHmEducation.setColumn(this.dsHmEducation.rowposition,"empNo",empNo); break;
+		case 3 : this.dsHmLicense.addRow(); 
+					this.dsHmLicense.setColumn(this.dsHmLicense.rowposition,"empNo",empNo); break;
+		case 4 : this.dsHmCareer.addRow(); 
+					this.dsHmCareer.setColumn(this.dsHmCareer.rowposition,"empNo",empNo); break;
+		case 5 : this.dsHmMilitary.addRow(); 
+					this.dsHmMilitary.setColumn(this.dsHmMilitary.rowposition,"empNo",empNo); break;	
+		case 6 : this.dsHmDisability.addRow(); 
+					this.dsHmDisability.setColumn(this.dsHmDisability.rowposition,"empNo",empNo); break;}
+		}
+
+
+
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	switch (this.tab_empInfo.tabindex){
+		case 0 : this.dsHmPerconaldate.deleteRow(this.dsHmPerconaldate.rowposition); break;
+		case 1 : this.dsHmFamily.deleteRow(this.sHmFamily.rowposition); break;
+		case 2 : this.dsHmEducation.deleteRow(this.dsHmEducation.rowposition); break;
+		case 3 : this.dsHmLicense.deleteRow(this.dsHmLicense.rowposition); break;
+		case 4 : this.dsHmCareer.deleteRow(this.dsHmCareer.rowposition); break;
+		case 5 : this.dsHmMilitary.deleteRow(this.dsHmMilitary.rowposition); break;
+		case 6 : this.dsHmDisability.deleteRow(this.dsHmDisability.rowposition); break;}	
+}
+
+this.exitFxAstBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close(); 
+}
+
+this.btn_saveAll_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(confirm("변경된 사원정보를 저장하시겠습니까?")){this.gfnService("mngntEmp");}
+}
+
+this.Div01_btn_empcheck_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nm=this.searchEmpNmEd.value;   
+	var noed=this.searchEmpNoEd.value;  
+	
+															//this.dsHmEmp.rowposition+1위치는 시작행 위치이다 바로 선택줄 +1이므로 검색버튼 누를때마다 검색하면서 아래에서 찾아간다
+ 	if(nm==""){	 	   selNo = this.dsHmEmp.findRowAs("empNo",noed,this.dsHmEmp.rowposition+1); alert(selNo); // 사원번호
+					if(selNo==-1)selNo = this.dsHmEmp.findRowAs("empNo",noed); //만약 없다면 첨부터 찾는다
+ 	}else{ 
+					var selNo = this.dsHmEmp.findRowAs("empNm",nm,this.dsHmEmp.rowposition+1); //이름에 빈칸이면 아래가서 사번꺼 찾는다
+					this.searchEmpNoEd.set_value("");//혹시 사번텍스트에 이름과 다른 사번이있으면 이상하니 그값은 빈칸으로 만든다
+					if(selNo==-1)selNo = this.dsHmEmp.findRowAs("empNm",nm); //만약 없다면 첨부터 찾는다
+	}
+		this.dsHmEmp.set_rowposition(selNo);          //그줄을 선택한다 
+	//Dataset.findRowAs(strColID,strVal,[nStartIdx[,nEndIdx]])//첫이름만 나와도 해당번호찾기 맨앞에꺼 순으로 (해당칼럼,해당행,시작행,끝행)
+}
+
+//부서검색
+this.btn_empDeptPopup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnCodePopup("GP500");
+	this.setCode = function(code,arrRtn){
+		this.empDeptCdEd.set_value(arrRtn[0]);
+		this.empDeptNmEd.set_value(arrRtn[1]);
+	}
+}
+
+//사원선택시 이벤트
 this.empListGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	this.dsHmCareer.filter("");
-	this.dsHmPerconaldate.filter("");
-	this.dsHmFamily.filter("");
-	this.dsHmEducation.filter("");
-	this.dsHmLicense.filter("");
-	this.dsHmMilitary.filter("");
-	this.dsHmDisability.filter("");
+	var empNo = this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNo");
+	
+	var imgNm  = this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"image");
+	this.imageEd.set_value(imgNm);
+	trace("dddddd" + imgNm);
+	this.imageViewer.set_image("http://localhost:8282/img/"+imgNm);
+}
 
-	var filterEmpNo = this.empListGrid.getCellValue(this.empListGrid.currentrow,2);
-	//alert(filterEmpNo);
-	this.dsHmCareer.filter("empNo == " + filterEmpNo);
-	this.dsHmPerconaldate.filter("empNo == " + filterEmpNo);
-	this.dsHmFamily.filter("empNo == " + filterEmpNo);
-	this.dsHmEducation.filter("empNo == " + filterEmpNo);
-	this.dsHmLicense.filter("empNo == " + filterEmpNo);
-	this.dsHmMilitary.filter("empNo == " + filterEmpNo);
-	this.dsHmDisability.filter("empNo == " + filterEmpNo);
+this.callbackFunc = function(svcID,errorCode,errorMsg){
+   
+   if(svcID == "empImage"){
+   if (errorCode < 1) {
+      trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+      this.gfnErrorPopup(svcID, errorMsg);
+   } else {
+      // 트랜잭션 완료
+      trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+      this.fn_imageSet();
+   }
+   
+   }
+}
+
+//pdf
+this.Div02_Button_PDF_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var searchEmpNo = this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNo");
+	trace(searchEmpNo);
+  application.open("사원정보","hrs::HM_ReportForm.xfdl",this.parent,{selectEmp:searchEmpNo},"showtitlebar=true showstatusbar=false", 700, 100, 250, 300);	
+
+}
+this.HM_MasterForm_oninit = function(obj:Form, e:nexacro.InitEventInfo)
+{
+	
 }
 ]]></Script>
   </Form>
