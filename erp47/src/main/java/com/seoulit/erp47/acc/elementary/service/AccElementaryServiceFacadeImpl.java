@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.elementary.applicationService.AccElementaryApplicationService;
+import com.seoulit.erp47.acc.elementary.exception.AcntCopyException;
 import com.seoulit.erp47.acc.elementary.to.AccAcntBean;
 import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 import com.seoulit.erp47.acc.elementary.to.AssiSubBean;
@@ -34,5 +35,14 @@ public class AccElementaryServiceFacadeImpl implements AccElementaryServiceFacad
 	    return accElementaryApplicationService.findAccPridList();
 	}
 
+    @Override
+    public void batchAccAcntProcess(List<AccAcntBean> accAcntList) {
+        accElementaryApplicationService.batchAccAcntProcess(accAcntList);
+    }
 
+    @Override
+    public List<AccAcntBean> lastYearAcntCopy(Map<String, String> argsMap) throws AcntCopyException {
+        return accElementaryApplicationService.lastYearAcntCopy(argsMap);
+    }
+    
 }
