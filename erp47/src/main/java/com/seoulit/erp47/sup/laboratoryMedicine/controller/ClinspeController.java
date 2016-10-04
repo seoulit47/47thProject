@@ -53,6 +53,17 @@ public class ClinspeController {
     	List<ClinspeBean> clinspeBeanList = laboratoryMedicineServiceFacade.findClinspeList(argsMap);
 		dataSetBeanMapper.beansToDataset(outData, clinspeBeanList, ClinspeBean.class);
     }
+	
+	// 미접수 검체조회
+	@RequestMapping("sup/laboratoryMedicine/findNoReceiptClinspeList.do")
+	public void findNoReceiptClinspeList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		 PlatformData inData = (PlatformData)request.getAttribute("inData");
+		 System.out.println(inData.saveXml());
+		 PlatformData outData = (PlatformData)request.getAttribute("outData");
+		 Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+	     List<ClinspeBean> clinspeBeanList = laboratoryMedicineServiceFacade.findNoReceiptClinspeList(argsMap);
+	     dataSetBeanMapper.beansToDataset(outData, clinspeBeanList, ClinspeBean.class);
+    }
 
 	// 검체채취 일괄처리
 	@RequestMapping("sup/laboratoryMedicine/batchClinspeProcess.do")

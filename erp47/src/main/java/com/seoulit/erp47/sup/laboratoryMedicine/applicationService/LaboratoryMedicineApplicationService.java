@@ -21,6 +21,7 @@ public interface LaboratoryMedicineApplicationService {
 	// 검체채취
 	public ClinspeSequenceBean findMaxClinspeNo();
 	public List<ClinspeBean> findClinspeList(Map<String, String> argsMap);
+	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap);
 	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList);
 	
 	// 검체접수

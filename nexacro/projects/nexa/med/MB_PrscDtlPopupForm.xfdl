@@ -13,7 +13,7 @@
         </Div>
         <Static id="stDiv08" taborder="1" text="처방전 구분" onclick="subCodeStc_onclick" left="1.2%" top="70" right="84%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Combo id="prscTypeCombo" taborder="2" innerdataset="idsPrscType" codecolumn="code" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="17.6%" top="71" right="61.4%" height="25" class="AreaCombo"/>
-        <Grid id="prscDtlGrid" taborder="3" binddataset="dsPrscDtl" useinputpanel="false" autofittype="col" oncelldblclick="prscDtlGrid_oncelldblclick" left="1.2%" top="107" right="1%" height="284">
+        <Grid id="prscDtlGrid" taborder="3" binddataset="dsPrsc" useinputpanel="false" autofittype="col" oncelldblclick="prscDtlGrid_oncelldblclick" left="1.2%" top="107" right="1%" height="284">
           <Formats>
             <Format id="default">
               <Columns>

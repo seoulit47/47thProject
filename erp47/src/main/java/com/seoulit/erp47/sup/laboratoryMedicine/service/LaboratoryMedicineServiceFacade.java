@@ -23,7 +23,9 @@ public interface LaboratoryMedicineServiceFacade {
 	public ClinspeSequenceBean findMaxClinspeNo();
 
 	public List<ClinspeBean> findClinspeList(Map<String, String> argsMap);
-
+	
+	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap);
+	
 	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList);
 
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList);

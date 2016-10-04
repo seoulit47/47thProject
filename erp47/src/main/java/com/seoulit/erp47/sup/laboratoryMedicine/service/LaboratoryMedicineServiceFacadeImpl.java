@@ -12,7 +12,7 @@ import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeSequenceBean;
 import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 
 /**
- * @Package  com.seoul.erp47.sup.laboratoryMedicine.dao
+ * @Package  com.seoulit.erp47.sup.laboratoryMedicine.dao
  * @Class    ClinspeReceiptDAO.java
  * @Create   
  * @Author   
@@ -56,5 +56,11 @@ public class LaboratoryMedicineServiceFacadeImpl implements LaboratoryMedicineSe
 	@Override
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList){
 	    LaboratoryMedicineApplicationService.batchClinspeReceiptProcess(clinspeReceiptBeanList);
+	}
+	
+	//미접수 검체조회
+	@Override
+	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap) {
+		return LaboratoryMedicineApplicationService.findNoReceiptClinspeList(argsMap);
 	}
 }

@@ -56,7 +56,7 @@
                 <Cell col="3" displaytype="combo" edittype="none" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
                 <Cell col="4" displaytype="date" edittype="none" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
                 <Cell col="5" edittype="none" text="bind:bloodgetEmp"/>
-                <Cell col="6" edittype="none" text="bind:patNo"/>
+                <Cell col="6" edittype="none" text="bind:patNm"/>
               </Band>
             </Format>
           </Formats>
@@ -80,9 +80,9 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="serviceID">findClinspeList</Col>
+            <Col id="serviceID">findNoReceiptClinspeList</Col>
             <Col id="inData"/>
-            <Col id="URL">erp47::sup/laboratoryMedicine/findClinspeList.do</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findNoReceiptClinspeList.do</Col>
             <Col id="callbackFunc"/>
             <Col id="outData">dsClinspe=dsClinspe</Col>
           </Row>
@@ -221,7 +221,7 @@ this.searchClinspeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	
 	var argument = "bloodGetStartDate='"+bloodGetStartDate+"' bloodGetEndDate='"+bloodGetEndDate+"' exmntCd='"+null+"' clinspeNm='"+this.clinspeNmCombo.value+"' patNo='"+this.searchPatNoEd.value+"' bloodgetEmp='"+this.searchDoctNmEd.value+"'";
 	this.dsService.setColumn(0,"argument",argument);
-	this.gfnService("findClinspeList");
+	this.gfnService("findNoReceiptClinspeList");
 }
 
 //조건초기화

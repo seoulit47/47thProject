@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SL_ReceiptMngntForm" classname="SL_ReceiptMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="SL_ReceiptMngntForm" classname="SL_ReceiptMngntForm" left="0" top="0" width="1250" height="768" titletext="검체접수관리">
     <Layouts>
       <Layout>
         <Static id="subCodeStc04" taborder="1" text="접수일자" onclick="subCodeStc_onclick" left="1.52%" top="75" right="90.16%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -314,9 +314,8 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
-include "scripts::commonScripts.xjs";
-include "scripts::Scripts.xjs";
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
 
 //조건초기화 이벤트
 this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)

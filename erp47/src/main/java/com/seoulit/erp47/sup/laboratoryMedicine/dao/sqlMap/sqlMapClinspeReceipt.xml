@@ -41,14 +41,16 @@
                    CLINSPE_NO, 
                    CLINSPE_RECEIPT_DATE, 
                    RECEIPT_CD, 
-                   EME_YN 
+                   EME_YN,
+                   DELIVERY_YN
                ) 
                VALUES
                ( 
                    #{clinspeNo},
                    #{clinspeReceiptDate},
                    #{receiptCd},
-                   #{emeYn} 
+                   #{emeYn},
+                   'N' 
                )
     </insert>
     

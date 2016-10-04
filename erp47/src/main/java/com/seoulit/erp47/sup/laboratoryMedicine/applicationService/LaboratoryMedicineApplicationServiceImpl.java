@@ -83,4 +83,9 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 			}	
 		}
 	}
+
+	@Override
+	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap) {
+		return clinspeDAO.selectNoReceiptClinspeList(argsMap);
+	}
 }

@@ -19,6 +19,7 @@ import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 public interface ClinspeDAO {
 	public ClinspeSequenceBean selectMaxClinspeNo();
 	public List<ClinspeBean> selectClinspeList(Map<String, String> argsMap);
+	public List<ClinspeBean> selectNoReceiptClinspeList(Map<String, String> argsMap);
 	public void insertClinspe(ClinspeBean expTgmBean);
 	public void deleteClinspe(ClinspeBean expTgmBean);
 	public void updateClinspe(ClinspeBean expTgmBean);

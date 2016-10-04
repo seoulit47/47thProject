@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_DeliveryClinspeMgtForm" classname="SL_DeliveryClinspeMgtForm" left="0" top="0" width="1250" height="768" titletext="검체전달관리" onload="SL_DeliveryClinspeMgtForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.48%" top="8" right="0.08%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체전달관리" left="4.02%" top="-4" right="81.66%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" left="2.56%" top="80" right="70.88%" height="316" style="background:aqua;"/>
+        <Grid id="clinspeReceiptGrid" taborder="2" binddataset="dsClinspeReceipt" useinputpanel="false" autofittype="col" oncellclick="clinspeReceiptGrid_oncellclick" left="29.76%" top="80" right="1.2%" height="274">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="10" text="미전달 검체목록"/>
+                <Cell row="1" text="검체번호"/>
+                <Cell row="1" col="1" text="검사항목"/>
+                <Cell row="1" col="2" text="검체명"/>
+                <Cell row="1" col="3" text="채취일시"/>
+                <Cell row="1" col="4" text="채취자"/>
+                <Cell row="1" col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell row="1" col="6" text="검체접수일"/>
+                <Cell row="1" col="7" text="접수구분"/>
+                <Cell row="1" col="8" text="접수 취소사유"/>
+                <Cell row="1" col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+            <Format id="insert">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검사항목"/>
+                <Cell col="2" text="검체명"/>
+                <Cell col="3" text="채취일시"/>
+                <Cell col="4" text="채취자"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell col="6" text="검체접수일"/>
+                <Cell col="7" text="접수구분"/>
+                <Cell col="8" text="접수 취소사유"/>
+                <Cell col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="none" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+            <Format id="cancel">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검사항목"/>
+                <Cell col="2" text="검체명"/>
+                <Cell col="3" text="채취일시"/>
+                <Cell col="4" text="채취자"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell col="6" text="검체접수일"/>
+                <Cell col="7" text="접수구분"/>
+                <Cell col="8" text="접수 취소사유"/>
+                <Cell col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="normal" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="date" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <ImageViewer id="ImageViewer00" taborder="3" left="64%" top="384" right="33.28%" height="40" style="background:transparent URL('img::delivery.jpg') stretch;border:0 none #e5e5e5ff ;"/>
+        <Grid id="clinspeReceiptGrid00" taborder="4" binddataset="dsClinspeReceipt" useinputpanel="false" autofittype="col" oncellclick="clinspeReceiptGrid_oncellclick" left="29.76%" top="448" right="1.2%" height="274">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="10" text="전달된 검체목록"/>
+                <Cell row="1" text="검체번호"/>
+                <Cell row="1" col="1" text="검사항목"/>
+                <Cell row="1" col="2" text="검체명"/>
+                <Cell row="1" col="3" text="채취일시"/>
+                <Cell row="1" col="4" text="채취자"/>
+                <Cell row="1" col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell row="1" col="6" text="검체접수일"/>
+                <Cell row="1" col="7" text="접수구분"/>
+                <Cell row="1" col="8" text="접수 취소사유"/>
+                <Cell row="1" col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+            <Format id="insert">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검사항목"/>
+                <Cell col="2" text="검체명"/>
+                <Cell col="3" text="채취일시"/>
+                <Cell col="4" text="채취자"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell col="6" text="검체접수일"/>
+                <Cell col="7" text="접수구분"/>
+                <Cell col="8" text="접수 취소사유"/>
+                <Cell col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="none" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+            <Format id="cancel">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검사항목"/>
+                <Cell col="2" text="검체명"/>
+                <Cell col="3" text="채취일시"/>
+                <Cell col="4" text="채취자"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell col="6" text="검체접수일"/>
+                <Cell col="7" text="접수구분"/>
+                <Cell col="8" text="접수 취소사유"/>
+                <Cell col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="normal" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="date" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findClinspeReceiptList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findClinspeReceiptList.do</Col>
+            <Col id="callbackFunc"/>
+            <Col id="outData">dsClinspeReceipt=dsClinspeReceipt</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchClinspeReceiptProcess</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/batchClinspeReceiptProcess.do</Col>
+            <Col id="inData">dsClinspeReceipt=dsClinspeReceipt:U</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsClinspeReceipt">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+          <Column id="dgnsNm" type="STRING" size="256"/>
+          <Column id="exmntCd" type="STRING" size="256"/>
+          <Column id="clinspeNm" type="STRING" size="256"/>
+          <Column id="bloodgetDate" type="STRING" size="256"/>
+          <Column id="bloodgetEmp" type="STRING" size="256"/>
+          <Column id="receiptCd" type="STRING" size="256"/>
+          <Column id="clinspeReceiptDate" type="STRING" size="256"/>
+          <Column id="emeYn" type="STRING" size="256"/>
+          <Column id="receiptCancelCau" type="STRING" size="256"/>
+          <Column id="receiptCancelDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+this.SL_DeliveryClinspeMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findClinspeReceiptList",false);
+}
+]]></Script>
+  </Form>
+</FDL>

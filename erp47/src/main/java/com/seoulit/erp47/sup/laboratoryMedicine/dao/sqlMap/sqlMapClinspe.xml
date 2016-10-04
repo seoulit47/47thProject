@@ -49,6 +49,28 @@
              </trim>    
     </select>
     
+    <select id="selectNoReceiptClinspeList" flushCache="false"  useCache="true" parameterType="map" resultType="ClinspeBean">
+          SELECT * FROM SL_CLINSPE C
+		  WHERE C.CLINSPE_NO NOT IN (SELECT CLINSPE_NO FROM SL_CLINSPE_RECEIPT)
+		  <trim prefix="AND" prefixOverrides="AND">
+		  		<if test="bloodGetStartDate != null and bloodGetEndDate != null">
+		  			C.BLOODGET_DATE BETWEEN #{bloodGetStartDate} AND #{bloodGetEndDate}
+		  		</if>
+		  		<if test="exmntCd != null and !exmntCd.equals('undefined') and !exmntCd.equals('')">
+                    AND C.EXMNT_CD = #{exmntCd}
+                </if>
+                <if test="clinspeNm != null and !clinspeNm.equals('undefined') and !clinspeNm.equals('')">
+                    AND C.CLINSPE_NM = #{clinspeNm}
+                </if>
+                <if test="patNo != null and !patNo.equals('undefined') and !patNo.equals('')">
+                    AND C.PAT_NO = #{patNo}
+                </if>
+                <if test="bloodgetEmp != null and !bloodgetEmp.equals('undefined') and !bloodgetEmp.equals('')">
+                    AND C.BLOODGET_EMP = #{bloodgetEmp}
+                </if>
+		  </trim>
+    </select>
+    
     <insert id="insertClinspe" parameterType="ClinspeBean">
         INSERT 
           INTO SL_CLINSPE
