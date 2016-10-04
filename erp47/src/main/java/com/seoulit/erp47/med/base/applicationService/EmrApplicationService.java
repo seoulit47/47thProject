@@ -3,7 +3,9 @@ package com.seoulit.erp47.med.base.applicationService;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.med.base.to.BaseExamBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
+import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 
@@ -14,5 +16,11 @@ public interface EmrApplicationService {
     List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap);
     
     List<DiseaseBean>findDiseaseList(Map<String,String>argsMap);
+    
+    List<DiseaseBean>findDiseaseCdList();
+    
+    List<PatientDsBean>findPatientDsPrscList(Map<String,String>args);
+    
+    List<BaseExamBean>findBaseExamList(Map<String,String>argsMap);
     
 }

@@ -51,8 +51,8 @@
         <Edit id="endDateEd" taborder="8" enable="false" left="41.36%" top="67" right="48.4%" height="30"/>
         <Button id="accPridPopupBtn" taborder="9" left="22.56%" top="67" right="74.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="accPridPopupBtn_onclick"/>
         <Button id="searchBtn" taborder="10" left="52.72%" top="65" right="40.08%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
-        <Button id="resetBtn" taborder="11" left="89.76%" top="66" right="2.08%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="closJourBtn" taborder="12" text="결산분개" left="78.4%" top="67" right="12%" height="29"/>
+        <Button id="resetBtn" taborder="11" left="89.76%" top="66" right="2.08%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="resetBtn_onclick"/>
+        <Button id="closJourBtn" taborder="12" text="결산분개" left="78.4%" top="67" right="12%" height="29" onclick="closJourBtn_onclick"/>
       </Layout>
     </Layouts>
     <InitValue>
@@ -118,11 +118,11 @@ this.setArrRtn=function(arrRtn)
 	var i = 0;
 	
 	this.accPridEd.set_value(arrRtn[i]);
-	alert(arrRtn[i]);
+	//alert(arrRtn[i]);
 	this.startDateEd.set_value(arrRtn[i++]);
-	alert(arrRtn[i]);
+	//alert(arrRtn[i]);
 	this.endDateEd.set_value(arrRtn[i++]);
-	alert(arrRtn[i]);
+	//alert(arrRtn[i]);
 	this.endDate = this.endDateEd.value ;
 }
 
@@ -130,14 +130,46 @@ this.setArrRtn=function(arrRtn)
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.accPrid = this.accPridEd.value; //회계기수 세팅 
+	
+	if(this.accPrid == null){
+		alert("회계기수를 선택하세요");
+	}else{
 	var argument = 'accPrid='+this.accPrid;
 	var rowPos = this.dsService.findRow("serviceID", "findClosDataLis");
 	this.dsService.setColumn(rowPos,"argument",argument);
 	this.gfnService("findClosDataLis");
+	}
 }
 
+//초기화
+this.resetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.searchBtn_onclick(null,null);
+}
 
-
+//결산분개
+this.closJourBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsClosJourData.clearData();
+	var jourAmtArr = new Array();
+	var i = 0;
+	
+	var artiCdArr = new Array("2210", "2220", "2230");
+	
+	for (var j = 0 ; j < 3 ; j++)
+	{
+		var jourAmt = this.dsClosData.lookup("artiCd", artiCdArr[j],"sumAmt");
+		if(jourAmt!=null)
+		{
+			this.dsClosJourData.addRow();
+			this.dsClosJourData.setColumn(j, "artiCd", artiCdArr[j]);
+			this.dsClosJourData.setColumn(j, "jourAmt", jourAmt);
+		}
+	}
+	
+	var retVal = this.gfnPopup("closingJourHelp","acc::AC_ClosJourHelpForm.xfdl","","");
+	//alert(this.MSG_ACC_CLOS_JOUR);
+}
 ]]></Script>
   </Form>
 </FDL>

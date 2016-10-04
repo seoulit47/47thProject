@@ -124,14 +124,14 @@
           </Row>
           <Row>
             <Col id="serviceID">batchAccAcntListProcess</Col>
-            <Col id="URL">his::acc/elementary/batchAccAcntProcess.do</Col>
+            <Col id="URL">erp47::acc/elementary/batchAccAcntProcess.do</Col>
             <Col id="inData">dsAccAcnt=dsAccAcnt:U</Col>
             <Col id="outData"/>
             <Col id="callbackFunc"/>
           </Row>
           <Row>
             <Col id="serviceID">lastYearAcntCopy</Col>
-            <Col id="URL">his::acc/elementary/lastYearAcntCopy.do</Col>
+            <Col id="URL">erp47::acc/elementary/lastYearAcntCopy.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsAccAcnt=dsAccAcnt</Col>
             <Col id="argument"/>
@@ -253,7 +253,7 @@ this.regBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 //전년도 코드 복사
 this.copyBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-		var year = this.yearSpin.value-1;
+	var year = this.yearSpin.value-1;
 	var codeCp = application.confirm(year + "년도 계정과목코드를 복사하시겠습니까?", "전년도코드복사");
 	
 	if(codeCp == true){

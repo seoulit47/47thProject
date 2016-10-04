@@ -43,4 +43,23 @@ public class AccAcntController {
         dataSetBeanMapper.beansToDataset(outData, accAcntList, AccAcntBean.class);
     }
     
+    
+    
+    @RequestMapping("acc/elementary/batchAccAcntProcess.do")
+    public void batchAccAcntProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        PlatformData inData = (PlatformData)request.getAttribute("inData");
+        List<AccAcntBean> accAcntList = dataSetBeanMapper.datasetToBeans(inData, AccAcntBean.class);
+        accElementaryServiceFacade.batchAccAcntProcess(accAcntList);
+    }
+    
+    @RequestMapping("acc/elementary/lastYearAcntCopy.do")
+    public void lastYearAcntCopy(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        PlatformData outData = (PlatformData)request.getAttribute("outData");
+        PlatformData inData = (PlatformData)request.getAttribute("inData");
+        Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        List<AccAcntBean> accAcntList = accElementaryServiceFacade.lastYearAcntCopy(argsMap);
+        dataSetBeanMapper.beansToDataset(outData, accAcntList, AccAcntBean.class);
+    }
+    
+    
 }

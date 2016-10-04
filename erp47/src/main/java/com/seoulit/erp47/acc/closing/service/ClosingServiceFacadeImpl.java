@@ -1,5 +1,6 @@
 package com.seoulit.erp47.acc.closing.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.closing.applicationService.ClosingApplicationService;
+import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
 
 @Service
@@ -26,17 +28,18 @@ public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
         return closingApplicationService.findClosDataList(argsMap);
     }
 
-   /* @Override
-    public List<ClosAcntBean> findClosAcntList(Map<String, String> argsMap) {
-        return closingApplicationService.findClosAcntList(argsMap);
-    }
+	@Override
+	public List<ClosAcntBean> findClosAcntList(Map<String, String> argsMap) {
+		 return closingApplicationService.findClosAcntList(argsMap);
+	}
 
-    @Override
-    public void registerClosJour(HashMap<String, Object> map) {
-        closingApplicationService.registerClosJour(map);
-    }
+	@Override
+	public void registerClosJour(HashMap<String, Object> map) {
+		closingApplicationService.registerClosJour(map);
+	}
 
-    @Override
+
+    /*@Override
     public void modifyDlineYn(AccPridBean accPrid) {
         dlineCarrforApplicationService.modifyDlineYn(accPrid);
     }

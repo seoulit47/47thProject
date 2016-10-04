@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MB_DiseaseCdPopupForm" classname="MB_DiseaseCdPopupForm" left="0" top="0" width="500" height="500" titletext="상병코드선택">
+  <Form id="MB_DiseaseCdPopupForm" classname="MB_DiseaseCdPopupForm" left="0" top="0" width="500" height="500" titletext="상병코드선택" onload="MB_DiseaseCdPopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div02" taborder="0" left="1.2%" top="0" right="0.8%" height="60" style="background:transparent URL('img::miniTitleBar4.jpg');">
