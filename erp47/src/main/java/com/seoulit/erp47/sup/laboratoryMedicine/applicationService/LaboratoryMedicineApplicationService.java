@@ -27,4 +27,9 @@ public interface LaboratoryMedicineApplicationService {
 	// 검체접수
 	public List<ClinspeReceiptBean> findClinspeReceiptList(Map<String, String> argsMap);
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList);
+	
+	//검체전달
+	public List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap);
+	public void updateDeliveryClinspeStatus(Map<String, String> argsMap);
+	
 }

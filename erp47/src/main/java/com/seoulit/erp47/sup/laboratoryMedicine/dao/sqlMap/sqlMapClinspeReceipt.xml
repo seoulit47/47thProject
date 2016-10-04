@@ -17,7 +17,8 @@
                S.EXMNT_CD, 
                S.CLINSPE_NM, 
                S.BLOODGET_DATE, 
-               S.BLOODGET_EMP 
+               S.BLOODGET_EMP,
+               R.CLINSPE_STATUS 
           FROM SL_CLINSPE S, 
                SL_CLINSPE_RECEIPT R 
            LEFT OUTER JOIN SL_CLINSPE_RECEIPT_CANCEL C 
@@ -42,7 +43,8 @@
                    CLINSPE_RECEIPT_DATE, 
                    RECEIPT_CD, 
                    EME_YN,
-                   DELIVERY_YN
+                   DELIVERY_YN,
+                   CLINSPE_STATUS
                ) 
                VALUES
                ( 
@@ -50,7 +52,8 @@
                    #{clinspeReceiptDate},
                    #{receiptCd},
                    #{emeYn},
-                   'N' 
+                   'N',
+                   '5'
                )
     </insert>
     

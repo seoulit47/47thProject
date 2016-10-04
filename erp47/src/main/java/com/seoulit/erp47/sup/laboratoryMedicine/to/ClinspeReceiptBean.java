@@ -34,6 +34,6 @@ public class ClinspeReceiptBean extends BaseBean{
 	               exmntCd,                // 검사항목
 	               clinspeNm,              // 검체명
 	               bloodgetDate,           // 채취일시
-	               bloodgetEmp;            // 채취자
-
+	               bloodgetEmp,            // 채취자
+	               clinspeStatus;		   // 검체상태
 }

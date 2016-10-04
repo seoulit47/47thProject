@@ -63,4 +63,14 @@ public class LaboratoryMedicineServiceFacadeImpl implements LaboratoryMedicineSe
 	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap) {
 		return LaboratoryMedicineApplicationService.findNoReceiptClinspeList(argsMap);
 	}
+
+	@Override
+	public List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap) {
+		return LaboratoryMedicineApplicationService.findNoDeliveryClinspeList(argsMap);
+	}
+
+	@Override
+	public void updateDeliveryClinspeStatus(Map<String, String> argsMap) {
+		LaboratoryMedicineApplicationService.updateDeliveryClinspeStatus(argsMap);
+	}
 }

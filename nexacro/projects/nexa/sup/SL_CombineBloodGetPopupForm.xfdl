@@ -247,6 +247,7 @@ this.clinspeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInf
 			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"bloodgetDate",this.dsClinspe.getColumn(e.row,"bloodgetDate"));
 			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"bloodgetEmp",this.dsClinspe.getColumn(e.row,"bloodgetEmp"));
 			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"receiptCd","RE000");
+			this.opener.dsClinspeReceipt.setColumn(this.opener.dsClinspeReceipt.rowcount-1,"clinspeStatus",5);
 			this.close();
 		} 
 	

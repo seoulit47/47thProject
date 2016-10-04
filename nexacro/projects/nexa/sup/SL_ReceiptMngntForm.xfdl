@@ -14,7 +14,7 @@
         <Combo id="receiptCombo" taborder="8" innerdataset="dsReceiptCd" codecolumn="code" datacolumn="data" left="66.16%" top="72" right="25.84%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
         <Button id="comboResetBtn" taborder="9" text="조건초기화" left="75.52%" top="73" right="18.4%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn" onclick="comboResetBtn_onclick"/>
         <Button id="searchFixedAssetMovBtn" taborder="10" cssclass="DelBtn" left="91.36%" top="72" right="1.44%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchFixedAssetMovBtn_onclick"/>
-        <Grid id="clinspeReceiptGrid" taborder="11" binddataset="dsClinspeReceipt" useinputpanel="false" autofittype="col" left="1.04%" top="110" right="1.2%" height="610" oncellclick="clinspeReceiptGrid_oncellclick">
+        <Grid id="clinspeReceiptGrid" taborder="11" binddataset="dsClinspeReceipt" useinputpanel="false" autofittype="col" left="1.04%" top="110" right="1.2%" height="610" oncellclick="clinspeReceiptGrid_oncellclick" oncelldblclick="clinspeReceiptGrid_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -27,6 +27,7 @@
                 <Column size="100"/>
                 <Column size="80"/>
                 <Column size="120"/>
+                <Column size="100"/>
                 <Column size="100"/>
               </Columns>
               <Rows>
@@ -44,6 +45,7 @@
                 <Cell col="7" text="접수구분"/>
                 <Cell col="8" text="접수 취소사유"/>
                 <Cell col="9" text="접수 취소일"/>
+                <Cell col="10" text="검체 상태"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:clinspeNo"/>
@@ -56,6 +58,7 @@
                 <Cell col="7" displaytype="combo" edittype="combo" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
                 <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
                 <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+                <Cell col="10" displaytype="combo" edittype="none" text="bind:clinspeStatus" combodataset="dsStatus" combocodecol="code" combodatacol="data" calendardisplaynulltype="none"/>
               </Band>
             </Format>
             <Format id="insert">
@@ -231,6 +234,7 @@
           <Column id="emeYn" type="STRING" size="256"/>
           <Column id="receiptCancelCau" type="STRING" size="256"/>
           <Column id="receiptCancelDate" type="STRING" size="256"/>
+          <Column id="clinspeStatus" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsExmntCd">
@@ -310,6 +314,38 @@
           <Row>
             <Col id="code">12</Col>
             <Col id="data">대변</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsStatus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="data">인수대기</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">인수확인</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">인수취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">검사중</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">검사완료</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">미전달</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -413,8 +449,10 @@ this.batchClinspeReceiptBtn_onclick = function(obj:Button,  e:nexacro.ClickEvent
 	}
 }
 
-//그리드 클릭 이벤트
-this.clinspeReceiptGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+
+
+
+this.clinspeReceiptGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
 	var selectRow = this.dsClinspeReceipt.getRowType(e.row);
 	
@@ -430,8 +468,6 @@ this.clinspeReceiptGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEven
 			}
 		}
 }
-
-
 ]]></Script>
   </Form>
 </FDL>

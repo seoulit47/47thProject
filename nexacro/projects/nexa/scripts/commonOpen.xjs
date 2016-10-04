@@ -32,6 +32,7 @@ this.gfnOpen = function(sID, sURL, menuName) {
  		oChildFrame.set_dragmovetype("none");
  		application.mainframe.frameSet.mainFrame.addChild(sID, oChildFrame);
  		oChildFrame.show();
+ 		
 		
 	} 
 	// 열린 탭이 있다면 해당창 최대화

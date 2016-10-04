@@ -26,7 +26,11 @@ public interface LaboratoryMedicineServiceFacade {
 	
 	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap);
 	
+	public List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap);
+	
 	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList);
 
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList);
+	
+	public void updateDeliveryClinspeStatus(Map<String, String> argsMap);
 }

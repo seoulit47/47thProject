@@ -1,5 +1,7 @@
 package com.seoulit.erp47.sup.laboratoryMedicine.applicationService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeDAO;
+import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeDeliveryDAO;
 import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeReceiptDAO;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeSequenceBean;
@@ -32,6 +35,8 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 	ClinspeReceiptDAO clinspeReceiptDAO;
 	@Autowired
 	ClinspeBlokDAO clinspeBlokDAO;
+	@Autowired
+	ClinspeDeliveryDAO clinspeDeliveryDAO; 
 	
 	// 검체채취(검체번호조회)
 	@Override
@@ -50,8 +55,9 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList){
 		for(ClinspeBean clinspeBean : clinspeBeanList){
 			switch ( clinspeBean.getStatus() ){
-				case "inserted" : { clinspeDAO.insertClinspe(clinspeBean); 
-				                    clinspeDAO.insertClinspeBlok(clinspeBean); break;             
+				case "inserted" : {
+					clinspeDAO.insertClinspe(clinspeBean); 
+				    clinspeDAO.insertClinspeBlok(clinspeBean); break;             
 				}
 				case "deleted" : { clinspeDAO.deleteClinspe(clinspeBean);  
 				                   clinspeBlokDAO.deleteClinspeBlok(clinspeBean); break;}
@@ -71,7 +77,7 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList){
 		for(ClinspeReceiptBean clinspeReceiptBean : clinspeReceiptBeanList){
 			switch ( clinspeReceiptBean.getStatus() ){
-				case "inserted" : { clinspeReceiptDAO.insertClinspeReceipt(clinspeReceiptBean); break; }
+				case "inserted" : { System.out.println("!~!~!");clinspeReceiptDAO.insertClinspeReceipt(clinspeReceiptBean); break; }
 				
 				case "deleted" : {  clinspeReceiptDAO.deleteClinspeReceiptCancel(clinspeReceiptBean);
 									clinspeReceiptDAO.deleteClinspeReceipt(clinspeReceiptBean); break; }
@@ -87,5 +93,23 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 	@Override
 	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap) {
 		return clinspeDAO.selectNoReceiptClinspeList(argsMap);
+	}
+
+	@Override
+	public List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap) {
+		return clinspeDeliveryDAO.selectNoDeliveryClinspeList(argsMap);
+	}
+
+	@Override
+	public void updateDeliveryClinspeStatus(Map<String, String> argsMap) {
+		Map<String, Object> procedureMap=new HashMap<>();
+		procedureMap.put("clinspeNo", argsMap.get("clinspeNo"));
+		procedureMap.put("empNo", argsMap.get("empNo"));
+		procedureMap.put("date", argsMap.get("date"));
+		clinspeDeliveryDAO.callDeliveryClinspe(procedureMap);
+		List<ClinspeReceiptBean> list=(List<ClinspeReceiptBean>)procedureMap.get("result");
+		System.out.println(list.size()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		//clinspeDeliveryDAO.updateDeliveryClinspeStatus(argsMap);
+		//clinspeDeliveryDAO.insertDeliveryClinspe(argsMap);
 	}
 }

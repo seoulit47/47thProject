@@ -395,7 +395,7 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 		
 		rsvtDAO.callCreateNewRsvtNo(argsMap);
 		String rsvtNo = argsMap.get("rsvtNo");
-		System.out.println(argsMap.get("errorMsg"));
+		
 		if(argsMap.get("errorCode").equals("-1")){
 			 new RuntimeException(argsMap.get("errorMsg"));
 		}else if(argsMap.get("errorMsg").equals("1")){

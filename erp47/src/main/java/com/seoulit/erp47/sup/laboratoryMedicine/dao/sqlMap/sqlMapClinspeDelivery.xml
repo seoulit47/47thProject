@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeDeliveryDAO">
+    
+   <cache flushInterval="86400000" eviction="LRU" />
+   <resultMap id="clinspeResultMap" type="ClinspeReceiptBean">
+		<result column="CLINSPE_NO" property="clinspeNo"/>
+   </resultMap>
+   
+   
+   <select id="selectNoDeliveryClinspeList" flushCache="false"  useCache="true" parameterType="map" resultType="ClinspeReceiptBean">
+        SELECT R.CLINSPE_NO,R.CLINSPE_RECEIPT_DATE,C.PAT_NM,C.BLOODGET_EMP,C.EXMNT_CD,C.CLINSPE_NM,R.EME_YN,C.BLOODGET_DATE
+		FROM SL_CLINSPE_RECEIPT R , SL_CLINSPE C 
+		WHERE R.DELIVERY_YN='N'
+		AND R.CLINSPE_NO = C.CLINSPE_NO
+		AND R.CLINSPE_NO NOT IN (SELECT CLINSPE_NO FROM SL_CLINSPE_RECEIPT_CANCEL)
+   </select>
+   
+   <update id="updateDeliveryClinspeStatus" parameterType="map">
+   		UPDATE SL_CLINSPE_RECEIPT 
+        SET 
+               DELIVERY_YN='Y',
+               CLINSPE_STATUS=0
+        WHERE CLINSPE_NO=#{clinspeNo}
+   </update>
+   
+   <insert id="insertDeliveryClinspe" parameterType="ClinspeReceiptBean">
+   		INSERT INTO SL_CLINSPE_DELIVERY      
+               VALUES
+               ( 
+                   #{clinspeNo},
+                   #{date},
+                   #{empNo}                 
+               )
+   </insert>
+   
+   <select id="callDeliveryClinspe" statementType="CALLABLE" parameterType="Map">
+		CALL PC_SP_DELIVERY_CLINSPE(
+			#{clinspeNo, mode=IN, jdbcType=VARCHAR, javaType=string}
+		,	#{date, mode=IN, jdbcType=VARCHAR, javaType=string}
+		,	#{empNo, mode=IN, jdbcType=VARCHAR, javaType=string}
+		, 	#{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string}
+		, 	#{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
+		,	#{result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=clinspeResultMap}
+		)
+	</select>
+</mapper>

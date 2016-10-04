@@ -32,6 +32,7 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="150"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -46,6 +47,7 @@
                 <Cell col="5" text="채취일시"/>
                 <Cell col="6" text="채취자"/>
                 <Cell col="7" text="환자등록번호"/>
+                <Cell col="8" text="검체상태"/>
               </Band>
               <Band id="body">
                 <Cell edittype="text" text="bind:clinspeNo"/>
@@ -56,6 +58,7 @@
                 <Cell col="5" displaytype="normal" edittype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
                 <Cell col="6" edittype="none" text="bind:bloodgetEmp"/>
                 <Cell col="7" edittype="text" text="bind:patNo"/>
+                <Cell col="8" edittype="none" text="bind:bloodgetEmp"/>
               </Band>
             </Format>
           </Formats>
@@ -129,6 +132,7 @@
           <Column id="ward" type="STRING" size="256"/>
           <Column id="hroom" type="STRING" size="256"/>
           <Column id="receiptCd" type="STRING" size="256"/>
+          <Column id="Column0" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsExmntCd">
@@ -208,6 +212,34 @@
           <Row>
             <Col id="code">12</Col>
             <Col id="data">대변</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsStatus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="data">인수대기</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">인수확인</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">인수취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">검사중</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">검사완료</Col>
           </Row>
         </Rows>
       </Dataset>
