@@ -357,28 +357,34 @@
 		set
 		FRIGN_SINGLE_TXRATE = #{frignSingleTxrate},
 		EMP_NM = #{empNm},
-		JOBTT = #{jobtt},
+		JOBTT =
+		#{jobtt},
 		JOBCL = #{jobcl},
 		JOBRK = #{jobrk},
 		RRN = #{rrn},
-		BIRTHDAY = #{birthday},
+		BIRTHDAY =
+		#{birthday},
 		GENDER = #{gender},
 		MATE_YN = #{mateYn},
 		ADDR = #{addr},
 		ZIP_CD = #{zipCd},
 		PERMADDR = #{permaddr},
 		TEL = #{tel},
-		PHONE = #{phone},
+		PHONE =
+		#{phone},
 		EXTSN = #{extsn},
 		FAX = #{fax},
 		PASSWORD = #{password},
-		IMAGE = #{image},
+		IMAGE =
+		#{image},
 		NATNT = #{natnt},
 		LOCAL_YN = #{localYn},
-		FORIN_NUM = #{forinNum},
+		FORIN_NUM =
+		#{forinNum},
 		DEPT_CD = #{deptCd},
 		HIRE_DIV = #{hireDiv},
-		WORK_STATUS = #{workStatus},
+		WORK_STATUS =
+		#{workStatus},
 		WORK_PERIOD = #{workPeriod},
 		RET_DATE = #{retDate},
 		RET_MONTH_WORKINGDAYS = #{retMonthWorkingdays},
@@ -400,7 +406,8 @@
 		HM_EMP
 		SET
 		LOGIN_IP = #{ip},
-		LOGIN_TIME = TO_CHAR(SYSDATE,'YYYYMMDD-HH24MISS')
+		LOGIN_TIME =
+		TO_CHAR(SYSDATE,'YYYYMMDD-HH24MISS')
 		WHERE
 		EMP_NO = #{empNo}
 
@@ -466,6 +473,22 @@
 		</if>
 		order by emp_no
 	</select>
+
+	<update id="appointEmp" parameterType="appointDetailBean">
+		UPDATE
+		HM_EMP
+		SET
+		JOBCL = #{appmtJobclNm},    <!-- 직종 -->
+		JOBTT = #{appmtJobtt},    <!-- 직위 -->
+		JOBRK = #{appmtJobrkNm},    <!-- 직급 -->
+		PAY_STEP = #{appmtPstep}, <!-- 호봉 -->
+		DEPT_CD = #{appmtDept},  <!-- 부서코드 -->
+		DEPT_NM = #{appmtDeptNm}   <!-- 부서명 -->
+		WHERE
+		EMP_NO =#{empNo}
+
+
+	</update>
 
 </mapper>
 		

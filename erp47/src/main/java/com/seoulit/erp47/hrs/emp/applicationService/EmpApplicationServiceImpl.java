@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.common.to.BaseBean;
+import com.seoulit.erp47.hrs.appoint.to.AppointDetailBean;
 import com.seoulit.erp47.hrs.emp.dao.CareerDAO;
 import com.seoulit.erp47.hrs.emp.dao.DisabilityDAO;
 import com.seoulit.erp47.hrs.emp.dao.EducationDAO;
@@ -298,11 +299,11 @@ public class EmpApplicationServiceImpl implements EmpApplicationService {
 		}
 	}
 
-/*	@Override
+	@Override
 	public void appointEmp(List<AppointDetailBean> appointDetailList) {
 		for (AppointDetailBean appointDetailBean : appointDetailList) {
 			empDAO.appointEmp(appointDetailBean);
 		}
-	}*/
+	}
 
 }

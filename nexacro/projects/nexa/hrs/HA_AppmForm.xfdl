@@ -248,8 +248,8 @@
             <Col id="callbackFunc">CallbackFunc</Col>
           </Row>
           <Row>
-            <Col id="serviceID">insertAppoint</Col>
-            <Col id="URL">erp47::hrs/appoint/registerAppoint.do</Col>
+            <Col id="serviceID">batchAppoint</Col>
+            <Col id="URL">erp47::hrs/appoint/batchAppoint.do</Col>
             <Col id="inData">dsAppoint=dsAppoint:U</Col>
             <Col id="callbackFunc">CallbackFunc</Col>
           </Row>
@@ -260,8 +260,8 @@
             <Col id="callbackFunc">CallbackFunc</Col>
           </Row>
           <Row>
-            <Col id="serviceID">insertAppointDetail</Col>
-            <Col id="URL">erp47::hrs/appoint/registerAppointDetail.do</Col>
+            <Col id="serviceID">batchAppointDetail</Col>
+            <Col id="URL">erp47::hrs/appoint/batchAppointDetail.do</Col>
             <Col id="inData">dsAppointDetail=dsAppointDetail:U</Col>
             <Col id="outData"/>
             <Col id="callbackFunc">CallbackFunc</Col>
@@ -399,32 +399,32 @@ this.dept_grid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 
 this.addAppmt_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-var dt;
-		var choiceEmp = this.dsHmEmp.rowposition; //alert(choiceEmp);        //행순번
+	var dt;
+	var choiceEmp = this.dsHmEmp.rowposition; //alert(choiceEmp);        //행순번
  
-	if(choiceEmp==-1){   alert("사원선택후 행추가가 가능합니다."); //선택안하면 -1
+	if(choiceEmp==-1){   
+		alert("사원선택후 행추가가 가능합니다."); //선택안하면 -1
 	}else{
-						var addAppmt=this.dsAppoint.addRow();
-						    copyAppmtNo=addAppmt;//차가된 행의 순번이 저장되고 아래에서 그 번호로 데이터 값을 저장한다
-						dt = this.gfnDate("yy-mm"); 
-						 trace("==============서버시간 ===========" + dt);//발령호수인데 이대로적자 뒤에가서 날짜받아온다
-					  	    empNo=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNo");
-					  	    
-					  	    
-						    empNm=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNm");
-						var deptnm=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"deptNm");
-						var deptcd=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"deptCd");
+		var addAppmt=this.dsAppoint.addRow();
+		copyAppmtNo=addAppmt;//차가된 행의 순번이 저장되고 아래에서 그 번호로 데이터 값을 저장한다
+		dt = this.gfnDate("yy-mm"); 
+		trace("==============서버시간 ===========" + dt);//발령호수인데 이대로적자 뒤에가서 날짜받아온다
+		empNo=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNo");
+		empNm=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"empNm");
+		var deptnm=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"deptNm");
+		var deptcd=this.dsHmEmp.getColumn(this.dsHmEmp.rowposition,"deptCd");
+		alert("deptnm: " + deptnm);
+		alert("deptcd: " + deptcd);				
+		this.dsAppoint.setColumn(addAppmt,"empNo",empNo);
+		this.dsAppoint.setColumn(addAppmt,"appmtSeq",dt);
+		this.dsAppoint.setColumn(addAppmt,"empNm",empNm);
+		this.dsAppoint.setColumn(addAppmt,"deptNm",deptnm);
+		this.dsAppoint.setColumn(addAppmt,"deptCd",deptcd);
+		this.dsAppoint.setColumn(addAppmt,"appmtyn","N");
 						
-						this.dsAppoint.setColumn(addAppmt,"empNo",empNo);
-						this.dsAppoint.setColumn(addAppmt,"appmtSeq",dt);
-						this.dsAppoint.setColumn(addAppmt,"empNm",empNm);
-						this.dsAppoint.setColumn(addAppmt,"deptNm",deptnm);
-						this.dsAppoint.setColumn(addAppmt,"deptCd",deptcd);
-						this.dsAppoint.setColumn(addAppmt,"appmtyn","N");
-						
-						//3번쨰 그리드 발령상세에서 가져간다
-						var cheakcurrDept=this.dsAppoint.getColumn(e.row,"currDept");
-						alert(cheakcurrDept);
+		//3번쨰 그리드 발령상세에서 가져간다
+		var cheakcurrDept=this.dsAppointDetail.getColumn(e.row,"currDept");
+		//alert(cheakcurrDept);
 	}
 }
 
@@ -491,7 +491,7 @@ this.appo_grid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 											this.dsAppointDetail.setColumn(addRow,"currDept",deptcd);
 											this.dsAppointDetail.setColumn(addRow,"baseAppmtNm",cheakAppmtSubject);//위에서 만든거 넣음
 											this.dsAppointDetail.setColumn(addRow,"baseAppmtCd",cheakAppmtDiv);
-											alert(323);
+											//alert(323);
 											}
 			}else{     alert("이미발령된 사원입니다.");
 			} }
@@ -606,7 +606,7 @@ this.btnInsertAppioint_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 			return alert("발신부서는 반드시 입력하셔야 합니다.");
 		}	
 	}
-	this.gfnService("insertAppoint");
+	this.gfnService("batchAppoint");
 }
 
 
@@ -646,7 +646,7 @@ this.CallbackFunc = function(trid,errcd,errmsg){
 			}else{
 			alert("발령정보 검색 실패");
 		}
-	}else if(trid == "insertAppointDetail"){
+	}else if(trid == "batchAppointDetail"){
 		if(errcd == 1){ 	                //alert(global.http.RecvHttpStr); //받을때  //SendHttpStr 이건 보낼때
 			alert("발령상세 저장");
 			}else{                           //    alert(global.http.RecvHttpStr);
@@ -658,7 +658,7 @@ this.CallbackFunc = function(trid,errcd,errmsg){
 			}else{
 			alert(" 않습니다");
 		}
-	}else if(trid == "insertAppoint"){
+	}else if(trid == "batchAppoint"){
 		if(errcd == 1){
 			alert("발령 저장 성공");
 			}else{
@@ -678,7 +678,7 @@ this.HA_AppmForm_oninit = function(obj:Form, e:nexacro.InitEventInfo)
 
 	
 	this.gfnService("findAppmtEmpList");
-	this.gfnService("findEmpList");
+	//this.gfnService("findEmpList");
 }
 
 //발령버튼
@@ -693,19 +693,20 @@ this.appointBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 // 	if(grEmpPms!="admin"|| grEmpPaystep<2){  alert("발령권한이 없습니다.");  return false;
 //	}else{
 			for(i=0;i<this.dsAppointDetail.getRowCount();i++){
-							var c = 1;
-							trace(c++);
-							var cheakAppmt=this.dsAppointDetail.getColumn(i,"cheack");
-							alert(cheakAppmt);
-							var appointRow=this.dsAppoint.findRow("empNo",this.dsAppointDetail.getColumn(i,"empNo")); 
-							this.dsAppoint.setColumn(appointRow,"appmtyn","Y");
-						if(cheakAppmt==1){        cheackNum++;       }     	
-						}
+				var c = 1;
+				trace(c++);
+				var cheakAppmt=this.dsAppointDetail.getColumn(i,"cheack");
+				alert(cheakAppmt);
+				var appointRow=this.dsAppoint.findRow("empNo",this.dsAppointDetail.getColumn(i,"empNo")); 
+				this.dsAppoint.setColumn(appointRow,"appmtyn","Y");
+				if(cheakAppmt==1){        cheackNum++;       }     	
+			}
 		
 			var trueOrfalse=confirm("발령등록 하시겠습니까?");
-			if(trueOrfalse==true){    			    this.gfnService("insertAppoint");
-													this.gfnService("insertAppointDetail"); //alert(global.http.SendHttpStr); //SendHttpStr
-													this.gfnService("modifyAppointEmp");    //alert(global.http.SendHttpStr); //SendHttpStr
+			if(trueOrfalse==true){ 
+				this.gfnService("batchAppoint");
+				this.gfnService("batchAppointDetail"); //alert(global.http.SendHttpStr); //SendHttpStr
+				this.gfnService("modifyAppointEmp");    //alert(global.http.SendHttpStr); //SendHttpStr
 			}else{      			 return false; }	
 //	}
 }

@@ -15,13 +15,12 @@ import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.hrs.ret.service.RetServiceFacade;
 import com.seoulit.erp47.hrs.ret.to.ReturnItemBean;
 
-
 /**
  * 
- * @Package  com.seoul.his.hrs.ret.controller
- * @Class    ReturnItemController.java
- * @Create   2016. 6. 27.
- * @Author   Ckeun
+ * @Package com.seoulit.erp47.hrs.ret.controller
+ * @Class ReturnItemController.java
+ * @Create 2016. 10. 3.
+ * @Author 김봉진
  * @Description
  *
  * @LastUpdated
@@ -35,8 +34,7 @@ public class ReturnItemController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping("hrs/ret/findReturnItemList.do")
-	public void findReturnItemList(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public void findReturnItemList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
@@ -45,19 +43,15 @@ public class ReturnItemController {
 		List<ReturnItemBean> returnItemList;
 
 		returnItemList = retServiceFacade.findReturnItemList(argsMap);
-		datasetBeanMapper.beansToDataset(outData, returnItemList,
-				ReturnItemBean.class);
+		datasetBeanMapper.beansToDataset(outData, returnItemList, ReturnItemBean.class);
 	}
 
 	@RequestMapping("hrs/ret/batchReturnItemProcess.do")
-	public void batchReturnItemProcess(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public void batchReturnItemProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("배치시작");
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
-		List<ReturnItemBean> returnItemList = datasetBeanMapper.datasetToBeans(inData,
-				ReturnItemBean.class);
+		List<ReturnItemBean> returnItemList = datasetBeanMapper.datasetToBeans(inData, ReturnItemBean.class);
 		retServiceFacade.batchReturnItemProcess(returnItemList);
 	}
-
 
 }

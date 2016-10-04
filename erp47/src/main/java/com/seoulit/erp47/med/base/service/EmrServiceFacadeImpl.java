@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.med.base.applicationService.CautionApplicationSerevice;
 import com.seoulit.erp47.med.base.applicationService.EmrApplicationService;
+import com.seoulit.erp47.med.base.to.BaseExamBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
+import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
@@ -63,6 +65,24 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	public List<DiseaseBean> findDiseaseList(Map<String, String> argsMap) {
 		// TODO Auto-generated method stub
 		return emrApplicationService.findDiseaseList(argsMap);
+	}
+
+	@Override
+	public List<DiseaseBean> findDiseaseCdList() {
+		// TODO Auto-generated method stub
+		return emrApplicationService.findDiseaseCdList();
+	}
+
+	@Override
+	public List<PatientDsBean> findPatientDsPrscList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return emrApplicationService.findPatientDsPrscList(argsMap);
+	}
+
+	@Override
+	public List<BaseExamBean> findBaseExamList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return emrApplicationService.findBaseExamList(argsMap);
 	}
 
 }

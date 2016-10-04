@@ -8,4 +8,6 @@ import com.seoulit.erp47.med.base.to.DiseaseBean;
 public interface DiseaseDAO {
 
 		List<DiseaseBean>findDiseaseList(Map<String,String>argsMap);
+		
+		List<DiseaseBean>findDiseaseCdList();
 }
