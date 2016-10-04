@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.won.outPatMgt.applicationService.OutPatMgtApplicationService;
+import com.seoulit.erp47.won.outPatMgt.applicationService.ReceiptPatApplicationService;
 import com.seoulit.erp47.won.outPatMgt.to.PatInfoBean;
+import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
 /**
  * @Package  com.seoulit.erp47.won.outPatMgt.service
@@ -23,6 +25,8 @@ import com.seoulit.erp47.won.outPatMgt.to.PatInfoBean;
 public class OutPatMgtServiceFacadeImpl implements OutPatMgtServiceFacade {
 	@Autowired
 	OutPatMgtApplicationService outPatMgtApplicationService; 
+	@Autowired
+	ReceiptPatApplicationService receiptPatApplicationService;
 	
 	@Override
 	public List<PatInfoBean> findPatList(Map<String, String> argsMap) {
@@ -33,4 +37,10 @@ public class OutPatMgtServiceFacadeImpl implements OutPatMgtServiceFacade {
     public PatInfoBean findPat(Map<String, String> argsMap) {
         return outPatMgtApplicationService.findPat(argsMap);
     }
+
+	@Override
+	public List<ReceiptInfoBean> findReceiptList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return receiptPatApplicationService.findReceiptList(argsMap);
+	}
 }

@@ -45,7 +45,8 @@
 	<package name="com.seoulit.erp47.acc.closing.to" />
 
     <!-- 원무 -->
-    <package name="com.seoulit.erp47.won.outPatMgt.to" />	  
+    <package name="com.seoulit.erp47.won.outPatMgt.to" />	
+    <package name="com.seoulit.erp47.won.baseInfo.to"/>  
       
       
     <!-- 진료지원 -->

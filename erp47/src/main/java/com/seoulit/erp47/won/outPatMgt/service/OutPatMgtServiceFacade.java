@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.seoulit.erp47.won.outPatMgt.to.PatInfoBean;
+import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
 /**
  * @Package  com.seoulit.erp47.won.outPatMgt.service
@@ -18,11 +19,12 @@ public interface OutPatMgtServiceFacade {
 
 	public List<PatInfoBean> findPatList(Map<String, String> argsMap);
 	public PatInfoBean findPat(Map<String, String> argsMap);
+	public List<ReceiptInfoBean> findReceiptList(Map<String, String> argsMap);
 	/*
     public void modifyPat(Map<String, Object> map);
     public void registerPat(Map<String, Object> map);
     public PatInfoBean findLastPatNo();
-    public List<ReceiptInfoBean> findReceiptList(Map<String, String> argsMap);
+    
     public void registerReceipt(ReceiptInfoBean receiptInfoBean);
     public void removeReceipt(ReceiptInfoBean receiptInfoBean);
     public List<CheckInfoBean> findCheckList(Map<String, String> argsMap);

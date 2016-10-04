@@ -309,7 +309,7 @@
         <Static id="titleStc01" taborder="5" text="환자 정보" onclick="titleStc00_onclick" left="1.04%" top="163" right="89.68%" height="26" style="color:dimgray;bordertype:round 5 5 ;font:antialias bold 14 맑은 고딕;" class="TStc"/>
         <Button id="registerBtn" taborder="6" onclick="registerBtn_onclick" left="81.6%" top="712" right="11.2%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="closeBtn" taborder="7" onclick="closeBtn_onclick" left="91.28%" top="712" right="1.52%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="searchBtn" taborder="8" onclick="searchBtn_onclick" left="27.68%" top="712" right="65.12%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="8" onclick="searchBtn_onclick" left="14.88%" top="280" right="77.92%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Grid id="patGrid" taborder="9" binddataset="dsOutpaReceipt" useinputpanel="false" autofittype="col" oncellclick="patGrid_oncellclick" left="1.04%" top="314" right="64.8%" height="378">
           <Formats>
             <Format id="default">
@@ -562,7 +562,7 @@
           </Row>
           <Row>
             <Col id="serviceID">findReceiptList</Col>
-            <Col id="URL">erp47::won/outPatMngnt/findReceiptList.do</Col>
+            <Col id="URL">erp47::won/outPatMgt/findReceiptList.do</Col>
             <Col id="outData">dsOutpaReceipt=dsOutpaReceipt</Col>
             <Col id="argument"/>
             <Col id="callbackFunc">emrCallback</Col>
@@ -886,13 +886,14 @@ this.MB_EmrForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 // 조회버튼 클릭시 
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-
+	alert("1234")
 	searchDate = null;
 // 	this.dsService.setColumn(1,"argument","trmtDoct=43000 trmtDate="+searchDate+" gubun=N");//n은 입원유무 43000은 현재 차트에 들어온 의사번호를 뜻한다 나중에 로그인의사번호 받아서  넣으면된다
 	this.dsService.setColumn(1, "argument", "trmtDoct=" + empNo + " trmtDate=" + searchDate);
 	//var trmtDoct = application.gdsEmp.getColumn(0, "empNo"); //alert(trmtDoct); /*"43000"*/
  	//this.dsService.setColumn(1, "argument", "trmtDoct=" + trmtDoct + " trmtDate=" + searchDate);  //담당의 번호가 들어간다
   	this.gfnService("findReceiptList");
+  	
 }
 
 // 환자그리드 클릭시
@@ -902,10 +903,11 @@ this.patGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 	patNo = this.dsOutpaReceipt.getColumn(this.dsOutpaReceipt.rowposition, "patNo");
 	receiptNo=this.dsOutpaReceipt.getColumn(this.dsOutpaReceipt.rowposition, "outpaReceiptNo");
 	
-	//기초검사정보조회
+	//기초검사정보조회(O)
 	this.dsService.setColumn(4, "argument","patNo="+patNo);
-	this.gfnService("findBaseExamList");             
-	//상병내역조회
+	this.gfnService("findBaseExamList");        
+	     
+	//상병내역조회(O)
     this.dsService.setColumn(2,"argument","patNo="+patNo);
     this.gfnService("findPatientDsPrscList"); 
     
@@ -934,6 +936,7 @@ this.medTab_reportTp_diseaseGrid_oncellclick = function(obj:Grid, e:nexacro.Grid
 	var patNo       = this.dsPatientDs.getColumn(this.dsPatientDs.rowposition, "patNo"); 
 
 	this.dsPatientPrsc.filter("patNo=='"+patNo+"' && prescDate=='"+prescDate+"' && diseaseCd =='"+diseaseCode+"'");
+
 }
 
 /***** 여기까지 진단 탭 *****/

@@ -25,21 +25,21 @@
         FROM
             (SELECT * FROM AE_ACC_ACNT WHERE ACC_YEAR=#{accYear}) A
             LEFT OUTER JOIN (SELECT * FROM AE_ASSI_TYPE WHERE ACC_YEAR=#{accYear}) B
-            ON A.ASSI_TYPE_CD = B.ASSI_TYPE_CD	<!-- 보조유형코드로 조인 -->
+            ON A.ASSI_TYPE_CD = B.ASSI_TYPE_CD			<!-- 보조유형코드로 조인 -->
         WHERE
             1=1
         <if test="acntNm != null">
             AND A.ACNT_NM LIKE '%' || #{acntNm} || '%'	<!-- 계정과목명 -->
         </if>
         <if test="accYear != null">
-            AND A.ACC_YEAR = #{accYear}			<!-- 회계년도  -->
+            AND A.ACC_YEAR = #{accYear}					<!-- 회계년도  -->
         </if>
         <if test="creDebDiv != null">
-            AND A.CRE_DEB_DIV = #{creDebDiv}	<!-- 차대구분 --> 
+            AND A.CRE_DEB_DIV = #{creDebDiv}			<!-- 차대구분 --> 
             AND A.INPUT_YN = 'Y'
         </if>
         <if test="acntDiv != null">
-            AND A.ACNT_DIV = #{acntDiv}			<!-- 계정구분 -->
+            AND A.ACNT_DIV = #{acntDiv}					<!-- 계정구분 -->
         </if>
         START WITH 
             PARENT_ACNT_CD IS NULL
@@ -49,11 +49,11 @@
             ACNT_CD
     </select>
     
-    <!-- <select id="callCopyAcnt" statementType="CALLABLE" parameterType="AccAcntBean" resultType="AccAcntBean">
+    <select id="callCopyAcnt" statementType="CALLABLE" parameterType="AccAcntBean" resultType="AccAcntBean">
          {call PC_AE_COPY_ACNT (
-            #{accYear, mode=IN, jdbcType=VARCHAR},
-            #{errorCode, mode=OUT, jdbcType=VARCHAR},
-            #{errorMsg, mode=OUT, jdbcType=VARCHAR}
+            #{accYear, 		mode=IN, 	jdbcType=VARCHAR},
+            #{errorCode, 	mode=OUT, 	jdbcType=VARCHAR},
+            #{errorMsg, 	mode=OUT, 	jdbcType=VARCHAR}
          ) }
     </select>
 
@@ -95,27 +95,28 @@
         DELETE 
             AE_ACC_ACNT
         WHERE 
-            ACNT_CD=#{acntCd }
+            ACNT_CD=#{acntCd}
             AND ACC_YEAR=#{accYear}
     </delete>
+    
     
     <update id="updateAccAcnt" parameterType="AccAcntBean">
         UPDATE 
             AE_ACC_ACNT SET
-                ACNT_NM       = #{acntNm},
-                ACNT_DIV      = #{acntDiv},
-                CRE_DEB_DIV   = #{creDebDiv},
-                ASSI_TYPE_CD  = #{assiTypeCd},
-                BUDG_YN       = #{budgYn},
-                USE_YN        = #{useYn},
-                INCOM_ARTI_CD = #{incomArtiCd},
-                INPUT_YN      = #{inputYn},
-                PARENT_ACNT_CD= #{parentAcntCd},
-                CASH_ARTI_CD  = #{cashArtiCd},
-                DEDUCT_YN     = #{deductYn}
+                ACNT_NM       	= #{acntNm},
+                ACNT_DIV      	= #{acntDiv},
+                CRE_DEB_DIV   	= #{creDebDiv},
+                ASSI_TYPE_CD  	= #{assiTypeCd},
+                BUDG_YN       	= #{budgYn},
+                USE_YN        	= #{useYn},
+                INCOM_ARTI_CD 	= #{incomArtiCd},
+                INPUT_YN      	= #{inputYn},
+                PARENT_ACNT_CD	= #{parentAcntCd},
+                CASH_ARTI_CD  	= #{cashArtiCd},
+                DEDUCT_YN     	= #{deductYn}
         WHERE 
-            ACNT_CD=#{acntCd}
-            AND ACC_YEAR=#{accYear}
-    </update> -->
+            ACNT_CD			=	#{acntCd}
+            AND ACC_YEAR	=	#{accYear}
+    </update>
     
 </mapper>

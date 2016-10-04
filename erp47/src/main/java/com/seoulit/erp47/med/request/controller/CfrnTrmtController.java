@@ -26,7 +26,7 @@ public class CfrnTrmtController {
 	@Autowired
 	private DataSetBeanMapper dataSetBeanMapper;
 	
-	@RequestMapping("/med/request/findCfrnTrmt.do")
+	@RequestMapping("med/request/findCfrnTrmtList.do")
 	public void findCfrnTrmt(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		
 		PlatformData outData = (PlatformData)request.getAttribute("outData");

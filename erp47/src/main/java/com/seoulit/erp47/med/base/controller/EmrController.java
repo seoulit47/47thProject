@@ -1,5 +1,6 @@
 package com.seoulit.erp47.med.base.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.med.base.service.EmrServiceFacade;
+import com.seoulit.erp47.med.base.to.BaseExamBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
+import com.seoulit.erp47.med.base.to.PatientDsBean;
+import com.seoulit.erp47.med.base.to.PatientPrscBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 
@@ -71,13 +75,51 @@ public class EmrController {
     	//상병코드조회
     		System.out.println("med findDiseaseCdList 매서드 입니다");
     	
-    		PlatformData inData = (PlatformData)request.getAttribute("inData");
+    		
     		PlatformData outData =(PlatformData) request.getAttribute("outData");
     		
-    		Map<String,String>argsMap=dataSetBeanMapper.variablesToMap(inData);
     		
-    		//10월4일에 할게요 mickey
+    		List<DiseaseBean>diseaseCdList =   emrServiceFacade.findDiseaseCdList();
 	
+    		
+    		dataSetBeanMapper.beansToDataset(outData, diseaseCdList, DiseaseBean.class);
+    }
+    @RequestMapping("med/base/findPatientDsPrscList.do")
+    public void findPatientDsPrscList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+    	//환자처방, 상병조회
+    	System.out.println("med / findPatientDsPrscList 매서드입니다.");
+    	
+    	PlatformData inData = (PlatformData)request.getAttribute("inData");
+    	PlatformData outData = (PlatformData)request.getAttribute("outData");
+    		
+    	Map<String,String>argsMap=dataSetBeanMapper.variablesToMap(inData);    			
+    	
+    	List<PatientDsBean>patientDsList = emrServiceFacade.findPatientDsPrscList(argsMap);
+    	
+    	   List<PatientPrscBean> patientPrscList = new ArrayList<>();
+           for(PatientDsBean patientDsBean : patientDsList){
+               patientPrscList.addAll(patientDsBean.getPatientPrscList());
+           }
+    	
+    	
+    	dataSetBeanMapper.beansToDataset(outData, patientDsList, PatientDsBean.class);
+    	dataSetBeanMapper.beansToDataset(outData, patientPrscList, PatientPrscBean.class);
+    }
+    
+    
+    @RequestMapping("med/base/findBaseExamList.do")
+    public void findBaseExamList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+    	
+    	System.out.println("med / findBaseExamList 매서드입니다.");
+    	
+    	PlatformData inData = (PlatformData)request.getAttribute("inData");
+    	PlatformData outData = (PlatformData)request.getAttribute("outData");
+    	
+    	Map<String,String>argsMap = dataSetBeanMapper.variablesToMap(inData);
+    	
+    	List<BaseExamBean>baseExamList=emrServiceFacade.findBaseExamList(argsMap);
+    	
+    	dataSetBeanMapper.beansToDataset(outData, baseExamList, BaseExamBean.class);
     }
 
 }

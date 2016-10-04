@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.seoulit.erp47.won.outPatMgt.dao.ReceiptInfoDAO">
+	<cache eviction="LRU" flushInterval="86400000"/>
+	
+	<select id="findReceiptList" resultType="ReceiptInfoBean">
+	SELECT
+            P.PAT_NO,
+            P.PAT_NM ,
+            R.OUTPA_RECEIPT_NO,
+            R.TRMT_DATE,
+            R.TRMT_DEPT,
+            FN_CM_CODE_DTL_NAME('GP080',R.TRMT_DEPT) AS TRMT_DEPT_NM,
+            R.TRMT_DOCT,
+            FN_HM_EMP(R.TRMT_DOCT) AS TRMT_DOCT_NM,
+            R.HOSPTLZ_YB ,
+            R.HOSPTLZ_RSVT_YB,
+            R.PAT_TYPE ,
+            R.TRMT_COST_CALCU_YB,
+            R.TRMT_YB ,
+            R.PRESC_YB ,
+            R.REG_DEPT ,
+            R.CNG_DEPT ,
+            R.RECEIPT_DATE,
+            R.DGNS_NM,
+            R.NT_TT_YB,
+            R.EXP_CD,
+            FN_CM_CODE_DTL_NAME('MD001',R.EXP_CD) AS EXP_NM,
+            R.NW_DIV
+        FROM
+            WS_OUTPA_RECEIPT R
+        ,   WS_PAT P
+        WHERE R.PAT_NO=P.PAT_NO
+            <if test="trmtDoct != '' and trmtDoct != null">
+                AND R.trmt_doct=#{trmtDoct}
+            </if>
+            <if test="trmtDate != '' and trmtDate != null">
+                AND R.trmt_date=#{trmtDate}
+            </if>
+        ORDER BY R.OUTPA_RECEIPT_NO
+	
+	
+	</select>
+
+	
+</mapper>
