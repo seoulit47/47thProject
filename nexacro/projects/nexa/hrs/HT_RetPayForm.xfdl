@@ -156,10 +156,8 @@ this.empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
     
     this.setEmpInfo = function(popuoEmpNo,popupEmpNm)
     {
-		alert(popuoEmpNo);
-		alert(popupEmpNm);
 		empNo = popuoEmpNo;
-		alert(empNo);
+		
 		this.Div00.empNoEdt.set_value(popuoEmpNo);
 		this.Div00.empNameEdt.set_value(popupEmpNm);
 	}	

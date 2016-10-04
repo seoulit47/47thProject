@@ -3,6 +3,7 @@ package com.seoulit.erp47.hrs.emp.applicationService;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.hrs.appoint.to.AppointDetailBean;
 import com.seoulit.erp47.hrs.emp.to.EmpBean;
 import com.seoulit.erp47.hrs.emp.to.EmployInfoBean;
 import com.seoulit.erp47.hrs.emp.to.FinSufcandiBean;
@@ -30,7 +31,7 @@ public interface EmpApplicationService {
 
 	List<EmpBean> findRetireeList(Map<String, String> argsMap);
 
-	//void appointEmp(List<AppointDetailBean> appointDetailList);
+	void appointEmp(List<AppointDetailBean> appointDetailList);
 
 	List<EmployInfoBean> findEmployInfoList(Map<String, String> argsMap);
 

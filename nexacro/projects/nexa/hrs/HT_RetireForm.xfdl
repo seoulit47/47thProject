@@ -216,11 +216,11 @@ this.empNoSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var arr = this.gfnEmpPopup();
 	
-	this.setEmpInfo = function(arrRtn)
+	this.setEmpInfo = function(popupEmpNo,popupEmpNm)
     { 
-		empNo = arrRtn[0];
-		this.Div00.empNoEdt.set_value(arrRtn[0]);
-		this.Div00.empNameEdt.set_value(arrRtn[1]);
+		//empNo = arrRtn[0];
+		this.Div00.empNoEdt.set_value(popupEmpNo);
+		this.Div00.empNameEdt.set_value(popupEmpNm);
 	}	
 	
 }

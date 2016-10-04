@@ -15,18 +15,15 @@ import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.hrs.ret.service.RetServiceFacade;
 import com.seoulit.erp47.hrs.ret.to.RetPayBean;
 
-
 /**
  * 
- * @Package  com.seoul.his.hrs.ret.controller
- * @Class    RetPayController.java
- * @Create   2016. 6. 5.
- * @Author   Ckeun
- * @Description
- *			퇴직금 조회 및 계산
- * @LastUpdated
- * 			2016. 6. 5.
- */			
+ * @Package com.seoulit.erp47.hrs.ret.controller
+ * @Class RetPayController.java
+ * @Create 2016. 10. 3.
+ * @Author 김봉진
+ * @Description 퇴직금 조회 및 계산
+ * @LastUpdated 2016. 10. 4.
+ */
 @Controller
 public class RetPayController {
 	@Autowired
@@ -35,8 +32,7 @@ public class RetPayController {
 	private DataSetBeanMapper datasetBeanMapper;
 
 	@RequestMapping("hrs/ret/findRetPayList.do")
-	public void findRetPayList(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public void findRetPayList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
@@ -45,13 +41,11 @@ public class RetPayController {
 		List<RetPayBean> retPayList;
 
 		retPayList = retServiceFacade.findRetPayList(argsMap);
-		datasetBeanMapper.beansToDataset(outData, retPayList,
-				RetPayBean.class);
+		datasetBeanMapper.beansToDataset(outData, retPayList, RetPayBean.class);
 	}
 
 	@RequestMapping("hrs/ret/calcRetPayProcess.do")
-	public void calcRetPayProcess(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public void calcRetPayProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		Map<String, String> argsMap;
@@ -62,12 +56,10 @@ public class RetPayController {
 	}
 
 	@RequestMapping("hrs/ret/batchRetPayProcess.do")
-	public void batchRetPayProcess(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public void batchRetPayProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
-		List<RetPayBean> retPayList = datasetBeanMapper.datasetToBeans(inData,
-				RetPayBean.class);
+		List<RetPayBean> retPayList = datasetBeanMapper.datasetToBeans(inData, RetPayBean.class);
 		retServiceFacade.batchRetPayProcess(retPayList);
 	}
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.seoulit.erp47.common.to.BaseBean;
+import com.seoulit.erp47.hrs.appoint.to.AppointDetailBean;
 import com.seoulit.erp47.hrs.emp.to.EmpBean;
 
 /**
@@ -31,7 +32,7 @@ public interface EmpDAO {
 
 	void deleteEmp(BaseBean empBean);
 	
-	//void appointEmp(AppointDetailBean appointDetailBean);
+	void appointEmp(AppointDetailBean appointDetailBean);
 	
 	List<EmpBean> selectRetireeList(Map<String, String> argsMap);
 

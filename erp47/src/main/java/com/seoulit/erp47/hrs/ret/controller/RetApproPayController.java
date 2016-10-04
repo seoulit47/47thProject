@@ -17,10 +17,10 @@ import com.seoulit.erp47.hrs.ret.to.RetApproPayBean;
 
 /**
  * 
- * @Package com.seoul.his.hrs.ret.controller
+ * @Package com.seoulit.erp47.hrs.ret.controller
  * @Class RetApproPayController.java
- * @Create 2016. 6. 5.
- * @Author Ckeun
+ * @Create 2016. 10. 3.
+ * @Author 김봉진
  * @Description
  *
  * @LastUpdated

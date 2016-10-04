@@ -4,69 +4,70 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-   <settings>
-      <setting value="true" name="callSettersOnNulls" />
-      <setting value="false" name="cacheEnabled" />
-      <setting value="true" name="useGeneratedKeys" />
-      <setting value="REUSE" name="defaultExecutorType" />
-      <setting value="VARCHAR" name="jdbcTypeForNull" />
-      <setting value="true" name="mapUnderscoreToCamelCase" />
-   </settings>
+	<settings>
+		<setting value="true" name="callSettersOnNulls" />
+		<setting value="false" name="cacheEnabled" />
+		<setting value="true" name="useGeneratedKeys" />
+		<setting value="REUSE" name="defaultExecutorType" />
+		<setting value="VARCHAR" name="jdbcTypeForNull" />
+		<setting value="true" name="mapUnderscoreToCamelCase" />
+	</settings>
 
-   <typeAliases>
+	<typeAliases>
 
-    <!-- 시스템공통 -->
-	<package name="com.seoulit.post.to" />
-	<package name="com.seoulit.erp47.com.base.to"/>
-	<package name="com.seoulit.erp47.com.util.to"/>
-	
-    <!-- 물류 -->
-    <package name="com.seoulit.erp47.log.base.to"/>
-	<package name="com.seoulit.erp47.log.ctrt.to"/>
-    <package name="com.seoulit.erp47.log.inpt.to"/>
-    <package name="com.seoulit.erp47.log.demd.to"/>   
-    <package name="com.seoulit.erp47.log.inven.to"/> 
-    <package name="com.seoulit.erp47.log.store.to"/>
-    <package name="com.seoulit.erp47.log.csr.to"/>
-    <package name="com.seoulit.erp47.log.prcs.to"/>
-    
-     <!-- 인사 -->
-	<package name="com.seoulit.erp47.hrs.emp.to" />				<!-- 인사관리 -->
-	<package name="com.seoulit.erp47.hrs.guntae.to" />			<!-- 근태관리 -->
-	<package name="com.seoulit.erp47.hrs.salBase.to"/>
-	<package name="com.seoulit.erp47.hrs.ret.to"/>	
-      
-    <!-- 회계 -->
-	<package name="com.seoulit.erp47.acc.budget.to"/>
-	<package name="com.seoulit.erp47.acc.elementary.to" />
-	<package name="com.seoulit.erp47.acc.resol.to" />
-	<package name="com.seoulit.erp47.acc.vat.to" />
-	<package name="com.seoulit.erp47.acc.slip.to" />
-	<package name="com.seoulit.erp47.acc.closing.to" />
+		<!-- 시스템공통 -->
+		<package name="com.seoulit.post.to" />
+		<package name="com.seoulit.erp47.com.base.to" />
+		<package name="com.seoulit.erp47.com.util.to" />
 
-    <!-- 원무 -->
-    <package name="com.seoulit.erp47.won.outPatMgt.to" />	  
-      
-      
-    <!-- 진료지원 -->
-    <package name="com.seoulit.erp47.sup.checkup.to"/>  
-    <package name="com.seoulit.erp47.sup.nutritive.to"/>  		<!-- 식품관리 -->
-	<package name="com.seoulit.erp47.sup.pathology.to"/>
-	<package name="com.seoulit.erp47.sup.drug.to"/>
-	<package name="com.seoulit.erp47.sup.laboratoryMedicine.to"/>	<!--검체관리  -->
-	  	
-	<!-- 원무 -->
-	
-	
-	
-     
-    <!-- 진료처방 -->
-    <package name="com.seoulit.erp47.med.request.to"/>
-    <package name="com.seoulit.erp47.med.base.to"/>
-    <package name="com.seoulit.erp47.med.adr.to"/>
-    <package name="com.seoulit.erp47.med.recipe.to"/>
-  
+		<!-- 물류 -->
+		<package name="com.seoulit.erp47.log.base.to" />
+		<package name="com.seoulit.erp47.log.ctrt.to" />
+		<package name="com.seoulit.erp47.log.inpt.to" />
+		<package name="com.seoulit.erp47.log.demd.to" />
+		<package name="com.seoulit.erp47.log.inven.to" />
+		<package name="com.seoulit.erp47.log.store.to" />
+		<package name="com.seoulit.erp47.log.csr.to" />
+		<package name="com.seoulit.erp47.log.prcs.to" />
 
-   </typeAliases>
+		<!-- 인사 -->
+		<package name="com.seoulit.erp47.hrs.appoint.to" />			
+		<package name="com.seoulit.erp47.hrs.emp.to" />				<!-- 인사관리 -->
+		<package name="com.seoulit.erp47.hrs.guntae.to" />			<!-- 근태관리 -->
+		<package name="com.seoulit.erp47.hrs.salBase.to" />
+		<package name="com.seoulit.erp47.hrs.ret.to" />
+
+		<!-- 회계 -->
+		<package name="com.seoulit.erp47.acc.budget.to" />
+		<package name="com.seoulit.erp47.acc.elementary.to" />
+		<package name="com.seoulit.erp47.acc.resol.to" />
+		<package name="com.seoulit.erp47.acc.vat.to" />
+		<package name="com.seoulit.erp47.acc.slip.to" />
+		<package name="com.seoulit.erp47.acc.closing.to" />
+
+		<!-- 원무 -->
+		<package name="com.seoulit.erp47.won.outPatMgt.to" />
+
+
+		<!-- 진료지원 -->
+		<package name="com.seoulit.erp47.sup.checkup.to" />
+		<package name="com.seoulit.erp47.sup.nutritive.to" />  		<!-- 식품관리 -->
+		<package name="com.seoulit.erp47.sup.pathology.to" />
+		<package name="com.seoulit.erp47.sup.drug.to" />
+		<package name="com.seoulit.erp47.sup.laboratoryMedicine.to" />	<!--검체관리 -->
+
+		<!-- 원무 -->
+
+
+
+
+		<!-- 진료처방 -->
+		<package name="com.seoulit.erp47.med.request.to" />
+		<package name="com.seoulit.erp47.med.base.to" />
+		<package name="com.seoulit.erp47.med.adr.to" />
+		<package name="com.seoulit.erp47.med.recipe.to" />
+
+
+	</typeAliases>
 
 </configuration>

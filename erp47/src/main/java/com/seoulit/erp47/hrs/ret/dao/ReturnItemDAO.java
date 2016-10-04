@@ -9,18 +9,16 @@ import com.seoulit.erp47.hrs.ret.to.ReturnItemBean;
 
 /**
  * 
- * @Package  com.seoul.his.hrs.ret.dao
- * @Class    ReturnItemDAO.java
- * @Create   2016. 6. 3.
- * @Author   Ckeun
- * @Description
- *			퇴직물품DAO
- * @LastUpdated
- * 			2016. 6. 5.
+ * @Package com.seoulit.erp47.hrs.ret.dao
+ * @Class ReturnItemDAO.java
+ * @Create 2016. 10. 3.
+ * @Author 김봉진
+ * @Description 퇴직물품DAO
+ * @LastUpdated 2016. 10. 4.
  */
 
 public interface ReturnItemDAO {
-	List<ReturnItemBean> selectReturnItemList (Map<String, String> returnItemSeachMap ) throws DataAccessException;
+	List<ReturnItemBean> selectReturnItemList(Map<String, String> returnItemSeachMap) throws DataAccessException;
 
 	void insertReturnItem(ReturnItemBean returnItemBean);
 

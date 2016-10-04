@@ -7,12 +7,12 @@ import org.springframework.dao.DataAccessException;
 
 import com.seoulit.erp47.hrs.ret.to.RetApproPayBean;
 
-/** 
+/**
  * 
- * @Package  com.seoul.his.hrs.ret.dao
- * @Class    RetApproPayDAO.java
- * @Create   2016. 6. 3.
- * @Author   Ckeun
+ * @Package com.seoulit.erp47.hrs.ret.dao
+ * @Class RetApproPayDAO.java
+ * @Create 2016. 10. 3.
+ * @Author 김봉진
  * @Description
  *
  * @LastUpdated
