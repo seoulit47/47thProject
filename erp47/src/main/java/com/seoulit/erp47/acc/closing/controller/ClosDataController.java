@@ -1,5 +1,6 @@
 package com.seoulit.erp47.acc.closing.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.acc.closing.service.ClosingServiceFacade;
+import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
+import com.seoulit.erp47.acc.resol.to.JourBean;
+import com.seoulit.erp47.acc.resol.to.ResolLetBean;
+import com.seoulit.erp47.acc.slip.to.SlipBean;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 
 @Controller
@@ -30,10 +35,9 @@ public class ClosDataController {
         Map<String, Object> argsMap = dataSetBeanMapper.procedureVariablesToMap(inData);
         List<ClosDataBean> totalBalList = closingServiceFacade.findClosDataList(argsMap);
         dataSetBeanMapper.beansToDataset(outData, totalBalList, ClosDataBean.class);
-
     }
 
-    /*@RequestMapping("acc/closing/findClosAcntList.do")
+    @RequestMapping("acc/closing/findClosAcntList.do")
     public void findClosAcntList(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         PlatformData outData = (PlatformData)request.getAttribute("outData");
@@ -59,7 +63,7 @@ public class ClosDataController {
 
         closingServiceFacade.registerClosJour(map);
 
-    }*/
+    }
     
 }
 

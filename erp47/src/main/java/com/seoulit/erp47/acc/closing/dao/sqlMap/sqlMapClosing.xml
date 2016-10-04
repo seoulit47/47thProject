@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.seoulit.epr47.acc.closing.dao.ClosingDAO">
+<mapper namespace="com.seoulit.erp47.acc.closing.dao.ClosingDAO">
 <cache flushInterval="86400000" eviction="LRU" />
     <resultMap id="closDataResult"  type="ClosDataBean">
         <result property="level"        column="LEVEL"   />
@@ -25,7 +25,7 @@
             )
     </select>
 
-   <!--  <select id="selectClosAcntList" parameterType="map" resultType="ClosAcntBean">
+   <select id="selectClosAcntList" parameterType="map" resultType="ClosAcntBean">
         SELECT 
             CA.ARTI_CD
            ,ACNT.ACNT_CD
@@ -70,6 +70,6 @@
           AND (CA.CLOS_ACNT_CD          = ACNT.ACNT_CD
            OR  CA.OPP_ACNT_CD           = ACNT.ACNT_CD )
         ORDER BY CA.ARTI_CD
-    </select> -->
+    </select>
     
 </mapper>

@@ -1,5 +1,6 @@
 package com.seoulit.erp47.acc.closing.applicationService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,19 +8,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.closing.dao.ClosingDAO;
+import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
+import com.seoulit.erp47.acc.resol.dao.JourDAO;
+import com.seoulit.erp47.acc.resol.dao.ResolLetDAO;
+import com.seoulit.erp47.acc.resol.to.JourBean;
+import com.seoulit.erp47.acc.resol.to.ResolLetBean;
+import com.seoulit.erp47.acc.slip.dao.SlipDAO;
+import com.seoulit.erp47.acc.slip.to.SlipBean;
 
 @Service
 public class ClosingApplicationServiceImpl implements ClosingApplicationService{
     
 	@Autowired
     ClosingDAO closingDAO;
-   /* @Autowired
+    @Autowired
     ResolLetDAO resolLetDAO;
     @Autowired
     SlipDAO slipDAO;
     @Autowired
-    JourDAO jourDAO;*/
+    JourDAO jourDAO;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -28,7 +36,7 @@ public class ClosingApplicationServiceImpl implements ClosingApplicationService{
         return (List<ClosDataBean>)argsMap.get("closDataList");
     }
 
-    /*@Override
+    @Override
     public List<ClosAcntBean> findClosAcntList(Map<String, String> argsMap) {
         return closingDAO.selectClosAcntList(argsMap);
     }
@@ -36,7 +44,7 @@ public class ClosingApplicationServiceImpl implements ClosingApplicationService{
     @SuppressWarnings("unchecked")
     @Override
     public void registerClosJour(HashMap<String, Object> map) {
-        HashMap<String, String> pcMap = new HashMap<String, String>();
+    	HashMap<String, String> pcMap = new HashMap<String, String>();
         pcMap.put("errorCode", "");
         pcMap.put("errorMsg", "");
         List<ResolLetBean> resolLetList = (List<ResolLetBean>) map.get("resolLetList");
@@ -61,7 +69,7 @@ public class ClosingApplicationServiceImpl implements ClosingApplicationService{
             pcMap.put("resolNo", resolNo);
             slipDAO.updateSlipNo(pcMap);
         }
-    }*/
+    }
 
 
 }

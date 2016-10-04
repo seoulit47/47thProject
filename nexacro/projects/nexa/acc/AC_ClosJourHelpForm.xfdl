@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AC_ClosJourHelpForm" classname="AC_ClosJourHelpForm" left="0" top="0" width="700" height="420" titletext="New Form" onload="AC_ClosJourHelpForm_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="closJourGrid" taborder="0" binddataset="dlJour" useinputpanel="false" cellsizingtype="col" autofittype="col" left="2.14%" top="62" right="1.71%" height="300" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="206"/>
+                <Column size="67"/>
+                <Column size="144"/>
+                <Column size="142"/>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계정코드"/>
+                <Cell col="1" text="계정명"/>
+                <Cell col="2" text="대차"/>
+                <Cell col="3" text="차변"/>
+                <Cell col="4" text="대변"/>
+                <Cell col="5" text="적요"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:acntCd"/>
+                <Cell col="1" text="bind:acntNm"/>
+                <Cell col="2" displaytype="combo" text="bind:creDebDiv" combodataset="dsCreDebDivCd" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" displaytype="number" style="align:right;padding:0 8 0 0;" text="bind:debAmt"/>
+                <Cell col="4" displaytype="number" style="align:right;padding:0 8 0 0;" text="bind:creAmt"/>
+                <Cell col="5" text="bind:acntAbs"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div02" taborder="1" left="2.29%" top="367" right="1.71%" height="44" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Button id="slipPubBtn" taborder="0" text="전표발행" onclick="Div02_slipPubBtn_onclick" left="64.93%" top="4" right="17.16%" height="35"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div05" taborder="2" left="0%" top="0" right="0.57%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="결산분개" left="7.31%" top="-3" right="69.63%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="cancelBtn" taborder="3" onclick="cancelBtn_onclick" left="84.29%" top="373" right="2.86%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dlJour" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="debAmt" type="STRING" size="256"/>
+          <Column id="creAmt" type="STRING" size="256"/>
+          <Column id="taxDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="slipNo" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="acntAbs" type="STRING" size="256"/>
+          <Column id="artiCd" type="STRING" size="256"/>
+          <Column id="closYb" type="STRING" size="256"/>
+          <Column id="resolNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+          <Column id="msg" type="STRING" size="256"/>
+          <Column id="callbackFunc2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">registerClosJour</Col>
+            <Col id="URL">erp47::acc/closing/registerClosJour.do</Col>
+            <Col id="inData">dsResolLet=dlResolLet dsSlip=dlSlip dsJour=dlJour</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+            <Col id="msg">this.MSG_ACC_CLOS_JOUR</Col>
+            <Col id="callbackFunc2"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findClosAcntList</Col>
+            <Col id="URL">erp47::acc/closing/findClosAcntList.do</Col>
+            <Col id="outData">dlJour=dsClosAcnt</Col>
+            <Col id="msg"/>
+            <Col id="callbackFunc2"/>
+            <Col id="callbackFunc">this.setJourAmt</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dlResolLet" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="resolNo" type="STRING" size="256"/>
+          <Column id="resolDiv" type="STRING" size="256"/>
+          <Column id="resolDate" type="STRING" size="256"/>
+          <Column id="resoler" type="STRING" size="256"/>
+          <Column id="resolDeptCd" type="STRING" size="256"/>
+          <Column id="progStatDiv" type="STRING" size="256"/>
+          <Column id="sakNo" type="STRING" size="256"/>
+          <Column id="receiptNo" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="operNo" type="STRING" size="256"/>
+          <Column id="resolAmt" type="STRING" size="256"/>
+          <Column id="brCau" type="STRING" size="256"/>
+          <Column id="abs" type="STRING" size="256"/>
+          <Column id="demdDeptCd" type="STRING" size="256"/>
+          <Column id="autoJourYb" type="STRING" size="256"/>
+          <Column id="modWorker" type="STRING" size="256"/>
+          <Column id="modDate" type="STRING" size="256"/>
+          <Column id="danDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="surtaxYb" type="STRING" size="256"/>
+          <Column id="resolDeptExtsn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dlSlip" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="slipNo" type="STRING" size="256"/>
+          <Column id="gipyoDate" type="STRING" size="256"/>
+          <Column id="slipDiv" type="STRING" size="256"/>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="custCd" type="STRING" size="256"/>
+          <Column id="operNo" type="STRING" size="256"/>
+          <Column id="abs" type="STRING" size="256"/>
+          <Column id="demdDeptCd" type="STRING" size="256"/>
+          <Column id="resolDeptCd" type="STRING" size="256"/>
+          <Column id="regWorker" type="STRING" size="256"/>
+          <Column id="danDiv" type="STRING" size="256"/>
+          <Column id="prfYb" type="STRING" size="256"/>
+          <Column id="receiptNo" type="STRING" size="256"/>
+          <Column id="sakNo" type="STRING" size="256"/>
+          <Column id="resolNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA049</Col>
+            <Col id="dsName">dsCreDebDivCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsCreDebDivCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+
+//화면변수
+var dsClosJourData;
+var accPrid;
+var endDate;
+
+//코드바인드 / 파라미터 셋팅 및 결산계정 조회
+this.AC_ClosJourHelpForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	accPrid = this.opener.accPridEd.value;
+	dsClosJourData = this.opener.dsClosJourData;
+	endDate = this.opener.endDateEd.value;
+	
+	var artiCdArr = new Array();
+	
+	this.dlResolLet.clearData();
+	this.dlSlip.clearData();
+	
+	for(var i = 0 ; i < dsClosJourData.rowcount ; i++)
+	{
+		artiCdArr[i] = dsClosJourData.getColumn(i,"artiCd");
+		//alert("artiCdArr"+i+artiCdArr[i]);
+		this.resolAndSlip(i);
+	}
+	
+	var argument = 'accPrid='+accPrid+' artiCd='+artiCdArr;
+	var rowPos = this.dsService.findRow("serviceID", "findClosAcntList");
+	this.dsService.setColumn(rowPos,"argument",argument);
+	this.gfnService("findClosAcntList");
+	
+}
+
+this.resolAndSlip=function(i){
+	this.dlResolLet.addRow();
+	this.dlResolLet.setColumn(i, "resolDate", this.gfnDate('YYYY-MM-DD'));
+	this.dlResolLet.setColumn(i, "closYb", 'Y');
+	this.dlResolLet.setColumn(i, "accPrid", this.accPrid);			//resolNo 셋팅해야함.
+	
+	this.dlSlip.addRow();			
+		
+	this.dlSlip.setColumn(i, "gipyoDate", this.endDate);
+// 	var dateArr=this.endDate.split("-");
+// 	//this.endDate=dateArr[0]+dateArr[1]+dateArr[2]; 
+// 	
+// 	var closDate=dateArr[0]+dateArr[1]+dateArr[2]; 
+// 	alert(this.gfn_date("yymm"));
+// 	
+// 	this.dlSlip.setColumn(i, "gipyoDate", closDate);
+	this.dlSlip.setColumn(i, "abs", '결산분개');
+	this.dlSlip.setColumn(i, "regWorker", application.gdsEmp.getColumn(0, "empNo"));
+	this.dlSlip.setColumn(i, "closYb", 'Y');
+	this.dlSlip.setColumn(i, "accPrid", this.accPrid);			//resolNo, slipNo 셋팅해야함.
+	this.dlSlip.setColumn(i, "slipNo", this.gfnDate('YYMM'));	
+	this.dlSlip.setColumn(i, "danDiv", "서울병원");
+}
+
+//전표 발행버튼 클릭
+this.Div02_slipPubBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("registerClosJour");
+	this.close();
+}
+
+//닫기 버튼 클릭
+this.cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+//결산계정에 분개금액 셋팅
+this.setJourAmt=function(){
+	//alert("setJourAmt");
+	var l = this.dlJour.rowcount;
+	for(var i = 0 ; i < l ; i++)
+	{
+		var artiCd = this.dlJour.getColumn(i, "artiCd");
+		var creDebDiv = this.dlJour.getColumn(i, "creDebDiv");
+		var jourAmt = this.dlClosJourData.lookup("artiCd", artiCd, "jourAmt");
+		//차변대변 구분
+		var creDebCol = "debAmt"; 
+		if (creDebDiv == '2') 
+		{
+			creDebCol = "creAmt"; 
+		}
+		this.dlJour.setColumn(i, creDebCol, jourAmt);
+		this.dlJour.setColumn(i, "closYb", "Y");
+		
+	}
+}]]></Script>
+  </Form>
+</FDL>
