@@ -17,5 +17,21 @@ SELECT CODE , CODE_NM , P_CODE FROM MC_DG_CODE
 </select>
 
 
+<!-- 상병코드조회 -->
+<select id="findDiseaseCdList" resultType="DiseaseBean">
+
+        SELECT
+            LEVEL-1 AS LV
+          , MC_DG_CODE.*
+        FROM
+            MC_DG_CODE
+        START WITH 
+            P_CODE IS NULL
+        CONNECT BY
+            PRIOR CODE = P_CODE
+
+</select>
+
+
 
 </mapper>
