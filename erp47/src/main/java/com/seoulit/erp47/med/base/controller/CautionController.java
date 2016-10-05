@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.med.base.service.EmrServiceFacade;
+import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
 import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 
@@ -60,6 +61,33 @@ EmrServiceFacade emrServiceFacade;
 			
 		}
 	
+		@RequestMapping("med/base/findCutnArticleList.do")
+		public void findCutnArticle(HttpServletRequest request, HttpServletResponse response)throws Exception{
+			
+			System.out.println("med / findCutnArticle 매서드입니다");
+			
+			PlatformData inData = (PlatformData)request.getAttribute("inData");
+			PlatformData outData = (PlatformData)request.getAttribute("outData");
+			
+			Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
+			
+			List<CutnArticleBean>cutnArticleList  = emrServiceFacade.findCutnArticle(argsMap);
+			
+			datasetBeanMapper.beansToDataset(outData, cutnArticleList, CutnArticleBean.class);
+		}
 		
 	
+		@RequestMapping("med/base/batchCutnArticleProcess.do")
+		public void batchCutnArticleProcess(HttpServletRequest request, HttpServletResponse response)throws Exception{
+			
+			
+			System.out.println("med / batchCutnArticleProcess 매서드입니다");
+			
+			PlatformData inData = (PlatformData)request.getAttribute("inData");
+			PlatformData outData = (PlatformData)request.getAttribute("outData");
+			
+			//  mickey 10월6일에 하겠습니다.  주의사항항목관리 크루드
+			
+		}
+		
 }

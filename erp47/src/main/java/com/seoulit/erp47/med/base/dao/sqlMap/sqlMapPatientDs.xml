@@ -24,18 +24,8 @@
             PAT_NO = #{patNo}
     </select>
     
-    <!-- 입원중 환자 처방내역조회 -->
-<!--     <select id="selectInpatientPrscList" resultType="PatientPrscBean">
-        SELECT
-            *
-        FROM
-            MC_IN_PAIENT
-        WHERE
-            DSCG_GUBUN = 0
-    </select> -->
-<!--     
     
-    <insert id="insertPatientDs">
+    <insert id="insertPatientDsList">
         INSERT INTO
             MC_DISEASE
         VALUES (
@@ -49,9 +39,8 @@
           , #{gubun}
         )
     </insert>
-
-
-    <update id="updatePatientDs">
+    
+    <update id="updatePatientDsList">
         UPDATE
             MC_DISEASE
         SET
@@ -65,6 +54,24 @@
          AND CODE       = #{code}
          AND PRESC_DATE = #{prescDate}
      </update>
+     
+     
+     
+    <!-- 입원중 환자 처방내역조회 -->
+<!--     <select id="selectInpatientPrscList" resultType="PatientPrscBean">
+        SELECT
+            *
+        FROM
+            MC_IN_PAIENT
+        WHERE
+            DSCG_GUBUN = 0
+    </select> -->
+<!--     
+    
+    
+
+
+
     
    
     <insert id="insertInpatientPrsc">

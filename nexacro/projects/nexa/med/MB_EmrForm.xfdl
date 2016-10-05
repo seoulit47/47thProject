@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MB_EmrForm" classname="MB_EmrForm" left="0" top="0" width="1250" height="768" titletext="EMR">
+  <Form id="MB_EmrForm" classname="MB_EmrForm" left="0" top="0" width="1250" height="768" titletext="EMR" onload="MB_EmrForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="0" right="0.16%" height="60" style="background:transparent URL('img::titleBar4.jpg');">
@@ -287,28 +287,12 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="chartTp" text="차트">
-              <Layouts>
-                <Layout>
-                  <Div id="chartDiv" taborder="11" left="0.39%" top="2" right="0.51%" height="30" style="border:1 solid black ;bordertype:round 5 5 ;" cssclass="TStc">
-                    <Layouts>
-                      <Layout>
-                        <Button id="reportBtn" taborder="8" text="조회" onclick="medTab_chartTp_chartDiv_reportBtn_onclick" left="88.28%" top="3" right="1.3%" height="23"/>
-                        <Edit id="patNoEd" taborder="9" oneditclick="medTab_tabpage4_Div00_emrReport_oneditclick" left="72.66%" top="4" right="12.24%" height="22"/>
-                      </Layout>
-                    </Layouts>
-                  </Div>
-                  <WebBrowser id="emrBrowser" left="0.39%" top="36" right="0.77%" height="538" taborder="12" onerror="medTab_tabpage4_WebBrowser00_onerror"/>
-                  <Static id="titleStc" taborder="13" text="환자 등록번호" left="3.22%" top="6" right="71.3%" height="26" style="color:dimgray;bordertype:round 5 5 ;font:antialias bold 14 맑은 고딕;" class="TStc"/>
-                </Layout>
-              </Layouts>
-            </Tabpage>
           </Tabpages>
         </Tab>
         <Static id="titleStc00" taborder="4" text="진료 정보" onclick="titleStc00_onclick" left="1.04%" top="80" right="89.68%" height="26" style="color:dimgray;bordertype:round 5 5 ;font:antialias bold 14 맑은 고딕;" class="TStc"/>
         <Static id="titleStc01" taborder="5" text="환자 정보" onclick="titleStc00_onclick" left="1.04%" top="163" right="89.68%" height="26" style="color:dimgray;bordertype:round 5 5 ;font:antialias bold 14 맑은 고딕;" class="TStc"/>
-        <Button id="registerBtn" taborder="6" onclick="registerBtn_onclick" left="81.6%" top="712" right="11.2%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="closeBtn" taborder="7" onclick="closeBtn_onclick" left="91.28%" top="712" right="1.52%" height="32" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="registerBtn" taborder="6" onclick="registerBtn_onclick" left="86%" top="56" right="8%" height="26" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="closeBtn" taborder="7" onclick="closeBtn_onclick" left="92.48%" top="56" right="1.52%" height="26" style="background:@gradation URL('img::closeBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="searchBtn" taborder="8" onclick="searchBtn_onclick" left="14.88%" top="280" right="77.92%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Grid id="patGrid" taborder="9" binddataset="dsOutpaReceipt" useinputpanel="false" autofittype="col" oncellclick="patGrid_oncellclick" left="1.04%" top="314" right="64.8%" height="378">
           <Formats>
@@ -994,7 +978,7 @@ this.medTab_prscTp_diseaseDiv_diseaseAddBtn_onclick = function(obj:Button,  e:ne
 	} else {
 		this.dsPatientDs.addRow();        // 상병내역 추가 
 	   	this.dsPatientDs.setColumn(this.dsPatientDs.rowposition, "patNo", patNo);
-		this.dsPatientDs.setColumn(this.dsPatientDs.rowposition, "dept", this.trmtDeptEd.value);
+		this.dsPatientDs.setColumn(this.dsPatientDs.rowposition, "dept", this.trmtDiv.trmtDeptEd.value);
 		this.dsPatientDs.setColumn(this.dsPatientDs.rowposition, "prescDate", prescDt);   
 		this.dsPatientDs.setColumn(this.dsPatientDs.rowposition, "prescNo", prescNo);
 	}
@@ -1134,14 +1118,17 @@ this.registerBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	}
 	
 	if (this.dsPatientDs.getRowCount != 0) {
+		//alert(this.dsPatientDs.getRowCount);
 		this.dsOutpaReceipt.setColumn(this.dsOutpaReceipt.rowposition, "trmtYb", "Y");   
 		this.dsOutpaReceipt.setColumn(this.dsOutpaReceipt.rowposition, "prescYb", "Y");
 		this.dsOutpaReceipt.setColumn(this.dsOutpaReceipt.rowposition, "dgnsNm", diseaseNm);
-		//this.dsPatientDs.setColumn(this.dsPatientDs.rowposition, "prescNo", prescNo);
+		this.dsPatientDs.setColumn(this.dsPatientDs.rowposition, "prescNo", prescNo);
 	} 
 	
   	if (confirm("EMR 등록 하시겠습니까?")) {
-		this.gfnService("batchEmr");			
+		
+		this.gfnService("batchEmr");
+					alert(this.dsPatientDs.getColumn(0,"prescDate"));
 	} 
 } 
  	

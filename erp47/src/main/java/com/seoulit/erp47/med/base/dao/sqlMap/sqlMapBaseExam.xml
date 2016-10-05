@@ -9,4 +9,40 @@
 SELECT * FROM MC_BASE_EXAMINATION WHERE PAT_NO = #{patNo} 
 </select>
 
+
+
+<insert id="insertBaseExamList" parameterType="BaseExamBean">
+
+	INSERT INTO 
+	MC_BASE_EXAMINATION 
+	VALUES(
+			#{systolicPressure}
+          , #{diastolicPressure}
+          , #{pulse}
+          , #{respirationRate}
+          , #{bodyTemp}
+          , #{sopMemo}
+          , #{patNo}
+	)
+
+</insert>
+
+<update id="updateBaseExamList" parameterType="BaseExamBean">
+	UPDATE
+            MC_BASE_EXAMINATION
+        SET
+            SYSTOLIC_PRESSURE  = #{systolicPressure}
+         ,  DIASTOLIC_PRESSURE = #{diastolicPressure}
+         ,  PULSE              = #{pulse}
+         ,  RESPIRATION_RATE   = #{respirationRate}
+         ,  BODY_TEMP          = #{bodyTemp}
+         ,  SOP_MEMO           = #{sopMemo}
+        WHERE
+            PAT_NO             = #{patNo}
+
+
+
+</update>
+
+
 </mapper>

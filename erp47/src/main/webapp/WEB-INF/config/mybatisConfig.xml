@@ -69,7 +69,7 @@
 
 		<!-- 원무 -->
 		<package name="com.seoulit.erp47.won.outPatMgt.to" />
-
+		<package name="com.seoulit.erp47.won.baseInfo.to"/>
 
 		<!-- 진료지원 -->
 		<package name="com.seoulit.erp47.sup.checkup.to" />
@@ -77,11 +77,6 @@
 		<package name="com.seoulit.erp47.sup.pathology.to" />
 		<package name="com.seoulit.erp47.sup.drug.to" />
 		<package name="com.seoulit.erp47.sup.laboratoryMedicine.to" />	<!--검체관리 -->
-
-		<!-- 원무 -->
-
-
-
 
 		<!-- 진료처방 -->
 		<package name="com.seoulit.erp47.med.request.to" />

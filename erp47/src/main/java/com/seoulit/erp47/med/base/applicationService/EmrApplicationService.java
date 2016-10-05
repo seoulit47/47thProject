@@ -23,4 +23,6 @@ public interface EmrApplicationService {
     
     List<BaseExamBean>findBaseExamList(Map<String,String>argsMap);
     
+    public void batchEmrProcess(Map<String,Object>emrMap);
+    
 }

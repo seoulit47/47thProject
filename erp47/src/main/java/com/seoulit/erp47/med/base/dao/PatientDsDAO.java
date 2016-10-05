@@ -12,4 +12,6 @@ public interface PatientDsDAO {
 
 	
 		List<PatientDsBean>findPatientDsPrscList(Map<String, String>argsMap);
+		public void insertPatientDsList(PatientDsBean patientDsBean);
+		public void updatePatientDsList(PatientDsBean patientDsBean);
 }
