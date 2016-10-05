@@ -10,7 +10,7 @@
 		ORDER BY CLINSPE_NO ,CLINSPE_BLOK_CODE ,CLINSPE_BLOK_PROD_DAY 
 	</select>
 	
-	<select resultType="ClinspeBean" id="findClinspeNoList"> 
+	<select resultType="ClinspeBean" id="selectClinspeNoList"> 
 		SELECT CLINSPE_NO 
 		FROM SL_CLINSPE 
 	</select>

@@ -8,6 +8,6 @@ import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 
 public interface ClinspeInfoDAO {
 
-	List<SlClinspeInfoBean> findClinspeInfoList(SlClinspeInfoBean clinspeInfoBean);
+	List<SlClinspeInfoBean> selectClinspeInfoList(SlClinspeInfoBean clinspeInfoBean);
 
 }

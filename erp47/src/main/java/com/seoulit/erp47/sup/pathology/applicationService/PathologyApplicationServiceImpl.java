@@ -1,6 +1,7 @@
 package com.seoulit.erp47.sup.pathology.applicationService;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,16 +9,17 @@ import org.springframework.stereotype.Component;
 import com.seoulit.erp47.sup.pathology.dao.ClinspeBlokDAO;
 import com.seoulit.erp47.sup.pathology.dao.ClinspeInfoDAO;
 import com.seoulit.erp47.sup.pathology.dao.ClinspeSliDAO;
+import com.seoulit.erp47.sup.pathology.dao.DeliveredClinspeDAO;
 import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
 
 /**
- * @Package  com.seoul.his.sup.pathology.applicationService
+ * @Package  com.seoulit.erp47.sup.pathology.applicationService
  * @Class    PathologyApplicationServiceImpl.java
- * @Create   2016. 6. 10.
- * @Author   jeong
+ * @Create   2016. 10. 05.
+ * @Author   
  * @Description
  *
  * @LastUpdated 
@@ -31,6 +33,9 @@ public class PathologyApplicationServiceImpl implements PathologyApplicationServ
 	ClinspeSliDAO clinspeSliDAO;
 	@Autowired
 	ClinspeInfoDAO clinspeInfoDAO;
+	@Autowired
+	DeliveredClinspeDAO deliveredClinspeDAO;
+	
 	
 	//검체블록 조회
 	@Override
@@ -71,13 +76,19 @@ public class PathologyApplicationServiceImpl implements PathologyApplicationServ
     // 검체정보 조회
 	@Override
 	public List<SlClinspeInfoBean> findClinspeInfoList(SlClinspeInfoBean clinspeInfoBean) {
-		return clinspeInfoDAO.findClinspeInfoList(clinspeInfoBean);
+		return clinspeInfoDAO.selectClinspeInfoList(clinspeInfoBean);
 	}
 	
 	// 검체번호 조회
 	@Override
 	public List<ClinspeBean> findClinspeNoList() {
-		return clinspeBlokDAO.findClinspeNoList();
+		return clinspeBlokDAO.selectClinspeNoList();
+	}
+	
+	//검체인수
+	@Override
+	public void updateDeliveredClinspeStatus(Map<String, String> argsMap) {
+		deliveredClinspeDAO.updateDeliveredClinspeStatus(argsMap);
 	}
   
 }

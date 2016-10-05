@@ -23,6 +23,20 @@
         WHERE SCD.DELIVERY_EMP=HE.EMP_NO
         AND 	SCD.CLINSPE_NO=SC.CLINSPE_NO
         AND SCD.CLINSPE_NO=SCR.CLINSPE_NO
+        <trim prefix="AND" prefixOverrides="AND">
+                <if test="startDate != null and !startDate.equals('undefined') and !startDate.equals('') ">
+                    AND SCD.DELIVERY_DATE BETWEEN #{startDate}
+                </if> 
+                <if test="endDate != null and !endDate.equals('undefined') and !endDate.equals('') ">
+                    AND #{endDate}
+                </if> 
+                <if test="emeYn != null and !emeYn.equals('undefined') and !emeYn.equals('')">
+                    AND SCR.EME_YN = #{emeYn}
+                </if>
+                <if test="clinspeStatus != null and !clinspeStatus.equals('undefined') and !clinspeStatus.equals('')">
+                    AND SCR.CLINSPE_STATUS = #{clinspeStatus}
+                </if>
+        </trim> 
    </select>
 
    <update id="updateDeliveryClinspeStatus" parameterType="map">

@@ -16,10 +16,10 @@ import com.seoulit.erp47.sup.laboratoryMedicine.service.LaboratoryMedicineServic
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 
 /**
- * @Package com.seoul.his.sup.laboratoryMedicine.controller
+ * @Package com.seoulit.erp47.sup.laboratoryMedicine.controller
  * @Class ClinspeReceiptController.java
- * @Create 2016. 06. 03.
- * @Author jeong
+ * @Create 2016. 10. 05.
+ * @Author 
  * @Description
  *
  * @LastUpdated

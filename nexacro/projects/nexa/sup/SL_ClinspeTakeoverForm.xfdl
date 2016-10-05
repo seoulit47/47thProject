@@ -149,9 +149,10 @@
         <Combo id="clinspeStatusCombo" taborder="9" innerdataset="@dsClinspeStatus" codecolumn="code" datacolumn="data" left="66.16%" top="72" right="25.84%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
         <Button id="comboResetBtn" taborder="10" text="조건초기화" onclick="comboResetBtn_onclick" left="75.52%" top="73" right="18.4%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
         <Button id="searchDeliveredClinspeListBtn" taborder="11" cssclass="DelBtn" left="91.36%" top="72" right="1.44%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDeliveredClinspeListBtn_onclick"/>
-        <Button id="takeoverBtn" taborder="12" text="인수확인" left="66.56%" top="422" right="17.36%" height="88" onclick="takeoverBtn_onclick"/>
-        <Button id="refuseBtn" taborder="13" text="반려" left="41.76%" top="423" right="40.88%" height="87" onclick="refuseBtn_onclick"/>
-        <Edit id="refuseEdit" taborder="14" left="3.84%" top="424" right="62.8%" height="89"/>
+        <Button id="takeoverBtn" taborder="12" text="인수확인" left="82.96%" top="422" right="0.96%" height="88" onclick="takeoverBtn_onclick"/>
+        <Button id="refuseBtn" taborder="13" text="반려" left="64.56%" top="423" right="18.08%" height="87" onclick="refuseBtn_onclick"/>
+        <Edit id="refuseEdit" taborder="14" left="30.48%" top="424" right="36.16%" height="89"/>
+        <Calendar id="refuseCal" taborder="15" left="2.08%" top="424" right="81.44%" height="90"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -184,19 +185,25 @@
             <Col id="serviceID">findDeliveryClinspeList</Col>
             <Col id="inData"/>
             <Col id="URL">erp47::sup/laboratoryMedicine/findDeliveryClinspeList.do</Col>
-            <Col id="callbackFunc"/>
+            <Col id="callbackFunc">callBackFunc</Col>
             <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
           </Row>
           <Row>
             <Col id="serviceID">updateDeliveryClinspeStatus</Col>
             <Col id="URL">erp47::sup/laboratoryMedicine/updateDeliveryClinspeStatus.do</Col>
             <Col id="inData">gdsEmp=gdsEmp</Col>
-            <Col id="callbackFunc"/>
+            <Col id="callbackFunc">callBackFunc</Col>
             <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
           </Row>
           <Row>
-            <Col id="serviceID">takeoverDeliveredClinspe</Col>
-            <Col id="URL">erp47::sup/pathology/takeoverDeliveredClinspe.do</Col>
+            <Col id="serviceID">updateDeliveredClinspeStatus</Col>
+            <Col id="URL">erp47::sup/pathology/updateDeliveredClinspeStatus.do</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">refuseDeliveredClinspe</Col>
+            <Col id="URL">erp47::sup/pathology/refuseDeliveredClinspe.do</Col>
+            <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -351,23 +358,36 @@
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
+var clinspeNo;
+var flag;
 
 //화면로딩
 this.SL_ClinspeTakeoverForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	this.clinspeDeliveryStartDateCal.set_value(this.gfnDate('yyyymmdd'));
-	this.deliveredClinspeGrid_oncellclick();
+	this.refuseCal.set_value(this.gfnDate('yyyymmdd'));
+	
 }
 
 
 //조회클릭
 this.searchDeliveredClinspeListBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	
+	flag=true;
 	var startDate = this.clinspeDeliveryStartDateCal.value;
-	var endDate;
+	var endDate = this.clinspeDeliveryEndDateCal.value;
+	var emeYn = this.emeYnCombo.value;
+	var clinspeStatus = this.clinspeStatusCombo.value;
 	
-	this.gfnService("findDeliveryClinspeList",false);
+	if(endDate==null){
+		alert("종료일자를 지정해주세요");
+	}else{
+		var argument = "startDate="+startDate+" endDate="+endDate+" emeYn="+emeYn+" clinspeStatus="+clinspeStatus;
+		this.dsService.setColumn(0,"argument",argument);
+		
+		this.gfnService("findDeliveryClinspeList",false);
+		this.deliveredClinspeGrid_oncellclick();
+	}
 }
 
 
@@ -377,19 +397,42 @@ this.refuseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	if(typeof(this.refuseEdit.value)=='undefined'){
 		alert("반려사유를 입력하세요");
 	}else{
-		//반려처리
+		var refuseDate=this.refuseCal.value;
+		var refuseCau=this.refuseEdit.value;
+		
+		this.gfnService("refuseDeliveredClinspe",false);
+		
 	}
+}
+
+//전달된 검체 그리드클릭
+this.deliveredClinspeGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if(flag){ //처음 조회됫을때 자동으로 검체번호 얻어옴
+		clinspeNo = this.dsClinspeDelivery.getColumn(0,"clinspeNo");
+		flag=false;
+	}else{
+		clinspeNo = this.dsClinspeDelivery.getColumn(e.row,"clinspeNo");
+	}
+	
+	
 }
 
 //인수확인클릭
 this.takeoverBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.gfnService("takeoverDeliveredClinspe",false);
+	var argument = "clinspeNo="+clinspeNo;
+	var row  = this.dsService.findRow("serviceID","updateDeliveredClinspeStatus");
+	this.dsService.setColumn(row,"argument",argument);
+	this.gfnService("updateDeliveredClinspeStatus",false);
+	this.searchDeliveredClinspeListBtn_onclick();
 }
 
-this.deliveredClinspeGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
-{
-	
+//콜백
+this.callBackFunc=function(strSvcID, nErrorCode, strErrorMag){
+	if(strSvcID=="updateDeliveredClinspeStatus"){
+		alert("인수확인완료");
+	}
 }
 ]]></Script>
   </Form>

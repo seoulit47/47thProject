@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.seoulit.erp47.sup.pathology.dao.DeliveredClinspeDAO">
+	<cache eviction="LRU" flushInterval="86400000"/>
+	<update id="updateDeliveredClinspeStatus" parameterType="Map">
+		UPDATE SL_CLINSPE_RECEIPT 
+		SET  CLINSPE_STATUS='1'
+		WHERE CLINSPE_NO=#{clinspeNo}
+	</update>
+
+</mapper>

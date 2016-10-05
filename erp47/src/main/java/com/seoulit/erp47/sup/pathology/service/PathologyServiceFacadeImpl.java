@@ -1,6 +1,7 @@
 package com.seoulit.erp47.sup.pathology.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,11 @@ public class PathologyServiceFacadeImpl implements PathologyServiceFacade{
 	public List<ClinspeBean> findClinspeNoList() {
 		List<ClinspeBean> clinspeNoList = pathologyApplicationService.findClinspeNoList();
 		return clinspeNoList;
+	}
+
+	@Override
+	public void updateDeliveredClinspeStatus(Map<String, String> argsMap) {
+		pathologyApplicationService.updateDeliveredClinspeStatus(argsMap);
 	}
 	
 	

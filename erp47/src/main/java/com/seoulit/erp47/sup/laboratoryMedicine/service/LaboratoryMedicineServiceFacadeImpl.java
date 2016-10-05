@@ -79,4 +79,5 @@ public class LaboratoryMedicineServiceFacadeImpl implements LaboratoryMedicineSe
 	public List<ClinspeDeliveryBean> findDeliveryClinspeList(Map<String, String> argsMap) {
 		return LaboratoryMedicineApplicationService.findDeliveryClinspeList(argsMap);
 	}
+
 }

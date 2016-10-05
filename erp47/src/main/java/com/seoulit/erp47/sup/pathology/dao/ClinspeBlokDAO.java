@@ -16,7 +16,7 @@ public interface ClinspeBlokDAO {
 
 	void deleteClinspeBlok(SlClinspeBlokBean slClinspeBlokBean);
 
-	List<ClinspeBean> findClinspeNoList();
+	List<ClinspeBean> selectClinspeNoList();
 
     void deleteClinspeBlok(ClinspeBean clinspeBean);
 

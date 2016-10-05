@@ -19,21 +19,23 @@ import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 
 public interface LaboratoryMedicineServiceFacade {
 
-	public List<ClinspeReceiptBean> findClinspeReceiptList(Map<String, String> argsMap);
+	List<ClinspeReceiptBean> findClinspeReceiptList(Map<String, String> argsMap);
 	
-	public ClinspeSequenceBean findMaxClinspeNo();
+	ClinspeSequenceBean findMaxClinspeNo();
 
-	public List<ClinspeBean> findClinspeList(Map<String, String> argsMap);
+	List<ClinspeBean> findClinspeList(Map<String, String> argsMap);
 	
-	public List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap);
+	List<ClinspeBean> findNoReceiptClinspeList(Map<String, String> argsMap);
 	
-	public List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap);
+	List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap);
 	
-	public void batchClinspeProcess(List<ClinspeBean> clinspeBeanList);
+	void batchClinspeProcess(List<ClinspeBean> clinspeBeanList);
 
-	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList);
+	void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList);
 	
-	public List<ClinspeDeliveryBean> updateDeliveryClinspeStatus(Map<String, String> argsMap);
+	List<ClinspeDeliveryBean> updateDeliveryClinspeStatus(Map<String, String> argsMap);
 	
-	public List<ClinspeDeliveryBean> findDeliveryClinspeList(Map<String, String> argsMap);
+	List<ClinspeDeliveryBean> findDeliveryClinspeList(Map<String, String> argsMap);
+	
+	
 }

@@ -1,6 +1,7 @@
 package com.seoulit.erp47.sup.pathology.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -89,11 +90,18 @@ public class SLclinspeController {
     }
     
     //검체인수확인
-    @RequestMapping("sup/pathology/takeoverDeliveredClinspe.do")
-    public void takeoverDeliveredClinspe(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping("sup/pathology/updateDeliveredClinspeStatus.do")
+    public void updateDeliveredClinspeStatus(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
-
+        Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
         
+        pathologyServiceFacade.updateDeliveredClinspeStatus(argsMap);
     }
+    
+    //검체인수반려
+ 	@RequestMapping("sup/pathology/refuseDeliveredClinspe.do")
+ 	public void refuseDeliveredClinspe(HttpServletRequest request, HttpServletResponse response) throws Exception {
+ 		System.out.println("!!!!");
+ 	}
 }

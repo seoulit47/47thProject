@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.seoulit.erp47.sup.pathology.dao.ClinspeInfoDAO">
 	<cache eviction="LRU" flushInterval="86400000"/>
-	<select resultType="SlClinspeInfoBean" id="findClinspeInfoList"> 
+	<select resultType="SlClinspeInfoBean" id="selectClinspeInfoList"> 
 		SELECT BLOK.CLINSPE_NO, CL.BLOODGET_DATE, CL.BLOODGET_EMP, CL.EXMNT_CD, CL.TRMT_DEPT, CL.RESP_DOCT, BLOK.CLINSPE_BLOK_CODE, BLOK.CLINSPE_BLOK_PROD_DAY, BLOK.CLINSPE_BLOK_PROD_TIME, BLOK.CLINSPE_BLOK_QNT, SLI.SLI_CODE, SLI.SLI_PROD_DAY, SLI.SLI_QNT, SLI.SLI_CON, BLOK.PAT_NO, BLOK.PAT_NM 
 		FROM SL_CLINSPE_SLI SLI 
 		INNER JOIN SL_CLINSPE CL ON CL.CLINSPE_NO = SLI.CLINSPE_NO 

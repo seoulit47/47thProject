@@ -1,6 +1,7 @@
 package com.seoulit.erp47.sup.pathology.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeBlokBean;
@@ -24,5 +25,7 @@ public interface PathologyServiceFacade {
 	
 	//검체번호 조회
 	List<ClinspeBean> findClinspeNoList();
+	
+	void updateDeliveredClinspeStatus(Map<String, String> argsMap);
 
 }
