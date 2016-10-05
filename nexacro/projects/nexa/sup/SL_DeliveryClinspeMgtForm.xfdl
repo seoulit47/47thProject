@@ -176,9 +176,9 @@
                 <Cell text="bind:clinspeNo"/>
                 <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
                 <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
-                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
-                <Cell col="4" text="bind:bloodgetEmp"/>
-                <Cell col="5"/>
+                <Cell col="3" displaytype="date" text="bind:deliveryDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:empNo"/>
+                <Cell col="5" text="bind:empNm"/>
                 <Cell col="6" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
                 <Cell col="7" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
               </Band>

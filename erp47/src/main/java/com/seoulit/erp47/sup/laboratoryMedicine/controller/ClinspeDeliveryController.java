@@ -52,9 +52,10 @@ public class ClinspeDeliveryController {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-		List<ClinspeDeliveryBean> clinspeDeliveryBeanList = laboratoryMedicineServiceFacade.updateDeliveryClinspeStatus(argsMap);
-		dataSetBeanMapper.beansToDataset(outData, clinspeDeliveryBeanList, ClinspeDeliveryBean.class);
+		laboratoryMedicineServiceFacade.updateDeliveryClinspeStatus(argsMap);
+		//dataSetBeanMapper.beansToDataset(outData, clinspeDeliveryBeanList, ClinspeDeliveryBean.class);
 
+		findDeliveryClinspeList(request,response);
 	}
 
 }

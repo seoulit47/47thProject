@@ -11,7 +11,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="clinspeReceiptGrid00" taborder="1" binddataset="dsClinspeDelivery" useinputpanel="false" autofittype="col" oncellclick="clinspeReceiptGrid_oncellclick" left="2%" top="112" right="1.12%" height="274">
+        <Grid id="deliveredClinspeGrid" taborder="1" binddataset="dsClinspeDelivery" useinputpanel="false" autofittype="col" left="2%" top="112" right="1.12%" height="274" oncellclick="deliveredClinspeGrid_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -149,6 +149,9 @@
         <Combo id="clinspeStatusCombo" taborder="9" innerdataset="@dsClinspeStatus" codecolumn="code" datacolumn="data" left="66.16%" top="72" right="25.84%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
         <Button id="comboResetBtn" taborder="10" text="조건초기화" onclick="comboResetBtn_onclick" left="75.52%" top="73" right="18.4%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
         <Button id="searchDeliveredClinspeListBtn" taborder="11" cssclass="DelBtn" left="91.36%" top="72" right="1.44%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDeliveredClinspeListBtn_onclick"/>
+        <Button id="takeoverBtn" taborder="12" text="인수확인" left="66.56%" top="422" right="17.36%" height="88" onclick="takeoverBtn_onclick"/>
+        <Button id="refuseBtn" taborder="13" text="반려" left="41.76%" top="423" right="40.88%" height="87" onclick="refuseBtn_onclick"/>
+        <Edit id="refuseEdit" taborder="14" left="3.84%" top="424" right="62.8%" height="89"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -190,6 +193,10 @@
             <Col id="inData">gdsEmp=gdsEmp</Col>
             <Col id="callbackFunc"/>
             <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">takeoverDeliveredClinspe</Col>
+            <Col id="URL">erp47::sup/pathology/takeoverDeliveredClinspe.do</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -344,10 +351,12 @@
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
+
 //화면로딩
 this.SL_ClinspeTakeoverForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	this.clinspeDeliveryStartDateCal.set_value(this.gfnDate('yyyymmdd'));
+	this.deliveredClinspeGrid_oncellclick();
 }
 
 
@@ -361,6 +370,27 @@ this.searchDeliveredClinspeListBtn_onclick = function(obj:Button,  e:nexacro.Cli
 	this.gfnService("findDeliveryClinspeList",false);
 }
 
+
+//반려버튼클릭
+this.refuseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(typeof(this.refuseEdit.value)=='undefined'){
+		alert("반려사유를 입력하세요");
+	}else{
+		//반려처리
+	}
+}
+
+//인수확인클릭
+this.takeoverBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("takeoverDeliveredClinspe",false);
+}
+
+this.deliveredClinspeGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	
+}
 ]]></Script>
   </Form>
 </FDL>

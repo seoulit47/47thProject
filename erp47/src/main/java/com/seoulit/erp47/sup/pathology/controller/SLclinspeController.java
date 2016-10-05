@@ -87,4 +87,13 @@ public class SLclinspeController {
         List<SlClinspeInfoBean> clinspeInfoBeanList = pathologyServiceFacade.findClinspeInfoBeanList(clinspeInfoBean);
         datasetBeanMapper.beansToDataset(outData, clinspeInfoBeanList, SlClinspeInfoBean.class);
     }
+    
+    //검체인수확인
+    @RequestMapping("sup/pathology/takeoverDeliveredClinspe.do")
+    public void takeoverDeliveredClinspe(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	PlatformData inData = (PlatformData) request.getAttribute("inData");
+        PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+        
+    }
 }
