@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.med.base.dao.PrscDAO">
+
+    <select id="selectPrscList" parameterType="map" resultType="PrscBean">
+        SELECT
+            PRESC_NO
+          , PAT_NO
+          , PRESC_DATE
+          , PRESC_DOC
+        FROM 
+            MP_PRESC
+    </select>
+
+    <!-- 처방상세 선택조회, 진단서에서 조회 -->
+    <!-- <select id="selectPrscDtl" resultType="PrscDtlBean">
+        SELECT
+            *
+        FROM
+            MP_PRESC_DTL
+        WHERE
+            PRESC_NO = #{prescNo}
+    </select> -->
+    
+    <select id="selectPrscDtlList" parameterType="map" resultType="PrscDtlBean">
+        SELECT
+            PRESC_NO
+          , PRESC_CD
+          , EMG_YN
+          , PRN_YN
+          , ANTI_YN
+          , HOLDING_YN
+          , MTRL_YN
+          , MTRL_NM
+          , MTRL_BODY_PART
+          , EXAM_WISH_DATE
+          , TIMES
+          , INSURANCE
+          , SELECT_CARE_YN
+          , CLNC_STUDY_YN
+          , PAT_TYPE
+          , REMARK
+          , IRRADI_YN
+          , AMOUNT
+          , PURPOSE
+          , TRFU_LOC
+          , AST
+          , BLOOD_DONOR
+          , VOLUME
+          , UNIT
+          , TAKE_WAY
+          , DAYS
+          , PRESC_DTL_NM
+          , PRESC_TYPE
+        FROM
+            MP_PRESC_DTL
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="prscType != null">
+                AND PRESC_TYPE = #{prscType}
+            </if>
+        </trim>
+    </select>
+    
+</mapper>

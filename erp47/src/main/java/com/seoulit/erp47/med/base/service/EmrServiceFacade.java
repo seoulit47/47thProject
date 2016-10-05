@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.seoulit.erp47.med.base.to.BaseExamBean;
+import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
@@ -28,4 +29,8 @@ public interface EmrServiceFacade {
     List<PatientDsBean>findPatientDsPrscList(Map<String,String>args);
     
     List<BaseExamBean>findBaseExamList(Map<String,String>argsMap);
+    
+    public void batchEmrProcess(Map<String,Object>emrMap);
+    
+    List<CutnArticleBean>findCutnArticle(Map<String,String>argsMap);
 }

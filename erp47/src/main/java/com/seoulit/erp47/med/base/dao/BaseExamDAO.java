@@ -10,4 +10,7 @@ public interface BaseExamDAO {
 	
 		List<BaseExamBean>findBaseExamList(Map<String, String>argsMap);
 	
+		public void insertBaseExamList(BaseExamBean baseExamBean);
+		
+		public void updateBaseExamList(BaseExamBean baseExamBean);
 }
