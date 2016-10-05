@@ -3,6 +3,7 @@ package com.seoulit.erp47.sup.laboratoryMedicine.applicationService;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeDeliveryBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeSequenceBean;
 import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
@@ -30,6 +31,8 @@ public interface LaboratoryMedicineApplicationService {
 	
 	//검체전달
 	public List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap);
-	public void updateDeliveryClinspeStatus(Map<String, String> argsMap);
+	public List<ClinspeDeliveryBean> updateDeliveryClinspeStatus(Map<String, String> argsMap);
+	
+	public List<ClinspeDeliveryBean> findDeliveryClinspeList(Map<String, String> argsMap);
 	
 }

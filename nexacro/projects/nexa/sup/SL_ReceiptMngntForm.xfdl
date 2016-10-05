@@ -58,7 +58,7 @@
                 <Cell col="7" displaytype="combo" edittype="combo" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
                 <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
                 <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
-                <Cell col="10" displaytype="combo" edittype="none" text="bind:clinspeStatus" combodataset="dsStatus" combocodecol="code" combodatacol="data" calendardisplaynulltype="none"/>
+                <Cell col="10" displaytype="combo" edittype="none" text="bind:clinspeStatus" combodataset="dsClinspeStatus" combocodecol="code" combodatacol="data" calendardisplaynulltype="none"/>
               </Band>
             </Format>
             <Format id="insert">
@@ -317,7 +317,7 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="dsStatus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+      <Dataset id="dsClinspeStatus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="code" type="STRING" size="256"/>
           <Column id="data" type="STRING" size="256"/>

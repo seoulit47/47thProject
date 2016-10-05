@@ -6,6 +6,14 @@
     
    <cache flushInterval="86400000" eviction="LRU" />
    
+   <select id="selectNoDeliveryClinspeList" flushCache="false"  useCache="true" parameterType="map" resultType="ClinspeReceiptBean">
+        SELECT R.CLINSPE_NO,R.CLINSPE_RECEIPT_DATE,C.PAT_NM,C.BLOODGET_EMP,C.EXMNT_CD,C.CLINSPE_NM,R.EME_YN,C.BLOODGET_DATE
+		FROM SL_CLINSPE_RECEIPT R , SL_CLINSPE C 
+		WHERE R.DELIVERY_YN='N'
+		AND R.CLINSPE_NO = C.CLINSPE_NO
+		AND R.CLINSPE_NO NOT IN (SELECT CLINSPE_NO FROM SL_CLINSPE_RECEIPT_CANCEL)
+   </select>
+   
    <select id="selectClinspeReceiptList" flushCache="false"  useCache="true" parameterType="map" resultType="ClinspeReceiptBean">
         SELECT R.CLINSPE_NO,
                R.CLINSPE_RECEIPT_DATE, 

@@ -23,6 +23,7 @@ public interface ClinspeReceiptDAO {
 	public void insertClinspeReceiptCancel(ClinspeReceiptBean clinspeReceiptBean);
 	public void deleteClinspeReceiptCancel(ClinspeReceiptBean clinspeReceiptBean);
 	public void updateClinspeReceiptCancel(ClinspeReceiptBean clinspeReceiptBean);
+	public List<ClinspeReceiptBean> selectNoDeliveryClinspeList(Map<String, String> argsMap);
 }
 
 

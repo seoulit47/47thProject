@@ -16,13 +16,13 @@ import com.seoulit.erp47.sup.laboratoryMedicine.service.LaboratoryMedicineServic
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 
 /**
- * @Package  com.seoul.his.sup.laboratoryMedicine.controller
- * @Class    ClinspeReceiptController.java
- * @Create   2016. 06. 03.
- * @Author   jeong
+ * @Package com.seoul.his.sup.laboratoryMedicine.controller
+ * @Class ClinspeReceiptController.java
+ * @Create 2016. 06. 03.
+ * @Author jeong
  * @Description
  *
- * @LastUpdated 
+ * @LastUpdated
  */
 
 @Controller
@@ -30,27 +30,39 @@ public class ClinspeReceiptController {
 
 	@Autowired
 	DataSetBeanMapper dataSetBeanMapper;
-	
+
 	@Autowired
 	LaboratoryMedicineServiceFacade laboratoryMedicineServiceFacade;
-	
+
 	// 검체접수 조회
 	@RequestMapping("sup/laboratoryMedicine/findClinspeReceiptList.do")
 	public void findClinspeReceiptList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		PlatformData inData = (PlatformData)request.getAttribute("inData");
-	    PlatformData outData = (PlatformData)request.getAttribute("outData");
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-    	List<ClinspeReceiptBean> clinspeReceiptBeanList = laboratoryMedicineServiceFacade.findClinspeReceiptList(argsMap);
-    	dataSetBeanMapper.beansToDataset(outData, clinspeReceiptBeanList, ClinspeReceiptBean.class);
+		List<ClinspeReceiptBean> clinspeReceiptBeanList = laboratoryMedicineServiceFacade
+				.findClinspeReceiptList(argsMap);
+		dataSetBeanMapper.beansToDataset(outData, clinspeReceiptBeanList, ClinspeReceiptBean.class);
 	}
 
 	// 검체접수 일괄처리
 	@RequestMapping("sup/laboratoryMedicine/batchClinspeReceiptProcess.do")
 	public void batchClinspeReceiptProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		PlatformData inData = (PlatformData)request.getAttribute("inData");
-		PlatformData outData = (PlatformData)request.getAttribute("outData");
-		List<ClinspeReceiptBean> clinspeReceiptBeanList = dataSetBeanMapper.datasetToBeans(inData, ClinspeReceiptBean.class);
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		List<ClinspeReceiptBean> clinspeReceiptBeanList = dataSetBeanMapper.datasetToBeans(inData,
+				ClinspeReceiptBean.class);
 		laboratoryMedicineServiceFacade.batchClinspeReceiptProcess(clinspeReceiptBeanList);
 		dataSetBeanMapper.beanToDataset(outData, new ClinspeReceiptBean(), ClinspeReceiptBean.class);
+	}
+
+	// 접수된 검체중 미전달 검체조회
+	@RequestMapping("sup/laboratoryMedicine/findNoDeliveryClinspeList.do")
+	public void findNoDeliveryClinspeList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+		List<ClinspeReceiptBean> clinspeDeliveryBeanList = laboratoryMedicineServiceFacade.findNoDeliveryClinspeList(argsMap);
+		dataSetBeanMapper.beansToDataset(outData, clinspeDeliveryBeanList, ClinspeReceiptBean.class);
 	}
 }

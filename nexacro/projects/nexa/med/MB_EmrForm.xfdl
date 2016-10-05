@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MB_EmrForm" classname="MB_EmrForm" left="0" top="0" width="1250" height="768" titletext="EMR">
+  <Form id="MB_EmrForm" classname="MB_EmrForm" left="0" top="0" width="1250" height="768" titletext="EMR" onload="MB_EmrForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="0" right="0.16%" height="60" style="background:transparent URL('img::titleBar4.jpg');">

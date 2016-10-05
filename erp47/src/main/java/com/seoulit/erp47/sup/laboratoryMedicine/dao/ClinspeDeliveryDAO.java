@@ -3,6 +3,7 @@ package com.seoulit.erp47.sup.laboratoryMedicine.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeDeliveryBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 
 /**
@@ -16,7 +17,9 @@ import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
  */
 
 public interface ClinspeDeliveryDAO {
-	public List<ClinspeReceiptBean> selectNoDeliveryClinspeList(Map<String, String> argsMap);
+	
+	public List<ClinspeDeliveryBean> selectDeliveryClinspeList(Map<String, String> argsMap);
+	
 	public void updateDeliveryClinspeStatus(Map<String, String> argsMap);
 	public void insertDeliveryClinspe(Map<String, String> argsMap);
 	public void callDeliveryClinspe(Map<String, Object> procedureMap);

@@ -5,19 +5,26 @@
 <mapper namespace="com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeDeliveryDAO">
     
    <cache flushInterval="86400000" eviction="LRU" />
-   <resultMap id="clinspeResultMap" type="ClinspeReceiptBean">
+   <resultMap id="clinspeResultMap" type="ClinspeDeliveryBean">
 		<result column="CLINSPE_NO" property="clinspeNo"/>
    </resultMap>
    
-   
-   <select id="selectNoDeliveryClinspeList" flushCache="false"  useCache="true" parameterType="map" resultType="ClinspeReceiptBean">
-        SELECT R.CLINSPE_NO,R.CLINSPE_RECEIPT_DATE,C.PAT_NM,C.BLOODGET_EMP,C.EXMNT_CD,C.CLINSPE_NM,R.EME_YN,C.BLOODGET_DATE
-		FROM SL_CLINSPE_RECEIPT R , SL_CLINSPE C 
-		WHERE R.DELIVERY_YN='N'
-		AND R.CLINSPE_NO = C.CLINSPE_NO
-		AND R.CLINSPE_NO NOT IN (SELECT CLINSPE_NO FROM SL_CLINSPE_RECEIPT_CANCEL)
+   <select id="selectDeliveryClinspeList" flushCache="false"  useCache="true" resultType="ClinspeDeliveryBean">
+   		SELECT SCD.CLINSPE_NO,
+		        SCD.DELIVERY_DATE,
+		        HE.EMP_NO,
+		        HE.EMP_NM,
+		        SC.EXMNT_CD,
+		        SC.CLINSPE_NM,
+		        SCR.EME_YN,
+		        SCR.CLINSPE_RECEIPT_DATE,
+		        SCR.CLINSPE_STATUS       
+        FROM SL_CLINSPE_DELIVERY SCD, HM_EMP HE, SL_CLINSPE SC, SL_CLINSPE_RECEIPT SCR
+        WHERE SCD.DELIVERY_EMP=HE.EMP_NO
+        AND 	SCD.CLINSPE_NO=SC.CLINSPE_NO
+        AND SCD.CLINSPE_NO=SCR.CLINSPE_NO
    </select>
-   
+
    <update id="updateDeliveryClinspeStatus" parameterType="map">
    		UPDATE SL_CLINSPE_RECEIPT 
         SET 
@@ -26,7 +33,7 @@
         WHERE CLINSPE_NO=#{clinspeNo}
    </update>
    
-   <insert id="insertDeliveryClinspe" parameterType="ClinspeReceiptBean">
+   <insert id="insertDeliveryClinspe" parameterType="ClinspeDeliveryBean">
    		INSERT INTO SL_CLINSPE_DELIVERY      
                VALUES
                ( 
@@ -43,7 +50,6 @@
 		,	#{empNo, mode=IN, jdbcType=VARCHAR, javaType=string}
 		, 	#{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string}
 		, 	#{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
-		,	#{result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=clinspeResultMap}
 		)
 	</select>
 </mapper>

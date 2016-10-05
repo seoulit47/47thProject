@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="SL_ClinspeTakeoverForm" classname="SL_ClinspeTakeoverForm" left="0" top="0" width="1250" height="768" titletext="검체인수" onload="SL_ClinspeTakeoverForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.48%" top="8" right="0.08%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체인수" left="4.02%" top="-4" right="81.66%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="clinspeReceiptGrid00" taborder="1" binddataset="dsClinspeDelivery" useinputpanel="false" autofittype="col" oncellclick="clinspeReceiptGrid_oncellclick" left="2%" top="112" right="1.12%" height="274">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="68"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="82"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="9" text="전달된 검체목록"/>
+                <Cell row="1" text="검체번호"/>
+                <Cell row="1" col="1" text="검사항목"/>
+                <Cell row="1" col="2" text="검체명"/>
+                <Cell row="1" col="3" text="전달일시"/>
+                <Cell row="1" col="4" colspan="2" text="담당자"/>
+                <Cell row="1" col="6" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell row="1" col="7" text="검체접수일"/>
+                <Cell row="1" col="8" text="검체상태"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:deliveryDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:empNo"/>
+                <Cell col="5" text="bind:empNm"/>
+                <Cell col="6" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="7" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="8" displaytype="combo" text="bind:clinspeStatus" combodataset="dsClinspeStatus" combocodecol="code" combodatacol="data"/>
+              </Band>
+            </Format>
+            <Format id="insert">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검사항목"/>
+                <Cell col="2" text="검체명"/>
+                <Cell col="3" text="채취일시"/>
+                <Cell col="4" text="채취자"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell col="6" text="검체접수일"/>
+                <Cell col="7" text="접수구분"/>
+                <Cell col="8" text="접수 취소사유"/>
+                <Cell col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="none" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+            <Format id="cancel">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="검체번호"/>
+                <Cell col="1" text="검사항목"/>
+                <Cell col="2" text="검체명"/>
+                <Cell col="3" text="채취일시"/>
+                <Cell col="4" text="채취자"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="응급여부"/>
+                <Cell col="6" text="검체접수일"/>
+                <Cell col="7" text="접수구분"/>
+                <Cell col="8" text="접수 취소사유"/>
+                <Cell col="9" text="접수 취소일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:clinspeNo"/>
+                <Cell col="1" displaytype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
+                <Cell col="4" text="bind:bloodgetEmp"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:emeYn" combodataset="dsEmeYn" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" displaytype="date" edittype="date" text="bind:clinspeReceiptDate" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="8" edittype="normal" text="bind:receiptCancelCau"/>
+                <Cell col="9" displaytype="date" edittype="date" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc04" taborder="2" text="전달일자" onclick="subCodeStc_onclick" left="2.16%" top="75" right="89.52%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="clinspeDeliveryStartDateCal" taborder="3" expr="expr:Date()" left="11.36%" top="73" right="78.24%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Calendar id="clinspeDeliveryEndDateCal" taborder="4" expr="expr:Date()" left="24.8%" top="73" right="64.8%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Static id="Static01" taborder="5" text="~" left="22.88%" top="80" right="76.16%" height="19" style="border:1 none #808080ff ;color:black;font:bold 11 arial;"/>
+        <Static id="subCodeStc00" taborder="6" text="응급여부" onclick="subCodeStc_onclick" left="38.24%" top="73" right="53.44%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="emeYnCombo" taborder="7" innerdataset="dsEmeYn" codecolumn="code" datacolumn="data" left="47.04%" top="72" right="44.96%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Static id="subCodeStc01" taborder="8" text="검체상태" onclick="subCodeStc_onclick" left="57.36%" top="73" right="34.32%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="clinspeStatusCombo" taborder="9" innerdataset="@dsClinspeStatus" codecolumn="code" datacolumn="data" left="66.16%" top="72" right="25.84%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Button id="comboResetBtn" taborder="10" text="조건초기화" onclick="comboResetBtn_onclick" left="75.52%" top="73" right="18.4%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
+        <Button id="searchDeliveredClinspeListBtn" taborder="11" cssclass="DelBtn" left="91.36%" top="72" right="1.44%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDeliveredClinspeListBtn_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsClinspeDelivery">
+        <ColumnInfo>
+          <Column id="clinspeNo" type="STRING" size="256"/>
+          <Column id="clinspeReceiptDate" type="STRING" size="256"/>
+          <Column id="deliveryDate" type="STRING" size="256"/>
+          <Column id="bloodgetDate" type="STRING" size="256"/>
+          <Column id="bloodgetEmp" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="exmntCd" type="STRING" size="256"/>
+          <Column id="clinspeNm" type="STRING" size="256"/>
+          <Column id="emeYn" type="STRING" size="256"/>
+          <Column id="clinspeStatus" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findDeliveryClinspeList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findDeliveryClinspeList.do</Col>
+            <Col id="callbackFunc"/>
+            <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">updateDeliveryClinspeStatus</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/updateDeliveryClinspeStatus.do</Col>
+            <Col id="inData">gdsEmp=gdsEmp</Col>
+            <Col id="callbackFunc"/>
+            <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsClinspeNm">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">혈액</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">수액</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">흉수</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">복수</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">관절액</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="data">농</Col>
+          </Row>
+          <Row>
+            <Col id="code">7</Col>
+            <Col id="data">분비액</Col>
+          </Row>
+          <Row>
+            <Col id="code">8</Col>
+            <Col id="data">담</Col>
+          </Row>
+          <Row>
+            <Col id="code">9</Col>
+            <Col id="data">인두점액</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="data">요</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="data">담즙</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="data">대변</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsReceiptCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">RE000</Col>
+            <Col id="data">접수</Col>
+          </Row>
+          <Row>
+            <Col id="code">RE001</Col>
+            <Col id="data">검사중</Col>
+          </Row>
+          <Row>
+            <Col id="code">RE002</Col>
+            <Col id="data">접수취소</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsEmeYn">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="data">비응급</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">응급</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsExmntCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">혈액</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">소변</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">세포</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">조직</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsClinspeStatus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="data">인수대기</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">인수확인</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">인수취소</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">검사중</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">검사완료</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">미전달</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+//화면로딩
+this.SL_ClinspeTakeoverForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.clinspeDeliveryStartDateCal.set_value(this.gfnDate('yyyymmdd'));
+}
+
+
+//조회클릭
+this.searchDeliveredClinspeListBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	var startDate = this.clinspeDeliveryStartDateCal.value;
+	var endDate;
+	
+	this.gfnService("findDeliveryClinspeList",false);
+}
+
+]]></Script>
+  </Form>
+</FDL>

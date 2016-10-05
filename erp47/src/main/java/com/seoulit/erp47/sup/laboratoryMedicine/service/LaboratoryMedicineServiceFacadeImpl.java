@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.sup.laboratoryMedicine.applicationService.LaboratoryMedicineApplicationService;
+import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeDeliveryBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeSequenceBean;
 import com.seoulit.erp47.sup.pathology.to.ClinspeBean;
@@ -70,7 +71,12 @@ public class LaboratoryMedicineServiceFacadeImpl implements LaboratoryMedicineSe
 	}
 
 	@Override
-	public void updateDeliveryClinspeStatus(Map<String, String> argsMap) {
-		LaboratoryMedicineApplicationService.updateDeliveryClinspeStatus(argsMap);
+	public List<ClinspeDeliveryBean> updateDeliveryClinspeStatus(Map<String, String> argsMap) {
+		return LaboratoryMedicineApplicationService.updateDeliveryClinspeStatus(argsMap);
+	}
+
+	@Override
+	public List<ClinspeDeliveryBean> findDeliveryClinspeList(Map<String, String> argsMap) {
+		return LaboratoryMedicineApplicationService.findDeliveryClinspeList(argsMap);
 	}
 }

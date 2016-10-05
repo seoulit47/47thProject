@@ -1,6 +1,5 @@
 package com.seoulit.erp47.sup.laboratoryMedicine.applicationService;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeDAO;
 import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeDeliveryDAO;
 import com.seoulit.erp47.sup.laboratoryMedicine.dao.ClinspeReceiptDAO;
+import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeDeliveryBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeReceiptBean;
 import com.seoulit.erp47.sup.laboratoryMedicine.to.ClinspeSequenceBean;
 import com.seoulit.erp47.sup.pathology.dao.ClinspeBlokDAO;
@@ -77,7 +77,7 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 	public void batchClinspeReceiptProcess(List<ClinspeReceiptBean> clinspeReceiptBeanList){
 		for(ClinspeReceiptBean clinspeReceiptBean : clinspeReceiptBeanList){
 			switch ( clinspeReceiptBean.getStatus() ){
-				case "inserted" : { System.out.println("!~!~!");clinspeReceiptDAO.insertClinspeReceipt(clinspeReceiptBean); break; }
+				case "inserted" : { clinspeReceiptDAO.insertClinspeReceipt(clinspeReceiptBean); break; }
 				
 				case "deleted" : {  clinspeReceiptDAO.deleteClinspeReceiptCancel(clinspeReceiptBean);
 									clinspeReceiptDAO.deleteClinspeReceipt(clinspeReceiptBean); break; }
@@ -97,19 +97,30 @@ public class LaboratoryMedicineApplicationServiceImpl implements LaboratoryMedic
 
 	@Override
 	public List<ClinspeReceiptBean> findNoDeliveryClinspeList(Map<String, String> argsMap) {
-		return clinspeDeliveryDAO.selectNoDeliveryClinspeList(argsMap);
+		return clinspeReceiptDAO.selectNoDeliveryClinspeList(argsMap);
 	}
 
 	@Override
-	public void updateDeliveryClinspeStatus(Map<String, String> argsMap) {
+	public List<ClinspeDeliveryBean> updateDeliveryClinspeStatus(Map<String, String> argsMap) {
 		Map<String, Object> procedureMap=new HashMap<>();
 		procedureMap.put("clinspeNo", argsMap.get("clinspeNo"));
 		procedureMap.put("empNo", argsMap.get("empNo"));
 		procedureMap.put("date", argsMap.get("date"));
 		clinspeDeliveryDAO.callDeliveryClinspe(procedureMap);
-		List<ClinspeReceiptBean> list=(List<ClinspeReceiptBean>)procedureMap.get("result");
-		System.out.println(list.size()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		//clinspeDeliveryDAO.updateDeliveryClinspeStatus(argsMap);
-		//clinspeDeliveryDAO.insertDeliveryClinspe(argsMap);
+		
+		if(procedureMap.get("errorCode").equals("-1")){
+			System.out.println(procedureMap.get("errorMsg"));
+            new RuntimeException((String)procedureMap.get("errorMsg"));
+        }if(procedureMap.get("errorCode").equals("1")){
+            System.out.println(procedureMap.get("errorMsg"));
+        }
+		List<ClinspeDeliveryBean> list=(List<ClinspeDeliveryBean>)procedureMap.get("result");
+		
+		return list;
+	}
+
+	@Override
+	public List<ClinspeDeliveryBean> findDeliveryClinspeList(Map<String, String> argsMap) {
+		return clinspeDeliveryDAO.selectDeliveryClinspeList(argsMap);
 	}
 }
