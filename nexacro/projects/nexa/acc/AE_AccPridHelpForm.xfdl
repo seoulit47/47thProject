@@ -5,8 +5,8 @@
     <Layouts>
       <Layout>
         <Div id="Div04" taborder="0" left="0%" top="0" right="0.29%" height="60" style="background:transparent URL('img::miniTitleBar6.jpg');"/>
-        <Static id="Static00" taborder="1" text="회계기수 도움" left="11.53%" top="-4" right="27.67%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
-        <Grid id="accPridGrid" taborder="2" binddataset="dsAccPrid" useinputpanel="false" autofittype="col" oncelldblclick="accPridGrid_oncelldblclick" left="4.9%" top="62" right="4.03%" height="430" class="AreaGrid">
+        <Static id="Static00" taborder="1" text="회계기수 도움" left="13.83%" top="-4" right="25.36%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="accPridGrid" taborder="2" binddataset="dsAccPrid" useinputpanel="false" autofittype="col" oncelldblclick="accPridGrid_oncelldblclick" left="4.9%" top="62" right="4.03%" height="419" class="AreaGrid">
           <Formats>
             <Format id="default">
               <Columns>

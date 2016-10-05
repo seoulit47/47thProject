@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
+import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 
 public interface ClosingServiceFacade {
 
@@ -15,9 +16,9 @@ public interface ClosingServiceFacade {
 
     void registerClosJour(HashMap<String, Object> map);
 
-    /*void modifyDlineYn(AccPridBean accPrid);
+    void modifyDlineYn(AccPridBean accPrid);
 
-    void executeCarrfor(AccPridBean accPrid);
+    /*void executeCarrfor(AccPridBean accPrid);
 
     List<FinanStatsBean> findFinanStats(Map<String, Object> argsMap);
 

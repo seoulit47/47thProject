@@ -72,5 +72,53 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
 		return baseExamDAO.findBaseExamList(argsMap);
 	}
 
+	@Override
+	public void batchEmrProcess(Map<String, Object> emrMap) {
+		
+		
+		//환자 기초검사 정보 등록,수정
+		List<BaseExamBean>baseExamList = (List<BaseExamBean>)emrMap.get("baseExamList");
+		
+		for(BaseExamBean baseExamBean : baseExamList){
+			
+			switch(baseExamBean.getStatus()){
+			
+					case "inserted" : 
+							
+						baseExamDAO.insertBaseExamList(baseExamBean);
+						break;
+					
+					case "updated" :
+						
+						baseExamDAO.updateBaseExamList(baseExamBean);
+						break;
+			
+			}
+			
+		}
+		
+		//환자상병 등록,수정
+		List<PatientDsBean>patientList = (List<PatientDsBean>)emrMap.get("patientDsList");
+		
+		for(PatientDsBean patientDsBean : patientList){
+			
+				switch(patientDsBean.getStatus()){
+				
+					case"inserted" :
+						patientDsDAO.insertPatientDsList(patientDsBean);
+						break;
+						
+					case"updated" :
+						System.out.println("update왜 안되지 ??");
+						patientDsDAO.updatePatientDsList(patientDsBean);
+						break;
+				
+				}
+			
+			
+		}
+		
+	}
+
 
 }
