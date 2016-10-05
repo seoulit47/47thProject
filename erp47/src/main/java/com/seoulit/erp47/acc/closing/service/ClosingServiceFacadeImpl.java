@@ -8,17 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.closing.applicationService.ClosingApplicationService;
+import com.seoulit.erp47.acc.closing.applicationService.DlineCarrforApplicationService;
 import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
+import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 
 @Service
 public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
     
 	@Autowired
     ClosingApplicationService closingApplicationService;
-    /*@Autowired
-    DlineCarrforApplicationService dlineCarrforApplicationService;
     @Autowired
+    DlineCarrforApplicationService dlineCarrforApplicationService;
+    /*@Autowired
     FinanStatsApplicationService finanStatsApplicationService;
     @Autowired
     TotalBalApplicationService totalBalApplicationService;*/
@@ -39,12 +41,12 @@ public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
 	}
 
 
-    /*@Override
+    @Override
     public void modifyDlineYn(AccPridBean accPrid) {
         dlineCarrforApplicationService.modifyDlineYn(accPrid);
     }
 
-    @Override
+    /*@Override
     public void executeCarrfor(AccPridBean accPrid) {
         dlineCarrforApplicationService.executeCarrfor(accPrid);
     }

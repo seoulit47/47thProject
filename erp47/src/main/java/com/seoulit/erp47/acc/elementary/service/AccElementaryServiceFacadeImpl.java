@@ -44,5 +44,11 @@ public class AccElementaryServiceFacadeImpl implements AccElementaryServiceFacad
     public List<AccAcntBean> lastYearAcntCopy(Map<String, String> argsMap) throws AcntCopyException {
         return accElementaryApplicationService.lastYearAcntCopy(argsMap);
     }
+
+
+	@Override
+	public AccPridBean findAccPrid(Map<String, String> argsMap) {
+		return accElementaryApplicationService.findAccPrid(argsMap);
+	}
     
 }

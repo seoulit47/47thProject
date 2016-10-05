@@ -38,7 +38,7 @@ public class AccPridController {
         PlatformData inData = (PlatformData)request.getAttribute("inData");
         List<AccPridBean> accPridList = dataSetBeanMapper.datasetToBeans(inData, AccPridBean.class);
         accElementaryServiceFacade.batchAccPridListProcess(accPridList);
-    }
+    }*/
 
     @RequestMapping("acc/elementary/findAccPrid.do")
     public void findAccPrid(HttpServletRequest request, HttpServletResponse response)
@@ -48,5 +48,5 @@ public class AccPridController {
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
         AccPridBean accPrid = accElementaryServiceFacade.findAccPrid(argsMap);
         dataSetBeanMapper.beanToDataset(outData, accPrid, AccPridBean.class);
-    }*/
+    }
 }

@@ -171,6 +171,7 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+include "scripts::accScripts.xjs";  
 
 //화면변수
 var dsClosJourData;
@@ -212,6 +213,7 @@ this.resolAndSlip=function(i){
 	this.dlSlip.addRow();			
 		
 	this.dlSlip.setColumn(i, "gipyoDate", this.endDate);
+	
 // 	var dateArr=this.endDate.split("-");
 // 	//this.endDate=dateArr[0]+dateArr[1]+dateArr[2]; 
 // 	
@@ -219,6 +221,7 @@ this.resolAndSlip=function(i){
 // 	alert(this.gfn_date("yymm"));
 // 	
 // 	this.dlSlip.setColumn(i, "gipyoDate", closDate);
+
 	this.dlSlip.setColumn(i, "abs", '결산분개');
 	this.dlSlip.setColumn(i, "regWorker", application.gdsEmp.getColumn(0, "empNo"));
 	this.dlSlip.setColumn(i, "closYb", 'Y');

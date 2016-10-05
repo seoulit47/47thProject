@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AC_DlineCarrforForm" classname="AC_DlineCarrforForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div05" taborder="0" left="0.08%" top="0" right="0.08%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="마감 및 이월" left="4.75%" top="-4" right="78.82%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="dlineCarrforDiv" taborder="1" left="1.44%" top="56" right="0.88%" height="702" style="background:#edececff;">
+          <Layouts>
+            <Layout>
+              <Grid id="workControlGrid" taborder="7" binddataset="dsAccPrid" useinputpanel="false" autofittype="col" useselcolor="false" left="0.9%" top="56" right="57.99%" height="590">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="64"/>
+                      <Column size="40"/>
+                      <Column size="40"/>
+                      <Column size="40"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell colspan="4" text="작업일자 통제"/>
+                      <Cell row="1" text="마감항목"/>
+                      <Cell row="1" col="1" text="마감일"/>
+                      <Cell row="1" col="2" text="마감자"/>
+                      <Cell row="1" col="3" text="이월여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="전표입력마감일"/>
+                      <Cell col="1" text="bind:dlineDate"/>
+                      <Cell col="2" text="bind:dlineManCd"/>
+                      <Cell col="3" text="bind:carrforYn"/>
+                      <Cell row="1" text="전표승인마감일"/>
+                      <Cell row="1" col="1" text="bind:dlineDate"/>
+                      <Cell row="1" col="2" text="bind:dlineManCd"/>
+                      <Cell row="1" col="3" text="bind:carrforYn"/>
+                      <Cell row="2" text="부가세신고작업"/>
+                      <Cell row="2" col="1" text="bind:dlineDate"/>
+                      <Cell row="2" col="2" text="bind:dlineManCd"/>
+                      <Cell row="2" col="3" text="bind:carrforYn"/>
+                      <Cell row="3" text="고정 자산 등록"/>
+                      <Cell row="3" col="1" text="bind:dlineDate"/>
+                      <Cell row="3" col="2" text="bind:dlineManCd"/>
+                      <Cell row="3" col="3" text="bind:carrforYn"/>
+                      <Cell row="4" text="자동 전표 마감"/>
+                      <Cell row="4" col="1" text="bind:dlineDate"/>
+                      <Cell row="4" col="2" text="bind:dlineManCd"/>
+                      <Cell row="4" col="3" text="bind:carrforYn"/>
+                      <Cell row="5" text="결산부속명세서"/>
+                      <Cell row="5" col="1" text="bind:dlineDate"/>
+                      <Cell row="5" col="2" text="bind:dlineManCd"/>
+                      <Cell row="5" col="3" text="bind:carrforYn"/>
+                      <Cell row="6" text="초기 이월 마감"/>
+                      <Cell row="6" col="1" text="bind:dlineDate"/>
+                      <Cell row="6" col="2" text="bind:dlineManCd"/>
+                      <Cell row="6" col="3" text="bind:carrforYn"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div04" taborder="2" left="2.16%" top="715" right="1.04%" height="38" style="border:1 solid black ;bordertype:round 5 5 ;font:9 Dotum;"/>
+        <Button id="carrforBtn" taborder="3" text="이월" onclick="carrforBtn_onclick" left="88.72%" top="720" right="1.84%" height="28" style="background:#848484ff;color:white;bordertype:round 3 3 ;font:bold 10 돋움;"/>
+        <Static id="Static11" taborder="4" text="마감일자" onclick="Static01_onclick" left="45.12%" top="209" right="48.96%" height="30" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static10" taborder="5" text="제" onclick="Static01_onclick" left="53.04%" top="271" right="41.04%" height="30" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static12" taborder="6" text="이월일자" onclick="Static01_onclick" left="45.12%" top="271" right="48.96%" height="30" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Edit id="dlinePridEd" taborder="7" enable="false" left="60.32%" top="204" right="35.6%" height="35" class="AreaEdt"/>
+        <Edit id="carrforDateEd" taborder="8" enable="false" left="66.16%" top="269" right="18.88%" height="35" class="AreaEdt"/>
+        <Edit id="carrforPridEd" taborder="9" enable="false" left="60.32%" top="269" right="35.6%" height="35" class="AreaEdt"/>
+        <Edit id="dlineDateEd" taborder="10" enable="false" left="66.16%" top="204" right="18.88%" height="35" class="AreaEdt"/>
+        <Div id="ACdlineCarrforDiv" taborder="11" left="2.16%" top="65" right="0.88%" height="37" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="~" left="39.04%" top="9" right="59.8%" height="19"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="accPridStc" taborder="12" text="회계기수" onclick="subCodeStc_onclick" left="3.28%" top="71" right="90.24%" height="27" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="accPridEd" taborder="13" enable="false" left="11.04%" top="69" right="78.48%" height="30"/>
+        <Edit id="endDateEd" taborder="14" enable="false" left="41.92%" top="69" right="47.6%" height="30"/>
+        <Edit id="startDateEd" taborder="15" enable="false" left="28.96%" top="69" right="60.56%" height="30"/>
+        <Static id="Static08" taborder="16" text="제" onclick="Static01_onclick" left="53.04%" top="209" right="41.04%" height="30" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;"/>
+        <Static id="Static01" taborder="17" left="42.8%" top="502" right="0.88%" height="200" style="border:1 solid skyblue ;bordertype:round 5 5 ;"/>
+        <Static id="Static00" taborder="18" text="1.  전표 마감 작업을 하시면 마감기수의 전표는 입력 수정이 통제 됩니다." left="61.84%" top="629" right="0.96%" height="25" style="bordertype:round 5 0 ;"/>
+        <Static id="Static03" taborder="19" text="기 수 이 월 작 업" left="48.16%" top="133" right="39.52%" height="33" style="font:bold 12 Dotum;"/>
+        <Static id="Static04" taborder="20" text="2.  초기이월 마감일자가 없으면 이월테이타를 삭제하고 마감을 진행합니다." left="61.84%" top="661" right="1.44%" height="31" style="bordertype:round 5 0 ;"/>
+        <Button id="accPridPopupBtn" taborder="21" onclick="accPridPopupBtn_onclick" left="22.08%" top="67" right="75.28%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="22" onclick="searchBtn_onclick" left="52.96%" top="68" right="39.76%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="dlineBtn" taborder="23" onclick="dlineBtn_onclick" left="70.8%" top="718" right="21.92%" height="32" style="background:@gradation URL('img::dLineBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="dlineCancelBtn" taborder="24" onclick="dlineCancelBtn_onclick" left="79.12%" top="718" right="12%" height="32" style="background:@gradation URL('img::dLineXBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Static id="Static02" taborder="25" left="42.8%" top="112" right="0.88%" height="388" style="border:1 solid skyblue ;bordertype:round 5 5 ;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="dlinePridEd" propid="value" datasetid="dsAccPrid" columnid="accPrid"/>
+      <BindItem id="item2" compid="carrforDateEd" propid="value" datasetid="dsAccPrid" columnid="carrforDate"/>
+      <BindItem id="item3" compid="carrforPridEd" propid="value" datasetid="dsAccPrid" columnid="accPrid"/>
+      <BindItem id="item5" compid="dlineDateEd" propid="value" datasetid="dsAccPrid" columnid="dlineDate"/>
+    </Bind>
+    <InitValue>
+      <Static id="accPridStc" style="border:3 solid #000000ff ;bordertype:round 5 5;"/>
+    </InitValue>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAccPrid</Col>
+            <Col id="URL">erp47::acc/elementary/findAccPrid.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAccPrid=dsAccPrid</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">dlineCarrforFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">modifyDlineYn</Col>
+            <Col id="URL">erp47::acc/closing/modifyDlineYn.do</Col>
+            <Col id="inData">dsAccPrid=dsAccPrid</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">dlineCarrforFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">executeCarrfor</Col>
+            <Col id="URL">erp47::acc/closing/executeCarrfor.do</Col>
+            <Col id="inData">dsAccPrid=dsAccPrid</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">dlineCarrforFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAccPrid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="dlineArti" type="STRING" size="256"/>
+          <Column id="carrforDate" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="dlineMan" type="STRING" size="256"/>
+          <Column id="dlineManCd" type="STRING" size="256"/>
+          <Column id="endDate" type="STRING" size="256"/>
+          <Column id="dlineYn" type="STRING" size="256"/>
+          <Column id="carrforYn" type="STRING" size="256"/>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="carrforMan" type="STRING" size="256"/>
+          <Column id="carrforManCd" type="STRING" size="256"/>
+          <Column id="dlineDate" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+	
+	
+//회계기수 도움 검색버튼 클릭
+this.accPridPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.open("findAccPrid","acc::AE_AccPridHelpForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false",0,0,500,350);
+}
+
+this.setArrRtn=function(arrRtn){
+
+	var i = 0;
+	this.accPridEd.set_value(arrRtn[i++]);
+	this.startDateEd.set_value(arrRtn[i++]);
+	this.endDateEd.set_value(arrRtn[i++]);
+}
+
+//조회
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accPrid = this.accPridEd.value;
+	var argument = 'accPrid='+accPrid;
+	var rowPos = this.dsService.findRow("serviceID","findAccPrid");
+	this.dsService.setColumn(rowPos,"argument",argument);
+	this.gfnService("findAccPrid");	
+}
+
+//마감버튼 클릭
+this.dlineBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var targetYn = this.dsAccPrid.rowcount;
+	if(targetYn == 1){
+		if(this.dsAccPrid.getColumn(0,"dlineYn") == "N"){	//->마감하는 경우
+			var YN = application.confirm("회계기수를 마감하시겠습니까?");
+			if(YN == true){
+				var useId = application.gdsEmp.getColumn(0,"empNo");
+				this.dsAccPrid.setColumn(0,"dlineManCd",userId);
+				this.dsAccPrid.setColumn(0,"dlineYn","Y");
+				this.gfnService("modifyDlineYn");
+				this.searchBtn_onclick();
+			}
+		}
+	}					// 마감쪽확인작동 아직안됨
+	
+}
+]]></Script>
+  </Form>
+</FDL>
