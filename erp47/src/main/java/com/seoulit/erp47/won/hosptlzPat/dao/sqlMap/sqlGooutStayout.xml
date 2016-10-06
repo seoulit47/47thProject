@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.won.hosptlzPat.dao.GooutStayoutDAO">
+	<cache flushInterval="86400000" eviction="LRU" />
+
+	
+
+
+    <!-- 입원환자정보조회 -->
+	<select id="selectHosptlzPat" resultType="HosptlzPatInfoBean">
+		SELECT p.PAT_NO
+			,p.PAT_NM 
+			,p.TEL 
+			,h.HROOM 
+			,h.WARD
+			,h.RESP_DOCT_NM 
+			,h.TRMT_DEPT_NM
+			,h.HOSPTLZ_RECEIPT_NO
+			,h.DSCG_DATE 
+		FROM WS_PAT p
+			,WH_HOSPTLZ_RECEIPT h
+		WHERE p.PAT_NO = h.PAT_NO
+		 AND p.PAT_NO=#{patNo}
+	</select>
+
+    <!-- 외출/외박 신청서 -->
+	<update id="insertGooutStayout">
+		INSERT INTO WH_GOOUT_STAYOUT(
+				APP_DATE
+				,CFMR
+				,CFMR_STATE
+				,CFMT_DATE
+				,COMEBACK_DATE
+				,COMEBACK_TIME
+				,GOOUT_DATE
+				,GOOUT_DAY
+				,GOOUT_STAYOUT_STATE
+				,GOOUT_TIME
+				,HOSPTLZ_RECEIPT_NO
+				,HROOM
+				,NOTE
+				,PAT_NO
+				,TOTAL_GOOUT_TIME
+				,TOTAL_STAYOUT_DAY
+				,TRMTDEPTNM
+				,WARD
+				,STATE
+			)
+			VALUES(
+					#{appDate}
+					,#{cfmr}
+					,#{cfmrState}
+					,#{cfmtDate}
+					,#{comebackDate}
+					,#{comebackTime}
+					,#{gooutDate}
+					,#{gooutDay}
+					,#{gooutStayoutState}
+					,#{gooutTime}
+					,#{hosptlzReceiptNo}
+					,#{hroom}
+					,#{note}
+					,#{patNo}
+					,#{totalGooutTime}
+					,#{totalStayoutDay}
+					,#{trmtdeptnm}
+					,#{ward}
+					,#{state}
+			)
+	</update>
+
+    <!-- 외출&외박 신청서 조회 -->
+	<select id="selectGooutStayoutList" resultType="GooutStayoutBean">
+		SELECT g.*
+		       ,p.PAT_NM
+		  FROM WH_GOOUT_STAYOUT g
+		       ,(SELECT PAT_NO,
+		              PAT_NM
+		         FROM WS_PAT
+		       )p
+		 WHERE g.PAT_NO =p.PAT_NO
+		 <if test="patNo!=null">
+		       AND g.PAT_NO=#{patNo}
+		 </if>
+		 <if test="aprv!=null">
+		       AND CFMR_STATE =#{aprv}
+		 </if>
+	</select>
+
+	<!-- 확인승인상태변경(N->Y), 외출확인, 복귀확인 -->
+	<update id="updateGooutStayout">
+		UPDATE WH_GOOUT_STAYOUT
+		       SET CFMR_STATE= #{cfmrState}
+		       		 ,CFMT_DATE=#{cfmtDate}
+		       		 ,STATE=#{state}
+		 WHERE PAT_NO=#{patNo}
+	</update>
+
+	<!-- 신청서 삭제 -->
+	<delete id="deleteGooutStayout">
+		DELETE FROM WH_GOOUT_STAYOUT
+			WHERE PAT_NO=#{patNo} and APP_DATE = #{appDate}
+	</delete>
+</mapper>

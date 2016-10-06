@@ -4,10 +4,11 @@
   <Form id="WH_HosptlzMngntForm" classname="WH_HosptlzMngntForm" left="0" top="0" width="1256" height="759" titletext="New Form" onload="WH_HosptlzMngntForm_onload">
     <Layouts>
       <Layout>
-        <Div id="Div06" taborder="0" text="           입원관리" left="0%" top="0" right="0.48%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');">
+        <Div id="Div04" taborder="74" left="1.99%" top="57" right="63.77%" height="39" style="border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Div id="Div06" taborder="0" text="           입원관리" left="0%" top="0" right="0.48%" height="47" style="align:left middle;background:transparent URL('img::titleBar7.jpg');">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="환자 입원 관리" left="4.48%" top="4" right="52.48%" height="44" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+              <Static id="Static00" taborder="0" text="환자 입원 관리" left="4.48%" top="9" right="52.48%" height="36" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -27,7 +28,9 @@
         </Div>
         <Div id="Div02" taborder="14" left="1.99%" top="101" right="63.77%" height="442" style="border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
-            <Layout/>
+            <Layout>
+              <Edit id="genderEdt" taborder="0" enable="false" left="78.04%" top="181" right="10.28%" height="27" style="font:돋움,9,antialias;" class="AreaEdt" oneditclick="Div02_genderEdt_oneditclick"/>
+            </Layout>
           </Layouts>
         </Div>
         <GroupBox id="GroupBox00" text="입원예약정보" taborder="15" left="1.51%" top="551" right="2.23%" height="183" style="border:1 solid lightslategray ;font:10 arial;"/>
@@ -126,11 +129,6 @@
         <Edit id="grtorAddrEdt" taborder="69" enable="false" left="50.56%" top="499" right="18.63%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Button id="grtorAddrBtn" taborder="70" onclick="grtorAddrBtn_onclick" enable="false" left="82.09%" top="499" right="15.53%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;}" class="AddBtn"/>
         <Button id="hosptlzRsvtBtn" taborder="71" text="입원예약" onclick="hosptlzRsvtBtn_onclick" visible="false" left="89.33%" top="690" right="3.58%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
-        <Div id="Div04" taborder="1" left="1.99%" top="56" right="63.77%" height="39" style="border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
-          <Layouts>
-            <Layout/>
-          </Layouts>
-        </Div>
         <Button id="patNoBtn" taborder="72" onclick="patNoBtn_onclick" left="19.27%" top="61" right="78.34%" height="26" class="AddBtn" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;"/>
         <Button id="hosptlzSearchBtn" taborder="73" onclick="hosptlzSearchBtn_onclick" left="74.28%" top="61" right="18.71%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;color:black;font:bold 10 돋움;" class="ProcessBtn"/>
       </Layout>
@@ -162,6 +160,7 @@
       <BindItem id="item22" compid="grtorRrnEdt" propid="value" datasetid="dsHosptlzReceipt" columnid="grtorRrn"/>
       <BindItem id="item23" compid="grtorTelEdt" propid="value" datasetid="dsHosptlzReceipt" columnid="grtorTel"/>
       <BindItem id="item24" compid="grtorAddrEdt" propid="value" datasetid="dsHosptlzReceipt" columnid="grtorAddr"/>
+      <BindItem id="item4" compid="Div02.genderEdt" propid="value" datasetid="dsPat" columnid="gender"/>
     </Bind>
     <Objects>
       <Dataset id="dsHosptlzRsvt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -208,7 +207,7 @@
           </Row>
           <Row>
             <Col id="serviceID">findReceipt</Col>
-            <Col id="URL">erp47s::won/hosptlzPat/findReceipt.do</Col>
+            <Col id="URL">erp47::won/hosptlzPat/findReceipt.do</Col>
             <Col id="inData"/>
             <Col id="outData">dsHosptlzReceipt=dsHosptlzReceipt</Col>
             <Col id="argument"/>
@@ -782,8 +781,6 @@ this.setPost = function(arrRtn){
 	this.grtorAddrEdt.set_value(arrRtn[2]+" "+arrRtn[0]+" "+arrRtn[1]); 
 	
 }
-
-
 
 ]]></Script>
   </Form>

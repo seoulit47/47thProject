@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.won.hosptlzPat.dao.AutoInsurDAO">
+	<cache flushInterval="86400000" eviction="LRU" />
+
+
+
+
+	<!-- 자보자격목록조회 -->
+	<select id="selectAutoInsurList" resultType="AutoInsurBean">
+		SELECT PAT_NO
+		,COM_CODE
+		,PAY_MON
+		,PAY_START_MON
+		,PAY_END_MON
+		,ACC_NO
+		,ASS_ACC_NO
+		,RESPOWORER
+		,RESPOWORER_PH
+		,CHA_MONEY
+		,COMP_MONEY
+		,NOTE
+		,TREAT_START_DATE
+		,TREAT_END_DATE
+		,TRMT_DEPT_CD_ONE
+		,TRMT_DEPT_CD_TWO
+		,TRMT_DEPT_CD_THREE
+		,TRMT_DEPT_CD_FOUR
+		,ACC_DATE
+		,FN_CM_CODE_DTL_NAME('GP080',TRMT_DEPT_CD_ONE) AS TRMT_DEPT_NM_ONE
+		,FN_CM_CODE_DTL_NAME('GP080',TRMT_DEPT_CD_TWO) AS TRMT_DEPT_NM_TWO
+		,FN_CM_CODE_DTL_NAME('GP080',TRMT_DEPT_CD_THREE) AS TRMT_DEPT_NM_THREE
+		,FN_CM_CODE_DTL_NAME('GP080',TRMT_DEPT_CD_FOUR) AS TRMT_DEPT_NM_FOUR
+		,FN_CM_CODE_DTL_NAME('GG001',COM_CODE) AS COM_NAME
+		,FN_PAT_NAME(PAT_NO) AS PAT_NM
+		FROM WI_AUTOINSER
+
+		WHERE PAT_NO =#{patNo}
+		order by ACC_DATE 
+
+
+
+	</select>
+
+
+
+	<update id="updateAutoInsur">
+		UPDATE WI_AUTOINSER
+		SET PAY_START_MON= #{payStartMon}
+		,PAY_END_MON=#{payEndMon}
+		,ACC_NO=#{accNo}
+		,ASS_ACC_NO=#{assAccNo}
+		,RESPOWORER=#{respoworer}
+		,RESPOWORER_PH=#{respoworerPh}
+		,CHA_MONEY=#{chaMoney}
+		,COMP_MONEY=#{compMoney}
+		,NOTE=#{note}
+		,TRMT_DEPT_CD_ONE=#{trmtDeptCdOne}
+		,TRMT_DEPT_CD_TWO=#{trmtDeptCdTwo}
+		,TRMT_DEPT_CD_THREE=#{trmtDeptCdThree}
+		,TRMT_DEPT_CD_FOUR=#{trmtDeptCdFour}
+		,TREAT_START_DATE=#{treatStartDate}
+		,TREAT_END_DATE=#{treatEndDate}
+		,ACC_DATE=#{accDate}
+		WHERE PAT_NO=#{patNo} AND
+		COM_CODE=#{comCode} AND PAY_MON = #{payMon}
+	</update>
+
+	<!-- 신청서 삭제 -->
+	<delete id="deleteAutoInsur">
+		DELETE FROM WI_AUTOINSER
+		WHERE PAT_NO=#{patNo} AND
+		COM_CODE=#{comCode} AND PAY_MON = #{payMon}
+	</delete>
+	<insert id="insertAutoInsur">
+		INSERT INTO WI_AUTOINSER(
+				PAT_NO
+				,COM_CODE
+				,PAY_MON
+				,PAY_START_MON
+				,PAY_END_MON
+				,ACC_NO
+				,ASS_ACC_NO
+				,RESPOWORER
+				,RESPOWORER_PH
+				,CHA_MONEY
+				,COMP_MONEY
+				,NOTE
+				,TREAT_START_DATE
+				,TREAT_END_DATE
+				,TRMT_DEPT_CD_ONE
+				,TRMT_DEPT_CD_TWO
+				,TRMT_DEPT_CD_THREE
+				,TRMT_DEPT_CD_FOUR
+				,ACC_DATE
+			)
+			VALUES(
+					#{patNo}
+					,#{comCode}
+					,#{payMon}
+					,#{payStartMon}
+					,#{payEndMon}
+					,#{accNo}
+					,#{assAccNo}
+					,#{respoworer}
+					,#{respoworerPh}
+					,#{chaMoney}
+					,#{compMoney}
+					,#{note}
+					,#{treatStartDate}
+					,#{treatEndDate}
+					,#{trmtDeptCdOne}
+					,#{trmtDeptCdTwo}
+					,#{trmtDeptCdThree}
+					,#{trmtDeptCdFour}
+					,#{accDate}
+			)
+	</insert>
+
+
+</mapper>
