@@ -19,7 +19,7 @@ import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
  * @Package  com.seoul.erp47.hrs.guntae.controller
  * @Class    OverTimeWorkController.java
  * @Create   2016. 9. 06.
- * @Author   pyh
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated

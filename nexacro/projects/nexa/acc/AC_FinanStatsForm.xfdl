@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AC_FinanStatsForm" classname="AC_FinanStatsForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AC_FinanStatsForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div05" taborder="0" left="0%" top="0" right="-0.08%" height="60" style="background:transparent URL('img::titleBar6.jpg');"/>
+        <Static id="Static00" taborder="1" text="재무제표" left="4.8%" top="-4" right="78.88%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="ACfinanStatsDiv" taborder="2" left="1.84%" top="62" right="1.44%" height="37" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+          <Layouts>
+            <Layout>
+              <Combo id="finanStatsDivCombo" taborder="0" innerdataset="dsFinanStatsCd" codecolumn="code" datacolumn="value" left="59.73%" top="3" right="26.43%" height="28"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="finanStatsGrid" taborder="3" binddataset="dsFinanStats" useinputpanel="false" autofittype="col" oncelldblclick="finanStatsGrid_oncelldblclick" left="1.84%" top="108" right="1.44%" height="644" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="182"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="구       분"/>
+                <Cell col="1" colspan="2" text="당   기"/>
+                <Cell col="3" colspan="2" text="전   기"/>
+                <Cell row="1" col="1" text="금  액"/>
+                <Cell row="1" col="2" text="합  계"/>
+                <Cell row="1" col="3" text="금  액"/>
+                <Cell row="1" col="4" text="합  계"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:left;padding:0 0 0 30;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:artiNm"/>
+                <Cell col="1" displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:dangiAmt"/>
+                <Cell col="2" displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:dangiSum"/>
+                <Cell col="3" displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:jungiAmt"/>
+                <Cell col="4" displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:null);color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:jungiSum"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="finanStatDivisionStc" taborder="4" text="재무제표 구분" onclick="subCodeStc_onclick" left="50.32%" top="67" right="40.96%" height="27" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="accPridStc" taborder="5" text="회계기수" onclick="subCodeStc_onclick" left="2.16%" top="68" right="91.44%" height="27" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="accPridEd" taborder="6" enable="false" left="9.92%" top="66" right="79.68%" height="30"/>
+        <Edit id="startDateEd" taborder="7" enable="false" left="25.2%" top="66" right="64.4%" height="30"/>
+        <Edit id="endDateEd" taborder="8" enable="false" left="38.16%" top="66" right="51.44%" height="30"/>
+        <Static id="Static01" taborder="9" text="~" left="36.48%" top="72" right="62.4%" height="19"/>
+        <Button id="accPridPopupBtn" taborder="10" onclick="accPridPopupBtn_onclick" left="20.96%" top="65" right="76.48%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="11" onclick="searchBtn_onclick" left="74.16%" top="65" right="18.64%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="printFinanStatBtn" taborder="12" onclick="printFinanStatBtn_onclick" left="82.56%" top="65" right="10.24%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <InitValue>
+      <Static id="finanStatDivisionStc" style="border:3 solid #000000ff ;bordertype:round 5 5;"/>
+      <Static id="accPridStc" style="border:3 solid #000000ff ;bordertype:round 5 5;"/>
+    </InitValue>
+    <Objects>
+      <Dataset id="dsFinanStats" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="artiCd" type="STRING" size="256"/>
+          <Column id="artiNm" type="STRING" size="256"/>
+          <Column id="dangiAmt" type="STRING" size="256"/>
+          <Column id="dangiSum" type="STRING" size="256"/>
+          <Column id="jungiAmt" type="STRING" size="256"/>
+          <Column id="jungiSum" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+          <Column id="acntDiv" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFinanStats</Col>
+            <Col id="URL">erp47::acc/closing/findFinanStats.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsFinanStats=dsFinanStats</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">finanStatsFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFinanStatsCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">A</Col>
+            <Col id="value">재무상태표</Col>
+          </Row>
+          <Row>
+            <Col id="code">B</Col>
+            <Col id="value">손익계산서</Col>
+          </Row>
+          <Row>
+            <Col id="code">C</Col>
+            <Col id="value">현금흐름표</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA088</Col>
+            <Col id="dsName">dsFinanStatsCd</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"; 
+include "scripts::accScripts.xjs";  
+
+
+//코드 바인드
+this.AC_FinanStatsForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+}
+
+//회계기수 도움 검색버튼 클릭
+this.accPridPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("findAccPrid","acc::AE_AccPridHelpForm.xfdl","","");
+}
+
+//선택한 회계기수 셋팅
+this.setArrRtn=function(arrRtn)		
+{
+	var i = 0;
+	this.accPridEd.set_value(arrRtn[i++]);
+	//alert(arrRtn[i]);
+	this.startDateEd.set_value(arrRtn[i++]);
+	//alert(arrRtn[i]);
+	this.endDateEd.set_value(arrRtn[i++]);
+	//alert(arrRtn[i]);
+	this.endDate = this.endDateEd.value ;
+}
+
+//재무제표 조회버튼 클릭
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accPrid = this.accPridEd.value;
+	var finanStatsCd = this.ACfinanStatsDiv.finanStatsDivCombo.value;
+	
+	if(accPrid == null){			//회계기수 미선택
+		alert(this.MSG_ACC_PRID_CHO);
+		return;
+	}
+	if(finanStatsCd == null){		//제무제표 조회미선택
+		alert(this.MSG_ACC_FINAN_CHO);
+		return;
+	}
+	var argument = 'accPrid='+accPrid+' finanStatsCd='+finanStatsCd;
+	var rowPos = this.dsService.findRow("serviceID","findFinanStats");
+	this.dsService.setColumn(rowPos,"argument",argument);
+	this.gfnService("findFinanStats");
+}
+]]></Script>
+  </Form>
+</FDL>

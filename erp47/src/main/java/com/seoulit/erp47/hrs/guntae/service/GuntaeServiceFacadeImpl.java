@@ -14,6 +14,7 @@ import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
+import com.seoulit.erp47.hrs.guntae.to.YeonchaBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.service
@@ -123,18 +124,17 @@ public class GuntaeServiceFacadeImpl implements GuntaeServiceFacade{
     public List<MonGuntaeCloseBean> closeMonGuntae(Map<String, String> argsMap) {
         return guntaeApplicationService.closeMonGuntae(argsMap);
     }
-/*
+
     //연차 조회
     @Override
     public List<YeonchaBean> findYeonchaList(Map<String, String> argsMap) {
-        return guntaeAS.findYeonchaList(argsMap);
+        return guntaeApplicationService.findYeonchaList(argsMap);
     }
 
     //연차발생
     @Override
     public List<YeonchaBean> callYeoncha(Map<String, String> argsMap) {
-        System.out.println("연차발생 serviceFacadeImpl");
-        return guntaeAS.callYeoncha(argsMap);
+        return guntaeApplicationService.callYeoncha(argsMap);
     }
-*/
+
 }

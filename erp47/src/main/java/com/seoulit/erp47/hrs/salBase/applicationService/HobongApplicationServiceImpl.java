@@ -12,7 +12,7 @@ import com.seoulit.erp47.hrs.salBase.to.HobongHistoryBean;
 import com.seoulit.erp47.hrs.salBase.to.JobBean;
 
 /**
- * @Package  com.seoul.his.hrs.salBase.applicationService
+ * @Package  com.seoulit.erp47.hrs.salBase.applicationService
  * @Class    HobongApplicationServiceImpl.java
  * @Create   2016. 5. 26.
  * @Author   YUN

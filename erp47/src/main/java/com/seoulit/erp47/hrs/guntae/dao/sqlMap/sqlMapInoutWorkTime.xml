@@ -49,7 +49,7 @@
 		, #{inoutGubun}
 		, #{inoutTimeNo}
 		, #{startDate}
-		, #{endDate}
+		, #{endDate}	
 		, #{empNo}
 		, #{empNm}
 		, #{overTime}

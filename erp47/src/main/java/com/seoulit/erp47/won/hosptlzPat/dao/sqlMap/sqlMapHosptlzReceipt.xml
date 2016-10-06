@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.won.hosptlzPat.dao.HosptlzReceiptDAO">
+	<cache flushInterval="86400000" eviction="LRU" />
+
+	<select id="selectHosptlzYB" flushCache="false" useCache="true"
+		resultType="ReceiptInfoBean">
+		SELECT o.PAT_NO
+		,maxNo.OUTPA_RECEIPT_NO
+		,o.HOSPTLZ_YB
+		,o.HOSPTLZ_RSVT_YB
+		FROM WS_OUTPA_RECEIPT o
+		,(SELECT MAX(OUTPA_RECEIPT_NO) OUTPA_RECEIPT_NO
+		,PAT_NO
+		FROM WS_OUTPA_RECEIPT
+		GROUP BY PAT_NO
+		ORDER BY PAT_NO ASC
+		)maxNo
+
+		WHERE maxNo.PAT_NO=#{patNo}
+		AND O.PAT_NO = MAXNO.PAT_NO
+
+	</select>
+
+	<select id="selectReceipt" flushCache="false" useCache="true"
+		resultType="HosptlzReceiptBean">
+		SELECT PAT_NO
+		FROM WH_HOSPTLZ_RECEIPT
+		WHERE PAT_NO=#{patNo}
+	</select>
+
+	<!-- 입원등록하기 -->
+	<insert id="insertHosptlzReceipt">
+		INSERT INTO WH_HOSPTLZ_RECEIPT(
+		DSCG_DATE
+		,DSCG_DIV
+		,GRTOR_ADDR
+		,GRTOR_NM
+		,GRTOR_RRN
+		,GRTOR_TEL
+		,HOSPTLZ_DATE
+		,HOSPTLZ_RECEIPT_NO
+		,HOSPTLZ_ROUTE
+		,HOSPTLZ_RSVT_YB
+		,HROOM
+		,OUTPA_RECEIPT_NO
+		,PAT_NO
+		,PAT_RSHIP
+		,PAT_TYPE_CD
+		,PAT_TYPE_NM
+		,RESP_DOCT_CD
+		,RESP_DOCT_NM
+		,RSHIP
+		,TRMT_DEPT_CD
+		,TRMT_DEPT_NM
+		,WARD)
+		VALUES (
+		#{dscgDate}
+		, #{dscgDiv}
+		, #{grtorAddr}
+		, #{grtorNm}
+		, #{grtorRrn}
+		, #{grtorTel}
+		, #{hosptlzDate}
+		, #{hosptlzReceiptNo}
+		, #{hosptlzRoute}
+		, #{hosptlzRsvtYb}
+		, #{hroom}
+		, #{outpaReceiptNo}
+		, #{patNo}
+		, #{patRship}
+		, #{patTypeCd}
+		, #{patTypeNm}
+		, #{respDoctCd}
+		, #{respDoctNm}
+		, #{rship}
+		, #{trmtDeptCd}
+		,#{trmtDeptNm}
+		,#{ward}
+		)
+	</insert>
+
+	<!-- 입원등록 번호 구하기 -->
+	<select id="selectHosptlzReceiptSeq" flushCache="false"
+		useCache="true" resultType="java.lang.String">
+		SELECT HOSPTLZ_RECEIPT_SEQ.NEXTVAL
+		FROM DUAL
+	</select>
+
+	<!-- 입원등록 조회 -->
+	<select id="selectfindHosptlzReceipt" flushCache="false"
+		useCache="true" resultType="HosptlzReceiptBean">
+		SELECT
+		DSCG_DATE as dscgDate
+		,DSCG_DIV as dscgDiv
+		,GRTOR_ADDR as grtorAddr
+		,GRTOR_NM as grtorNm
+		,GRTOR_RRN as grtorRrn
+		,GRTOR_TEL as grtorTel
+		,HOSPTLZ_DATE as hosptlzDate
+		,HOSPTLZ_RECEIPT_NO as hosptlzReceiptNo
+		,HOSPTLZ_ROUTE as hosptlzRoute
+		,HOSPTLZ_RSVT_YB as hosptlzRsvtYb
+		,HROOM as hroom
+		,OUTPA_RECEIPT_NO as outpaReceiptNo
+		,PAT_NO as patNo
+		,PAT_RSHIP as patRship
+		,PAT_TYPE_CD as patTypeCd
+		,PAT_TYPE_NM as patTypeNm
+		,RESP_DOCT_CD as respDoctCd
+		,RESP_DOCT_NM as respDoctNm
+		,RSHIP as rship
+		,TRMT_DEPT_CD as trmtDeptCd
+		,TRMT_DEPT_NM as trmtDeptNm
+		,WARD as ward
+		FROM WH_HOSPTLZ_RECEIPT
+		WHERE PAT_NO=#{patNo}
+	</select>
+
+	<!-- 입원등록 정보 수정 -->
+	<update id="updateHosptlzReceipt">
+		UPDATE WH_HOSPTLZ_RECEIPT
+		SET HOSPTLZ_DATE =#{hosptlzDate}
+		,DSCG_DATE=#{dscgDate}
+		,WARD=#{ward}
+		,HROOM=#{hroom}
+		WHERE PAT_NO=#{patNo}
+		AND HOSPTLZ_RECEIPT_NO =#{hosptlzReceiptNo}
+	</update>
+
+	<!-- 입원등록취소 -->
+	<delete id="deletedHosptlzReceipt">
+		DELETE FROM WH_HOSPTLZ_RECEIPT
+		WHERE PAT_NO=#{patNo}
+		AND HOSPTLZ_RECEIPT_NO =#{hosptlzReceiptNo}
+	</delete>
+</mapper>

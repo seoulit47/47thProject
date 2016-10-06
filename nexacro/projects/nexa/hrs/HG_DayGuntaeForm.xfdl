@@ -14,7 +14,7 @@
         <Div id="mainDiv" taborder="1" left="1.27%" top="55" right="1.59%" height="697" style="background:#edececff;" enableevent="false">
           <Layouts>
             <Layout width="1233" height="721">
-              <Grid id="dayGuntaeGrid" taborder="56" binddataset="dsDayGuntae" useinputpanel="false" autofittype="col" left="0.65%" top="40" right="3.57%" height="649">
+              <Grid id="dayGuntaeGrid" taborder="56" binddataset="dsDayGuntae" useinputpanel="false" autofittype="col" left="0.66%" top="40" right="0.82%" height="649">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -80,10 +80,10 @@
               </Grid>
               <Static id="empnoStc" taborder="57" text="사번" onclick="subCodeStc_onclick" left="51.7%" top="7" right="43.34%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Edit id="empNoEd" taborder="58" enable="false" left="56.9%" top="6" right="36.44%" height="26"/>
-              <Edit id="empNmEd" taborder="59" enable="false" left="73.38%" top="7" right="19.72%" height="26"/>
+              <Edit id="empNmEd" taborder="59" enable="false" left="73.36%" top="7" right="18.11%" height="26"/>
               <Static id="empnmStc" taborder="60" text="성명" left="67.94%" top="7" right="27.03%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Button id="empSearchBtn" taborder="61" cssclass="AddBtn" left="63.69%" top="4" right="33.69%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_empSearchBtn_onclick"/>
-              <Button id="searchDayGuntaeBtn" taborder="62" onclick="mainDiv_searchDayGuntaeBtn_onclick" cssclass="SearchBtn" left="89.45%" top="5" right="3.57%" height="31" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchDayGuntaeBtn" taborder="62" onclick="mainDiv_searchDayGuntaeBtn_onclick" cssclass="SearchBtn" left="92.05%" top="5" right="0.98%" height="31" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
               <Static id="hdateStc" taborder="63" text="기간" left="0.57%" top="6" right="92.37%" height="30" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
               <Calendar id="startCal" taborder="64" left="7.31%" top="6" right="81.41%" height="30"/>
               <Static id="Static04" taborder="65" text="   ~" left="18.34%" top="6" right="79.06%" height="31" style="color:#46463dff;"/>
@@ -91,7 +91,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="guntaeCreateBtn" taborder="2" text="일근태생성" onclick="guntaeCreateBtn_onclick" left="80.57%" top="60" right="12.5%" height="30" style="color:black;font:bold 9 arial;" enable="false"/>
+        <Button id="guntaeCreateBtn" taborder="2" text="일근태생성" onclick="guntaeCreateBtn_onclick" left="83.12%" top="60" right="9.95%" height="30" style="color:black;font:bold 9 arial;" enable="false"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -111,7 +111,7 @@
             <Col id="outData">dsDayGuntae=dsDayGuntae</Col>
             <Col id="inData">dsDayGuntae=dsDayGuntae</Col>
             <Col id="argument"/>
-            <Col id="callbackFunc"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
           </Row>
           <Row>
             <Col id="serviceID">createGuntae</Col>
@@ -119,7 +119,7 @@
             <Col id="inData">dsDayGuntae=dsDayGuntae:u</Col>
             <Col id="outData">dsDayGuntae=dsDayGuntae</Col>
             <Col id="argument"/>
-            <Col id="callbackFunc"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -250,9 +250,9 @@ this.HG_DayGuntaeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	var pms = application.gdsEmp.getColumn(0,"pms");
 	var deptNm = application.gdsEmp.getColumn(0,"deptNm");
 	
-	if(pms == 'admin' && deptNm == '인사팀'){
+	//if(pms == 'admin' && deptNm == '인사팀'){
 		this.guntaeCreateBtn.set_enable(true);
-	}
+	//}
 }
 
 
@@ -299,6 +299,11 @@ this.mainDiv_searchDayGuntaeBtn_onclick = function(obj:Button,  e:nexacro.ClickE
 ***************************************************************************************************/
 this.guntaeCreateBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
+	var belongDay = this.mainDiv.startCal.value;
+	
+	var argument = 'empNo='+empNo+' belongDay='+belongDay;
+	this.dsService.setColumn(1,"argument",argument);
+	
 	this.gfnService("createGuntae");
 }
 

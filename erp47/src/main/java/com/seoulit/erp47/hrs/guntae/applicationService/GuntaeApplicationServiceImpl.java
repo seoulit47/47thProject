@@ -11,6 +11,7 @@ import com.seoulit.erp47.hrs.guntae.dao.HdayDAO;
 import com.seoulit.erp47.hrs.guntae.dao.HolidayDAO;
 import com.seoulit.erp47.hrs.guntae.dao.InoutWorkTimeDAO;
 import com.seoulit.erp47.hrs.guntae.dao.OverTimeWorkDAO;
+import com.seoulit.erp47.hrs.guntae.dao.YeonchaDAO;
 import com.seoulit.erp47.hrs.guntae.to.DayGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.HdayBean;
 import com.seoulit.erp47.hrs.guntae.to.HolidayBean;
@@ -18,6 +19,7 @@ import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
+import com.seoulit.erp47.hrs.guntae.to.YeonchaBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.applicationService
@@ -47,8 +49,8 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     @Autowired
     GuntaeDAO guntaeDAO;
 
-    //@Autowired
-    //YeonchaDAO yeonchaDAO;
+    @Autowired
+    YeonchaDAO yeonchaDAO;
 
     //휴일 조회
     @Override
@@ -121,7 +123,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
             }
 
         }
-
+        					
     }
 
     //개인 시간외근무 조회
@@ -162,7 +164,9 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
     public List<DayGuntaeBean> createDayGuntae(Map<String, String> argsMap) {
         argsMap.put("errorCode", "");
         argsMap.put("errorMsg", "");
+        
         List<DayGuntaeBean> callDayGuntae = guntaeDAO.callDayGuntae(argsMap);
+        
         if(argsMap.get("errorCode").equals("-1")){
             new RuntimeException(argsMap.get("errorMsg"));
         }
@@ -216,7 +220,7 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
 
         return monGuntaeCloseList;
     }
-/*
+
     //연차 조회
     @Override
     public List<YeonchaBean> findYeonchaList(Map<String, String> argsMap) {
@@ -234,5 +238,5 @@ public class GuntaeApplicationServiceImpl implements GuntaeApplicationService{
             new RuntimeException(argsMap.get("errorMsg"));
         }
         return callYeon;
-    }*/
+    }
 }

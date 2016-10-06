@@ -7,12 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.hrs.salBase.applicationService.HobongApplicationService;
+import com.seoulit.erp47.hrs.salBase.applicationService.IncomeTaxSetApplicationService;
 import com.seoulit.erp47.hrs.salBase.applicationService.PayDeduApplicationService;
+import com.seoulit.erp47.hrs.salBase.applicationService.PaydayApplicationService;
+import com.seoulit.erp47.hrs.salBase.applicationService.SalStandardSetApplicationService;
+import com.seoulit.erp47.hrs.salBase.applicationService.SocialInsuranceApplicationService;
+import com.seoulit.erp47.hrs.salBase.to.DeduChartBean;
 import com.seoulit.erp47.hrs.salBase.to.HobongBean;
 import com.seoulit.erp47.hrs.salBase.to.HobongHistoryBean;
+import com.seoulit.erp47.hrs.salBase.to.IncomeTaxSetBean;
 import com.seoulit.erp47.hrs.salBase.to.JobBean;
 import com.seoulit.erp47.hrs.salBase.to.PayDeduBean;
 import com.seoulit.erp47.hrs.salBase.to.PayDeduSectBean;
+import com.seoulit.erp47.hrs.salBase.to.PaydayBean;
+import com.seoulit.erp47.hrs.salBase.to.SalStandardSetBean;
+import com.seoulit.erp47.hrs.salBase.to.SocialInsureBean;
 
 /**
  * @Package  com.seoul.his.hrs.salBase.service
@@ -30,22 +39,20 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
 	@Autowired
     public  HobongApplicationService  hobongApplicationService;
     
-	@Autowired
-    public  PayDeduApplicationService  payDeduApplicationService;
-	
-    /*@Autowired
+    @Autowired
     public  IncomeTaxSetApplicationService  incomeTaxSetApplicationService;
-    
+  
     @Autowired
     public  PaydayApplicationService  paydayApplicationService;
-    
-    
+      
+    @Autowired
+    public  PayDeduApplicationService  payDeduApplicationService;
     
     @Autowired
     public  SalStandardSetApplicationService  salStandardSetApplicationService;
     
     @Autowired
-    public  SocialInsuranceApplicationService  socialInsuranceApplicationService;*/
+    public  SocialInsuranceApplicationService  socialInsuranceApplicationService;
     
     @Override
     public List<JobBean> findJobList() {
@@ -70,6 +77,47 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
     @Override
     public void batchHobongHisProcess(List<HobongHistoryBean> hobongHisList) {
         hobongApplicationService.batchHobongHisProcess(hobongHisList);
+    }
+ 
+    @Override
+    public List<IncomeTaxSetBean> findTaxChartList(Map<String, String> argsMap) {
+        return incomeTaxSetApplicationService.findTaxChartList(argsMap);
+    }
+
+    @Override
+    public List<DeduChartBean> findDeduChartList(Map<String, String> argsMap) {
+        return incomeTaxSetApplicationService.findDeduChartList(argsMap);
+    }
+
+    @Override
+    public void batchTaxChartProcess(List<IncomeTaxSetBean> taxList) {
+        incomeTaxSetApplicationService.batchTaxChartProcess(taxList);
+    }
+
+    @Override
+    public void batchDeductionChartProcess(List<DeduChartBean> deduChartList) {
+        incomeTaxSetApplicationService.batchDeductionChartProcess(deduChartList);
+    }
+
+    @Override
+    public void setTaxDeduCopy(int year) {
+        incomeTaxSetApplicationService.setTaxDeduCopy(year);
+    }
+    
+    //급상여지급일자관리 
+    @Override
+    public List<PaydayBean> findPaydayList(Map<String, String> argsMap) {
+        return paydayApplicationService.findPaydayList(argsMap);
+    }
+
+    @Override
+    public List<PaydayBean> findPaydaySubList(Map<String, String> argsMap) {
+        return paydayApplicationService.findPaydaySubList(argsMap);
+    }
+
+    @Override
+    public void batchPaydayProcess(List<PaydayBean> paydayList){
+        paydayApplicationService.batchPaydayProcess(paydayList);
     }
     
     //지급공제항목설정
@@ -97,52 +145,8 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
     public void batchPayDeduSectProcess(List<PayDeduSectBean> payDeduSectList) {
         payDeduApplicationService.batchPayDeduSectProcess(payDeduSectList);
     }
- /*   
-     소득세액공제설정 
-    @Override
-    public List<IncomeTaxSetBean> findTaxChartList(Map<String, String> argsMap) {
-        return incomeTaxSetApplicationService.findTaxChartList(argsMap);
-    }
-
-    @Override
-    public List<DeduChartBean> findDeduChartList(Map<String, String> argsMap) {
-        return incomeTaxSetApplicationService.findDeduChartList(argsMap);
-    }
-
-    @Override
-    public void batchTaxChartProcess(List<IncomeTaxSetBean> taxList) {
-        incomeTaxSetApplicationService.batchTaxChartProcess(taxList);
-    }
-
-    @Override
-    public void batchDeductionChartProcess(List<DeduChartBean> deduChartList) {
-        incomeTaxSetApplicationService.batchDeductionChartProcess(deduChartList);
-    }
-
-    @Override
-    public void setTaxDeduCopy(int year) {
-        incomeTaxSetApplicationService.setTaxDeduCopy(year);
-    }
     
-     급상여지급일자관리 
-    @Override
-    public List<PaydayBean> findPaydayList(Map<String, String> argsMap) {
-        return paydayApplicationService.findPaydayList(argsMap);
-    }
-
-    @Override
-    public List<PaydayBean> findPaydaySubList(Map<String, String> argsMap) {
-        return paydayApplicationService.findPaydaySubList(argsMap);
-    }
-
-    @Override
-    public void batchPaydayProcess(List<PaydayBean> paydayList){
-        paydayApplicationService.batchPaydayProcess(paydayList);
-    }
-
-    
-    
-     사회보험설정 
+     //사회보험설정 
     @Override
     public List<SocialInsureBean> findsocialInsureList(Map<String, String> argsMap) {
         return socialInsuranceApplicationService.findsocialInsureList(argsMap);
@@ -153,7 +157,7 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
         socialInsuranceApplicationService.batchSocialInsureProcess(argsMap);
     }
     
-    급여근태기준일설정
+    //급여근태기준일설정
     @Override
     public List<SalStandardSetBean> findSalStandardList() {
         return salStandardSetApplicationService.findSalStandardList();
@@ -162,6 +166,6 @@ public class SalBaseServiceFacadeImpl implements SalBaseServiceFacade{
     @Override
     public void batchSalStanSetProcess(List<SalStandardSetBean> salStanList) {
         salStandardSetApplicationService.batchSalStanSetProcess(salStanList);
-    }*/
+    }
 
 }

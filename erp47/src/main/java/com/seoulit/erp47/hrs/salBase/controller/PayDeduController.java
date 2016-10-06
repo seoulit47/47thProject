@@ -21,7 +21,7 @@ import com.seoulit.erp47.hrs.salBase.to.PayDeduSectBean;
  * @Package  com.seoul.his.hrs.salBase.controller
  * @Class    PayDeduController.java
  * @Create   2016. 10. 02.
- * @Author   
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated 

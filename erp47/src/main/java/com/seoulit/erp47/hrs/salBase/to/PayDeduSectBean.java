@@ -11,7 +11,7 @@ import lombok.ToString;
  * @Package  com.seoul.his.hrs.salBase.to
  * @Class    PayDeduSectBean.java
  * @Create   2016. 10. 02.
- * @Author   YUN
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated 
