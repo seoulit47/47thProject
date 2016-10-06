@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AssiTypePopupForm" classname="AE_AssiTypePopupForm" left="0" top="0" width="389" height="596" titletext="보조유형 조회">
+    <Layouts>
+      <Layout>
+        <Edit id="assiSubNmEd" taborder="0" left="27.25%" top="43" right="27.25%" height="32" class="AreaEdt"/>
+        <Static id="subCodeStc07" taborder="1" text="보조유형명" onclick="subCodeStc_onclick" left="2.83%" top="43" right="75.58%" height="32" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Grid id="assiTypeGrid" taborder="2" binddataset="dsAssiType" useinputpanel="false" autofittype="col" oncelldblclick="assiTypeGrid_oncelldblclick" left="2.83%" top="81" right="1.54%" height="503">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="보조유형코드"/>
+                <Cell col="1" text="보조유형명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assiTypeCd"/>
+                <Cell col="1" text="bind:assiTypeNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchBtn" taborder="3" onclick="DelBtn_onclick" left="74.81%" top="43" right="2.06%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Div id="Div06" taborder="4" left="-4.63%" top="-4" right="1.03%" height="44" style="background:transparent URL('img::titleBar7.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="보조유형 조회" left="13.4%" top="15" right="41.94%" height="29" style="font:bold 20 나눔스퀘어 Bold;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsAssiType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="assiTypeCd" type="STRING" size="256"/>
+          <Column id="assiTypeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAssiTypeList</Col>
+            <Col id="URL">erp47::acc/elementary/findAssiTypeList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAssiType=dsAssiType</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+
+//조회
+this.DelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = new Date().getFullYear();
+	alert(accYear);
+	var argument = 'accYear='+accYear;
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findAssiTypeList");
+}
+
+this.assiTypeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var arrRtn = new Array;
+	var i=0;
+	
+	arrRtn[i++] = this.dsAssiType.getColumn(e.row,"assiTypeCd");
+	arrRtn[i++] = this.dsAssiType.getColumn(e.row,"assiTypeNm");
+	
+	this.opener.assicode(arrRtn)
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

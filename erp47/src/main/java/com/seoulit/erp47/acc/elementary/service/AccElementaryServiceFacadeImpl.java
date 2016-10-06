@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.elementary.applicationService.AccElementaryApplicationService;
+import com.seoulit.erp47.acc.elementary.exception.AccntNoCopyException;
 import com.seoulit.erp47.acc.elementary.exception.AcntCopyException;
 import com.seoulit.erp47.acc.elementary.exception.AssiCopyException;
 import com.seoulit.erp47.acc.elementary.to.AccAcntBean;
 import com.seoulit.erp47.acc.elementary.to.AccPridBean;
+import com.seoulit.erp47.acc.elementary.to.AccntNoBean;
 import com.seoulit.erp47.acc.elementary.to.AssiSubBean;
 import com.seoulit.erp47.acc.elementary.to.AssiTypeBean;
 
@@ -69,6 +71,21 @@ public class AccElementaryServiceFacadeImpl implements AccElementaryServiceFacad
 	@Override
 	public List<AssiTypeBean> lastYearAssiCodeCopy(Map<String, String> argsMap) throws AssiCopyException {
 		return accElementaryApplicationService.lastYearAssiCodeCopy(argsMap);
+	}
+
+	@Override
+	public List<AccntNoBean> findAccntNoList(Map<String, String> argsMap) {
+		return accElementaryApplicationService.findAccntNoList(argsMap);
+	}
+
+	@Override
+	public void batchAccntNoListProcess(List<AccntNoBean> accntNoList) {
+		accElementaryApplicationService.batchAccntNoListProcess(accntNoList);
+	}
+
+	@Override
+	public List<AccntNoBean> lastYearAccntNoCopy(Map<String, String> argsMap) throws AccntNoCopyException {
+		return accElementaryApplicationService.lastYearAccntNoCopy(argsMap);
 	}
 
 }

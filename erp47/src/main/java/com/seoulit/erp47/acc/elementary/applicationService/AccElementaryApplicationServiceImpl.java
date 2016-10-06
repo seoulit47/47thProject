@@ -9,12 +9,15 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.elementary.dao.AccAcntDAO;
 import com.seoulit.erp47.acc.elementary.dao.AccPridDAO;
+import com.seoulit.erp47.acc.elementary.dao.AccntNoDAO;
 import com.seoulit.erp47.acc.elementary.dao.AssiSubDAO;
 import com.seoulit.erp47.acc.elementary.dao.AssiTypeDAO;
+import com.seoulit.erp47.acc.elementary.exception.AccntNoCopyException;
 import com.seoulit.erp47.acc.elementary.exception.AcntCopyException;
 import com.seoulit.erp47.acc.elementary.exception.AssiCopyException;
 import com.seoulit.erp47.acc.elementary.to.AccAcntBean;
 import com.seoulit.erp47.acc.elementary.to.AccPridBean;
+import com.seoulit.erp47.acc.elementary.to.AccntNoBean;
 import com.seoulit.erp47.acc.elementary.to.AssiSubBean;
 import com.seoulit.erp47.acc.elementary.to.AssiTypeBean;
 
@@ -29,6 +32,8 @@ public class AccElementaryApplicationServiceImpl implements AccElementaryApplica
     AccPridDAO accPridDAO;
     @Autowired
     AssiTypeDAO assiTypeDAO;
+    @Autowired
+    AccntNoDAO accntNoDAO;
 
     @Override
     public List<AccAcntBean> findAccAcntList(Map<String, String> argsMap) {
@@ -138,6 +143,40 @@ public class AccElementaryApplicationServiceImpl implements AccElementaryApplica
             return assiCodeList;
         }else {
             throw new AssiCopyException(assiTypeBean.getErrorMsg());
+        }
+    }
+    
+    @Override
+    public List<AccntNoBean> findAccntNoList(Map<String, String> argsMap) {
+        return accntNoDAO.selectAccntNoList(argsMap);
+    }
+
+    @Override
+    public void batchAccntNoListProcess(List<AccntNoBean> accntNoList) {
+        for (AccntNoBean accntNoBean : accntNoList) {
+            if (accntNoBean.getStatus().equals("inserted")) {
+                accntNoDAO.insertAccntNo(accntNoBean);
+            }else if (accntNoBean.getStatus().equals("deleted")) {
+                accntNoDAO.deleteAccntNo(accntNoBean);
+            }else if (accntNoBean.getStatus().equals("updated")) {
+                accntNoDAO.updateAccntNo(accntNoBean);
+            }
+        }
+    }
+
+    @Override
+    public List<AccntNoBean> lastYearAccntNoCopy(Map<String, String> argsMap) throws AccntNoCopyException {
+        AccntNoBean accntNoBean = new AccntNoBean();
+        accntNoBean.setAccYear(argsMap.get("year"));
+        accntNoDAO.callCopyAccntNo(accntNoBean);
+        
+        if(accntNoBean.getErrorCode().equals("1")){
+            HashMap<String, String> queryMap = new HashMap<String, String>();
+            queryMap.put("accYear", argsMap.get("year"));
+            List<AccntNoBean> accntNoList = accntNoDAO.selectAccntNoList(queryMap);
+            return accntNoList;
+        }else{
+            throw new AccntNoCopyException(accntNoBean.getErrorMsg());
         }
     }
 
