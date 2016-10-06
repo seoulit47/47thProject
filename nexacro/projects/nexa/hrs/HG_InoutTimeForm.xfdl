@@ -53,19 +53,19 @@
               </Grid>
               <Edit id="deptCdEd" taborder="6" left="30.73%" top="4" right="62.59%" height="25" enable="false"/>
               <Static id="hdateStc01" taborder="11" text="사번" left="53.55%" top="5" right="42.22%" height="25" style="background:skyblue;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
-              <Edit id="empNoEd" taborder="12" left="58.19%" top="5" right="35.04%" height="25" enable="false"/>
+              <Edit id="empNoEd" taborder="12" left="58.15%" top="5" right="35.08%" height="25" enable="false"/>
               <Static id="hdateStc02" taborder="13" text="사원명" left="68.05%" top="6" right="26.81%" height="25" style="background:skyblue;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
               <Edit id="empNmEd" taborder="14" left="73.68%" top="6" right="19.56%" height="25" enable="false"/>
               <Button id="searchInoutTimeBtn" taborder="4" cssclass="SearchBtn" left="81.17%" top="4" right="13.12%" height="29" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_searchInoutTimeBtn_onclick"/>
-              <Button id="deptSearchBtn" taborder="2" onclick="mainDiv_deptSearchBtn_onclick" cssclass="AddBtn" left="37.33%" top="4" right="59.98%" height="25" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="deptSearchBtn" taborder="2" onclick="mainDiv_deptSearchBtn_onclick" cssclass="AddBtn" left="37.5%" top="4" right="59.84%" height="25" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
               <Static id="hdateStc03" taborder="15" text="부서명" left="40.59%" top="4" right="54.12%" height="25" style="background:skyblue;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
               <Edit id="deptNmEd" taborder="16" left="46.45%" top="4" right="46.86%" height="25" enable="false"/>
-              <Button id="empSerchBtn" taborder="3" cssclass="AddBtn" left="64.87%" top="5" right="32.52%" height="25" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_empSerchBtn_onclick"/>
+              <Button id="empSerchBtn" taborder="3" cssclass="AddBtn" left="65%" top="5" right="32.34%" height="25" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_empSerchBtn_onclick"/>
               <Button id="addBtn" taborder="5" cssclass="DelBtn" left="87.1%" top="4" right="7.26%" height="29" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="false" onclick="mainDiv_addBtn_onclick"/>
             </Layout>
           </Layouts>
         </Div>
-        <Button id="saveBtn" taborder="4" cssclass="DelBtn" left="92.52%" top="76" right="1.99%" height="29" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="false" onclick="saveBtn_onclick"/>
+        <Button id="saveBtn" taborder="5" onclick="saveBtn_onclick" cssclass="DelBtn" enable="false" left="92.6%" top="75" right="1.75%" height="30" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -129,8 +129,8 @@
             <Col id="serviceID">batchInoutTimeProcess</Col>
             <Col id="URL">erp47::hrs/inoutTime/batchInoutWorkTimeProcess.do</Col>
             <Col id="inData">dsInoutWorkTime=dsInoutWorkTime:u</Col>
-            <Col id="outData">dsInoutWorkTime=dsInoutWorkTime</Col>
-            <Col id="argument">[Undefined]</Col>
+            <Col id="outData"></Col>
+            <Col id="argument"></Col>
             <Col id="callbackFunc">CallbackFunc</Col>
           </Row>
         </Rows>
@@ -153,9 +153,6 @@
 *                                         import                                                   *
 ***************************************************************************************************/
 include "scripts::commonScripts.xjs";
-include "scripts::hrsScripts.xjs";
-include "scripts::commonTransaction.xjs";
-include "scripts::commonPopup.xjs";
 
 
 /***************************************************************************************************
@@ -172,7 +169,6 @@ var startDate;		//출퇴근등록 시작날짜
 var endDate;		//출퇴근등록 마지막날짜
 var pms;			//권한
 var code;           //기초코드
-var hrs;
 
 
 /***************************************************************************************************
@@ -215,22 +211,23 @@ this.HG_InoutTimeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	
 	belongDay = this.fn_Today().substr(0,6);
 	
-	deptCd = application.gdsEmp.getColumn(0,"deptCd");   //테스트용 emp데이터셋 사용 나중에 고쳐야함
+	deptCd = application.gdsEmp.getColumn(0,"deptCd");   
 	deptNm = application.gdsEmp.getColumn(0,"deptNm");
 	empNo = application.gdsEmp.getColumn(0,"empNo");
 	empNm = application.gdsEmp.getColumn(0,"empNm");
 	pms = application.gdsEmp.getColumn(0,"pms");
 
-	if(pms == "admin" && deptNm == "인사팀")
-	{
+	//if(pms == "admin" && deptNm == "인사팀")
+	//{
 		this.mainDiv.addBtn.set_enable(true);
 		this.saveBtn.set_enable(true);
-	}
+	//}
 	
 	this.mainDiv.deptCdEd.set_value(deptCd);
 	this.mainDiv.deptNmEd.set_value(deptNm);
 	this.mainDiv.empNoEd.set_value(empNo);
 	this.mainDiv.empNmEd.set_value(empNm);
+	
 }
 
 
@@ -239,6 +236,7 @@ this.HG_InoutTimeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 ***************************************************************************************************/
 this.mainDiv_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
+
 	empNo = this.mainDiv.empNoEd.value;
 	empNm = this.mainDiv.empNmEd.value;
 	deptCd = this.mainDiv.deptCdEd.value;
@@ -257,7 +255,7 @@ this.mainDiv_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.dsInoutWorkTime.setColumn(this.dsInoutWorkTime.rowposition,"deptNm",deptNm);
 	this.dsInoutWorkTime.setColumn(this.dsInoutWorkTime.rowposition,"belongDay",belongDay);
 	this.dsInoutWorkTime.setColumn(this.dsInoutWorkTime.rowposition,"inOutTime",time);
-	
+
 	if(inoutTimeNo == undefined)
 	{
 		inoutTimeNo = parseInt(this.fn_Today()+"00")+count;
@@ -275,6 +273,7 @@ this.mainDiv_addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		inoutTimeNo = parseInt(this.fn_Today()+"00")+count;
 		this.dsInoutWorkTime.setColumn(this.dsInoutWorkTime.rowposition,"inoutTimeNo",inoutTimeNo);
 	}
+
 }
 
 
@@ -337,6 +336,17 @@ this.setEmpInfo=function(empNo,empNm){
 this.mainDiv_deptSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnCodePopup("GP500");
+}
+
+
+
+/***************************************************************************************************
+*                                         부서 셋팅	                                       	   *
+***************************************************************************************************/
+this.setCode = function(code,arrRtn,codeSeq) 
+{
+	this.mainDiv.deptCdEd.set_value(arrRtn[0]);
+	this.mainDiv.deptNmEd.set_value(arrRtn[1]);
 }
 
 

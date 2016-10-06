@@ -5,8 +5,8 @@
 	<select id="callDayGuntae" statementType="CALLABLE" parameterType="map">
 
 		{ CALL PC_HG_DAYGUNTAE_CREATE(
-               #{date, mode=IN, jdbcType=VARCHAR, javaType=string},
-               #{guntaeEmpNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+               #{belongDay, mode=IN, jdbcType=VARCHAR, javaType=string},
+               #{empNo, mode=IN, jdbcType=VARCHAR, javaType=string},
 			   #{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string},
 			   #{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
 			)

@@ -69,14 +69,14 @@
               <Calendar id="endCal" taborder="70" left="20.69%" top="4" right="67.49%" height="30"/>
               <Static id="Static04" taborder="71" text="   ~" left="18.8%" top="6" right="78.49%" height="31" style="color:#46463dff;"/>
               <Button id="addOverTimeBtn" taborder="73" onclick="mainDiv_addOverTimeBtn_onclick" cssclass="DelBtn" left="79.89%" top="6" right="13.79%" height="28" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="true"/>
-              <Button id="delOverTimeBtn" taborder="74" onclick="mainDiv_delOverTimeBtn_onclick" cssclass="DelBtn" enable="false" left="86.78%" top="6" right="6.9%" height="28" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="delOverTimeBtn" taborder="74" onclick="mainDiv_delOverTimeBtn_onclick" cssclass="DelBtn" enable="true" left="86.78%" top="6" right="6.9%" height="28" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
               <Button id="searchOverTimeWorkBtn" taborder="75" onclick="mainDiv_searchOverTimeWorkBtn_onclick" cssclass="SearchBtn" left="73.07%" top="6" right="20.61%" height="28" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
               <Button id="empSearchBtn" taborder="76" onclick="mainDiv_empSearchBtn_onclick" cssclass="DelBtn" left="45.65%" top="4" right="51.64%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="apBtn" taborder="77" cssclass="DelBtn" left="63.05%" top="6" right="30.13%" height="28" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="false" onclick="mainDiv_apBtn_onclick"/>
+              <Button id="apBtn" taborder="77" cssclass="DelBtn" left="63.05%" top="6" right="30.13%" height="28" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="true" onclick="mainDiv_apBtn_onclick"/>
             </Layout>
           </Layouts>
         </Div>
-        <Button id="saveBtn" taborder="2" onclick="saveBtn_onclick" cssclass="DelBtn" enable="false" left="92.68%" top="61" right="1.67%" height="28" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="saveBtn" taborder="2" onclick="saveBtn_onclick" cssclass="DelBtn" enable="true" left="92.68%" top="61" right="1.67%" height="28" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -175,8 +175,8 @@ this.HG_OverTimeWorkForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 
 	this.mainDiv.startCal.set_value(this.fn_Today());
 	this.mainDiv.endCal.set_value(this.fn_Today());
-	this.mainDiv.empnoEdt.set_value(empNo);
-	this.mainDiv.empnmEdt.set_value(empNm);
+	this.mainDiv.empNoEd.set_value(empNo);
+	this.mainDiv.empNmEd.set_value(empNm);
 	
 	if(pms == "admin" && deptNm == "인사팀"){ㅠ
 	
