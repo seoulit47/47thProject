@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AccCardinalNumForm" classname="AE_AccCardinalNumForm" left="0" top="0" width="1250" height="768" titletext="회계기수 관리" onload="AE_accCardinalNumForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" left="0.16%" top="0" right="0.8%" height="60" style="background:transparent URL('img::titleBar5.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="회계기수 관리" onclick="Div04_Static00_onclick" left="4.12%" top="13" right="80.13%" height="35" style="font:bold 20 나눔스퀘어 Bold;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="accPridGrid" taborder="1" binddataset="dsAccPrid" useinputpanel="false" autofittype="col" left="2.4%" top="66" right="0.8%" height="637" titletext="회계기수 관리">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="74"/>
+                <Column size="74"/>
+                <Column size="66"/>
+                <Column size="132"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="회계기수"/>
+                <Cell col="1" text="시작일자"/>
+                <Cell col="2" text="종료일자"/>
+                <Cell col="3" text="마감여부"/>
+                <Cell col="4" text="마감일자"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:accPrid"/>
+                <Cell col="1" displaytype="text" edittype="text" text="bind:startDate" mask="####-##-##"/>
+                <Cell col="2" displaytype="text" edittype="text" text="bind:endDate" mask="####-##-##"/>
+                <Cell col="3" text="bind:dlineYn"/>
+                <Cell col="4" text="bind:dlineDate"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="removeAccCardinalNumBtn" taborder="2" onclick="removeAccCardinalNumBtn_onclick" left="82.8%" top="712" right="10%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="regAccCardinalNumBtn" taborder="3" onclick="regAccCardinalNumBtn_onclick" left="74.08%" top="712" right="18.72%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchAccCardinalNumBtn" taborder="4" onclick="batchAccCardinalNumBtn_onclick" left="91.52%" top="712" right="1.28%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsAccPrid">
+        <ColumnInfo>
+          <Column id="accPrid" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="endDate" type="STRING" size="256"/>
+          <Column id="dlineYn" type="STRING" size="256"/>
+          <Column id="dlineDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAccPridList</Col>
+            <Col id="URL">erp47::acc/elementary/findAccPridList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAccPrid=dsAccPrid</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchAccPridList</Col>
+            <Col id="URL">erp47::acc/elementary/batchAccPridList.do</Col>
+            <Col id="outData"/>
+            <Col id="inData">dsAccPrid=dsAccPrid:U</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+include "scripts::commonScripts.xjs";
+
+// 화면 로드시 회계기수 조회
+this.AE_accCardinalNumForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findAccPridList");
+}
+
+// 회계기수 추가
+this.regAccCardinalNumBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var addPrid = this.dsAccPrid.getColumn(this.dsAccPrid.rowcount-1,"accPrid");
+	newRow = this.dsAccPrid.addRow();
+	this.dsAccPrid.setColumn(newRow, "accPrid", parseInt(addPrid)+1);
+}
+
+//회계기수 삭제
+this.removeAccCardinalNumBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsAccPrid.deleteRow(this.accPridGrid.currentrow);
+}
+
+
+//회계기수 일괄처리
+this.batchAccCardinalNumBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var rowCount = this.dsAccPrid.rowcount;
+	
+	for(var row=0 ; row<rowCount ; row++){
+		var rowType = this.dsAccPrid.getRowType(row);
+		var startDate = this.dsAccPrid.getColumn(row,"startDate");
+		var endDate = this.dsAccPrid.getColumn(row,"endDate");
+		
+		if(rowType == 2){
+			var sDate = startDate.substring(0,4)+"-"+startDate.substring(4,6)+"-"+startDate.substring(6,8);
+			var eDate = endDate.substring(0,4)+"-"+endDate.substring(4,6)+"-"+endDate.substring(6,8);
+			
+			this.dsAccPrid.setColumn(row, "dlineYn", "N");
+			this.dsAccPrid.setColumn(row, "startDate", sDate);
+			this.dsAccPrid.setColumn(row, "endDate", eDate);
+		}else if(rowType == 4){
+			if(startDate.length == 8){
+				var sDate = startDate.substring(0,4)+"-"+startDate.substring(4,6)+"-"+startDate.substring(6,8);
+				this.dsAccPrid.setColumn(row, "startDate", sDate);
+			}else if(endDate.length == 8){
+				var eDate = endDate.substring(0,4)+"-"+endDate.substring(4,6)+"-"+endDate.substring(6,8);
+				this.dsAccPrid.setColumn(row, "endDate", eDate);
+			}
+		}
+	}
+
+	this.gfnService("batchAccPridList");
+}
+
+
+
+//Callback함수
+this.CallbackFunc=function(serviceID, errorCode, errorMsg)
+{
+	if(serviceID == "findAccPridList"){
+		if(errorCode < 0){
+			alert("회계기수목록 로드 오류");
+		}
+	}
+	if(serviceID == "batchAccPridList"){
+		if(errorCode == 1){
+			alert("회계기수 일괄처리 완료");
+			this.reload;
+		}else{
+			alert("회계기수 일괄처리 오류");
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

@@ -32,13 +32,13 @@ public class AccPridController {
     }
     
     // 회계기수 일괄처리
-    /*@RequestMapping("acc/elementary/batchAccPridList.do")
+    @RequestMapping("acc/elementary/batchAccPridList.do")
     public void batchAccPridListProcess(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         PlatformData inData = (PlatformData)request.getAttribute("inData");
         List<AccPridBean> accPridList = dataSetBeanMapper.datasetToBeans(inData, AccPridBean.class);
         accElementaryServiceFacade.batchAccPridListProcess(accPridList);
-    }*/
+    }
 
     @RequestMapping("acc/elementary/findAccPrid.do")
     public void findAccPrid(HttpServletRequest request, HttpServletResponse response)

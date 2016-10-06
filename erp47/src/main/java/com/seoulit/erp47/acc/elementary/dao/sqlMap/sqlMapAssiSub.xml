@@ -41,7 +41,7 @@
         </if>
     </select>
 
-   <!--  <insert id="insertAssiSub" parameterType="assiSubBean">
+   <insert id="insertAssiSub" parameterType="assiSubBean">
         INSERT INTO 
             AE_ASSI_SUB VALUES(
                 #{accYear   },
@@ -73,6 +73,6 @@
             ACC_YEAR   = #{accYear   }
             AND ASSI_TYPE_CD = #{assiTypeCd}
             AND ASSI_SUB_CD  = #{assiSubCd }
-    </delete> -->
+    </delete> 
 
 </mapper>
