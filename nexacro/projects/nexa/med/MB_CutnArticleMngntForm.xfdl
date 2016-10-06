@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MB_CutnArticleMngntForm" classname="MB_CutnArticleMngntForm" left="0" top="0" width="1250" height="768" titletext="주의사항항목관리">
+  <Form id="MB_CutnArticleMngntForm" classname="MB_CutnArticleMngntForm" left="0" top="0" width="1250" height="768" titletext="주의사항항목관리" onload="MB_CautionArticleMngntForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div04" taborder="0" left="0%" top="4" right="0.16%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>
@@ -68,10 +68,10 @@
               <Static id="Static03" taborder="64" text="입력구분" left="7.56%" top="290" right="65.11%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
               <Static id="Static04" taborder="65" text="분류" left="7.56%" top="354" right="65.11%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
               <Static id="Static05" taborder="66" text="사용여부" left="7.56%" top="418" right="65.11%" height="30" style="background:blanchedalmond;border:0 solid black ;color:darkred;align:middle;font:bold 11 arial;"/>
-              <Button id="searchBtn" taborder="67" onclick="cutnArticleDiv_searchBtn_onclick" left="72%" top="24" right="8%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="addBtn" taborder="68" onclick="cutnArticleDiv_addBtn_onclick" left="48.89%" top="472" right="31.11%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="saveBtn" taborder="69" onclick="cutnArticleDiv_saveBtn_onclick" left="72%" top="472" right="8%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="delBtn" taborder="70" onclick="cutnArticleDiv_delBtn_onclick" left="7.56%" top="24" right="72.44%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchBtn" taborder="67" onclick="cutnArticleDiv_searchBtn_onclick" left="8.22%" top="504" right="71.78%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="addBtn" taborder="68" onclick="cutnArticleDiv_addBtn_onclick" left="50.67%" top="504" right="29.33%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="saveBtn" taborder="69" onclick="cutnArticleDiv_saveBtn_onclick" left="72%" top="504" right="8%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="delBtn" taborder="70" onclick="cutnArticleDiv_delBtn_onclick" left="28.89%" top="504" right="51.11%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
               <Radio id="inputDvRadio" taborder="71" innerdataset="dsInptYn" codecolumn="code" datacolumn="name" direction="vertical" left="40.44%" top="287" right="8.22%" height="38" style="font:13 Dotum;"/>
             </Layout>
           </Layouts>
@@ -245,6 +245,7 @@ this.cutnArticleDiv_saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEvent
 {
 	this.gfnService("batchCutnArticleProcess", false);
 }
+
 ]]></Script>
   </Form>
 </FDL>

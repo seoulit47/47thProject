@@ -72,6 +72,10 @@ public class AccElementaryApplicationServiceImpl implements AccElementaryApplica
     }
 
 
+    @Override
+    public AccPridBean findAccPrid(Map<String, String> argsMap) {
+        return accPridDAO.selectAccPrid(argsMap);
+    }
 }
 
 

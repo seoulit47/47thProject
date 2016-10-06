@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AC_ClosedDataForm" classname="AC_ClosedDataForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="AC_ClosedDataForm" classname="AC_ClosedDataForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AC_ClosedDataForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div05" taborder="0" left="0%" top="0" right="0.96%" height="60" style="background:transparent URL('img::titleBar6.jpg');"/>
@@ -170,6 +170,59 @@ this.closJourBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var retVal = this.gfnPopup("closingJourHelp","acc::AC_ClosJourHelpForm.xfdl","","");
 	//alert(this.MSG_ACC_CLOS_JOUR);
 }
+
+
+//결산자료입력시
+this.dsClosData_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo){
+	var cellInputDiv = obj.getColumn(e.row, "cellInputDiv");
+	
+	if(e.columnid == "jourAmt" && cellInputDiv!=null){
+		this.closDataGrid.setCellPos(1);
+		if(!isNaN(e.newvalue)){
+			
+			this.dsClosData.setColumn(e.row, "amt", e.newvalue);
+			var startStockQ = this.dsClosData.getColumn(e.row-2, "amt");
+			var endStockQ = this.dsClosData.getColumn(e.row-1, "amt");
+			var amt = parseInt(isNaN(startStockQ) == true? 0: startStockQ)
+						+parseInt(isNaN(endStockQ) == true? 0: endStockQ)-e.newvalue;
+			this.dsClosData.setColumn(e.row-3, "jourAmt", amt);
+			this.dsClosData.setColumn(e.row-3, "sumAmt", amt);
+			this.autoCal('2200');
+						
+		}
+	}
+}
+
+//그리드 내 자동계산
+this.autoCal=function(sumArtiCd){
+	var sumAmt = this.dsClosData.getSum("sumArtiCd =='"+sumArtiCd+"'? (deductYn =='Y' ? sumAmt*-1 : sumAmt) : 0");
+	var row = this.dsClosData.findRow("artiCd",sumArtiCd);
+	this.dsClosData.setColumn(row,"sumAmt",sumAmt);
+	var sumArtiCd = this.dsClosData.getColumn(row,"sumArtiCd",sumArtiCd);
+	if(sumArtiCd!=null){
+		this.autoCal(sumArtiCd);
+	}
+}
+
+///////////////////////////////////////////////////////////
+
+/*
+//초기 분개대상 금액 셋팅
+this.setJourAmt=function()
+{
+	var row = this.dlClosData.findRow("artiCd", '2210');
+	var sumAmt = this.dlClosData.getColumn(row, "sumAmt");
+	this.dlClosData.setColumn(row, "jourAmt", sumAmt);
+	
+	var row = this.dlClosData.findRow("artiCd", '2220');
+	var sumAmt = this.dlClosData.getColumn(row, "sumAmt");
+	this.dlClosData.setColumn(row, "jourAmt", sumAmt);
+	
+	var row = this.dlClosData.findRow("artiCd", '2230');
+	var sumAmt = this.dlClosData.getColumn(row, "sumAmt");
+	this.dlClosData.setColumn(row, "jourAmt", sumAmt);
+}*/
+
 ]]></Script>
   </Form>
 </FDL>

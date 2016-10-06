@@ -33,5 +33,6 @@
 	<select resultType="AccPridBean" id="callCarrfor" parameterType="AccPridBean" statementType="CALLABLE"> 
 		CALL PC_AC_CARRFOR ( #{accPrid, mode=IN, jdbcType=VARCHAR}, #{userId, mode=IN, jdbcType=VARCHAR}, #{userIp, mode=IN, jdbcType=VARCHAR}, #{errorCode, mode=OUT, jdbcType=VARCHAR}, #{errorMsg, mode=OUT, jdbcType=VARCHAR} ) 
 	</select>
+
     
 </mapper>

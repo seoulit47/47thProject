@@ -19,4 +19,6 @@ public interface AccElementaryApplicationService {
     void batchAccAcntProcess(List<AccAcntBean> accAcntList);
     
     List<AccAcntBean> lastYearAcntCopy(Map<String, String> argsMap) throws AcntCopyException;
+    
+    AccPridBean findAccPrid(Map<String, String> argsMap);
 }

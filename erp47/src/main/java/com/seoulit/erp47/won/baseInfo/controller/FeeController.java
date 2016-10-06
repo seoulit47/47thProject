@@ -36,7 +36,7 @@ public class FeeController {
 			
 			List<FeeBean>findFeeList=baseServiceFacade.findFeeListEMR(argsMap);
 			
-			
+			dataSetBeanMapper.beansToDataset(outData, findFeeList, FeeBean.class);
 	
 		}
 	
