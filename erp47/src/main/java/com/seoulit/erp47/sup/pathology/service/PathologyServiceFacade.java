@@ -27,5 +27,7 @@ public interface PathologyServiceFacade {
 	List<ClinspeBean> findClinspeNoList();
 	
 	void updateDeliveredClinspeStatus(Map<String, String> argsMap);
+	
+	void refuseDeliveredClinspe(Map<String,String> argsMap);
 
 }

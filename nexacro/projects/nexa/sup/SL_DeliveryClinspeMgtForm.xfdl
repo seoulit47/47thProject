@@ -293,8 +293,15 @@
             <Col id="serviceID">updateDeliveryClinspeStatus</Col>
             <Col id="URL">erp47::sup/laboratoryMedicine/updateDeliveryClinspeStatus.do</Col>
             <Col id="inData">gdsEmp=gdsEmp</Col>
-            <Col id="callbackFunc"/>
+            <Col id="callbackFunc">callbackFunc</Col>
             <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDeliveryClinspeList</Col>
+            <Col id="URL">erp47::sup/laboratoryMedicine/findDeliveryClinspeList.do</Col>
+            <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
+            <Col id="argument">startDate=19000101 endDate=29000101</Col>
+            <Col id="callbackFunc">callbackFunc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -457,6 +464,7 @@ var flag;
 this.SL_DeliveryClinspeMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	this.gfnService("findNoDeliveryClinspeList",false);
+	this.gfnService("findDeliveryClinspeList",false);
 	flag=true;
 	this.clinspeReceiptGrid_oncellclick();
 }
@@ -495,6 +503,7 @@ this.Div01_deliveryBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		
 		this.gfnService("updateDeliveryClinspeStatus",false);
 		this.SL_DeliveryClinspeMgtForm_onload();
+		
 	}
 }
 ]]></Script>

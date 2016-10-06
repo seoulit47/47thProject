@@ -16,9 +16,9 @@ public class DlineCarrforApplicationServiceImpl implements DlineCarrforApplicati
         accPridDAO.updateAccPridDline(accPrid);
     }
 
-   /* @Override
+    @Override
     public void executeCarrfor(AccPridBean accPrid) {
         accPridDAO.callCarrfor(accPrid);
-    }*/
+    }
 
 }

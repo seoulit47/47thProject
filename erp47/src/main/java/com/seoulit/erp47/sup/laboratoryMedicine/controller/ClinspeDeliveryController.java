@@ -57,7 +57,7 @@ public class ClinspeDeliveryController {
 		// dataSetBeanMapper.beansToDataset(outData, clinspeDeliveryBeanList,
 		// ClinspeDeliveryBean.class);
 
-		findDeliveryClinspeList(request, response);
+		//findDeliveryClinspeList(request, response);
 	}
 
 	

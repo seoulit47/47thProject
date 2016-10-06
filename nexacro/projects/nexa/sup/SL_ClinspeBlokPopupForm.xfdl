@@ -84,8 +84,12 @@ include "scripts::commonTransaction.xjs";
 this.clinspeGrid_OnCelldblClick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
 	var cliNo = this.dsClinspe.getColumn(e.row, "clinspeNo");
+	var patNumber=this.dsClinspe.getColumn(e.row,"patNo");
+	var patName=this.dsClinspe.getColumn(e.row,"patNm");
+	
 	//alert(cliNo);
-	this.opener.setClinspeNoArray(cliNo);
+	this.opener.setData(cliNo,patNumber,patName);
+	
     //this.opener.clinspeNoEd.value(cliNo);
 	this.close();
 }

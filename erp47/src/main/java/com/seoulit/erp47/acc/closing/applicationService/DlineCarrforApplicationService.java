@@ -6,6 +6,6 @@ public interface DlineCarrforApplicationService {
 
     void modifyDlineYn(AccPridBean accPrid);
 
-    //void executeCarrfor(AccPridBean accPrid);
+    void executeCarrfor(AccPridBean accPrid);
 
 }

@@ -90,5 +90,10 @@ public class PathologyApplicationServiceImpl implements PathologyApplicationServ
 	public void updateDeliveredClinspeStatus(Map<String, String> argsMap) {
 		deliveredClinspeDAO.updateDeliveredClinspeStatus(argsMap);
 	}
+
+	@Override
+	public void refuseDeliveredClinspe(Map<String, String> argsMap) {
+		deliveredClinspeDAO.insertRefuseDeliveredClinspe(argsMap);
+	}
   
 }
