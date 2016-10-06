@@ -33,4 +33,5 @@ public interface PathologyApplicationService {
 	public List<ClinspeBean> findClinspeNoList();
 	
 	public void updateDeliveredClinspeStatus(Map<String, String> argsMap);
+	public void refuseDeliveredClinspe(Map<String, String> argsMap);
 }

@@ -9,4 +9,24 @@
 		WHERE CLINSPE_NO=#{clinspeNo}
 	</update>
 
+	<select id="insertRefuseDeliveredClinspe" parameterType="Map">
+	
+		BEGIN
+			INSERT INTO SL_CLINSPE_TAKEOVER_CANCEL
+			VALUES
+			(
+				#{clinspeNo}
+				,#{clinspeReceiptDate}
+				,#{takeoverCancelCau}
+				,#{takeoverCancelDate}
+				,#{takeoverCancelEmpNo}
+				,#{takeoverCancelEmpNm}		
+			);
+			
+			UPDATE SL_CLINSPE_RECEIPT 
+			SET  CLINSPE_STATUS='2'
+			WHERE CLINSPE_NO=#{clinspeNo};
+		END;
+		 
+	</select>
 </mapper>

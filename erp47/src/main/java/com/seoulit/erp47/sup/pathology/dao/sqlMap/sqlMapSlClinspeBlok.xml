@@ -2,32 +2,45 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.seoulit.erp47.sup.pathology.dao.ClinspeBlokDAO">
-	
-	<select resultType="SlClinspeBlokBean" id="findClinspeBlokList"> 
-		SELECT CLINSPE_NO, CLINSPE_BLOK_CODE, CLINSPE_BLOK_PROD_DAY, CLINSPE_BLOK_PROD_TIME, CLINSPE_BLOK_QNT, PAT_NO, PAT_NM 
-		FROM SL_CLINSPE_BLOK 
-		WHERE CLINSPE_NO = #{clinspeNo} 
-		ORDER BY CLINSPE_NO ,CLINSPE_BLOK_CODE ,CLINSPE_BLOK_PROD_DAY 
+
+	<select resultType="SlClinspeBlokBean" id="findClinspeBlokList">
+		SELECT CLINSPE_NO, CLINSPE_BLOK_CODE, CLINSPE_BLOK_PROD_DAY,
+		CLINSPE_BLOK_PROD_TIME, CLINSPE_BLOK_QNT, PAT_NO, PAT_NM
+		FROM SL_CLINSPE_BLOK
+		WHERE CLINSPE_NO = #{clinspeNo}
+		ORDER BY CLINSPE_NO ,CLINSPE_BLOK_CODE ,CLINSPE_BLOK_PROD_DAY
 	</select>
-	
-	<select resultType="ClinspeBean" id="selectClinspeNoList"> 
-		SELECT CLINSPE_NO 
-		FROM SL_CLINSPE 
+
+	<select resultType="ClinspeBean" id="selectClinspeNoList">
+		SELECT SCD.CLINSPE_NO,SC.PAT_NM,SC.PAT_NO
+		FROM SL_CLINSPE_DELIVERY SCD,SL_CLINSPE_RECEIPT SCR ,SL_CLINSPE SC
+		WHERE SCD.CLINSPE_NO NOT IN (SELECT CLINSPE_NO FROM
+		SL_CLINSPE_TAKEOVER_CANCEL)
+		AND SCD.CLINSPE_NO=SCR.CLINSPE_NO
+		AND SCD.CLINSPE_NO=SC.CLINSPE_NO
+		AND SCR.CLINSPE_STATUS='1'
 	</select>
-	
-	<insert id="insertClinspeBlok" parameterType="slClinspeBlokBean"> 
-		INSERT INTO SL_CLINSPE_BLOK ( CLINSPE_NO, CLINSPE_BLOK_CODE, CLINSPE_BLOK_PROD_DAY, CLINSPE_BLOK_PROD_TIME, CLINSPE_BLOK_QNT, PAT_NO, PAT_NM ) 
-		VALUES ( #{clinspeNo}, #{clinspeBlokCode}, #{clinspeBlokProdDay}, #{clinspeBlokProdTime}, #{clinspeBlokQnt}, #{patNo}, #{patNm} ) 
+
+	<insert id="insertClinspeBlok" parameterType="slClinspeBlokBean">
+		INSERT INTO SL_CLINSPE_BLOK ( CLINSPE_NO, CLINSPE_BLOK_CODE,
+		CLINSPE_BLOK_PROD_DAY, CLINSPE_BLOK_PROD_TIME, CLINSPE_BLOK_QNT,
+		PAT_NO, PAT_NM )
+		VALUES ( #{clinspeNo}, #{clinspeBlokCode}, #{clinspeBlokProdDay},
+		#{clinspeBlokProdTime}, #{clinspeBlokQnt}, #{patNo}, #{patNm} )
 	</insert>
-	
-	<update id="updateClinspeBlok" parameterType="slClinspeBlokBean"> 
-		UPDATE SL_CLINSPE_BLOK SET CLINSPE_NO=#{clinspeNo}, CLINSPE_BLOK_CODE=#{clinspeBlokCode}, CLINSPE_BLOK_PROD_DAY=#{clinspeBlokProdDay}, CLINSPE_BLOK_PROD_TIME=#{clinspeBlokProdTime}, CLINSPE_BLOK_QNT=#{clinspeBlokQnt}, PAT_NO=#{patNo}, PAT_NM=#{patNm} 
+
+	<update id="updateClinspeBlok" parameterType="slClinspeBlokBean">
+		UPDATE SL_CLINSPE_BLOK SET CLINSPE_NO=#{clinspeNo},
+		CLINSPE_BLOK_CODE=#{clinspeBlokCode},
+		CLINSPE_BLOK_PROD_DAY=#{clinspeBlokProdDay},
+		CLINSPE_BLOK_PROD_TIME=#{clinspeBlokProdTime},
+		CLINSPE_BLOK_QNT=#{clinspeBlokQnt}, PAT_NO=#{patNo}, PAT_NM=#{patNm}
 		WHERE CLINSPE_NO=#{clinspeNo}
 	</update>
-	
-	<delete id="deleteClinspeBlok" parameterType="slClinspeBlokBean"> 
-		DELETE FROM SL_CLINSPE_BLOK 
-		WHERE CLINSPE_NO=#{clinspeNo} AND CLINSPE_BLOK_CODE=#{clinspeBlokCode} 
+
+	<delete id="deleteClinspeBlok" parameterType="slClinspeBlokBean">
+		DELETE FROM SL_CLINSPE_BLOK
+		WHERE CLINSPE_NO=#{clinspeNo} AND CLINSPE_BLOK_CODE=#{clinspeBlokCode}
 	</delete>
 
 </mapper>

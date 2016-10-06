@@ -15,7 +15,7 @@ import lombok.ToString;
 public class SlClinspeInfoBean extends BaseBean{
 	
     private String clinspeNo     // 검체번호
-		   ,bloddGetDate         // 체혈일
+		   ,bloodGetDate         // 체혈일
 		   ,bloodGetEmp          // 체혈자
 		   ,exmntCd              // 검사코드
 		   ,trmtDept             // 진료과

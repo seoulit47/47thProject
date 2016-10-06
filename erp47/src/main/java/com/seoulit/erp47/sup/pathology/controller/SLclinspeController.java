@@ -19,89 +19,108 @@ import com.seoulit.erp47.sup.pathology.to.SlClinspeInfoBean;
 import com.seoulit.erp47.sup.pathology.to.SlClinspeSliBean;
 
 /**
- * @Package  com.seoulit.erp47.sup.pathology.controller
- * @Class    SLclinspeController.java
- * @Create   2016. 09. 19.
- * @Author   김진환
+ * @Package com.seoulit.erp47.sup.pathology.controller
+ * @Class SLclinspeController.java
+ * @Create 2016. 09. 19.
+ * @Author 김진환
  * @Description
  *
- * @LastUpdated 
+ * @LastUpdated
  */
 
 @Controller
 public class SLclinspeController {
-    @Autowired
-    PathologyServiceFacade pathologyServiceFacade;
-    @Autowired
-    DataSetBeanMapper datasetBeanMapper;
+	@Autowired
+	PathologyServiceFacade pathologyServiceFacade;
+	@Autowired
+	DataSetBeanMapper datasetBeanMapper;
 
-   
-    // 검체번호 조회
-    @RequestMapping("sup/pathology/findClinspeNoList.do")
-    public void findClinspeNoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        PlatformData outData = (PlatformData) request.getAttribute("outData");
-        List<ClinspeBean> clinspeBlokBeanList = pathologyServiceFacade.findClinspeNoList();
-        datasetBeanMapper.beansToDataset(outData, clinspeBlokBeanList, ClinspeBean.class);
-    }
-    
+	// 검체번호 조회
+	@RequestMapping("sup/pathology/findClinspeNoList.do")
+	public void findClinspeNoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		List<ClinspeBean> clinspeBlokBeanList = pathologyServiceFacade.findClinspeNoList();
+		datasetBeanMapper.beansToDataset(outData, clinspeBlokBeanList, ClinspeBean.class);
+	}
 
-    // 검체블록 조회
-    @RequestMapping("sup/pathology/findClinspeBlokList.do")
-    public void findClinspeBlokList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	PlatformData inData = (PlatformData) request.getAttribute("inData");
-        PlatformData outData = (PlatformData) request.getAttribute("outData");
+	// 검체블록 조회
+	@RequestMapping("sup/pathology/findClinspeBlokList.do")
+	public void findClinspeBlokList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
-        String clinspeNo = inData.getVariable("clinspeNo").getString();
+		String clinspeNo = inData.getVariable("clinspeNo").getString();
 
-        SlClinspeBlokBean clinspeNoBean = new SlClinspeBlokBean();
-        clinspeNoBean.setClinspeNo(clinspeNo);
+		SlClinspeBlokBean clinspeNoBean = new SlClinspeBlokBean();
+		clinspeNoBean.setClinspeNo(clinspeNo);
 
-        List<SlClinspeBlokBean> clinspeBlokBeanList = pathologyServiceFacade.findClinspeBlokList(clinspeNoBean);
-        datasetBeanMapper.beansToDataset(outData, clinspeBlokBeanList, SlClinspeBlokBean.class);
-    }
+		List<SlClinspeBlokBean> clinspeBlokBeanList = pathologyServiceFacade.findClinspeBlokList(clinspeNoBean);
+		datasetBeanMapper.beansToDataset(outData, clinspeBlokBeanList, SlClinspeBlokBean.class);
+	}
 
-    // 검체슬라이드 조회
-    @RequestMapping("sup/pathology/findClinspeSliList.do")
-    public void findClinspeSliList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        PlatformData inData = (PlatformData) request.getAttribute("inData");
-        PlatformData outData = (PlatformData) request.getAttribute("outData");
+	// 검체슬라이드 조회
+	@RequestMapping("sup/pathology/findClinspeSliList.do")
+	public void findClinspeSliList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
-        String cliNo = inData.getVariable("CLINSPE_NO").getString();
+		String cliNo = inData.getVariable("CLINSPE_NO").getString();
 
-        SlClinspeSliBean sliBean = new SlClinspeSliBean();
-        sliBean.setClinspeNo(cliNo);
+		SlClinspeSliBean sliBean = new SlClinspeSliBean();
+		sliBean.setClinspeNo(cliNo);
 
-        List<SlClinspeSliBean> clinspeSliBeanList = pathologyServiceFacade.findClinspeSliList(sliBean);
-        datasetBeanMapper.beansToDataset(outData, clinspeSliBeanList, SlClinspeSliBean.class);
-    }
-    
-    // 검체정보 조회
-    @RequestMapping("sup/pathology/findClinspeInfoList.do")
-    public void findClinspeInfoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        PlatformData inData = (PlatformData) request.getAttribute("inData");
-        PlatformData outData = (PlatformData) request.getAttribute("outData");
+		List<SlClinspeSliBean> clinspeSliBeanList = pathologyServiceFacade.findClinspeSliList(sliBean);
+		datasetBeanMapper.beansToDataset(outData, clinspeSliBeanList, SlClinspeSliBean.class);
+	}
 
-        String clinspeNo = inData.getVariable("clinspeNo").getString();
-        SlClinspeInfoBean clinspeInfoBean = new SlClinspeInfoBean();
-        clinspeInfoBean.setClinspeNo(clinspeNo);
+	// 검체정보 조회
+	@RequestMapping("sup/pathology/findClinspeInfoList.do")
+	public void findClinspeInfoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
-        List<SlClinspeInfoBean> clinspeInfoBeanList = pathologyServiceFacade.findClinspeInfoBeanList(clinspeInfoBean);
-        datasetBeanMapper.beansToDataset(outData, clinspeInfoBeanList, SlClinspeInfoBean.class);
-    }
-    
-    //검체인수확인
-    @RequestMapping("sup/pathology/updateDeliveredClinspeStatus.do")
-    public void updateDeliveredClinspeStatus(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	PlatformData inData = (PlatformData) request.getAttribute("inData");
-        PlatformData outData = (PlatformData) request.getAttribute("outData");
-        Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
-        
-        pathologyServiceFacade.updateDeliveredClinspeStatus(argsMap);
-    }
-    
-    //검체인수반려
- 	@RequestMapping("sup/pathology/refuseDeliveredClinspe.do")
- 	public void refuseDeliveredClinspe(HttpServletRequest request, HttpServletResponse response) throws Exception {
- 		System.out.println("!!!!");
- 	}
+		String clinspeNo = inData.getVariable("clinspeNo").getString();
+		SlClinspeInfoBean clinspeInfoBean = new SlClinspeInfoBean();
+		clinspeInfoBean.setClinspeNo(clinspeNo);
+
+		List<SlClinspeInfoBean> clinspeInfoBeanList = pathologyServiceFacade.findClinspeInfoBeanList(clinspeInfoBean);
+		datasetBeanMapper.beansToDataset(outData, clinspeInfoBeanList, SlClinspeInfoBean.class);
+	}
+
+	// 검체블록 일괄처리
+	@RequestMapping("sup/pathology/batchClinspeBlokProcess.do")
+	public void batchClinspeBlokProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+
+		List<SlClinspeBlokBean> batchClinspeBlokBeanList = datasetBeanMapper.datasetToBeans(inData,SlClinspeBlokBean.class);
+		pathologyServiceFacade.batchClinspeBlokProcess(batchClinspeBlokBeanList);
+	}
+
+	// 검체슬라이드 일괄처리
+	@RequestMapping("sup/pathology/batchClinspeSliProcess.do")
+	public void batchClinspeSliProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		List<SlClinspeSliBean> batchClinspeSliBeanList = datasetBeanMapper.datasetToBeans(inData,SlClinspeSliBean.class);
+		pathologyServiceFacade.batchClinspeSliProcess(batchClinspeSliBeanList);
+	}
+
+	// 검체인수확인
+	@RequestMapping("sup/pathology/updateDeliveredClinspeStatus.do")
+	public void updateDeliveredClinspeStatus(HttpServletRequest request, HttpServletResponse response)throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
+
+		pathologyServiceFacade.updateDeliveredClinspeStatus(argsMap);
+	}
+
+	// 검체인수반려
+	@RequestMapping("sup/pathology/refuseDeliveredClinspe.do")
+	public void refuseDeliveredClinspe(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
+
+		pathologyServiceFacade.refuseDeliveredClinspe(argsMap);
+	}
 }

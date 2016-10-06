@@ -151,8 +151,8 @@
         <Button id="searchDeliveredClinspeListBtn" taborder="11" cssclass="DelBtn" left="91.36%" top="72" right="1.44%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDeliveredClinspeListBtn_onclick"/>
         <Button id="takeoverBtn" taborder="12" text="인수확인" left="82.96%" top="422" right="0.96%" height="88" onclick="takeoverBtn_onclick"/>
         <Button id="refuseBtn" taborder="13" text="반려" left="64.56%" top="423" right="18.08%" height="87" onclick="refuseBtn_onclick"/>
-        <Edit id="refuseEdit" taborder="14" left="30.48%" top="424" right="36.16%" height="89"/>
-        <Calendar id="refuseCal" taborder="15" left="2.08%" top="424" right="81.44%" height="90"/>
+        <Edit id="takeoverCancelCauEdit" taborder="14" left="30.48%" top="424" right="36.16%" height="89"/>
+        <Calendar id="takeoverCancelDateCal" taborder="15" left="2.08%" top="424" right="81.44%" height="90"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -204,6 +204,8 @@
             <Col id="serviceID">refuseDeliveredClinspe</Col>
             <Col id="URL">erp47::sup/pathology/refuseDeliveredClinspe.do</Col>
             <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
+            <Col id="inData"></Col>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -359,13 +361,14 @@
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
 var clinspeNo;
+var clinspeReceiptDate;
 var flag;
 
 //화면로딩
 this.SL_ClinspeTakeoverForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	this.clinspeDeliveryStartDateCal.set_value(this.gfnDate('yyyymmdd'));
-	this.refuseCal.set_value(this.gfnDate('yyyymmdd'));
+	this.takeoverCancelDateCal.set_value(this.gfnDate('yyyymmdd'));
 	
 }
 
@@ -374,10 +377,15 @@ this.SL_ClinspeTakeoverForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 this.searchDeliveredClinspeListBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	flag=true;
-	var startDate = this.clinspeDeliveryStartDateCal.value;
-	var endDate = this.clinspeDeliveryEndDateCal.value;
+	var startDate=this.clinspeDeliveryStartDateCal.value;;
+	var endDate = "21000101";
 	var emeYn = this.emeYnCombo.value;
 	var clinspeStatus = this.clinspeStatusCombo.value;
+
+
+	if(this.clinspeDeliveryEndDateCal.value != null & ""){
+		endDate = this.clinspeDeliveryEndDateCal.value;
+	}
 	
 	if(endDate==null){
 		alert("종료일자를 지정해주세요");
@@ -394,14 +402,23 @@ this.searchDeliveredClinspeListBtn_onclick = function(obj:Button,  e:nexacro.Cli
 //반려버튼클릭
 this.refuseBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	if(typeof(this.refuseEdit.value)=='undefined'){
+	if(typeof(clinspeNo)=='undefined'){
+		alert("선택된 검체가 없습니다. 조회후 반려하세요");
+	}else if(typeof(this.takeoverCancelCauEdit.value)=='undefined'){
 		alert("반려사유를 입력하세요");
 	}else{
-		var refuseDate=this.refuseCal.value;
-		var refuseCau=this.refuseEdit.value;
+		var takeoverCancelDate=this.takeoverCancelDateCal.value;
+		var takeoverCancelCau=this.takeoverCancelCauEdit.value;
+		var takeoverCancelEmpNo = application.gdsEmp.getColumn(0,"empNo");
+		var takeoverCancelEmpNm = application.gdsEmp.getColumn(0,"empNm");
 		
+		var argument="clinspeNo="+clinspeNo+" clinspeReceiptDate="+clinspeReceiptDate+" takeoverCancelDate="+takeoverCancelDate+" takeoverCancelCau="+takeoverCancelCau+" takeoverCancelEmpNo="+takeoverCancelEmpNo+" takeoverCancelEmpNm="+takeoverCancelEmpNm;
+		
+		var row=this.dsService.findRow("serviceID","refuseDeliveredClinspe");
+		this.dsService.setColumn(row,"argument",argument);
 		this.gfnService("refuseDeliveredClinspe",false);
 		
+		this.searchDeliveredClinspeListBtn_onclick();
 	}
 }
 
@@ -410,9 +427,11 @@ this.deliveredClinspeGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEv
 {
 	if(flag){ //처음 조회됫을때 자동으로 검체번호 얻어옴
 		clinspeNo = this.dsClinspeDelivery.getColumn(0,"clinspeNo");
+		clinspeReceiptDate = this.dsClinspeDelivery.getColumn(0,"clinspeReceiptDate");
 		flag=false;
 	}else{
 		clinspeNo = this.dsClinspeDelivery.getColumn(e.row,"clinspeNo");
+		clinspeReceiptDate = this.dsClinspeDelivery.getColumn(e.row,"clinspeReceiptDate");
 	}
 	
 	
@@ -434,6 +453,7 @@ this.callBackFunc=function(strSvcID, nErrorCode, strErrorMag){
 		alert("인수확인완료");
 	}
 }
+
 ]]></Script>
   </Form>
 </FDL>

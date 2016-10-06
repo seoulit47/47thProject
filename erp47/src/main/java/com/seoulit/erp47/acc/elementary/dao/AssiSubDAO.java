@@ -10,5 +10,9 @@ public interface AssiSubDAO {
    
 	List<AssiSubBean> selectAssiSubList(Map<String, String> argsMap);
 
+	void insertAssiSub(AssiSubBean assiSubBean);
 
+    void deleteAssiSub(AssiSubBean assiSubBean);
+
+    void updateAssiSub(AssiSubBean assiSubBean);
 }

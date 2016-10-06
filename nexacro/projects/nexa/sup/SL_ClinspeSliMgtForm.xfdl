@@ -80,11 +80,13 @@
             <Col id="URL">erp47::sup/pathology/findClinspeSliList.do</Col>
             <Col id="outData">dsSlClinspeSli=dsSlClinspeSli</Col>
             <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
           <Row>
             <Col id="serviceID">batchClinspeSliProcess</Col>
             <Col id="URL">erp47::sup/pathology/batchClinspeSliProcess.do</Col>
             <Col id="inData">dsSlClinspeSli=dsSlClinspeSli:u</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -123,7 +125,7 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 * 검체번호 조회                                     
 ***************************************************************************************************/
 
-this.setClinspeNoArray = function(cliNo){
+this.setData = function(cliNo){
 	this.clinspeNoEd.set_value(cliNo);
 }
 
@@ -178,6 +180,16 @@ this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnService("batchClinspeSliProcess", "false");
+}
+
+//콜백
+this.callBackFunc=function(strSvcID, nErrorCode, strErrorMag)
+{
+	switch(strSvcID)
+	{
+		case "findClinspeSliList" : alert("조회완료"); break;
+		case "batchClinspeSliProcess" : alert("저장완료"); break;
+	}
 }
 ]]></Script>
   </Form>
