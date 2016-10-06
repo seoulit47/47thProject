@@ -57,6 +57,7 @@
 		<package name="com.seoulit.erp47.hrs.emp.to" />				<!-- 인사관리 -->
 		<package name="com.seoulit.erp47.hrs.guntae.to" />			<!-- 근태관리 -->
 		<package name="com.seoulit.erp47.hrs.salBase.to" />
+		<package name="com.seoulit.erp47.hrs.salMng.to" />
 		<package name="com.seoulit.erp47.hrs.ret.to" />
 		<package name="com.seoulit.erp47.hrs.yeta.to" />
 
@@ -78,6 +79,11 @@
 		<package name="com.seoulit.erp47.sup.pathology.to" />
 		<package name="com.seoulit.erp47.sup.drug.to" />
 		<package name="com.seoulit.erp47.sup.laboratoryMedicine.to" />	<!--검체관리 -->
+
+		<!-- 원무 -->
+
+
+
 
 		<!-- 진료처방 -->
 		<package name="com.seoulit.erp47.med.request.to" />

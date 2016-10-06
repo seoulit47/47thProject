@@ -355,14 +355,25 @@
 *                                                                   *
 * @Path		    지급/공제항목 등록      							*
 * @Description  지급/공제항목 등록과 세부 설정을 할 수 있다.	*
-* @Author		  					                        		*
+* @Author		박 영 희			                        		*
 * 								                                    *
 * Created on 2016. 10. 02                             		        *
 *								                                    *
 ********************************************************************/
 
+
+
+
+/***************************************************************************************************
+*                                         import                                                   *
+***************************************************************************************************/
 include "scripts::commonScripts.xjs";
 
+
+
+/***************************************************************************************************
+*                                     조회버튼 click event                                        *
+***************************************************************************************************/
 this.searchPaydayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
 	var salDiv = this.salCombo.text;
 	var payDeduDiv = this.deducCombo.text;	
@@ -377,6 +388,11 @@ this.searchPaydayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
 	this.setValue(0);
 }
 
+
+
+/***************************************************************************************************
+*                                       callback function                                          *
+***************************************************************************************************/
 this.findPayDeduListCB = function(svcID, errorCode, errorMsg){
 	if (errorCode < 1) {
 		trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
@@ -400,7 +416,12 @@ this.findPayDeduListCB = function(svcID, errorCode, errorMsg){
 	}
 }
 
-//버튼비활성화여부
+
+
+
+/***************************************************************************************************
+*                                     버튼 비활성화 function                                     *
+***************************************************************************************************/
 this.setBoolean=function(code){ 
 	this.taxCombo.set_enable(code); 					//과세구분	
 	this.taxTypeNmEd.set_enable(code); 					//과세유형
@@ -419,6 +440,11 @@ this.setBoolean=function(code){
 	this.deducBatchBtn.set_enable(code);	
 }
 
+
+
+/***************************************************************************************************
+*                                     payDeduGrid click event                                      *
+***************************************************************************************************/
 this.paymDeducGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
 	if(e.keycode!=113){	
 		if(this.dsPayDedu.getColumn(e.row, "paymDeducCd") == null){
@@ -431,7 +457,12 @@ this.paymDeducGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo
 	}
 }
 
-//과세구분에 따른 활성화여부
+
+
+
+/***************************************************************************************************
+*                                  과세구분에 따른 버튼활성화                                   *
+***************************************************************************************************/
 this.taxCombo_oncloseup = function(obj:Combo, e:nexacro.ComboCloseUpEventInfo){
 	if(this.taxCombo.text == "비과세"){
 		this.searchTaxTypeBtn.set_enable(true);

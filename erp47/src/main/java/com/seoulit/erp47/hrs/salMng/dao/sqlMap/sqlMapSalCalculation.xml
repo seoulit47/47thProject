@@ -20,7 +20,7 @@
 		<result property="belongYm" column="BELONG_YM"/>
 		<result property="paymentDate" column="PAYMENT_DATE"/>
 		<collection property="salCalculDetailList"
-			    select="com.seoul.his.hrs.salMng.dao.SalCalculationDAO.selectSalCalculDetailList"
+			    select="com.seoulit.erp47.hrs.salMng.dao.SalCalculationDAO.selectSalCalculDetailList"
 			    column="{empNo=EMP_NO,belongYm=BELONG_YM,paymentDate=PAYMENT_DATE}"
 			    javaType="list"/>
     </resultMap>
