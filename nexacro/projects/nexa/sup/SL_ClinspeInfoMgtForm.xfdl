@@ -20,7 +20,7 @@
             <Format id="default">
               <Columns>
                 <Column size="85"/>
-                <Column size="80"/>
+                <Column size="121"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -60,7 +60,7 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:clinspeNo"/>
-                <Cell col="1" text="bind:bloodGetDate"/>
+                <Cell col="1" displaytype="normal" text="bind:bloodGetDate"/>
                 <Cell col="2" text="bind:bloodGetEmp"/>
                 <Cell col="3" text="bind:exmntCd"/>
                 <Cell col="4" text="bind:trmtDept"/>
@@ -150,7 +150,7 @@ this.clinspeSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnPopup("SL_clinspeBlokPopupForm","sup","","");
 }
 
-this.setClinspeNoArray = function(cliNo){
+this.setData = function(cliNo){
 	this.clinspeNoEd.set_value(cliNo);
 }
 

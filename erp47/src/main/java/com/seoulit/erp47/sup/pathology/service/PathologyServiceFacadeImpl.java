@@ -68,6 +68,11 @@ public class PathologyServiceFacadeImpl implements PathologyServiceFacade{
 	public void updateDeliveredClinspeStatus(Map<String, String> argsMap) {
 		pathologyApplicationService.updateDeliveredClinspeStatus(argsMap);
 	}
+
+	@Override
+	public void refuseDeliveredClinspe(Map<String, String> argsMap) {
+		pathologyApplicationService.refuseDeliveredClinspe(argsMap);
+	}
 	
 	
 }

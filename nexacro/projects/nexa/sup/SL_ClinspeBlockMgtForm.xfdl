@@ -72,11 +72,13 @@
             <Col id="serviceID">findClinspeBlokList</Col>
             <Col id="URL">erp47::sup/pathology/findClinspeBlokList.do</Col>
             <Col id="outData">dsSlClinspeBlok=dsSlClinspeBlok</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
           <Row>
             <Col id="serviceID">batchClinspeBlokProcess</Col>
             <Col id="URL">erp47::sup/pathology/batchClinspeBlokProcess.do</Col>
             <Col id="inData">dsSlClinspeBlok=dsSlClinspeBlok:u</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -113,6 +115,9 @@
 include "scripts::commonTransaction.xjs";
 include "scripts::commonScripts.xjs";
 
+var patNo;
+var patNm;
+
 /***************************************************************************************************
 * 검체정보 조회                                     
 ***************************************************************************************************/
@@ -139,8 +144,10 @@ this.searchClinspeNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 * 검체번호 조회 click 이벤트 때 사용                                                          
 ***************************************************************************************************/
 
-this.setClinspeNoArray = function(cliNo){
+this.setData = function(cliNo,patNumber,patName){
 	this.clinspeNoEd.set_value(cliNo);
+	patNo=patNumber;
+	patNm=patName;
 }
 
 /***************************************************************************************************
@@ -181,6 +188,8 @@ this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	
 	this.dsSlClinspeBlok.setColumn(count , "clinspeNo", this.clinspeNoEd.value);
 	this.dsSlClinspeBlok.setColumn(count , "clinspeBlokCode", setBlokCode);
+	this.dsSlClinspeBlok.setColumn(count , "patNo", patNo);
+	this.dsSlClinspeBlok.setColumn(count , "patNm", patNm);
 //	this.dsSlClinspeBlok.setColumn(count, "clinspeBlokProdTime", this.nowTime());
 }
 
@@ -201,6 +210,15 @@ this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnService("batchClinspeBlokProcess", "false");
 }
-]]></Script>
+
+this.callBackFunc=function(strSvcID, nErrorCode, strErrorMag)
+{
+	switch(strSvcID)
+	{
+		case "batchClinspeBlokProcess": alert("저장완료"); break;
+		case "findClinspeBlokList": alert("조회완료"); break;
+	}
+	
+}]]></Script>
   </Form>
 </FDL>

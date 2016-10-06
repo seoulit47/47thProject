@@ -38,10 +38,10 @@ public class ClinspeReceiptController {
 	@RequestMapping("sup/laboratoryMedicine/findClinspeReceiptList.do")
 	public void findClinspeReceiptList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		System.out.println(inData.saveXml()+"@@@@@@@@@@@");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-		List<ClinspeReceiptBean> clinspeReceiptBeanList = laboratoryMedicineServiceFacade
-				.findClinspeReceiptList(argsMap);
+		List<ClinspeReceiptBean> clinspeReceiptBeanList = laboratoryMedicineServiceFacade.findClinspeReceiptList(argsMap);
 		dataSetBeanMapper.beansToDataset(outData, clinspeReceiptBeanList, ClinspeReceiptBean.class);
 	}
 
