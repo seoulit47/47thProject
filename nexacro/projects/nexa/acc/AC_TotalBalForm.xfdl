@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AC_TotalBalForm" classname="AC_TotalBalForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div05" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="합계잔액 시산표" left="4.75%" top="-4" right="73.03%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="ActotalBalDiv" taborder="1" left="1.6%" top="62" right="0.96%" height="37" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="subCodeStc03" taborder="2" text="회계기수" onclick="subCodeStc_onclick" left="2.24%" top="67" right="91.44%" height="27" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="accPridEd" taborder="3" enable="false" left="9.92%" top="65" right="79.68%" height="30"/>
+        <Div id="ACtotalBalDiv" taborder="4" left="1.6%" top="104" right="0.96%" height="655" style="background:#edececff;">
+          <Layouts>
+            <Layout width="1218" height="655">
+              <Grid id="totalBalGrid" taborder="0" binddataset="dsTotalBal" useinputpanel="false" cellsizingtype="row" autofittype="col" createcellasync="true" oncelldblclick="ACtotalBalDiv_totalBalGrid_oncelldblclick" left="0.66%" top="6" right="0.66%" height="640">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="137"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                      <Row size="24" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell colspan="2" text="차변"/>
+                      <Cell col="2" rowspan="2" text="계정과목"/>
+                      <Cell col="3" colspan="2" text="대변"/>
+                      <Cell row="1" text="잔액"/>
+                      <Cell row="1" col="1" text="합계"/>
+                      <Cell row="1" col="3" text="합계"/>
+                      <Cell row="1" col="4" text="잔액"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:debBal" calendardisplaynulltext="0"/>
+                      <Cell col="1" displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:debSum"/>
+                      <Cell col="2" style="background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:acntNm"/>
+                      <Cell col="3" displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:creSum"/>
+                      <Cell col="4" displaytype="number" style="align:right;padding:0 20 0 0;background:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));background2:EXPR(level==&quot;1&quot;?&quot;#696969c5&quot;:(level==&quot;2&quot;?&quot;gainsboro&quot;:null));color:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);color2:EXPR(level==&quot;1&quot;?&quot;white&quot;:null);" text="bind:creBal"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell celltype="none" displaytype="number" style="background:blanchedalmond;" expr="expr:getSum('level == &quot;1&quot; ? (!isNaN(debBal)== true? debBal : &quot;0&quot;) : &quot;0&quot;') ==0? null: getSum('level == &quot;1&quot; ? (!isNaN(debBal)== true? debBal : &quot;0&quot;) : &quot;0&quot;')"/>
+                      <Cell col="1" celltype="none" displaytype="number" style="background:blanchedalmond;" expr="expr:getSum('level == &quot;1&quot; ? (!isNaN(debSum)== true? debSum : &quot;0&quot;) : &quot;0&quot;') ==0? null: getSum('level == &quot;1&quot; ? (!isNaN(debSum)== true? debSum : &quot;0&quot;) : &quot;0&quot;')"/>
+                      <Cell col="2" celltype="none" style="background:blanchedalmond;" text="총합계"/>
+                      <Cell col="3" celltype="none" displaytype="number" style="background:blanchedalmond;" expr="expr:getSum('level == &quot;1&quot; ? (!isNaN(creSum)== true? creSum : &quot;0&quot;) : &quot;0&quot;') ==0? null: getSum('level == &quot;1&quot; ? (!isNaN(creSum)== true? creSum : &quot;0&quot;) : &quot;0&quot;')"/>
+                      <Cell col="4" celltype="none" displaytype="number" style="background:blanchedalmond;" expr="expr:getSum('level == &quot;1&quot; ? (!isNaN(creBal)== true? creBal : &quot;0&quot;) : &quot;0&quot;') ==0? null: getSum('level == &quot;1&quot; ? (!isNaN(creBal)== true? creBal : &quot;0&quot;) : &quot;0&quot;')"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Edit id="startDateEd" taborder="5" enable="false" left="28.48%" top="65" right="61.12%" height="30"/>
+        <Static id="Static00" taborder="6" text="~" left="39.44%" top="72" right="59.44%" height="19"/>
+        <Edit id="endDateEd" taborder="7" enable="false" left="40.64%" top="65" right="48.96%" height="30"/>
+        <Button id="accPridPopupBtn" taborder="8" onclick="accPridPopupBtn_onclick" left="21.04%" top="64" right="76.4%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="9" onclick="searchBtn_onclick" left="51.84%" top="65" right="40.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="printTotalBalBtn" taborder="10" onclick="printTotalBalBtn_onclick" enable="false" left="91.2%" top="65" right="1.6%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" visible="false"/>
+      </Layout>
+    </Layouts>
+    <InitValue>
+      <Static id="subCodeStc03" style="border:3 solid #000000ff ;bordertype:round 5 5;"/>
+    </InitValue>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findTotalBalStat</Col>
+            <Col id="URL">erp47::acc/closing/findTotalBalStat.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsTotalBal=dsTotalBal</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">totalBalFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsTotalBal" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="debBal" type="STRING" size="256"/>
+          <Column id="debSum" type="STRING" size="256"/>
+          <Column id="creSum" type="STRING" size="256"/>
+          <Column id="creBal" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+          <Column id="totalDebBal" type="STRING" size="256"/>
+          <Column id="totalDebSum" type="STRING" size="256"/>
+          <Column id="totalCreBal" type="STRING" size="256"/>
+          <Column id="totalCreSum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTotalBalSum" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+
+//회계기수 도움 검색버튼 클릭
+this.accPridPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.open("findAccPrid","acc::AE_AccPridHelpForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false",0,0,500,350);
+}
+
+//선택한 회계기수 셋팅
+this.setArrRtn=function(arrRtn)		
+{
+	var i = 0;
+	this.accPridEd.set_value(arrRtn[i++]);
+	this.startDateEd.set_value(arrRtn[i++]);
+	this.endDateEd.set_value(arrRtn[i++]);
+}
+
+//합계잔액시산표 조회버튼 클릭
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accPrid = this.accPridEd.value;
+	var argument = 'accPrid='+accPrid;
+	var rowPos = this.dsService.findRow("serviceID", "findTotalBalStat");
+	this.dsService.setColumn(rowPos,"argument",argument);
+	this.gfnService("findTotalBalStat");
+	//this.printTotalBalBtn.set_enable(true);
+}
+
+//출력버튼 클릭
+this.printTotalBalBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.open("finanStatsPrint","acc::AC_TotalBalPrintForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false",0,0,1250,750);
+}
+]]></Script>
+  </Form>
+</FDL>

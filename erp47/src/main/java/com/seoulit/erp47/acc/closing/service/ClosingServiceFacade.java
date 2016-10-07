@@ -7,6 +7,7 @@ import java.util.Map;
 import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
 import com.seoulit.erp47.acc.closing.to.FinanStatsBean;
+import com.seoulit.erp47.acc.closing.to.TotalBalBean;
 import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 
 public interface ClosingServiceFacade {
@@ -23,6 +24,8 @@ public interface ClosingServiceFacade {
 
     List<FinanStatsBean> findFinanStats(Map<String, Object> argsMap);
 
-    //List<TotalBalBean> findTotalBalList(Map<String, Object> argsMap);
+    HashMap<String, Object> findPrintFinanStats (HashMap<String, Object> queryMap);
+    
+    List<TotalBalBean> findTotalBalList(Map<String, Object> argsMap);
 
 }

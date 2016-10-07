@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import com.seoulit.erp47.acc.closing.applicationService.ClosingApplicationService;
 import com.seoulit.erp47.acc.closing.applicationService.DlineCarrforApplicationService;
 import com.seoulit.erp47.acc.closing.applicationService.FinanStatsApplicationService;
+import com.seoulit.erp47.acc.closing.applicationService.TotalBalApplicationService;
 import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
 import com.seoulit.erp47.acc.closing.to.FinanStatsBean;
+import com.seoulit.erp47.acc.closing.to.TotalBalBean;
 import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 
 @Service
@@ -24,8 +26,8 @@ public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
     DlineCarrforApplicationService dlineCarrforApplicationService;
     @Autowired
     FinanStatsApplicationService finanStatsApplicationService;
-    /*@Autowired
-    TotalBalApplicationService totalBalApplicationService;*/
+    @Autowired
+    TotalBalApplicationService totalBalApplicationService;
 
     @Override
     public List<ClosDataBean> findClosDataList(Map<String, Object> argsMap) {
@@ -58,9 +60,14 @@ public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
         return finanStatsApplicationService.findFinanStats(argsMap);
     }
 
-    /*@Override
+    @Override
     public List<TotalBalBean> findTotalBalList(Map<String, Object> argsMap) {
         return totalBalApplicationService.findTotalBalList(argsMap);
-    }*/
+    }
 
+    @Override
+	public HashMap<String, Object> findPrintFinanStats (HashMap<String, Object> queryMap) {
+		HashMap<String, Object> printFinanStatsList = finanStatsApplicationService.findPrintFinanStats(queryMap);
+		return printFinanStatsList;
+	}
 }
