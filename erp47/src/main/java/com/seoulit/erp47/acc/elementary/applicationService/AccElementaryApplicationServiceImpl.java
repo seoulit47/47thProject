@@ -12,6 +12,7 @@ import com.seoulit.erp47.acc.elementary.dao.AccPridDAO;
 import com.seoulit.erp47.acc.elementary.dao.AccntNoDAO;
 import com.seoulit.erp47.acc.elementary.dao.AssiSubDAO;
 import com.seoulit.erp47.acc.elementary.dao.AssiTypeDAO;
+import com.seoulit.erp47.acc.elementary.dao.CorpCardDAO;
 import com.seoulit.erp47.acc.elementary.exception.AccntNoCopyException;
 import com.seoulit.erp47.acc.elementary.exception.AcntCopyException;
 import com.seoulit.erp47.acc.elementary.exception.AssiCopyException;
@@ -20,6 +21,7 @@ import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 import com.seoulit.erp47.acc.elementary.to.AccntNoBean;
 import com.seoulit.erp47.acc.elementary.to.AssiSubBean;
 import com.seoulit.erp47.acc.elementary.to.AssiTypeBean;
+import com.seoulit.erp47.acc.elementary.to.CorpCardBean;
 
 @Service
 public class AccElementaryApplicationServiceImpl implements AccElementaryApplicationService {
@@ -34,6 +36,8 @@ public class AccElementaryApplicationServiceImpl implements AccElementaryApplica
     AssiTypeDAO assiTypeDAO;
     @Autowired
     AccntNoDAO accntNoDAO;
+    @Autowired
+    CorpCardDAO corpCardDAO;
 
     @Override
     public List<AccAcntBean> findAccAcntList(Map<String, String> argsMap) {
@@ -177,6 +181,24 @@ public class AccElementaryApplicationServiceImpl implements AccElementaryApplica
             return accntNoList;
         }else{
             throw new AccntNoCopyException(accntNoBean.getErrorMsg());
+        }
+    }
+    
+    @Override
+    public List<CorpCardBean> findCorpCardList(Map<String, String> argsMap) {
+        return corpCardDAO.selectCorpCardList(argsMap);
+    }
+
+    @Override
+    public void batchCorpCardListProcess(List<CorpCardBean> corpCardList) {
+        for (CorpCardBean batchCorpCardBean : corpCardList) {
+            if (batchCorpCardBean.getStatus().equals("inserted")) {
+                corpCardDAO.insertCorpCard(batchCorpCardBean);
+            }else if (batchCorpCardBean.getStatus().equals("deleted")) {
+                corpCardDAO.deleteCorpCard(batchCorpCardBean);
+            }else if (batchCorpCardBean.getStatus().equals("updated")) {
+                corpCardDAO.updateCorpCard(batchCorpCardBean);
+            }
         }
     }
 

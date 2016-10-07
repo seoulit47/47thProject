@@ -12,6 +12,7 @@ import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 import com.seoulit.erp47.acc.elementary.to.AccntNoBean;
 import com.seoulit.erp47.acc.elementary.to.AssiSubBean;
 import com.seoulit.erp47.acc.elementary.to.AssiTypeBean;
+import com.seoulit.erp47.acc.elementary.to.CorpCardBean;
 
 public interface AccElementaryApplicationService {
 	
@@ -41,5 +42,8 @@ public interface AccElementaryApplicationService {
 
     List<AccntNoBean> lastYearAccntNoCopy(Map<String, String> argsMap) throws AccntNoCopyException;
 
+    List<CorpCardBean> findCorpCardList(Map<String, String> argsMap);
+
+    void batchCorpCardListProcess(List<CorpCardBean> corpCardList);
     
 }
