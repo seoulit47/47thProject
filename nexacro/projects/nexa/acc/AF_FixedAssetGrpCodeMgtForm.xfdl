@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AF_FixedAssetGrpCodeMgtForm" classname="AF_FixedAssetGrpCodeMgtForm" left="0" top="0" width="1250" height="768" titletext="고정자산 분류코드 관리" onload="AF_FixedAssetGrpCodeMgtForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" left="0%" top="0" right="1.44%" height="60" style="background:transparent URL('img::titleBar4.jpg');" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="15" text="고정자산 분류코드 관리화면" left="4.79%" top="-4" right="64.94%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+              <Static id="Static06" taborder="16" text="자산번호" onclick="Static06_onclick" left="61.36%" top="67" right="31.66%" height="26" class="AreaStc"/>
+              <Edit id="assetNoEdit" taborder="17" left="68.59%" top="67" right="22.89%" height="26" class="AreaEdt"/>
+              <Edit id="assetNmEdit" taborder="18" left="84.42%" top="67" right="7.06%" height="26" class="AreaEdt"/>
+              <Static id="Static00" taborder="19" text="자산이름" onclick="Static06_onclick" left="77.27%" top="67" right="15.75%" height="26" class="AreaStc"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="fixedAssetGrpCdDiv" taborder="1" left="2.16%" top="58" right="1.36%" height="702" style="background:#edececff;">
+          <Layouts>
+            <Layout>
+              <Static id="fixedAssetLgGrpCdStc" taborder="18" text="대분류 코드" onclick="subCodeStc_onclick" left="1.24%" top="12" right="91.71%" height="35" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="fixedAssetMidGrpCdStc" taborder="19" text="중분류 코드" onclick="subCodeStc_onclick" left="34.58%" top="12" right="58.37%" height="35" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="fixedAssetSmGrpCdStc" taborder="20" text="소분류 코드" onclick="subCodeStc_onclick" left="67.91%" top="12" right="25.04%" height="35" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Grid id="fixedAssetLgGrpCdGrid" taborder="21" binddataset="dsAssetLgGrpCd" useinputpanel="false" autofittype="col" oncellclick="fixedAssetGrpCdDiv_fixedAssetLgGrpCdGrid_oncellclick" onselectchanged="fixedAssetGrpCdDiv_fixedAssetLgGrpCdGrid_onselectchanged" left="1.24%" top="54" right="68.74%" height="590">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="대분류 코드"/>
+                      <Cell col="1" text="분류명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:lgGrpCd"/>
+                      <Cell col="1" edittype="normal" text="bind:lgGrpCdNm"/>
+                    </Band>
+                  </Format>
+                  <Format id="insert">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="대분류 코드"/>
+                      <Cell col="1" text="분류명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="normal" text="bind:lgGrpCd"/>
+                      <Cell col="1" edittype="normal" text="bind:lgGrpCdNm"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="fixedAssetMidGrpCdGrid" taborder="22" useinputpanel="false" autofittype="col" oncellclick="fixedAssetGrpCdDiv_fixedAssetMidGrpCdGrid_oncellclick" onselectchanged="fixedAssetGrpCdDiv_fixedAssetMidGrpCdGrid_onselectchanged" left="34.58%" top="54" right="35.41%" height="590">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="중분류 코드"/>
+                      <Cell col="1" text="분류명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:midGrpCd"/>
+                      <Cell col="1" edittype="normal" text="bind:midGrpCdNm"/>
+                    </Band>
+                  </Format>
+                  <Format id="insert">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="중분류 코드"/>
+                      <Cell col="1" text="분류명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="normal" text="bind:midGrpCd"/>
+                      <Cell col="1" edittype="normal" text="bind:midGrpCdNm"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="fixedAssetSmGrpCdGrid" taborder="23" useinputpanel="false" autofittype="col" oncellclick="fixedAssetGrpCdDiv_fixedAssetSmGrpCdGrid_oncellclick" left="67.91%" top="54" right="1.99%" height="590">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="소분류 코드"/>
+                      <Cell col="1" text="분류명"/>
+                      <Cell col="2" text="사용여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:smGrpCd"/>
+                      <Cell col="1" edittype="normal" text="bind:smGrpCdNm"/>
+                      <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:useYn"/>
+                    </Band>
+                  </Format>
+                  <Format id="insert">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="소분류 코드"/>
+                      <Cell col="1" text="분류명"/>
+                      <Cell col="2" text="사용여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="normal" text="bind:smGrpCd"/>
+                      <Cell col="1" edittype="normal" text="bind:smGrpCdNm"/>
+                      <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:useYn"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="addFixedAssetLgGrpCdBtn" taborder="24" onclick="fixedAssetGrpCdDiv_addFixedAssetLgGrpCdBtn_onclick" left="15.34%" top="12" right="77.2%" height="35" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="deleteFixedAssetLgGrpCdBtn" taborder="25" onclick="fixedAssetGrpCdDiv_deleteFixedAssetLgGrpCdBtn_onclick" left="23.47%" top="12" right="69.07%" height="35" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="addFixedAssetMidGrpCdBtn" taborder="26" onclick="fixedAssetGrpCdDiv_addFixedAssetMidGrpCdBtn_onclick" left="49.5%" top="12" right="43.03%" height="35" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="deleteFixedAssetMidGrpCdBtn" taborder="27" onclick="fixedAssetGrpCdDiv_deleteFixedAssetMidGrpCdBtn_onclick" left="57.63%" top="12" right="34.91%" height="35" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="addFixedAssetSmGrpCdBtn" taborder="28" onclick="fixedAssetGrpCdDiv_addFixedAssetSmGrpCdBtn_onclick" left="82.5%" top="12" right="10.03%" height="35" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="deleteFixedAssetSmGrpCdBtn" taborder="29" onclick="fixedAssetGrpCdDiv_deleteFixedAssetSmGrpCdBtn_onclick" left="90.63%" top="12" right="1.91%" height="35" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="batchFixedAssetGrpCdBtn" taborder="2" onclick="batchFixedAssetGrpCdBtn_onclick" left="87.92%" top="712" right="3.28%" height="38" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsAssetLgGrpCd" oncolumnchanged="dsAssetLgGrpCd_oncolumnchanged"/>
+      <Dataset id="dsAssetMidGrpCd" oncolumnchanged="dsAssetMidGrpCd_oncolumnchanged"/>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFixedAssetGrpCdList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAssetGrpCdList.do</Col>
+            <Col id="callbackFunc">fixedAssetGrpCdCallBack</Col>
+            <Col id="outData">dsAssetLgGrpCd=dsAssetLgGrpCd dsAssetMidGrpCd=dsAssetMidGrpCd dsAssetSmGrpCd=dsAssetSmGrpCd</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchFixedAssetGrpCdProcess</Col>
+            <Col id="URL">erp47::acc/fixedasset/batchFixedAssetGrpCdProcess.do</Col>
+            <Col id="inData">dsAssetLgGrpCd=dsAssetLgGrpCd:U dsAssetMidGrpCd=dsAssetMidGrpCd:U dsAssetSmGrpCd=dsAssetSmGrpCd:U</Col>
+            <Col id="callbackFunc">fixedAssetGrpCdCallBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAssetSmGrpCd" oncolumnchanged="dsAssetSmGrpCd_oncolumnchanged"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+// 폼 로드 이벤트
+this.AF_FixedAssetGrpCodeMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findFixedAssetGrpCdList");
+}
+
+// 그리드 클릭 이벤트
+this.fixedAssetGrpCdDiv_fixedAssetLgGrpCdGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+	this.dsAssetMidGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'");
+	this.fixedAssetGrpCdDiv.fixedAssetMidGrpCdGrid.set_binddataset("dsAssetMidGrpCd");
+	this.fixedAssetGrpCdDiv_fixedAssetMidGrpCdGrid_oncellclick(this,0);
+	var selectRow = this.dsAssetLgGrpCd.getRowType(this.dsAssetLgGrpCd.rowposition);
+	if(selectRow == 2){
+		this.fixedAssetGrpCdDiv.fixedAssetLgGrpCdGrid.set_formatid("insert");
+	}else{
+		this.fixedAssetGrpCdDiv.fixedAssetLgGrpCdGrid.set_formatid("default");
+	}
+
+}
+
+this.fixedAssetGrpCdDiv_fixedAssetMidGrpCdGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+	var midGrpCd = this.dsAssetMidGrpCd.getColumn(e.row,"midGrpCd");
+	
+	this.dsAssetSmGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'"+"&& midGrpCd=='"+midGrpCd+"'");
+	
+	this.fixedAssetGrpCdDiv.fixedAssetSmGrpCdGrid.set_binddataset("dsAssetSmGrpCd");
+	
+	var selectRow = this.dsAssetMidGrpCd.getRowType(this.dsAssetMidGrpCd.rowposition);
+	if(selectRow == 2){
+		this.fixedAssetGrpCdDiv.fixedAssetMidGrpCdGrid.set_formatid("insert");
+	}else{
+		this.fixedAssetGrpCdDiv.fixedAssetMidGrpCdGrid.set_formatid("default");
+	}
+}
+
+this.fixedAssetGrpCdDiv_fixedAssetSmGrpCdGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var selectRow = this.dsAssetSmGrpCd.getRowType(this.dsAssetSmGrpCd.rowposition);
+	if(selectRow == 2){
+		this.fixedAssetGrpCdDiv.fixedAssetSmGrpCdGrid.set_formatid("insert");
+	}else{
+		this.fixedAssetGrpCdDiv.fixedAssetSmGrpCdGrid.set_formatid("default");
+	}
+}
+
+// 그리드 내용변경 이벤트
+this.fixedAssetGrpCdDiv_fixedAssetLgGrpCdGrid_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	this.fixedAssetGrpCdDiv_fixedAssetLgGrpCdGrid_oncellclick(obj,e);
+}
+
+this.fixedAssetGrpCdDiv_fixedAssetMidGrpCdGrid_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	this.fixedAssetGrpCdDiv_fixedAssetMidGrpCdGrid_oncellclick(obj,e);
+}
+
+// 대분류코드 추가버튼 클릭이벤트
+this.fixedAssetGrpCdDiv_addFixedAssetLgGrpCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsAssetLgGrpCd.addRow();
+}
+
+// 중분류코드 추가버튼 클릭이벤트
+this.fixedAssetGrpCdDiv_addFixedAssetMidGrpCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+	if(lgGrpCd != null && lgGrpCd != ""){
+		var nRow = this.dsAssetMidGrpCd.addRow();
+		this.dsAssetMidGrpCd.setColumn(nRow,"lgGrpCd",lgGrpCd);
+	}else{
+		alert("대분류 코드 입력 후 추가하시오.");
+	}
+}
+
+// 소분류코드 추가버튼 클릭이벤트
+this.fixedAssetGrpCdDiv_addFixedAssetSmGrpCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+	var midGrpCd = this.dsAssetMidGrpCd.getColumn(this.dsAssetMidGrpCd.rowposition,"midGrpCd");
+	
+	if((lgGrpCd != null && lgGrpCd != "") && (midGrpCd != null && midGrpCd != "")){
+		var nRow = this.dsAssetSmGrpCd.addRow();
+		this.dsAssetSmGrpCd.setColumn(nRow,"lgGrpCd",lgGrpCd);
+		this.dsAssetSmGrpCd.setColumn(nRow,"midGrpCd",midGrpCd);
+		this.dsAssetSmGrpCd.setColumn(nRow,"useYn",1);
+	}else{
+		alert("중분류 코드 입력 후 추가하시오.");
+	}
+}
+
+// 대분류코드 삭제버튼 클릭이벤트
+this.fixedAssetGrpCdDiv_deleteFixedAssetLgGrpCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var conResult = confirm("해당 중,소분류 코드가 함께 삭제됩니다. 진행하시겠습니까?");
+	if(conResult == true){
+		this.dsAssetMidGrpCd.deleteAll();
+		this.dsAssetSmGrpCd.deleteAll();
+		this.dsAssetLgGrpCd.deleteRow(this.dsAssetLgGrpCd.rowposition);
+		
+		var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+		this.dsAssetMidGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'");
+	    this.fixedAssetGrpCdDiv_fixedAssetMidGrpCdGrid_oncellclick(this,0);
+	}
+}
+
+// 중분류코드 삭제버튼 클릭이벤트
+this.fixedAssetGrpCdDiv_deleteFixedAssetMidGrpCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var conResult = confirm("해당 소분류 코드가 함께 삭제됩니다. 진행하시겠습니까?");
+	if(conResult == true){
+		this.dsAssetSmGrpCd.deleteAll();
+		this.dsAssetMidGrpCd.deleteRow(this.dsAssetMidGrpCd.rowposition);
+		
+		var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+	    var midGrpCd = this.dsAssetMidGrpCd.getColumn(this.dsAssetMidGrpCd.rowposition,"midGrpCd");
+		this.dsAssetSmGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'"+"&& midGrpCd=='"+midGrpCd+"'");
+		//this.fixedAssetGrpCdDiv_fixedAssetSmGrpCdGrid_oncellclick(this,0);
+	}
+}
+
+// 소분류코드 삭제버튼 클릭이벤트
+this.fixedAssetGrpCdDiv_deleteFixedAssetSmGrpCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsAssetSmGrpCd.deleteRow(this.dsAssetSmGrpCd.rowposition);
+}
+
+
+
+// 일괄처리 버튼 클릭이벤트
+this.batchFixedAssetGrpCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var flag = 0;
+    for(var i=0; i < this.dsAssetLgGrpCd.getRowCount(); i++){
+		var rowType = this.dsAssetLgGrpCd.getRowType(i);
+		var lgGrpCd = this.dsAssetLgGrpCd.getColumn(i,"lgGrpCd");
+		if(rowType == 2 && (lgGrpCd == null || lgGrpCd == "")){
+			flag = 1;
+			break;
+		}
+	}
+	
+	if(flag == 0){
+		this.dsAssetMidGrpCd.filter("");
+			for(var i=0; i < this.dsAssetMidGrpCd.getRowCount(); i++){
+				var rowType = this.dsAssetMidGrpCd.getRowType(i);
+				var midGrpCd = this.dsAssetMidGrpCd.getColumn(i,"midGrpCd");
+				if(rowType == 2 && (midGrpCd == null || midGrpCd == "")){
+					flag = 1;
+					break;
+				}
+			}
+	}
+	
+	if(flag == 0){
+		this.dsAssetSmGrpCd.filter("");
+			for(var i=0; i < this.dsAssetSmGrpCd.getRowCount(); i++){
+				var rowType = this.dsAssetSmGrpCd.getRowType(i);
+				var smGrpCd = this.dsAssetSmGrpCd.getColumn(i,"smGrpCd");
+				if(rowType == 2 && (smGrpCd == null || smGrpCd == "")){
+					flag = 1;
+					break;
+				}
+			}
+	}
+	
+	if(flag == 1){
+		var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+		this.dsAssetMidGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'");
+		var midGrpCd = this.dsAssetMidGrpCd.getColumn(this.dsAssetMidGrpCd.rowposition,"midGrpCd");
+		this.dsAssetSmGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'"+"&& midGrpCd=='"+midGrpCd+"'");	
+		alert("소분류 코드 입력사항을 확인 하십시오.");
+	}else{
+		this.gfnService("batchFixedAssetGrpCdProcess");
+	}
+}
+
+// 콜백 함수
+this.fixedAssetGrpCdCallBack = function fixedAssetGrpCdCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findFixedAssetGrpCdList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.fixedAssetGrpCdDiv_fixedAssetLgGrpCdGrid_oncellclick(this,0);
+		}
+	}else if(strSvcID == "batchFixedAssetGrpCdProcess"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			alert("정상처리 되었습니다.");
+			
+			var lgGrpCd = this.dsAssetLgGrpCd.getColumn(this.dsAssetLgGrpCd.rowposition,"lgGrpCd");
+			this.dsAssetMidGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'");
+			var midGrpCd = this.dsAssetMidGrpCd.getColumn(this.dsAssetMidGrpCd.rowposition,"midGrpCd");
+			this.dsAssetSmGrpCd.filter("lgGrpCd=='"+lgGrpCd+"'"+"&& midGrpCd=='"+midGrpCd+"'");
+			
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

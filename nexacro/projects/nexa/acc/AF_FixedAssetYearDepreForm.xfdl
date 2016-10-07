@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AF_FixedAssetYearDepreForm" classname="AF_FixedAssetYearDepreForm" left="0" top="0" width="1250" height="768" titletext="감가상각완료">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="1.28%" top="71" right="1.04%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Button id="searchYearDepreBtn" taborder="1" onclick="searchYearDepreBtn_onclick" left="35.28%" top="82" right="57.52%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Spin id="yearDepreEndDateSpin" taborder="2" value="2020" displaynulltext="2020" max="2020" min="2000" left="25.28%" top="83" right="65.92%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
+        <Static id="Static00" taborder="3" text="~" left="22.24%" top="89" right="76.8%" height="19" style="border:1 none #808080ff ;color:black;font:bold 11 arial;"/>
+        <Spin id="yearDepreStartDateSpin" taborder="4" value="2010" displaynulltext="2016" max="2020" min="2000" left="11.6%" top="83" right="79.6%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
+        <Static id="subCodeStc02" taborder="5" text="상각년도" onclick="subCodeStc_onclick" left="2%" top="84" right="89.68%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Div id="Div00" taborder="6" left="0%" top="4" right="0.96%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
+        <Static id="titleEdt02" taborder="7" text="년 상각 관리 " cssclass="TStc" left="4.88%" top="14" right="77.6%" height="36" style="font:bold 15 Dotum;"/>
+        <Grid id="yearDepreGrid" taborder="8" binddataset="dsFixedAssetDepreYm" useinputpanel="false" autofittype="col" oncellclick="yearDepreGrid_oncellclick" onselectchanged="yearDepreGrid_onselectchanged" left="1.28%" top="138" right="83.76%" height="570">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="년도"/>
+                <Cell col="1" text="건수"/>
+                <Cell col="2" text="상각액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:depreYear"/>
+                <Cell col="1" text="bind:cnt"/>
+                <Cell col="2" displaytype="number" text="bind:depreAmt" mask="9,999,999,999"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="yearDepreInfoGrid" taborder="9" useinputpanel="false" autofittype="col" enable="false" left="17.44%" top="138" right="1.04%" height="570">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="110"/>
+                <Column size="130"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="자산번호"/>
+                <Cell col="1" text="자산명"/>
+                <Cell col="2" text="취득일자"/>
+                <Cell col="3" text="기초자산액"/>
+                <Cell col="4" text="상각누계액"/>
+                <Cell col="5" text="잔존상각액"/>
+                <Cell col="6" text="당기상각액"/>
+                <Cell col="7" text="잔존가액"/>
+                <Cell col="8" text="마감여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assetNo"/>
+                <Cell col="1" text="bind:assetNm"/>
+                <Cell col="2" displaytype="date" text="bind:acquDate"/>
+                <Cell col="3" displaytype="number" text="bind:basicAssetAmt" mask="9,999,999,999"/>
+                <Cell col="4" displaytype="number" text="bind:depreSum" mask="9,999,999,999"/>
+                <Cell col="5" displaytype="number" text="bind:residDepreAmt" mask="9,999,999,999"/>
+                <Cell col="6" displaytype="number" text="bind:thatyearDepreAmt" mask="9,999,999,999"/>
+                <Cell col="7" displaytype="number" text="bind:residAmt" mask="9,999,999,999"/>
+                <Cell col="8" displaytype="combo" text="bind:yearDepreDlineYn" combodataset="dsYearDepreDlineYn" combocodecol="code" combodatacol="data"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc32" taborder="10" text="작업년" onclick="subCodeStc_onclick" left="74.08%" top="724" right="20.16%" height="30" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="yearDepreYearEd" taborder="11" inputmode="upper" readonly="true" left="81.12%" top="724" right="9.36%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <Button id="updateYearDepreBtn" taborder="12" text="상각마감" onclick="updateYearDepreBtn_onclick" left="91.92%" top="724" right="1.04%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="gradeBind" compid="yearDepreYearEd" propid="value" datasetid="dsFixedAsset" columnid="grade"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsYearDepreDlineYn">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="data">Y</Col>
+            <Col id="code">1</Col>
+          </Row>
+          <Row>
+            <Col id="data">N</Col>
+            <Col id="code">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFixedAssetDepreYm" updatecontrol="true"/>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFixedAssetYearDepreDtlList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAssetYearDepreDtlList.do</Col>
+            <Col id="callbackFunc">fixedAssetYearDepreCallBack</Col>
+            <Col id="outData">dsYearDepre=dsYearDepre dsFixedAssetDepreYm=dsFixedAssetDepreYm</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">modifyFixedAssetYearDepre</Col>
+            <Col id="URL">erp47::acc/fixedasset/modifyFixedAssetYearDepre.do</Col>
+            <Col id="inData">dsYearDepre=dsYearDepre:U</Col>
+            <Col id="callbackFunc">fixedAssetYearDepreCallBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsYearDepre"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+include "scripts::commonTransaction.xjs";  
+/********************************************************************************
+  폼 로드 이벤트
+********************************************************************************/
+this.AF_FixedAssetYearDepreForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	
+}
+
+/********************************************************************************
+  콜백 함수
+********************************************************************************/
+this.fixedAssetYearDepreCallBack = function fixedAssetYearDepreCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findFixedAssetYearDepreDtlList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.yearDepreGrid_oncellclick(this,0);
+		}
+	}else if(strSvcID == "modifyFixedAssetYearDepre"){
+		if(nErrorCode==-1){
+			alert(strErrorMag);
+			for(var i = 0; i < this.dsYearDepre.rowcount; i++){
+				this.dsYearDepre.setColumn(i,"yearDepreDlineYn",0);
+		    }
+		 }   	
+		else{
+			alert("정상처리 되었습니다.");
+			this.searchYearDepreBtn_onclick(this,0);
+		}
+	}
+}
+
+/********************************************************************************
+  버튼 클릭 이벤트
+********************************************************************************/
+this.searchYearDepreBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		var startDate = this.yearDepreStartDateSpin.value;
+		var endDate = nexacro.toNumber(this.yearDepreEndDateSpin.value);
+		var argument = "startDate='"+startDate+"' endDate='"+endDate+"'";
+		this.dsService.setColumn(0,"argument",argument);
+		this.gfnService("findFixedAssetYearDepreDtlList");
+}
+
+
+this.updateYearDepreBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.updateYearDepreBtn.text == "상각마감"){
+		for(var i = 0; i < this.dsYearDepre.rowcount; i++){
+			this.dsYearDepre.setColumn(i,"yearDepreDlineYn",1);
+		}
+	}else{
+		for(var i = 0; i < this.dsYearDepre.rowcount; i++){
+			this.dsYearDepre.setColumn(i,"yearDepreDlineYn",0);
+		}
+	}  
+	this.gfnService("modifyFixedAssetYearDepre");
+}
+
+/********************************************************************************
+  그리드 클릭 이벤트
+********************************************************************************/
+this.yearDepreGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var depreYear = this.dsFixedAssetDepreYm.getColumn(this.dsFixedAssetDepreYm.rowposition,"depreYear");
+	
+	this.dsYearDepre.filter("depreYear =='"+depreYear+"'");
+	this.yearDepreInfoGrid.set_binddataset("dsYearDepre");
+	
+	this.yearDepreYearEd.set_value(depreYear);
+	var yearDepreDlineYn = this.dsYearDepre.getColumn(0,"yearDepreDlineYn");
+	if(yearDepreDlineYn == 0){
+		this.updateYearDepreBtn.set_text("상각마감");
+	}else{
+		this.updateYearDepreBtn.set_text("마감취소");
+	}
+}
+
+/********************************************************************************
+  그리드 내용변경 이벤트
+********************************************************************************/
+this.yearDepreGrid_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	this.yearDepreGrid_oncellclick(obj,e);
+}
+
+
+
+this.searchMonthDepreBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+}
+]]></Script>
+  </Form>
+</FDL>

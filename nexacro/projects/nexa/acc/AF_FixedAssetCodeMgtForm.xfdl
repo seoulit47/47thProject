@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AF_FixedAssetCodeMgtForm" classname="AF_FixedAssetCodeMgtForm" left="0" top="0" width="1250" height="768" titletext="고정자산 기초코드관리" onload="AF_FixedAssetCodeMgtForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" left="0%" top="0" right="1.44%" height="60" style="background:transparent URL('img::titleBar4.jpg');" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="20" text="고정자산기초코드 관리화면" left="4.79%" top="-4" right="64.94%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+              <Static id="Static06" taborder="21" text="자산번호" onclick="Static06_onclick" left="61.36%" top="67" right="31.66%" height="26" class="AreaStc"/>
+              <Edit id="assetNoEdit" taborder="22" left="68.59%" top="67" right="22.89%" height="26" class="AreaEdt"/>
+              <Edit id="assetNmEdit" taborder="23" left="84.42%" top="67" right="7.06%" height="26" class="AreaEdt"/>
+              <Static id="Static00" taborder="24" text="자산이름" onclick="Static06_onclick" left="77.27%" top="67" right="15.75%" height="26" class="AreaStc"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="fixedAssetCdDiv" taborder="1" left="2.24%" top="61" right="1.36%" height="698" style="background:#edececff;">
+          <Layouts>
+            <Layout>
+              <Grid id="fixedAssetCdDtlGrid" taborder="11" useinputpanel="false" autofittype="col" oncellclick="fixedAssetCdDiv_fixedAssetCdDtlGrid_oncellclick" left="51.45%" top="51" right="3.4%" height="587">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="코드"/>
+                      <Cell col="1" text="코드명"/>
+                      <Cell col="2" text="사용여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:fixedAssetCdDtl"/>
+                      <Cell col="1" edittype="normal" text="bind:cdDtlNm"/>
+                      <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:cdDtlUseYn"/>
+                    </Band>
+                  </Format>
+                  <Format id="insert">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="코드"/>
+                      <Cell col="1" text="코드명"/>
+                      <Cell col="2" text="사용여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="normal" text="bind:fixedAssetCdDtl"/>
+                      <Cell col="1" edittype="normal" text="bind:cdDtlNm"/>
+                      <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:cdDtlUseYn"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="fixedAssetCdDtlStc" taborder="12" text="코드상세" onclick="subCodeStc_onclick" left="51.45%" top="11" right="41.41%" height="35" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="fixedAssetCdStc" taborder="13" text="코 드" onclick="subCodeStc_onclick" left="3.07%" top="11" right="89.88%" height="35" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Grid id="fixedAssetCdGrid" taborder="14" binddataset="dsFixedAssetCd" formatid="default" useinputpanel="false" autofittype="col" oncellclick="fixedAssetCdDiv_fixedAssetCdGrid_oncellclick" onselectchanged="fixedAssetCdDiv_fixedAssetCdGrid_onselectchanged" left="3.07%" top="51" right="51.78%" height="587">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="코드유형"/>
+                      <Cell col="1" text="코드유형 명칭"/>
+                      <Cell col="2" text="사용여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:fixedAssetCd"/>
+                      <Cell col="1" edittype="normal" text="bind:cdNm"/>
+                      <Cell col="2" displaytype="checkbox" text="bind:cdUseYn"/>
+                    </Band>
+                  </Format>
+                  <Format id="insert">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="코드유형"/>
+                      <Cell col="1" text="코드유형 명칭"/>
+                      <Cell col="2" text="사용여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell edittype="normal" text="bind:fixedAssetCd"/>
+                      <Cell col="1" edittype="normal" text="bind:cdNm"/>
+                      <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:cdUseYn"/>
+                    </Band>
+                  </Format>
+                  <Format id="admin">
+                    <Columns>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="코드유형"/>
+                      <Cell col="1" text="코드유형 명칭"/>
+                      <Cell col="2" text="사용여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:fixedAssetCd"/>
+                      <Cell col="1" edittype="normal" text="bind:cdNm"/>
+                      <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:cdUseYn"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="batchFixedAssetCdBtn" taborder="2" onclick="batchFixedAssetCdBtn_onclick" left="86.72%" top="712" right="4.48%" height="38" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="deleteFixedAssetCdBtn" taborder="3" onclick="deleteFixedAssetCdBtn_onclick" left="41.6%" top="72" right="51.2%" height="35" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addFixedAssetCdBtn" taborder="4" onclick="addFixedAssetCdBtn_onclick" left="33.76%" top="72" right="59.04%" height="35" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="deleteFixedAssetCdDtlBtn" taborder="5" onclick="deleteFixedAssetCdDtlBtn_onclick" left="88.32%" top="72" right="4.48%" height="35" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addFixedAssetCdDtlBtn" taborder="6" onclick="addFixedAssetCdDtlBtn_onclick" left="80.48%" top="72" right="12.32%" height="35" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFixedAssetCdList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAssetCdList.do</Col>
+            <Col id="callbackFunc">fixedAssetCdCallBack</Col>
+            <Col id="outData">dsFixedAssetCd=dsFixedAssetCd dsFixedAssetCdDtl=dsFixedAssetCdDtl</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchFixedAssetCdProcess</Col>
+            <Col id="URL">erp47::acc/fixedasset/batchFixedAssetCdProcess.do</Col>
+            <Col id="inData">dsFixedAssetCd=dsFixedAssetCd:U dsFixedAssetCdDtl=dsFixedAssetCdDtl:U</Col>
+            <Col id="callbackFunc">fixedAssetCdCallBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFixedAssetCdDtl" oncolumnchanged="dsFixedAssetCdDtl_oncolumnchanged"/>
+      <Dataset id="dsFixedAssetCd" oncolumnchanged="dsFixedAssetCd_oncolumnchanged" enableevent="true"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+// 폼 로드 이벤트
+this.AF_FixedAssetCodeMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findFixedAssetCdList");
+}
+
+// 콜백 함수
+this.fixedAssetCdCallBack = function fixedAssetCdCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findFixedAssetCdList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.fixedAssetCdDiv_fixedAssetCdGrid_oncellclick(this,0);
+		}
+	}else if(strSvcID == "batchFixedAssetCdProcess"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.exefilter();
+			alert("정상처리 되었습니다.");
+		}
+	}
+}
+
+// 그리드 클릭 이벤트(코드)
+this.fixedAssetCdDiv_fixedAssetCdGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.exefilter();
+	this.fixedAssetCdDiv.fixedAssetCdDtlGrid.set_binddataset("dsFixedAssetCdDtl");
+	var selectRow = this.dsFixedAssetCd.getRowType(this.dsFixedAssetCd.rowposition);
+	if(selectRow == 2){	 
+		this.fixedAssetCdDiv.fixedAssetCdGrid.set_formatid("insert");
+	}else{
+		// 나중에 접속자의 권한에 따른 수정항목 나누기 ex) if(application.gdsLoginEmp.getColumn(0,"권한코드") == "AU-01(상위권한))" 
+		this.fixedAssetCdDiv.fixedAssetCdGrid.set_formatid("default");
+	 }
+}
+
+// 그리드 클릭 이벤트(코드상세)
+this.fixedAssetCdDiv_fixedAssetCdDtlGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var selectRow = this.dsFixedAssetCdDtl.getRowType(this.dsFixedAssetCdDtl.rowposition);
+	if(selectRow == 2){
+		this.fixedAssetCdDiv.fixedAssetCdDtlGrid.set_formatid("insert");
+	}else{
+		this.fixedAssetCdDiv.fixedAssetCdDtlGrid.set_formatid("default");
+	}
+}
+
+// 그리드 내용변경 이벤트
+this.fixedAssetCdDiv_fixedAssetCdGrid_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	this.fixedAssetCdDiv_fixedAssetCdGrid_oncellclick(obj,e);
+}
+
+//  페이지전용 함수
+this.exefilter = function()
+{
+	var fixedAssetCd = this.dsFixedAssetCd.getColumn(this.dsFixedAssetCd.rowposition,"fixedAssetCd");
+	this.dsFixedAssetCdDtl.filter("fixedAssetCd=='"+fixedAssetCd+"'");
+}
+
+//  데이터셋 이벤트(코드)
+this.dsFixedAssetCd_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "fixedAssetCd"){
+		for(var i=0; i < this.dsFixedAssetCd.getRowCount(); i++){
+			var fixedAssetCd = this.dsFixedAssetCd.getColumn(i,"fixedAssetCd");
+			if(this.dsFixedAssetCd.rowposition != i){
+				if(fixedAssetCd == e.newvalue){
+					alert("이미 등록된 코드유형입니다.");
+					this.dsFixedAssetCd.setColumn(this.dsFixedAssetCd.rowposition,"fixedAssetCd","");
+					break;
+				}
+			}
+		}
+	}
+}
+
+//  데이터셋 이벤트(코드상세)
+this.dsFixedAssetCdDtl_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "fixedAssetCdDtl"){
+		for(var i=0; i < this.dsFixedAssetCdDtl.getRowCount(); i++){
+			var fixedAssetCdDtl = this.dsFixedAssetCdDtl.getColumn(i,"fixedAssetCdDtl");
+			if(this.dsFixedAssetCdDtl.rowposition != i){	
+				if(fixedAssetCdDtl == e.newvalue){
+					alert("이미 등록된 코드입니다.");
+					this.dsFixedAssetCdDtl.setColumn(this.dsFixedAssetCdDtl.rowposition,"fixedAssetCdDtl","");
+					break;
+				}
+			}
+		}
+	}
+}
+
+// 고정자산 추가(코드)
+this.addFixedAssetCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsFixedAssetCd.addRow();
+	this.dsFixedAssetCd.setColumn(nRow,"cdUseYn",1);
+}
+
+// 고정자산 추가(코드상세)
+this.addFixedAssetCdDtlBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var fixedAssetCd = this.dsFixedAssetCd.getColumn(this.dsFixedAssetCd.rowposition,"fixedAssetCd");
+	if(fixedAssetCd != null && fixedAssetCd != ""){
+		var nRow = this.dsFixedAssetCdDtl.addRow();
+		this.dsFixedAssetCdDtl.setColumn(nRow,"fixedAssetCd",fixedAssetCd);
+		this.dsFixedAssetCdDtl.setColumn(nRow,"cdDtlUseYn",1);
+	}else{
+		alert("코드유형 입력 후 추가하시오.");
+	}
+}
+
+// 고정자산 삭제(코드)
+this.deleteFixedAssetCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var conResult = confirm("해당 상세코드가 함께 삭제됩니다. 진행하시겠습니까?");
+	if(conResult == true){
+		alert(this.dsFixedAssetCdDtl.deleteAll());
+		this.dsFixedAssetCdDtl.deleteAll()
+		this.dsFixedAssetCd.deleteRow(this.dsFixedAssetCd.rowposition);
+		this.exefilter();
+	}
+}
+
+// 고정자산 삭제(코드상세)
+this.deleteFixedAssetCdDtlBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsFixedAssetCdDtl.deleteRow(this.dsFixedAssetCdDtl.rowposition);
+}
+
+// 고정자산코드 일괄처리
+this.batchFixedAssetCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var flag = 0;
+	for(var i=0; i < this.dsFixedAssetCd.getRowCount(); i++){
+		var rowType = this.dsFixedAssetCd.getRowType(i);
+		var fixedAssetCd = this.dsFixedAssetCd.getColumn(i,"fixedAssetCd");
+		if(rowType == 2 && (fixedAssetCd == null || fixedAssetCd == "")){
+			flag = 1;
+			break;
+		}
+	}
+	
+	if(flag == 0){
+		this.dsFixedAssetCdDtl.filter("");
+		for(var i=0; i < this.dsFixedAssetCdDtl.getRowCount(); i++){
+			var rowType = this.dsFixedAssetCdDtl.getRowType(i);
+			var fixedAssetCdDtl = this.dsFixedAssetCdDtl.getColumn(i,"fixedAssetCdDtl");
+				if(rowType == 2 && (fixedAssetCdDtl == null || fixedAssetCdDtl == "")){
+					flag = 1;
+					break;
+				}
+		}
+	}
+	
+	if(flag == 1){
+		this.exefilter();
+		alert("코드 유형 및 코드 입력사항을 확인 하십시오.");
+	}else{
+		this.gfnService("batchFixedAssetCdProcess");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

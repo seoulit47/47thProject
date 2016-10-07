@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AF_FixedAssetPopupForm" classname="AF_FixedAssetPopupForm" left="0" top="0" width="700" height="700" titletext="고정자산 검색" onload="AE_FixedAssetPopupForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="-2.86%" top="-4" right="0.57%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="titleStc" taborder="1" text="고정자산 검색" left="4.86%" top="-4" right="69.29%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div00" taborder="2" left="0.57%" top="49" right="1%" height="87" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="subCodeStc02" taborder="3" text="자산구분" onclick="subCodeStc_onclick" left="1.71%" top="63" right="90%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc04" taborder="4" text="취득일자" onclick="subCodeStc_onclick" left="1.71%" top="100" right="90%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="acquStartDateCal" taborder="5" expr="expr:Date()" left="11.14%" top="97" right="74.57%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Combo id="assetCombo" taborder="6" innerdataset="dsAssetCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="11.14%" top="60" right="74.57%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Static id="subCodeStc00" taborder="7" text="장비구분" onclick="subCodeStc_onclick" left="28%" top="63" right="63.71%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="equipCombo" taborder="8" innerdataset="dsEquipCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="37.43%" top="60" right="48.29%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Calendar id="acquEndDateCal" taborder="9" expr="expr:Date()" left="30.43%" top="97" right="55.29%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Static id="Static00" taborder="10" text="~" left="27.43%" top="105" right="68.29%" height="19" style="border:1 none #808080ff ;color:black;font:bold 11 arial;"/>
+        <Static id="subCodeStc03" taborder="11" text="상각법" onclick="subCodeStc_onclick" left="54.29%" top="97" right="37.43%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc01" taborder="12" text="관리구분" onclick="subCodeStc_onclick" left="54.29%" top="63" right="37.43%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="mngntCombo" taborder="13" innerdataset="dsMngntCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="63.71%" top="60" right="16%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Combo id="depreMthdCombo" taborder="14" innerdataset="dsDepreMthd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="63.71%" top="97" right="16%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Grid id="fixedAssetGrid" taborder="15" binddataset="dsFixedAsset" useinputpanel="false" autofittype="col" oncelldblclick="fixedAssetGrid_oncelldblclick" left="1.14%" top="146" right="1.29%" height="502">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="자산번호"/>
+                <Cell col="1" text="자산명"/>
+                <Cell col="2" text="자산구분"/>
+                <Cell col="3" text="장비구분"/>
+                <Cell col="4" text="관리구분"/>
+                <Cell col="5" text="상각법"/>
+                <Cell col="6" text="취득일자"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assetNo"/>
+                <Cell col="1" text="bind:assetNm"/>
+                <Cell col="2" displaytype="combo" text="bind:assetCd" combodataset="dsAssetCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="3" displaytype="combo" text="bind:equipCd" combodataset="dsEquipCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="4" displaytype="combo" text="bind:mngntCd" combodataset="dsMngntCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="5" displaytype="combo" text="bind:depreMthd" combodataset="dsDepreMthd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="6" displaytype="date" text="bind:acquDate"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="comboResetBtn" taborder="16" onclick="comboResetBtn_onclick" left="85.71%" top="57" right="1.57%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchFixedAssetBtn" taborder="17" onclick="searchFixedAssetBtn_onclick" left="85.71%" top="95" right="1.43%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="completeBtn" taborder="18" onclick="fixedAssetGrid_oncelldblclick" left="32%" top="657" right="55.14%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="cancelBtn" taborder="19" onclick="cancelBtn_onclick" left="47.29%" top="657" right="39.86%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsMngntCd"/>
+      <Dataset id="dsDepreMthd"/>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findUsingFixedAssetCdDtlList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::acc/fixedasset/findUsingFixedAssetCdDtlList.do</Col>
+            <Col id="callbackFunc">fixedAssetPopupCallBack</Col>
+            <Col id="outData">dsFixedAssetCdDtl=dsFixedAssetCdDtl</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findFixedAssetList</Col>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAssetList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsFixedAsset=dsFixedAsset</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">fixedAssetPopupCallBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFixedAsset"/>
+      <Dataset id="dsAssetCd"/>
+      <Dataset id="dsEquipCd"/>
+      <Dataset id="dsFixedAssetCdDtl"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+// 폼 로드
+this.AE_FixedAssetPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findUsingFixedAssetCdDtlList");
+}
+
+
+//  콜백 함수
+this.fixedAssetPopupCallBack = function fixedAssetPopupCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findUsingFixedAssetCdDtlList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZFG'");
+			this.dsAssetCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZBG'");
+			this.dsEquipCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZBK'");
+			this.dsMngntCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZSA'");
+			this.dsDepreMthd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+		}
+	}else if(strSvcID == "findFixedAssetList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			
+		}
+	}
+}
+
+this.searchFixedAssetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var acquStartDate = "19000101";
+	var acquEndDate = "21000101";
+
+	if(this.acquStartDateCal.value != null){
+		acquStartDate = this.acquStartDateCal.value;
+	}
+	if(this.acquEndDateCal.value != null){
+		acquEndDate = this.acquEndDateCal.value;
+	}
+
+	var argument = "acquStartDate='"+acquStartDate+"' acquEndDate='"+acquEndDate+"' assetCd='"+this.assetCombo.value+"' equipCd='"+this.equipCombo.value+"' mngntCd='"+this.mngntCombo.value+"' depreMthd='"+this.depreMthdCombo.value+"' ownDept='undefined'";
+	this.dsService.setColumn(1,"argument",argument);
+	this.gfnService("findFixedAssetList");
+}
+
+this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.assetCombo.set_value(null);
+	this.equipCombo.set_value(null);
+	this.mngntCombo.set_value(null);
+	this.depreMthdCombo.set_value(null);
+	this.acquStartDateCal.set_value(null);
+	this.acquEndDateCal.set_value(null);
+}
+
+this.fixedAssetGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if(this.parent.parentReason == "searchFixedAsset"){
+		if(e.row == null && this.dsFixedAsset.rowposition == null){
+			alert("고정자산을 선택 하시오.");
+		}else{
+			this.opener.searchAssetNoEd.set_value(this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"assetNo"));
+			this.opener.searchAssetNmEd.set_value(this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"assetNm"));
+			this.close();
+		}
+	}else if(this.parent.parentReason == "searchDisposalPlnFixedAsset"){
+ 		var disposalCd = this.dsFixedAsset.getColumn(e.row,"disposalCd");
+ 		var disposalCdPosition = this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"disposalCd");
+ 		if(disposalCd != null && disposalCdPosition){
+ 			alert("이미 매각등록된 자산입니다.");
+ 		}else{
+ 
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"assetNo",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"assetNo"));
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"assetNm",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"assetNm"));
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"mngntCd",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"mngntCd"));
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"ownDept",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"ownDept"));
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"pstLoc",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"pstLoc"));
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"respoWorker",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"respoWorker"));
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"acquDate",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"acquDate"));
+ 			this.opener.dsDisposalPlnFixedAsset.setColumn(this.opener.dsDisposalPlnFixedAsset.rowcount-1,"acquAmt",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"acquAmt"));
+ 			this.close();
+ 		 }
+	}
+}
+
+this.cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.parent.parentReason == "searchDisposalPlnFixedAsset"){
+	this.opener.dsDisposalPlnFixedAsset.deleteRow(this.opener.dsDisposalPlnFixedAsset.rowcount-1);
+	}
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

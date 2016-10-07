@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AF_FixedAssetMonthDepreForm" classname="AF_FixedAssetMonthDepreForm" left="0" top="0" width="1250" height="768" titletext="월별 감가상각 관리" onload="AF_FixedAssetMonthDepreForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="4" right="0.96%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
+        <Static id="titleEdt02" taborder="1" text="월별 감가상각 관리" cssclass="TStc" left="4.88%" top="14" right="77.6%" height="36" style="font:bold 15 Dotum;"/>
+        <Div id="Div03" taborder="2" left="1.28%" top="71" right="1.04%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="subCodeStc02" taborder="3" text="년도" onclick="subCodeStc_onclick" left="2%" top="84" right="89.68%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Button id="searchMonthDepreBtn" taborder="4" onclick="searchMonthDepreBtn_onclick" left="35.28%" top="82" right="57.52%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Spin id="monthDepreStartDateSpin" taborder="5" value="2010" displaynulltext="2016" max="2020" min="2000" left="11.6%" top="83" right="79.6%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
+        <Spin id="monthDepreEndDateSpin" taborder="6" value="2020" displaynulltext="2020" max="2020" min="2000" left="25.28%" top="83" right="65.92%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;font:9 Dotum;"/>
+        <Static id="Static00" taborder="7" text="~" left="22.24%" top="89" right="76.8%" height="19" style="border:1 none #808080ff ;color:black;font:bold 11 arial;"/>
+        <Grid id="monthDepreGrid" taborder="8" binddataset="dsFixedAssetDepreYm" useinputpanel="false" autofittype="col" oncellclick="monthDepreGrid_oncellclick" onselectchanged="monthDepreGrid_onselectchanged" left="1.28%" top="139" right="83.76%" height="566">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="50"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="년월"/>
+                <Cell col="1" text="건수"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" text="bind:depreYm" mask="####-##"/>
+                <Cell col="1" text="bind:cnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="monthDepreInfoGrid" taborder="9" useinputpanel="false" autofittype="col" enable="false" left="17.52%" top="139" right="1.04%" height="566">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="160"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="50"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="자산번호"/>
+                <Cell col="1" text="자산명"/>
+                <Cell col="2" text="취득일"/>
+                <Cell col="3" text="취득금액"/>
+                <Cell col="4" text="관리구분"/>
+                <Cell col="5" text="보유부서"/>
+                <Cell col="6" displaytype="normal" text="현위치"/>
+                <Cell col="7" text="담당자"/>
+                <Cell col="8" text="상각방법"/>
+                <Cell col="9" text="전년도잔존액"/>
+                <Cell col="10" text="당월상각액"/>
+                <Cell col="11" text="당기상각액"/>
+                <Cell col="12" text="실행여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assetNo"/>
+                <Cell col="1" text="bind:assetNm"/>
+                <Cell col="2" displaytype="date" text="bind:acquDate"/>
+                <Cell col="3" text="bind:acquAmt"/>
+                <Cell col="4" displaytype="combo" text="bind:mngntCd" combodataset="dsMngntCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="5" displaytype="normal" text="bind:ownDept"/>
+                <Cell col="6" displaytype="combo" text="bind:pstLoc" combodataset="dsPstLocCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="7" displaytype="normal" text="bind:respoWorker"/>
+                <Cell col="8" displaytype="combo" text="bind:depreMthd" combodataset="dsDepreMthd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="9" displaytype="number" text="bind:befYearResidAmt" mask="9,999,999,999"/>
+                <Cell col="10" displaytype="number" text="bind:thatmonthDepreAmt" mask="9,999,999,999"/>
+                <Cell col="11" displaytype="number" text="bind:thatyearDepreAmt" mask="9,999,999,999"/>
+                <Cell col="12" displaytype="combo" text="bind:thatmonthDepreRunYn" combodataset="dsThatmonthDepreRunYn" combocodecol="code" combodatacol="data"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc32" taborder="10" text="작업년월" left="74.16%" top="722" right="20.08%" height="29" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="monthDepreYmEd" taborder="11" inputmode="upper" readonly="true" left="81.2%" top="721" right="9.28%" height="30" style="border:1 solid #a6a6a9ff ;align:center middle;font:9 Dotum;"/>
+        <Button id="updateMonthDepreBtn" taborder="12" text="상각실행" onclick="updateMonthDepreBtn_onclick" left="91.92%" top="721" right="1.04%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="gradeBind" compid="monthDepreYmEd" propid="value" datasetid="dsFixedAsset" columnid="grade"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsPstLocCd"/>
+      <Dataset id="dsThatmonthDepreRunYn">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="data">Y</Col>
+            <Col id="code">1</Col>
+          </Row>
+          <Row>
+            <Col id="data">N</Col>
+            <Col id="code">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFixedAssetCdDtl"/>
+      <Dataset id="dsDepreMthd"/>
+      <Dataset id="dsFixedAssetDepreYm" updatecontrol="true">
+        <ColumnInfo>
+          <Column id="depreYm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findUsingFixedAssetCdDtlList</Col>
+            <Col id="URL">erp47::acc/fixedasset/findUsingFixedAssetCdDtlList.do</Col>
+            <Col id="outData">dsFixedAssetCdDtl=dsFixedAssetCdDtl</Col>
+            <Col id="callbackFunc">fixedAssetMonthDepreCallBack</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findFixedAssetMonthDepreList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAssetMonthDepreList.do</Col>
+            <Col id="callbackFunc">fixedAssetMonthDepreCallBack</Col>
+            <Col id="outData">dsMonthDepre=dsMonthDepre dsFixedAssetDepreYm=dsFixedAssetDepreYm</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">modifyFixedAssetMonthDepre</Col>
+            <Col id="URL">erp47::acc/fixedasset/modifyFixedAssetMonthDepre.do</Col>
+            <Col id="inData">dsMonthDepre=dsMonthDepre:U</Col>
+            <Col id="callbackFunc">fixedAssetMonthDepreCallBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMonthDepre"/>
+      <Dataset id="dsMngntCd"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+include "scripts::commonTransaction.xjs";  
+/********************************************************************************
+  폼 로드 이벤트
+********************************************************************************/
+this.AF_FixedAssetMonthDepreForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findUsingFixedAssetCdDtlList");
+	
+}
+
+/********************************************************************************
+  콜백 함수
+********************************************************************************/
+this.fixedAssetMonthDepreCallBack = function fixedAssetMonthDepreCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findUsingFixedAssetCdDtlList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZBK'");
+			this.dsMngntCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZSA'");
+			this.dsDepreMthd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZLC'");
+			this.dsPstLocCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+		}
+	}else if(strSvcID == "findFixedAssetMonthDepreList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.monthDepreGrid_oncellclick(this,0);
+		}
+	}else if(strSvcID == "modifyFixedAssetMonthDepre"){
+		if(nErrorCode==-1){
+			alert(strErrorMag);
+			for(var i = 0; i < this.dsMonthDepre.rowcount; i++){
+				this.dsMonthDepre.setColumn(i,"thatmonthDepreRunYn",1);
+		    }	
+		}
+		else{
+			alert("정상처리 되었습니다.");
+			this.monthDepreGrid_oncellclick(this,0);
+		}
+	}
+}
+
+/********************************************************************************
+  버튼 클릭 이벤트
+********************************************************************************/
+this.searchMonthDepreBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		var startDate = this.monthDepreStartDateSpin.value;
+		var endDate = nexacro.toNumber(this.monthDepreEndDateSpin.value)+1;
+		var argument = "startDate='"+startDate+"' endDate='"+endDate+"'";
+		this.dsService.setColumn(1,"argument",argument);
+		this.gfnService("findFixedAssetMonthDepreList");
+}
+
+this.updateMonthDepreBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.updateMonthDepreBtn.text == "상각실행"){
+		for(var i = 0; i < this.dsMonthDepre.rowcount; i++){
+			this.dsMonthDepre.setColumn(i,"thatmonthDepreRunYn",1);
+		}
+	}else{
+		for(var i = 0; i < this.dsMonthDepre.rowcount; i++){
+			this.dsMonthDepre.setColumn(i,"thatmonthDepreRunYn",0);
+		}
+	}  
+	this.gfnService("modifyFixedAssetMonthDepre");
+}
+
+/********************************************************************************
+  그리드 클릭 이벤트
+********************************************************************************/
+this.monthDepreGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var depreYm = this.dsFixedAssetDepreYm.getColumn(this.dsFixedAssetDepreYm.rowposition,"depreYm");
+	this.dsMonthDepre.filter("depreYm =='"+depreYm+"'");
+	this.monthDepreInfoGrid.set_binddataset("dsMonthDepre");
+	var newDepreYm = depreYm.substr(0,7);
+	this.monthDepreYmEd.set_value(newDepreYm);
+	
+	var depreRunYn = this.dsMonthDepre.getColumn(0,"thatmonthDepreRunYn");
+	if(depreRunYn == 0){
+		this.updateMonthDepreBtn.set_text("상각실행");
+	}else{
+		this.updateMonthDepreBtn.set_text("실행취소");
+	}
+}
+
+/********************************************************************************
+  그리드 내용변경 이벤트
+********************************************************************************/
+// this.monthDepreGrid_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+// {
+// 	this.monthDepreGrid_oncellclick(obj,e);
+// }
+]]></Script>
+  </Form>
+</FDL>
