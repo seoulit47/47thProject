@@ -40,8 +40,8 @@
                 AND BUY_RECEIPT_DATE BETWEEN #{buyReceiptStartCal} AND #{buyReceiptEndCal}
             </if>
             <if test="gdsAnspNo != null and anspHistNo != null and gdsAnspNo != '' and anspHistNo != ''">
-                AND GDS_ANSP_NO = #{gdsAnspNo} AND
-                ANSP_HIST_NO = #{anspHistNo}
+                AND GDS_ANSP_NO = #{gdsAnspNo}
+                AND ANSP_HIST_NO = #{anspHistNo}
             </if>
         </trim>
         ORDER BY

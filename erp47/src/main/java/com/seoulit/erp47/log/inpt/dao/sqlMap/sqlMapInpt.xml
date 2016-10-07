@@ -1,56 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seoulit.erp47.log.inpt.dao.InptDAO">
-<!-- mapper의 namespace는  Interface인  실제 DAO의 경로로 설정한다. -->
-<cache flushInterval="86400000" eviction="LRU" />
-<resultMap type="CtrtInfoBean" id="findCtrtListResultMap">
-        <result property="ctrtNo" column="CTRT_NO" />                        <!-- 계약번호 -->
-        <result property="ctrtDate" column="CTRT_DATE" />                    <!-- 계약일자 -->
-        <result property="ctrtDiv" column="CTRT_DIV" />                      <!-- 계약구분 -->
-        <result property="ctrtStart" column="CTRT_START" />                  <!-- 계약시작 -->
-        <result property="ctrtEnd" column="CTRT_END" />                      <!-- 계약종료 -->
-        <result property="ctrtRespoWorker" column="CTRT_RESPO_WORKER" />     <!-- 계약담당자 -->
-        <result property="ctrtSeq" column="CTRT_SEQ" />                      <!-- 계약순번 -->
-        <result property="cust" column="CUST" />                             <!-- 거래처 -->
-        <result property="ctrtStat" column="CTRT_START" />                   <!-- 계약상태 -->
-        <result property="buyAprvYb" column="BUY_APRV_YB" />                 <!-- 구매승인여부 -->
-        <result property="signSsYb" column="SIGN_SS_YB" />                   <!-- 결재상신여부 -->
-        <result property="ctrtCon" column="CTRT_CON" />                      <!-- 계약내용 -->
-        <result property="ctrtStand" column="CTRT_STAND" />                  <!-- 계약규격 -->
-        <result property="ctrtQnt" column="CTRT_QNT" />                      <!-- 계약수량 -->
-        <result property="ctrtPrice" column="CTRT_PRICE" />                  <!-- 계약단가 -->
-        <result property="ctrtAmt" column="CTRT_AMT" />                      <!-- 계약금액 -->
-        <result property="buyReceiptNo" column="BUY_RECEIPT_NO" />           <!-- 구매접수번호 -->
-        <result property="inptYb" column="INPT_YB" />                        <!-- 검수여부 -->
-        <result property="fm" column="FM" />                                 <!-- 품목 -->
-        <result property="gdsCd" column="GDS_CD" />                          <!-- 물품코드 -->
-        <result property="ctrtGds" column="CTRT_GDS" />                      <!-- 계약물품 -->
-    </resultMap>
+	<!-- mapper의 namespace는 Interface인 실제 DAO의 경로로 설정한다. -->
+	<cache flushInterval="86400000" eviction="LRU" />
+	
+	<resultMap type="CtrtInfoBean" id="findCtrtListResultMap">
+		<result property="ctrtNo" column="CTRT_NO" />                        <!-- 계약번호 -->
+		<result property="ctrtDate" column="CTRT_DATE" />                    <!-- 계약일자 -->
+		<result property="ctrtDiv" column="CTRT_DIV" />                      <!-- 계약구분 -->
+		<result property="ctrtStart" column="CTRT_START" />                  <!-- 계약시작 -->
+		<result property="ctrtEnd" column="CTRT_END" />                      <!-- 계약종료 -->
+		<result property="ctrtRespoWorker" column="CTRT_RESPO_WORKER" />     <!-- 계약담당자 -->
+		<result property="ctrtSeq" column="CTRT_SEQ" />                      <!-- 계약순번 -->
+		<result property="cust" column="CUST" />                             <!-- 거래처 -->
+		<result property="ctrtStat" column="CTRT_START" />                   <!-- 계약상태 -->
+		<result property="buyAprvYb" column="BUY_APRV_YB" />                 <!-- 구매승인여부 -->
+		<result property="signSsYb" column="SIGN_SS_YB" />                   <!-- 결재상신여부 -->
+		<result property="ctrtCon" column="CTRT_CON" />                      <!-- 계약내용 -->
+		<result property="ctrtStand" column="CTRT_STAND" />                  <!-- 계약규격 -->
+		<result property="ctrtQnt" column="CTRT_QNT" />                      <!-- 계약수량 -->
+		<result property="ctrtPrice" column="CTRT_PRICE" />                  <!-- 계약단가 -->
+		<result property="ctrtAmt" column="CTRT_AMT" />                      <!-- 계약금액 -->
+		<result property="buyReceiptNo" column="BUY_RECEIPT_NO" />           <!-- 구매접수번호 -->
+		<result property="inptYb" column="INPT_YB" />                        <!-- 검수여부 -->
+		<result property="fm" column="FM" />                                 <!-- 품목 -->
+		<result property="gdsCd" column="GDS_CD" />                          <!-- 물품코드 -->
+		<result property="ctrtGds" column="CTRT_GDS" />                      <!-- 계약물품 -->
+	</resultMap>
 
-<select id="findCtrtList" resultType="CtrtInfoBean">
-        SELECT CTRT_NO
-            ,CTRT_DATE
-            ,CTRT_DIV
-            ,CTRT_START
-            ,CTRT_END
-            ,CTRT_RESPO_WORKER
-            ,CTRT_SEQ
-            ,CUST
-            ,CTRT_STAT
-            ,BUY_APRV_YB
-            ,SIGN_SS_YB
-            ,CTRT_CON
-            ,CTRT_STAND
-            ,CTRT_QNT
-            ,CTRT_PRICE
-            ,CTRT_AMT
-            ,BUY_RECEIPT_NO
-            ,INPT_YB
-            ,GDS_CD
-            ,CTRT_GDS
-            ,FM
-        FROM LP_CTRT
-            ORDER BY
-            CTRT_NO
-    </select>
+	<resultMap type="CtrtInfoDetailBean" id="findCtrtDetailListResultMap">
+		<result property="ctrtDate" column="CTRT_DATE" />
+		<result property="ctrtSeq" column="CTRT_SEQ" />
+		<result property="gdsCd" column="GDS_CD" />
+		<result property="gdsNm" column="GDS_NM" />
+		<result property="receiptNo" column="RECEIPT_NO" />
+		<result property="ctrtQnt" column="CTRT_QNT" />
+		<result property="ctrtPrice" column="CTRT_PRICE" />
+		<result property="ctrtAmt" column="CTRT_AMT" />
+		<result property="gdsStand" column="GDS_STAND" />
+		<result property="cngQnt" column="CNG_QNT" />
+		<result property="accYear" column="ACC_YEAR" />
+		<result property="asstSubCd" column="ASST_SUB_CD" />
+		<result property="mngntAtcCode" column="MNGNT_ATC_CODE" />
+		<result property="ordUnit" column="ORD_UNIT" />
+		<result property="ctrtNo" column="CTRT_NO" />
+		<result property="demdDate" column="DEMD_DATE" />
+		<result property="demdSeq" column="DEMD_SEQ" />
+		<result property="deptCd" column="DEPT_CD" />
+		<result property="respoWorker" column="RESPO_WORKER" />
+		<result property="nsBo" column="NS_NO" />
+		<result property="acntSeq" column="ACNT_SEQ" />
+		<result property="subul" column="SUBUL" />
+	</resultMap>
+	
+	<resultMap type="GdsInptBean" id="findGdsInptResultMap">
+		<result property="amt" column="AMT" />
+		<result property="ctrtNo" column="CTRT_NO" />
+		<result property="delayDays" column="DELAY_DAYS" />
+		<result property="delayGijunPay" column="DELAY_GIJUN_PAY" />
+		<result property="delayPrzAmt" column="DELAY_PRZ_AMT" />
+		<result property="delayRate" column="DELAY_RATE" />
+		<result property="delivDay" column="DELIV_DAY" />
+		<result property="gdsInptNo" column="GDS_INPT_NO" />
+		<result property="inptDate" column="INPT_DATE" />
+	</resultMap>
+	
+	<select id="selectCtrtList" parameterType="map" resultType="CtrtInfoBean">
+		SELECT CTRT_NO
+			,CTRT_DATE
+			,CTRT_DIV
+			,CTRT_START
+			,CTRT_END
+			,CTRT_RESPO_WORKER
+			,CTRT_SEQ
+			,CUST
+			,CTRT_STAT
+			,BUY_APRV_YB
+			,SIGN_SS_YB
+			,CTRT_CON
+			,CTRT_STAND
+			,CTRT_QNT
+			,CTRT_PRICE
+			,CTRT_AMT
+			,BUY_RECEIPT_NO
+			,INPT_YB
+			,GDS_CD
+			,CTRT_GDS
+			,FM
+		FROM 
+			LP_CTRT
+		<!-- WHERE -->
+			
+		ORDER BY
+			CTRT_NO
+	</select>
+	
+	<select id="selectCtrtDetailList" parameterType="map" resultType="CtrtInfoDetailBean">
+		SELECT * 
+			FROM 
+				LP_CTRT_DTL_HIST
+		<trim prefix="WHERE" prefixOverrides="AND">
+            <if test="selectCtrtNo != null">
+                AND CTRT_NO = #{selectCtrtNo}
+            </if>
+        </trim>
+	</select>
+	
+	<select id="selectGdsInpt" parameterType="map" resultType="GdsInptBean">
+		SELECT * 
+			FROM 
+				LE_GDS_INPT
+			WHERE 
+				CTRT_NO = #{selectCtrtNo}
+	</select>
 </mapper>

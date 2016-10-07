@@ -2,6 +2,7 @@ package com.seoulit.erp47.log.prcs.applicationService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,13 @@ public class PrcsApplicationServiceImpl implements PrcsApplicationService {
 
     @Override
     public List<PrcsReceiptBean> findPrcsReceiptList(Map<String, String> argsMap) {
+    	
+    	System.out.println("sizeeeee : " + argsMap.size());
+    	for (Entry<String, String> entry : argsMap.entrySet()) {
+    		System.out.println("keyyyyy : " + entry.getKey());
+    		System.out.println("valllll : " + entry.getValue());
+    		}
+    	
         return prcsReceiptDAO.selectPrcsReceiptList(argsMap);
     }
 

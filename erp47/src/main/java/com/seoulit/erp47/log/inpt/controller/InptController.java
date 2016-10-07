@@ -2,7 +2,6 @@ package com.seoulit.erp47.log.inpt.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +14,8 @@ import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.log.inpt.service.InptServiceFacade;
 import com.seoulit.erp47.log.inpt.to.CtrtInfoBean;
+import com.seoulit.erp47.log.inpt.to.CtrtInfoDetailBean;
+import com.seoulit.erp47.log.inpt.to.GdsInptBean;
 import com.seoulit.erp47.log.inpt.to.SkillExmntHistBean;
 
 /**
@@ -39,24 +40,39 @@ public class InptController {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		
-		
-		System.out.println("******************************************************************************");
 		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
-		for (Entry<String, String> entry : argsMap.entrySet()) {
-			System.out.println("키키키 : " + entry.getKey());
-			System.out.println("밸밸밸 : " + entry.getKey());
-		}
-		System.out.println("******************************************************************************");
-
-		
-		List<CtrtInfoBean> ctrtList = inptServiceFacade.findCtrtList();
-		
-		for(CtrtInfoBean bean : ctrtList){
-			System.out.println("getCtrtNo : " + bean.getCtrtNo());
-		}
-		
+		List<CtrtInfoBean> ctrtList = inptServiceFacade.findCtrtList(argsMap);
 		
 		datasetBeanMapper.beansToDataset(outData, ctrtList, CtrtInfoBean.class);
+	}
+	
+	@RequestMapping("log/inpt/findCtrtHistList.do")
+	public void findCtrtDetailList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		
+		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
+		List<CtrtInfoDetailBean> ctrtInfoDetailList = inptServiceFacade.findCtrtDetailList(argsMap);
+		
+		datasetBeanMapper.beansToDataset(outData, ctrtInfoDetailList, CtrtInfoDetailBean.class);
+	}
+	
+	@RequestMapping("log/inpt/findGdsInptList.do")
+	public void findGdsInpt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		
+		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
+		List<GdsInptBean> gdsInpt = inptServiceFacade.findGdsInpt(argsMap);
+		
+		for(GdsInptBean bean : gdsInpt){
+			System.out.println("getCtrtNo : " + bean.getCtrtNo());
+			System.out.println("getGdsInptNo : " + bean.getGdsInptNo());
+			System.out.println("getAmt : " + bean.getAmt());
+			System.out.println("getDelayGijunPay : " + bean.getDelayGijunPay());
+		}
+		
+		datasetBeanMapper.beansToDataset(outData, gdsInpt, GdsInptBean.class);
 	}
 	
 	@RequestMapping("log/inpt/findSkillExmntList.do")
