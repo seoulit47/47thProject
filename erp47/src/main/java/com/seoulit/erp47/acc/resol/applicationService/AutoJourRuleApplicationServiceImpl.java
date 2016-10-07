@@ -16,6 +16,7 @@ public class AutoJourRuleApplicationServiceImpl implements AutoJourRuleApplicati
 
     @Override
     public List<AutoJourRuleBean> findAutoJourRuleList(Map<String, String> argsMap) {
-        return jourDAO.selectAutoJourRuleList(argsMap);
+    	List<AutoJourRuleBean> list=jourDAO.selectAutoJourRuleList(argsMap);
+        return list;
     }
 }

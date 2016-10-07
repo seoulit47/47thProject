@@ -801,6 +801,7 @@ this.AR_ResolReceiptMgtForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	this.gfnService("findAccount",false);//거래처 데이터셋
 	this.dsAccount.filter("custcd==''");	
 	this.gfnService("empInfo");//사원정보 데이터셋
+	
 }
 
 // 부서검색 팝업

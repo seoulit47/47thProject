@@ -34,7 +34,7 @@ public class ResolLetController {
             throws Exception {
         PlatformData outData = (PlatformData)request.getAttribute("outData");
         PlatformData inData = (PlatformData)request.getAttribute("inData");
-        System.out.println(inData.saveXml());
+        
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
         List<ResolLetBean> resolLetList = resolServiceFacade.findResolLetList(argsMap);
         dataSetBeanMapper.beansToDataset(outData, resolLetList, ResolLetBean.class);
@@ -54,6 +54,7 @@ public class ResolLetController {
     public void registerResolLet(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
+        System.out.println(inData.saveXml()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         HashMap<String, Object> dataSetMap=new HashMap<String, Object>();
         ResolLetBean resolLetBean = dataSetBeanMapper.datasetToBean(inData,ResolLetBean.class);
         List<JourBean> jourList = dataSetBeanMapper.datasetToBeans(inData,JourBean.class);

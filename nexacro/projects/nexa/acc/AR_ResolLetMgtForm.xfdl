@@ -836,7 +836,7 @@ this.resolMngmt_searchResolBtn_onclick = function(obj:Button,  e:nexacro.ClickEv
 // 결의서 추가 버튼
 this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	alert("결의서 추가~");
+
 	application.open("resolRegPopupForm"
 						,"acc::AR_ResolRegistPopupForm.xfdl"
 						,this.parent

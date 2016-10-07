@@ -66,7 +66,6 @@ public class PckController {
     public void batchPckProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
 
-        System.out.println(inData.saveXml());
         List<PckBean> pckList = dataSetBeanMapper.datasetToBeans(inData, PckBean.class);
         List<InspBean> pckInspList = dataSetBeanMapper.datasetToBeans(inData, InspBean.class);
         

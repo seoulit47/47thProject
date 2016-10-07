@@ -19,6 +19,7 @@ this.gfnBind = function() {
 	for (var i = 0; i < this.dsBindCode.rowcount; i++) {
 		outData += " " + this.dsBindCode.getColumn(i,"dsName") + "=" + this.dsBindCode.getColumn(i,"dsName");
     }
+    //alert(outData);
     
 	this.transaction(
 		"codeBind",

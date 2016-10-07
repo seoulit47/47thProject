@@ -748,6 +748,31 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div01.resolNoEd" propid="value" datasetid="dsResolLet" columnid="resolNo"/>
+      <BindItem id="item1" compid="Div01.resolDivCombo" propid="value" datasetid="dsResolLet" columnid="resolDiv"/>
+      <BindItem id="item2" compid="Div01.demdDeptCdEd" propid="value" datasetid="dsResolLet" columnid="demdDeptCd"/>
+      <BindItem id="item3" compid="Div01.demdDeptNameEd" propid="value" datasetid="dsResolLet" columnid="demdDeptCd"/>
+      <BindItem id="item4" compid="Div01.resolerCdEd" propid="value" datasetid="dsResolLet" columnid="resoler"/>
+      <BindItem id="item5" compid="Div01.resolerNameEd" propid="value" datasetid="dsResolLet" columnid="resolerNm"/>
+      <BindItem id="item6" compid="Div01.resolDateCal" propid="value" datasetid="dsResolLet" columnid="resolDate"/>
+      <BindItem id="item7" compid="Div01.resolAmtMaskEdt" propid="value" datasetid="dsResolLet" columnid="resolAmt"/>
+      <BindItem id="item8" compid="Div01.acntCdEd" propid="value" datasetid="dsResolLet" columnid="acntCd"/>
+      <BindItem id="item9" compid="Div01.acntNameEd" propid="value" datasetid="dsResolLet" columnid="acntCdNm"/>
+      <BindItem id="item10" compid="Div01.assiSubNameEd" propid="value" datasetid="dsResolLet" columnid="assiSubCd"/>
+      <BindItem id="item11" compid="Div01.resolDeptExtsnEd" propid="value" datasetid="dsResolLet" columnid="resolDeptExtsn"/>
+      <BindItem id="item12" compid="Div01.custCdEd" propid="value" datasetid="dsResolLet" columnid="custCd"/>
+      <BindItem id="item13" compid="Div01.custNameEd" propid="value" datasetid="dsResolLet" columnid=""/>
+      <BindItem id="item14" compid="Div01.operNoEd" propid="value" datasetid="dsResolLet" columnid="operNo"/>
+      <BindItem id="item15" compid="Div01.ctrtNoEd" propid="value" datasetid="dsResolLet" columnid="ctrtNo"/>
+      <BindItem id="item16" compid="Div01.resolDeptCdEd" propid="value" datasetid="dsResolLet" columnid="resolDeptCd"/>
+      <BindItem id="item17" compid="Div01.resolDeptNameEd" propid="value" datasetid="dsResolLet" columnid="resolDeptCd"/>
+      <BindItem id="item18" compid="Div01.sakNoEd" propid="value" datasetid="dsResolLet" columnid="progStatDiv"/>
+      <BindItem id="item19" compid="Div01.receiptNoEd" propid="value" datasetid="dsResolLet" columnid="receiptNo"/>
+      <BindItem id="item20" compid="Div01.progStatDivEd" propid="value" datasetid="dsResolLet" columnid="sakNo"/>
+      <BindItem id="item21" compid="Div01.brCauArea" propid="value" datasetid="dsResolLet" columnid="brCau"/>
+      <BindItem id="item22" compid="Div01.absArea" propid="value" datasetid="dsResolLet" columnid="abs"/>
+    </Bind>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
 
 this.resolNo = ""; 	//자바단에서 보내주는 결의서 번호 담을 변수
@@ -765,15 +790,17 @@ this.AR_ResolRegistPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo
 		this.gfnService("findAccPridList",false);					//회계기수데이터셋
 	
 		resolDiv = '1';
-		this.Div01.demdDeptCdEd.set_value(this.dsHmEmp.getColumn(0,"deptCd"));
-		this.Div01.demdDeptNameEd.set_value(this.dsHmEmp.getColumn(0,"deptNm"));	
-		this.Div01.resolDeptCdEd.set_value(this.dsHmEmp.getColumn(0,"deptCd"));	
-		this.Div01.resolDeptNameEd.set_value(this.dsHmEmp.getColumn(0,"deptCd"));
-		this.Div01.resolerCdEd.set_value(this.dsHmEmp.getColumn(0,"empNo"));
-		this.Div01.resolerNameEd.set_value(this.dsHmEmp.getColumn(0,"empNm"));	
+		alert(application.gdsEmp.getColumn(0,"deptCd"));
+		this.Div01.demdDeptCdEd.set_value(application.gdsEmp.getColumn(0,"deptCd"));
+		this.Div01.demdDeptNameEd.set_value(application.gdsEmp.getColumn(0,"deptNm"));	
+		this.Div01.resolDeptCdEd.set_value(application.gdsEmp.getColumn(0,"deptCd"));	
+		this.Div01.resolDeptNameEd.set_value(application.gdsEmp.getColumn(0,"deptCd"));
+		this.Div01.resolerCdEd.set_value(application.gdsEmp.getColumn(0,"empNo"));
+		this.Div01.resolerNameEd.set_value(application.gdsEmp.getColumn(0,"empNm"));
+		
 		//alert("등록 날짜"+this.gfnDate('yyyymmdd'));
 		this.Div01.resolDateCal.set_value(this.gfnDate('yyyymmdd'));
-		this.Div01.resolDeptExtsnEd.set_value(this.dsHmEmp.getColumn(0,"extsn"));
+		this.Div01.resolDeptExtsnEd.set_value(application.gdsEmp.getColumn(0,"extsn"));
 		this.Div01.resolDivCombo.set_text(this.dsResolDiv.getColumn(0,"value"));
 		this.Div01.resolDivCombo.set_value(this.dsResolDiv.getColumn(0,"code"));
 		this.Div01.pirintDivCombo.set_value('0');
@@ -1026,24 +1053,26 @@ this.searchCustCdBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 // 결의서 등록 버튼클릭 이벤트
 this.regBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	if(this.resolAmtMaskEdt.value==null){	
+	if(this.Div01.resolAmtMaskEdt.value==null){	
 		alert("결의서의 결의금액은 필수 입력사항 입니다.");
-	}else if(this.absArea.value==null){
+	}else if(this.Div01.absArea.value==null){
 		alert("결의서의 적요항목은 필수 입력사항 입니다.");
 	}else if(this.dsJour.rowcount==0){
 		alert("결의금액에 따른 분개를 등록하여 주시기 바랍니다.");
-	}else if(this.JourGrid.getCellValue(-2,1)!=this.JourGrid.getCellValue(-2,2)){
+	}else if(this.Div01.JourGrid.getCellValue(0,8)!=this.Div01.JourGrid.getCellValue(1,9)){
+	alert(this.Div01.JourGrid.getCellValue(0,8)+"////"+this.Div01.JourGrid.getCellValue(1,9))
 		alert("분개장의 차변금액과 대변금액은 동일해야 합니다.");
 	}else{			
 		//결의서 데이터셋 셋팅↓	
-		this.dsResolLet.setColumn(0,"accPrid",this.accPridCombo.displaynulltext);		//회계기수 셋팅
+		this.dsResolLet.setColumn(0,"accPrid",this.Div01.accPridCombo.displaynulltext);		//회계기수 셋팅
 		this.dsResolLet.setColumn(0,"progStatDiv","16");					//진행상태(결의등록중으로 셋팅)
 		this.dsResolLet.setColumn(0,"danDiv","사삼병원");				//단구분 셋팅
-		this.dsResolLet.setColumn(0,"autoJourYb",this.autoJourCheck.value);	//자동분개 여부 셋팅
+		this.dsResolLet.setColumn(0,"autoJourYb",this.Div01.autoJourCheck.value);	//자동분개 여부 셋팅
 		this.dsResolLet.setColumn(0,"closYb","N");						//결산여부 셋팅 		
 		if(this.dsTaxInv.findRow("purchSalesDiv","1")){	//세금계산서 일시			
 			this.dsResolLet.setColumn(0,"surtaxYb","Y");	//세금계산서 여부 셋팅			
-		}		
+		}
+				
 		//결의서 등록 메서드↓
 		this.gfnService("registerResolLet");	
 		this.close();
@@ -1106,7 +1135,7 @@ this.JourGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 	
 	resolDiv=this.Div01.resolDivCombo.value;
 	var creDebDiv=this.dsJour.getColumn(e.row,"creDebDiv");
-	alert(e.cell+"//"+creDebDiv);
+	//alert(e.cell+"//"+creDebDiv);
 	//행추가 된 row 일 때 실행	ex) 0-존재하지않는행 1-초기행 2-추가된행 3-수정된행 8-삭제된 행
 	if(this.dsJour.getRowType(e.row)==2){					
 		//계정코드 조회버튼 클릭시 실행 
@@ -1244,12 +1273,15 @@ this.gridAddRow_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 			}else{
 				var row=this.dsPayRec.addRow();
 				this.dsPayRec.setColumn(row,"resolNo",this.Div01.resolNoEd.value);		//결의번호
-				this.dsPayRec.setColumn(row,"seq",this.Div01.dsPayRec.getRowCount());	//순번 부여
+				this.dsPayRec.setColumn(row,"seq",this.dsPayRec.getRowCount());	//순번 부여
 				this.dsPayRec.setColumn(row,"price",this.Div01.resolAmtMaskEdt.value);	//금액
 				this.dsPayRec.setColumn(row,"custCd",this.Div01.custCdEd.value);		//거래처코드
 				this.dsPayRec.setColumn(row,"operNo",this.Div01.operNoEd.value);		//사업자번호
-				this.dsPayRec.setColumn(row,"addr",this.Div01.addrEd.value);			//주소
+				alert(666);
+				this.dsPayRec.setColumn(row,"addr",this.Div00.addrEd.value);			//주소
+								alert(555);
 				this.dsPayRec.setColumn(row,"exePurp",this.Div01.absArea.value);		//집행목적
+				alert(777);
 				this.dsPayRec.setColumn(row,"users",application.gdsEmp.getColumn(0,"empNm"));//사용자
 			}			
 		}else{

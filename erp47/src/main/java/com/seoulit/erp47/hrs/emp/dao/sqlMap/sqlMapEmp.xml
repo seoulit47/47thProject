@@ -85,6 +85,8 @@
 		e.pms ,
 		<!-- 부서명 -->
 		e.dept_nm ,
+		e.dept_cd ,
+		e.extsn ,
 		<!-- 직급 -->
 		e.jobrk
 		from hm_emp e

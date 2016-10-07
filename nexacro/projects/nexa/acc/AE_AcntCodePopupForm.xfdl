@@ -108,8 +108,10 @@ this.AE_AcntCodePopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
+	
 	var accYear = this.opener.yearSpin.value;
 	var acntDiv = this.acntDivCombo.value;
+	
 	
 	if(this.parent.gubun == 'acntCD'){		//gubun 은 open 할때 주는 인자 값
 		var acntNm=this.acntNmEd.value;

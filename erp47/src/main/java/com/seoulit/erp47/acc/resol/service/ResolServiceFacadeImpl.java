@@ -63,6 +63,7 @@ public class ResolServiceFacadeImpl implements ResolServiceFacade{
     @Override
     public void registResolLet(HashMap<String, Object> dataSetMap) {
         ResolLetBean resolLetBean = (ResolLetBean)dataSetMap.get("resolLetBean");
+        System.out.println(resolLetBean.getResolNo()+"후회회호히회횧");
         resolApplicationService.registResolLet(resolLetBean);
         List<JourBean> jourBeanList = (List<JourBean>)dataSetMap.get("jourList");
         jourApplicationService.registJour(jourBeanList);

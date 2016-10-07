@@ -8,19 +8,19 @@
 
 
 	<select resultType="AutoJourRuleBean" useCache="true"
-		flushCache="false" id="selectAutoJourRuleList">
+		flushCache="false" id="selectAutoJourRuleList" parameterType="AutoJourRuleBean">
 		SELECT ACC_YEAR, BUSI_DIV_CD, JOUR_DIV_NM, CRE_DEB_DIV, ACNT_CD,
 		ASSI_SUB_CD, NOTE, JOUR_CD, PARENT_JOUR_CD, ACNT_CD_NM,
 		ASSI_SUB_CD_NM, BIMOK_CD 
 		FROM AR_AUTO_JOUR_RULE 
-		WHERE ACC_YEAR =#{accYear}
+		WHERE ACC_YEAR =#{accYear} 
 		<if test="parentJourCd != null"> AND PARENT_JOUR_CD IS NOT null </if>
 
 		<if test="parentJourCd == null"> AND PARENT_JOUR_CD IS null </if>
 
 		<if test="busiDivCd != null"> AND BUSI_DIV_CD = #{busiDivCd} </if>
 
-		<if test="jourDivNm != null"> AND JOUR_DIV_NM LIKE #{jourDivNm} || '%' </if>
+		<if test="jourDivNm != null"> AND JOUR_DIV_NM LIKE '%' || #{jourDivNm} || '%' </if> 
 
 	</select>
 

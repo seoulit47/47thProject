@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AutoJourRoleForm" classname="AE_AutoJourRoleForm" left="0" top="0" width="1250" height="768" titletext="분개규칙 관리" onload="AE_AutoJourRoleForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" left="0.16%" top="0" right="0.64%" height="60" style="background:transparent URL('img::titleBar5.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="분개규칙 관리" onclick="Div04_Static00_onclick" left="4.11%" top="13" right="68.06%" height="35" style="font:bold 20 나눔스퀘어 Bold;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="yearDiv" taborder="1" text="회계년도" left="2.48%" top="65" right="89.52%" height="32" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Spin id="yearSpin" taborder="2" value="2016" onspin="yearSpin_onspin" left="11.28%" top="65" right="79.28%" height="32" style="margin:1 0 2 0;" class="AreaSpin"/>
+        <Div id="yearDiv00" taborder="3" text="업무구분" left="24.24%" top="65" right="67.76%" height="32" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Div id="yearDiv01" taborder="4" text="분개명" left="46.64%" top="65" right="45.36%" height="32" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Combo id="busiDivCdCombo" taborder="5" innerdataset="@dsBusiDiv" codecolumn="code" datacolumn="value" left="32.88%" top="68" right="57.28%" height="26" class="AreaCombo"/>
+        <Edit id="jourDivNmEd" taborder="6" left="55.36%" top="68" right="23.36%" height="26" class="AreaEdt"/>
+        <Button id="searchBtn" taborder="7" onclick="searchBtn_onclick" left="78.16%" top="65" right="14.64%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="childAutoJourRuleGrid" taborder="8" binddataset="dsChildAutoJourRule" useinputpanel="false" autofittype="col" oncellclick="autoJourRuleGrid_oncellclick" left="2.4%" top="136" right="0.24%" height="270" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="90"/>
+                <Column size="70"/>
+                <Column size="89"/>
+                <Column size="120"/>
+                <Column size="90"/>
+                <Column size="40"/>
+                <Column size="200"/>
+                <Column size="90"/>
+                <Column size="40"/>
+                <Column size="200"/>
+                <Column size="122"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="회계년도"/>
+                <Cell col="1" style="background:transparent;color:black;font:10 arial;" text="업무구분"/>
+                <Cell col="2" style="background:transparent;color:red;font:10 arial;" text="차대구분"/>
+                <Cell col="3" style="background:transparent;color:red;font:10 arial;" text="상위분개코드"/>
+                <Cell col="4" text="분개구분 명"/>
+                <Cell col="5" colspan="2" style="background:transparent;color:red;font:10 arial;" text="계정과목 코드"/>
+                <Cell col="7" text="계정과목 명"/>
+                <Cell col="8" colspan="2" text="보조과목 코드"/>
+                <Cell col="10" text="보조과목명"/>
+                <Cell col="11" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="none" text="bind:accYear"/>
+                <Cell col="1" displaytype="combo" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;combo&quot;" text="bind:busiDivCd" combodataset="dsBusiDiv" combocodecol="code" combodatacol="value"/>
+                <Cell col="2" displaytype="combo" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;combo&quot;" text="bind:creDebDiv" combodataset="dsCreDebDiv" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" text="bind:parentJourCd"/>
+                <Cell col="4" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;normal&quot;" text="bind:jourDivNm"/>
+                <Cell col="5" text="bind:acntCd"/>
+                <Cell col="6" displaytype="button" edittype="button" style="controlbackground:URL('img::팝업.png') stretch;controlbackgroundimagemode:single;" text="+" tooltiptype="bottom"/>
+                <Cell col="7" text="bind:acntCdNm"/>
+                <Cell col="8" text="bind:assiSubCd"/>
+                <Cell col="9" displaytype="button" edittype="button" style="controlbackground:URL('img::팝업.png') stretch;controlbackgroundimagemode:single;" text="+" tooltiptype="bottom"/>
+                <Cell col="10" text="bind:assiSubCdNm"/>
+                <Cell col="11" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;normal&quot;" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="stc_year" taborder="9" text="하위분개규칙" onclick="subCodeStc_onclick" left="2.4%" top="108" right="89.28%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="stc_year00" taborder="10" text="상위분개규칙" onclick="subCodeStc_onclick" left="2.4%" top="436" right="89.28%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Button id="childAddRowBtn" taborder="12" onclick="addRowBtn_onclick" left="76%" top="406" right="16.8%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="childRemoveRowBtn" taborder="13" onclick="removeRowBtn_onclick" left="83.68%" top="406" right="9.2%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="regChildBtn" taborder="14" onclick="regBtn_onclick" left="91.36%" top="406" right="1.44%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addRowBtn" taborder="15" onclick="addRowBtn_onclick" left="76%" top="734" right="16.8%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="removeRowBtn" taborder="16" onclick="removeRowBtn_onclick" left="83.68%" top="734" right="9.2%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="regBtn" taborder="17" onclick="regBtn_onclick" left="91.36%" top="734" right="1.44%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="parentautoJourRuleGrid" taborder="18" binddataset="dsParentAutoJourRule" useinputpanel="false" autofittype="col" oncellclick="autoJourRuleGrid_oncellclick" left="2.4%" top="464" right="0.24%" height="269" class="AreaGrid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="30"/>
+                <Column size="200"/>
+                <Column size="80"/>
+                <Column size="30"/>
+                <Column size="200"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="회계년도"/>
+                <Cell col="1" style="background:transparent;color:red;font:10 arial;" text="업무구분"/>
+                <Cell col="2" style="background:transparent;color:red;font:10 arial;" text="차대구분"/>
+                <Cell col="3" text="분개코드"/>
+                <Cell col="4" text="분개구분 명"/>
+                <Cell col="5" colspan="2" style="background:transparent;color:red;font:10 arial;" text="계정과목코드"/>
+                <Cell col="7" text="계정과목 명"/>
+                <Cell col="8" colspan="2" text="보조과목 코드"/>
+                <Cell col="10" text="보조과목 명"/>
+                <Cell col="11" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:accYear"/>
+                <Cell col="1" displaytype="combo" edittype="combo" text="bind:busiDivCd" combodataset="dsBusiDiv" combocodecol="code" combodatacol="value"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:creDebDiv" combodataset="dsCreDebDiv" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" edittype="none" text="bind:jourCd"/>
+                <Cell col="4" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;normal&quot;" text="bind:jourDivNm"/>
+                <Cell col="5" text="bind:acntCd"/>
+                <Cell col="6" displaytype="button" edittype="button" style="controlbackground:URL('img::팝업.png') stretch;controlbackgroundimagemode:single;" text="+" tooltiptype="bottom"/>
+                <Cell col="7" text="bind:acntCdNm"/>
+                <Cell col="8" text="bind:assiSubCd"/>
+                <Cell col="9" displaytype="button" edittype="button" style="controlbackground:URL('img::팝업.png') stretch;controlbackgroundimagemode:single;" text="+" tooltiptype="bottom"/>
+                <Cell col="10" text="bind:assiSubCdNm"/>
+                <Cell col="11" edittype="expr:getRowType(currow)==1?&quot;none&quot;:&quot;normal&quot;" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findChildAutoJourRuleList</Col>
+            <Col id="URL">erp47::/acc/resol/findAutoJourRuleList.do</Col>
+            <Col id="inData"></Col>
+            <Col id="outData">dsChildAutoJourRule=dsAutoJourRule</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findParentAutoJourRuleList</Col>
+            <Col id="URL">erp47::/acc/resol/findAutoJourRuleList.do</Col>
+            <Col id="inData"></Col>
+            <Col id="outData">dsParentAutoJourRule=dsAutoJourRule</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerParentAutoJourRule</Col>
+            <Col id="URL">erp47::/acc/resol/registerAutoJourRule.do</Col>
+            <Col id="outData"/>
+            <Col id="inData">dsAutoJourRule=dsParentAutoJourRule:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerChildAutoJourRuleList</Col>
+            <Col id="URL">erp47::/acc/resol/registerAutoJourRule.do</Col>
+            <Col id="inData">dsAutoJourRule=dsChildAutoJourRule:u</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA052</Col>
+            <Col id="dsName">dsBusiDiv</Col>
+          </Row>
+          <Row>
+            <Col id="dsName">dsCreDebDiv</Col>
+            <Col id="code">GA049</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBusiDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCreDebDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChildAutoJourRule" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="busiDivCd" type="STRING" size="256"/>
+          <Column id="jourDivNm" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="jourCd" type="STRING" size="256"/>
+          <Column id="parentJourCd" type="STRING" size="256"/>
+          <Column id="acntCdNm" type="STRING" size="256"/>
+          <Column id="assiSubCdNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsParentAutoJourRule" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="busiDivCd" type="STRING" size="256"/>
+          <Column id="jourDivNm" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="jourCd" type="STRING" size="256"/>
+          <Column id="parentJourCd" type="STRING" size="256"/>
+          <Column id="acntCdNm" type="STRING" size="256"/>
+          <Column id="assiSubCdNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearchAutoJourRule" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="busiDivCd" type="STRING" size="256"/>
+          <Column id="jourDivNm" type="STRING" size="256"/>
+          <Column id="creDebDiv" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiSubCd" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="jourCd" type="STRING" size="256"/>
+          <Column id="parentJourCd" type="STRING" size="256"/>
+          <Column id="acntCdNm" type="STRING" size="256"/>
+          <Column id="assiSubCdNm" type="STRING" size="256"/>
+          <Column id="bimokCd" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+var newRow;
+var busiDivCd;
+var jourDivNm;
+var assiTypeCd;
+var arr=[];
+var gridRow;
+
+//***********
+//화면onload
+//***********
+this.AE_AutoJourRoleForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	
+	this.gfnBind();
+	accYear = this.yearSpin.value;
+	
+	var argument = "accYear="+accYear+" parentJourCd=Y";
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findChildAutoJourRuleList",false);	
+	
+	argument = "accYear="+accYear+" parentJourCd="+null;
+	this.dsService.setColumn(1,"argument",argument);
+	this.gfnService("findParentAutoJourRuleList");
+}
+
+
+//**********
+//분개 조회
+//**********
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	accYear = this.yearSpin.value;
+	busiDivCd = this.busiDivCdCombo.value;
+	jourDivNm = this.jourDivNmEd.value;
+	
+	//this.dsSearchAutoJourRule.setColumn(0,"accYear",accYear);
+	//this.dsSearchAutoJourRule.setColumn(0,"busiDivCd",busiDivCd);
+	//this.dsSearchAutoJourRule.setColumn(0,"jourDivNm",jourDivNm);
+	
+	var argument = "accYear="+accYear+" busiDivCd="+busiDivCd+" jourDivNm="+jourDivNm;
+	
+	this.dsService.setColumn(0,"argument",argument);
+	this.gfnService("findChildAutoJourRuleList",false);
+	
+	this.dsSearchAutoJourRule.setColumn(0,"parentJourCd",null);
+	
+	this.gfnService("findParentAutoJourRuleList");
+}
+
+
+//***************
+//그리드 행추가
+//***************
+this.addRowBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(obj.name == "childAddRowBtn"){
+		newRow = this.dsChildAutoJourRule.addRow();
+		this.dsChildAutoJourRule.setColumn(newRow, "accYear", accYear);
+	}else if(obj.name == "addRowBtn"){
+		newRow = this.dsParentAutoJourRule.addRow();
+		this.dsParentAutoJourRule.setColumn(newRow, "accYear", accYear);
+	}
+}
+
+//***************
+//그리드 행삭제
+//***************
+this.removeRowBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(obj.name == "childRemoveRowBtn"){
+		var row = this.childAutoJourRuleGrid.currentrow;
+		if(this.dsChildAutoJourRule.getRowType(row) == 2){
+			this.dsChildAutoJourRule.deleteRow(row);
+		}else{
+			alert("이미 등록된 분개규칙은 삭제불가능합니다.");
+		}
+	}else if(obj.name == "parentRemoveRowBtn"){
+		var row = this.parentautoJourRuleGrid.currentrow;
+		if(this.dsParentAutoJourRule.getRowType(row) == 2){
+			this.dsParentAutoJourRule.deleteRow(row);
+		}else{
+			alert("이미 등록된 분개규칙은 삭제불가능합니다.");
+		}
+	}
+}
+
+//***************
+//그리드 event
+//***************
+this.autoJourRuleGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	gridRow=e.row;
+	
+	if(obj.name=="childAutoJourRuleGrid"){		
+		if(this.dsChildAutoJourRule.getRowType(e.row)==2){
+			if(e.cell==3){
+				if(this.dsChildAutoJourRule.getColumn(e.row,"busiDivCd")==null){
+						alert("업무구분 선택후 조회 가능합니다.");
+				}else{
+					var parentJourCd=application.open("acntCdPopupForm"
+												,"acc::AEparentJourCodePopupForm.xfdl"
+												,""	
+												,{accYear:this.dsChildAutoJourRule.getColumn(e.row,"accYear"),
+												  busiDivCd:this.dsChildAutoJourRule.getColumn(e.row,"busiDivCd")}
+												,"showtitlebar=true showstatusbar=false"
+												,0 
+												,450);
+					this.dsChildAutoJourRule.setColumn(e.row,"parentJourCd",parentJourCd);
+				}								
+			}
+			if(e.cell==6){			
+				if(this.dsChildAutoJourRule.getColumn(e.row,"busiDivCd")==null){
+					alert("업무구분 선택후 조회 가능합니다.");
+				}else{//업무가 결의 일시					
+					if(this.dsChildAutoJourRule.getColumn(e.row,"creDebDiv")==null){
+						alert("차대구분 선택후 조회 가능합니다.");
+					}else if(this.dsChildAutoJourRule.getColumn(e.row,"creDebDiv")=='2'){
+						var arr=application.open("acntCdPopupForm"
+												,"acc::AEacntCodePopupForm.xfdl"
+												,""	
+												,{gubun:"autoJourHelp"}
+												,"showtitlebar=true showstatusbar=false"
+												,100 
+												,100);
+						this.dsChildAutoJourRule.setColumn(e.row,"acntCd",arr[0]);
+						this.dsChildAutoJourRule.setColumn(e.row,"acntCdNm",arr[1]);
+						assiTypeCd = arr[2];
+						if(assiTypeCd!=null){
+							var arr=application.open("assiSubCdPopupForm"
+												,"acc::AEaccAssiSubPopupForm.xfdl"
+												,""	
+												,{acntCd:this.dsChildAutoJourRule.getColumn(e.row,"acntCd")}
+												,"showtitlebar=true showstatusbar=false"
+												,100 
+												,100);
+						this.dsChildAutoJourRule.setColumn(e.row,"assiSubCd",arr[0]);
+						this.dsChildAutoJourRule.setColumn(e.row,"assiSubCdNm",arr[1]);				
+						}
+						
+					}else if(this.dsChildAutoJourRule.getColumn(e.row,"creDebDiv")=='1'){
+						var arr=application.open("debAcntCodePopupForm"
+												,"acc::AEdebAcntCodePopupForm.xfdl"
+												,""	
+												,{deptCd:this.dsEmp.getColumn(0,"deptCd")}
+												,"showtitlebar=true showstatusbar=false"
+												,100 
+												,100);
+						this.dsChildAutoJourRule.setColumn(e.row,"bimokCd",arr[0]);											
+						this.dsChildAutoJourRule.setColumn(e.row,"acntCd",arr[1]);
+						this.dsChildAutoJourRule.setColumn(e.row,"acntCdNm",arr[2]);
+						this.dsChildAutoJourRule.setColumn(e.row,"assiSubCd",arr[3]);
+						this.dsChildAutoJourRule.setColumn(e.row,"assiSubCdNm",arr[4]);						
+					}					
+				}
+			}else if(e.cell==9){
+				if(assiTypeCd==null){
+					alert("해당 계정과목은 보조과목이 등록되어 있지 않습니다.");
+				}else{
+					var arr=application.open("assiSubCdPopupForm"
+												,"acc::AEaccAssiSubPopupForm.xfdl"
+												,""	
+												,{acntCd:this.dsChildAutoJourRule.getColumn(e.row,"acntCd")}
+												,"showtitlebar=true showstatusbar=false"
+												,100 
+												,100);
+						this.dsChildAutoJourRule.setColumn(e.row,"assiSubCd",arr[0]);
+						this.dsChildAutoJourRule.setColumn(e.row,"assiSubCdNm",arr[1]);				
+				}
+
+			}
+		}
+	}else{	//상위분개규칙
+		if(this.dsParentAutoJourRule.getRowType(e.row)==2){			
+			if(e.cell==6){			
+				if(this.dsParentAutoJourRule.getColumn(e.row,"busiDivCd")==null){
+					alert("업무구분 선택후 조회 가능합니다.");
+				}else{
+					if(this.dsParentAutoJourRule.getColumn(e.row,"creDebDiv")==null){
+						alert("차대구분 선택후 조회 가능합니다.");
+					}else if(this.dsParentAutoJourRule.getColumn(e.row,"creDebDiv")=='2'){
+						this.gfnPopup("AE_AcntCodePopupForm","acc",{gubun:"acntCD"},"");
+						
+						
+						this.dsParentAutoJourRule.setColumn(e.row,"acntCd",arr[0]);
+						this.dsParentAutoJourRule.setColumn(e.row,"acntCdNm",arr[1]);
+						assiTypeCd = arr[2];
+						if(assiTypeCd!=null){
+							var arr=application.open("assiSubCdPopupForm"
+												,"acc::AEaccAssiSubPopupForm.xfdl"
+												,""	
+												,{acntCd:this.dsChildAutoJourRule.getColumn(e.row,"acntCd")}
+												,"showtitlebar=true showstatusbar=false"
+												,100 
+												,100);
+						this.dsParentAutoJourRule.setColumn(e.row,"assiSubCd",arr[0]);
+						this.dsParentAutoJourRule.setColumn(e.row,"assiSubCdNm",arr[1]);				
+						}
+					}else if(this.dsParentAutoJourRule.getColumn(e.row,"creDebDiv")=='1'){
+						var arr=application.open("debAcntCodePopupForm"
+												,"acc::AEdebAcntCodePopupForm.xfdl"
+												,""	
+												,{deptCd:this.dsEmp.getColumn(0,"deptCd")}
+												,"showtitlebar=true showstatusbar=false"
+												,100 
+												,100);
+						this.dsParentAutoJourRule.setColumn(e.row,"bimokCd",arr[0]);											
+						this.dsParentAutoJourRule.setColumn(e.row,"acntCd",arr[1]);
+						this.dsParentAutoJourRule.setColumn(e.row,"acntCdNm",arr[2]);
+						this.dsParentAutoJourRule.setColumn(e.row,"assiSubCd",arr[3]);
+						this.dsParentAutoJourRule.setColumn(e.row,"assiSubCdNm",arr[4]);						
+					}									
+				}
+			}else if(e.cell==9){
+				if(assiTypeCd==null){
+					alert("해당 계정과목은 보조과목이 등록되어 있지 않습니다.");
+				}else{
+					var arr=application.open("assiSubCdPopupForm"
+												,"acc::AEaccAssiSubPopupForm.xfdl"
+												,""	
+												,{acntCd:this.dsParentAutoJourRule.getColumn(e.row,"acntCd")}
+												,"showtitlebar=true showstatusbar=false"
+												,100 
+												,100);
+						this.dsParentAutoJourRule.setColumn(e.row,"assiSubCd",arr[0]);
+						this.dsParentAutoJourRule.setColumn(e.row,"assiSubCdNm",arr[1]);				
+				}
+
+			}	
+		}
+	}	
+}
+
+//**********
+//저장 버튼
+//**********
+this.regBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(obj.name=="regChildBtn"){		
+		for(var i=0; i<this.dsChildAutoJourRule.getRowCount();i++){
+			if(this.dsChildAutoJourRule.getRowType(i)==2){
+				var vBusiDivCd=this.dsChildAutoJourRule.getColumn(i,"busiDivCd");
+				var vCreDebDiv=this.dsChildAutoJourRule.getColumn(i,"creDebDiv");
+				var vAcntCd=this.dsChildAutoJourRule.getColumn(i,"acntCd");
+				var vparentJourCd=this.dsChildAutoJourRule.getColumn(i,"parentJourCd");
+				
+				if(vBusiDivCd==null || vCreDebDiv==null || vAcntCd == null || vparentJourCd == null){
+					alert("필수입력 항목을 작성후 등록하여 주시기 바랍니다.");
+				}else{	
+					var argument ='parentDiv=N';	
+					this.dsService.setColumn(3,"argument",argument);			
+					this.gfnService("registerChildAutoJourRuleList");
+				}		
+			}			
+		}
+	}else{
+		for(var i=0; i<this.dsParentAutoJourRule.getRowCount();i++){
+			if(this.dsParentAutoJourRule.getRowType(i)==2){
+				var vBusiDivCd=this.dsParentAutoJourRule.getColumn(i,"busiDivCd");
+				var vCreDebDiv=this.dsParentAutoJourRule.getColumn(i,"creDebDiv");
+				var vAcntCd=this.dsParentAutoJourRule.getColumn(i,"acntCd");
+				
+				if(vBusiDivCd==null || vCreDebDiv==null || vAcntCd == null){
+					alert("필수입력 항목을 작성후 등록하여 주시기 바랍니다.");
+				}else{
+					var argument ='parentDiv=Y';	
+					this.dsService.setColumn(2,"argument",argument);
+					this.gfnService("registerParentAutoJourRule");
+				}		
+			}			
+		}
+	}
+}
+
+
+// 팝업 셋팅
+this.setCode=function(code, arrRtn)
+{
+	arr=arrRtn;
+	alert(arr[0]);
+	alert(arr[1]);
+	alert(arr[2]);
+}
+
+
+
+]]></Script>
+  </Form>
+</FDL>

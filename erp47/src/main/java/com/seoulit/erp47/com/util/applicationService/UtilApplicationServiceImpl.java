@@ -24,6 +24,7 @@ public class UtilApplicationServiceImpl implements UtilApplicationService {
     public Map<String, List<OutCodeBean>> bindCode(List<BindCodeBean> bindCodeList) {
         Map<String, List<OutCodeBean>> bindCodeMap = new HashMap<String, List<OutCodeBean>>();
         for (BindCodeBean bcbean : bindCodeList) {
+        	
             bindCodeMap.put(bcbean.getDsName(), codeUtilDAO.selectCodeList(bcbean.getCode()));
         }
         return bindCodeMap;
