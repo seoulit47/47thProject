@@ -9,8 +9,8 @@ import com.seoulit.erp47.won.hosptlzPat.to.DscgPatBean;
  * DscgPatDAO
  *
  * @Description   퇴원환자조회 및 퇴원일 수정
- * @Author          황태경
- * Created on         2016. 6. 15.
+ * @Author         박 영 희
+ * Created on      2016. 10. 08.
  */
 
 public interface DscgPatDAO {

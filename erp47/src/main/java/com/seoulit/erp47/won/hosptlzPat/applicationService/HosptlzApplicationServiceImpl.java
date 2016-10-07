@@ -26,9 +26,6 @@ public class HosptlzApplicationServiceImpl implements HosptlzApplicationService 
 	private HosptlzRsvtDAO hosptlzRsvtDAO;  
 
 
-	
-
-	
 	@Override
 	public List<ReceiptInfoBean> findHosptlzYB(Map<String, String> argsMap) {
 		return hosptlzReceiptDAO.selectHosptlzYB(argsMap);

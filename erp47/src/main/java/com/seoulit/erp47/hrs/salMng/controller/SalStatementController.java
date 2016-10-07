@@ -26,7 +26,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
  * @Package  com.seoulit.erp47.hrs.salMng.controller
  * @Class    SalStatementController.java
  * @Create   2016. 9. 29.
- * @Author   YUN
+ * @Author   박 영 희
  * @Description
  *
  * @LastUpdated 

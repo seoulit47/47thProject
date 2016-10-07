@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WH_DscgPatSearchForm" classname="WH_DscgPatSearchForm" left="0" top="0" width="1256" height="759" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="0%" top="0" right="0.48%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="0" text="퇴원 환자 관리" left="4.4%" top="-3" right="56.32%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc02" taborder="1" text="환자등록번호" onclick="subCodeStc_onclick" left="1.91%" top="65" right="88.85%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="patNoEd" taborder="2" left="11.62%" top="65" right="77.31%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Button id="patNoBtn" taborder="3" onclick="patNoBtn_onclick" cssclass="AddBtn" left="23.17%" top="65" right="74.36%" height="26" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn"/>
+        <Static id="subCodeStc00" taborder="4" text="조회기간" onclick="subCodeStc_onclick" left="29.14%" top="65" right="63.85%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="startDateCal" taborder="5" left="36.54%" top="66" right="53.58%" height="25"/>
+        <Static id="Static00" taborder="6" text="~" left="47.13%" top="68" right="50.96%" height="22" style="align:center middle;font:bold 9 arial;"/>
+        <Calendar id="endDateCal" taborder="7" left="49.52%" top="66" right="40.29%" height="25"/>
+        <Button id="searchBtn" taborder="8" onclick="searchBtn_onclick" cssclass="SearchBtn" left="83.36%" top="66" right="10.19%" height="31" class="SearchBtn" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;"/>
+        <Button id="modBtn" taborder="9" onclick="modBtn_onclick" left="90.92%" top="66" right="2.63%" height="31" style="background:@gradation URL('img::reviseBtn.png') stretch;border:1 none #999999ff ;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
+        <Grid id="dscgPatGrid" taborder="10" binddataset="dsDscgPat" useinputpanel="false" autofittype="col" left="1.67%" top="105" right="2.15%" height="619">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="32"/>
+                <Column size="138"/>
+                <Column size="93"/>
+                <Column size="145"/>
+                <Column size="145"/>
+                <Column size="102"/>
+                <Column size="51"/>
+              </Columns>
+              <Rows>
+                <Row size="26" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="환자등록번호"/>
+                <Cell col="2" text="성 명"/>
+                <Cell col="3" text="입원일자"/>
+                <Cell col="4" text="퇴원일자"/>
+                <Cell col="5" text="진료과"/>
+                <Cell col="6" text="병실"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="none" expr="currow+1"/>
+                <Cell col="1" displaytype="normal" edittype="none" text="bind:patNo"/>
+                <Cell col="2" displaytype="normal" edittype="none" text="bind:patNm"/>
+                <Cell col="3" displaytype="date" edittype="none" text="bind:hosptlzDate"/>
+                <Cell col="4" displaytype="date" edittype="date" text="bind:dscgDate"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="bind:trmtDept"/>
+                <Cell col="6" displaytype="normal" edittype="none" text="bind:hroom"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsDscgPat" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="hosptlzDate" type="STRING" size="256"/>
+          <Column id="dscgDate" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="dscgGubun" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findDscgPatList</Col>
+            <Col id="URL">erp47::won/hosptlzPat/findDscgPatList.do</Col>
+            <Col id="outData">dsDscgPat=dsDscgPat</Col>
+            <Col id="callbackFunc">findDscgPatList</Col>
+          </Row>
+          <Row>
+            <Col id="URL">erp47::won/hosptlzPat/modDscgDay.do</Col>
+            <Col id="inData">dsDscgPat=dsDscgPat:u</Col>
+            <Col id="serviceID">modDscgDay</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 퇴원 환자 관리                                                          	*
+*                                                                               *
+* @Path		    WH_DscgPatSearchForm                        	                *
+* @Description 	퇴원 환자 조회                	   	                        *
+* @Author	    박 영 희					                               		*
+* 									                                            *
+* Created on 2016. 10. 07.                             		                    *
+*									                                            *
+********************************************************************************/
+
+
+
+/***************************************************************************************************
+*                                         import                                                   *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include "scripts::wonPopup.xjs";	
+
+
+
+
+/***************************************************************************************************
+*                                  환자 조회 button click event                                   *
+***************************************************************************************************/
+this.patNoBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnPopup("WS_PatPopupForm","won","");
+}
+
+
+
+/***************************************************************************************************
+*                                  조회 환자 세팅 function                                       *
+***************************************************************************************************/
+this.setPatInfo = function(arr){
+	this.patNoEd.set_value(arr[0]);
+}
+
+
+
+/***************************************************************************************************
+*                                      callback function                                           *
+***************************************************************************************************/
+this.findDscgPatList = function(svcID, errorCode, errorMsg)
+{
+	if(errorCode > "0") {
+		if(this.dsDscgPat.rowcount==0){
+			alert("조회한 데이터가 없습니다.");
+	    }
+	}else{
+		alert("조회실패");
+	}	
+}
+
+
+/***************************************************************************************************
+*                                   조회 button click event                                       *
+***************************************************************************************************/
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var patNo = this.patNoEd.value;            //환자등록번호
+	var startDay=this.startDateCal.value;    // 조회시작일
+	var endDay =this.endDateCal.value;     // 조회 마지막일
+	
+	
+	this.dsService.setColumn(0,"argument","patNo="+patNo+" startDay="+startDay+" endDay="+endDay );
+	this.gfnService("findDscgPatList", "false"); 
+}
+
+
+
+/***************************************************************************************************
+*                                   수정 button click event                                       *
+***************************************************************************************************/
+this.modBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("modDscgDay", "false"); 
+}
+]]></Script>
+  </Form>
+</FDL>
