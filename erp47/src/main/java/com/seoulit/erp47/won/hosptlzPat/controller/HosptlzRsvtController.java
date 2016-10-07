@@ -39,6 +39,7 @@ public class HosptlzRsvtController {
 	private Map<String, String> argsMap;
 	private PlatformData inData;
 	private PlatformData outData;
+	
 	// 입원예약자 등록
 	@RequestMapping("won/hosptlzPat/registerHosptlzRsvt.do")
 	public void registerHosptlzRsvt(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -46,7 +47,6 @@ public class HosptlzRsvtController {
 
 		List<HosptlzRsvtBean> hosptlzRsvt = dataSetBeanMapper.datasetToBeans(inData, HosptlzRsvtBean.class);
 		hosptlzServiceFacade.registerHosptlzRsvt(hosptlzRsvt);
-		System.out.println("===== 병실 =:  "+hosptlzRsvt.get(0).getHopeWard());
 	}
 
 	// 입원예약자 번호 생성
@@ -67,7 +67,6 @@ public class HosptlzRsvtController {
 		
 		argsMap = dataSetBeanMapper.variablesToMap(inData);
 		List<HosptlzRsvtBean> hosptlzRsvt = hosptlzServiceFacade.findHosptlzRsvt(argsMap);
-		System.out.println("입원예약조회 여기타나요 ? 몇개입니까 예약내역이  : "+hosptlzRsvt.size());
 		dataSetBeanMapper.beansToDataset(outData, hosptlzRsvt, HosptlzRsvtBean.class);
 	}
 

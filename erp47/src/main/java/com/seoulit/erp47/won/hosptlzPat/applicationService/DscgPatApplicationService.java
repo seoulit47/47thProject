@@ -10,7 +10,7 @@ import com.seoulit.erp47.won.hosptlzPat.to.DscgPatBean;
  *
   * @Description   퇴원환자조회 및 퇴원일 수정
  * @Author           박 영 희
- * Created on         2016. 10. 13.
+ * Created on         2016. 10. 08.
  */
 
 
