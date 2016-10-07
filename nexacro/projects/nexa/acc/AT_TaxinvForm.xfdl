@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AT_TaxinvForm" classname="AT_TaxinvForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="AT_TaxinvForm" classname="AT_TaxinvForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AT_TaxinvForm_onload">
     <Layouts>
       <Layout>
         <Div id="titleBarDiv" taborder="0" text="       세금계산서 등록" left="0%" top="4" right="2.08%" height="60" style="align:left middle;background:transparent URL('img::titleBar6.jpg');font:bold 15 Dotum;" cssclass="TStc"/>
@@ -125,6 +125,12 @@
     <Bind>
       <BindItem id="item0" compid="slipNoEd" propid="value" datasetid="dsAtTaxinv" columnid="slipNo"/>
       <BindItem id="item5" compid="salesCustnmEd" propid="value" datasetid="dsAtDetailTaxinv" columnid=""/>
+      <BindItem id="item1" compid="taxinvDiv.pubComb" propid="value" datasetid="dsTaxInv" columnid="pubDiv"/>
+      <BindItem id="item2" compid="taxinvDiv.purchSalesComb" propid="value" datasetid="dsTaxInv" columnid="purchSalesDiv"/>
+      <BindItem id="item3" compid="taxinvDiv.ResolNoEd" propid="value" datasetid="dsTaxInv" columnid="resolNo"/>
+      <BindItem id="item4" compid="taxinvDiv.billComb" propid="value" datasetid="dsTaxInv" columnid="billDiv"/>
+      <BindItem id="item6" compid="gipyoDateCal" propid="value" datasetid="dsTaxInv" columnid="gipyoDate"/>
+      <BindItem id="item7" compid="pubNoEd" propid="value" datasetid="dsTaxInv" columnid="pubNo"/>
     </Bind>
     <Objects>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -140,7 +146,7 @@
           <Row>
             <Col id="serviceID">findTaxInvList</Col>
             <Col id="inData"/>
-            <Col id="URL">his::acc/vat/findTaxInvList.do</Col>
+            <Col id="URL">erp47::acc/vat/findTaxInvList.do</Col>
             <Col id="callbackFunc">texinvCallBack</Col>
             <Col id="outData">dsTaxInv=dsTaxInv dsDetailTaxInv=dsDetailTaxInv</Col>
           </Row>
@@ -279,6 +285,20 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.0"><![CDATA[]]></Script>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+this.AT_TaxinvForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	//등록을 위한 DS의 열을 추가한다.
+	this.dsTaxInv.addRow();
+	//코드 정보를 가지고 온다.
+	this.gfnBind();
+	// 계정 정보를 가지고 온다.
+	this.gfnService("findAccount");
+	// 작성일자에 오늘 날짜를 등록한다.
+	this.dsTaxInv.setColumn(0,"pubDate",this.gfnLocalDate());
+}
+]]></Script>
   </Form>
 </FDL>
