@@ -1,5 +1,6 @@
 package com.seoulit.erp47.acc.closing.applicationService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,12 +9,15 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.closing.dao.FinanStatsDAO;
 import com.seoulit.erp47.acc.closing.to.FinanStatsBean;
+import com.seoulit.erp47.acc.elementary.dao.AccPridDAO;
+import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 
 @Service
 public class FinanStatsApplicationServiceImpl implements FinanStatsApplicationService{
     @Autowired
     FinanStatsDAO finanStatsDAO;
-
+    @Autowired
+    AccPridDAO accPridDAO;
     
     @Override
     public List<FinanStatsBean> findFinanStats(Map<String, Object> argsMap) {
@@ -39,4 +43,19 @@ public class FinanStatsApplicationServiceImpl implements FinanStatsApplicationSe
         return finanStatsList;
     }
 
+    @Override
+	public HashMap<String, Object> findPrintFinanStats (HashMap<String, Object> queryMap) {
+
+		HashMap<String, String> queryMap2 = new HashMap<>();
+		queryMap2.put("accPrid", (String) queryMap.get("accPrid"));
+
+		List<FinanStatsBean> finanStatsList = findFinanStats(queryMap);
+		AccPridBean accPrid = accPridDAO.selectAccPrid(queryMap2);
+
+		HashMap<String, Object> printFinanStatsMap = new HashMap<>();
+		printFinanStatsMap.put("accPrid", accPrid);
+		printFinanStatsMap.put("finanStatsList", finanStatsList);
+
+		return printFinanStatsMap;
+	}
 }

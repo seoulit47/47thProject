@@ -131,6 +131,9 @@
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs"; 
 include "scripts::accScripts.xjs";  
 
+var accPrid;
+var finanStatsCd;
+
 
 //코드 바인드
 this.AC_FinanStatsForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
@@ -160,13 +163,13 @@ this.setArrRtn=function(arrRtn)
 //재무제표 조회버튼 클릭
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	var accPrid = this.accPridEd.value;
-	var finanStatsCd = this.ACfinanStatsDiv.finanStatsDivCombo.value;
+	accPrid = this.accPridEd.value;
+	finanStatsCd = this.ACfinanStatsDiv.finanStatsDivCombo.value;
 	
 	if(accPrid == null){			//회계기수 미선택
 		alert(this.MSG_ACC_PRID_CHO);
 		return;
-	}
+	} 
 	if(finanStatsCd == null){		//제무제표 조회미선택
 		alert(this.MSG_ACC_FINAN_CHO);
 		return;
@@ -175,6 +178,14 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var rowPos = this.dsService.findRow("serviceID","findFinanStats");
 	this.dsService.setColumn(rowPos,"argument",argument);
 	this.gfnService("findFinanStats");
+}
+
+//출력
+this.printFinanStatBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var param = {accPrid:accPrid, finanStatsCd:finanStatsCd};
+	this.gfnPopup("finanStatsPrintForm","acc::AC_FinanStatsPrintForm.xfdl",param,"");
+
 }
 ]]></Script>
   </Form>
