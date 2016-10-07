@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WB_WardhroompstCondSearchForm" classname="WB_WardhroompstCondSearchForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="병실 관리" left="4.8%" top="-4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div03" taborder="1" left="0%" top="0" right="4%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static01" taborder="2" text="병동병실조회" left="5.44%" top="-4" right="80.16%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="hroomListGrid" taborder="3" binddataset="dsHroomList" useinputpanel="false" autofittype="col" oncellclick="hroomListGrid_oncellclick" left="32.96%" top="66" right="1.68%" height="670">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="병실"/>
+                <Cell col="1" text="진료과"/>
+                <Cell col="2" text="성별"/>
+                <Cell col="3" text="등급"/>
+                <Cell col="4" text="재원자"/>
+                <Cell col="5" text="공병상"/>
+                <Cell col="6" text="입원예정일"/>
+                <Cell col="7" text="퇴원예정일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:hroom"/>
+                <Cell col="1" text="bind:trmtDeptCd"/>
+                <Cell col="2" text="bind:gender"/>
+                <Cell col="3" text="bind:hroomGrade"/>
+                <Cell col="4" text="bind:finanCnt"/>
+                <Cell col="5" text="bind:pmsnSibd"/>
+                <Cell col="6" text="bind:hosptlzPlnDate"/>
+                <Cell col="7" text="bind:hosptlzFinalDate"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="hroomGrid" taborder="4" binddataset="dsHroom" useinputpanel="false" autofittype="col" oncellclick="hroomGrid_oncellclick" left="2.24%" top="66" right="67.36%" height="670">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="병동"/>
+                <Cell col="1" text="병실"/>
+                <Cell col="2" text="등급"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" edittype="none" text="bind:ward" combodataset="dsWardCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="1" displaytype="combo" edittype="none" text="bind:hroom" combodataset="dsHroomCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" edittype="none" text="bind:hroomGrade" combodataset="dsHroomGradeCd" combocodecol="code" combodatacol="data"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsWardCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">41</Col>
+            <Col id="data">41병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">51</Col>
+            <Col id="data">51병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">52</Col>
+            <Col id="data">52병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">61</Col>
+            <Col id="data">61병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">62</Col>
+            <Col id="data">62병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">71</Col>
+            <Col id="data">71병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">72</Col>
+            <Col id="data">72병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">81</Col>
+            <Col id="data">81병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">AA</Col>
+            <Col id="data">중환자실</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHroomList">
+        <ColumnInfo>
+          <Column id="hroomNo" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="hosptlzDate" type="STRING" size="256"/>
+          <Column id="hosptlzPlnDate" type="STRING" size="256"/>
+          <Column id="hosptlzFinalDate" type="STRING" size="256"/>
+          <Column id="trmtDeptCd" type="STRING" size="256"/>
+          <Column id="hroomGrade" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="sibdCnt" type="STRING" size="256"/>
+          <Column id="pmsnSibd" type="STRING" size="256"/>
+          <Column id="finanCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">getHroomList</Col>
+            <Col id="URL">erp47::won/base/getHroomList.do</Col>
+            <Col id="outData">dsHroomList=dsHroomList</Col>
+            <Col id="callbackFunc">hroomListCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findHroomList</Col>
+            <Col id="URL">erp47::won/base/findHroomList.do</Col>
+            <Col id="outData">dsHroom=dsHroom</Col>
+            <Col id="callbackFunc">hroomCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHroomCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1A</Col>
+            <Col id="data">1인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">2A</Col>
+            <Col id="data">2인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">4A</Col>
+            <Col id="data">4인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">6A</Col>
+            <Col id="data">6인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">I</Col>
+            <Col id="data">중환자실</Col>
+          </Row>
+          <Row>
+            <Col id="code">S</Col>
+            <Col id="data">특실</Col>
+          </Row>
+          <Row>
+            <Col id="code">V</Col>
+            <Col id="data">VIP실</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHroom">
+        <ColumnInfo>
+          <Column id="hroomNo" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="applyPridStartDate" type="STRING" size="256"/>
+          <Column id="applyPridEndDate" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="hroomGrade" type="STRING" size="256"/>
+          <Column id="hroomdiffAmt" type="STRING" size="256"/>
+          <Column id="feeCd" type="STRING" size="256"/>
+          <Column id="sibdCnt" type="STRING" size="256"/>
+          <Column id="pmsnSibd" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="sibdTel" type="STRING" size="256"/>
+          <Column id="finanCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsHroomGradeCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">특실</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">1인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">2인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">4인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">6인실</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHroomPat">
+        <ColumnInfo>
+          <Column id="hroomNo" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="hosptlzDate" type="STRING" size="256"/>
+          <Column id="hosptlzPlnDate" type="STRING" size="256"/>
+          <Column id="hosptlzFinalDate" type="STRING" size="256"/>
+          <Column id="trmtDeptCd" type="STRING" size="256"/>
+          <Column id="hroomGrade" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="sibdCnt" type="STRING" size="256"/>
+          <Column id="pmsnSibd" type="STRING" size="256"/>
+          <Column id="finanCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 원무 병동병실 조회                         						*
+*                                                                   *
+* @Path		    병동병실 조회		      							*
+* @Description  병동병실정보를 조회한다.							*
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 10. 9.                             		        *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonScripts.xjs";
+
+var ward, hroomNo;
+this.WB_WardhroompstCondSearchForm_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	this.gfnService("findHroomList",false);
+}
+
+this.hroomGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	ward = this.dsHroom.getColumn(this.hroomGrid.currentrow,"ward");
+	hroom = this.dsHroom.getColumn(this.hroomGrid.currentrow,"hroom");
+		
+	var argument = "ward ='"+ward+"' hroom='"+hroom+"'"; 			
+	var row = this.dsService.findRow('serviceID' , "getHroomList");
+	this.dsService.setColumn(row, "argument", argument);
+	this.gfnService("getHroomList",false);
+	
+	//trace(this.dsHroomList.saveXML());
+}
+
+this.hroomListCallbackFunc = function(svcID, errorCode, errorMsg){
+   if (errorCode < 1) {
+      trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+      this.gfnErrorPopup(svcID, errorMsg);
+   } else {
+      // 트랜잭션 완료
+      trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+      if(this.dsHroomList.getRowCount() == 0){
+		alert("해당 조건에 검색된 데이터가 없습니다.");	
+      }
+   }
+}
+this.hroomListGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	this.dsHroomPat.copyData(this.dsHroomList,true);
+}
+]]></Script>
+  </Form>
+</FDL>

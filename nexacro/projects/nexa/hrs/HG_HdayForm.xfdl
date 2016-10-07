@@ -46,10 +46,10 @@
                 </Formats>
               </Grid>
               <Static id="Static04" taborder="20" text="   ~" left="20.24%" top="6" right="77.17%" height="31" style="color:#46463dff;"/>
-              <Button id="addHdayBtn" taborder="25" cssclass="DelBtn" left="77.31%" top="8" right="16.33%" height="28" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_addHdayBtn_onclick" enable="false"/>
-              <Button id="delHdayBtn" taborder="26" cssclass="DelBtn" enable="false" left="84.23%" top="8" right="9.49%" height="28" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_delHdayBtn_onclick"/>
+              <Button id="addHdayBtn" taborder="25" cssclass="DelBtn" left="77.31%" top="8" right="16.33%" height="28" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_addHdayBtn_onclick" enable="true"/>
+              <Button id="delHdayBtn" taborder="26" cssclass="DelBtn" enable="true" left="84.23%" top="8" right="9.49%" height="28" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_delHdayBtn_onclick"/>
               <Button id="serchHdayBtn" taborder="27" cssclass="SearchBtn" left="70.47%" top="8" right="23.17%" height="28" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="mainDiv_serchHdayBtn_onclick"/>
-              <Button id="saveBtn" taborder="28" onclick="saveBtn_onclick" cssclass="DelBtn" enable="false" left="91.15%" top="8" right="3.22%" height="28" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="saveBtn" taborder="28" onclick="saveBtn_onclick" cssclass="DelBtn" enable="true" left="91.15%" top="8" right="3.22%" height="28" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
             </Layout>
           </Layouts>
         </Div>

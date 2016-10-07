@@ -10,6 +10,7 @@ import com.seoulit.erp47.hrs.guntae.to.InoutWorkTimeBean;
 import com.seoulit.erp47.hrs.guntae.to.MonGuntaeBean;
 import com.seoulit.erp47.hrs.guntae.to.MonGuntaeCloseBean;
 import com.seoulit.erp47.hrs.guntae.to.OverTimeWorkBean;
+import com.seoulit.erp47.hrs.guntae.to.YeonchaBean;
 
 /**
  * @Package  com.seoul.his.hrs.guntae.service
@@ -69,8 +70,8 @@ public interface GuntaeServiceFacade {
     List<MonGuntaeCloseBean> closeMonGuntae(Map<String, String> argsMap);
 
     //연차 조회
-    //List<YeonchaBean> findYeonchaList(Map<String, String> argsMap);
+    List<YeonchaBean> findYeonchaList(Map<String, String> argsMap);
 
     //연차발생
-    //List<YeonchaBean> callYeoncha(Map<String, String> argsMap);
+    List<YeonchaBean> callYeoncha(Map<String, String> argsMap);
 }

@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WB_HosptlzHroomMngntForm" classname="WB_HosptlzHroomMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="4%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="병실 관리" left="4.8%" top="-4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="baseDiv" taborder="2" left="2.24%" top="69" right="1.68%" height="51" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="hroomStc" taborder="3" text="병실" left="23.36%" top="80" right="67.04%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="searchHroomCombo" taborder="4" innerdataset="dsHroomCd" codecolumn="code" datacolumn="data" left="33.52%" top="80" right="58.08%" height="28" style="background:transparent;"/>
+        <Button id="comboResetBtn" taborder="5" onclick="comboResetBtn_onclick" cssclass="comboResetBtn" left="64.8%" top="80" right="27.04%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="comboResetBtn"/>
+        <Button id="searchHroomBtn" taborder="6" onclick="searchHroomBtn_onclick" cssclass="searchHroomBtn" left="73.12%" top="80" right="19.68%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchHroomBtn"/>
+        <Static id="wardStc" taborder="7" text="병동" left="3.52%" top="80" right="86.88%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="searchWardCombo" taborder="8" innerdataset="dsWardCd" codecolumn="code" datacolumn="data" left="13.68%" top="80" right="77.92%" height="28" style="background:transparent;"/>
+        <Static id="genderStc" taborder="9" text="성별" left="43.2%" top="80" right="47.2%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Radio id="genderRadio" taborder="10" columncount="2" innerdataset="dsGenderCd" codecolumn="code" datacolumn="data" onitemclick="Radio00_onitemclick" left="54.08%" top="82" right="36.64%" height="24"/>
+        <Grid id="hroomGrid" taborder="11" binddataset="dsHroom" useinputpanel="false" autofittype="col" left="2.24%" top="129" right="1.68%" height="575">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="병실일련번호"/>
+                <Cell col="1" text="병동"/>
+                <Cell col="2" text="병실"/>
+                <Cell col="3" text="등급"/>
+                <Cell col="4" text="적용 시작일"/>
+                <Cell col="5" text="적용 종료일"/>
+                <Cell col="6" text="수가코드"/>
+                <Cell col="7" text="병상수"/>
+                <Cell col="8" text="허가병상"/>
+                <Cell col="9" text="성별"/>
+                <Cell col="10" text="병상전화번호"/>
+                <Cell col="11" text="재원자수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:hroomNo"/>
+                <Cell col="1" displaytype="combo" edittype="combo" text="bind:ward" combodataset="dsWardCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:hroom" combodataset="dsHroomCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:hroomGrade" combodataset="dsHroomGradeCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="4" displaytype="date" edittype="date" text="bind:applyPridStartDate"/>
+                <Cell col="5" displaytype="date" edittype="date" text="bind:applyPridEndDate"/>
+                <Cell col="6" displaytype="combo" edittype="combo" text="bind:feeCd" combodataset="dsFeeCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="7" edittype="normal" text="bind:sibdCnt"/>
+                <Cell col="8" edittype="normal" text="bind:pmsnSibd"/>
+                <Cell col="9" displaytype="combo" edittype="combo" text="bind:gender" combodataset="dsGenderCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="10" edittype="normal" text="bind:sibdTel"/>
+                <Cell col="11" edittype="normal" text="bind:finanCnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addHroomBtn" taborder="12" onclick="addHroomBtn_onclick" cssclass="addHroomBtn" left="65.28%" top="720" right="27.52%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addHroomBtn"/>
+        <Button id="deleteHroomBtn" taborder="13" onclick="deleteHroomBtn_onclick" cssclass="deleteHroomBtn" left="73.12%" top="720" right="19.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="deleteHroomBtn"/>
+        <Button id="cancelHroomBtn" taborder="14" onclick="cancelHroomBtn_onclick" cssclass="cancelHroomBtn" left="80.96%" top="720" right="11.84%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="cancelHroomBtn"/>
+        <Button id="batchHroomBtn" taborder="15" onclick="batchHroomBtn_onclick" cssclass="batchHroomBtn" left="88.8%" top="720" right="2.4%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="batchHroomBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsHroomCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1A</Col>
+            <Col id="data">1인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">2A</Col>
+            <Col id="data">2인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">4A</Col>
+            <Col id="data">4인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">6A</Col>
+            <Col id="data">6인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">I</Col>
+            <Col id="data">중환자실</Col>
+          </Row>
+          <Row>
+            <Col id="code">S</Col>
+            <Col id="data">특실</Col>
+          </Row>
+          <Row>
+            <Col id="code">V</Col>
+            <Col id="data">VIP실</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsFeeCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">ABZ11</Col>
+            <Col id="data">vip실</Col>
+          </Row>
+          <Row>
+            <Col id="code">ABZ06</Col>
+            <Col id="data">6인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">ABZ05</Col>
+            <Col id="data">4인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">ABZ04</Col>
+            <Col id="data">2인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">ABZ03</Col>
+            <Col id="data">1인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">ABZ02</Col>
+            <Col id="data">중환자실</Col>
+          </Row>
+          <Row>
+            <Col id="code">ABZ01</Col>
+            <Col id="data">특실</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findHroomList</Col>
+            <Col id="URL">erp47::won/base/findHroomList.do</Col>
+            <Col id="outData">dsHroom=dsHroom</Col>
+            <Col id="callbackFunc">hroomCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchHroomProcess</Col>
+            <Col id="URL">erp47::won/base/batchHroomProcess.do</Col>
+            <Col id="inData">dsHroom=dsHroom:u</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsWardCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">41</Col>
+            <Col id="data">41병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">51</Col>
+            <Col id="data">51병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">52</Col>
+            <Col id="data">52병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">61</Col>
+            <Col id="data">61병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">62</Col>
+            <Col id="data">62병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">71</Col>
+            <Col id="data">71병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">72</Col>
+            <Col id="data">72병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">81</Col>
+            <Col id="data">81병동</Col>
+          </Row>
+          <Row>
+            <Col id="code">E</Col>
+            <Col id="data">응급병동</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGenderCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="data">남자</Col>
+            <Col id="code">남자</Col>
+          </Row>
+          <Row>
+            <Col id="data">여자</Col>
+            <Col id="code">여자</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHroom">
+        <ColumnInfo>
+          <Column id="hroomNo" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="applyPridStartDate" type="STRING" size="256"/>
+          <Column id="applyPridEndDate" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="hroomGrade" type="STRING" size="256"/>
+          <Column id="hroomdiffAmt" type="STRING" size="256"/>
+          <Column id="feeCd" type="STRING" size="256"/>
+          <Column id="sibdCnt" type="STRING" size="256"/>
+          <Column id="pmsnSibd" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="sibdTel" type="STRING" size="256"/>
+          <Column id="finanCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsHroomGradeCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">특실</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">1인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">2인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">4인실</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">6인실</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 원무 병실 관리                           						*
+*                                                                   *
+* @Path		    병실 관리		      								*
+* @Description  병실정보를 관리한다.								*
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 10.  8.                             		        *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonScripts.xjs";
+
+//조건초기화
+this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.searchWardCombo.set_value(null);
+	this.searchHroomCombo.set_value(null);
+	this.genderRadio.set_value(null);
+}
+
+//병실조회
+this.searchHroomBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var wardCombo = this.searchWardCombo.value;
+	var hroomCombo = this.searchHroomCombo.value;
+	var genderRadio = this.genderRadio.value;
+	
+	if(wardCombo == null){
+		alert("병동 선택 후 조회하십시오.");
+	}else{
+		var argument = "ward ='"+wardCombo+"' hroom='"+hroomCombo+"' gender='"+genderRadio+"'"; 		
+		var row = this.dsService.findRow('serviceID' , "findHroomList");
+		this.dsService.setColumn(row, "argument", argument);
+		this.gfnService("findHroomList", false);
+		trace(this.dsHroom.saveXML());
+	}
+}
+
+//병실추가
+this.addHroomBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var nRow = this.dsHroom.addRow();
+	
+	var hroomNo = this.dsHroomSequence.getColumn(0,"hroomNo");
+		if(hroomNo != null){
+			var newHroomNo = nexacro.toNumber(hroomNo)+1;
+			this.dsHroomSequence.setColumn(0,"hroomNo",newHroomNo);
+			this.dsHroom.setColumn(nRow,"hroomNo",newHroomNo.toString());
+		}else{
+			this.dsHroom.setColumn(nRow,"hroomNo","1");
+		}
+}
+
+//병실삭제
+this.deleteHroomBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsHroom.deleteMultiRows(this.hroomGrid.getSelectedDatasetRows());
+}
+
+//작성취소
+this.cancelHroomBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("작성중인 데이터는 저장되지 않습니다. 취소하시겠습니까?")){
+		this.reload();
+	}
+}
+
+//일괄처리
+this.batchHroomBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("일괄처리 하시겠습니까?")){
+		for(var i=0; i<this.dsHroom.rowcount; i++){
+			var hroomNo = this.dsHroom.getColumn(i,"hroomNo");
+			var ward = this.dsHroom.getColumn(i,"ward");
+			var hroom = this.dsHroom.getColumn(i,"hroom");
+			var feeCd = this.dsHroom.getColumn(i,"feeCd");
+			
+			if(hroomNo == null){			
+				alert("병실 번호를 입력하시오.");
+			}else if(ward == null || feeCd == null){
+				alert("병동,병실,수가코드는 필수입력 사항입니다.");
+			}else{
+				this.gfnService("batchHroomProcess");
+			}
+		}
+	}
+}
+
+this.hroomCallbackFunc = function(svcID, errorCode, errorMsg){
+   if (errorCode < 1) {
+      trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+      this.gfnErrorPopup(svcID, errorMsg);
+   } else {
+      // 트랜잭션 완료
+      trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+      if(this.dsHroom.getRowCount() == 0){
+		alert("해당 조건에 검색된 데이터가 없습니다.");	
+      }
+   }
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -3,11 +3,16 @@ package com.seoulit.erp47.hrs.salBase.service;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.hrs.salBase.to.DeduChartBean;
 import com.seoulit.erp47.hrs.salBase.to.HobongBean;
 import com.seoulit.erp47.hrs.salBase.to.HobongHistoryBean;
+import com.seoulit.erp47.hrs.salBase.to.IncomeTaxSetBean;
 import com.seoulit.erp47.hrs.salBase.to.JobBean;
 import com.seoulit.erp47.hrs.salBase.to.PayDeduBean;
 import com.seoulit.erp47.hrs.salBase.to.PayDeduSectBean;
+import com.seoulit.erp47.hrs.salBase.to.PaydayBean;
+import com.seoulit.erp47.hrs.salBase.to.SalStandardSetBean;
+import com.seoulit.erp47.hrs.salBase.to.SocialInsureBean;
 
 /**
  * @Package  com.seoul.his.hrs.salBase.service
@@ -16,7 +21,7 @@ import com.seoulit.erp47.hrs.salBase.to.PayDeduSectBean;
  * @Author   박 영 희
  * @Description
  *
- * @LastUpdated 
+ * @LastUpdated 2016.9.29
  */
 
 public interface SalBaseServiceFacade {
@@ -36,6 +41,26 @@ public interface SalBaseServiceFacade {
     //호봉이력일괄처리
     public void batchHobongHisProcess(List<HobongHistoryBean> hobongHisList);
     
+    //세액 조회
+    public List<IncomeTaxSetBean> findTaxChartList(Map<String, String> argsMap);
+    
+    //공제 조회
+    public List<DeduChartBean> findDeduChartList(Map<String, String> argsMap);
+    
+    //세액 복사
+    public void setTaxDeduCopy(int year);
+    
+    //세액 저장
+    public void batchTaxChartProcess(List<IncomeTaxSetBean> taxList);
+    
+    //공제 저장
+    public void batchDeductionChartProcess(List<DeduChartBean> deduChartList);
+    
+    //급상여지급일자관리 
+    public List<PaydayBean> findPaydayList(Map<String, String> argsMap);
+    public List<PaydayBean> findPaydaySubList(Map<String, String> argsMap);
+    public void batchPaydayProcess(List<PaydayBean> paydayList);
+  
     //지급공제항목설정
     public List<PayDeduBean> findPayDeduList(Map<String, String> argsMap);
     public void magamCancel(List<PayDeduBean> payDeduList);
@@ -43,27 +68,12 @@ public interface SalBaseServiceFacade {
     public void batchPayDeduProcess(List<PayDeduBean> payDeduList);
     public void batchPayDeduSectProcess(List<PayDeduSectBean> payDeduSectList);
     
-/*
-     소득.세액환경설정 
-    public List<IncomeTaxSetBean> findTaxChartList(Map<String, String> argsMap);
-    public List<DeduChartBean> findDeduChartList(Map<String, String> argsMap);
-    public void setTaxDeduCopy(int year);
-    public void batchTaxChartProcess(List<IncomeTaxSetBean> taxList);
-    public void batchDeductionChartProcess(List<DeduChartBean> deduChartList);
-    
-     급상여지급일자관리 
-    public List<PaydayBean> findPaydayList(Map<String, String> argsMap);
-    public List<PaydayBean> findPaydaySubList(Map<String, String> argsMap);
-    public void batchPaydayProcess(List<PaydayBean> paydayList);
-    
- 
-    
-    사회보험설정
+    //사회보험설정
     public List<SocialInsureBean> findsocialInsureList(Map<String, String> argsMap);
     public void batchSocialInsureProcess(Map<String, String> argsMap);
     
-    급여근태기준일설정
+    //급여근태기준일설정
     List<SalStandardSetBean> findSalStandardList();
-    void batchSalStanSetProcess(List<SalStandardSetBean> salStanList);*/
+    void batchSalStanSetProcess(List<SalStandardSetBean> salStanList);
 
 }

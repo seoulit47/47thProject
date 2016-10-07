@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HS_IncomeTaxSettingForm" classname="HS_IncomeTexSettingForm" left="0" top="0" width="1256" height="759" titletext="New Form" name="HS_IncomeTaxSettingForm">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="8" right="1.27%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="소득/세액 공제설정" left="4.78%" top="4" right="74.36%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Grid id="incomeGrid" taborder="2" binddataset="dsIncomeTaxR" useinputpanel="false" autofittype="col" oncellclick="incomeGrid_oncellclick" left="2.23%" top="128" right="64.17%" height="303">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" text="항목명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:gubun"/>
+                <Cell col="1" text="bind:name"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="taxChartGrid" taborder="3" binddataset="dsTaxChart" useinputpanel="false" autofittype="col" left="36.46%" top="128" right="1.67%" height="273">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="88"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" colspan="2" text="과세표준"/>
+                <Cell col="3" text="세율"/>
+                <Cell col="4" text="누진공제"/>
+                <Cell col="5" text="한도액"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" edittype="normal" text="bind:taxRangeFrom"/>
+                <Cell col="2" displaytype="number" edittype="normal" text="bind:taxRangeTo"/>
+                <Cell col="3" displaytype="normal" edittype="normal" text="bind:taxRate"/>
+                <Cell col="4" displaytype="number" edittype="normal" text="bind:acmltDdt"/>
+                <Cell col="5" displaytype="number" edittype="normal" text="bind:limitAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="deduGrid" taborder="4" binddataset="dsIncomeTaxS" useinputpanel="false" autofittype="col" oncellclick="deduGrid_oncellclick" left="2.23%" top="441" right="64.17%" height="304">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" text="항목명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:gubun"/>
+                <Cell col="1" text="bind:name"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="deductionChartGrid" taborder="5" binddataset="dsDeductionChart" useinputpanel="false" autofittype="col" left="36.46%" top="441" right="1.91%" height="274">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="항목"/>
+                <Cell col="2" text="공제율"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" edittype="normal" text="bind:division"/>
+                <Cell col="2" edittype="normal" text="bind:deductAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="baseDiv" taborder="6" left="2.23%" top="69" right="1.67%" height="51" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="belongStc" taborder="7" text="귀속년도" left="2.63%" top="80" right="87.74%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Button id="taxRateCopyBtn" taborder="8" onclick="taxRateCopyBtn_onclick" cssclass="taxRateCopyBtn" left="79.62%" top="81" right="11.62%" height="32" style="background:@gradation URL('img::taxCopyBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="taxRateCopyBtn"/>
+        <Spin id="yearSpin" taborder="9" value="2016" onspin="yearSpin_onspin" left="12.66%" top="80" right="80.57%" height="34" style="margin:1 0 2 0;" class="yearSpin"/>
+        <Button id="incomTaxSearchBtn" taborder="10" onclick="incomTaxSearchBtn_onclick" cssclass="SearchBtn" left="20.22%" top="81" right="72.61%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="SearchBtn"/>
+        <Button id="taxAddBtn" taborder="11" onclick="taxAddBtn_onclick" left="90.45%" top="403" right="7.01%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="taxAddBtn"/>
+        <Button id="taxDelBtn" taborder="12" onclick="taxDelBtn_onclick" left="93.63%" top="403" right="3.82%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="taxDelBtn"/>
+        <Button id="DeduAddBtn" taborder="13" onclick="DeduAddBtn_onclick" left="90.45%" top="718" right="7.01%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DeduAddBtn"/>
+        <Button id="DeduDelBtn" taborder="14" onclick="DeduDelBtn_onclick" left="93.63%" top="718" right="3.82%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DeduDelBtn"/>
+        <Button id="saveBtn" taborder="15" onclick="saveBtn_onclick" cssclass="saveBtn" left="88.77%" top="81" right="4.06%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="saveBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsDeductionChart">
+        <ColumnInfo>
+          <Column id="division" type="STRING" size="256"/>
+          <Column id="deductAmt" type="STRING" size="256"/>
+          <Column id="artcCd" type="STRING" size="256"/>
+          <Column id="belongYear" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findTaxChartList</Col>
+            <Col id="URL">erp47::hrs/salBase/findTaxChartList.do</Col>
+            <Col id="outData">dsTaxChart=dsTaxChart</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDeduChartList</Col>
+            <Col id="URL">erp47::hrs/salBase/findDeduChartList.do</Col>
+            <Col id="outData">dsDeductionChart=dsDeductionChart</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">setTaxDeduCopy</Col>
+            <Col id="URL">erp47::hrs/salBase/setTaxDeduCopy.do</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchTaxChartProcess</Col>
+            <Col id="URL">erp47::hrs/salBase/batchTaxChartProcess.do</Col>
+            <Col id="outData"/>
+            <Col id="callbackFunc">CallbackFunc</Col>
+            <Col id="inData">dsTaxChart=dsTaxChart:u</Col>
+          </Row>
+          <Row>
+            <Col id="inData">dsDeductionChart=dsDeductionChart:u</Col>
+            <Col id="serviceID">batchDeduChartProcess</Col>
+            <Col id="URL">erp47::hrs/salBase/batchDeduChartProcess.do</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsIncomeTaxS">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="gubun" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GS006</Col>
+            <Col id="name">퇴직소득공제율</Col>
+            <Col id="gubun">퇴직소득</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS007</Col>
+            <Col id="name">표준공제</Col>
+            <Col id="gubun">소득공제</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS008</Col>
+            <Col id="name">비과세항목</Col>
+            <Col id="gubun">소득공제</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS009</Col>
+            <Col id="name">인적공제</Col>
+            <Col id="gubun">소득공제</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS010</Col>
+            <Col id="name">특별공제</Col>
+            <Col id="gubun">소득공제</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS011</Col>
+            <Col id="name">농특세 및 주민세</Col>
+            <Col id="gubun">농특세/주민세</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsIncomeTaxR">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="gubun" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GS001</Col>
+            <Col id="name">기본세율조견표</Col>
+            <Col id="gubun">근로소득</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS002</Col>
+            <Col id="name">소득공제</Col>
+            <Col id="gubun">근로소득</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS003</Col>
+            <Col id="name">세액공제</Col>
+            <Col id="gubun">근로소득</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS004</Col>
+            <Col id="name">간이세액수입금액조정</Col>
+            <Col id="gubun">근로소득</Col>
+          </Row>
+          <Row>
+            <Col id="code">GS005</Col>
+            <Col id="name">퇴직소득공제조견표</Col>
+            <Col id="gubun">퇴직소득</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsTaxChart">
+        <ColumnInfo>
+          <Column id="taxRangeFrom" type="STRING" size="256"/>
+          <Column id="taxRate" type="STRING" size="256"/>
+          <Column id="acmltDdt" type="STRING" size="256"/>
+          <Column id="limitAmt" type="STRING" size="256"/>
+          <Column id="artcCd" type="STRING" size="256"/>
+          <Column id="taxRangeTo" type="STRING" size="256"/>
+          <Column id="belongYear" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 인사 소득/세액 공제설정관리                           			*
+*                                                                   *
+* @Path		    소득/세액 환경설정 관리							*
+* @Description  각 소득세액공제 항목별 환경을 설정할 수 있다.	*
+* @Author		박영희    					                        *
+* 								                                    *
+* Created on 2016. 9.  27.                             		        *
+*								                                    *
+********************************************************************/
+
+
+
+/***************************************************************************************************
+*                                         import                                                   *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+
+
+
+/***************************************************************************************************
+*                                         변수 선언부                                             *
+***************************************************************************************************/
+
+
+
+/***************************************************************************************************
+*                                         onload event                                             *
+***************************************************************************************************/
+
+
+
+/***************************************************************************************************
+*                                       조회버튼 click event                                      *
+***************************************************************************************************/
+var taxRowCount, deduRowCount;
+
+this.incomTaxSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var year = this.yearSpin.text;	
+	
+	this.dsService.setColumn(0,4,"year="+year);
+	this.gfnService("findTaxChartList", false);
+	
+	this.dsService.setColumn(1,4,"year="+year);
+	this.gfnService("findDeduChartList", false);
+		
+	taxRowCount=this.dsTaxChart.getRowCount();
+	deduRowCount=this.dsDeductionChart.getRowCount();
+	
+	var code1 = this.dsIncomeTaxR.getColumn(0,"code");
+	this.dsTaxChart.filter("artcCd=='"+code1+"'");
+	var code2 = this.dsIncomeTaxS.getColumn(0,"code");
+	this.dsDeductionChart.filter("artcCd=='"+code2+"'");
+}
+
+
+/***************************************************************************************************
+*                                       incomeGrid click event                                     *
+***************************************************************************************************/
+this.incomeGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	var code = this.dsIncomeTaxR.getColumn(this.incomeGrid.currentrow,"code");
+	this.dsTaxChart.filter("artcCd=='"+code+"'");
+}
+
+
+
+/***************************************************************************************************
+*                                       deduGrid click event                                       *
+***************************************************************************************************/
+this.deduGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	var code = this.dsIncomeTaxS.getColumn(this.deduGrid.currentrow,"code");
+	this.dsDeductionChart.filter("artcCd=='"+code+"'");
+}
+
+
+
+/***************************************************************************************************
+*                                세율복사 버튼 click event                                       *
+***************************************************************************************************/
+this.taxRateCopyBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {	
+	if (confirm("직전년도 세율 데이터를 복사하시겠습니까?")) {
+		if (this.dsTaxChart.getRowCount() == 0) {			
+			var year = this.yearSpin.text -1;	
+			this.dsService.setColumn(2,4,"year="+year);
+			this.gfnService("setTaxDeduCopy");
+		}else{
+			alert("해당년도 세율 데이터가 이미 존재합니다.");
+		}
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                 tax 추가 버튼 click event                                       *
+***************************************************************************************************/
+this.taxAddBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var year = this.yearSpin.text;	
+	var cd=this.dsIncomeTaxR.getColumn(this.dsIncomeTaxR.rowposition,"code");
+	
+	var seqArr = new Array; 
+	var arrIndex = 0;
+	for(var i=0; i<taxRowCount; i++){
+		seqArr[arrIndex++]=this.dsTaxChart.getColumn(i,"seq");
+	}
+	
+	this.dsTaxChart.addRow();	
+	this.dsTaxChart.setColumn(this.dsTaxChart.rowposition,"belongYear",year);
+	this.dsTaxChart.setColumn(this.dsTaxChart.rowposition,"artcCd",cd);
+	this.dsTaxChart.setColumn(this.dsTaxChart.rowposition,"seq",arrIndex+1);
+}
+
+
+
+/***************************************************************************************************
+*                                 tax 삭제 버튼 click event                                       *
+***************************************************************************************************/
+this.taxDelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsTaxChart.deleteRow(this.dsTaxChart.rowposition);
+}
+
+
+
+/***************************************************************************************************
+*                                 dedu 추가 버튼 click event                                      *
+***************************************************************************************************/
+this.DeduAddBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var year = this.yearSpin.text;	
+	var cd=this.dsIncomeTaxS.getColumn(this.dsIncomeTaxS.rowposition,"code");
+	
+	var seqArr = new Array; 
+	var arrIndex = 0;
+	for(var i=0; i<deduRowCount; i++){
+		seqArr[arrIndex++]=this.dsDeductionChart.getColumn(i,"seq");
+	}
+	
+	this.dsDeductionChart.addRow();
+	this.dsDeductionChart.setColumn(this.dsDeductionChart.rowposition,"belongYear",year);
+	this.dsDeductionChart.setColumn(this.dsDeductionChart.rowposition,"artcCd",cd);
+	this.dsDeductionChart.setColumn(this.dsDeductionChart.rowposition,"seq",arrIndex+1);
+}
+
+
+
+/***************************************************************************************************
+*                                 dedu 삭제 버튼 click event                                      *
+***************************************************************************************************/
+this.DeduDelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsDeductionChart.deleteRow(this.dsDeductionChart.rowposition);
+}
+
+
+
+
+/***************************************************************************************************
+*                                 저장 버튼 click event                                           *
+***************************************************************************************************/
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){	
+	if(confirm("저장하시겠습니까?")){
+		if(this.taxChartGrid.rowcount != 0){
+			this.gfnService("batchTaxChartProcess");	
+		}
+		
+		if(this.deductionChartGrid.rowcount != 0){
+			this.gfnService("batchDeduChartProcess");	
+		}
+	}		
+}
+
+
+
+/***************************************************************************************************
+*                                         콜백 함수 셋팅                                           *
+***************************************************************************************************/
+this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
+{
+	if(errorCode<0)	{	
+		this.gfn_errorPopup(svcID, errorMsg);
+		return;
+	
+	}else{			
+		if(svcID=="batchTaxChartProcess"){
+			alert("정상 처리되었습니다.");
+		}
+	}	
+}]]></Script>
+  </Form>
+</FDL>

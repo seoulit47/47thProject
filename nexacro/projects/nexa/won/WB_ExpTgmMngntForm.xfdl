@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WB_ExpTgmMngntForm" classname="WB_ExpTgmMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="-33.6%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="감면대상자 관리" left="4.8%" top="-4" right="75.04%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="baseDiv" taborder="2" left="2.24%" top="69" right="1.68%" height="51" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Button id="searchExpTgmBtn" taborder="3" onclick="searchExpTgmBtn_onclick" cssclass="searchExpTgmBtn" left="88.48%" top="80" right="4.32%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchExpTgmBtn"/>
+        <Static id="empStc" taborder="4" text="사원 검색" left="2.64%" top="80" right="87.76%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Button id="comboResetBtn" taborder="5" onclick="comboResetBtn_onclick" cssclass="comboResetBtn" left="80.16%" top="80" right="11.68%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="comboResetBtn"/>
+        <Button id="searchEmpBtn" taborder="6" onclick="searchEmpBtn_onclick" cssclass="searchEmpBtn" left="19.84%" top="80" right="77.6%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchEmpBtn"/>
+        <Edit id="searchEmpNoEd" taborder="7" left="12.48%" top="80" right="80.16%" height="30"/>
+        <Static id="patStc" taborder="8" text="대상환자 검색" left="32.64%" top="80" right="57.76%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="expStc" taborder="9" text="감면코드" left="61.76%" top="80" right="28.64%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Edit id="searchEmpNmEd" taborder="10" left="22.56%" top="80" right="70.08%" height="30"/>
+        <Edit id="searchPatNoEd" taborder="11" left="42.48%" top="80" right="50.16%" height="30"/>
+        <Edit id="searchPatNmEd" taborder="12" left="52.72%" top="80" right="39.92%" height="30"/>
+        <Button id="searchPatBtn" taborder="13" onclick="searchPatBtn_onclick" cssclass="searchPatBtn" left="49.92%" top="80" right="47.52%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchPatBtn"/>
+        <Combo id="expCombo" taborder="14" innerdataset="dsExpCd" codecolumn="code" datacolumn="data" left="71.92%" top="80" right="20.96%" height="28" style="background:transparent;"/>
+        <Button id="addExpTgmBtn" taborder="15" onclick="addExpTgmBtn_onclick" cssclass="addExpTgmBtn" left="65.28%" top="720" right="27.52%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addExpTgmBtn"/>
+        <Button id="deleteExpTgmBtn" taborder="16" onclick="deleteExpTgmBtn_onclick" cssclass="deleteExpTgmBtn" left="73.12%" top="720" right="19.68%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="deleteExpTgmBtn"/>
+        <Button id="cancelExpTgmBtn" taborder="17" onclick="cancelExpTgmBtn_onclick" cssclass="cancelExpTgmBtn" left="80.96%" top="720" right="11.84%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="cancelExpTgmBtn"/>
+        <Button id="batchExpTgmBtn" taborder="18" onclick="batchExpTgmBtn_onclick" cssclass="batchExpTgmBtn" left="88.8%" top="720" right="2.4%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="batchExpTgmBtn"/>
+        <Grid id="expTgmGrid" taborder="19" binddataset="dsExpTgm" useinputpanel="false" autofittype="col" oncelldblclick="expTgmGrid_oncelldblclick" left="2.24%" top="129" right="1.68%" height="575">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="환자등록번호"/>
+                <Cell col="1" text="성명"/>
+                <Cell col="2" text="적용 시작일"/>
+                <Cell col="3" text="적용 종료일"/>
+                <Cell col="4" text="감면구분"/>
+                <Cell col="5" text="관계"/>
+                <Cell col="6" text="사원번호"/>
+                <Cell col="7" text="사원명"/>
+                <Cell col="8" text="부서명"/>
+                <Cell col="9" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:patNo"/>
+                <Cell col="1" text="bind:patNm"/>
+                <Cell col="2" displaytype="date" edittype="date" text="bind:applyPridStartDate"/>
+                <Cell col="3" displaytype="date" edittype="date" text="bind:applyPridEndDate"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:expCd" combodataset="dsExpCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:rshipCd" combodataset="dsRshipCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="6" text="bind:empNo"/>
+                <Cell col="7" text="bind:empNm"/>
+                <Cell col="8" text="bind:deptNm"/>
+                <Cell col="9" edittype="normal" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsRshipCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">본인</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">배우자</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">조부</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">조모</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">부</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="data">모</Col>
+          </Row>
+          <Row>
+            <Col id="code">7</Col>
+            <Col id="data">장인</Col>
+          </Row>
+          <Row>
+            <Col id="code">8</Col>
+            <Col id="data">장모</Col>
+          </Row>
+          <Row>
+            <Col id="code">9</Col>
+            <Col id="data">자</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="data">지인</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsExpTgm">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="patRrn" type="STRING" size="256"/>
+          <Column id="applyPridStartDate" type="STRING" size="256"/>
+          <Column id="applyPridEndDate" type="STRING" size="256"/>
+          <Column id="expCd" type="STRING" size="256"/>
+          <Column id="rshipCd" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findExpTgmList</Col>
+            <Col id="URL">erp47::won/base/findExpTgmList.do</Col>
+            <Col id="outData">dsExpTgm=dsExpTgm</Col>
+            <Col id="callbackFunc">expTgmCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchExpTgmProcess</Col>
+            <Col id="URL">erp47::won/base/batchExpTgmProcess.do</Col>
+            <Col id="inData">dsExpTgm=dsExpTgm:u</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsExpCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">직원감면(50%)</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">가족감면(30%)</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">직원지인(10%)</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 원무 감면대상자 관리                           					*
+*                                                                   *
+* @Path		    감면대상자 관리      								*
+* @Description  감면대상자를 관리한다.							*
+* @Author		김봉진   					                        *
+* 								                                    *
+* Created on 2016. 10.  6.                             		        *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonScripts.xjs";
+include "scripts::hrsScripts.xjs";
+include "scripts::wonScripts.xjs";
+
+//사원검색
+this.searchEmpBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.gfnEmpPopup();
+	this.setEmpInfo = function(arrRtn){ 
+		this.searchEmpNoEd.set_value(arrRtn[0]);  
+		this.searchEmpNmEd.set_value(arrRtn[1]);  	
+	}
+}
+
+//대상환자검색
+this.searchPatBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.gfnPatPopup();
+	this.setPatInfo = function(arrRtn){ 
+			this.searchPatNoEd.set_value(arrRtn[0]);  
+			this.searchPatNmEd.set_value(arrRtn[1]);  									
+	}
+}
+
+//조건초기화
+this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.searchEmpNoEd.set_value(null);
+	this.searchEmpNmEd.set_value(null);
+	this.searchPatNoEd.set_value(null);
+	this.searchPatNmEd.set_value(null);
+	this.expCombo.set_value(null);
+}
+
+//감면대상자조회
+this.searchExpTgmBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var searchPatNoEd = this.searchPatNoEd.value;
+	var searchEmpNoEd = this.searchEmpNoEd.value;
+	var expCombo = this.expCombo.value;
+	
+	if(searchEmpNoEd == null || searchEmpNoEd == null){
+		alert("사원 검색 후 조회하십시오.");		
+	}else{
+		var argument = "patNo='"+searchPatNoEd+"' empNo='"+searchEmpNoEd+"' expCd='"+expCombo+"'"; 
+		var row = this.dsService.findRow('serviceID' , "findExpTgmList");
+		this.dsService.setColumn(row, "argument", argument);
+		this.gfnService("findExpTgmList");
+	}
+}
+
+//감면대상자추가
+this.addExpTgmBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsExpTgm.addRow();	
+}
+
+//감면대상자삭제
+this.deleteExpTgmBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsExpTgm.deleteMultiRows(this.expTgmGrid.getSelectedDatasetRows());
+}
+
+//작성취소
+this.cancelExpTgmBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("작성중인 데이터는 저장되지 않습니다. 취소하시겠습니까?")){
+		this.reload();
+	}
+}
+
+//일괄처리
+this.batchExpTgmBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("일괄처리 하시겠습니까?")){
+		//expCd 50% 1, 30% 2, 10% 1이다.
+		for(var i=0; i<this.dsExpTgm.rowcount; i++){
+			var empNo = this.dsExpTgm.getColumn(i,"empNo");
+			var expCd = this.dsExpTgm.getColumn(i,"expCd");
+			var rshipCd = this.dsExpTgm.getColumn(i,"rshipCd");
+			
+			if(empNo == null){			
+				alert("직원정보를 확인 하십시오.");
+			}else if(expCd == null || rshipCd == null ){
+				alert("감면구분 및 관계를 확인 하십시오.");
+			}else{
+				this.gfnService("batchExpTgmProcess");
+			}
+		}
+	}
+}
+
+//그리드클릭이벤트
+this.expTgmGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	var nRow = this.dsExpTgm.rowposition;
+	if(e.cell == 0 || e.cell == 1){
+		this.gfnPatPopup();
+		this.setPatInfo = function(arrRtn){ 
+			this.dsExpTgm.setColumn(nRow,"patNo",arrRtn[0]);			
+			this.dsExpTgm.setColumn(nRow,"patNm",arrRtn[1]);									
+		}
+	}else if(e.cell == 6 || e.cell == 7 || e.cell == 8){
+		this.gfn_EmpPopup();
+		this.setEmpInfo = function(arrRtn){ 
+			this.dsExpTgm.setColumn(nRow,"empNo",arrRtn[0]);
+			this.dsExpTgm.setColumn(nRow,"empNm",arrRtn[1]);
+			this.dsExpTgm.setColumn(nRow,"deptNm",arrRtn[3]);
+		}
+	}
+}
+
+this.expTgmCallbackFunc = function(svcID, errorCode, errorMsg){
+   if (errorCode < 1) {
+      trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+      this.gfnErrorPopup(svcID, errorMsg);
+   } else {
+      // 트랜잭션 완료
+      trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+      if(this.dsExpTgm.getRowCount() == 0){
+		alert("해당 조건에 검색된 데이터가 없습니다.");
+      }
+   }
+}]]></Script>
+  </Form>
+</FDL>

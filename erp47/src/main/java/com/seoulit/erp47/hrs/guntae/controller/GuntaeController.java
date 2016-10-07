@@ -43,7 +43,7 @@ public class GuntaeController {
         PlatformData outData = (PlatformData)request.getAttribute("outData");
         PlatformData inData = (PlatformData)request.getAttribute("inData");
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-
+        
         List<DayGuntaeBean> list = guntaeServiceFacade.createDayGuntae(argsMap);
 
         dataSetBeanMapper.beansToDataset(outData, list, DayGuntaeBean.class);
@@ -58,7 +58,6 @@ public class GuntaeController {
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
 
         List<DayGuntaeBean> list = guntaeServiceFacade.findDayGuntaeList(argsMap);
-        System.out.println("요기용"); 
         dataSetBeanMapper.beansToDataset(outData, list, DayGuntaeBean.class);
 
     }

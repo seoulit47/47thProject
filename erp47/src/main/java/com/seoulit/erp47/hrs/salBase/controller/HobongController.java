@@ -18,7 +18,7 @@ import com.seoulit.erp47.hrs.salBase.to.HobongHistoryBean;
 import com.seoulit.erp47.hrs.salBase.to.JobBean;
 
 /**
- * @Package  com.seoul.his.hrs.salBase.controller
+ * @Package  com.seoulit.erp47.hrs.salBase.controller
  * @Class    HobongController.java
  * @Create   2016. 9. 26.
  * @Author   박 영 희

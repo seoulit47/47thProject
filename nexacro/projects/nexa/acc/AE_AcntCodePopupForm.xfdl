@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AE_AcntCodePopupForm" classname="AE_AcntCodePopupForm" left="0" top="0" width="490" height="596" titletext="New Form" onload="AE_AcntCodePopupForm_onload">
+  <Form id="AE_AcntCodePopupForm" classname="AE_AcntCodePopupForm" left="0" top="0" width="490" height="596" titletext="계정과목 조회" onload="AE_AcntCodePopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="0%" top="4" right="3.21%" height="52" style="background:transparent URL('img::titleBar7.jpg') stretch;">

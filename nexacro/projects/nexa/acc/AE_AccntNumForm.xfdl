@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AE_AccntNumForm" classname="AE_AccntNumForm" left="0" top="0" width="1250" height="768" titletext="법인계좌번호 관리" onload="AE_AcntNoForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" left="0%" top="-4" right="0.8%" height="60" style="background:transparent URL('img::titleBar5.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="법인계좌번호 관리" onclick="Div04_Static00_onclick" left="3.71%" top="11" right="71.61%" height="35" style="font:bold 20 나눔스퀘어 Bold;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="yearDiv" taborder="1" text="회계년도" left="2.24%" top="74" right="89.76%" height="32" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Spin id="yearSpin" taborder="2" value="2016" onspin="yearSpin_onspin" left="11.68%" top="74" right="78.88%" height="32" style="margin:1 0 2 0;" class="AreaSpin"/>
+        <Div id="acntDiv" taborder="3" text="보조유형명" left="24.96%" top="74" right="67.04%" height="32" style="background:wheat;color:black;bordertype:round 5 5 ;font:10 다음_Regular;"/>
+        <Edit id="acntSubEd" taborder="4" left="34.56%" top="74" right="44.16%" height="32" class="AreaEdt"/>
+        <Button id="searchBtn" taborder="5" onclick="searchBtn_onclick" left="57.44%" top="74" right="35.36%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="acntNoGrid" taborder="6" binddataset="dsAccntNo" useinputpanel="false" autofittype="col" onexpanddown="acntNoGrid_onexpanddown" left="2.24%" top="139" right="1.12%" height="570">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="159"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="61"/>
+                <Column size="166"/>
+              </Columns>
+              <Rows>
+                <Row size="33" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2">
+                  <Cell/>
+                  <Cell col="1" style="align:left;" text="계정정보"/>
+                </Cell>
+                <Cell col="2" rowspan="2">
+                  <Cell style="align:bottom;" text="보조유형코드"/>
+                  <Cell row="1"/>
+                </Cell>
+                <Cell col="3" rowspan="2">
+                  <Cell style="align:bottom;" text="계좌번호"/>
+                  <Cell row="1"/>
+                </Cell>
+                <Cell col="4" rowspan="2">
+                  <Cell style="align:bottom;" text="계좌명"/>
+                  <Cell row="1"/>
+                </Cell>
+                <Cell col="5" rowspan="2">
+                  <Cell style="align:bottom;" text="은행"/>
+                  <Cell row="1"/>
+                </Cell>
+                <Cell col="6" rowspan="2">
+                  <Cell style="align:bottom;" text="샤용여부"/>
+                  <Cell row="1"/>
+                </Cell>
+                <Cell col="7" rowspan="2">
+                  <Cell style="align:bottom;" text="비고"/>
+                  <Cell row="1"/>
+                </Cell>
+                <Cell row="1" text="계정코드"/>
+                <Cell row="1" col="1" text="계정명"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="expand" text="bind:acntCd" expandshow="show" expandimage="URL('theme://images\ico_menu_check.png')"/>
+                <Cell col="1" text="bind:acntNm"/>
+                <Cell col="2" edittype="expand" text="bind:assiTypeNm" expandshow="show" expandimage="URL('theme://images\ico_menu_check.png')"/>
+                <Cell col="3" edittype="text" text="bind:accntNo"/>
+                <Cell col="4" edittype="text" text="bind:accntNm"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:bankDiv" combodataset="dsGA003" combocodecol="code" combodatacol="value"/>
+                <Cell col="6" edittype="combo" text="bind:useYn" combodataset="useYN" combocodecol="code" combodatacol="value"/>
+                <Cell col="7" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addBtn" taborder="7" onclick="subAddRow_onclick" left="84.08%" top="99" right="8.72%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delBtn" taborder="8" onclick="subDelRow_onclick" left="91.76%" top="99" right="1.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="copyBtn" taborder="9" onclick="copyBtn_onclick" left="83.52%" top="720" right="9.28%" height="32" style="background:@gradation URL('img::copyBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchBtn" taborder="10" onclick="batchBtn_onclick" left="91.68%" top="720" right="1.12%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="useYN" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value"/>
+            <Col id="code">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">Y</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="code">N</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAccntNo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accYear" type="STRING" size="256"/>
+          <Column id="accntNo" type="STRING" size="256"/>
+          <Column id="accntNm" type="STRING" size="256"/>
+          <Column id="acntNm" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="assiTypeNm" type="STRING" size="256"/>
+          <Column id="assiTypeCd" type="STRING" size="256"/>
+          <Column id="bankDiv" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAccntNoList</Col>
+            <Col id="URL">erp47::acc/elementary/findAccntNoList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsAccntNo=dsAccntNo</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchAccntNoList</Col>
+            <Col id="URL">erp47::acc/elementary/batchAccntNoListProcess.do</Col>
+            <Col id="inData">dsAccntNo=dsAccntNo:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">lastYearAccntNoCopy</Col>
+            <Col id="URL">erp47::acc/elementary/lastYearAccntNoCopy.do</Col>
+            <Col id="inData">dsAccntNo=dsAccntNo</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA003</Col>
+            <Col id="dsName">dsGA003</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGA003" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonTransaction.xjs";
+include "scripts::commonBind.xjs";	
+
+
+// 화면 로드시
+this.AE_AcntNoForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnBind();
+}
+
+//계좌 조회
+this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var accYear = this.yearSpin.value;
+	var argument = "accYear="+accYear;
+	this.dsService.setColumn(0, "argument", argument);
+	this.gfnService("findAccntNoList");
+}
+
+//계좌 추가
+this.subAddRow_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var newRow = this.dsAccntNo.addRow();	
+	this.dsAccntNo.setColumn(newRow, "accYear", this.yearSpin.value);
+}
+
+//계좌 삭제
+this.subDelRow_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsAccntNo.deleteRow(this.acntNoGrid.currentrow);
+}
+
+// 그리드함수
+this.acntNoGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)
+{
+	var accYear = this.yearSpin.value;
+	if(e.cell == 0){
+		application.open("계정과목검색","acc::AE_AcntCodePopupForm.xfdl",this.parent,{gubun:"acntCD"},'',e.screenX,e.screenY);
+	}else if(e.cell == 2){
+		application.open("보조유형과목검색","acc::AE_AssiTypePopupForm.xfdl",this.parent,{accYear:accYear},'',e.screenX,e.screenY);	
+	}
+}
+
+// 팝업함수
+this.setCode=function(pCode, accCodeArr)
+{
+		this.dsAccntNo.setColumn(this.dsAccntNo.rowposition,"acntCd",accCodeArr[0]);
+		this.dsAccntNo.setColumn(this.dsAccntNo.rowposition,"acntNm",accCodeArr[1]);
+}
+this.assicode=function(assiType)
+{
+		this.dsAccntNo.setColumn(this.dsAccntNo.rowposition,"assiTypeCd",assiType[0]);
+		this.dsAccntNo.setColumn(this.dsAccntNo.rowposition,"assiTypeNm",assiType[1]);
+}
+
+
+//계좌 저장
+this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchAccntNoList");
+}
+
+//전년도 복사
+this.copyBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var year = this.yearSpin.value-1
+	var Cdcopy = application.confirm(year + "년도 계좌번호를 복사해오시겠습니까?","전년도 계좌번호복사");
+	
+	if(Cdcopy==true){
+		var year = this.yearSpin.value;
+		this.dsService.setColumn(2,"argument","year="+year);
+		this.gfnService("lastYearAccntNoCopy");
+	}else{
+		return ;
+	}
+}
+
+
+//Callback함수
+this.CalbackFunc = function(serviceID,errorCode,errorMsg){
+	if(ServiceID=="findAccntNoList"){
+		if(errorCode < 0){
+			alert(errorMsg+"계좌번호목록을 불러오는데 실패했습니다");
+		}
+	}else if(ServiceID=="batchAccntNoList"){
+		if(errorCode == 0){
+			alert("계좌번호정보 일괄처리를 완료했습니다.");
+			form.reload();
+		}else if(errorCode < 0){
+			alert(errorMsg+"계좌번호정보 일괄처리를 실패했습니다.");
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

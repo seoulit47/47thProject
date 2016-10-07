@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WB_GijunCodeForm" classname="WB_GijunCodeForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0.8%" top="24" right="0.88%" height="38" style="background:transparent URL('img::formBar.png');border:0 none #808080ff ;color:black;bordertype:round 10 10 ;" cssclass="TStc"/>
+        <Grid id="gijunInfoGrid" taborder="1" binddataset="dsGijunInfo" useinputpanel="false" autofittype="col" oncellclick="gijunInfoGrid_oncellclick" left="1.36%" top="99" right="54.88%" height="549">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="200"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="기준정보코드"/>
+                <Cell col="1" text="기준정보명"/>
+                <Cell col="2" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="none" text="bind:gijunCd"/>
+                <Cell col="1" edittype="none" text="bind:gijunNm"/>
+                <Cell col="2" edittype="none" text="bind:useYb"/>
+              </Band>
+            </Format>
+            <Format id="insert">
+              <Columns>
+                <Column size="100"/>
+                <Column size="200"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="기준정보코드"/>
+                <Cell col="1" text="기준정보명"/>
+                <Cell col="2" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:gijunCd"/>
+                <Cell col="1" edittype="text" text="bind:gijunNm"/>
+                <Cell col="2" edittype="text" text="bind:useYb"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="gijunInfoDetailGrid" taborder="2" useinputpanel="false" autofittype="col" oncellclick="gijunInfoDetailGrid_oncellclick" left="47.04%" top="99" right="0.88%" height="549">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="150"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상세코드"/>
+                <Cell col="1" text="상세명"/>
+                <Cell col="2" text="사용여부"/>
+                <Cell col="3" text="변경여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:dtlCd"/>
+                <Cell col="1" text="bind:dtlNm"/>
+                <Cell col="2" text="bind:useYb"/>
+                <Cell col="3" text="bind:filedWorkCngYb"/>
+              </Band>
+            </Format>
+            <Format id="insert">
+              <Columns>
+                <Column size="100"/>
+                <Column size="150"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상세코드"/>
+                <Cell col="1" text="상세명"/>
+                <Cell col="2" text="사용여부"/>
+                <Cell col="3" text="변경여부"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:dtlCd"/>
+                <Cell col="1" edittype="text" text="bind:dtlNm"/>
+                <Cell col="2" edittype="text" text="bind:useYb"/>
+                <Cell col="3" edittype="text" text="bind:filedWorkCngYb"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div02" taborder="3" left="1.36%" top="669" right="54.88%" height="43" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Div id="Div01" taborder="4" left="47.04%" top="669" right="0.88%" height="43" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="subCodeStc" taborder="5" text="코드" onclick="subCodeStc_onclick" left="1.6%" top="64" right="86.4%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc00" taborder="6" text="상세코드" onclick="subCodeStc_onclick" left="47.04%" top="65" right="40%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Button id="delGijunBtn" taborder="7" onclick="delGijunBtn_onclick" cssclass="delGijunBtn" left="37.76%" top="674" right="55.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delGijunBtn"/>
+        <Button id="addGijunBtn" taborder="8" onclick="addGijunBtn_onclick" cssclass="addGijunBtn" left="30.32%" top="674" right="62.48%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addGijunBtn"/>
+        <Button id="delGijunDetailBtn" taborder="9" onclick="delGijunDetailBtn_onclick" cssclass="delGijunDetailBtn" left="91.76%" top="674" right="1.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delGijunDetailBtn"/>
+        <Button id="addGijunDetailBtn" taborder="10" onclick="addGijunDetailBtn_onclick" cssclass="addGijunDetailBtn" left="84.32%" top="674" right="8.48%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addGijunDetailBtn"/>
+        <Button id="DelBtn19" taborder="11" onclick="processBtn_onclick" cssclass="DelBtn" left="90.4%" top="64" right="0.8%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Static id="Static01" taborder="12" text="병동병실조회" left="5.44%" top="-4" right="80.16%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div03" taborder="13" left="0%" top="0" right="4%" height="60" style="background:transparent URL('img::titleBar4.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="0" text="기준정보코드 관리" left="4%" top="-4" right="81.58%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsGijunInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="gijunCd" type="STRING" size="256"/>
+          <Column id="gijunNm" type="STRING" size="256"/>
+          <Column id="useYb" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGijunInfoDetail" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="dtlCd" type="STRING" size="256"/>
+          <Column id="dtlNm" type="STRING" size="256"/>
+          <Column id="useYb" type="STRING" size="256"/>
+          <Column id="filedWorkCngYb" type="STRING" size="256"/>
+          <Column id="gijunCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findGijunInfoCodeList</Col>
+            <Col id="URL">erp47::won/base/findGijunInfoCodeList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsGijunInfo=dsGijunInfo dsGijunInfoDetail=dsGijunInfoDetail</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">gijunInfoCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchProcessGijunInfoData</Col>
+            <Col id="URL">erp47::won/base/batchProcessGijunInfoData.do</Col>
+            <Col id="inData">dsGijunInfo=dsGijunInfo:u dsGijunInfoDetail=dsGijunInfoDetail:u</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">batchProcessCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                               			                    *
+* 기준정보코드 관리															*
+*                                                                   			*
+* @Path			원무 – 기준정보코드 관리   	 								*
+* @Description 	기준정보코드 관리(조회, 추가, 수정, 삭제) 	      			*
+* @Author		김봉진 						 								*
+* 									 											*
+* Created on 	2016. 10. 7.                           		 					*
+*									 											*
+********************************************************************************/
+
+include "scripts::commonScripts.xjs"; 
+
+this.WB_GijunCodeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	this.gfnService("findGijunInfoCodeList");
+}
+
+//기준정보코드추가
+this.addGijunBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var addRow = this.dsGijunInfo.addRow();
+	this.dsGijunInfo.setColumn(addRow,"useYb", 'Y');
+}
+
+//기준정보코드삭제
+this.delGijunBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("해당 상세코드가 함께 삭제됩니다. 진행하시겠습니까?")){
+		this.dsGijunInfoDetail.deleteAll();
+		this.dsGijunInfo.deleteRow(this.dsGijunInfo.rowposition);
+		this.dsGijunInfoDetail.reset();
+		this.gijunInfoDetailGrid.set_visible(false)
+	}
+}
+
+//상세코드추가
+this.addGijunDetailBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var addRow = this.dsGijunInfoDetail.addRow();
+	this.dsGijunInfoDetail.setColumn(addRow,"filedWorkCngYb", 'Y');
+	this.dsGijunInfoDetail.setColumn(addRow,"useYb", 'Y');
+	this.dsGijunInfoDetail.setColumn(addRow,"gijunCd",this.dsGijunInfo.getColumn(this.dsGijunInfo.rowposition,"gijunCd"));
+}
+
+//상세코드삭제
+this.delGijunDetailBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsGijunInfoDetail.deleteRow(this.dsGijunInfoDetail.rowposition);
+}
+
+
+//일괄처리
+this.processBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var flag=0;
+	var gijunCodeSelectRowType = this.dsGijunInfo.getRowType(this.dsGijunInfo.rowposition);
+	var gijunCode= this.dsGijunInfo.getColumn(this.dsGijunInfo.rowposition,"gijunCd");
+	
+	for(var i=0; i< this.dsGijunInfoDetail.getRowCount(); i++){
+		var rowType = this.dsGijunInfoDetail.getRowType(i);
+		var dtlCd = this.dsGijunInfoDetail.getColumn(i,"dtlCd");
+		if( rowType == 2 && dtlCd == null ){
+		  flag=1;
+		  break;
+		}
+	}
+	
+	if( gijunCodeSelectRowType == 2 && gijunCode == null ){
+		alert("코드구분코드를 입력해주세요");
+	}else if(flag == 1){
+		alert("상세코드를 입력해주세요");
+		flag=0;
+	}else{
+		this.gfnService("batchProcessGijunInfoData");
+	}
+}
+
+//기준정보 셀 클릭 시 해당 코드의 상세를 보여주는 이벤트
+this.gijunInfoGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	var useYb = this.dsGijunInfo.getColumn(this.dsGijunInfo.rowposition,"useYb");
+	if(useYb=="N"){
+		//this.addGijunDetailBtn.set_visible(false);
+		//this.delGijunDetailBtn.set_visible(false);
+		this.gijunInfoDetailGrid.set_formatid("default");
+	}else{
+		//this.addGijunDetailBtn.set_visible(true);
+		//this.delGijunDetailBtn.set_visible(true);
+		this.gijunInfoDetailGrid.set_formatid("insert");
+	}
+	this.gijunInfoDetailGrid.set_visible(true);
+	var filter_str = "gijunCd=='"+this.dsGijunInfo.getColumn(e.row,"gijunCd") +"'";
+	this.dsGijunInfoDetail.filter(filter_str);
+	this.gijunInfoDetailGrid.set_binddataset("dsGijunInfoDetail");
+
+	var rowType = this.dsGijunInfo.getRowType(e.row);
+	if(rowType == 2){
+		this.gijunInfoGrid.set_formatid("insert");
+		this.gijunInfoGrid.set_readonly(false);
+	}else{
+		this.gijunInfoGrid.set_formatid("default");
+		this.gijunInfoGrid.set_readonly(true);
+	}
+}
+
+this.gijunInfoDetailGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	if(this.dsGijunInfoDetail.getColumn(e.row, "filedWorkCngYb") == 'N'){
+		this.gijunInfoDetailGrid.set_formatid("default");
+		this.gijunInfoDetailGrid.set_readonly(true);
+	}else{
+		this.gijunInfoDetailGrid.set_formatid("insert");
+		this.gijunInfoDetailGrid.set_readonly(false);
+	}
+}
+
+this.gijunInfoCallbackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 1) {
+      trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+      this.gfnErrorPopup(svcID, errorMsg);
+   } else {
+      // 트랜잭션 완료
+      trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+      if(this.dsGijunInfo.getRowCount() == 0){
+		alert("해당 조건에 검색된 데이터가 없습니다.");	
+      }
+   }
+}
+
+this.batchProcessCallbackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 1) {
+      trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+      this.gfnErrorPopup(svcID, errorMsg);
+   } else {
+      // 트랜잭션 완료
+      trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+      if(this.dsGijunInfo.getRowCount() == 0){
+		alert("해당 조건에 검색된 데이터가 없습니다.");	
+      }
+   }
+}
+]]></Script>
+  </Form>
+</FDL>
