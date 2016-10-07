@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WH_GooutStayoutMngntForm" classname="WH_GooutStayoutMngntForm" left="0" top="0" width="1256" height="759" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div06" taborder="0" left="0%" top="0" right="0.48%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="0" text="외출 외박 관리" left="4.4%" top="-3" right="56.32%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc01" taborder="1" text="환자번호" onclick="subCodeStc_onclick" left="2.23%" top="80" right="90.68%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="patNoEd" taborder="2" left="10.03%" top="80" right="81.37%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Button id="patNoBtn" taborder="3" onclick="patNoBtn_onclick" left="18.95%" top="80" right="78.66%" height="26" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn"/>
+        <Static id="subCodeStc00" taborder="4" text="승인구분" onclick="subCodeStc_onclick" left="37.02%" top="78" right="55.89%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Radio id="aprvRadio" taborder="5" columncount="2" codecolumn="codecolumn" datacolumn="datacolumn" left="45.78%" top="70" right="39.97%" height="45" style="font:bold 9 arial;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">Y</Col>
+                <Col id="datacolumn">승인</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">N</Col>
+                <Col id="datacolumn">미승인</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Button id="searchBtn" taborder="6" text="조회" onclick="searchBtn_onclick" left="59.95%" top="78" right="35.35%" height="26" class="SearchBtn"/>
+        <Button id="appCancelBtn" taborder="7" text="신청취소" onclick="appCancelBtn_onclick" left="68.79%" top="78" right="24.12%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="approvalBtn" taborder="8" text="승 인" onclick="approvalBtn_onclick" left="76.43%" top="78" right="17.99%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="gooutCfmtBtn" taborder="9" text="외출확인" onclick="gooutCfmtBtn_onclick" left="82.56%" top="78" right="10.43%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="comebackCfmtBtn" taborder="10" text="복귀확인" onclick="comebackCfmtBtn_onclick" left="90.13%" top="78" right="2.79%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <GroupBox id="GroupBox00" text="외출/외박 신청" taborder="11" left="1.51%" top="117" right="64.89%" height="617" style="border:1 solid lightslategray ;font:11 arial;"/>
+        <Button id="patSearchBtn" taborder="12" text="조회" onclick="patSearchBtn_onclick" left="29.46%" top="141" right="66%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Edit id="hosptlzReceiptNoEd" taborder="13" enable="false" left="13.85%" top="149" right="83.76%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="subCodeStc03" taborder="14" text="입원접수번호 " onclick="subCodeStc_onclick" left="3.66%" top="149" right="88.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc05" taborder="15" text="이  름" onclick="subCodeStc_onclick" left="4.86%" top="186" right="88.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="patNmEd" taborder="16" enable="false" left="13.85%" top="186" right="76.99%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="subCodeStc13" taborder="17" text="퇴원일" onclick="subCodeStc_onclick" left="4.86%" top="223" right="88.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="dscgDateCal" taborder="18" enable="false" left="13.85%" top="223" right="73.89%" height="26"/>
+        <Static id="subCodeStc06" taborder="19" text="연락처" onclick="subCodeStc_onclick" left="4.78%" top="260" right="88.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <MaskEdit id="patTelEd" taborder="20" type="string" mask=" ### - #### - ####" enable="false" left="13.85%" top="261" right="73.81%" height="26" style=":disabled {align:left middle;}"/>
+        <Static id="subCodeStc08" taborder="21" text="병동/병실" onclick="subCodeStc_onclick" left="4.78%" top="297" right="88.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="wardEd" taborder="22" enable="false" left="13.85%" top="297" right="82.8%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="Static01" taborder="23" text="동" left="17.68%" top="297" right="80.65%" height="27" style="font:bold 9 arial;"/>
+        <Edit id="hroomEd" taborder="24" enable="false" left="19.82%" top="297" right="76.83%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="Static02" taborder="25" text="실" left="23.73%" top="297" right="74.52%" height="27" style="font:bold 9 arial;"/>
+        <Edit id="trmtdeptnmEd" taborder="26" enable="false" left="13.85%" top="334" right="73.81%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="subCodeStc11" taborder="27" text="진료과" onclick="subCodeStc_onclick" left="4.78%" top="334" right="88.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc12" taborder="28" text="담당의사" onclick="subCodeStc_onclick" left="4.78%" top="371" right="88.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="respDoctNmEd" taborder="29" enable="false" left="13.85%" top="371" right="73.81%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Button id="applicationBtn" taborder="30" text="신청" onclick="applicationBtn_onclick" left="29.46%" top="460" right="66.24%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Combo id="gooutStayoutCombo" taborder="31" innerdataset="gooutStayoutDiv" codecolumn="code" datacolumn="value" oncloseup="gooutStayoutCombo_oncloseup" left="9.87%" top="460" right="80.18%" height="26" class="AreaCombo"/>
+        <Static id="subCodeStc07" taborder="32" text="구 분" onclick="subCodeStc_onclick" left="2.79%" top="459" right="90.92%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc09" taborder="33" text="외박날짜" onclick="subCodeStc_onclick" left="2.79%" top="503" right="90.92%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="gooutDateCal" taborder="34" enable="false" left="9.87%" top="504" right="78.66%" height="25"/>
+        <Calendar id="comebackDateCal" taborder="35" enable="false" left="22.77%" top="504" right="66%" height="25"/>
+        <Static id="Static00" taborder="36" text="~" left="21.18%" top="505" right="76.91%" height="22" style="align:center middle;font:bold 9 arial;"/>
+        <Edit id="totalStayoutDayEd" taborder="37" enable="false" left="22.85%" top="534" right="65.92%" height="26" style="color:lightseagreen; :disabled {font:bold 9 arial;}"/>
+        <Calendar id="gooutDayCal" taborder="38" enable="false" left="9.87%" top="579" right="79.14%" height="25"/>
+        <Static id="subCodeStc14" taborder="39" text="외출날짜" onclick="subCodeStc_onclick" left="2.95%" top="577" right="90.76%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc04" taborder="40" text="외출시간" onclick="subCodeStc_onclick" left="2.79%" top="612" right="90.92%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="Static03" taborder="41" text="~" left="15.13%" top="614" right="82.96%" height="22" style="align:center middle;font:bold 9 arial;"/>
+        <Edit id="totalGooutTimeEd" taborder="42" enable="false" left="22.93%" top="611" right="66.48%" height="29" style=":disabled {color:lightseagreen;font:bold 9 arial;}"/>
+        <TextArea id="NOTE" taborder="43" left="9.87%" top="647" right="66%" height="57"/>
+        <Static id="subCodeStc10" taborder="44" text="사 유" onclick="subCodeStc_onclick" left="2.79%" top="647" right="90.92%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Grid id="GooutStayoutGrid" taborder="45" binddataset="dsGooutStayout" useinputpanel="false" left="36.54%" top="122" right="2.15%" height="611">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="118"/>
+                <Column size="89"/>
+                <Column size="69"/>
+                <Column size="90"/>
+                <Column size="46"/>
+                <Column size="46"/>
+                <Column size="94"/>
+                <Column size="119"/>
+                <Column size="124"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="112"/>
+                <Column size="75"/>
+                <Column size="116"/>
+                <Column size="204"/>
+                <Column size="318"/>
+              </Columns>
+              <Rows>
+                <Row size="26" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="신청일자"/>
+                <Cell col="1" text="외출/외박구분"/>
+                <Cell col="2" text="환자번호"/>
+                <Cell col="3" text="성 명"/>
+                <Cell col="4" text="진료과"/>
+                <Cell col="5" text="병동"/>
+                <Cell col="6" text="병실"/>
+                <Cell col="7" text="외출시간"/>
+                <Cell col="8" text="외출복귀시간"/>
+                <Cell col="9" text="총외출시간"/>
+                <Cell col="10" text="외박시작일시"/>
+                <Cell col="11" text="외박복귀일시"/>
+                <Cell col="12" text="총외박일수"/>
+                <Cell col="13" text="확인자"/>
+                <Cell col="14" text="확인일시"/>
+                <Cell col="15" text="외출/복귀상태"/>
+                <Cell col="16" text="사유"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="mask" text="bind:appDate" mask="####/ ##/ ##"/>
+                <Cell col="1" text="bind:gooutStayoutState"/>
+                <Cell col="2" displaytype="text" edittype="text" text="bind:patNo"/>
+                <Cell col="3" displaytype="text" edittype="text" text="bind:patNm"/>
+                <Cell col="4" text="bind:trmtdeptnm"/>
+                <Cell col="5" text="bind:ward"/>
+                <Cell col="6" text="bind:hroom"/>
+                <Cell col="7" displaytype="text" edittype="mask" text="bind:gooutTime" mask="## : ##"/>
+                <Cell col="8" displaytype="text" edittype="mask" text="bind:comebackTime" mask="## : ##"/>
+                <Cell col="9" displaytype="text" edittype="mask" text="bind:totalGooutTime" mask="##시간 ##분" suppressalign="first"/>
+                <Cell col="10" displaytype="text" edittype="mask" text="bind:gooutDate" mask="####/ ##/ ##"/>
+                <Cell col="11" displaytype="text" edittype="mask" text="bind:comebackDate" mask="####/ ##/ ##"/>
+                <Cell col="12" displaytype="text" edittype="mask" text="bind:totalStayoutDay" mask=" ##일" suppressalign="first"/>
+                <Cell col="13" text="bind:cfmr"/>
+                <Cell col="14" displaytype="text" edittype="mask" text="bind:cfmtDate" mask="####/ ##/ ##"/>
+                <Cell col="15" displaytype="text" edittype="none" text="bind:state"/>
+                <Cell col="16"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <MaskEdit id="gooutTimeEd" taborder="46" value="0000" type="string" mask="## : ##" enable="false" left="9.79%" top="612" right="85.67%" height="28" style=":disabled {align:left middle;}"/>
+        <MaskEdit id="comebackTimeEd" taborder="47" value="1200" type="string" mask="## : ##" enable="false" left="17.2%" top="611" right="78.26%" height="28" style=":disabled {align:left middle;}"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item6" compid="hosptlzReceiptNoEd" propid="value" datasetid="dsHosptlzPatInfo" columnid="hosptlzReceiptNo"/>
+      <BindItem id="item0" compid="patNmEd" propid="value" datasetid="dsHosptlzPatInfo" columnid="patNm"/>
+      <BindItem id="item7" compid="dscgDateCal" propid="value" datasetid="dsHosptlzPatInfo" columnid="dscgDate"/>
+      <BindItem id="item1" compid="patTelEd" propid="value" datasetid="dsHosptlzPatInfo" columnid="tel"/>
+      <BindItem id="item2" compid="wardEd" propid="value" datasetid="dsHosptlzPatInfo" columnid="ward"/>
+      <BindItem id="item3" compid="hroomEd" propid="value" datasetid="dsHosptlzPatInfo" columnid="hroom"/>
+      <BindItem id="item4" compid="trmtdeptnmEd" propid="value" datasetid="dsHosptlzPatInfo" columnid="trmtDeptNm"/>
+      <BindItem id="item5" compid="respDoctNmEd" propid="value" datasetid="dsHosptlzPatInfo" columnid="respDoctNm"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findHosptlzPat</Col>
+            <Col id="callbackFunc">findHosptlzPatCallbackFunc</Col>
+            <Col id="URL">erp47::won/hosptlzPat/findHosptlzPat.do</Col>
+            <Col id="outData">dsHosptlzPatInfo=dsHosptlzPatInfo</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">appGooutStayout</Col>
+            <Col id="URL">erp47::won/hosptlzPat/batchProcessGooutStayout.do</Col>
+            <Col id="inData">dsGooutStayout=dsGooutStayout:u</Col>
+            <Col id="callbackFunc">callbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findGooutStayoutList</Col>
+            <Col id="URL">erp47::won/hosptlzPat/findGooutStayoutList.do</Col>
+            <Col id="outData">dsGooutStayout=dsGooutStayout</Col>
+            <Col id="callbackFunc">callbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">aprvGooutStayout</Col>
+            <Col id="URL">erp47::won/hosptlzPat/batchProcessGooutStayout.do</Col>
+            <Col id="inData">dsGooutStayout=dsGooutStayout:u</Col>
+            <Col id="callbackFunc">callbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">GooutStayout</Col>
+            <Col id="URL">erp47::won/hosptlzPat/batchProcessGooutStayout.do</Col>
+            <Col id="inData">dsGooutStayout=dsGooutStayout:u</Col>
+            <Col id="callbackFunc">callbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">deleteGooutStayout</Col>
+            <Col id="URL">erp47::won/hosptlzPat/batchProcessGooutStayout.do</Col>
+            <Col id="inData">dsGooutStayout=dsGooutStayout:u</Col>
+            <Col id="callbackFunc">callbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="gooutStayoutDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">외출</Col>
+            <Col id="value">외출</Col>
+          </Row>
+          <Row>
+            <Col id="code">외박</Col>
+            <Col id="value">외박</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHosptlzPatInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="respDoctNm" type="STRING" size="256"/>
+          <Column id="trmtDeptNm" type="STRING" size="256"/>
+          <Column id="hosptlzReceiptNo" type="STRING" size="256"/>
+          <Column id="dscgDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGooutStayout" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="appDate" type="STRING" size="256"/>
+          <Column id="cfmr" type="STRING" size="256"/>
+          <Column id="cfmrState" type="STRING" size="256"/>
+          <Column id="cfmtDate" type="STRING" size="256"/>
+          <Column id="comebackDate" type="STRING" size="256"/>
+          <Column id="gooutDate" type="STRING" size="256"/>
+          <Column id="gooutStayoutState" type="STRING" size="256"/>
+          <Column id="hosptlzReceiptNo" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="totalGooutTime" type="STRING" size="256"/>
+          <Column id="totalStayoutDay" type="STRING" size="256"/>
+          <Column id="trmtdeptnm" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="comebackTime" type="STRING" size="256"/>
+          <Column id="gooutTime" type="STRING" size="256"/>
+          <Column id="gooutDay" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="state" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

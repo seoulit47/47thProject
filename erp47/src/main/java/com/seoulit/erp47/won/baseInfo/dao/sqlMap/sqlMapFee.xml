@@ -4,8 +4,25 @@
 
 <cache flushInterval="86400000" eviction="LRU" />
 
-<select id="findFeeListEMR" resultType="FeeBean" parameterType="map" flushCache="false" useCache="true">
+	<select id="selectFeeList" flushCache="false" useCache="true"
+		parameterType="map" resultType="FeeBean">
+		SELECT *
+		FROM WB_FEE
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="bigGrp != null">
+				AND BIG_GRP = #{bigGrp}
+			</if>
+			<if test="midGrp != null">
+				AND MID_GRP = #{midGrp}
+			</if>
+			<if	test="!feeNm.equals('%null%') and !feeNm.equals('%undefined%') and !feeNm.equals('%%')">
+				AND FEE_NM LIKE #{feeNm}
+			</if>
+		</trim>
+	</select>
 
+	<select id="selectFeeListEMR" flushCache="false" useCache="true"
+		parameterType="map" resultType="FeeBean">
 		SELECT *
 		FROM WB_FEE
 		<trim prefix="WHERE" prefixOverrides="AND">
@@ -36,10 +53,37 @@
 				</choose>
 			</if>
 		</trim>
+	</select>
 
+	<insert id="insertFee" parameterType="FeeBean">
+		INSERT INTO WB_FEE
+		VALUES(
+			#{feeCd},
+			#{feeNm},
+			#{bigGrp},
+			#{midGrp},
+			#{smGrp},
+			#{applyPridStartDate},
+			#{applyPridEndDate},
+			#{cost},
+			#{note}
+		)
+	</insert>
 
-</select>
+	<update id="updateFee" parameterType="FeeBean">
+		UPDATE WB_FEE 
+		SET
+			FEE_NM=#{feeNm},
+			APPLY_PRID_START_DATE=#{applyPridStartDate},
+			APPLY_PRID_END_DATE=#{applyPridEndDate},
+			COST=#{cost},
+			NOTE=#{note}
+		WHERE FEE_CD=#{feeCd}
+	</update>
 
-
+	<delete id="deleteFee" parameterType="FeeBean">
+		DELETE FROM WB_FEE
+		WHERE FEE_CD=#{feeCd}
+	</delete>
 
 </mapper>

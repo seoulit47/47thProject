@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoul.his.won.base.dao.ExpTgmDAO">
+
+	<cache flushInterval="86400000" eviction="LRU" />
+
+	<select id="selectExpTgmList" flushCache="false" useCache="true"
+		parameterType="map" resultType="ExpTgmBean">
+		SELECT *
+		FROM WB_EXP_TGM
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="patNo != null and !patNo.equals('undefined') and !patNo.equals('') ">
+				AND PAT_NO = #{patNo}
+			</if>
+			<if test="empNo != null and !empNo.equals('undefined') and !empNo.equals('')">
+				AND EMP_NO = #{empNo}
+			</if>
+			<if test="expCd != null and !expCd.equals('undefined') and !expCd.equals('')">
+				AND EXP_CD = #{expCd}
+			</if>
+		</trim>
+	</select>
+
+	<insert id="insertExpTgm" parameterType="ExpTgmBean">
+		INSERT INTO WB_EXP_TGM
+		VALUES(
+			#{patNo},
+			#{patNm},
+			#{patRrn},
+			#{applyPridStartDate},
+			#{applyPridEndDate},
+			#{expCd},
+			#{rshipCd},
+			#{empNo},
+			#{empNm},
+			#{deptNm},
+			#{note}
+		)
+	</insert>
+
+	<update id="updateExpTgm" parameterType="ExpTgmBean">
+		UPDATE WB_EXP_TGM
+		SET
+			PAT_NM=#{patNm},
+			PAT_RRN=#{patRrn},
+			APPLY_PRID_START_DATE=#{applyPridStartDate},
+			APPLY_PRID_END_DATE=#{applyPridEndDate},
+			EXP_CD=#{expCd},
+			RSHIP_CD=#{rshipCd},
+			EMP_NO=#{empNo},
+			EMP_NM=#{empNm},
+			DEPT_NM=#{deptNm},
+			NOTE=#{note}
+		WHERE PAT_NO=#{patNo}
+	</update>
+
+	<delete id="deleteExpTgm" parameterType="ExpTgmBean">
+		DELETE FROM WB_EXP_TGM
+		WHERE PAT_NO=#{patNo}
+	</delete>
+
+</mapper>
