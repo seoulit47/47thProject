@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.won.hosptlzPat.dao.DscgPatDAO">
+	<cache flushInterval="86400000" eviction="LRU" />
+
+	<select id="selectDscgPatList" flushCache="false" useCache="true" resultType="DscgPatBean">
+		SELECT h.PAT_NO 
+		       ,p.PAT_NM
+		       ,h.HOSPTLZ_DATE
+		       ,h.DSCG_DATE
+		       ,o.TRMT_DEPT
+		       ,h.HROOM 
+		       ,h.DSCG_DIV 
+		  FROM WH_HOSPTLZ_RECEIPT h
+		       ,(SELECT TRMT_DEPT
+		              ,PAT_NO
+		         FROM WS_OUTPA_RECEIPT
+		       ) o
+		       ,(SELECT PAT_NO
+		              ,PAT_NM
+		         FROM WS_PAT
+		       ) p
+		 WHERE h.PAT_NO = o.PAT_NO
+		       AND o.PAT_NO = p.PAT_NO
+		 <if test="startDay != null or endDay != null">
+		       AND h.DSCG_DATE BETWEEN #{startDay} AND #{endDay}
+		  </if>
+		  <if test="patNo != null">
+		       AND h.PAT_NO = #{patNo}
+		   </if>
+		ORDER BY h.PAT_NO
+	</select>
+
+	<update id="updateModDscgDay" parameterType="DscgPatBean">
+    	UPDATE WH_HOSPTLZ_RECEIPT
+		       SET DSCG_DATE=#{dscgDate}
+		 WHERE PAT_NO = #{patNo} and HOSPTLZ_DATE = #{hosptlzDate}
+	</update>
+
+</mapper>

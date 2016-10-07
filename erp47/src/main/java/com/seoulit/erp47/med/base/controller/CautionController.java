@@ -86,7 +86,7 @@ EmrServiceFacade emrServiceFacade;
 			PlatformData inData = (PlatformData)request.getAttribute("inData");
 			PlatformData outData = (PlatformData)request.getAttribute("outData");
 			
-			//  mickey 10월6일에 하겠습니다.  주의사항항목관리 크루드
+			//  mickey 10월7일에 하겠습니다.  주의사항항목관리 크루드
 			
 		}
 		

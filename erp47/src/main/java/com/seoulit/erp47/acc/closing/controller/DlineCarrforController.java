@@ -27,11 +27,11 @@ public class DlineCarrforController {
         closingServiceFacade.modifyDlineYn(accPrid);
     }
 
-   /* @RequestMapping("acc/closing/executeCarrfor.do")
+    @RequestMapping("acc/closing/executeCarrfor.do")
     public void executeCarrfor(HttpServletRequest request,HttpServletResponse response) 
             throws Exception {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         AccPridBean accPrid = dataSetBeanMapper.datasetToBean(inData, AccPridBean.class);
         closingServiceFacade.executeCarrfor(accPrid);
-    }*/
+    }
 }

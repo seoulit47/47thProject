@@ -12,15 +12,15 @@ import lombok.ToString;
 @ToString
 @Dataset(name = "dsClosData")
 public class ClosDataBean extends BaseBean {
-    String  artiCd         
-            ,artiNm            
-            ,amt             
-            ,sumAmt          
-            ,jourAmt          
-            ,cellInputDiv       
-            ,autoCalYn        
-            ,sumArtiCd        
-            ,deductYn
-            ,level;         
+    String  artiCd         	 //항목코드
+            ,artiNm          //항목명 
+            ,amt             //총액
+            ,sumAmt          //합계총액
+            ,jourAmt         //분개총액
+            ,cellInputDiv    //셀입력구분
+            ,autoCalYn       //
+            ,sumArtiCd       //합계항목코드
+            ,deductYn		 //공제여부
+            ,level;          //수준
     
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AC_DlineCarrforForm" classname="AC_DlineCarrforForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="AC_DlineCarrforForm" classname="AC_DlineCarrforForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AC_DlineCarrforForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div05" taborder="0" left="0.08%" top="0" right="0.08%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
@@ -173,9 +173,38 @@
           <Column id="userIp" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GA094</Col>
+            <Col id="dsName">dsDlineArti</Col>
+          </Row>
+          <Row>
+            <Col id="code">GA095</Col>
+            <Col id="dsName">dsCarrforArti</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDlineArti" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCarrforArti" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
-	
+include "scripts::accScripts.xjs";  	
+
 	
 //회계기수 도움 검색버튼 클릭
 this.accPridPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
@@ -183,6 +212,7 @@ this.accPridPopupBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	application.open("findAccPrid","acc::AE_AccPridHelpForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false",0,0,500,350);
 }
 
+//선택한 회계기수 셋팅
 this.setArrRtn=function(arrRtn){
 
 	var i = 0;
@@ -209,15 +239,58 @@ this.dlineBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		if(this.dsAccPrid.getColumn(0,"dlineYn") == "N"){	//->마감하는 경우
 			var YN = application.confirm("회계기수를 마감하시겠습니까?");
 			if(YN == true){
-				var useId = application.gdsEmp.getColumn(0,"empNo");
+				var userId = application.gdsEmp.getColumn(0,"empNo");
 				this.dsAccPrid.setColumn(0,"dlineManCd",userId);
 				this.dsAccPrid.setColumn(0,"dlineYn","Y");
 				this.gfnService("modifyDlineYn");
 				this.searchBtn_onclick();
 			}
 		}
-	}					// 마감쪽확인작동 아직안됨
+	}			
 	
+}
+
+//마감취소 버튼 클릭
+this.dlineCancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var YN = application.confirm(this.MSG_ACC_DLINE_Q2);
+	if(YN == true && this.dsAccPrid.getColumn(0,"dlineYn") == "Y"){
+		this.dsAccPrid.setColumn(0, "dlineManCd", "");
+		this.dsAccPrid.setColumn(0, "dlineYn", "N");
+		this.gfnService("modifyDlineYn");
+		this.searchBtn_onclick();
+	}
+}
+
+//이월버튼 클릭
+this.carrforBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var dlineYn = this.dsAccPrid.getColumn(0,"dlineYn");
+	var carrforYn = this.dsAccPrid.getColumn(0,"carrforYn");
+	if(dlineYn == "Y" && carrforYn == "N"){			//마감완료 미이월 시
+		var YN = application.confirm (this.MSG_ACC_CARRFOR_Q1);
+		if(YN == true){
+			this.gfnService("executeCarrfor");
+		}else{
+			return;
+		}
+	}else{
+		if(dlineYn == "N"){ 				//미마감 - 이월하기 위해서 마감작업이 선행되어야합니다
+			alert(this.MSG_ACC_NODLINE);
+			return;
+		}	
+		if(carrforYn == "Y"){ 				//기이월 - 기 이월된 회계기수입니다
+			alert(this.MSG_ACC_DONECARR);
+			return;
+		}
+	}
+}
+
+
+
+//코드 바인드
+this.AC_DlineCarrforForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	//this.gfnBind();
 }
 ]]></Script>
   </Form>

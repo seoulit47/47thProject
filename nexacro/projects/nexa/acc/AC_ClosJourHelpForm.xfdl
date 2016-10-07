@@ -45,7 +45,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div05" taborder="2" left="0%" top="0" right="0.57%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
+        <Div id="Div05" taborder="2" left="0%" top="0" right="0.29%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="결산분개" left="7.31%" top="-3" right="69.63%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>

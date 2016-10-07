@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HG_MonGuntaeForm" classname="HG_MonGuntaeForm" left="0" top="0" width="1256" height="759" titletext="New Form">
+  <Form id="HG_MonGuntaeForm" classname="HG_MonGuntaeForm" left="0" top="0" width="1256" height="759" titletext="월근태조회" onload="HG_MonGuntaeForm_onload">
     <Layouts>
       <Layout>
         <Div id="titleDiv" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
@@ -77,9 +77,9 @@
               <Spin id="yearSpin" taborder="71" value="2016" onspin="yearSpin_onspin" left="8.56%" top="5" right="83.61%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
               <Static id="Static02" taborder="72" text="년" left="17.05%" top="7" right="80.75%" height="24"/>
               <Combo id="monthCombo" taborder="73" innerdataset="dsMonth" codecolumn="code" datacolumn="code" left="18.92%" top="7" right="73.57%" height="24"/>
-              <Button id="guntaeCreateBtn" taborder="75" text="월근태생성" onclick="mainDiv.guntaeCreateBtn_onclick" enable="false" left="74.39%" top="5" right="18.6%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+              <Button id="guntaeCreateBtn" taborder="75" text="월근태생성" onclick="mainDiv.guntaeCreateBtn_onclick" enable="true" left="74.39%" top="5" right="18.6%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
               <Button id="searchMonGuntaeBtn" taborder="76" onclick="mainDiv_searchMonGuntaeBtn_onclick" cssclass="SearchBtn" left="84.18%" top="5" right="9.38%" height="28" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-              <Button id="monGuntaeCloseBtn" taborder="77" onclick="DelBtn_onclick" cssclass="DelBtn" left="91.27%" top="5" right="2.12%" height="28" style="background:@gradation URL('img::dLineBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="false"/>
+              <Button id="monGuntaeCloseBtn" taborder="77" onclick="DelBtn_onclick" cssclass="DelBtn" left="91.27%" top="5" right="2.12%" height="28" style="background:@gradation URL('img::dLineBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" enable="true"/>
               <Static id="Static00" taborder="78" text="월" left="26.84%" top="7" right="70.96%" height="24"/>
             </Layout>
           </Layouts>
@@ -207,14 +207,11 @@
 /***************************************************************************************************
 *                                         공통 Script Include                                      *
 ***************************************************************************************************/
+include "scripts::commonScripts.xjs";
 
-include "scripts::commonScript.xjs";
-include "scripts::hrsScripts.xjs";
-include "scripts::commonTransaction.xjs";
-include "scripts::commonPopup.xjs";
 
 /***************************************************************************************************
-*                                          화면 변수 선언부                                        *
+*                                          화면 변수 선언부                                      *
 ***************************************************************************************************/
 
 var startDate;
@@ -225,7 +222,7 @@ var pms;
 var deptNm;
 
 /***************************************************************************************************
-*                                         콜백 함수 셋팅                                           *
+*                                         콜백 함수 셋팅                                         *
 ***************************************************************************************************/
 this.CallbackFunc = function CallbackFunc(svcID, errorCode, errorMsg)
 {
@@ -263,8 +260,8 @@ this.HG_MonGuntaeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	this.mainDiv.empNoEd.set_value(application.gdsEmp.getColumn(0,"empNo"));
 	this.mainDiv.empNmEd.set_value(application.gdsEmp.getColumn(0,"empNm"));
 	
-	empNo = this.mainDiv.empnoEdt.value;
-	empNm = this.mainDiv.empnmEdt.value;
+	empNo = this.mainDiv.empNoEd.value;
+	empNm = this.mainDiv.empNmEd.value;
 	
 	pms = application.gdsEmp.getColumn(0,"pms");
 	deptNm = application.gdsEmp.getColumn(0,"deptNm");
@@ -280,7 +277,7 @@ this.HG_MonGuntaeForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 
 
 /***************************************************************************************************
-*                                         사원 조회 버튼 클릭 Event                            	   *
+*                                     사원 조회 버튼 클릭 Event                            	   *
 ***************************************************************************************************/
 this.mainDiv_empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
@@ -289,7 +286,7 @@ this.mainDiv_empSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventIn
 
 
 /***************************************************************************************************
-*                                        사원 셋팅 				    		                       *
+*                                        사원 셋팅 			    		                       *
 ***************************************************************************************************/
 this.setEmpInfo=function(empNo,empNm){
 	this.mainDiv.empNmEd.set_value(empNm);
@@ -299,7 +296,7 @@ this.setEmpInfo=function(empNo,empNm){
 
 
 /***************************************************************************************************
-*                                         조회 버튼 클릭 Event     		                       	   *
+*                                      조회 버튼 클릭 Event     		                       	   *
 ***************************************************************************************************/
 this.mainDiv_searchMonGuntaeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {

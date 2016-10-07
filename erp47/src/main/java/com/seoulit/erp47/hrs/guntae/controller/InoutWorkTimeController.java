@@ -49,13 +49,10 @@ public class InoutWorkTimeController {
     //출퇴근시간 일괄처리
 	@RequestMapping("hrs/inoutTime/batchInoutWorkTimeProcess.do")
 	public void batchInoutWorkTimeProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
-
+		System.out.println("123");
 		PlatformData inData = (PlatformData)request.getAttribute("inData");
 		PlatformData outData = (PlatformData)request.getAttribute("outData");
-		NexacroLogger.debug(inData);
 
-		System.out.println("getDataSetList:");
-		NexacroLogger.debug(inData.getDataSetList());
 		List<InoutWorkTimeBean> list;
 
 		list = dataSetBeanMapper.datasetToBeans(inData, InoutWorkTimeBean.class);

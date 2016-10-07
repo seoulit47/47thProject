@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.closing.applicationService.ClosingApplicationService;
 import com.seoulit.erp47.acc.closing.applicationService.DlineCarrforApplicationService;
+import com.seoulit.erp47.acc.closing.applicationService.FinanStatsApplicationService;
 import com.seoulit.erp47.acc.closing.to.ClosAcntBean;
 import com.seoulit.erp47.acc.closing.to.ClosDataBean;
+import com.seoulit.erp47.acc.closing.to.FinanStatsBean;
 import com.seoulit.erp47.acc.elementary.to.AccPridBean;
 
 @Service
@@ -20,9 +22,9 @@ public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
     ClosingApplicationService closingApplicationService;
     @Autowired
     DlineCarrforApplicationService dlineCarrforApplicationService;
-    /*@Autowired
-    FinanStatsApplicationService finanStatsApplicationService;
     @Autowired
+    FinanStatsApplicationService finanStatsApplicationService;
+    /*@Autowired
     TotalBalApplicationService totalBalApplicationService;*/
 
     @Override
@@ -46,7 +48,7 @@ public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
         dlineCarrforApplicationService.modifyDlineYn(accPrid);
     }
 
-    /*@Override
+    @Override
     public void executeCarrfor(AccPridBean accPrid) {
         dlineCarrforApplicationService.executeCarrfor(accPrid);
     }
@@ -56,7 +58,7 @@ public class ClosingServiceFacadeImpl implements ClosingServiceFacade{
         return finanStatsApplicationService.findFinanStats(argsMap);
     }
 
-    @Override
+    /*@Override
     public List<TotalBalBean> findTotalBalList(Map<String, Object> argsMap) {
         return totalBalApplicationService.findTotalBalList(argsMap);
     }*/

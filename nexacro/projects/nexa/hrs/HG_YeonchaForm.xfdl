@@ -75,7 +75,7 @@
               <Static id="hdateStc" taborder="75" text="기간" left="1.22%" top="6" right="91.72%" height="28" style="background:#c4d2daff;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;" class="AreaStc"/>
               <Spin id="yearSpin" taborder="76" value="2016" onspin="yearSpin_onspin" left="9.01%" top="5" right="84.82%" height="30" style="margin:1 0 2 0;" class="AreaSpin"/>
               <Static id="Static02" taborder="77" text="년" left="15.75%" top="7" right="82.06%" height="24"/>
-              <Button id="yeonchaCreateBtn" taborder="78" text="자료생성" onclick="mainDiv_yeonchaCreateBtn_onclick" enable="false" left="78.41%" top="8" right="14.69%" height="25" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+              <Button id="yeonchaCreateBtn" taborder="78" text="자료생성" onclick="mainDiv_yeonchaCreateBtn_onclick" enable="true" left="78.41%" top="8" right="14.69%" height="25" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
               <Button id="empSearchBtn" taborder="79" onclick="mainDiv_empSearchBtn_onclick" cssclass="AddBtn" left="62.58%" top="7" right="34.9%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
               <Button id="searchYeonchaBtn" taborder="80" onclick="mainDiv_searchYeonchaBtn_onclick" cssclass="SearchBtn" left="89.45%" top="4" right="3.17%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
             </Layout>

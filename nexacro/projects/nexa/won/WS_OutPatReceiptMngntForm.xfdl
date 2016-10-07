@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WS_OutPatReceiptMngntForm" classname="WS_OutPatReceiptMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="titleDiv" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="0" text="외래환자관리" left="4.8%" top="-4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="WS_OutPatReceiptMngnDiv" taborder="1" left="1.12%" top="65" right="0.8%" height="693" style="background:#edececff;">
+          <Layouts>
+            <Layout>
+              <GroupBox id="patMngntGroupBox" text="환자조회 및 등록" taborder="78" left="0.9%" top="11" right="55.06%" height="640" style="background:#edececff;font:bold underline 14 arial;"/>
+              <GroupBox id="receiptGroupBox" text="외래환자 접수등록" taborder="79" left="45.92%" top="11" right="0.65%" height="640" style="background:#edececff;font:bold underline 14 arial;"/>
+              <Static id="patNoStc" taborder="80" text="환자등록번호" left="1.79%" top="46" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="patNmStc" taborder="81" text="성명" left="1.79%" top="78" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="rrnStc" taborder="82" text="주민번호" left="1.79%" top="110" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="zipStc" taborder="83" text="우편번호" left="1.79%" top="142" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="addrStc" taborder="84" text="주소" left="1.79%" top="174" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="telStc" taborder="85" text="연락처" left="1.79%" top="206" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="smsNoStc" taborder="86" text="SMS" left="1.79%" top="238" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="recNwDateStc" taborder="87" text="최근내원일" left="1.79%" top="270" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="barrAssStc" taborder="88" text="장애종별" left="1.79%" top="302" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="deathDateStc" taborder="89" text="사망일시" left="1.79%" top="334" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="certfctNoStc" taborder="90" text="의료보험증" left="1.79%" top="366" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="insuNmStc" taborder="91" text="피보험자명" left="1.79%" top="398" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="insuRrnStc" taborder="92" text="주민번호" left="1.79%" top="430" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="applyStc" taborder="93" text="적용기간" left="1.79%" top="462" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="noteStc" taborder="94" text="메모" left="1.79%" top="494" right="88.25%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Edit id="patNoEd" taborder="95" left="12.15%" top="46" right="78.06%" height="28"/>
+              <Button id="searchPatNoBtn" taborder="96" onclick="clickBtn" cssclass="AddBtn" left="22.35%" top="44" right="75.04%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchPatBtn" taborder="97" text="환자조회" onclick="clickBtn" left="26.43%" top="44" right="65.91%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Button id="createPatBtn" taborder="98" text="신환등록" onclick="clickBtn" left="34.91%" top="44" right="57.42%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Edit id="patNmEd" taborder="99" left="12.15%" top="78" right="78.06%" height="28"/>
+              <Edit id="rrn1Ed" taborder="100" left="12.15%" top="110" right="78.06%" height="28"/>
+              <Edit id="zipEd" taborder="101" readonly="true" left="12.15%" top="142" right="78.06%" height="28"/>
+              <Edit id="addrEd" taborder="102" left="12.15%" top="174" right="56.53%" height="28"/>
+              <Edit id="telEd" taborder="103" left="12.15%" top="206" right="78.06%" height="28"/>
+              <Edit id="smsNoEd" taborder="104" left="12.15%" top="238" right="78.06%" height="28"/>
+              <Edit id="certfctNoEd" taborder="105" left="12.15%" top="366" right="78.06%" height="28"/>
+              <Edit id="insuNmEd" taborder="106" left="12.15%" top="398" right="78.06%" height="28"/>
+              <Edit id="insuRrn1Ed" taborder="107" left="12.15%" top="430" right="78.06%" height="28"/>
+              <Edit id="noteTextArea" taborder="108" left="12.15%" top="494" right="55.87%" height="148"/>
+              <Button id="addPatBtn" taborder="109" text="환자등록" onclick="clickBtn" left="26.43%" top="658" right="65.91%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Button id="modPatBtn" taborder="110" text="정보수정" onclick="WS_OutPatReceiptMngnDiv_modPatBtn_onclick" left="34.91%" top="658" right="57.34%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Button id="addReceiptBtn" taborder="111" text="진료접수등록" onclick="clickBtn" left="89.07%" top="658" right="3.18%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Button id="delReceiptBtn" taborder="112" text="진료접수취소" onclick="clickBtn" left="80.59%" top="658" right="11.66%" height="28" style="background:#848484ff;color:white;font:bold 10 돋움;"/>
+              <Static id="Static00" taborder="113" text="~" left="22.02%" top="111" right="77%" height="26" style="align:center middle;"/>
+              <Edit id="rrn2Ed" taborder="114" left="23.25%" top="110" right="66.97%" height="28"/>
+              <Radio id="genderRadio" taborder="115" columncount="2" innerdataset="dsGenderCode" codecolumn="code" datacolumn="value" left="34.09%" top="111" right="58.56%" height="27"/>
+              <Button id="searchZipBtn" taborder="116" onclick="clickBtn" cssclass="AddBtn" left="22.35%" top="140" right="75.04%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <CheckBox id="smsCheck" taborder="117" left="22.43%" top="239" right="75.29%" height="26" style="buttonalign:center middle;align:center middle;"/>
+              <Static id="smsReceiverStc" taborder="118" text="관계" left="24.63%" top="238" right="65.42%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Edit id="smsReceiverEd" taborder="119" left="34.99%" top="238" right="55.87%" height="28"/>
+              <Calendar id="recNwDateCal" taborder="120" left="12.15%" top="271" right="77.98%" height="27"/>
+              <Calendar id="deathDateCal" taborder="121" left="12.15%" top="335" right="77.98%" height="27"/>
+              <Static id="Static01" taborder="122" text="~" left="22.02%" top="431" right="77%" height="26" style="align:center middle;"/>
+              <Edit id="insuRrn2Ed" taborder="123" left="23.25%" top="430" right="66.97%" height="28"/>
+              <Combo id="barrAssCombo" taborder="124" innerdataset="dsBarrAssCode" codecolumn="code" datacolumn="value" left="12.23%" top="303" right="77.98%" height="26"/>
+              <Calendar id="applyStartDateCal" taborder="125" left="12.15%" top="463" right="77.98%" height="27"/>
+              <Calendar id="applyEndDateCal" taborder="126" left="23.25%" top="463" right="66.88%" height="27"/>
+              <Static id="Static02" taborder="127" text="~" left="22.02%" top="463" right="77%" height="26" style="align:center middle;"/>
+              <Static id="trmtDeptStc" taborder="128" text="진료과" left="46.82%" top="46" right="45.19%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="expStc" taborder="129" text="진료의사" left="46.82%" top="78" right="45.19%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="patNoStc16" taborder="130" text="감면사항" left="46.82%" top="110" right="45.19%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Edit id="trmtDeptCdEd" taborder="131" readonly="true" left="55.22%" top="46" right="39.23%" height="28"/>
+              <Edit id="trmtDoctCdEd" taborder="132" readonly="true" left="55.22%" top="78" right="39.23%" height="28"/>
+              <Edit id="expCdEd" taborder="133" readonly="true" left="55.22%" top="110" right="39.23%" height="28"/>
+              <Button id="searchTrmtDeptCdBtn" taborder="134" onclick="clickBtn" cssclass="AddBtn" left="61.17%" top="44" right="36.22%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchTrmtDoctCdBtn" taborder="135" onclick="clickBtn" cssclass="AddBtn" left="61.17%" top="76" right="36.22%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Button id="searchExpCdBtn" taborder="136" onclick="clickBtn" cssclass="AddBtn" left="61.17%" top="108" right="36.22%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+              <Edit id="trmtDeptNmEd" taborder="137" readonly="true" left="64.19%" top="46" right="25.37%" height="28"/>
+              <Edit id="trmtDoctNmEd" taborder="138" readonly="true" left="64.19%" top="78" right="25.37%" height="28"/>
+              <Edit id="expNmEd" taborder="139" readonly="true" left="64.19%" top="110" right="25.37%" height="28"/>
+              <Static id="ntTtStc" taborder="140" text="초/재진" left="76.84%" top="46" right="15.17%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="nwDivStc" taborder="141" text="내원구분" left="76.84%" top="78" right="15.17%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Static id="trmtDateStc" taborder="142" text="진료일시" left="76.84%" top="110" right="15.17%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Combo id="ntTtCombo" taborder="143" innerdataset="dsNtTt" codecolumn="code" datacolumn="value" left="85.32%" top="47" right="2.94%" height="26"/>
+              <Static id="patTypeStc" taborder="144" text="환자유형" left="76.84%" top="142" right="15.17%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Combo id="nwDivCombo" taborder="145" innerdataset="dsNwDiv" codecolumn="code" datacolumn="value" left="85.32%" top="79" right="2.94%" height="26"/>
+              <Combo id="patTypeCombo" taborder="146" innerdataset="dsPatType" codecolumn="code" datacolumn="value" left="85.32%" top="143" right="2.94%" height="26"/>
+              <Calendar id="trmtDateCal" taborder="147" left="85.24%" top="111" right="2.94%" height="27"/>
+              <Static id="trmtHistTitleStc" taborder="148" text="과거진료이력" left="46.82%" top="190" right="43.23%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Grid id="trmtHistGrid" taborder="149" binddataset="dsReceiptHist" useinputpanel="false" autofittype="col" left="46.82%" top="222" right="1.39%" height="188">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="진료일자"/>
+                      <Cell col="1" text="진료과"/>
+                      <Cell col="2" text="진료의사"/>
+                      <Cell col="3" text="유형"/>
+                      <Cell col="4" text="입원여부"/>
+                      <Cell col="5" text="진단명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:trmtDate"/>
+                      <Cell col="1" text="bind:trmtDeptNm"/>
+                      <Cell col="2" text="bind:trmtDoct"/>
+                      <Cell col="3" text="bind:patType"/>
+                      <Cell col="4" text="bind:hosptlzYb"/>
+                      <Cell col="5" text="bind:dgnsNm"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="noTrmtHistTitleStc" taborder="150" text="당일&amp;미진료내역" left="46.82%" top="422" right="43.23%" height="28" style="background:#5a280bcc;color:ivory;align:center middle;font:bold 9 arial;"/>
+              <Grid id="noTrmtHistGrid" taborder="151" binddataset="dsOutpaReceipt" useinputpanel="false" autofittype="col" left="46.82%" top="454" right="1.39%" height="188">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="접수번호"/>
+                      <Cell col="1" text="접수일자"/>
+                      <Cell col="2" text="진료일자"/>
+                      <Cell col="3" text="환자명"/>
+                      <Cell col="4" text="진료과"/>
+                      <Cell col="5" text="진료의사"/>
+                      <Cell col="6" text="유형"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:outpaReceiptNo"/>
+                      <Cell col="1" text="bind:receiptDate"/>
+                      <Cell col="2" text="bind:trmtDate"/>
+                      <Cell col="3" text="bind:patNm"/>
+                      <Cell col="4" text="bind:trmtDeptNm"/>
+                      <Cell col="5" text="bind:trmtDoctNm"/>
+                      <Cell col="6" text="bind:patType"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsReceiptHist" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="outpaReceiptNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="trmtDate" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="trmtDeptNm" type="STRING" size="256"/>
+          <Column id="trmtDoct" type="STRING" size="256"/>
+          <Column id="trmtDoctNm" type="STRING" size="256"/>
+          <Column id="hosptlzYb" type="STRING" size="256"/>
+          <Column id="hosptlzRsvtYb" type="STRING" size="256"/>
+          <Column id="patType" type="STRING" size="256"/>
+          <Column id="trmtCostCalcuYb" type="STRING" size="256"/>
+          <Column id="trmtYb" type="STRING" size="256"/>
+          <Column id="prescYb" type="STRING" size="256"/>
+          <Column id="regDept" type="STRING" size="256"/>
+          <Column id="cngDept" type="STRING" size="256"/>
+          <Column id="receiptDate" type="STRING" size="256"/>
+          <Column id="dgnsNm" type="STRING" size="256"/>
+          <Column id="ntTtYb" type="STRING" size="256"/>
+          <Column id="expCd" type="STRING" size="256"/>
+          <Column id="nwDiv" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGenderCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">남</Col>
+            <Col id="value">남</Col>
+          </Row>
+          <Row>
+            <Col id="code">여</Col>
+            <Col id="value">여</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBarrAssCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">지체장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">뇌병변장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="value">시각장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="value">청각장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="value">언어장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="value">신장장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">7</Col>
+            <Col id="value">심장장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">8</Col>
+            <Col id="value">간장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">9</Col>
+            <Col id="value">호흡기장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="value">장루.요루장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="value">간질장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="value">지적장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">13</Col>
+            <Col id="value">자폐성장애</Col>
+          </Row>
+          <Row>
+            <Col id="code">14</Col>
+            <Col id="value">정신장애</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsNtTt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">초진</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">재진</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPatType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">일반</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">건강보험</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="value">급여1종</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="value">의료보험</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findPat</Col>
+            <Col id="URL">erp47::won/outPatMngnt/findPat.do</Col>
+            <Col id="outData">dsPat=dsPat</Col>
+            <Col id="inData"/>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerPat</Col>
+            <Col id="URL">erp47::won/outPatMngnt/registerPat.do</Col>
+            <Col id="inData">dsPat=dsPat:U</Col>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findLastPatNo</Col>
+            <Col id="URL">erp47::won/outPatMngnt/findLastPatNo.do</Col>
+            <Col id="outData">dsPat=dsPat</Col>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findReceiptList</Col>
+            <Col id="URL">erp47::won/outPatMngnt/findReceiptList.do</Col>
+            <Col id="outData">dsOutpaReceipt=dsOutpaReceipt</Col>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerReceipt</Col>
+            <Col id="URL">erp47::won/outPatMngnt/registerReceipt.do</Col>
+            <Col id="inData">dsOutpaReceipt=dsOutpaReceipt:U</Col>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">removeReceipt</Col>
+            <Col id="URL">erp47::won/outPatMngnt/removeReceipt.do</Col>
+            <Col id="inData">dsOutpaReceipt=dsOutpaReceipt:U</Col>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">modifyPat</Col>
+            <Col id="URL">erp47::won/outPatMngnt/modifyPat.do</Col>
+            <Col id="inData">dsPat=dsPat:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPatList</Col>
+            <Col id="URL">erp47::won/outPatMngnt/findPatList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsPat=dsPat</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">outPatReceiptMngntCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPat" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="rrn2" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="barrAss" type="STRING" size="256"/>
+          <Column id="dtlAddr" type="STRING" size="256"/>
+          <Column id="zip" type="STRING" size="256"/>
+          <Column id="deathDate" type="STRING" size="256"/>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="smsReceiveYb" type="STRING" size="256"/>
+          <Column id="smsReceiveNo" type="STRING" size="256"/>
+          <Column id="smsReceiver" type="STRING" size="256"/>
+          <Column id="recNwDate" type="STRING" size="256"/>
+          <Column id="estbGiho" type="STRING" size="256"/>
+          <Column id="certfctNo" type="STRING" size="256"/>
+          <Column id="insuRrn" type="STRING" size="256"/>
+          <Column id="insuRrn1" type="STRING" size="256"/>
+          <Column id="insuNm" type="STRING" size="256"/>
+          <Column id="applyStartDate" type="STRING" size="256"/>
+          <Column id="applyEndDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOutpaReceipt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="outpaReceiptNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="trmtDate" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="trmtDeptNm" type="STRING" size="256"/>
+          <Column id="trmtDoct" type="STRING" size="256"/>
+          <Column id="trmtDoctNm" type="STRING" size="256"/>
+          <Column id="hosptlzYb" type="STRING" size="256"/>
+          <Column id="hosptlzRsvtYb" type="STRING" size="256"/>
+          <Column id="patType" type="STRING" size="256"/>
+          <Column id="trmtCostCalcuYb" type="STRING" size="256"/>
+          <Column id="trmtYb" type="STRING" size="256"/>
+          <Column id="prescYb" type="STRING" size="256"/>
+          <Column id="regDept" type="STRING" size="256"/>
+          <Column id="cngDept" type="STRING" size="256"/>
+          <Column id="receiptDate" type="STRING" size="256"/>
+          <Column id="dgnsNm" type="STRING" size="256"/>
+          <Column id="ntTtYb" type="STRING" size="256"/>
+          <Column id="expCd" type="STRING" size="256"/>
+          <Column id="expNm" type="STRING" size="256"/>
+          <Column id="nwDiv" type="STRING" size="256"/>
+          <Column id="patNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsNwDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">원무접수</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">진료과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                               			                    *
+* 외래환자관리 및 외래진료접수관리                             		        *
+*                                                                   			*
+* @Path			원무 - 외래환자관리									 		*
+* @Description 	외래환자등록 및 수정, 외래진료접수 관리					*
+* @Author		김봉진 						 								*
+* 									 											*
+* Created on	2015. 10. 10.                           		 				*
+*									 											*
+********************************************************************************/
+
+/**************************************************************************************************
+*                                         공통 Script Include                                     *
+***************************************************************************************************/
+
+include "scripts::commonScripts.xjs";
+include "scripts::wonScripts.xjs";
+include "scripts::commonTransaction.xjs";
+include "scripts::commonPopup.xjs";
+
+/**************************************************************************************************
+*                                         화면 변수 선언부                                      *
+***************************************************************************************************/
+
+var receiptFlag=0;
+
+
+/***************************************************************************************************
+*                                         조회조건 EVENT START                                    *
+/*-------------------------------------------------------------------------------------------------+
+>>  onkeyDown EVENT
++-------------------------------------------------------------------------------------------------*/
+
+this.edOnkeyDown = function(obj:Edit, e:KeyEventInfo){
+	if(e.keycode==13){		
+		this.clickSearchBtn();
+	}				
+}
+
+/***************************************************************************************************
+*                                          버튼 EVENT START                                       *
+/*-------------------------------------------------------------------------------------------------+
+>>  click EVENT
++-------------------------------------------------------------------------------------------------*/
+
+this.clickBtn = function(obj){	
+	switch(obj){ 
+		case this.WS_OutPatReceiptMngnDiv.searchPatNoBtn: 	//환자등록번호 검색
+			this.clickSearchPatNoBtn();
+			break;
+		case this.WS_OutPatReceiptMngnDiv.searchPatBtn: 	//환자 검색
+			this.clickSearchPatBtn();
+			break;
+		case this.WS_OutPatReceiptMngnDiv.createPatBtn: 	//신환등록을 위한 작업
+			this.clickCreatePatBtn();
+			break;	
+		case this.WS_OutPatReceiptMngnDiv.addPatBtn: 	//신환등록(환자등록)
+			this.clickAddPatBtn();
+			break;	
+		case this.WS_OutPatReceiptMngnDiv.searchZipBtn:
+			this.clickSearchZipBtn();	//우편번호 검색
+			break;
+		case this.WS_OutPatReceiptMngnDiv.searchTrmtDeptCdBtn:	//진료과 검색
+			this.clickSearchTrmtDeptCdBtn();
+			break;
+		case this.WS_OutPatReceiptMngnDiv.searchTrmtDoctCdBtn:	//진료의사 검색
+			this.clickSearchTrmtDoctCdBtn();
+			break;
+		case this.WS_OutPatReceiptMngnDiv.searchExpCdBtn:	//감면대상 검색
+			this.clickSearchExpCdBtn();
+			break;
+		case this.WS_OutPatReceiptMngnDiv.delReceiptBtn:	//접수취소
+			this.clickDelReceiptBtn();
+			break;
+		case this.WS_OutPatReceiptMngnDiv.addReceiptBtn:	//접수등록
+			this.clickAddReceiptBtn();
+			break;
+	}
+}
+
+/*-------------------------------------------------------------------------------------------------+
+>> 진료과,진료의사,감면사항 검색 팝업의 그리드를 더블클릭할 때 호출하는 함수
++-------------------------------------------------------------------------------------------------*/
+
+this.setCode = function(code,arr){
+	switch(code){
+		case "GP080":
+			this.WS_OutPatReceiptMngnDiv.trmtDeptCdEd.set_value(arr[0]);
+			this.WS_OutPatReceiptMngnDiv.trmtDeptNmEd.set_value(arr[1]);
+			break;
+		case "MD001":
+			this.WS_OutPatReceiptMngnDiv.expCdEd.set_value(arr[0]);
+			this.WS_OutPatReceiptMngnDiv.expNmEd.set_value(arr[1]);
+			break;
+	}
+}
+this.setDoct = function(arr){
+	this.WS_OutPatReceiptMngnDiv.trmtDoctCdEd.set_value(arr[0]);
+	this.WS_OutPatReceiptMngnDiv.trmtDoctNmEd.set_value(arr[1]);
+}
+
+/*-------------------------------------------------------------------------------------------------+
+>>  조회
++-------------------------------------------------------------------------------------------------*/
+
+this.clickSearchPatNoBtn = function(){	//환자등록번호조회
+	this.gfnPatPopup();
+	this.setPatInfo = function(arrRtn){
+		this.WS_OutPatReceiptMngnDiv.patNoEd.set_value(arrRtn[0]);
+	}
+}
+this.clickSearchPatBtn = function(){	//환자조회
+	if(this.WS_OutPatReceiptMngnDiv.patNoEd.value==null){
+		alert("조회할 환자를 선택하세요!");
+		return;
+	}
+	this.dsService.setColumn(0,"argument",'patNo='+this.WS_OutPatReceiptMngnDiv.patNoEd.value);
+	this.dsPat.clearData();
+	this.gfnService("findPat","false");		
+			
+}
+this.clickSearchZipBtn = function(){	//우편번호 조회
+	this.gfnPostPopup();
+	this.setPost = function(zip,base,detail){
+		this.dsPat.setColumn(this.dsPat.rowposition,"zip",zip);
+		this.dsPat.setColumn(this.dsPat.rowposition,"addr",base+" "+detail);
+	}
+}
+this.clickSearchTrmtDeptCdBtn = function(){	//진료과 조회
+	this.gfnCodePopup("GP080");
+}  
+this.clickSearchTrmtDoctCdBtn = function(){	//진료의사 조회
+	if(this.WS_OutPatReceiptMngnDiv.trmtDeptCdEd.value==null){
+		alert("진료과를 선택해주세요");
+	}else{
+		this.gfnDoctPopup(this.WS_OutPatReceiptMngnDiv.trmtDeptCdEd.value,this.WS_OutPatReceiptMngnDiv.trmtDeptNmEd.value);
+	}
+}
+this.clickSearchExpCdBtn = function(){
+	this.gfnCodePopup("MD001");
+}
+
+
+/*-------------------------------------------------------------------------------------------------+
+>> 신환등록
++-------------------------------------------------------------------------------------------------*/
+
+this.clickCreatePatBtn = function(){
+	this.gfnService("findLastPatNo","false");
+	this.dsOutpaReceipt.clearData();
+	this.dsReceiptHist.clearData();
+	receiptFlag=0;
+}
+this.clickAddPatBtn = function(){
+	this.gfnService("registerPat","false");
+	receiptFlag=1;
+}
+
+/*-------------------------------------------------------------------------------------------------+
+>> 접수취소
++-------------------------------------------------------------------------------------------------*/
+
+this.clickDelReceiptBtn = function(){
+	this.dsOutpaReceipt.deleteRow(this.dsOutpaReceipt.rowposition);
+	this.gfnService("removeReceipt","false");
+}
+
+/*-------------------------------------------------------------------------------------------------+
+>> 접수등록
++-------------------------------------------------------------------------------------------------*/
+
+this.clickAddReceiptBtn = function(){
+	var addRow = this.dsOutpaReceipt.addRow();
+	this.dsOutpaReceipt.setColumn(addRow,"patNo",this.WS_OutPatReceiptMngnDiv.patNoEd.value);
+	this.dsOutpaReceipt.setColumn(addRow,"receiptDate",this.gfnLocalDate());
+	this.dsOutpaReceipt.setColumn(addRow,"trmtDept",this.WS_OutPatReceiptMngnDiv.trmtDeptCdEd.value);
+	this.dsOutpaReceipt.setColumn(addRow,"trmtDoct",this.WS_OutPatReceiptMngnDiv.trmtDoctCdEd.value);
+	this.dsOutpaReceipt.setColumn(addRow,"expCd",this.WS_OutPatReceiptMngnDiv.expCdEd.value);
+	this.dsOutpaReceipt.setColumn(addRow,"ntTt",this.WS_OutPatReceiptMngnDiv.ntTtCombo.text);
+	this.dsOutpaReceipt.setColumn(addRow,"nwDiv",this.WS_OutPatReceiptMngnDiv.nwDivCombo.text);
+	this.dsOutpaReceipt.setColumn(addRow,"trmtDate",this.WS_OutPatReceiptMngnDiv.trmtDateCal.value);
+	this.dsOutpaReceipt.setColumn(addRow,"patType",this.WS_OutPatReceiptMngnDiv.patTypeCombo.text);
+	this.dsOutpaReceipt.setColumn(addRow,"patType",this.WS_OutPatReceiptMngnDiv.patTypeCombo.text);
+	this.dsOutpaReceipt.setColumn(addRow,"trmtYb",'N');
+	
+	this.gfnService("registerReceipt","true");
+}
+
+/*-------------------------------------------------------------------------------------------------+
+>>  grid EVENT
++-------------------------------------------------------------------------------------------------*/
+
+this.WS_OutPatReceiptMngnDiv.noTrmtHistGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	//this.WS_OutPatReceiptMngnDiv.delReceiptBtn.set_visible(true);
+}
+
+/***************************************************************************************************
+*                                       CallBack Function Start                                    *
+***************************************************************************************************/
+
+this.outPatReceiptMngntCallbackFunc = function(svcID, errorCode, errorMsg){
+	if(errorCode<0) {
+		this.gfnErrorPopup(svcID, errorMsg);
+	}else{
+		if(svcID=="findPat"){
+			if(this.dsPat.rowcount==0){
+				alert("조건에 맞는 환자조회 결과가 없습니다.");
+				receiptFlag=0;
+			}else{
+				this.WS_OutPatReceiptMngnDiv.patNoEd.set_value(this.dsPat.getColumn(0,'patNo'));
+				
+				this.dsService.setColumn(3,"argument",'patNo='+this.dsPat.getColumn(0,'patNo'));
+				this.gfnService("findReceiptList","false");
+				receiptFlag=1;
+			}
+		}else if(svcID=="findReceiptList"){
+			this.dsReceiptHist.copyData(this.dsOutpaReceipt);
+			this.dsOutpaReceipt.filter("trmtYb=='N'");
+			this.dsReceiptHist.filter("trmtYb=='Y'");
+			receiptFlag=1;
+		}else if(svcID=="findLastPatNo"){
+			this.WS_OutPatReceiptMngnDiv.patNoEd.set_value(this.dsPat.getColumn(0,'patNo'));
+		}else if(svcID="registerReceipt"){
+			this.gfnService("findReceiptList","false");
+		}
+		else if(svcID="removeReceipt"){
+			this.gfnService("findReceiptList","false");
+		}else if(svcID=="modifyPat"){
+			//trace("환자수정 성공");
+		}
+	}
+}
+
+/***************************************************************************************************
+*                                       정보수정                                                  *
+***************************************************************************************************/
+
+this.WS_OutPatReceiptMngnDiv_modPatBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("modifyPat","false");
+	receiptFlag=1;
+}
+]]></Script>
+  </Form>
+</FDL>
