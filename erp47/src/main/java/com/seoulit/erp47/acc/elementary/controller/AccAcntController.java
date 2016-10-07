@@ -47,7 +47,7 @@ public class AccAcntController {
     
     @RequestMapping("acc/elementary/batchAccAcntProcess.do")
     public void batchAccAcntProcess(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        PlatformData inData = (PlatformData)request.getAttribute("inData");
+    	PlatformData inData = (PlatformData)request.getAttribute("inData");
         List<AccAcntBean> accAcntList = dataSetBeanMapper.datasetToBeans(inData, AccAcntBean.class);
         accElementaryServiceFacade.batchAccAcntProcess(accAcntList);
     }
