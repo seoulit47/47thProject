@@ -5,9 +5,26 @@ import java.util.Map;
 
 import com.seoulit.erp47.won.baseInfo.to.FeeBean;
 
+/**
+ * @Package com.seoulit.erp47.won.base.dao
+ * @Class FeeDAO.java
+ * @Create 2016. 10. 7.
+ * @Author 김봉진
+ * @Description
+ *
+ * @LastUpdated
+ */
+
 public interface FeeDAO {
 
-	
-	List<FeeBean>findFeeListEMR(Map<String, String>argsMap);
-	
+	public List<FeeBean> selectFeeList(Map<String, String> argsMap);
+
+	public List<FeeBean> selectFeeListEMR(Map<String, String> argsMap);
+
+	public void insertFee(FeeBean feeBean);
+
+	public void deleteFee(FeeBean feeBean);
+
+	public void updateFee(FeeBean feeBean);
+
 }

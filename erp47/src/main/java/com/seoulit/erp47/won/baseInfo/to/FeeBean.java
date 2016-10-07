@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.won.base.to
+ * @Package  com.seoulit.erp47.won.base.to
  * @Class    FeeBean.java
  * @Create   2016. 10. 4.
  * @Author   mickim

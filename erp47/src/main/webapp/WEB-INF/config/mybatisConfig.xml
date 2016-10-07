@@ -22,7 +22,8 @@
 
     <!-- 원무 -->
     <package name="com.seoulit.erp47.won.outPatMgt.to" />	
-    <package name="com.seoulit.erp47.won.baseInfo.to"/>  
+    <package name="com.seoulit.erp47.won.baseInfo.to"/>
+    <package name="com.seoulit.erp47.won.hosptlzPat.to"/>  
       
       
     <!-- 진료지원 -->
