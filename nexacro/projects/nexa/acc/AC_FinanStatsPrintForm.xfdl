@@ -7,7 +7,7 @@
         <Div id="mainDiv" taborder="1" left="0.64%" top="66" right="0.08%" height="693" style="background:white;">
           <Layouts>
             <Layout width="1266" height="720">
-              <WebBrowser id="web" left="1.29%" top="16" right="1.61%" height="669" taborder="0"/>
+              <WebBrowser id="web" left="1.29%" top="22" right="1.93%" height="657" taborder="0"/>
             </Layout>
           </Layouts>
         </Div>
