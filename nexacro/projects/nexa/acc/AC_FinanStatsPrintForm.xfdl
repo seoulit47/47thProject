@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AC_FinanStatsPrintForm" classname="AC_FinanStatsPrintForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AC_FinanStatsPrintForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="mainDiv" taborder="1" left="0.64%" top="66" right="0.08%" height="693" style="background:white;">
+          <Layouts>
+            <Layout width="1266" height="720">
+              <WebBrowser id="web" left="1.29%" top="16" right="1.61%" height="669" taborder="0"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="0" left="0.16%" top="1" right="0.08%" height="55" cssclass="TStc" style="background:transparent URL('img::titleBar6.jpg');border:0 none #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Static id="titleEd" taborder="0" text="재무제표 출력" cssclass="TStc" left="4.73%" top="12" right="79.41%" height="26" class="TStc" style="font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dlClosData" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dlClosData_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="artiCd" type="STRING" size="256"/>
+          <Column id="artiNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="sumAmt" type="STRING" size="256"/>
+          <Column id="jourAmt" type="STRING" size="256"/>
+          <Column id="cellInputDiv" type="STRING" size="256"/>
+          <Column id="autoCalYn" type="STRING" size="256"/>
+          <Column id="sumArtiCd" type="STRING" size="256"/>
+          <Column id="deductYn" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ServiceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+          <Column id="callbackFunc2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ServiceID">findClosDataList</Col>
+            <Col id="URL">erp47::acc/closing/findClosDataList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dlClosData=dsClosData</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">accCallBackFunc</Col>
+            <Col id="callbackFunc2">setJourAmt</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dlClosJourData" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="artiCd" type="STRING" size="256"/>
+          <Column id="jourAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";  
+include "scripts::accScripts.xjs";  
+
+var accPrid;
+var finanStatsCd;
+
+this.AC_FinanStatsPrintForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	 accPrid = this.parent.accPrid;
+	 finanStatsCd = this.parent.finanStatsCd;
+	 
+	var path="http://localhost:8282/erp47/acc/closing/printFinanStats.do?";
+	//alert(path+"accPrid="+accPrid+"&finanStatsCd="+finanStatsCd);
+	this.mainDiv.web.set_url(path+"accPrid="+accPrid+"&finanStatsCd="+finanStatsCd);
+	//this.mainDiv.web.set_url("http://localhost:8282/erp47/acc/closing/printFinanStats.do?accPrid=1&finanStatsCd=A");
+}
+]]></Script>
+  </Form>
+</FDL>

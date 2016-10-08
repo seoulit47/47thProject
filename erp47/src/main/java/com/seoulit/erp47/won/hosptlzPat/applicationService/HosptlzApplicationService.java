@@ -8,15 +8,6 @@ import com.seoulit.erp47.won.hosptlzPat.to.HosptlzReceiptBean;
 import com.seoulit.erp47.won.hosptlzPat.to.HosptlzRsvtBean;
 import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
-/**
- * @Package  com.seoul.his.
- * @Class    HosptlzAS.java
- * @Create   2016.6.15
- * @Author   hwang
- * @Description
- *
- * @LastUpdated 
- */
 public interface HosptlzApplicationService {
 
 	

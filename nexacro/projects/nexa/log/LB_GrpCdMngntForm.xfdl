@@ -9,7 +9,7 @@
         <Static id="bigGrpCdStc" taborder="2" text="대분류" onclick="subCodeStc_onclick" left="4.96%" top="71" right="86.88%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="bigGrpCdEd" taborder="3" onkeydown="edOnkeyDown" left="13.67%" top="71" right="76.56%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Edit id="bigGrpCdNmEd" taborder="4" left="27.64%" top="71" right="56.15%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Grid id="bigGrpGrid" taborder="5" binddataset="dsBigGrpCd" useinputpanel="false" autofittype="col" oncellclick="bigGrpGrid_oncellclick" oncloseup="oncloseup" ontextchanged="ontextchanged" left="4.79%" top="155" right="62.6%" height="549">
+        <Grid id="bigGrpGrid" taborder="5" binddataset="dsBigGrpCd" useinputpanel="false" autofittype="col" oncellclick="bigGrpGrid_oncellclick" oncloseup="oncloseup" ontextchanged="ontextchanged" left="4.8%" top="155" right="65.2%" height="549">
           <Formats>
             <Format id="default">
               <Columns>
@@ -37,7 +37,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="midGrpGrid" taborder="6" binddataset="dsMidGrpCd" useinputpanel="false" autofittype="col" oncellclick="midGrpGrid_oncellclick" oncloseup="oncloseup" visible="false" left="41.11%" top="155" right="27.83%" height="549">
+        <Grid id="midGrpGrid" taborder="6" binddataset="dsMidGrpCd" useinputpanel="false" autofittype="col" oncellclick="midGrpGrid_oncellclick" oncloseup="oncloseup" visible="false" left="36.64%" top="155" right="33.36%" height="549">
           <Formats>
             <Format id="default">
               <Columns>
@@ -62,7 +62,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="smGrpGrid" taborder="7" binddataset="dsSmGrpCd" useinputpanel="false" autofittype="col" visible="false" left="75.88%" top="155" right="-17.87%" height="549">
+        <Grid id="smGrpGrid" taborder="7" binddataset="dsSmGrpCd" useinputpanel="false" autofittype="col" visible="false" left="68.88%" top="155" right="1.84%" height="549">
           <Formats>
             <Format id="default">
               <Columns>
@@ -89,12 +89,12 @@
         </Grid>
         <Button id="searchBtn" taborder="8" onclick="clickBtn" left="46.39%" top="68" right="44.82%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="batchBtn" taborder="9" onclick="clickBtn" left="1115" top="69" width="90" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="addBigGrpBtn" taborder="10" onclick="clickBtn" left="30.47%" top="115" right="66.41%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="delBigGrpBtn" taborder="11" onclick="clickBtn" left="34.28%" top="115" right="62.6%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="addMidGrpBtn" taborder="12" onclick="clickBtn" left="65.23%" top="115" right="31.64%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="delMidGrpBtn" taborder="13" onclick="clickBtn" left="69.04%" top="115" right="27.83%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="addSmGrpBtn" taborder="14" onclick="clickBtn" left="1134" top="115" width="32" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="delSmGrpBtn" taborder="15" onclick="clickBtn" left="1173" top="115" width="32" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addBigGrpBtn" taborder="10" onclick="clickBtn" left="27.28%" top="115" right="69.6%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delBigGrpBtn" taborder="11" onclick="clickBtn" left="31.12%" top="115" right="65.84%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addMidGrpBtn" taborder="12" onclick="clickBtn" left="59.44%" top="115" right="37.44%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delMidGrpBtn" taborder="13" onclick="clickBtn" left="63.28%" top="115" right="33.6%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addSmGrpBtn" taborder="14" onclick="clickBtn" left="1134" top="115" width="39" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="delSmGrpBtn" taborder="15" onclick="clickBtn" left="1181" top="115" width="39" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="searchBigGrpBtn" taborder="16" onclick="clickBtn" left="23.93%" top="68" right="72.95%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>

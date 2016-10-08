@@ -4,10 +4,10 @@
   <Form id="LE_GdsInputMngntForm" classname="LE_GdsInputMngntForm" left="0" top="0" width="1250" height="768" titletext="물품 검수 관리">
     <Layouts>
       <Layout>
-        <Div id="Div00" taborder="0" left="0.2%" top="4" right="-41.89%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+        <Div id="Div00" taborder="0" left="0.24%" top="4" right="0.16%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="물품검수관리" left="3.1%" top="-4" right="83.39%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+              <Static id="Static00" taborder="0" text="물품 검수 관리" left="4.42%" top="-4" right="76.47%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -36,7 +36,7 @@
         </Radio>
         <Div id="searchDiv" taborder="7" left="53.81%" top="61" right="0.98%" height="145" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
-            <Layout>
+            <Layout width="565" height="145">
               <Static id="subCodeStc01" taborder="12" text="계약일자" onclick="subCodeStc_onclick" left="2.6%" top="11" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="subCodeStc00" taborder="13" text="품  명" onclick="subCodeStc_onclick" left="2.6%" top="54" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="subCodeStc02" taborder="14" text="납품일" onclick="subCodeStc_onclick" left="2.6%" top="97" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -70,7 +70,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="inptGrid" taborder="9" binddataset="dsCtrtInfo" useinputpanel="false" oncelldblclick="inptGrid_oncelldblclick" left="1.28%" top="103" right="47.2%" height="204">
+        <Grid id="inptGrid" taborder="9" binddataset="dsCtrtInfo" useinputpanel="false" left="1.28%" top="103" right="47.2%" height="609" oncellclick="inptGrid_oncellclick" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -141,88 +141,6 @@
         <Button id="searchBtn" taborder="14" onclick="searchBtn_onclick" cssclass="SearchBtn" left="47.27%" top="64" right="46.78%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="SearchBtn"/>
         <Button id="inptYnBtn" taborder="15" onclick="inptYnBtn_onclick" cssclass="InptYnBtn" left="0.98%" top="723" right="91.8%" height="32" style="background:@gradation URL('img::permitBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="InptYnBtn"/>
         <Button id="inptYnCancelBtn" taborder="16" onclick="inptYnCancelBtn_onclick" cssclass="InptYnCancelBtn" left="9.28%" top="723" right="83.4%" height="32" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="InptYnCancelBtn"/>
-        <Grid id="Grid00" taborder="17" useinputpanel="false" left="1.28%" top="383" right="47.2%" height="204" binddataset="dsCtrtInfo">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-                <Col size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row band="body" size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell col="0" disptype="normal" text="ctrtNo"/>
-                <Cell col="1" disptype="normal" text="ctrtDate"/>
-                <Cell col="2" disptype="normal" text="ctrtDiv"/>
-                <Cell col="3" disptype="normal" text="ctrtStart"/>
-                <Cell col="4" disptype="normal" text="ctrtEnd"/>
-                <Cell col="5" disptype="normal" text="ctrtSeq"/>
-                <Cell col="6" disptype="normal" text="ctrtRespoWorker"/>
-                <Cell col="7" disptype="normal" text="ctrtRespoWorkerNm"/>
-                <Cell col="8" disptype="normal" text="cust"/>
-                <Cell col="9" disptype="normal" text="ctrtStat"/>
-                <Cell col="10" disptype="normal" text="buyAprvYb"/>
-                <Cell col="11" disptype="normal" text="signSsYb"/>
-                <Cell col="12" disptype="normal" text="ctrtCon"/>
-                <Cell col="13" disptype="normal" text="ctrtStand"/>
-                <Cell col="14" disptype="normal" text="ctrtQnt"/>
-                <Cell col="15" disptype="normal" text="ctrtPrice"/>
-                <Cell col="16" disptype="normal" text="ctrtAmt"/>
-                <Cell col="17" disptype="normal" text="buyReceiptNo"/>
-                <Cell col="18" disptype="normal" text="inptYb"/>
-                <Cell col="19" disptype="normal" text="fm"/>
-                <Cell col="20" disptype="normal" text="ctrtGds"/>
-                <Cell col="21" disptype="normal" text="gdsCd"/>
-              </Band>
-              <Band id="body">
-                <Cell col="0" disptype="normal" text="bind:ctrtNo"/>
-                <Cell col="1" disptype="normal" text="bind:ctrtDate"/>
-                <Cell col="2" disptype="normal" text="bind:ctrtDiv"/>
-                <Cell col="3" disptype="normal" text="bind:ctrtStart"/>
-                <Cell col="4" disptype="normal" text="bind:ctrtEnd"/>
-                <Cell col="5" disptype="normal" text="bind:ctrtSeq"/>
-                <Cell col="6" disptype="normal" text="bind:ctrtRespoWorker"/>
-                <Cell col="7" disptype="normal" text="bind:ctrtRespoWorkerNm"/>
-                <Cell col="8" disptype="normal" text="bind:cust"/>
-                <Cell col="9" disptype="normal" text="bind:ctrtStat"/>
-                <Cell col="10" disptype="normal" text="bind:buyAprvYb"/>
-                <Cell col="11" disptype="normal" text="bind:signSsYb"/>
-                <Cell col="12" disptype="normal" text="bind:ctrtCon"/>
-                <Cell col="13" disptype="normal" text="bind:ctrtStand"/>
-                <Cell col="14" disptype="normal" text="bind:ctrtQnt"/>
-                <Cell col="15" disptype="normal" text="bind:ctrtPrice"/>
-                <Cell col="16" disptype="normal" text="bind:ctrtAmt"/>
-                <Cell col="17" disptype="normal" text="bind:buyReceiptNo"/>
-                <Cell col="18" disptype="normal" text="bind:inptYb"/>
-                <Cell col="19" disptype="normal" text="bind:fm"/>
-                <Cell col="20" disptype="normal" text="bind:ctrtGds"/>
-                <Cell col="21" disptype="normal" text="bind:gdsCd"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
       </Layout>
     </Layouts>
     <Objects>
@@ -284,32 +202,6 @@
           <Column id="inptDate" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="dsCtrtInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="false" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="ctrtNo" type="STRING" size="256"/>
-          <Column id="ctrtDate" type="STRING" size="256"/>
-          <Column id="ctrtDiv" type="STRING" size="256"/>
-          <Column id="ctrtStart" type="STRING" size="256"/>
-          <Column id="ctrtEnd" type="STRING" size="256"/>
-          <Column id="ctrtSeq" type="STRING" size="256"/>
-          <Column id="ctrtRespoWorker" type="STRING" size="256"/>
-          <Column id="ctrtRespoWorkerNm" type="STRING" size="256"/>
-          <Column id="cust" type="STRING" size="256"/>
-          <Column id="ctrtStat" type="STRING" size="256"/>
-          <Column id="buyAprvYb" type="STRING" size="256"/>
-          <Column id="signSsYb" type="STRING" size="256"/>
-          <Column id="ctrtCon" type="STRING" size="256"/>
-          <Column id="ctrtStand" type="STRING" size="256"/>
-          <Column id="ctrtQnt" type="STRING" size="256"/>
-          <Column id="ctrtPrice" type="STRING" size="256"/>
-          <Column id="ctrtAmt" type="STRING" size="256"/>
-          <Column id="buyReceiptNo" type="STRING" size="256"/>
-          <Column id="inptYb" type="STRING" size="256"/>
-          <Column id="fm" type="STRING" size="256"/>
-          <Column id="ctrtGds" type="STRING" size="256"/>
-          <Column id="gdsCd" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="dsCtrtInfoDetail" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="accYear" type="STRING" size="256"/>
@@ -340,6 +232,31 @@
         <ColumnInfo>
           <Column id="buyDemdDate" type="STRING" size="256"/>
           <Column id="receiptNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCtrtInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ctrtNo" type="STRING" size="256"/>
+          <Column id="ctrtDate" type="STRING" size="256"/>
+          <Column id="ctrtDiv" type="STRING" size="256"/>
+          <Column id="ctrtStart" type="STRING" size="256"/>
+          <Column id="ctrtEnd" type="STRING" size="256"/>
+          <Column id="ctrtSeq" type="STRING" size="256"/>
+          <Column id="ctrtRespoWorker" type="STRING" size="256"/>
+          <Column id="cust" type="STRING" size="256"/>
+          <Column id="ctrtStat" type="STRING" size="256"/>
+          <Column id="buyAprvYb" type="STRING" size="256"/>
+          <Column id="signSsYb" type="STRING" size="256"/>
+          <Column id="ctrtCon" type="STRING" size="256"/>
+          <Column id="ctrtStand" type="STRING" size="256"/>
+          <Column id="ctrtQnt" type="STRING" size="256"/>
+          <Column id="ctrtPrice" type="STRING" size="256"/>
+          <Column id="ctrtAmt" type="STRING" size="256"/>
+          <Column id="buyReceiptNo" type="STRING" size="256"/>
+          <Column id="inptYb" type="STRING" size="256"/>
+          <Column id="fm" type="STRING" size="256"/>
+          <Column id="ctrtGds" type="STRING" size="256"/>
+          <Column id="gdsCd" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -377,7 +294,8 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	radio=this.inptRadio.value;      	
 	
 	//조회 검색조건
-	/*if(startDate==null){   
+	/*
+	if(startDate==null){   
 	    alert("검색시작일 선택하세요.");		
 	}else if(endDate==null){
 		alert("검색종료일 선택하세요.");
@@ -387,7 +305,8 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		alert("검수여부 선택하세요");
 	}else{	
 		this.gfnService("findCtrtList", false);
-	}*/	
+	}
+	*/
 	this.gfnService("findCtrtList", false);
 	
 }
@@ -456,11 +375,11 @@ this.inptCheckBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 //프린트버튼이벤트
 this.printStateBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	
+	alert("준비중임니당");
 }
 
 //그리드 셀클릭 이벤트
-this.inptGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+this.inptGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
 	selectCtrtNo = this.dsCtrtInfo.getColumn(this.dsCtrtInfo.rowposition,"ctrtNo");   
 	var selectBuyReceiptNo=this.dsCtrtInfo.getColumn(this.dsCtrtInfo.rowposition,"buyReceiptNo");   //선택된 구매접수번호
@@ -471,7 +390,8 @@ this.inptGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 	    
 	this.gfnService("findCtrtHistList","false");   //계약번호에 해당하는 계약상세정보만 불러옴.
 	this.gfnService("findGdsInptList","false");   //계약번호에 해당하는 검수내역만 불러옴.	 
-	this.gfnService("findDelivDay","false");   //계약번호에 해당하는 납품일만 불러옴.
+
+//	this.gfnService("findDelivDay","false");   //계약번호에 해당하는 납품일만 불러옴.
 }
 
 //승인버튼
