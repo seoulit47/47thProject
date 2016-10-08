@@ -6,4 +6,7 @@
   <Services>
     <Service id="img" file_ext="" include_subdir="false"/>
   </Services>
+  <ComponentInfoGroup>
+    <ComponentInfo name="WebBrowser" defaultwidth="" defaultheight="" image="18"/>
+  </ComponentInfoGroup>
 </Project>

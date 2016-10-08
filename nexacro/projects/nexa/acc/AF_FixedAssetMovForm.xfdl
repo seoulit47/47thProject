@@ -1,0 +1,963 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AF_FixedAssetMovForm" classname="AF_FixedAssetMovForm" left="0" top="0" width="1250" height="768" titletext="고정자산 이동관리" onload="AF_FixedAssetMovForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="titleBarDiv" taborder="0" left="0%" top="0" right="1.44%" height="60" style="background:transparent URL('img::titleBar4.jpg');" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="titleStc" taborder="10" text="고정자산이동 관리" left="4.79%" top="-4" right="71.43%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+              <Static id="Static06" taborder="11" text="자산번호" onclick="Static06_onclick" left="61.36%" top="67" right="31.66%" height="26" class="AreaStc"/>
+              <Edit id="assetNoEdit" taborder="12" left="68.59%" top="67" right="22.89%" height="26" class="AreaEdt"/>
+              <Edit id="assetNmEdit" taborder="13" left="84.42%" top="67" right="7.06%" height="26" class="AreaEdt"/>
+              <Static id="Static00" taborder="14" text="자산이름" onclick="Static06_onclick" left="77.27%" top="67" right="15.75%" height="26" class="AreaStc"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div03" taborder="1" left="2%" top="59" right="1.2%" height="37" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="subCodeStc02" taborder="2" text="고정자산 검색" onclick="subCodeStc_onclick" left="2.64%" top="64" right="89.76%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="searchAssetNoEd" taborder="3" readonly="true" enable="false" left="11.04%" top="63" right="81.28%" height="30"/>
+        <Edit id="searchAssetNmEd" taborder="4" readonly="true" enable="false" left="22.24%" top="62" right="68.08%" height="30"/>
+        <Static id="subCodeStc00" taborder="5" text="자산구분" onclick="subCodeStc_onclick" left="33.12%" top="64" right="60.16%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="searchAssetCombo" taborder="6" innerdataset="@dsAssetCd" codecolumn="code" datacolumn="bigValue" left="40.64%" top="62" right="51.36%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;" ondropdown="searchAssetCombo_ondropdown"/>
+        <Static id="subCodeStc01" taborder="7" text="관리구분" onclick="subCodeStc_onclick" left="49.36%" top="64" right="43.92%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="searchMngntCombo" taborder="8" innerdataset="@dsMngntCd" codecolumn="code" datacolumn="bigValue" left="56.56%" top="62" right="34.32%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;" ondropdown="searchMngntCombo_ondropdown"/>
+        <Static id="subCodeStc03" taborder="9" text="보유부서" onclick="subCodeStc_onclick" left="66.8%" top="64" right="26.48%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="searchOwnDeptCombo" taborder="10" innerdataset="dsOwnDept" codecolumn="code" datacolumn="bigValue" left="74.32%" top="62" right="17.68%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Button id="comboResetBtn" taborder="11" onclick="comboResetBtn_onclick" left="82.72%" top="62" right="9.12%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchFixedAssetMovBtn" taborder="12" onclick="searchFixedAssetMovBtn_onclick" left="91.12%" top="63" right="1.68%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchFixedAssetBtn" taborder="13" onclick="searchFixedAssetBtn_onclick" left="19.04%" top="63" right="78.4%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="fixedAssetGrid" taborder="14" binddataset="dsFixedAsset" useinputpanel="false" autofittype="col" oncellclick="fixedAssetGrid_oncellclick" onselectchanged="fixedAssetGrid_onselectchanged" left="2.4%" top="102" right="82.56%" height="617">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="110"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="자산번호"/>
+                <Cell col="1" text="자산명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assetNo"/>
+                <Cell col="1" text="bind:assetNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="grpDiv" taborder="15" left="17.68%" top="100" right="20.48%" height="200" style="background:#edececff;" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Calendar id="acquDateCal" taborder="20" expr="expr:Date()" readonly="true" left="47.99%" top="34" right="28.59%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+              <Calendar id="dproDateCal" taborder="21" expr="expr:Date()" readonly="true" left="47.99%" top="66" right="28.59%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+              <Button id="comboResetBtn" taborder="22" text="조건초기화" onclick="comboResetBtn_onclick" left="129.24%" top="-35" right="-39.07%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
+              <Static id="subCodeStc33" taborder="23" text="수령자" onclick="subCodeStc_onclick" left="24.19%" top="706" right="70.12%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="receiverEd" taborder="24" readonly="true" left="30.66%" top="704" right="51.23%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Static id="subCodeStc35" taborder="25" text="현위치" onclick="subCodeStc_onclick" left="24.19%" top="773" right="70.12%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="pstLocCombo" taborder="26" innerdataset="dsPstLocCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="30.66%" top="772" right="45.92%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+              <Static id="subCodeStc36" taborder="27" text="담당자" onclick="subCodeStc_onclick" left="24.19%" top="806" right="70.12%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="respoWorkerEd" taborder="28" readonly="true" left="30.66%" top="805" right="51.23%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="subCodeStc04" taborder="16" text="분 류 내 역" onclick="subCodeStc_onclick" left="17.68%" top="100" right="20.56%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc06" taborder="17" text="자산번호" onclick="subCodeStc_onclick" left="18.56%" top="134" right="75.68%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc07" taborder="18" text="자산구분" onclick="subCodeStc_onclick" left="18.56%" top="166" right="75.68%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc08" taborder="19" text="장비구분" onclick="subCodeStc_onclick" left="18.56%" top="198" right="75.68%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc09" taborder="20" text="관리구분" onclick="subCodeStc_onclick" left="18.56%" top="230" right="75.68%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc10" taborder="21" text="취득재원" onclick="subCodeStc_onclick" left="18.56%" top="262" right="75.68%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="acquFinanCombo" taborder="22" readonly="true" innerdataset="dsAcquFinanCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="25.28%" top="264" right="60.24%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">동남권원자력의학원장</Col>
+                <Col id="datacolumn">동남권원자력의학원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장</Col>
+                <Col id="datacolumn">원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장 직무대행</Col>
+                <Col id="datacolumn">원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주임과장</Col>
+                <Col id="datacolumn">주임과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장</Col>
+                <Col id="datacolumn">실장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장</Col>
+                <Col id="datacolumn">센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장</Col>
+                <Col id="datacolumn">병원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장 직무대행</Col>
+                <Col id="datacolumn">병원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장</Col>
+                <Col id="datacolumn">연구센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장 직무대행</Col>
+                <Col id="datacolumn">연구센터장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장</Col>
+                <Col id="datacolumn">부장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장대우</Col>
+                <Col id="datacolumn">부장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장 직무대행</Col>
+                <Col id="datacolumn">부장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)</Col>
+                <Col id="datacolumn">실장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)대우</Col>
+                <Col id="datacolumn">실장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급) 직무대행</Col>
+                <Col id="datacolumn">실장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)</Col>
+                <Col id="datacolumn">센터장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)대우</Col>
+                <Col id="datacolumn">센터장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장</Col>
+                <Col id="datacolumn">팀장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장대우</Col>
+                <Col id="datacolumn">팀장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장 직무대행</Col>
+                <Col id="datacolumn">팀장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장</Col>
+                <Col id="datacolumn">과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장대우</Col>
+                <Col id="datacolumn">과장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장 직무대행</Col>
+                <Col id="datacolumn">과장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)</Col>
+                <Col id="datacolumn">실장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)대우</Col>
+                <Col id="datacolumn">실장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">실장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)</Col>
+                <Col id="datacolumn">센터장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)대우</Col>
+                <Col id="datacolumn">센터장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">수간호사</Col>
+                <Col id="datacolumn">수간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">정책위원</Col>
+                <Col id="datacolumn">정책위원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="mngntCombo" taborder="23" readonly="true" innerdataset="dsMngntCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="25.28%" top="231" right="60.24%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Combo id="equipCombo" taborder="24" readonly="true" innerdataset="dsEquipCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="25.28%" top="198" right="60.24%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Combo id="assetCombo" taborder="25" readonly="true" innerdataset="dsAssetCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="25.28%" top="165" right="60.24%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Edit id="assetNoEd" taborder="26" readonly="true" left="25.28%" top="132" right="60.24%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Static id="subCodeStc14" taborder="27" text="취득일자" onclick="subCodeStc_onclick" left="40.96%" top="134" right="53.28%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc13" taborder="28" text="전산일자" onclick="subCodeStc_onclick" left="40.96%" top="166" right="53.28%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc12" taborder="29" text="내/외자" onclick="subCodeStc_onclick" left="40.96%" top="198" right="53.28%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc11" taborder="30" text="계정구분" onclick="subCodeStc_onclick" left="40.96%" top="230" right="53.28%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc15" taborder="31" text="취득구분" onclick="subCodeStc_onclick" left="40.96%" top="262" right="53.28%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="acquCombo" taborder="32" readonly="true" innerdataset="dsAcquCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="47.44%" top="264" right="38.08%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Combo id="acntCdCombo" taborder="33" readonly="true" innerdataset="dsAcntCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="47.44%" top="231" right="38.08%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">동남권원자력의학원장</Col>
+                <Col id="datacolumn">동남권원자력의학원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장</Col>
+                <Col id="datacolumn">원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장 직무대행</Col>
+                <Col id="datacolumn">원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주임과장</Col>
+                <Col id="datacolumn">주임과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장</Col>
+                <Col id="datacolumn">실장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장</Col>
+                <Col id="datacolumn">센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장</Col>
+                <Col id="datacolumn">병원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장 직무대행</Col>
+                <Col id="datacolumn">병원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장</Col>
+                <Col id="datacolumn">연구센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장 직무대행</Col>
+                <Col id="datacolumn">연구센터장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장</Col>
+                <Col id="datacolumn">부장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장대우</Col>
+                <Col id="datacolumn">부장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장 직무대행</Col>
+                <Col id="datacolumn">부장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)</Col>
+                <Col id="datacolumn">실장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)대우</Col>
+                <Col id="datacolumn">실장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급) 직무대행</Col>
+                <Col id="datacolumn">실장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)</Col>
+                <Col id="datacolumn">센터장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)대우</Col>
+                <Col id="datacolumn">센터장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장</Col>
+                <Col id="datacolumn">팀장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장대우</Col>
+                <Col id="datacolumn">팀장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장 직무대행</Col>
+                <Col id="datacolumn">팀장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장</Col>
+                <Col id="datacolumn">과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장대우</Col>
+                <Col id="datacolumn">과장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장 직무대행</Col>
+                <Col id="datacolumn">과장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)</Col>
+                <Col id="datacolumn">실장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)대우</Col>
+                <Col id="datacolumn">실장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">실장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)</Col>
+                <Col id="datacolumn">센터장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)대우</Col>
+                <Col id="datacolumn">센터장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">수간호사</Col>
+                <Col id="datacolumn">수간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">정책위원</Col>
+                <Col id="datacolumn">정책위원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="inOutCapitalCombo" taborder="34" readonly="true" innerdataset="dsInOutCapitalCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="47.44%" top="198" right="38.08%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">동남권원자력의학원장</Col>
+                <Col id="datacolumn">동남권원자력의학원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장</Col>
+                <Col id="datacolumn">원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">원장 직무대행</Col>
+                <Col id="datacolumn">원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">주임과장</Col>
+                <Col id="datacolumn">주임과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장</Col>
+                <Col id="datacolumn">실장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장</Col>
+                <Col id="datacolumn">센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장</Col>
+                <Col id="datacolumn">병원장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">병원장 직무대행</Col>
+                <Col id="datacolumn">병원장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장</Col>
+                <Col id="datacolumn">연구센터장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">연구센터장 직무대행</Col>
+                <Col id="datacolumn">연구센터장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장</Col>
+                <Col id="datacolumn">부장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장대우</Col>
+                <Col id="datacolumn">부장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">부장 직무대행</Col>
+                <Col id="datacolumn">부장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)</Col>
+                <Col id="datacolumn">실장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급)대우</Col>
+                <Col id="datacolumn">실장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(부장급) 직무대행</Col>
+                <Col id="datacolumn">실장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)</Col>
+                <Col id="datacolumn">센터장(부장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급)대우</Col>
+                <Col id="datacolumn">센터장(부장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(부장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(부장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장</Col>
+                <Col id="datacolumn">팀장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장대우</Col>
+                <Col id="datacolumn">팀장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">팀장 직무대행</Col>
+                <Col id="datacolumn">팀장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장</Col>
+                <Col id="datacolumn">과장</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장대우</Col>
+                <Col id="datacolumn">과장대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">과장 직무대행</Col>
+                <Col id="datacolumn">과장 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)</Col>
+                <Col id="datacolumn">실장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급)대우</Col>
+                <Col id="datacolumn">실장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">실장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">실장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)</Col>
+                <Col id="datacolumn">센터장(팀장급)</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급)대우</Col>
+                <Col id="datacolumn">센터장(팀장급)대우</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">센터장(팀장급) 직무대행</Col>
+                <Col id="datacolumn">센터장(팀장급) 직무대행</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">수간호사</Col>
+                <Col id="datacolumn">수간호사</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">정책위원</Col>
+                <Col id="datacolumn">정책위원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="subCodeStc16" taborder="35" text="수익구분" onclick="subCodeStc_onclick" left="62.8%" top="134" right="31.44%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Radio id="profitRadio" taborder="36" columncount="2" innerdataset="dsProfit" codecolumn="code" datacolumn="data" readonly="true" left="69.04%" top="139" right="21.12%" height="22" style="color:black;font:8 arial;"/>
+        <Edit id="ownDeptEd" taborder="37" readonly="true" left="69.28%" top="166" right="21.36%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Static id="subCodeStc34" taborder="38" text="보유부서" onclick="subCodeStc_onclick" left="62.8%" top="166" right="31.44%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc35" taborder="39" text="현위치" onclick="subCodeStc_onclick" left="62.8%" top="198" right="31.44%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="pstLocCombo" taborder="40" readonly="true" innerdataset="dsPstLocCd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="69.28%" top="198" right="21.36%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Edit id="respoWorkerEd" taborder="41" readonly="true" left="69.28%" top="231" right="21.36%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Static id="subCodeStc36" taborder="42" text="담당자" onclick="subCodeStc_onclick" left="62.8%" top="230" right="31.44%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Div id="Div02" taborder="43" left="80.32%" top="100" right="1.12%" height="200" style="background:#edececff;"/>
+        <Static id="subCodeStc05" taborder="44" text="상 각 내 역" onclick="subCodeStc_onclick" left="80.32%" top="100" right="1.12%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc17" taborder="45" text="상각방법" onclick="subCodeStc_onclick" left="80.64%" top="134" right="13.6%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc18" taborder="46" text="상각년수" onclick="subCodeStc_onclick" left="80.64%" top="191" right="13.6%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc19" taborder="47" text="상각율" onclick="subCodeStc_onclick" left="80.64%" top="248" right="13.6%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="depreRateEd" taborder="48" readonly="true" left="87.28%" top="245" right="2.08%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Edit id="depreYearsEd" taborder="49" readonly="true" left="87.28%" top="191" right="2.08%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Combo id="depreMthdCombo" taborder="50" readonly="true" innerdataset="dsDepreMthd" codecolumn="fixedAssetCdDtl" datacolumn="cdDtlNm" left="87.28%" top="133" right="2.08%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
+        <Div id="assetDiv" taborder="51" left="17.68%" top="309" right="1.2%" height="70" style="background:#edececff;"/>
+        <Static id="subCodeStc20" taborder="52" text="자 산 내 역" onclick="subCodeStc_onclick" left="17.68%" top="304" right="1.2%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc21" taborder="53" text="자산명" onclick="subCodeStc_onclick" left="18.8%" top="340" right="75.44%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="assetNmEd" taborder="54" readonly="true" left="25.52%" top="338" right="26.08%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+        <Static id="subCodeStc27" taborder="55" text="취득금액" onclick="subCodeStc_onclick" left="75.68%" top="340" right="18.56%" height="27" style="background:wheat;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <MaskEdit id="acquAmtMaskEd" taborder="56" mask="9,999,999,999,999" left="82.48%" top="337" right="3.04%" height="30"/>
+        <Grid id="fixedAssetMovGrid" taborder="57" binddataset="dsFixedAssetMov" useinputpanel="false" selecttype="multirow" autofittype="col" oncellclick="fixedAssetMovGrid_oncellclick" oncelldblclick="fixedAssetMovGrid_oncelldblclick" left="17.68%" top="384" right="1.12%" height="344">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="200"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="이동일자"/>
+                <Cell col="1" text="관리구분"/>
+                <Cell col="2" text="보유부서"/>
+                <Cell col="3" text="현위치"/>
+                <Cell col="4" text="담당자"/>
+                <Cell col="5" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" edittype="none" text="bind:movDate"/>
+                <Cell col="1" displaytype="combo" edittype="none" text="bind:mngntCd" combodataset="dsMngntCd" combocodecol="code" combodatacol="bigValue" combodisplay="edit"/>
+                <Cell col="2" displaytype="combo" text="bind:ownDept" combodataset="dsOwnDept" combocodecol="code" combodatacol="bigValue"/>
+                <Cell col="3" displaytype="combo" text="bind:pstLoc" combodataset="dsPstLocCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="4" displaytype="normal" text="bind:respoWorker"/>
+                <Cell col="5" style="align:left;" text="bind:note"/>
+              </Band>
+            </Format>
+            <Format id="insert">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="200"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="이동일자"/>
+                <Cell col="1" text="관리구분"/>
+                <Cell col="2" text="보유부서"/>
+                <Cell col="3" text="현위치"/>
+                <Cell col="4" text="담당자"/>
+                <Cell col="5" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" edittype="date" text="bind:movDate"/>
+                <Cell col="1" displaytype="combo" edittype="combo" text="bind:mngntCd" combodataset="dsMngntCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:ownDept" combodataset="dsOwnDept" combocodecol="code" combodatacol="bigValue"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:pstLoc" combodataset="dsPstLocCd" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="bind:respoWorker" combodataset="dsRespoWorker" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+                <Cell col="5" edittype="normal" style="align:left;" text="bind:note"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addFixedAssetMovBtn" taborder="58" onclick="addFixedAssetMovBtn_onclick" left="73.92%" top="731" right="18.88%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="deleteFixedAssetMovBtn" taborder="59" onclick="deleteFixedAssetMovBtn_onclick" left="81.76%" top="731" right="11.04%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="batchFixedAssetMovBtn" taborder="60" onclick="batchFixedAssetMovBtn_onclick" left="89.6%" top="731" right="1.6%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item1" compid="searchOwnDeptCombo" propid="value" datasetid="dsHmEmp" columnid="jobtt"/>
+      <BindItem id="item5" compid="acquFinanCombo" propid="value" datasetid="dsFixedAsset" columnid="acquFinanCd"/>
+      <BindItem id="item4" compid="mngntCombo" propid="value" datasetid="dsFixedAsset" columnid="mngntCd"/>
+      <BindItem id="item3" compid="equipCombo" propid="value" datasetid="dsFixedAsset" columnid="equipCd"/>
+      <BindItem id="item2" compid="assetCombo" propid="value" datasetid="dsFixedAsset" columnid="assetCd"/>
+      <BindItem id="item11" compid="assetNoEd" propid="value" datasetid="dsFixedAsset" columnid="assetNo"/>
+      <BindItem id="item8" compid="acquCombo" propid="value" datasetid="dsFixedAsset" columnid="acquCd"/>
+      <BindItem id="item7" compid="acntCdCombo" propid="value" datasetid="dsFixedAsset" columnid="acntCd"/>
+      <BindItem id="item6" compid="inOutCapitalCombo" propid="value" datasetid="dsFixedAsset" columnid="inOutCapitalCd"/>
+      <BindItem id="item15" compid="profitRadio" propid="value" datasetid="dsFixedAsset" columnid="profitCd"/>
+      <BindItem id="ownDeptBind" compid="ownDeptEd" propid="value" datasetid="dsFixedAsset" columnid="ownDept"/>
+      <BindItem id="item14" compid="pstLocCombo" propid="value" datasetid="dsFixedAsset" columnid="pstLoc"/>
+      <BindItem id="item19" compid="respoWorkerEd" propid="value" datasetid="dsFixedAsset" columnid="respoWorker"/>
+      <BindItem id="item17" compid="depreRateEd" propid="value" datasetid="dsFixedAsset" columnid="depreRate"/>
+      <BindItem id="item16" compid="depreYearsEd" propid="value" datasetid="dsFixedAsset" columnid="depreYears"/>
+      <BindItem id="item9" compid="depreMthdCombo" propid="value" datasetid="dsFixedAsset" columnid="depreMthd"/>
+      <BindItem id="item18" compid="assetNmEd" propid="value" datasetid="dsFixedAsset" columnid="assetNm"/>
+      <BindItem id="item10" compid="acquAmtMaskEd" propid="value" datasetid="dsFixedAsset" columnid="acquAmt"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsRespoWorker"/>
+      <Dataset id="dsFixedAssetCdDtl">
+        <ColumnInfo>
+          <Column id="fixedAssetCdDtl" type="STRING" size="256"/>
+          <Column id="cdDtlNm" type="STRING" size="256"/>
+          <Column id="cdDtlUseYn" type="STRING" size="256"/>
+          <Column id="fixedAssetCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsFixedAsset" oncolumnchanged="dsFixedAsset_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="equipCd" type="STRING" size="256"/>
+          <Column id="mngntCd" type="STRING" size="256"/>
+          <Column id="acquFinanCd" type="STRING" size="256"/>
+          <Column id="inOutCapitalCd" type="STRING" size="256"/>
+          <Column id="acntCd" type="STRING" size="256"/>
+          <Column id="depreMthd" type="STRING" size="256"/>
+          <Column id="assetNo" type="STRING" size="256"/>
+          <Column id="acquDate" type="STRING" size="256"/>
+          <Column id="dproDate" type="STRING" size="256"/>
+          <Column id="profitCd" type="STRING" size="256"/>
+          <Column id="depreYears" type="STRING" size="256"/>
+          <Column id="depreRate" type="STRING" size="256"/>
+          <Column id="assetNm" type="STRING" size="256"/>
+          <Column id="acnt" type="STRING" size="256"/>
+          <Column id="asstAcnt" type="STRING" size="256"/>
+          <Column id="acquAmt" type="STRING" size="256"/>
+          <Column id="monUnitCd" type="STRING" size="256"/>
+          <Column id="disposalDate" type="STRING" size="256"/>
+          <Column id="disposalCd" type="STRING" size="256"/>
+          <Column id="assetGrp" type="STRING" size="256"/>
+          <Column id="splyComp" type="STRING" size="256"/>
+          <Column id="cashBuyYn" type="STRING" size="256"/>
+          <Column id="prodComp" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="prodNo" type="STRING" size="256"/>
+          <Column id="prodCtry" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="receiver" type="STRING" size="256"/>
+          <Column id="ownDept" type="STRING" size="256"/>
+          <Column id="pstLoc" type="STRING" size="256"/>
+          <Column id="respoWorker" type="STRING" size="256"/>
+          <Column id="fixedAssetPhoto" type="STRING" size="256"/>
+          <Column id="assetCd" type="STRING" size="256"/>
+          <Column id="acquCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsFixedAssetMov">
+        <ColumnInfo>
+          <Column id="note" type="STRING" size="256"/>
+          <Column id="movDate" type="STRING" size="256"/>
+          <Column id="assetNo" type="STRING" size="256"/>
+          <Column id="ownDept" type="STRING" size="256"/>
+          <Column id="pstLoc" type="STRING" size="256"/>
+          <Column id="mngntCd" type="STRING" size="256"/>
+          <Column id="respoWorker" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOwnDept">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPstLocCd"/>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findUsingFixedAssetCdDtlList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::acc/fixedasset/findUsingFixedAssetCdDtlList.do</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+            <Col id="outData">dsFixedAssetCdDtl=dsFixedAssetCdDtl</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findFixedAssetList</Col>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAssetList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsFixedAsset=dsFixedAsset</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findFixedAsset</Col>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAsset.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">dsFixedAsset=dsFixedAsset</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findFixedAssetMovList</Col>
+            <Col id="URL">erp47::acc/fixedasset/findFixedAssetMovList.do</Col>
+            <Col id="outData">dsFixedAssetMov=dsFixedAssetMov</Col>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchFixedAssetMovProcess</Col>
+            <Col id="URL">erp47::acc/fixedasset/batchFixedAssetMovProcess.do</Col>
+            <Col id="inData">dsFixedAssetMov=dsFixedAssetMov:U</Col>
+            <Col id="outData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">callBackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GP500</Col>
+            <Col id="dsName">dsOwnDept</Col>
+          </Row>
+          <Row>
+            <Col id="code">GFZBK</Col>
+            <Col id="dsName">dsMngntCd</Col>
+          </Row>
+          <Row>
+            <Col id="dsName">dsAssetCd</Col>
+            <Col id="code">GFZFG</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsAcquCd"/>
+      <Dataset id="dsProfit">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">수익</Col>
+            <Col id="data">수익</Col>
+          </Row>
+          <Row>
+            <Col id="code">비수익</Col>
+            <Col id="data">비수익</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDepreMthd"/>
+      <Dataset id="dsAcquFinanCd"/>
+      <Dataset id="dsInOutCapitalCd"/>
+      <Dataset id="dsAcntCd"/>
+      <Dataset id="dsAssetCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsMngntCd">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsEquipCd"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+include "scripts::accScripts.xjs"; 
+
+
+
+// 폼 온로드 이벤트
+this.AF_FixedAssetMovForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findUsingFixedAssetCdDtlList");
+	this.gfnBind();
+}
+
+// 고정자산검색 팝업 생성
+this.searchFixedAssetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnFixedAssetPopup('searchFixedAsset');
+}
+
+// 콤보리셋버튼 
+this.comboResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.searchAssetCombo.set_index(-1);
+	this.searchMngntCombo.set_index(-1);
+	this.searchOwnDeptCombo.set_index(-1);
+	this.searchAssetNoEd.set_value(null);
+	this.searchAssetNmEd.set_value(null);
+}
+
+// 고정자산이동검색 버튼
+this.searchFixedAssetMovBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.searchAssetNoEd.value == null){
+		var acquStartDate = "19000101";
+		var acquEndDate = "21000101";
+
+		var argument = "acquStartDate='"+acquStartDate+"' acquEndDate='"+acquEndDate+"' assetCd='"+this.searchAssetCombo.value+"' equipCd='undefined' mngntCd='"+this.searchMngntCombo.value+"' depreMthd='undefined' ownDept='"+this.searchOwnDeptCombo.value+"'";
+		this.dsService.setColumn(1,"argument",argument);
+		this.gfnService("findFixedAssetList");
+	}else{
+		var argument = "assetNo='"+this.searchAssetNoEd.value+"'";
+		this.dsService.setColumn(2,"argument",argument);
+		this.gfnService("findFixedAsset");
+		
+	}
+	this.gfnService("findFixedAssetMovList");
+}
+
+//  그리드 클릭 이벤트
+this.fixedAssetGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var assetNo = this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"assetNo");
+	this.dsFixedAssetMov.filter("assetNo=='"+assetNo+"'");
+	this.fixedAssetMovGrid.set_binddataset("dsFixedAssetMov");
+	
+}
+
+this.fixedAssetMovGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var selectRow = this.dsFixedAssetMov.getRowType(this.dsFixedAssetMov.rowposition);
+	if(selectRow == 2){
+		this.fixedAssetMovGrid.set_formatid("insert");
+	}else{
+	    if(this.dsFixedAssetMov.rowposition == this.dsFixedAssetMov.rowcount-1){
+			this.fixedAssetMovGrid.set_formatid("insert");
+	    }else{
+			this.fixedAssetMovGrid.set_formatid("default");
+	    }
+	}
+}
+
+this.fixedAssetMovGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if(e.cell == 4){
+		this.gfnEmpPopup();
+		this.setEmpInfo = function(arrRtn){ 
+			this.dsFixedAssetMov.setColumn(e.row,"respoWorker",arrRtn[1]);
+		}
+	}
+}
+
+//  그리드 내용변경 이벤트
+this.fixedAssetGrid_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	this.fixedAssetGrid_oncellclick(obj,e);
+}
+
+// 고정자산이동 추가 이벤트
+this.addFixedAssetMovBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsFixedAssetMov.addRow();
+	this.dsFixedAssetMov.setColumn(nRow,"assetNo",this.dsFixedAsset.getColumn(this.dsFixedAsset.rowposition,"assetNo"));
+	this.dsFixedAssetMov.setColumn(nRow,"movDate",this.gfnGetTime());
+}
+
+this.deleteFixedAssetMovBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsFixedAssetMov.deleteMultiRows(this.fixedAssetMovGrid.getSelectedDatasetRows());
+}
+
+this.batchFixedAssetMovBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchFixedAssetMovProcess");
+}
+
+
+//  콜백 함수
+this.fixedAssetMovCallBack = function fixedAssetMovCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findUsingFixedAssetCdDtlList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZFG'");
+			this.dsAssetCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZBG'");
+			this.dsEquipCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZBK'");
+			this.dsMngntCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZSA'");
+			this.dsDepreMthd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZGJ'");
+			this.dsAcquFinanCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZYG'");
+			this.dsInOutCapitalCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZAG'");
+			this.dsAcntCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZGE'");
+			this.dsAcquCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZLC'");
+			this.dsPstLocCd.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+			
+		}
+	}else if(strSvcID == "findFixedAssetList" || strSvcID == "findFixedAsset"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			this.fixedAssetGrid_oncellclick(this,0);
+		}
+	}else if(strSvcID == "findFixedAssetMovList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			
+		}
+	}else if(strSvcID == "batchFixedAssetMovProcess"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			alert("정상 처리 되었습니다.");
+		}
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>

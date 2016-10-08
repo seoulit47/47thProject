@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="AF_DisposalFixedAssetForm" classname="AF_DisposalFixedAssetForm" left="0" top="0" width="1250" height="768" titletext="매각자산관리" onload="AFdisposalRegFixedAssetForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="0%" top="4" right="0.96%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc"/>
+        <Static id="titleEdt02" taborder="1" text="매각자산관리" cssclass="TStc" left="4.88%" top="14" right="82.32%" height="36" style="font:bold 15 Dotum;"/>
+        <Div id="Div03" taborder="2" left="1.28%" top="71" right="1.04%" height="53" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Button id="searchDisposalFixedAssetBtn" taborder="3" onclick="searchDisposalFixedAssetBtn_onclick" left="43.84%" top="82" right="48.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Grid id="disposalFixedAssetGrid" taborder="4" binddataset="dsDisposalReg" useinputpanel="false" autofittype="col" oncellclick="disposalFixedAssetGrid_oncellclick" left="1.12%" top="136" right="1.12%" height="578">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="110"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="자산번호"/>
+                <Cell col="1" text="자산명"/>
+                <Cell col="2" text="매각일"/>
+                <Cell col="3" text="매각금액"/>
+                <Cell col="4" text="매각비용"/>
+                <Cell col="5" text="매각이익"/>
+                <Cell col="6" text="매각손실"/>
+                <Cell col="7" text="처분처"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assetNo"/>
+                <Cell col="1" text="bind:assetNm"/>
+                <Cell col="2" displaytype="date" text="bind:disposalDate" calendardisplaynulltype="none"/>
+                <Cell col="3" displaytype="number" text="bind:sellAmt" mask="9,999,999,999"/>
+                <Cell col="4" displaytype="number" text="bind:sellCost" mask="9,999,999,999"/>
+                <Cell col="5" displaytype="number" text="bind:sellProfit" mask="9,999,999,999"/>
+                <Cell col="6" displaytype="number" text="bind:sellLoss" mask="9,999,999,999"/>
+                <Cell col="7" displaytype="combo" edittype="none" text="bind:sellComp" combodataset="dsSellComp" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+              </Band>
+            </Format>
+            <Format id="insertOrUpdate">
+              <Columns>
+                <Column size="90"/>
+                <Column size="110"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="자산번호"/>
+                <Cell col="1" text="자산명"/>
+                <Cell col="2" text="매각일"/>
+                <Cell col="3" text="매각금액"/>
+                <Cell col="4" text="매각비용"/>
+                <Cell col="5" text="매각이익"/>
+                <Cell col="6" text="매각손실"/>
+                <Cell col="7" text="처분처"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:assetNo"/>
+                <Cell col="1" text="bind:assetNm"/>
+                <Cell col="2" displaytype="date" edittype="date" text="bind:disposalDate" calendardisplaynulltype="none"/>
+                <Cell col="3" displaytype="number" edittype="masknumber" text="bind:sellAmt" mask="9,999,999,999"/>
+                <Cell col="4" displaytype="number" edittype="masknumber" text="bind:sellCost" mask="9,999,999,999"/>
+                <Cell col="5" displaytype="number" text="bind:sellProfit" mask="9,999,999,999"/>
+                <Cell col="6" displaytype="number" text="bind:sellLoss" mask="9,999,999,999"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:sellComp" combodataset="dsSellComp" combocodecol="fixedAssetCdDtl" combodatacol="cdDtlNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="subCodeStc00" taborder="5" text="매각일" onclick="subCodeStc_onclick" left="2%" top="84" right="89.68%" height="27" style="background:antiquewhite;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Calendar id="disposalStartDateCal" taborder="6" expr="expr:Date()" left="11.2%" top="83" right="78.4%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Static id="Static00" taborder="7" text="~" left="23.12%" top="91" right="72.56%" height="19" style="border:1 none #808080ff ;color:black;font:bold 11 arial;"/>
+        <Calendar id="disposalEndDateCal" taborder="8" expr="expr:Date()" left="25.36%" top="83" right="64.24%" height="30" style="border:1 solid #a6a6a9ff ;align:right middle;font:9 Dotum;"/>
+        <Button id="calResetBtn" taborder="9" text="날짜초기화" onclick="calResetBtn_onclick" left="37.04%" top="85" right="56.88%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
+        <Button id="batchDisposalFixedAssetBtn" taborder="10" onclick="batchDisposalFixedAssetBtn_onclick" left="89.6%" top="721" right="1.6%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="addDisposalFixedAssetBtn" taborder="11" onclick="addDisposalFixedAssetBtn_onclick" left="73.28%" top="721" right="19.52%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="deleteDisposalFixedBtn" taborder="12" onclick="deleteDisposalFixedBtn_onclick" left="81.44%" top="721" right="11.36%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findUsingFixedAssetCdDtlList</Col>
+            <Col id="inData"/>
+            <Col id="URL">erp47::acc/fixedasset/findUsingFixedAssetCdDtlList.do</Col>
+            <Col id="callbackFunc">disposalFiexdAssetCallBack</Col>
+            <Col id="outData">dsFixedAssetCdDtl=dsFixedAssetCdDtl</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDisposalFixedAssetList</Col>
+            <Col id="URL">erp47::acc/fixedasset/findDisposalFixedAssetList.do</Col>
+            <Col id="outData">dsDisposalReg=dsDisposalReg</Col>
+            <Col id="callbackFunc">disposalFiexdAssetCallBack</Col>
+            <Col id="inData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchDisposalFixedAssetProcess</Col>
+            <Col id="URL">erp47::acc/fixedasset/batchDisposalFixedAssetProcess.do</Col>
+            <Col id="inData">dsDisposalReg=dsDisposalReg:U</Col>
+            <Col id="callbackFunc">disposalFiexdAssetCallBack</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDisposalSellValue</Col>
+            <Col id="URL">erp47::acc/fixedasset/findDisposalSellValue.do</Col>
+            <Col id="callbackFunc">disposalFiexdAssetCallBack</Col>
+            <Col id="outData">dsDisposalSellValue=dsDisposalSellValue</Col>
+            <Col id="inData">dsDisposalSellValue=dsDisposalSellValue</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSellComp"/>
+      <Dataset id="dsDisposalSellValue">
+        <ColumnInfo>
+          <Column id="assetNo" type="STRING" size="256"/>
+          <Column id="sellAmt" type="STRING" size="256"/>
+          <Column id="disposalDate" type="STRING" size="256"/>
+          <Column id="disposalSellValue" type="STRING" size="256"/>
+          <Column id="disposalResult" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsFixedAssetCdDtl"/>
+      <Dataset id="dsDisposalReg" oncolumnchanged="dsDisposalReg_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="assetNo" type="STRING" size="256"/>
+          <Column id="assetNm" type="STRING" size="256"/>
+          <Column id="disposalDate" type="STRING" size="256"/>
+          <Column id="sellAmt" type="STRING" size="256"/>
+          <Column id="sellCost" type="STRING" size="256"/>
+          <Column id="sellProfit" type="STRING" size="256"/>
+          <Column id="sellLoss" type="STRING" size="256"/>
+          <Column id="sellComp" type="STRING" size="256"/>
+          <Column id="disposalCd" type="STRING" size="256"/>
+          <Column id="acquDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/  
+
+include "scripts::commonTransaction.xjs";
+
+/********************************************************************************
+  폼 로드 이벤트
+********************************************************************************/
+
+this.AFdisposalRegFixedAssetForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findUsingFixedAssetCdDtlList");
+}
+
+/********************************************************************************
+  콜백 함수
+********************************************************************************/
+
+this.disposalFiexdAssetCallBack = function disposalFiexdAssetCallBack(strSvcID, nErrorCode, strErrorMag)
+{
+	if(strSvcID == "findUsingFixedAssetCdDtlList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+
+			this.dsFixedAssetCdDtl.filter("fixedAssetCd == 'GFZCC'");
+			this.dsSellComp.copyData(this.dsFixedAssetCdDtl,true);
+			this.dsFixedAssetCdDtl.filter("");
+		}
+	}else if(strSvcID == "findDisposalFixedAssetList"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+		}
+	}else if(strSvcID == "batchDisposalFixedAssetProcess"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			alert("정상처리 되었습니다.");
+		}
+	}else if(strSvcID == "findDisposalSellValue"){
+		if(nErrorCode==-1)
+			alert(strErrorMag);
+		else{
+			var disposalResult = this.dsDisposalSellValue.getColumn(0,"disposalResult")
+			var disposalSellValue = this.dsDisposalSellValue.getColumn(0,"disposalSellValue");
+			if(disposalResult == "매각이익"){
+				this.dsDisposalReg.setColumn(this.dsDisposalReg.rowposition,"sellProfit",disposalSellValue);
+				this.dsDisposalReg.setColumn(this.dsDisposalReg.rowposition,"sellLoss",null);
+			}else if(disposalResult == "매각손실"){
+				this.dsDisposalReg.setColumn(this.dsDisposalReg.rowposition,"sellLoss",disposalSellValue);
+				this.dsDisposalReg.setColumn(this.dsDisposalReg.rowposition,"sellProfit",null);
+			}else{
+				this.dsDisposalReg.setColumn(this.dsDisposalReg.rowposition,"sellProfit",0);
+				this.dsDisposalReg.setColumn(this.dsDisposalReg.rowposition,"sellLoss",0);
+			}
+			this.dsDisposalSellValue.deleteAll();
+		}
+	}
+}
+
+/********************************************************************************
+  버튼 클릭 이벤트
+********************************************************************************/
+
+/********************************************************************************
+  매각자산 조회
+********************************************************************************/
+
+this.searchDisposalFixedAssetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var disposalStartDate = "19000101";
+	var disposalEndDate = "21000101";
+
+	if(this.disposalStartDateCal.value != null){
+		disposalStartDate = this.disposalStartDateCal.value;
+	}
+	if(this.disposalEndDateCal.value != null){
+		disposalEndDate = this.disposalEndDateCal.value;
+	}
+
+	var argument = "disposalStartDate='"+disposalStartDate+"' disposalEndDate='"+disposalEndDate+"'";
+	this.dsService.setColumn(1,"argument",argument);
+	this.gfnService("findDisposalFixedAssetList");
+}
+
+/********************************************************************************
+  조건초기화 
+********************************************************************************/
+
+this.calResetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.disposalStartDateCal.set_value(null);
+	this.disposalEndDateCal.set_value(null);
+}
+	 
+/********************************************************************************
+  매각자산 추가
+********************************************************************************/
+
+this.addDisposalFixedAssetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsDisposalReg.addRow();
+	application.open("disposalFixedAssetPopup","acc::AF_DisposalPlnFixedAssetPopupForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false",0,0,780,550);
+}
+
+/********************************************************************************
+  매각자산 삭제
+********************************************************************************/
+
+this.deleteDisposalFixedBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsDisposalReg.deleteRow(this.dsDisposalReg.rowposition);
+}
+
+/********************************************************************************
+  매각자산 일괄처리(저장)
+********************************************************************************/
+
+this.batchDisposalFixedAssetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfnService("batchDisposalFixedAssetProcess");
+}
+
+/********************************************************************************
+  그리드 클릭 이벤트
+********************************************************************************/
+
+this.disposalFixedAssetGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var selectRow = this.dsDisposalReg.getRowType(e.row);
+	if(selectRow == 2){
+		this.disposalFixedAssetGrid.set_formatid("insertOrUpdate");
+	}else{
+		this.disposalFixedAssetGrid.set_formatid("default");
+	}
+}
+
+/********************************************************************************
+  데이터셋 이벤트
+********************************************************************************/
+
+this.dsDisposalReg_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "sellCost" || e.columnid == "sellAmt"){
+		var disposalDate = this.dsDisposalReg.getColumn(this.dsDisposalReg.rowposition,"disposalDate");
+		if(disposalDate == null){
+			alert("매각일 입력한 후 입력하시오.");
+		}else{
+			// 매각금액 - 매각비용 한 값이 매각일 기준 잔존 상각액 보다 크면 매각 이익에 그 차액을 넣고, 작으면 매각 손실에 그 차액을 넣는다. (프로시져)
+			var sellAmt = this.dsDisposalReg.getColumn(this.dsDisposalReg.rowposition,"sellAmt");
+			var sellCost = this.dsDisposalReg.getColumn(this.dsDisposalReg.rowposition,"sellCost");
+			if(sellAmt != null && sellCost != null){
+				this.dsDisposalSellValue.deleteAll();
+			    var assetNo = this.dsDisposalReg.getColumn(this.dsDisposalReg.rowposition,"assetNo");
+			    var sellAmt= nexacro.toNumber(sellAmt)-nexacro.toNumber(sellCost);
+				var nRow = this.dsDisposalSellValue.addRow();
+				this.dsDisposalSellValue.setColumn(nRow,"assetNo",assetNo);
+				this.dsDisposalSellValue.setColumn(nRow,"sellAmt",sellAmt);
+				this.dsDisposalSellValue.setColumn(nRow,"disposalDate",disposalDate);
+				//var argument = "disposalDate='"+disposalDate+"' sellAmt='"+sellAmt+"' assetNo='"+assetNo+"'";
+			   // this.dsService.setColumn(3,"argument",argument);
+			    this.gfnService("findDisposalSellValue");
+			}
+		}
+	}else if(e.columnid == "disposalDate"){
+		var acquDate = this.dsDisposalReg.getColumn(this.dsDisposalReg.rowposition,"acquDate");
+		if(acquDate > e.newvalue){
+			alert("매각일을 재확인 하십시오.");
+			this.dsDisposalReg.setColumn(this.dsDisposalReg.rowposition,"disposalDate",null);
+		}
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>
