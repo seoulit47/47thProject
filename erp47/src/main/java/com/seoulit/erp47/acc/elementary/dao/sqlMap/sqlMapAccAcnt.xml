@@ -83,6 +83,7 @@
                  #{budgYn},
                  #{useYn},
                  FN_AC_GET_INCOM_CD(#{accYear},#{parentAcntCd}),
+                 
                  #{inputYn},
                  #{accYear},
                  #{parentAcntCd},
@@ -95,6 +96,7 @@
         DELETE 
             AE_ACC_ACNT
         WHERE 
+        
             ACNT_CD=#{acntCd}
             AND ACC_YEAR=#{accYear}
     </delete>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.seoulit.erp47.acc.vat.to.TaxInvBean;
+import com.seoulit.erp47.acc.vat.to.VATDeclBean;
 
 public interface VATServiceFacade {
 
@@ -11,4 +12,5 @@ public interface VATServiceFacade {
 
     void batchTaxInvProcess(List<TaxInvBean> tempTaxInvList);
 
+   List<VATDeclBean> findVATDeclList(Map<String, String> argsMap);
 }

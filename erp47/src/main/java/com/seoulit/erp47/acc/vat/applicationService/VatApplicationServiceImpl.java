@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.seoulit.erp47.acc.vat.dao.TaxInvDAO;
+import com.seoulit.erp47.acc.vat.dao.VATDeclDAO;
 import com.seoulit.erp47.acc.vat.to.DetailTaxInvBean;
 import com.seoulit.erp47.acc.vat.to.TaxInvBean;
+import com.seoulit.erp47.acc.vat.to.VATDeclBean;
 
 @Service
-public class TaxInvApplicationServiceImpl implements TaxInvApplicationService {
+public class VatApplicationServiceImpl implements VatApplicationService {
+	
 	@Autowired
 	TaxInvDAO taxInvDAO;
+	@Autowired
+	VATDeclDAO vatDeclDAO;
 
 	@Override
 	public List<TaxInvBean> findTaxInvList(Map<String, String> argsMap) {
@@ -45,4 +50,9 @@ public class TaxInvApplicationServiceImpl implements TaxInvApplicationService {
 		}
 	}
 
+
+    @Override
+    public List<VATDeclBean> findVATDeclList(Map<String, String> argsMap) {
+        return vatDeclDAO.selectVATDeclList(argsMap);
+    }
 }

@@ -19,7 +19,7 @@ import com.seoulit.erp47.acc.resol.to.AutoJourRuleBean;
 import com.seoulit.erp47.acc.resol.to.JourBean;
 import com.seoulit.erp47.acc.resol.to.PayRecBean;
 import com.seoulit.erp47.acc.resol.to.ResolLetBean;
-import com.seoulit.erp47.acc.vat.applicationService.TaxInvApplicationService;
+import com.seoulit.erp47.acc.vat.applicationService.VatApplicationService;
 import com.seoulit.erp47.acc.vat.to.TaxInvBean;
 
 @Service
@@ -35,7 +35,7 @@ public class ResolServiceFacadeImpl implements ResolServiceFacade{
     @Autowired
     PayRecApplicationService payRecApplicationService;
     @Autowired
-    TaxInvApplicationService taxInvApplicationService;
+    VatApplicationService taxInvApplicationService;
     @Autowired
     AppendFileApplicationService appendFileApplicationService;
 

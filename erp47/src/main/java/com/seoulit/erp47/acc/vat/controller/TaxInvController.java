@@ -18,15 +18,6 @@ import com.seoulit.erp47.acc.vat.to.TaxInvBean;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 
 
-/**
- * @Package  com.seoulit.erp47.acc.vat.controller
- * @Class    TaxInvController.java
- * @Create   2016. 09. 05.
- * @Author   YonG
- * @Description 
- *  	
- * @LastUpdated 
- */
 
 @Controller
 public class TaxInvController {
