@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WH_JwjSearchForm" classname="WH_JwjSearchForm" left="0" top="0" width="1256" height="759" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="baseDiv" taborder="0" left="2.23%" top="64" right="1.67%" height="91" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Static id="patStc" taborder="1" text="환자등록번호" left="3.26%" top="75" right="87.82%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="wardCombo" taborder="2" innerdataset="dsSC070" codecolumn="code" datacolumn="value" left="45.86%" top="79" right="43.47%" height="28" style="background:transparent;"/>
+        <Edit id="patNmEd" taborder="3" left="24.92%" top="76" right="65.84%" height="28"/>
+        <Button id="searchJwjBtn" taborder="4" onclick="searchJwjBtn_onclick" left="89.89%" top="113" right="4.22%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchChangeSalBtn"/>
+        <Static id="deptStc" taborder="5" text="담당의사" left="60.83%" top="116" right="30.49%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="trmtStc" taborder="6" text="진료과" left="36.46%" top="116" right="54.78%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="hospStc" taborder="7" text="입원일자" left="3.26%" top="115" right="87.82%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Edit id="patNoEd" taborder="8" left="12.58%" top="76" right="78.26%" height="28"/>
+        <Button id="patBtn" taborder="9" onclick="patBtn_onclick" cssclass="patBtn" left="21.89%" top="76" right="75.8%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="patBtn"/>
+        <Static id="wardStc" taborder="10" text="병동" left="36.31%" top="79" right="54.94%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Combo id="respDoctNmCombo" taborder="11" innerdataset="@gdsEmp" codecolumn="empNo" datacolumn="empNm" left="70.3%" top="116" right="18.95%" height="28" style="background:transparent;"/>
+        <Combo id="trmtDeptNmCombo" taborder="12" innerdataset="dsGP080" codecolumn="code" datacolumn="bigValue" left="45.86%" top="116" right="43.47%" height="28" style="background:transparent;" oncloseup="trmtDeptNmCombo_oncloseup"/>
+        <Calendar id="hosptlzStartDateCal" taborder="13" autoskip="true" left="12.58%" top="115" right="77.63%" height="30" style="padding:0 0 0 0;"/>
+        <Calendar id="hosptlzEndDateCal" taborder="14" autoskip="true" left="24.04%" top="115" right="66.08%" height="30" style="padding:0 0 0 0;"/>
+        <Static id="Stc" taborder="15" text="~" left="22.85%" top="116" right="75.4%" height="28" style="border:1 none #808080ff ;color:black;font:bold 10 arial;"/>
+        <Grid id="expTgmGrid" taborder="16" binddataset="dsJwj" useinputpanel="false" autofittype="col" left="2.23%" top="161" right="1.67%" height="575">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="20"/>
+                <Column size="100"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="환자등록번호"/>
+                <Cell col="2" text="성명"/>
+                <Cell col="3" text="생년월일"/>
+                <Cell col="4" text="성별"/>
+                <Cell col="5" text="나이"/>
+                <Cell col="6" text="진료과"/>
+                <Cell col="7" text="담당의사"/>
+                <Cell col="8" text="병동"/>
+                <Cell col="9" text="병실"/>
+                <Cell col="10" text="입원일"/>
+                <Cell col="11" text="퇴원일"/>
+                <Cell col="12" text="주소"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:patNo"/>
+                <Cell col="2" text="bind:patNm"/>
+                <Cell col="3" edittype="mask" text="bind:rrn1" mask="##/##/##"/>
+                <Cell col="4" text="bind:gender"/>
+                <Cell col="5" text="bind:age"/>
+                <Cell col="6" displaytype="combo" text="bind:trmtDept" combodataset="dsGP080" combocodecol="code" combodatacol="bigValue"/>
+                <Cell col="7" displaytype="combo" text="bind:trmtDoct" combodataset="gdsEmp" combocodecol="empNo" combodatacol="empNm"/>
+                <Cell col="8" text="bind:ward"/>
+                <Cell col="9" text="bind:hroom"/>
+                <Cell col="10" displaytype="date" text="bind:hosptlzDate"/>
+                <Cell col="11" displaytype="date" text="bind:dscgDate"/>
+                <Cell col="12" text="bind:addr"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div03" taborder="17" left="0%" top="0" right="-32.96%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="18" text="재원환자조회" left="4.78%" top="-4" right="81.69%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsJwj" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="patNm" type="STRING" size="256"/>
+          <Column id="rrn1" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="hosptlzDate" type="STRING" size="256"/>
+          <Column id="jwDate" type="STRING" size="256"/>
+          <Column id="trmtDept" type="STRING" size="256"/>
+          <Column id="trmtDoct" type="STRING" size="256"/>
+          <Column id="ward" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="hroom" type="STRING" size="256"/>
+          <Column id="dscgDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">empInfo</Col>
+            <Col id="URL">erp47::hrs/emp/findEmpList.do</Col>
+            <Col id="outData">gdsEmp=gdsEmp</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findJwjList</Col>
+            <Col id="URL">erp47::won/baseInfo/findJwjList.do</Col>
+            <Col id="outData">dsJwj=dsJwj</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">SC070</Col>
+            <Col id="dsName">dsSC070</Col>
+          </Row>
+          <Row>
+            <Col id="code">GP080</Col>
+            <Col id="dsName">dsGP080</Col>
+          </Row>
+          <Row>
+            <Col id="dsName">dsGA043</Col>
+            <Col id="code">GA043</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSC070" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGP080" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="gdsEmp" onrowposchanged="dsHmEmp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="payDate" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+          <Column id="lunar" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 입원 예정자 관리                                                           	*
+*                                                                               *
+* @Path		    WH_HospylzPrdstorMngntForm                     	                *
+* @Description 	재원환자조회 관리                  	   	                    *
+* @Author	    박 영 희					                               		*
+* 									                                            *
+* Created on 2016. 10. 09.                             		                    *
+*									                                            *
+********************************************************************************/
+
+
+
+/***************************************************************************************************
+*                                         import                                                   *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";
+include "scripts::wonScripts.xjs";
+
+
+
+
+/***************************************************************************************************
+*                                        변수 초기화                                              *
+***************************************************************************************************/
+var deptCd;
+
+
+
+
+/***************************************************************************************************
+*                                        onload event                                              *
+***************************************************************************************************/
+this.WH_JwjSearchForm_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	this.gfnBind();
+	this.gfnService("empInfo", false);
+	this.gdsEmp.filter(this.gfnLike("jobrk", "의사"));
+}
+
+
+
+/***************************************************************************************************
+*                                   환자조회 button click event                                   *
+***************************************************************************************************/
+this.patBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.gfnPatPopup();
+
+this.setPatInfo = function(arrRtn){ 
+		this.patNoEd.set_value(arrRtn[0]);  
+		this.patNmEd.set_value(arrRtn[1]);  									
+	}
+}
+
+
+
+/***************************************************************************************************
+*                                  진료과 combo oncloseup event                                   *
+***************************************************************************************************/
+this.trmtDeptNmCombo_oncloseup = function(obj:Combo, e:nexacro.ComboCloseUpEventInfo){
+	deptCd = this.trmtDeptNmCombo.value;
+	this.gdsEmp.filter(this.gfnLike("deptCd", deptCd));
+}
+
+
+
+
+/***************************************************************************************************
+*                                     조회 button click event                                      *
+***************************************************************************************************/
+this.searchJwjBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var patNo = this.patNoEd.value;              
+	var patNm = this.patNmEd.value;              
+	var ward = this.wardCombo.value;             
+	var start = this.hosptlzStartDateCal.value;  
+	var end =  this.hosptlzEndDateCal.value;    
+	var respDoctNm = this.respDoctNmCombo.value;  
+	
+	var argument = "patNo="+patNo+" patNm="+patNm+" ward="+ward+" deptCd="+deptCd
+					+" start="+start+" end="+end+" respDoctNm="+respDoctNm;
+
+	this.dsService.setColumn(0,"argument", argument);	    
+	this.gfnService("findJwjList",false);   
+	
+	this.dsJwj.filter("patNo=='"+this.patNoEd.value+"'");
+}
+]]></Script>
+  </Form>
+</FDL>
