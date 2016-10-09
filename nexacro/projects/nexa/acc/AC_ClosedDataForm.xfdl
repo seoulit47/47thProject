@@ -9,7 +9,7 @@
         <Div id="ACclosDataDiv" taborder="2" left="2.32%" top="63" right="1.12%" height="37" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="~" left="38.76%" top="10" right="60.25%" height="19"/>
+              <Static id="Static00" taborder="0" text="~" left="38.76%" top="10" right="60.23%" height="19"/>
             </Layout>
           </Layouts>
         </Div>
@@ -49,10 +49,10 @@
         <Static id="accPridStc01" taborder="6" text="기" onclick="subCodeStc_onclick" left="19.2%" top="69" right="78.48%" height="27" style="background:wheat;border:0 none #808080ff ;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="startDateEd" taborder="7" enable="false" left="29.2%" top="67" right="60.56%" height="30"/>
         <Edit id="endDateEd" taborder="8" enable="false" left="41.36%" top="67" right="48.4%" height="30"/>
-        <Button id="accPridPopupBtn" taborder="9" left="22.56%" top="67" right="74.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="accPridPopupBtn_onclick"/>
-        <Button id="searchBtn" taborder="10" left="52.72%" top="65" right="40.08%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
-        <Button id="resetBtn" taborder="11" left="89.76%" top="66" right="2.08%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="resetBtn_onclick"/>
-        <Button id="closJourBtn" taborder="12" text="결산분개" left="78.4%" top="67" right="12%" height="29" onclick="closJourBtn_onclick"/>
+        <Button id="accPridPopupBtn" taborder="9" onclick="accPridPopupBtn_onclick" left="23.04%" top="67" right="74.32%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="searchBtn" taborder="10" left="53.04%" top="66" right="39.76%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchBtn_onclick"/>
+        <Button id="closJourBtn" taborder="11" text="결산분개" onclick="closJourBtn_onclick" left="78.24%" top="67" right="12.16%" height="29"/>
+        <Button id="resetBtn" taborder="12" onclick="resetBtn_onclick" left="89.6%" top="66" right="2.24%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
       </Layout>
     </Layouts>
     <InitValue>
@@ -130,7 +130,7 @@ this.setArrRtn=function(arrRtn)
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.accPrid = this.accPridEd.value; //회계기수 세팅 
-	
+
 	if(this.accPrid == null){
 		alert("회계기수를 선택하세요");
 	}else{

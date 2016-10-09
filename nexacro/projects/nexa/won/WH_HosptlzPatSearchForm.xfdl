@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WH_HosptlzPatSearchForm" classname="WH_HosptlzPatSearchForm" left="0" top="0" width="571" height="392" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="subCodeStc07" taborder="0" text="환자등록번호" onclick="subCodeStc_onclick" left="1.99%" top="72" right="77.55%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="patNoEd" taborder="1" enable="false" left="23.89%" top="72" right="50.08%" height="26" class="AreaEdt"/>
+        <Calendar id="hosptlzHopeDateCal" taborder="2" left="23.89%" top="116" right="45.94%" height="25"/>
+        <Static id="subCodeStc00" taborder="3" text="입원희망일" onclick="subCodeStc_onclick" left="4.94%" top="115" right="77.55%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc01" taborder="4" text="진료과" onclick="subCodeStc_onclick" left="4.94%" top="158" right="77.55%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="trmtDeptNmCombo" taborder="5" innerdataset="dsGP080" codecolumn="code" datacolumn="bigValue" oncloseup="trmtDeptNmCombo_oncloseup" left="23.89%" top="159" right="50.08%" height="26" class="AreaCombo"/>
+        <Combo id="wardCombo" taborder="6" innerdataset="dsSC070" codecolumn="code" datacolumn="value" left="24.04%" top="202" right="50.08%" height="26" class="AreaCombo"/>
+        <Static id="subCodeStc03" taborder="7" text="희망병동" onclick="subCodeStc_onclick" left="4.94%" top="201" right="77.55%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc06" taborder="8" text="예상재원일" onclick="subCodeStc_onclick" left="4.94%" top="244" right="77.55%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="prdtFinanDateEdt" taborder="9" left="23.89%" top="245" right="67.04%" height="26" class="AreaEdt"/>
+        <Static id="subCodeStc08" taborder="10" text="특기사항" onclick="subCodeStc_onclick" left="4.94%" top="287" right="77.55%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <TextArea id="TextArea" taborder="11" left="23.89%" top="288" right="20.06%" height="94"/>
+        <Combo id="hroomCombo" taborder="12" innerdataset="dsSC071" codecolumn="code" datacolumn="value" left="75.32%" top="201" right="1.75%" height="26" class=""/>
+        <Static id="subCodeStc04" taborder="13" text="희망병실" onclick="subCodeStc_onclick" left="56.29%" top="201" right="26.27%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc02" taborder="14" text="담당의사" onclick="subCodeStc_onclick" left="56.29%" top="158" right="26.27%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Combo id="respDoctNmCombo" taborder="15" innerdataset="gdsEmp" codecolumn="empNo" datacolumn="empNm" enable="false" left="75.32%" top="159" right="1.99%" height="26" class=""/>
+        <Edit id="rsvtNoEdt" taborder="16" enable="false" left="78.5%" top="116" right="12.34%" height="26" class="AreaEdt"/>
+        <Static id="subCodeStc09" taborder="17" text="입원예약번호" onclick="subCodeStc_onclick" left="56.29%" top="115" right="23.25%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Static id="subCodeStc05" taborder="18" text="외래접수번호" onclick="subCodeStc_onclick" left="56.29%" top="72" right="23.25%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="outpaReceiptNoEdt" taborder="19" enable="false" left="78.5%" top="73" right="12.34%" height="26" class="AreaEdt"/>
+        <Button id="saveBtn" taborder="20" onclick="saveBtn_onclick" left="82.32%" top="352" right="2.79%" height="30" class="DelBtn" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;"/>
+        <Div id="Div06" taborder="21" left="0%" top="4" right="0.88%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="0" text="입원 예약 관리" left="8.66%" top="5" right="55.3%" height="47" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="rsvtNoEdt" propid="value" datasetid="dsHosptlzRsvt" columnid="hosptlzRsvtNo"/>
+    </Bind>
+    <Objects>
+      <Dataset id="dsSC070" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSC071" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">empInfo</Col>
+            <Col id="URL">erp47::hrs/emp/findEmpList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">gdsEmp=gdsEmp</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">callhosptlzRsvtSeq</Col>
+            <Col id="URL">erp47::won/hosptlzPat/callhosptlzRsvtSeq.do</Col>
+            <Col id="outData">hosptlzRsvtNo=hosptlzRsvtNo</Col>
+            <Col id="callbackFunc">callhosptlzRsvtSeqCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerHosptlzRsvt</Col>
+            <Col id="URL">erp47::won/hosptlzPat/registerHosptlzRsvt.do</Col>
+            <Col id="inData">dsHosptlzRsvt=dsHosptlzRsvt:u </Col>
+            <Col id="callbackFunc">registerHosptlzRsvtCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsGP080" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+          <Column id="bigValue" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="gdsEmp" onrowposchanged="dsHmEmp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="payDate" type="STRING" size="256"/>
+          <Column id="zipCd" type="STRING" size="256"/>
+          <Column id="workStatus" type="STRING" size="256"/>
+          <Column id="workPeriod" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="retMonthWorkingdays" type="STRING" size="256"/>
+          <Column id="retDate" type="STRING" size="256"/>
+          <Column id="pms" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="permaddr" type="STRING" size="256"/>
+          <Column id="payStep" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="natnt" type="STRING" size="256"/>
+          <Column id="mateYn" type="STRING" size="256"/>
+          <Column id="localYn" type="STRING" size="256"/>
+          <Column id="jobtt" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="image" type="STRING" size="256"/>
+          <Column id="hireDiv" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="frignSingleTxrate" type="STRING" size="256"/>
+          <Column id="forinNum" type="STRING" size="256"/>
+          <Column id="fax" type="STRING" size="256"/>
+          <Column id="extsn" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="birthday" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="detailAddr" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="accountNm" type="STRING" size="256"/>
+          <Column id="sts" type="STRING" size="256"/>
+          <Column id="lunar" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBindCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="dsName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">GP080</Col>
+            <Col id="dsName">dsGP080</Col>
+          </Row>
+          <Row>
+            <Col id="code">SC070</Col>
+            <Col id="dsName">dsSC070</Col>
+          </Row>
+          <Row>
+            <Col id="code">SC071</Col>
+            <Col id="dsName">dsSC071</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsHosptlzRsvt" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="hopeWard" type="STRING" size="256"/>
+          <Column id="hosptlzPlnDate" type="STRING" size="256"/>
+          <Column id="hosptlzRsvtNo" type="STRING" size="256"/>
+          <Column id="hopeRoom" type="STRING" size="256"/>
+          <Column id="outpaReceiptNo" type="STRING" size="256"/>
+          <Column id="patNo" type="STRING" size="256"/>
+          <Column id="prdtFinanDate" type="STRING" size="256"/>
+          <Column id="respDoctCd" type="STRING" size="256"/>
+          <Column id="trmtDeptCd" type="STRING" size="256"/>
+          <Column id="uniqueNtc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************************
+*                                                                               *
+* 입원 예약 등록                                                           	*
+*                                                                               *
+* @Path		    WH_HosptlzPatSearchForm                        	                *
+* @Description 	입원 예약 등록                	   	                        *
+* @Author	    박 영 희					                               		*
+* 									                                            *
+* Created on 2016. 10. 08.                             		                    *
+*									                                            *
+********************************************************************************/
+
+
+
+
+/***************************************************************************************************
+*                                         import                                                   *
+***************************************************************************************************/
+include "scripts::commonScripts.xjs";  
+include "scripts::wonScripts.xjs";	          
+
+
+
+
+/***************************************************************************************************
+*                                       변수 초기화                                               *
+***************************************************************************************************/
+this.hosptlzRsvtNo="";
+var row; 
+
+
+
+/***************************************************************************************************
+*                                 진료과 combo change event                                        *
+***************************************************************************************************/
+this.trmtDeptNmCombo_oncloseup = function(obj:Combo, e:nexacro.ComboCloseUpEventInfo)
+{
+	deptCd = this.trmtDeptNmCombo.value;  //진료과
+
+    this.gdsEmp.filter("");
+    this.gdsEmp.filter("jobrk=='"+'의사'+"' && deptCd=='"+deptCd+"'");  
+    
+    this.respDoctNmCombo.set_enable(true);
+}
+
+
+
+
+/***************************************************************************************************
+*                                  확인 button click event                                        *
+***************************************************************************************************/
+this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{		
+	row=this.dsHosptlzRsvt.rowposition;
+	this.dsHosptlzRsvt.setColumn(row,"patNo",this.patNoEd.value);   //환자등록번호
+	this.dsHosptlzRsvt.setColumn(row,"outpaReceiptNo",this.outpaReceiptNoEdt.value);   //외래접수번호
+	this.dsHosptlzRsvt.setColumn(row,"hosptlzPlnDate",this.hosptlzHopeDateCal.value);  //입원희망일
+	this.dsHosptlzRsvt.setColumn(row,"hosptlzRsvtNo",this.hosptlzRsvtNo);   //입원예약번호
+	this.dsHosptlzRsvt.setColumn(row,"trmtDeptCd",this.trmtDeptNmCombo.value);  //진료과
+	this.dsHosptlzRsvt.setColumn(row,"respDoctCd",this.respDoctNmCombo.value);    //담당의사
+	this.dsHosptlzRsvt.setColumn(row,"hopeWard",this.wardCombo.value);    //희망병동
+	this.dsHosptlzRsvt.setColumn(row,"hopeRoom",this.hroomCombo.value);    //희망병실
+	this.dsHosptlzRsvt.setColumn(row,"prdtFinanDate",this.prdtFinanDateEdt.value);    //예상재원일
+	this.dsHosptlzRsvt.setColumn(row,"uniqueNtc",this.TextArea.value);    //특기사항			
+
+	this.gfnService("registerHosptlzRsvt","false");
+}
+
+
+
+/***************************************************************************************************
+*                                      callback function                                           *
+***************************************************************************************************/
+this.registerHosptlzRsvtCallbackFunc=function(svcID, errorCode, errorMsg){
+	if(errorCode=="1"){					
+		alert("입원예약등록 되었습니다.");
+		
+		var arrRtn = new Array;
+		var i=0;
+		arrRtn[i++] = this.dsHosptlzRsvt.getColumn(row,"patNo"); // 환자등록번호 0
+	    arrRtn[i++] = this.dsHosptlzRsvt.getColumn(row,"hosptlzRsvtNo"); // 입원예약번호 1
+	    
+	    this.opener.registerHosptlzRsvtInfo(arrRtn);		
+		this.close();
+	}else{
+		alert("입원예약 등록 중 오류발생");
+	}	
+}
+
+this.callhosptlzRsvtSeqCallbackFunc=function(svcID, errorCode, errorMsg){
+	if(errorCode=="1"){			
+		this.dsHosptlzRsvt.addRow();		
+		this.rsvtNoEdt.set_value(this.hosptlzRsvtNo);		
+	}else{
+		alert("입원예약번호 중 오류발생");
+	}	
+}
+
+
+
+/***************************************************************************************************
+*                              WH_HosptlzPatSearchForm_onload event                                *
+***************************************************************************************************/
+this.WH_HosptlzPatSearchForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+		
+	this.patNoEd.set_value(this.parent.patNo);  //부모창에 받아온 환자등록번호 바로 셋팅
+	this.outpaReceiptNoEdt.set_value(this.parent.outpaReceiptNo);   //부모창에 받아온 외래접수번호 바로 셋팅
+	application.setVariable("hosptlzRsvtNo", this.hosptlzRsvtNo);			
+	this.gfnService("callhosptlzRsvtSeq","false");   //입원예약번호 구하기
+	
+	this.gfnBind();  
+	this.gfnService("empInfo","false");
+}
+]]></Script>
+  </Form>
+</FDL>
