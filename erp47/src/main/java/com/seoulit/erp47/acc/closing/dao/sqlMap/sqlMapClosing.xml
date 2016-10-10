@@ -66,6 +66,7 @@
           AND ARTI_CD IN ('')
          </otherwise>
     </choose>
+    
           AND SUBSTR(AP.START_DATE,0,4) = ACNT.ACC_YEAR
           AND (CA.CLOS_ACNT_CD          = ACNT.ACNT_CD
            OR  CA.OPP_ACNT_CD           = ACNT.ACNT_CD )

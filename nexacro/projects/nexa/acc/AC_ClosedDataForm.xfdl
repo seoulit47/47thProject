@@ -167,6 +167,7 @@ this.closJourBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		}
 	}
 	
+	//var retVal = this.fn_dialog("closingJourHelp","acc::AC_ClosJourHelpForm","this.accPrid, this.dsClosJourData, this.endDate");
 	var retVal = this.gfnPopup("closingJourHelp","acc::AC_ClosJourHelpForm.xfdl","","");
 	//alert(this.MSG_ACC_CLOS_JOUR);
 }
