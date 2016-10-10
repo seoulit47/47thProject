@@ -40,7 +40,9 @@ public class PayDeduBean extends BaseBean{
     			   dline,             // 마감상태
     			   paymDeducNm,       // 지급공제명
     			   taxType,           // 과세유형
-				   calFormula;        // 계산식
+				   calFormula,        // 계산식
+				   realFormula;		  // 실제계산식
+	
 	
 	private List<PayDeduSectBean> payDeduSectList;
 

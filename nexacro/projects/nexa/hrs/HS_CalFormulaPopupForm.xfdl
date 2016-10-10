@@ -191,6 +191,7 @@ include "scripts::commonScripts.xjs";
 
 var nomal="";
 var result="";
+var realFormula="";
 
 this.HS_CalFormulaForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
@@ -206,10 +207,17 @@ this.itemTab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
 
 this.itemTab_itemGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	var itemCode = obj.getCellValue(e.row,0); //코드
-	var itemNm = obj.getCellValue(e.row,1); //명칭
+	var itemCode = this.dsCode.getColumn(e.row,"code");//코드
+	var itemDetailCode = this.dsCode.getColumn(e.row,"detailCode"); //상세코드
+	var itemNm = this.dsCode.getColumn(e.row,"codeName") //명칭
 	
-	nomal = nomal + itemCode;
+	
+	//근태관련코드 && 총연장근무시간
+	if(itemCode == "HSP002" && itemDetailCode=="03"){
+		realFormula=realFormula + "SELECT SUM(total_overtime) FROM HG_OVERTIME_WORK WHERE start_overtime_date LIKE"
+	}
+	
+	nomal = nomal + itemDetailCode;
 	result = result + itemNm;
 	
 	this.nomalDiv.nomalEdt.set_value(nomal);
