@@ -2,6 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.seoulit.erp47.log.prcs.dao.PrcsReceiptDAO">
+	<resultMap type="PrcsReceiptBean" id="findPrcsReceiptBean">
+		<result property="gdsAnspNo" column="GDS_ANSP_NO"/>
+		<result property="anspHistNo" column="ANSP_HIST_NO"/>
+		<result property="buyReceiptNo" column="BUY_RECEIPT_NO"/>
+		<result property="buyReceiptDate" column="BUY_RECEIPT_DATE"/>
+		<result property="buyReceiptRespoWorker" column="BUY_RECEIPT_RESPO_WORKER"/>
+		<result property="cust" column="CUST"/>
+		<result property="custCd" column="CUST_CD"/>
+		<result property="buyKind" column="BUY_KIND"/>
+		<result property="inptYn" column="INPT_YN"/>
+		<result property="prcsQnt" column="PRCS_QNT"/>
+		<result property="buyReceiptYb" column="BUY_RECEIPT_YB"/>
+		<result property="buyDemdDeptCd" column="BUY_DEMD_DEPT_CD"/>
+		<result property="acntCd" column="ACNT_CD"/>
+		<result property="danDiv" column="DAN_DIV"/>
+		<result property="receiptDiv" column="RECEIPT_DIV"/>
+		<result property="skillExamTargetYb" column="SKILL_EXAM_TARGET_YB"/>
+		<result property="skillExamDate" column="SKILL_EXAM_DATE"/>
+		<result property="ctrtKind" column="CTRT_KIND"/>
+		<result property="signStat" column="SIGN_STAT"/>
+		<result property="buyDemdNo" column="BUY_DEMD_NO"/>
+		<result property="buyDemdDate" column="BUY_DEMD_DATE"/>
+		<result property="ctrtYb" column="CTRT_YB"/>
+		<result property="ctrtDiv" column="CTRT_DIV"/>
+		<result property="aprvYn" column="APRV_YN"/>
+		<result property="aprvWorker" column="APRV_WORKER"/>
+		<result property="gdsCd" column="GDS_CD"/>
+		<result property="gdsNm" column="GDS_NM"/>
+	</resultMap>
 
     <select id="selectAnspList" flushCache="false" resultType="GdsAnspBean">
         SELECT
@@ -12,7 +41,7 @@
             <if test="prcsStartCal != null and prcsEndCal != null and prcsStartCal != '' and prcsEndCal != ''">
                 AND ANSP_DATE BETWEEN #{prcsStartCal} AND #{prcsEndCal}
             </if>
-            AND PROG_STAT = 6
+            AND PROG_STAT = '6'
         </trim>        	
         ORDER BY
             GDS_ANSP_NO

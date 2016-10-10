@@ -10,8 +10,9 @@ import com.seoulit.erp47.log.prcs.to.PrcsReceiptBean;
 public interface PrcsReceiptDAO {
     List<GdsAnspBean> selectAnspList(Map<String, String> argsMap);
     List<PrcsReceiptBean> selectPrcsReceiptList(Map<String, String> argsMap);
+    List<GdsAnspHistBean> selectAnspHistList(GdsAnspHistBean anspHistBean);
+    
     void insertPrcsReceipt(PrcsReceiptBean prcsReceiptBean);
     void updatePrcsReceipt(PrcsReceiptBean prcsReceiptBean);
     void deletePrcsReceipt(PrcsReceiptBean prcsReceiptBean);
-    List<GdsAnspHistBean> selectAnspHistList(GdsAnspHistBean anspHistBean);
 }

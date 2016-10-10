@@ -19,23 +19,19 @@ public class PrcsApplicationServiceImpl implements PrcsApplicationService {
 
     @Override
     public List<PrcsReceiptBean> findPrcsReceiptList(Map<String, String> argsMap) {
-    	
-    	System.out.println("sizeeeee : " + argsMap.size());
-    	for (Entry<String, String> entry : argsMap.entrySet()) {
-    		System.out.println("keyyyyy : " + entry.getKey());
-    		System.out.println("valllll : " + entry.getValue());
-    		}
-    	
-        return prcsReceiptDAO.selectPrcsReceiptList(argsMap);
+    	return prcsReceiptDAO.selectPrcsReceiptList(argsMap);
     }
 
     @Override
     public void batchPrcsReceiptProcess(List<PrcsReceiptBean> prcsReceiptList) {
         for(PrcsReceiptBean prcsReceiptBean : prcsReceiptList) {
             switch(prcsReceiptBean.getStatus()){
-            case "inserted" :prcsReceiptDAO.insertPrcsReceipt(prcsReceiptBean); break;
-            case "updated" :prcsReceiptDAO.updatePrcsReceipt(prcsReceiptBean); break;
-            case "deleted" :prcsReceiptDAO.deletePrcsReceipt(prcsReceiptBean); break;
+            case "inserted" :prcsReceiptDAO.insertPrcsReceipt(prcsReceiptBean); 
+            	break;
+            case "updated" :prcsReceiptDAO.updatePrcsReceipt(prcsReceiptBean); 
+            	break;
+            case "deleted" :prcsReceiptDAO.deletePrcsReceipt(prcsReceiptBean); 
+            	break;
             }
         }
     }

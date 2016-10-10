@@ -14,37 +14,45 @@ import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.log.ctrt.service.CtrtServiceFacade;
 import com.seoulit.erp47.log.ctrt.to.CtrtBean;
-
-
+import com.seoulit.erp47.log.inpt.to.SkillExmntHistBean;
 
 @Controller
 public class CtrtController {
 	@Autowired
 	CtrtServiceFacade ctrtServiceFacade;
-	
+
 	@Autowired
 	DataSetBeanMapper datasetBeanMapper;
+
+	@RequestMapping("log/ctrt/findCtrtList.do")
+	public void findCtrtList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+		Map<String, String> argsMap = datasetBeanMapper.variablesToMap(inData);
+
+		System.out.println("test : " + argsMap.get("startDate"));
+		System.out.println("test : " + argsMap.get("endDate"));
+
+		List<CtrtBean> ctrtList = ctrtServiceFacade.findCtrtList(argsMap);
+
+		datasetBeanMapper.beansToDataset(outData, ctrtList, CtrtBean.class);
+	}
 	
-		@RequestMapping("log/ctrt/findCtrtList.do")
-		public void findCtrtList(HttpServletRequest request, HttpServletResponse response)throws Exception{
-			
-			
-				System.out.println("findCtrtList매서드입니다.");
-			
-				PlatformData inData =(PlatformData)request.getAttribute("inData");
-				PlatformData outData =(PlatformData)request.getAttribute("outData");
-			
-				Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
-			
-					System.out.println(argsMap.get("startDate"));
-					System.out.println(argsMap.get("endDate"));
-					
-				List<CtrtBean>ctrtList=ctrtServiceFacade.findCtrtList(argsMap);	
-				
-				datasetBeanMapper.beansToDataset(outData, ctrtList, CtrtBean.class);
-				
-			 	
-				
+	@RequestMapping("log/ctrt/batchCtrtProcess.do")
+	public void batchCtrtProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+		
+		List<CtrtBean> ctrtList = datasetBeanMapper.datasetToBeans(inData, CtrtBean.class);
+		
+		System.out.println("size : " + ctrtList.size());
+		for(CtrtBean bean : ctrtList ){
+			System.out.println("Number : " + bean.getCtrtNo());
 		}
-	
+		
+		ctrtServiceFacade.batchCtrtList(ctrtList);
+	}
+
+
 }

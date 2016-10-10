@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 /**
- * @Package  com.seoul.his.med.base.to
+ * @Package  com.seoulit.erp47.med.base.to
  * @Class    DiseaseBean.java
  * @Create   2016. 10. 3.
  * @Author   mickey

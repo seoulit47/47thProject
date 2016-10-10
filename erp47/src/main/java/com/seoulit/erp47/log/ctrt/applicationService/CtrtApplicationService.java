@@ -7,7 +7,8 @@ import com.seoulit.erp47.log.ctrt.to.CtrtBean;
 
 public interface CtrtApplicationService {
 
-	
 	public List<CtrtBean> findCtrtList(Map<String, String> argsMap);
-	
+
+	public void batchCtrtList(List<CtrtBean> ctrtList);
+
 }
