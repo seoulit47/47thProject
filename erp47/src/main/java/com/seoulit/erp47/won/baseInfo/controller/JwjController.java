@@ -15,15 +15,6 @@ import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.won.baseInfo.service.BaseServiceFacade;
 import com.seoulit.erp47.won.baseInfo.to.JwjBean;
 
-/**
- * @Package com.seoul.his.won.base.controller
- * @Class JwjController.java
- * @Create 2016. 10. 9.
- * @Author 박 영 희
- * @Description
- *
- * @LastUpdated
- */
 
 @Controller
 public class JwjController {

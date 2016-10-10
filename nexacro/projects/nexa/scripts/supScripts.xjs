@@ -96,4 +96,6 @@ this.supCallBackFunc = function(svcID, errorCode, errorMsg){
 			alert(this.MSG_SUP_SAVE);
 		}
  	}
-}]]></Script>
+}
+
+]]></Script>

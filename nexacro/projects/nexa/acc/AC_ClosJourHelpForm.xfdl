@@ -181,6 +181,8 @@ var endDate;
 //코드바인드 / 파라미터 셋팅 및 결산계정 조회
 this.AC_ClosJourHelpForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
+	this.gfnBind();
+	
 	accPrid = this.opener.accPridEd.value;
 	dsClosJourData = this.opener.dsClosJourData;
 	endDate = this.opener.endDateEd.value;
@@ -195,12 +197,14 @@ this.AC_ClosJourHelpForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 		artiCdArr[i] = dsClosJourData.getColumn(i,"artiCd");
 		//alert("artiCdArr"+i+artiCdArr[i]);
 		this.resolAndSlip(i);
+		
 	}
 	
 	var argument = 'accPrid='+accPrid+' artiCd='+artiCdArr;
 	var rowPos = this.dsService.findRow("serviceID", "findClosAcntList");
 	this.dsService.setColumn(rowPos,"argument",argument);
-	this.gfnService("findClosAcntList");
+	this.gfnService("findClosAcntList",false);
+	this.setJourAmt();
 	
 }
 
@@ -228,6 +232,7 @@ this.resolAndSlip=function(i){
 	this.dlSlip.setColumn(i, "accPrid", this.accPrid);			//resolNo, slipNo 셋팅해야함.
 	this.dlSlip.setColumn(i, "slipNo", this.gfnDate('YYMM'));	
 	this.dlSlip.setColumn(i, "danDiv", "서울병원");
+	
 }
 
 //전표 발행버튼 클릭
@@ -245,23 +250,25 @@ this.cancelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 
 //결산계정에 분개금액 셋팅
 this.setJourAmt=function(){
+	
 	//alert("setJourAmt");
 	var l = this.dlJour.rowcount;
 	for(var i = 0 ; i < l ; i++)
 	{
 		var artiCd = this.dlJour.getColumn(i, "artiCd");
 		var creDebDiv = this.dlJour.getColumn(i, "creDebDiv");
-		var jourAmt = this.dlClosJourData.lookup("artiCd", artiCd, "jourAmt");
+		var jourAmt = dsClosJourData.lookup("artiCd", artiCd, "jourAmt");
 		//차변대변 구분
 		var creDebCol = "debAmt"; 
 		if (creDebDiv == '2') 
 		{
 			creDebCol = "creAmt"; 
 		}
+		//alert("artiCd: "+artiCd+"/ creDebDiv: "+creDebDiv+"/ jourAmt: "+jourAmt);
 		this.dlJour.setColumn(i, creDebCol, jourAmt);
-		this.dlJour.setColumn(i, "closYb", "Y");
-		
+		this.dlJour.setColumn(i, "closYb", "Y");	
 	}
+	
 }]]></Script>
   </Form>
 </FDL>
