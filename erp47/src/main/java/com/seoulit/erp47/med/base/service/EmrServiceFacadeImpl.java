@@ -12,6 +12,7 @@ import com.seoulit.erp47.med.base.to.BaseExamBean;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
+import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
@@ -97,5 +98,21 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 		// TODO Auto-generated method stub
 		return cautionApplicationService.findCutnArticle(argsMap);
 	}
+
+	@Override
+	public void batchCutnArticleProcess(List<CutnArticleBean> articleList) {
+		// TODO Auto-generated method stub
+		cautionApplicationService.batchCutnArticleProcess(articleList);
+		
+	}
+
+	@Override
+	public List<PatCutnBean> findPatCutnList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		// 환자 주의사항 조회
+		return cautionApplicationService.findPatCutnList(argsMap);
+	}
+
+	
 
 }

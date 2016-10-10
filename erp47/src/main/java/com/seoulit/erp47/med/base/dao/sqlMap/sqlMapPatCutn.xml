@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.med.base.dao.PatCutnDAO">
+
+
+<select id="findPatCutnList" resultType="PatCutnBean" parameterType="map">
+
+	SELECT
+        	p.PAT_NO,
+          	p.PAT_CAUTION_NO,
+          	a.CUTN_CATEGORY_CD,
+          	a.CUTN_CATEGORY_NM,
+          	a.CAUTION_CD,
+          	a.CAUTION_NM,
+          	a.ABBR,
+            p.CHOICE_YB
+        FROM 
+            MB_PAT_CAUTION p, MB_CAUTION_ARTICLE a
+        WHERE a.CAUTION_CD = p.CAUTION_CD(+) 
+        AND p.PAT_NO(+)= #{patNo}
+        ORDER BY A.CUTN_CATEGORY_CD
+        
+</select>
+
+
+
+</mapper>

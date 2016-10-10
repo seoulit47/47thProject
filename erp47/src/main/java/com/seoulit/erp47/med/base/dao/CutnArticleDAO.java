@@ -9,4 +9,7 @@ public interface CutnArticleDAO {
 
 	
 	List<CutnArticleBean>findCutnArticle(Map<String, String>argsMap);
+	void insertCutnArticle(CutnArticleBean cutnArticleBean);
+	void updateCutnArticle(CutnArticleBean cutnArticleBean);
+	void deleteCutnArticle(CutnArticleBean cutnArticleBean);
 }

@@ -7,6 +7,7 @@ import com.seoulit.erp47.med.base.to.BaseExamBean;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
+import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
@@ -33,4 +34,8 @@ public interface EmrServiceFacade {
     public void batchEmrProcess(Map<String,Object>emrMap);
     
     List<CutnArticleBean>findCutnArticle(Map<String,String>argsMap);
+    
+    void batchCutnArticleProcess(List<CutnArticleBean>articleList);
+    
+    List<PatCutnBean>findPatCutnList(Map<String,String>argsMap); //환자 주의사항 조회
 }
