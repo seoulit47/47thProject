@@ -79,6 +79,11 @@
 	    WHERE BELONG_YEAR 	  	= #{belongYear}
     </update>
     
+    <delete id="deleteTaxChart">
+        delete from HS_TAX_CHART 
+	    WHERE BELONG_YEAR 	  	= #{belongYear}
+    </delete>
+    
     <update id="updateDeductionChart">
         UPDATE HS_DEDUCTION_CHART 
         SET
@@ -88,6 +93,11 @@
 			SEQ 			  	= #{seq}
 	    WHERE BELONG_YEAR 	  	= #{belongYear}
     </update>
+    
+    <delete id="deleteDeductionChart">
+        delete from HS_DEDUCTION_CHART 
+	    WHERE BELONG_YEAR 	  	= #{belongYear}
+    </delete>
 
     <select id="setTaxDeduCopy" statementType="CALLABLE">
         CALL PC_HS_SALBASE_TAX_DEDU_COPY(

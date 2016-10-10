@@ -20,6 +20,56 @@
 	
 	
 	</select>
+	
+	<insert id="insertCutnArticle" parameterType="CutnArticleBean">
+	
+			INSERT INTO MB_CAUTION_ARTICLE(
+                CAUTION_CD,
+        		CAUTION_NM,
+        		ABBR,
+        		INPUT_DV,
+        		CUTN_CATEGORY_CD,
+        		CUTN_CATEGORY_NM,
+        		USE_YB
+            )
+        VALUES (
+            #{cautionCd},
+            #{cautionNm},
+            #{abbr},
+            #{inputDv},
+            #{cutnCategoryCd},
+            #{cutnCategoryNm},
+            #{useYb}
+        )
+	
+	</insert>
+	
+	<update id="updateCutnArticle" parameterType="CutnArticleBean">
+			
+				UPDATE MB_CAUTION_ARTICLE 
+				SET 		
+			CAUTION_CD = #{cautionCd},
+        	CAUTION_NM = #{cautionNm},
+        	ABBR = #{abbr},
+        	INPUT_DV = #{inputDv},
+        	CUTN_CATEGORY_CD = #{cutnCategoryCd},
+        	CUTN_CATEGORY_NM = #{cutnCategoryNm},
+        	USE_YB = #{useYb}
+        WHERE 
+            CAUTION_CD = #{cautionCd}
+	
+	
+	
+	</update>
+	
+	
+	<delete id="deleteCutnArticle" parameterType="CutnArticleBean">
+	
+		DELETE FROM MB_CAUTION_ARTICLE
+		WHERE
+            CAUTION_CD = #{cautionCd}
+	
+	</delete>
 
 
 

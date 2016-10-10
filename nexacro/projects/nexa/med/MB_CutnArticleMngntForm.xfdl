@@ -35,13 +35,13 @@
               </Band>
               <Band id="body">
                 <Cell expr="expr:currow+1"/>
-                <Cell col="1" text="bind:cautionCd"/>
-                <Cell col="2" text="bind:cautionNm"/>
-                <Cell col="3" text="bind:abbr"/>
-                <Cell col="4" text="bind:inputDv"/>
-                <Cell col="5" text="bind:cutnCategoryCd"/>
-                <Cell col="6" text="bind:cutnCategoryNm"/>
-                <Cell col="7" text="bind:useYb"/>
+                <Cell col="1" edittype="normal" text="bind:cautionCd"/>
+                <Cell col="2" edittype="normal" text="bind:cautionNm"/>
+                <Cell col="3" edittype="normal" text="bind:abbr"/>
+                <Cell col="4" edittype="normal" text="bind:inputDv"/>
+                <Cell col="5" edittype="normal" text="bind:cutnCategoryCd"/>
+                <Cell col="6" edittype="normal" text="bind:cutnCategoryNm"/>
+                <Cell col="7" edittype="normal" text="bind:useYb"/>
               </Band>
             </Format>
           </Formats>

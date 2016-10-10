@@ -22,7 +22,7 @@ import lombok.ToString;
 @ToString
 @Dataset(name = "dsHobong")
 public class HobongBean extends BaseBean{
-    private String positionCode,             // 직급코드
+    private String positionCd,             // 직급코드
 		           hobong,                 // 호봉
 		           basicSal,               // 기본급
 		           gubhoAllowance,         // 급호수당
