@@ -4,7 +4,7 @@
   <Form id="WB_HosptlzHroomMngntForm" classname="WB_HosptlzHroomMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
     <Layouts>
       <Layout>
-        <Div id="Div03" taborder="0" left="0%" top="0" right="4%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Div id="Div03" taborder="0" left="0%" top="0" right="0.72%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
         <Static id="Static00" taborder="1" text="병실 관리" left="4.8%" top="-4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
         <Div id="baseDiv" taborder="2" left="2.24%" top="69" right="1.68%" height="51" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
         <Static id="hroomStc" taborder="3" text="병실" left="23.36%" top="80" right="67.04%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>

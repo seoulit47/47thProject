@@ -43,6 +43,8 @@ public class IncomeTaxSetApplicationServiceImpl implements IncomeTaxSetApplicati
                 incomeTaxSetDAO.insertTaxChart(incomeTaxSetBean);
             } else if (incomeTaxSetBean.getStatus().equals("updated")) {
                 incomeTaxSetDAO.updateTaxChart(incomeTaxSetBean);
+            } else if (incomeTaxSetBean.getStatus().equals("deleted")) {
+            	incomeTaxSetDAO.deleteTaxChart(incomeTaxSetBean);
             }
         }
     }
@@ -54,6 +56,8 @@ public class IncomeTaxSetApplicationServiceImpl implements IncomeTaxSetApplicati
                 incomeTaxSetDAO.insertDeductionChart(deduChartBean);
             } else if (deduChartBean.getStatus().equals("updated")) {
                 incomeTaxSetDAO.updateDeductionChart(deduChartBean);
+            } else if (deduChartBean.getStatus().equals("deleted")) {
+            	incomeTaxSetDAO.deleteDeductionChart(deduChartBean);
             }
         }
     }
