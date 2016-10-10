@@ -15,6 +15,7 @@ import com.seoulit.erp47.common.util.DataSetBeanMapper;
 import com.seoulit.erp47.med.base.service.EmrServiceFacade;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
+import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 
 
@@ -86,8 +87,25 @@ EmrServiceFacade emrServiceFacade;
 			PlatformData inData = (PlatformData)request.getAttribute("inData");
 			PlatformData outData = (PlatformData)request.getAttribute("outData");
 			
-			//  정보처기사실기 시험 끝나고 일뵤일부터   주의사항항목관리 크루드
+			List<CutnArticleBean>cutnArticleList=datasetBeanMapper.datasetToBeans(inData, CutnArticleBean.class);
+			emrServiceFacade.batchCutnArticleProcess(cutnArticleList);
+		}
+		
+		@RequestMapping("med/base/findPatCutnList.do")
+		public void findPatCutnList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+			//환자 주의사항 조회
+			System.out.println("med / findPatCutnList 매서드 입니다");
 			
+			PlatformData inData = (PlatformData)request.getAttribute("inData");
+			PlatformData outData = (PlatformData)request.getAttribute("outData");
+			
+			Map<String,String>argsMap=datasetBeanMapper.variablesToMap(inData);
+
+			List<PatCutnBean>patCutnList = emrServiceFacade.findPatCutnList(argsMap);
+			
+			datasetBeanMapper.beansToDataset(outData, patCutnList, PatCutnBean.class);
+			
+			// 10//11일 환자주의사항정보관리 마무리 할게요 
 		}
 		
 }

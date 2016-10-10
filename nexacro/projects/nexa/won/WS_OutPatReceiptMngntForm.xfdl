@@ -60,7 +60,7 @@
               <Calendar id="deathDateCal" taborder="121" left="12.15%" top="335" right="77.98%" height="27"/>
               <Static id="Static01" taborder="122" text="~" left="22.02%" top="431" right="77%" height="26" style="align:center middle;"/>
               <Edit id="insuRrn2Ed" taborder="123" left="23.25%" top="430" right="66.97%" height="28"/>
-              <Combo id="barrAssCombo" taborder="124" innerdataset="dsBarrAssCode" codecolumn="code" datacolumn="value" left="12.23%" top="303" right="77.98%" height="26"/>
+              <Combo id="barrAssCombo" taborder="124" codecolumn="value" datacolumn="value" left="12.23%" top="303" right="77.98%" height="26" innerdataset="@dsBarrAssCode"/>
               <Calendar id="applyStartDateCal" taborder="125" left="12.15%" top="463" right="77.98%" height="27"/>
               <Calendar id="applyEndDateCal" taborder="126" left="23.25%" top="463" right="66.88%" height="27"/>
               <Static id="Static02" taborder="127" text="~" left="22.02%" top="463" right="77%" height="26" style="align:center middle;"/>
@@ -443,6 +443,27 @@
         </Rows>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="WS_OutPatReceiptMngnDiv.patNmEd" propid="value" datasetid="dsPat" columnid="patNm"/>
+      <BindItem id="item1" compid="WS_OutPatReceiptMngnDiv.rrn1Ed" propid="value" datasetid="dsPat" columnid="rrn1"/>
+      <BindItem id="item2" compid="WS_OutPatReceiptMngnDiv.rrn2Ed" propid="value" datasetid="dsPat" columnid="rrn2"/>
+      <BindItem id="item3" compid="WS_OutPatReceiptMngnDiv.zipEd" propid="value" datasetid="dsPat" columnid="zip"/>
+      <BindItem id="item4" compid="WS_OutPatReceiptMngnDiv.addrEd" propid="value" datasetid="dsPat" columnid="addr"/>
+      <BindItem id="item5" compid="WS_OutPatReceiptMngnDiv.telEd" propid="value" datasetid="dsPat" columnid="tel"/>
+      <BindItem id="item6" compid="WS_OutPatReceiptMngnDiv.smsNoEd" propid="value" datasetid="dsPat" columnid="smsReceiveNo"/>
+      <BindItem id="item7" compid="WS_OutPatReceiptMngnDiv.smsCheck" propid="value" datasetid="dsPat" columnid="smsReceiveYb"/>
+      <BindItem id="item8" compid="WS_OutPatReceiptMngnDiv.recNwDateCal" propid="value" datasetid="dsPat" columnid="recNwDate"/>
+      <BindItem id="item9" compid="WS_OutPatReceiptMngnDiv.barrAssCombo" propid="value" datasetid="dsPat" columnid="barrAss"/>
+      <BindItem id="item10" compid="WS_OutPatReceiptMngnDiv.deathDateCal" propid="value" datasetid="dsPat" columnid="deathDate"/>
+      <BindItem id="item11" compid="WS_OutPatReceiptMngnDiv.genderRadio" propid="value" datasetid="dsPat" columnid="gender"/>
+      <BindItem id="item12" compid="WS_OutPatReceiptMngnDiv.certfctNoEd" propid="value" datasetid="dsPat" columnid="certfctNo"/>
+      <BindItem id="item13" compid="WS_OutPatReceiptMngnDiv.insuNmEd" propid="value" datasetid="dsPat" columnid="insuNm"/>
+      <BindItem id="item14" compid="WS_OutPatReceiptMngnDiv.insuRrn1Ed" propid="value" datasetid="dsPat" columnid="insuRrn"/>
+      <BindItem id="item15" compid="WS_OutPatReceiptMngnDiv.insuRrn2Ed" propid="value" datasetid="dsPat" columnid="insuRrn1"/>
+      <BindItem id="item16" compid="WS_OutPatReceiptMngnDiv.applyStartDateCal" propid="value" datasetid="dsPat" columnid="applyStartDate"/>
+      <BindItem id="item17" compid="WS_OutPatReceiptMngnDiv.applyEndDateCal" propid="value" datasetid="dsPat" columnid="applyEndDate"/>
+      <BindItem id="item18" compid="WS_OutPatReceiptMngnDiv.noteTextArea" propid="value" datasetid="dsPat" columnid="note"/>
+    </Bind>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************
 *                                               			                    *
 * 외래환자관리 및 외래진료접수관리                             		        *

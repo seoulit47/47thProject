@@ -32,9 +32,10 @@ public interface IncomeTaxSetDAO {
 	//세액 저장
 	public void insertTaxChart(IncomeTaxSetBean incomeTaxSetBean);
     public void updateTaxChart(IncomeTaxSetBean incomeTaxSetBean);
-    
-    //공제 저장
+    public void deleteTaxChart(IncomeTaxSetBean incomeTaxSetBean);
+    		
+    //공제 수정
     public void insertDeductionChart(DeduChartBean deduChartBean);
     public void updateDeductionChart(DeduChartBean deduChartBean);
-
+    public void deleteDeductionChart(DeduChartBean deduChartBean);
 }

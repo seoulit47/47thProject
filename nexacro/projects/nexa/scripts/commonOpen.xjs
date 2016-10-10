@@ -30,6 +30,7 @@ this.gfnOpen = function(sID, sURL, menuName) {
  		oChildFrame.set_showtitlebar(false);
 		oChildFrame.set_resizable(false);
  		oChildFrame.set_dragmovetype("none");
+ 		oChildFrame.set_scrollbars("alwaysvert");
  		application.mainframe.frameSet.mainFrame.addChild(sID, oChildFrame);
  		oChildFrame.show();
  		
@@ -48,6 +49,8 @@ this.gfnOpen = function(sID, sURL, menuName) {
 		//objChild.show();
 		objChild.setFocus();
 	}
+	
+	//application.mainframe.frameSet.mainFrame.set_scrollbars("none");
 }
 // 
 // // Create Object  

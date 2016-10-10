@@ -305,9 +305,9 @@ this.findFunc = function(){
       this.gfnService("findPatCutnList", false);
       this.dsPatCutnA.copyData(this.dsPatCutn);
 	  this.dsPatCutnB.copyData(this.dsPatCutn);
-	  this.dsPatCutnA.set_filterstr("cutnCategoryCd!='T'");
-	  this.dsPatCutnB.set_filterstr("cutnCategoryCd=='T'");
-	  this.gfnService("findPatCutnHistList", false);
+	 this.dsPatCutnA.set_filterstr("cutnCategoryCd!='T'");
+	 this.dsPatCutnB.set_filterstr("cutnCategoryCd=='T'");
+	 // this.gfnService("findPatCutnHistList", false);
 }
 
 // 리로드 콜백함수
