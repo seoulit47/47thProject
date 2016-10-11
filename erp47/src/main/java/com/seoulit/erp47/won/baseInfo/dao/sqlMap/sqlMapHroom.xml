@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.seoul.his.won.base.dao.HroomDAO">
+<mapper namespace="com.seoulit.erp47.won.baseInfo.dao.HroomDAO">
 
 	<cache flushInterval="86400000" eviction="LRU" />
 

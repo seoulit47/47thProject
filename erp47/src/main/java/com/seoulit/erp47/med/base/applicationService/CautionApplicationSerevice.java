@@ -7,27 +7,31 @@ import com.seoulit.erp47.med.base.to.AntimicrobialBean;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.CutnRltnExmntBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
+
 import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatCutnHistBean;
 import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 
 public interface CautionApplicationSerevice {
+
 		List<OrdBean>findOrdList(Map<String,String>argsMap);
 		List<SpeciesVirusBean>findVirusList(Map<String,String>argsMap);
 		List<CutnArticleBean>findCutnArticle(Map<String,String>argsMap);
+
+
 		
 		
 		//----------------------------------------------------------------------------
 		//----------------------------------------------------------------------------
 		//----------------------------------------------------------------------------
 		
-	    List<CutnArticleBean> findCutnArticleList(Map<String, String> argsMap);		//ì£¼ì˜ì‚¬í•­ í•­ëª© ì¡°íšŒ
-	    void batchCutnArticleProcess(List<CutnArticleBean> cutnArticleList);		//ì£¼ì˜ì‚¬í•­ í•­ëª© BATCH  
-	    List<CutnRltnExmntBean> findCutnRltnExmntList(Map<String, String> argsMap);	//ì£¼ì˜ì‚¬í•­ ê´€ë ¨ê²€ì‚¬ ì¡°íšŒ   
-	    void batchCutnRltnExmntProcess(List<CutnRltnExmntBean> cutnRltnExmntList);  // ì£¼ì˜ì‚¬í•­ ê´€ë ¨ê²€ì‚¬ BATCH
-	    List<PatCutnBean> findPatCutnList(Map<String, String> argsMap);				//í™˜ì ì£¼ì˜ì‚¬í•­ ì¡°íšŒ
-	    List<PatCutnHistBean> findPatCutnHistList(Map<String, String> argsMap);		//í™˜ì ì£¼ì˜ì‚¬í•­ ìˆ˜ì •ë‚´ì—­ ì¡°íšŒ             
-	    void batchPatCutnProcess(Map<String, Object> patCautionMap);                // í™˜ì ì£¼ì˜ì‚¬í•­, ìˆ˜ì •ë‚´ì—­ BATCH  
+	    List<CutnArticleBean> findCutnArticleList(Map<String, String> argsMap);		//ÁÖÀÇ»çÇ× Ç×¸ñ Á¶È¸
+	    void batchCutnArticleProcess(List<CutnArticleBean> cutnArticleList);		//ÁÖÀÇ»çÇ× Ç×¸ñ BATCH  
+	    List<CutnRltnExmntBean> findCutnRltnExmntList(Map<String, String> argsMap);	//ÁÖÀÇ»çÇ× °ü·Ã°Ë»ç Á¶È¸   
+	    void batchCutnRltnExmntProcess(List<CutnRltnExmntBean> cutnRltnExmntList);  // ÁÖÀÇ»çÇ× °ü·Ã°Ë»ç BATCH
+	    List<PatCutnBean> findPatCutnList(Map<String, String> argsMap);				//È¯ÀÚ ÁÖÀÇ»çÇ× Á¶È¸
+	    List<PatCutnHistBean> findPatCutnHistList(Map<String, String> argsMap);		//È¯ÀÚ ÁÖÀÇ»çÇ× ¼öÁ¤³»¿ª Á¶È¸             
+	    void batchPatCutnProcess(Map<String, Object> patCautionMap);                // È¯ÀÚ ÁÖÀÇ»çÇ×, ¼öÁ¤³»¿ª BATCH  
 	    List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap);
 	    List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap);
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1250" height="81" onload="menuFrame_onload" visible="true">
+  <Form id="menuFrame" classname="menuFrame" left="0" top="0" width="1250" height="81" onload="menuFrame_onload" visible="true" scrollbars="autovert">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="3" left="0%" top="0" right="0.1%" height="33" style="background:navy;border:1 solid white ;">

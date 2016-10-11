@@ -274,6 +274,7 @@
           <Column id="paymDeducNm" type="STRING" size="256"/>
           <Column id="taxType" type="STRING" size="256"/>
           <Column id="calFormula" type="STRING" size="256"/>
+          <Column id="realFormula" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsPayDeduSect" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">

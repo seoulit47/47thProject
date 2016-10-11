@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 package com.seoulit.erp47.med.base.dao;
 
 import java.util.List;
@@ -6,7 +14,7 @@ import java.util.Map;
 import com.seoulit.erp47.med.base.to.PatCutnBean;
 
 public interface PatCutnDAO {
-    List<PatCutnBean> selectPatCutnList(Map<String, String> argsMap);				//í™˜ì ì£¼ì˜ì‚¬í•­ ì¡°íšŒ
-    void insertPatCutn(PatCutnBean patCutnBean);// í™˜ì ì£¼ì˜ì‚¬í•­ BATCH  
+    List<PatCutnBean> selectPatCutnList(Map<String, String> argsMap);				//È¯ÀÚ ÁÖÀÇ»çÇ× Á¶È¸
+    void insertPatCutn(PatCutnBean patCutnBean);// È¯ÀÚ ÁÖÀÇ»çÇ× BATCH  
     void deletePatCutn(PatCutnBean patCutnBean);
 }

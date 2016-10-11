@@ -18,6 +18,7 @@ import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.CutnRltnExmntBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
+
 import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatCutnHistBean;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
@@ -30,6 +31,10 @@ import com.seoulit.erp47.med.base.to.TrmtSchdTypeBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdTypeDetailBean;
 
 /**
+ * @Package  com.seoul.his.med.base.service
+ * @Class    EmrServiceFacadeImpl.java
+ * @Create   
+ * @Author   
  * @Package com.seoul.his.med.base.service
  * @Class EmrServiceFacadeImpl.java
  * @Create
@@ -47,8 +52,13 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	@Autowired
 	private CautionApplicationSerevice cautionApplicationService;
     @Autowired
+    private EmrApplicationService emrApplicationService;
+    /*@Autowired
     private TrmtSchdTypeApplicationService trmtSchdTypeApplicationService;
     @Autowired
+    private TrmtSchdApplicationService trmtSchdApplicationService;*/
+    @Autowired
+    private CautionApplicationSerevice cautionApplicationService;
     private TrmtSchdApplicationService trmtSchdApplicationService;
 	
 	
@@ -62,8 +72,19 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 		return emrApplicationService.findPrscDtlList(argsMap);
 	}
 
+    @Override
+    public List<PrscBean> findPrscList(Map<String, String> argsMap) {
+        return emrApplicationService.findPrscList(argsMap);
+    }
+
+    @Override
+    public List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap) {
+        return emrApplicationService.findPrscDtlList(argsMap);
+    }
+
 	@Override
 	public List<OrdBean> findOrdList(Map<String, String> argsMap) {
+		
 
 		return cautionApplicationService.findOrdList(argsMap);
 	}
@@ -116,6 +137,7 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	public void batchDiseaseProcess(List<DiseaseBean> diseaseList) {
 		emrApplicationService.batchDiseaseProcess(diseaseList);
 	}
+
 
 	@Override
 	public List<PatientDsBean> findPatientDsList(Map<String, String> argsMap) {

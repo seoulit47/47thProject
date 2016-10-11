@@ -147,10 +147,10 @@ include "scripts::commonScripts.xjs";
 // 처방상세 조회
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-    var prscType = this.prscTypeCombo.value;
-   
+    var prscType = this.prscTypeCombo.text;
+	alert(prscType);
     if(prscType != null){
-		this.dsService.setColumn(0, 4, "prscType=" + prscType);
+		this.dsService.setColumn(0, "argument", "prscType=" + prscType);
     }
    
     this.gfnService("findPrscList");

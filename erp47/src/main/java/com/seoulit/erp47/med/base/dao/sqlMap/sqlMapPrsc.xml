@@ -11,6 +11,8 @@
           , PRESC_DOC
         FROM 
             MP_PRESC
+
+        	
     </select>
 
     <!-- 처방상세 선택조회, 진단서에서 조회 -->

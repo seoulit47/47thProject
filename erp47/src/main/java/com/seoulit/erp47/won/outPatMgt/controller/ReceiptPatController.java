@@ -18,25 +18,23 @@ import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 @Controller
 public class ReceiptPatController {
 
-		@Autowired
-		DataSetBeanMapper dataSetBeanMapper;
-		@Autowired
-		OutPatMgtServiceFacade outpatMgtServiceFacade;
-		
-		
-		@RequestMapping("won/outPatMgt/findReceiptList.do")
-		public void findReceiptPatList(HttpServletRequest request , HttpServletResponse response)throws Exception{
-			
-				System.out.println("won / findReceiptPatList 매서드입니다");
-			
-			PlatformData inData = (PlatformData)request.getAttribute("inData");
-			PlatformData outData = (PlatformData)request.getAttribute("outData");
-				
-			
-			Map<String,String>argsMap=dataSetBeanMapper.variablesToMap(inData);
-			
-			List<ReceiptInfoBean>receiptList = outpatMgtServiceFacade.findReceiptList(argsMap);
-			
-			dataSetBeanMapper.beansToDataset(outData, receiptList, ReceiptInfoBean.class);
-		}
+	@Autowired
+	DataSetBeanMapper dataSetBeanMapper;
+	@Autowired
+	OutPatMgtServiceFacade outpatMgtServiceFacade;
+
+	@RequestMapping("won/outPatMngnt/findReceiptList.do")
+	public void findReceiptPatList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		System.out.println("won / findReceiptPatList 매서드입니다");
+
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		PlatformData outData = (PlatformData) request.getAttribute("outData");
+
+		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+
+		List<ReceiptInfoBean> receiptList = outpatMgtServiceFacade.findReceiptList(argsMap);
+
+		dataSetBeanMapper.beansToDataset(outData, receiptList, ReceiptInfoBean.class);
+	}
 }
