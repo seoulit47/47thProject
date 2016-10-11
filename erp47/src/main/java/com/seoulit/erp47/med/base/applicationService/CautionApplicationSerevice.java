@@ -7,15 +7,14 @@ import com.seoulit.erp47.med.base.to.AntimicrobialBean;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.CutnRltnExmntBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
-
 import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatCutnHistBean;
-import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
+import com.seoulit.erp47.med.base.to.VirusBean;
 
 public interface CautionApplicationSerevice {
 
 		List<OrdBean>findOrdList(Map<String,String>argsMap);
-		List<SpeciesVirusBean>findVirusList(Map<String,String>argsMap);
+		List<VirusBean>findVirusList(Map<String,String>argsMap);
 		List<CutnArticleBean>findCutnArticle(Map<String,String>argsMap);
 
 		//----------------------------------------------------------------------------
@@ -28,6 +27,5 @@ public interface CautionApplicationSerevice {
 	    List<PatCutnBean> findPatCutnList(Map<String, String> argsMap);				
 	    List<PatCutnHistBean> findPatCutnHistList(Map<String, String> argsMap);             
 	    void batchPatCutnProcess(Map<String, Object> patCautionMap);  
-	    List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap);
 	    List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap);
 }

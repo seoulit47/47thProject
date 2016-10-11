@@ -11,17 +11,16 @@ import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.CutnRltnExmntBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
-
 import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatCutnHistBean;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PatientPrscBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
-import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdTypeBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdTypeDetailBean;
+import com.seoulit.erp47.med.base.to.VirusBean;
 
 public interface EmrServiceFacade {
    
@@ -31,7 +30,7 @@ public interface EmrServiceFacade {
     
     List<OrdBean>findOrdList(Map<String,String>argsMap);
 
-    List<SpeciesVirusBean>findVirusList(Map<String,String>argsMap);
+    List<VirusBean>findVirusList(Map<String,String>argsMap);
     
     List<DiseaseBean>findDiseaseList(Map<String,String>argsMap);
     
@@ -95,8 +94,6 @@ public interface EmrServiceFacade {
 	void batchPatCutnProcess(Map<String, Object> patCautionMap); // 환자 주의사항,
 																	// 수정내역
 																	// BATCH
-
-	List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap);
 
 	List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap);
 

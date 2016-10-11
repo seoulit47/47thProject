@@ -20,37 +20,37 @@
 		<package name="com.seoulit.erp47.com.base.to" />
 		<package name="com.seoulit.erp47.com.util.to" />
 
-    <!-- 원무 -->
-    <package name="com.seoulit.erp47.won.outPatMgt.to" />	
-    <package name="com.seoulit.erp47.won.baseInfo.to"/>
-    <package name="com.seoulit.erp47.won.hosptlzPat.to"/>  
-      
-      
-    <!-- 진료지원 -->
-    <package name="com.seoulit.erp47.sup.checkup.to"/>  
-    <package name="com.seoulit.erp47.sup.nutritive.to"/>  		<!-- 식품관리 -->
-	<package name="com.seoulit.erp47.sup.pathology.to"/>
-	<package name="com.seoulit.erp47.sup.drug.to"/>
-	<package name="com.seoulit.erp47.sup.laboratoryMedicine.to"/>	<!--검체관리  -->
-	  	
-	<!-- 물류 --> 
-     <package name="com.seoulit.erp47.log.base.to"/> 
- 	<package name="com.seoulit.erp47.log.ctrt.to"/> 
-     <package name="com.seoulit.erp47.log.inpt.to"/> 
-     <package name="com.seoulit.erp47.log.demd.to"/>    
-     <package name="com.seoulit.erp47.log.inven.to"/>  
-    <package name="com.seoulit.erp47.log.store.to"/> 
-     <package name="com.seoulit.erp47.log.csr.to"/> 
-     <package name="com.seoulit.erp47.log.prcs.to"/> 
-     
-    <!-- 진료처방 -->
-    <package name="com.seoulit.erp47.med.request.to"/>
-    <package name="com.seoulit.erp47.med.base.to"/>
-    <package name="com.seoulit.erp47.med.adr.to"/>
-    <package name="com.seoulit.erp47.med.recipe.to"/>
-  
+		<!-- 원무 -->
+		<package name="com.seoulit.erp47.won.outPatMgt.to" />
+		<package name="com.seoulit.erp47.won.baseInfo.to" />
+		<package name="com.seoulit.erp47.won.hosptlzPat.to" />
+
+
+		<!-- 진료지원 -->
+		<package name="com.seoulit.erp47.sup.checkup.to" />
+		<package name="com.seoulit.erp47.sup.nutritive.to" />  		<!-- 식품관리 -->
+		<package name="com.seoulit.erp47.sup.pathology.to" />
+		<package name="com.seoulit.erp47.sup.drug.to" />
+		<package name="com.seoulit.erp47.sup.laboratoryMedicine.to" />	<!--검체관리 -->
+
+		<!-- 물류 -->
+		<package name="com.seoulit.erp47.log.base.to" />
+		<package name="com.seoulit.erp47.log.ctrt.to" />
+		<package name="com.seoulit.erp47.log.inpt.to" />
+		<package name="com.seoulit.erp47.log.demd.to" />
+		<package name="com.seoulit.erp47.log.inven.to" />
+		<package name="com.seoulit.erp47.log.store.to" />
+		<package name="com.seoulit.erp47.log.csr.to" />
+		<package name="com.seoulit.erp47.log.prcs.to" />
+
+		<!-- 진료처방 -->
+		<package name="com.seoulit.erp47.med.request.to" />
+		<package name="com.seoulit.erp47.med.base.to" />
+		<package name="com.seoulit.erp47.med.adr.to" />
+		<package name="com.seoulit.erp47.med.recipe.to" />
+
 		<!-- 인사 -->
-		<package name="com.seoulit.erp47.hrs.appoint.to" />			
+		<package name="com.seoulit.erp47.hrs.appoint.to" />
 		<package name="com.seoulit.erp47.hrs.emp.to" />				<!-- 인사관리 -->
 		<package name="com.seoulit.erp47.hrs.guntae.to" />			<!-- 근태관리 -->
 		<package name="com.seoulit.erp47.hrs.salBase.to" />
@@ -69,8 +69,8 @@
 
 		<!-- 원무 -->
 		<package name="com.seoulit.erp47.won.outPatMgt.to" />
-		<package name="com.seoulit.erp47.won.baseInfo.to"/>
-		<package name="com.seoulit.erp47.won.hosptlzPat.to"/>
+		<package name="com.seoulit.erp47.won.baseInfo.to" />
+		<package name="com.seoulit.erp47.won.hosptlzPat.to" />
 
 		<!-- 진료지원 -->
 		<package name="com.seoulit.erp47.sup.checkup.to" />

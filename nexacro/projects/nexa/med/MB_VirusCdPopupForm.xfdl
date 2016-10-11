@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MB_VirusCdPopupForm" classname="MB_VirusCdPopupForm" left="0" top="0" width="600" height="400" titletext="균조회">
+  <Form id="MB_VirusCdPopupForm" classname="MB_VirusCdPopupForm" left="0" top="0" width="600" height="400" titletext="균조회" onload="MB_VirusCdPopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="0" right="0.5%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
         <Static id="Static00" taborder="1" text="균 조회" left="11.83%" top="-4" right="51.5%" height="60" style="color:#6c6c6cff;font:antialias 20 맑은 고딕;"/>
-        <Grid id="grid" taborder="2" binddataset="dsVirus" useinputpanel="false" autofittype="col" oncelldblclick="grid_oncelldblclick" left="2.67%" top="79" right="2.17%" height="310">
+        <Grid id="grid" taborder="2" binddataset="dsVirus" useinputpanel="false" autofittype="col" oncelldblclick="grid_oncelldblclick" left="2.67%" top="79" right="2.17%" height="303">
           <Formats>
             <Format id="default">
               <Columns>
@@ -31,12 +31,6 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="dsVirus">
-        <ColumnInfo>
-          <Column id="baccd" type="STRING" size="256"/>
-          <Column id="bacnm" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="serviceID" type="STRING" size="100"/>
@@ -55,6 +49,12 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="dsVirus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="baccd" type="STRING" size="256"/>
+          <Column id="bacnm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            
 균 조회화면                                           						                                                                         
@@ -67,8 +67,8 @@ include "scripts::commonScripts.xjs";
 
 this.MB_VirusCdPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	var speciesVirusCd = "bacgencd="+this.parent.speciesVirus;
-	this.dsService.setColumn(0, "argument", speciesVirusCd);
+	//var speciesVirusCd = "bacgencd="+this.parent.speciesVirus;
+	//this.dsService.setColumn(0, "argument", speciesVirusCd);
 	this.gfnService("findVirusList", false);
 }
 

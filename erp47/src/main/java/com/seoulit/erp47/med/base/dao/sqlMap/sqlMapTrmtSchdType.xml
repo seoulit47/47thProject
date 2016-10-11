@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.med.base.dao.TrmtSchdTypeDAO">
+	<cache flushInterval="86400000" eviction="LRU" />
+	<resultMap type="TrmtSchdTypeBean" id="resultmapTrmtSchdType">
+		<result property="empNo" column="EMP_NO"/>
+		<result property="empNm" column="EMP_NM"/>
+		<result property="trmtTypeNo" column="TRMT_TYPE_NO"/>
+		<result property="trmtTypeNm" column="TRMT_TYPE_NM"/>
+		<result property="amUseYn" column="AM_USE_YN"/>
+		<result property="fmUseYn" column="FM_USE_YN"/>
+		<result property="amStime" column="AM_STIME"/>
+		<result property="amEtime" column="AM_ETIME"/>
+		<result property="fmStime" column="FM_STIME"/>
+		<result property="fmEtime" column="FM_ETIME"/>
+		<result property="amIntv" column="AM_INTV"/>
+		<result property="fmIntv" column="FM_INTV"/>
+		<result property="amHandle" column="AM_HANDLE"/>
+		<result property="diffDeptReser" column="DIFF_DEPT_RESER"/>
+		<result property="fmHandle" column="FM_HANDLE"/>
+		<result property="sun" column="SUN"/>
+		<result property="mon" column="MON"/>
+		<result property="tue" column="TUE"/>
+		<result property="wed" column="WED"/>
+		<result property="thurs" column="THURS"/>
+		<result property="fri" column="FRI"/>
+		<result property="sat" column="SAT"/>
+		<collection property="trmtSchdTypeDetailList"
+			    select="com.seoulit.erp47.med.base.dao.TrmtSchdTypeDAO.selectTrmtSchdTypeDetailList"
+			    column="{empNo=EMP_NO,trmtTypeNo=TRMT_TYPE_NO}"
+			    javaType="list"/>
+	</resultMap>
+
+	<select id="selectTrmtTypeList" resultMap="resultmapTrmtSchdType">
+		select *
+		from MC_TRMT_SCHD_TYPE
+		where emp_no=#{empNo}
+	</select>
+
+	<select id="selectTrmtSchdTypeDetailList" resultType="TrmtSchdTypeDetailBean">
+		select
+			AM_FM_DIV       amFmDiv,
+			TIME            time,
+			HANDLE          handle,
+			DIFF_DEPT_RESER diffDeptReser,
+			EMP_NO          empNo,
+			TRMT_TYPE_NO    trmtTypeNo,
+			DAY_OF_WEEK     dayOfWeek
+		from MC_TRMT_SCHD_TYPE_DETAIL
+		where EMP_NO=#{empNo}
+		and TRMT_TYPE_NO=#{trmtTypeNo}
+		ORDER BY TIME
+	</select>
+
+	<insert id="insertTrmtSchdType">
+		insert into MC_TRMT_SCHD_TYPE
+		values (
+			#{empNo},
+			#{empNm},
+			#{trmtTypeNo},
+			#{trmtTypeNm},
+			#{amUseYn},
+			#{fmUseYn},
+			#{amStime},
+			#{amEtime},
+			#{fmStime},
+			#{fmEtime},
+			#{amIntv},
+			#{fmIntv},
+			#{amHandle},
+			#{diffDeptReser},
+			#{fmHandle},
+			#{sun},
+			#{mon},
+			#{tue},
+			#{wed},
+			#{thurs},
+			#{fri},
+			#{sat}
+		)
+	</insert>
+
+	<insert id="insertTrmtSchdTypeDetail">
+		insert into MC_TRMT_SCHD_TYPE_DETAIL
+		values(
+			#{amFmDiv},
+			#{time},
+			#{handle},
+			#{diffDeptReser},
+			#{empNo},
+			#{trmtTypeNo},
+			#{dayOfWeek}
+		)
+	</insert>
+
+	<delete id="deleteTrmtSchdTypeDetailPro">
+		delete from MC_TRMT_SCHD_TYPE_DETAIL
+		where TRMT_TYPE_NO = #{trmtTypeNo}
+	</delete>
+
+	<delete id="deleteTrmtSchdType">
+		delete from MC_TRMT_SCHD_TYPE
+		where TRMT_TYPE_NO = #{trmtTypeNo}
+	</delete>
+
+	<delete id="deleteTrmtSchdTypeDetail">
+		delete from MC_TRMT_SCHD_TYPE_DETAIL
+		where
+		TIME = #{time}
+		and EMP_NO = #{empNo}
+		and TRMT_TYPE_NO = #{trmtTypeNo}
+		and DAY_OF_WEEK = #{dayOfWeek}
+	</delete>
+
+	<update id="updateTrmtSchdType">
+		update MC_TRMT_SCHD_TYPE
+		set
+			EMP_NM=#{empNm},
+			TRMT_TYPE_NM=#{trmtTypeNm},
+			AM_USE_YN=#{amUseYn},
+			FM_USE_YN=#{fmUseYn},
+			AM_STIME=#{amStime},
+			AM_ETIME=#{amEtime},
+			FM_STIME=#{fmStime},
+			FM_ETIME=#{fmEtime},
+			AM_INTV=#{amIntv},
+			FM_INTV=#{fmIntv},
+			AM_HANDLE=#{amHandle},
+			DIFF_DEPT_RESER=#{diffDeptReser},
+			FM_HANDLE=#{fmHandle},
+			SUN=#{sun},
+			MON=#{mon},
+			TUE=#{tue},
+			WED=#{wed},
+			THURS=#{thurs},
+			FRI=#{fri},
+			SAT=#{sat}
+		where
+			EMP_NO=#{empNo}
+		and
+			TRMT_TYPE_NO=#{trmtTypeNo}
+	</update>
+
+	<update id="updateTrmtSchdTypeDetail">
+		update MC_TRMT_SCHD_TYPE_DETAIL
+		set
+			AM_FM_DIV=#{amFmDiv},
+			HANDLE=#{handle},
+			DIFF_DEPT_RESER=#{diffDeptReser}
+		where
+			TIME=#{time}
+		and	EMP_NO=#{empNo}
+		and	TRMT_TYPE_NO=#{trmtTypeNo}
+		and	DAY_OF_WEEK=#{dayOfWeek}
+	</update>
+
+	<select id="callApplyType" statementType="CALLABLE">
+		call PC_MC_APPLY_TYPE(
+			#{empNo,mode=IN,jdbcType=VARCHAR,javaType=string},
+			#{sday,mode=IN,jdbcType=VARCHAR,javaType=string},
+			#{eday,mode=IN,jdbcType=VARCHAR,javaType=string},
+			#{typeNo,mode=IN,jdbcType=VARCHAR,javaType=string},
+			#{errorCode,mode=OUT,jdbcType=VARCHAR,javaType=string},
+			#{errorMsg,mode=OUT,jdbcType=VARCHAR,javaType=string}
+		)
+	</select>
+
+
+
+</mapper>

@@ -24,4 +24,5 @@ public interface TrmtSchdTypeDAO {
 	void updateTrmtSchdType(TrmtSchdTypeBean trmtSchdTypeBean);
 
 	void callApplyType(Map<String, String> queryMap);
+	
 }

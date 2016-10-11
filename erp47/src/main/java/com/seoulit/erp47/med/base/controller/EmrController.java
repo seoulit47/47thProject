@@ -20,7 +20,6 @@ import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PatientPrscBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
-import com.seoulit.erp47.med.base.to.PrscDtlBean;
 import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
 /**

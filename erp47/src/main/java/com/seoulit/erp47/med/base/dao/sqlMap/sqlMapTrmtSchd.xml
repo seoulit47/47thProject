@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.med.base.dao.TrmtSchdDAO">
+	<cache flushInterval="86400000" eviction="LRU" />
+	<select id="selectCalendarList" resultType="CalendarBean">
+		SELECT MIN(DECODE(d, '1', o)) sun
+		     , MIN(DECODE(d, '2', o)) mon
+		     , MIN(DECODE(d, '3', o)) thu
+		     , MIN(DECODE(d, '4', o)) wed
+		     , MIN(DECODE(d, '5', o)) THURS
+		     , MIN(DECODE(d, '6', o)) FRI
+		     , MIN(DECODE(d, '7', o)) SAT
+		  FROM (SELECT  to_char(dt+LEVEL-1,'yyyymmdd') o
+		                ,TRUNC  (dt + LEVEL - 1, 'd') w
+		             , TO_CHAR(dt + LEVEL - 1, 'd') d
+		             , LPAD(LEVEL, 2, '0') dd
+		        FROM (SELECT TO_DATE(#{yearMonth},'yyyymm') dt FROM dual)
+		        CONNECT BY LEVEL <![CDATA[<]]> = TO_CHAR(LAST_DAY(dt), 'dd')
+		        )
+		 GROUP BY w
+		 ORDER BY w
+	</select>
+
+	<select id="selectTrmtSchdList" resultType="TrmtSchdBean">
+		select day,
+	       dayOfWeek,
+	       empNo,
+	       trmtTypeNo,
+	       amHandle,
+	       fmHandle,
+	       doctCtRe,
+	       time,
+	       reser
+		from (select
+		      a.DAY day,
+		      a.DAY_OF_WEEK dayOfWeek,
+		      a.EMP_NO empNo,
+		      a.TRMT_TYPE_NO trmtTypeNo,
+		      a.TOTAL_AM_HANDLE amHandle,
+		      a.TOTAL_FM_HANDLE fmHandle,
+		      a.DOCT_CT_RE doctCtRe,
+		      a.DOCT_CT_STAT doctCtStat,
+		      decode(cnt,1	,t1 ,
+		                  2	,t2 ,
+		                  3	,t3 ,
+		                  4	,t4 ,
+		                  5	,t5 ,
+		                  6	,t6 ,
+		                  7	,t7 ,
+		                  8	,t8 ,
+		                  9	,t9 ,
+		                  10	,t10,
+		                  11	,t11,
+		                  12	,t12,
+		                  13	,t13,
+		                  14	,t14,
+		                  15	,t15,
+		                  16	,t16,
+		                  17	,t17,
+		                  18	,t18,
+		                  19	,t19,
+		                  20	,t20,
+		                  21	,t21,
+		                  22	,t22,
+		                  23	,t23,
+		                  24	,t24,
+		                  25	,t25,
+		                  26	,t26,
+		                  27	,t27,
+		                  28	,t28,
+		                  29	,t29,
+		                  30	,t30,
+		                  31	,t31,
+		                  32	,t32,
+		                  33	,t33,
+		                  34	,t34,
+		                  35	,t35,
+		                  36	,t36,
+		                  37	,t37,
+		                  38	,t38,
+		                  39	,t39) time,
+		        decode(cnt,1	,r1  ,
+		                    2	,r2  ,
+		                    3	,r3  ,
+		                    4	,r4  ,
+		                    5	,r5  ,
+		                    6	,r6  ,
+		                    7	,r7  ,
+		                    8	,r8  ,
+		                    9	,r9  ,
+		                    10	,r10 ,
+		                    11	,r11 ,
+		                    12	,r12 ,
+		                    13	,r13 ,
+		                    14	,r14 ,
+		                    15	,r15 ,
+		                    16	,r16 ,
+		                    17	,r17 ,
+		                    18	,r18 ,
+		                    19	,r19 ,
+		                    20	,r20 ,
+		                    21	,r21 ,
+		                    22	,r22 ,
+		                    23	,r23 ,
+		                    24	,r24 ,
+		                    25	,r25 ,
+		                    26	,r26 ,
+		                    27	,r27 ,
+		                    28	,r28 ,
+		                    29	,r29 ,
+		                    30	,r30 ,
+		                    31	,r31 ,
+		                    32	,r32 ,
+		                    33	,r33 ,
+		                    34	,r34 ,
+		                    35	,r35 ,
+		                    36	,r36 ,
+		                    37	,r37 ,
+		                    38	,r38 ,
+		                    39	,r39) reser
+		from MC_TRMT_SCHD_MNG a ,
+		    (select level cnt
+		    from dual
+		    connect by level <![CDATA[<]]>40) b
+		where a.emp_no=#{empNo}
+		and day like #{yearMonth}||'%')
+		where time is not null
+		order by day, time
+	</select>
+
+	<select id="selectApplyHistoryList" resultType="ApplyHistoryBean">
+		SELECT DAY
+		FROM (SELECT ROW_NUMBER () OVER (
+                           ORDER BY DAY DESC) O,
+              		 DAY
+				FROM MC_TRMT_SCHD_MNG
+				where emp_no=#{empNo}
+				)
+		WHERE O<![CDATA[<]]>6
+		ORDER BY DAY
+	</select>
+</mapper>

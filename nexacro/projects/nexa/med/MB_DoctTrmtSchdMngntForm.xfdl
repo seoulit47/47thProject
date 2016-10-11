@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MB_DoctTrmtSchdMngntForm" classname="MB_DoctTrmtSchdMngntForm" left="0" top="0" width="1250" height="768" titletext="의사진료일정">
+  <Form id="MB_DoctTrmtSchdMngntForm" classname="MB_DoctTrmtSchdMngntForm" left="0" top="0" width="1250" height="768" titletext="의사진료일정" onload="MB_DoctTrmtSchdMngntForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="0.72%" top="2" right="63.36%" height="60" style="background:transparent URL('img::miniTitleBar1.jpg');">
@@ -84,9 +84,9 @@
               <Div id="Div01" taborder="98" text="Div00" left="72.3%" top="34" right="0.73%" height="331" style="background:white;border:1 none darkgray transparent;bordertype:normal 5 5  leftbottom rightbottom;">
                 <Layouts>
                   <Layout width="628" height="751">
-                    <Static id="stYear" taborder="10" text="2015" left="20.91%" top="5" right="53.64%" height="41" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
+                    <Static id="stYear" taborder="10" text="2016" left="20.91%" top="5" right="53.64%" height="41" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
                     <Static id="Static00" taborder="11" text="년" left="44.24%" top="5" right="46.97%" height="41" style="background:transparent;font:Bodoni Bd BT,14,bold;"/>
-                    <Static id="stMonth" taborder="12" text="06" left="52.12%" top="4" right="30.91%" height="43" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
+                    <Static id="stMonth" taborder="12" text="10" left="52.12%" top="4" right="30.91%" height="43" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
                     <Static id="Static01" taborder="13" text="월" left="63.94%" top="4" right="23.03%" height="43" style="background:transparent;align:center;font:Bodoni Bd BT,14,bold;"/>
                     <Button id="btnRightMonth" taborder="14" text="&gt;" onclick="Div01_btnRightMonth_onclick" left="77.88%" top="12" right="11.52%" height="27" style="background:cornflowerblue stretch;color:black;font:돋움,15,bold;" class="Btn_rightArrow_min"/>
                     <Button id="btnLettMonth" taborder="15" text="&lt;" onclick="Div01_btnLettMonth_onclick" left="10.3%" top="12" right="79.39%" height="26" style="background:cornflowerblue stretch;color:black;font:돋움,15,bold;" class="Btn_leftArrow_min"/>
@@ -204,8 +204,8 @@
               <Static id="stDiv14" taborder="105" text="진료과" wordwrap="char" onclick="subCodeStc_onclick" left="3.17%" top="37" right="92.77%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Button id="typeAddBtn" taborder="106" onclick="typeAddBtn_onclick" left="1.54%" top="147" right="93.34%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
               <Button id="delTypeBtn" taborder="107" onclick="delTypeBtn_onclick" left="6.9%" top="147" right="87.98%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="createDeatailTypeBtn" taborder="108" onclick="createDeatailTypeBtn_onclick" left="58.81%" top="168" right="35.91%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="deleteAllDetailBtn" taborder="109" onclick="deleteAllDetailBtn_onclick" left="64.42%" top="168" right="29.49%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="createDeatailTypeBtn" taborder="108" onclick="createDeatailTypeBtn_onclick" left="58.81%" top="128" right="35.91%" height="32" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="deleteAllDetailBtn" taborder="109" onclick="deleteAllDetailBtn_onclick" left="64.42%" top="128" right="29.49%" height="32" style="background:@gradation URL('img::resetBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
               <Button id="DelBtn03" taborder="110" onclick="applyTypeBtn_onclick" cssclass="DelBtn" left="7.47%" top="656" right="85.22%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
               <Div id="Div02" taborder="111" left="22.42%" top="162" right="29%" height="94" style="align:center middle;border:3 solid #808080ff ;color:#dcdeffff;bordertype:round 5 5 ;font:9 Dotum;" cssclass="TStc">
                 <Layouts>
@@ -607,10 +607,8 @@
 *								                                    *
 ********************************************************************/
 
-include "scripts::commonTransaction.xjs";
+
 include "scripts::commonScripts.xjs";  
-include "scripts::commonUtil.xjs";
-include "scripts::commonPopup.xjs";
 include "scripts::supScripts.xjs";
 include "scripts::wonScripts.xjs";
 
@@ -743,29 +741,28 @@ this.searchEmpBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		empnm=arrRtn[1];
 		this.doctschdDiv.empNmEd.set_value(arrRtn[1]);
 		this.doctschdDiv.deptNmEd.set_value(arrRtn[2]);
-		alert(empnm);
+		//alert(empnm);
+		
 		this.dsService.setColumn(3,"argument","empNo="+empno);
 		this.gfnService("findTrmtTypeList"); //진료일정타입 조회
+		
+		//진료일정 조회
 		this.findTrmtSchd();
+		
 		this.findApplyHistory();
-		}
-
-	
+		}	
 }
 
 /********************************************************************************
 @Description 	type적용이력 가져오기
 ********************************************************************************/
 
-this.findApplyHistory = function()
-{
+this.findApplyHistory = function(){
 	if(empno==null||empno==undefined)
 		return;
 	this.dsService.setColumn(7,"argument","empNo="+empno);
 	this.gfnService("findApplyHistoryList"); //날짜조회
 	//trace(this.dsApplyHistory.saveXML());
-
-
 }
 
 /********************************************************************************
@@ -773,13 +770,13 @@ this.findApplyHistory = function()
 ********************************************************************************/
 
 this.findTrmtSchd = function (){
-	 var year=this.doctschdDiv.Div01.stYear.text;
+	var year=this.doctschdDiv.Div01.stYear.text;
 	var month=this.doctschdDiv.Div01.stMonth.text;
 	var yearMonth=year+""+month;
-	alert(yearMonth);
+	//alert(yearMonth);
 	var param="empNo="+empno+" yearMonth="+yearMonth;
 	this.dsService.setColumn(6,"argument",param);
-    this.gfnService("findTrmtSchdList");//진료일정 조회
+	this.gfnService("findTrmtSchdList");//진료일정 조회
 }
 
 /********************************************************************************
@@ -848,7 +845,7 @@ this.createDeatailTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventIn
 		return;
 	var typenm=this.dsTrmtSchdType.getColumn(typeRow,"trmtTypeNm");	
 	var typeno=this.dsTrmtSchdType.getColumn(typeRow,"trmtTypeNo");
-	alert(typenm + typeno)
+	//alert("typenm : " + typenm + " // typeno : " + typeno)
 	if(typenm==undefined || typenm==""){
 		alert("타입명을 먼저 기입해주세요");
 		return;
@@ -864,6 +861,7 @@ this.createDeatailTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventIn
 	var checkthurs=this.dsTrmtSchdType.getColumn(typeRow,"thurs");
 	var checkfri=this.dsTrmtSchdType.getColumn(typeRow,"fri");
 	var checksat=this.dsTrmtSchdType.getColumn(typeRow,"sat");
+	
 	if(checksun=="1"){
 		arr[index]=1;
 		var row=this.trmtStandard.addRow();
@@ -924,7 +922,7 @@ this.createDeatailTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventIn
 
 this.detailFilter = function(){
 	var day=this.trmtStandard.getColumn(this.trmtStandard.rowposition,"day");
-	alert("데이"+day)
+	alert("데이 : "+day);
 	var trmtno=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"trmtTypeNo");
 	this.dsTrmtSchdTypeDetailAM.filter("dayOfWeek=='"+day+"' && trmtTypeNo=='"+trmtno+"'");
 	this.dsTrmtSchdTypeDetailFM.filter("dayOfWeek=='"+day+"' && trmtTypeNo=='"+trmtno+"'");
@@ -1120,7 +1118,6 @@ this.typeGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 /********************************************************************************
 @Description 	type을 실 일정에 적용
 ********************************************************************************/
-
 this.applyTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var typeNo=this.dsTrmtSchdType.getColumn(this.dsTrmtSchdType.rowposition,"trmtTypeNo");
@@ -1128,6 +1125,7 @@ this.applyTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var sday=this.doctschdDiv.sdayCal.value;
 	alert(sday)
 	var eday=this.doctschdDiv.edayCal.value;
+	
 	if(sday>=eday){
 		alert("기간설정을 다시해주세요");
 		return;
@@ -1151,23 +1149,20 @@ this.applyTypeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 ********************************************************************************/
 this.MB_DoctTrmtSchdMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-		var gdsEmpNo = application.gdsEmp.getColumn(0, "empNo");
-		//alert(gdsEmpNo+"gdsEmpNo");
-		var argument = 'gdsEmpNo='+gdsEmpNo;
-		this.dsService.setColumn(8,"argument",argument);
-		this.gfnService("findDoctResptMsgList", false);
+	var gdsEmpNo = application.gdsEmp.getColumn(0, "empNo");
+	//alert(gdsEmpNo+"gdsEmpNo");
+	var argument = 'gdsEmpNo='+gdsEmpNo;
+	this.dsService.setColumn(8,"argument",argument);
+	this.gfnService("findDoctResptMsgList", false);
 		
 	if(this.dsCfrnTrmt.rowcount==0){
-            alert("조건에 맞는 회신 결과가 없습니다.");
-            this.cfrnTrmtRespBtn.set_visible(false);
-         }else{
-			alert("되는가?");
-            this.cfrnTrmtRespBtn.set_visible(true);
- 
-            }
-     
-
-	
+		alert("조건에 맞는 회신 결과가 없습니다.");
+		this.cfrnTrmtRespBtn.set_visible(false);
+	}else{
+		alert("되는가?");
+		this.cfrnTrmtRespBtn.set_visible(true);
+    }
+    
 	var yearMonth=this.gfnDate("yyyymm");
 	var year=yearMonth.substr(0,4);
 	var month=yearMonth.substr(4,2);
@@ -1176,13 +1171,11 @@ this.MB_DoctTrmtSchdMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInf
 	this.dsService.setColumn(5,"argument","yearMonth="+yearMonth);
 	
 	this.gfnService("findCalendarList");
-
 }
 
 /********************************************************************************
 @Description 	달력 변화이벤트
 ********************************************************************************/
-
 this.Div01_btnLettMonth_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var year=parseInt(this.doctschdDiv.Div01.stYear.text);
@@ -1237,19 +1230,14 @@ this.Div01_btnRightMonth_onclick = function(obj:Button,  e:nexacro.ClickEventInf
 
 this.Div01_calendarGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	
 	var day=obj.getCellText(e.row,e.col);
 	var year=this.doctschdDiv.Div01.stYear.text;
 	var month=this.doctschdDiv.Div01.stMonth.text;
 	var date=year+""+month+day;
 	//alert(date)
 	this.dsTrmtSchd.filter("day=='"+date+"'");
-	trace(this.dsTrmtSchd.saveXML());
+	//trace(this.dsTrmtSchd.saveXML());
 }
-
-
-
-
 
 this.cfrnTrmtRespBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {

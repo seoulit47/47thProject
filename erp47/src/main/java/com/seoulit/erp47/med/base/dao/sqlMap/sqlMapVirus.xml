@@ -3,9 +3,13 @@
 
 <mapper namespace="com.seoulit.erp47.med.base.dao.VirusDAO">
 
-	<select id="findVirusList" parameterType="map" resultType="SpeciesVirusBean">
+	<select id="findVirusList" parameterType="map" resultType="VirusBean">
 	
-		SELECT BACGENCD, BACGENNM FROM MB_SPECIES_VIRUS_CD
+		SELECT 
+			BACGENCD as baccd, 
+			BACGENNM as bacnm
+		FROM 
+			MB_SPECIES_VIRUS_CD
 			<trim prefix="WHERE" prefixOverrides="AND">
 				<if test="bacgencd != null">
 					AND BACGENCD = #{bacgencd}

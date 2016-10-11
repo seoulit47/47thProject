@@ -2,6 +2,7 @@ package com.seoulit.erp47.med.base.applicationService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,8 +65,13 @@ public class TrmtSchdTypeApplicationServiceImpl implements TrmtSchdTypeApplicati
 	public void callApplyType(Map<String, String> queryMap) {
 		queryMap.put("errorCode","");
 		queryMap.put("errorMsg","");
+		
+		for (Entry<String, String> entry : queryMap.entrySet()) {
+			System.out.println("key : " + entry.getKey());
+			System.out.println("val : " + entry.getValue());
+			System.out.println();
+			}
+		
 		trmtSchdTypeDAO.callApplyType(queryMap);
-
-
 	}
 }
