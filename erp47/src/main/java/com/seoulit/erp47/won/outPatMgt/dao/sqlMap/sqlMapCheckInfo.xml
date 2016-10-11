@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.won.outPatMgt.dao.CheckInfoDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+
+    <resultMap type="CheckInfoBean" id="resultCheck">
+        <result property="checkPatSeq"     column="CHECK_PAT_SEQ" />      <!--체크환자등록번호-->
+        <result property="patNo"           column="PAT_NO" />             <!--환자등록번호-->
+        <result property="postStartDate"   column="POST_START_DATE" />    <!--게시시작일-->
+        <result property="importance"      column="IMPORTANCE" />         <!--중요도-->
+        <result property="receiptYb"       column="RECEIPT_YB" />         <!--접수여부-->
+        <result property="othersDelPossYb" column="OTHERS_DEL_POSS_YB" /> <!--타인삭제가능여부-->
+        <result property="checkNtc"        column="CHECK_NTC" />          <!--체크사항-->
+        <result property="regDate"         column="REG_DATE" />           <!--등록일-->
+        <result property="finModDate"      column="FIN_MOD_DATE" />       <!--최종수정일-->
+        <result property="regWorker"       column="REG_WORKER" />         <!--등록자-->
+        <result property="finModWorker"    column="FIN_MOD_WORKER" />     <!--최종수정자-->
+        <result property="postEndDate"     column="POST_END_DATE" />      <!--게시종료일-->
+    </resultMap>
+
+    <select id="selectCheckList" resultMap="resultCheck">
+        SELECT
+            *
+        FROM
+            ws_check_pat
+        <if test="patNo != null">
+        where pat_no=#{patNo}
+        </if>
+    </select>
+
+    <insert id="insertCheck" parameterType="CheckInfoBean">
+            INSERT INTO
+            ws_check_pat
+            (
+            CHECK_PAT_SEQ,
+            POST_START_DATE ,
+            IMPORTANCE ,
+            RECEIPT_YB ,
+            OTHERS_DEL_POSS_YB ,
+            CHECK_NTC ,
+            REG_DATE ,
+            FIN_MOD_DATE ,
+            REG_WORKER ,
+            FIN_MOD_WORKER ,
+            POST_END_DATE ,
+            PAT_NO
+            ) VALUES
+            (
+            CHECK_PAT_SEQ.NEXTVAL,
+            #{postStartDate},
+            #{importance},
+            #{receiptYb},
+            #{othersDelPossYb},
+            #{checkNtc},
+            #{regDate},
+            #{finModDate},
+            #{regWorker},
+            #{finModWorker},
+            #{postEndDate},
+            #{patNo}
+            )
+    </insert>
+    <update id="updateCheck" parameterType="CheckInfoBean">
+        UPDATE
+            ws_check_pat
+        SET
+            POST_START_DATE = #{postStartDate},
+            IMPORTANCE = #{importance},
+            RECEIPT_YB = #{receiptYb},
+            OTHERS_DEL_POSS_YB = #{othersDelPossYb},
+            CHECK_NTC = #{checkNtc},
+            FIN_MOD_DATE = #{finModDate},
+            FIN_MOD_WORKER = #{finModWorker},
+            POST_END_DATE = #{postEndDate}
+        WHERE
+            PAT_NO =#{patNo}
+        and
+            CHECK_PAT_SEQ = #{checkPatSeq}
+    </update>
+
+
+    <delete id="deleteCheck" parameterType="CheckInfoBean">
+        delete from
+            ws_check_pat
+        where
+            CHECK_PAT_SEQ=#{checkPatSeq}
+    </delete>
+</mapper>

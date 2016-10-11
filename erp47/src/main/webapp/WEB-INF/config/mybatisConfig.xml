@@ -22,7 +22,7 @@
 
     <!-- 원무 -->
     <package name="com.seoulit.erp47.won.outPatMgt.to" />	
-    <package name="com.seoulit.erp47.won.baseInfo.to"/>
+    <package name="com.seoulit.erp47.won.base.to"/>
     <package name="com.seoulit.erp47.won.hosptlzPat.to"/>  
       
       

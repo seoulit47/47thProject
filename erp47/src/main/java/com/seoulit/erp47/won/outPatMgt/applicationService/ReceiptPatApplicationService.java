@@ -5,14 +5,12 @@ import java.util.Map;
 
 import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
-
-
 public interface ReceiptPatApplicationService {
 
-    List<ReceiptInfoBean> findReceiptList(Map<String, String> argsMap);
+	List<ReceiptInfoBean> findReceiptList(Map<String, String> argsMap);
 
-    /*void registerReceipt(ReceiptInfoBean receiptInfoBean);
+	void registerReceipt(ReceiptInfoBean receiptInfoBean);
 
-    void removeReceipt(ReceiptInfoBean receiptInfoBean);*/
+	void removeReceipt(ReceiptInfoBean receiptInfoBean);
 
 }

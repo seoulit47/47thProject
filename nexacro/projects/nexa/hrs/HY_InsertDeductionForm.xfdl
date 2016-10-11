@@ -1004,13 +1004,13 @@ var param;
 
 this.searchEmpBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.gfnPopup("HM_EmpSearchPopup","hrs","");
+	this.gfnPopup("HM_EmpPopupForm","hrs","");
 }
 
-this.setEmpInfo = function( arrRtn ){
+this.setEmpInfo = function(popupEmpNo,popupEmpNm){
 
-	this.empNoEd.set_value(arrRtn[0]);
-	this.empNameEd.set_value(arrRtn[1]);
+	this.empNoEd.set_value(popupEmpNo);
+	this.empNameEd.set_value(popupEmpNm);
 	empNo = this.empNoEd.value;
 	
 }

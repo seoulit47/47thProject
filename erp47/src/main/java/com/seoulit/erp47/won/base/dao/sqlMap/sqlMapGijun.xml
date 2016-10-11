@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.won.base.dao.GijunDAO">
+	<cache flushInterval="86400000" eviction="LRU" />
+
+	<resultMap type="GijunInfoBean" id="GijunInfoResultMap">
+		<result property="gijunCd" column="GIJUN_CD"/>
+		<result property="gijunNm" column="GIJUN_NM"/>
+		<result property="useYb" column="USE_YB"/>
+		<collection property="gijunInfoDetailList"
+			    select="com.seoul.his.won.base.dao.GijunDAO.selectGijunInfoDetailList"
+			    column="GIJUN_CD" javaType="list"/>
+	</resultMap>
+
+	<select id="selectGijunInfoList" resultMap="GijunInfoResultMap">
+		SELECT * FROM SR_GIJUN_INFO
+    </select>
+
+    <select id="selectGijunInfoDetailList" resultType="GijunInfoDetailBean">
+		SELECT * FROM SR_GIJUN_INFO_DETAIL
+    </select>
+
+    <select id="selectGijunInfoCode" parameterType="string" resultType="GijunInfoDetailBean">
+		SELECT * FROM SR_GIJUN_INFO_DETAIL WHERE GIJUN_CD=#{gijunCd}
+    </select>
+
+    <insert id="insertGijunInfo" parameterType="GijunInfoBean">
+   		INSERT INTO SR_GIJUN_INFO 
+   		 VALUES(
+		    #{gijunCd},
+	        #{gijunNm},
+	        #{useYb}
+		  )
+    </insert>
+
+    <update id="updateGijunInfo" parameterType="GijunInfoBean">
+	    UPDATE SR_GIJUN_INFO 
+	    SET 
+			  GIJUN_NM=#{gijunNm},
+			  USE_YB=#{USEyB}
+		 WHERE GIJUN_CD=#{gijunCd}
+    </update>
+
+    <delete id="deleteGijunInfo" parameterType="GijunInfoBean">
+    	DELETE FROM SR_GIJUN_INFO WHERE GIJUN_CD=#{gijunCd}
+    </delete>
+
+    <insert id="insertGijunInfoDetail" parameterType="GijunInfoDetailBean">
+    	INSERT INTO SR_GIJUN_INFO_DETAIL 
+		  VALUES(
+		    #{dtlCd},
+	        #{dtlNm},
+	        #{useYb},
+	        #{filedWorkCngYb},
+	        #{gijunCd}
+		  )
+    </insert>
+
+    <update id="updateGijunInfoDetail" parameterType="GijunInfoDetailBean">
+	    UPDATE SR_GIJUN_INFO_DETAIL 
+	    SET 
+			  DTL_NM=#{empName},
+			  USE_YB=#{empRegNo},
+			  FILED_WORK_CNG_YB=#{filedWorkCngYb}
+		WHERE GIJUN_CD=#{gijunCd} 
+			AND DTL_CD=#{dtlCd}
+    </update>
+
+    <delete id="deleteGijunInfoDetail" parameterType="GijunInfoDetailBean">
+    	DELETE FROM SR_GIJUN_INFO_DETAIL WHERE GIJUN_CD=#{gijunCd} AND DTL_CD=#{dtlCd}
+    </delete>
+
+    <delete id="deleteAllGijunInfoDetailFromGijunInfo" parameterType="GijunInfoDetailBean">
+    	DELETE FROM SR_GIJUN_INFO_DETAIL WHERE GIJUN_CD=#{gijunCd}
+    </delete>
+
+</mapper>

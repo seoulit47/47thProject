@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.xapi.data.PlatformData;
 import com.seoulit.erp47.common.util.DataSetBeanMapper;
+import com.seoulit.erp47.common.util.NexacroLogger;
 import com.seoulit.erp47.won.outPatMgt.service.OutPatMgtServiceFacade;
 import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
@@ -36,5 +37,22 @@ public class ReceiptPatController {
 		List<ReceiptInfoBean> receiptList = outpatMgtServiceFacade.findReceiptList(argsMap);
 
 		dataSetBeanMapper.beansToDataset(outData, receiptList, ReceiptInfoBean.class);
+	}
+
+	// 접수 등록
+	@RequestMapping("won/outPatMngnt/registerReceipt.do")
+	public void registerReceipt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		NexacroLogger.debug(inData);
+		ReceiptInfoBean receiptInfoBean = dataSetBeanMapper.datasetToBean(inData, ReceiptInfoBean.class);
+		outpatMgtServiceFacade.registerReceipt(receiptInfoBean);
+	}
+
+	// 접수 삭제
+	@RequestMapping("won/outPatMngnt/removeReceipt.do")
+	public void removeReceipt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
+		ReceiptInfoBean receiptInfoBean = dataSetBeanMapper.datasetToBean(inData, ReceiptInfoBean.class);
+		outpatMgtServiceFacade.removeReceipt(receiptInfoBean);
 	}
 }
