@@ -29,6 +29,7 @@ public class LoginApplicationServiceImpl implements LoginApplicationService {
     public Map<String, Object> login(Map<String, String> argsMap) throws IdNotFoundException, PwMissMatchException {
         Map<String, Object> login = new HashMap<>();
         EmpBean empBean = empDAO.selectEmp(argsMap);
+        System.out.println(":::::"+empBean.getEmpNm()+":::::");
         
         if (empBean == null) { 
             throw new IdNotFoundException(messageSource.getMessage("idNotFound", null, Locale.KOREAN));

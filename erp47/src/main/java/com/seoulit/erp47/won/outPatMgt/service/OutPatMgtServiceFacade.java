@@ -3,6 +3,7 @@ package com.seoulit.erp47.won.outPatMgt.service;
 import java.util.List;
 import java.util.Map;
 
+import com.seoulit.erp47.won.outPatMgt.to.CheckInfoBean;
 import com.seoulit.erp47.won.outPatMgt.to.PatInfoBean;
 import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
@@ -20,7 +21,7 @@ public interface OutPatMgtServiceFacade {
 	public List<PatInfoBean> findPatList(Map<String, String> argsMap);
 	public PatInfoBean findPat(Map<String, String> argsMap);
 	public List<ReceiptInfoBean> findReceiptList(Map<String, String> argsMap);
-	/*
+	
     public void modifyPat(Map<String, Object> map);
     public void registerPat(Map<String, Object> map);
     public PatInfoBean findLastPatNo();
@@ -32,7 +33,7 @@ public interface OutPatMgtServiceFacade {
     
     ////////////////////////
     
-    CalcuOutpaTrmtCostBean calcuOutpaTrmtCost(
+/*    CalcuOutpaTrmtCostBean calcuOutpaTrmtCost(
             Map<String, Object> procedureMap)throws Exception;
 
     void registerRece(OutpaTrmtCostBean outpaTrmtCost);

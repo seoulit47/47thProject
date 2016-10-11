@@ -23,6 +23,42 @@
         
 </select>
 
-
+<update id="insertPatCutn" parameterType="PatCutnBean">
+    <![CDATA[
+       MERGE INTO
+            MB_PAT_CAUTION c
+        USING DUAL ON (c.PAT_NO = #{patNo} AND c.CAUTION_CD = #{cautionCd})
+        WHEN MATCHED THEN
+            UPDATE SET
+            	c.PAT_CAUTION_NO = #{patCautionNo},
+                c.CUTN_CATEGORY_CD = #{cutnCategoryCd},
+                c.ABBR = #{abbr},
+                c.CHOICE_YB = #{choiceYb}
+        WHEN NOT MATCHED THEN
+            INSERT(
+                PAT_NO,
+                PAT_CAUTION_NO,
+                CUTN_CATEGORY_CD,
+                CAUTION_CD,
+                ABBR,
+                CHOICE_YB
+            )
+        VALUES (
+            #{patNo},
+            #{patCautionNo},
+            #{cutnCategoryCd},
+            #{cautionCd},
+            #{abbr},
+            #{choiceYb}
+        )
+	]]>
+    </update>
+    
+    <delete id="deletePatCutn" parameterType="PatCutnBean">
+        DELETE FROM 
+            MB_PAT_CAUTION
+        WHERE
+            PAT_NO = #{patNo} AND PAT_CAUTION_NO = #{patCautionNo}
+    </delete>
 
 </mapper>

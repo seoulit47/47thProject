@@ -571,13 +571,13 @@ this.searchResultYta = function(row) {
 }
 this.searchEmpBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.gfnPopup("HM_EmpSearchPopup","hrs","");
+	this.gfnPopup("HM_EmpPopupForm","hrs","");
 }
 
-this.setEmpInfo = function( arrRtn ){
+this.setEmpInfo = function(popupEmpNo,popupEmpNm){
 
 	
-	var argument = "empNo="+arrRtn[0];
+	var argument = "empNo="+popupEmpNo;
 	this.dsService.setColumn(1, "argument", argument);
 	this.gfnService("findEmpInfo");
 }]]></Script>

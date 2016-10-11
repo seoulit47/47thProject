@@ -4,8 +4,33 @@
 <mapper namespace="com.seoulit.erp47.won.outPatMgt.dao.ReceiptInfoDAO">
 	<cache eviction="LRU" flushInterval="86400000"/>
 	
+    <resultMap type="ReceiptInfoBean" id="resultReceipt">
+        <result property="outpaReceiptNo"  column="OUTPA_RECEIPT_NO" />      <!--외래접수번호   -->
+        <result property="trmtDate"        column="TRMT_DATE" />             <!--진료일시       -->
+        <result property="trmtDept"        column="TRMT_DEPT" />             <!--진료과코드   -->
+        <result property="trmtDeptNm"      column="TRMT_DEPT_NM" />          <!--진료과명        -->
+        <result property="trmtDoct"        column="TRMT_DOCT" />             <!--진료의사코드   -->
+        <result property="trmtDoctNm"      column="TRMT_DOCT_NM" />          <!--진료의사명     -->
+        <result property="hosptlzYb"       column="HOSPTLZ_YB" />            <!--입원여부       -->
+        <result property="hosptlzRsvtYb"   column="HOSPTLZ_RSVT_YB" />       <!--입원예약여부   -->
+        <result property="patType"         column="PAT_TYPE" />              <!--환자유형       -->
+        <result property="trmtCostCalcuYb" column="TRMT_COST_CALCU_YB" />    <!--진찰료계산여부 -->
+        <result property="trmtYb"          column="TRMT_YB" />               <!--진료여부       -->
+        <result property="prescYb"         column="PRESC_YB" />              <!--처방여부       -->
+        <result property="regDept"         column="REG_DEPT" />              <!--등록부서       -->
+        <result property="cngDept"         column="CNG_DEPT" />              <!--변경부서       -->
+        <result property="receiptDate"     column="RECEIPT_DATE" />          <!--접수날짜       -->
+        <result property="dgnsNm"          column="DGNS_NM" />               <!--진단명         -->
+        <result property="ntTtYb"          column="NT_TT_YB" />              <!--초/재진여부    -->
+        <result property="expCd"           column="EXP_CD" />                <!--감면코드       -->
+        <result property="expNm"           column="EXP_NM" />                <!--감면명         -->
+        <result property="nwDiv"           column="NW_DIV" />                <!--내원구분       -->
+        <result property="patNo"           column="PAT_NO" />                <!--환자등록번호   -->
+        <result property="patNm"           column="PAT_NM" />                <!--환자이름       -->
+    </resultMap>	
+	
 	<select id="findReceiptList" resultType="ReceiptInfoBean">
-	SELECT
+        SELECT
             P.PAT_NO,
             P.PAT_NM ,
             R.OUTPA_RECEIPT_NO,
@@ -32,16 +57,106 @@
             WS_OUTPA_RECEIPT R
         ,   WS_PAT P
         WHERE R.PAT_NO=P.PAT_NO
+            <if test="patNo != '' and patNo != null">
+                AND R.pat_no=#{patNo}
+            </if>
             <if test="trmtDoct != '' and trmtDoct != null">
                 AND R.trmt_doct=#{trmtDoct}
             </if>
             <if test="trmtDate != '' and trmtDate != null">
                 AND R.trmt_date=#{trmtDate}
             </if>
+            <if test="gubun != '' and gubun !=null">
+                AND HOSPTLZ_YB=#{gubun}
+            </if>
         ORDER BY R.OUTPA_RECEIPT_NO
-	
 	
 	</select>
 
+    <insert id="insertReceipt" parameterType="ReceiptInfoBean">
+        INSERT INTO
+        ws_outpa_receipt
+        (
+            OUTPA_RECEIPT_NO,
+            TRMT_DATE ,
+            TRMT_DEPT ,
+            TRMT_DOCT ,
+            HOSPTLZ_YB ,
+            HOSPTLZ_RSVT_YB,
+            PAT_TYPE ,
+            TRMT_COST_CALCU_YB ,
+            TRMT_YB ,
+            PRESC_YB ,
+            REG_DEPT ,
+            CNG_DEPT ,
+            RECEIPT_DATE ,
+            DGNS_NM ,
+            NT_TT_YB ,
+            EXP_CD,
+            NW_DIV,
+            PAT_NO
+        ) VALUES
+        (
+            OUT_PAT_RECEIPT_NO.NEXTVAL,
+            #{trmtDate},
+            #{trmtDept},
+            #{trmtDoct},
+            #{hosptlzYb},
+            #{hosptlzRsvtYb},
+            #{patType},
+            #{trmtCostCalcuYb},
+            #{trmtYb},
+            #{prescYb},
+            #{regDept},
+            #{cngDept},
+            #{receiptDate},
+            #{dgnsNm},
+            #{ntTtYb},
+            #{expCd},
+            #{nwDiv},
+            #{patNo}
+        )
+    </insert>
+<update id="updateReceipt" parameterType="ReceiptInfoBean">
+        UPDATE
+        ws_outpa_receipt
+        SET
+            TRMT_DATE = #{trmtDate},
+            TRMT_DEPT = #{trmtDept},
+            TRMT_DOCT = #{trmtDoct},
+            HOSPTLZ_YB = #{hosptlzYb},
+            HOSPTLZ_RSVT_YB = #{hosptlzRsvtYb},
+            PAT_TYPE = #{patType},
+            TRMT_COST_CALCU_YB = #{trmtCostCalcuYb},
+            TRMT_YB = #{trmtYb},
+            PRESC_YB = #{prescYb},
+            REG_DEPT = #{regDept},
+            CNG_DEPT = #{cngDept},
+            RECEIPT_DATE = #{receiptDate},
+            DGNS_NM = #{dgnsNm},
+            NT_TT_YB = #{ntTtYb},
+            EXP_CD= #{expCd},
+            NW_DIV= #{nwDiv}
+        WHERE
+            PAT_NO =#{patNo}
+        and
+        OUTPA_RECEIPT_NO = #{outpaReceiptNo}
+    </update>
+
+
+    <delete id="deleteReceipt" parameterType="ReceiptInfoBean">
+        delete from
+        ws_outpa_receipt
+        where
+        OUTPA_RECEIPT_NO
+        =#{outpaReceiptNo}
+    </delete>
+
+    <update id="updateTrmtCostCalcuYb" flushCache="false">
+            UPDATE WS_OUTPA_RECEIPT SET
+                   TRMT_COST_CALCU_YB='Y'
+             WHERE PAT_NO =  #{patNo}
+               AND OUTPA_RECEIPT_NO = #{outpaReceiptNo}
+    </update>
 	
 </mapper>
