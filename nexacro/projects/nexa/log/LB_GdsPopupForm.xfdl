@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LB_GdsPopupForm" classname="LB_GdsPopupForm" left="0" top="0" width="1024" height="768" titletext="New Form">
+  <Form id="LB_GdsPopupForm" classname="LB_GdsPopupForm" left="0" top="0" width="1024" height="768" titletext="물품 정보">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="0" right="3.81%" height="60" style="background:transparent URL('img::titleBar1.jpg');"/>

@@ -36,16 +36,10 @@ public class CtrtBean extends BaseBean {
                    signSsYb,           //결재상신여부
                    ctrtStand,          //계약규격
                    fm,                 //품목 24 이하 데이터칼럼에 없음
-                   
                    custCd,             //거래처코드                   
                    bussNo,             //                   
                    busCtgNm,           //
                    prsdntNm,           //
-                   
-                   
-                   
-                   
-                   
                    buyKnd,             //
                    ctrtMthd,           //
                    pps,                //

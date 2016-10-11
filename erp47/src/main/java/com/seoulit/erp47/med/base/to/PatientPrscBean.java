@@ -8,10 +8,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.med.base.to
+ * @Package  com.seoulit.erp47.med.base.to
  * @Class    PatientPrcsBean.java
  * @Create   2016. 5. 26.
- * @Author   godseop
+ * @Author   
  * @Description PatientPrsc(Patient Prescription) 환자처방 TO
  *      inpatient(입원환자) & outpatient(외래환자) 같이 사용
  *      입원환자 - 입원접수번호, 퇴원일자, 퇴원구분

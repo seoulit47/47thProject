@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 package com.seoulit.erp47.med.base.to;
 
 import com.seoulit.erp47.common.annotation.Dataset;
@@ -8,7 +18,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.med.base.to
+ * @Package  com.seoulit.erp47.med.base.to
  * @Class    CntnInfoBean.java
  * @Create   2016. 10. 10
  * @Author   mickey

@@ -19,8 +19,13 @@ public class CtrtServiceFacadeImpl implements CtrtServiceFacade{
 	
 	@Override
 	public List<CtrtBean> findCtrtList(Map<String, String> argsMap) {
-		// TODO Auto-generated method stub
 		return ctrtApplicationService.findCtrtList(argsMap);
+	}
+
+
+	@Override
+	public void batchCtrtList(List<CtrtBean> ctrtList) {
+		ctrtApplicationService.batchCtrtList(ctrtList);
 	}
 
 }

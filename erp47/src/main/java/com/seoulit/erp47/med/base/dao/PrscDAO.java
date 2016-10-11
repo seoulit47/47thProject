@@ -7,7 +7,8 @@ import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 
 public interface PrscDAO {
-    
+	PrscDtlBean selectPrscDtl(Map<String, String> argsMap);
+	
     List<PrscDtlBean> selectPrscDtlList(Map<String, String> argsMap);
 
     List<PrscBean> selectPrscList(Map<String, String> argsMap);
