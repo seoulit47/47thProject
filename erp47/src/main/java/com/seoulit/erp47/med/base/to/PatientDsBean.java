@@ -12,10 +12,10 @@ import lombok.ToString;
 
 
 /**
- * @Package  com.seoul.his.med.base.to
+ * @Package  com.seoulit.erp47.med.base.to
  * @Class    PatientDsBean.java
  * @Create   2016. 10. 4.
- * @Author   godseop
+ * @Author   
  * @Description 환자상병 TO
  *
  * @LastUpdated 

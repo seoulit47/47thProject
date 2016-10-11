@@ -55,7 +55,7 @@
         <Static id="Static01" taborder="9" text="~" left="36.48%" top="72" right="62.4%" height="19"/>
         <Button id="accPridPopupBtn" taborder="10" onclick="accPridPopupBtn_onclick" left="20.96%" top="65" right="76.48%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
         <Button id="searchBtn" taborder="11" onclick="searchBtn_onclick" left="74.16%" top="65" right="18.64%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
-        <Button id="printFinanStatBtn" taborder="12" onclick="printFinanStatBtn_onclick" left="82.56%" top="65" right="10.24%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn"/>
+        <Button id="printFinanStatBtn" taborder="12" onclick="printFinanStatBtn_onclick" left="82.56%" top="65" right="10.24%" height="32" style="background:@gradation URL('img::printBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" visible="false" enable="false"/>
       </Layout>
     </Layouts>
     <InitValue>
@@ -178,6 +178,8 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	var rowPos = this.dsService.findRow("serviceID","findFinanStats");
 	this.dsService.setColumn(rowPos,"argument",argument);
 	this.gfnService("findFinanStats");
+	
+	//this.printFinanStatBtn.set_enable(true);
 }
 
 //출력

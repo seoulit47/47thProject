@@ -17,10 +17,84 @@
                 AND INPT_YB = 'Y'
             </if>
         </trim>
-        ORDER BY
+        ORDER BY 
             CTRT_NO
     </select>
 
-
+	<insert id="insertCtrtBean">
+		INSERT INTO LP_CTRT
+		VALUES (
+			#{ctrtNo}
+			,#{buyReceiptNo}
+			,#{ctrtDiv}
+			,#{inptYb}
+			,#{cust}
+			,#{ctrtDate}
+			,#{ctrtTel}
+			,#{ctrtAddr}
+			,#{ctrtRespoWorker}
+			,#{ctrtGds}
+			,#{gdsCd}
+			,#{ctrtPrid}
+			,#{ctrtQnt}
+			,#{ctrtPrice}
+			,#{ctrtAmt}
+			,#{ctrtCon}
+			,#{ctrtStart}
+			,#{ctrtEnd}
+			,#{ctrtSeq}
+			,#{ctrtStat}
+			,#{buyAprvYb}
+			,#{signSsYb}
+			,#{ctrtStand}
+			,#{fm}
+			,#{custCd}
+			,#{bussNo}
+			,#{busCtgNm}
+			,#{prsdntNm}
+		)
+	</insert>
+	
+	<update id="updateCtrtBean">
+	UPDATE LP_CTRT 
+		SET 
+		 BUY_RECEIPT_NO=#{buyReceiptNo}
+		,CTRT_DIV=#{ctrtDiv}
+		,INPT_YB=#{inptYb}
+		,CUST=#{cust}
+		,CTRT_DATE=#{ctrtDate}
+		,CTRT_TEL=#{ctrtTel}
+		,CTRT_ADDR=#{ctrtAddr}
+		,CTRT_RESPO_WORKER=#{ctrtRespoWorker}
+		,CTRT_GDS=#{ctrtGds}
+		,GDS_CD=#{gdsCd}
+		,CTRT_PRID=#{ctrtPrid}
+		,CTRT_QNT=#{ctrtQnt}
+		,CTRT_PRICE=#{ctrtPrice}
+		,CTRT_AMT=#{ctrtAmt}
+		,CTRT_CON=#{ctrtCon}
+		,CTRT_START=#{ctrtStart}
+		,CTRT_END=#{ctrtEnd}
+		,CTRT_SEQ=#{ctrtSeq}
+		,CTRT_STAT=#{ctrtStat}
+		,BUY_APRV_YB=#{buyAprvYb}
+		,SIGN_SS_YB=#{signSsYb}
+		,CTRT_STAND=#{ctrtStand}
+		,FM=#{fm}
+		,CUST_CD=#{custCd}
+		,BUSS_NO=#{bussNo}
+		,BUS_CTG_NM=#{busCtgNm}
+		,PRSDNT_NM=#{prsdntNm}
+	
+	WHERE
+		CTRT_NO = #{ctrtNo} 
+		
+	</update>
+	
+	<delete id="deleteCtrtBean">
+		DELETE FROM LP_CTRT
+			WHERE 
+				CTRT_NO = #{ctrtNo} AND BUY_RECEIPT_NO = #{buyReceiptNo}
+	</delete>
 
 </mapper>

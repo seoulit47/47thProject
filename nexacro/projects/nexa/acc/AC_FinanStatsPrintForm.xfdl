@@ -37,7 +37,7 @@
       </Dataset>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
-          <Column id="ServiceID" type="STRING" size="256"/>
+          <Column id="serviceID" type="STRING" size="256"/>
           <Column id="URL" type="STRING" size="256"/>
           <Column id="inData" type="STRING" size="256"/>
           <Column id="outData" type="STRING" size="256"/>
@@ -47,7 +47,7 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="ServiceID">findClosDataList</Col>
+            <Col id="serviceID">findClosDataList</Col>
             <Col id="URL">erp47::acc/closing/findClosDataList.do</Col>
             <Col id="inData"/>
             <Col id="outData">dlClosData=dsClosData</Col>
@@ -76,10 +76,16 @@ this.AC_FinanStatsPrintForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	 finanStatsCd = this.parent.finanStatsCd;
 	 
 	var path="http://localhost:8282/erp47/acc/closing/printFinanStats.do?";
-	//alert(path+"accPrid="+accPrid+"&finanStatsCd="+finanStatsCd);
+			//alert(path+"accPrid="+accPrid+"&finanStatsCd="+finanStatsCd);
 	this.mainDiv.web.set_url(path+"accPrid="+accPrid+"&finanStatsCd="+finanStatsCd);
-	//this.mainDiv.web.set_url("http://localhost:8282/erp47/acc/closing/printFinanStats.do?accPrid=1&finanStatsCd=A");
+			//this.mainDiv.web.set_url("http://localhost:8282/erp47/acc/closing/printFinanStats.do?accPrid=1&finanStatsCd=A");
+			//erp47::acc/closing/findClosDataList.do
+
 }
+
+
+
+
 ]]></Script>
   </Form>
 </FDL>

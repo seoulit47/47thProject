@@ -6,8 +6,6 @@ import java.util.Map;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
 
 public interface CutnArticleDAO {
-
-	
 	List<CutnArticleBean>findCutnArticle(Map<String, String>argsMap);
 	void insertCutnArticle(CutnArticleBean cutnArticleBean);
 	void updateCutnArticle(CutnArticleBean cutnArticleBean);

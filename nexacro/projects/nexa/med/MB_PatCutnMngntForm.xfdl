@@ -307,7 +307,7 @@ this.findFunc = function(){
 	  this.dsPatCutnB.copyData(this.dsPatCutn);
 	 this.dsPatCutnA.set_filterstr("cutnCategoryCd!='T'");
 	 this.dsPatCutnB.set_filterstr("cutnCategoryCd=='T'");
-	 // this.gfnService("findPatCutnHistList", false);
+	 this.gfnService("findPatCutnHistList", false);
 }
 
 // 리로드 콜백함수

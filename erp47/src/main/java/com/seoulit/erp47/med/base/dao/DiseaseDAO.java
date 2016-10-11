@@ -10,4 +10,10 @@ public interface DiseaseDAO {
 		List<DiseaseBean>findDiseaseList(Map<String,String>argsMap);
 		
 		List<DiseaseBean>findDiseaseCdList();
+		
+	    void insertDisease(DiseaseBean diseaseBean);
+
+	    void updateDisease(DiseaseBean diseaseBean);
+
+	    void deleteDisease(DiseaseBean diseaseBean);
 }

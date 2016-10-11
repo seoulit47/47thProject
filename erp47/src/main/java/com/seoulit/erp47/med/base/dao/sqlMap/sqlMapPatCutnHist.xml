@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.med.base.dao.PatCutnHistDAO">
+<select id="selectPatCutnHistList" parameterType="map" resultType="PatCutnHistBean">
+
+ SELECT
+          *
+        FROM 
+            MB_PAT_CAUTION_HIST
+        WHERE PAT_NO = #{patNo}
+        ORDER BY HIST_NO
+
+
+</select>
+<insert id="insertPatCutnHist" parameterType="PatCutnHistBean">
+        INSERT INTO
+            MB_PAT_CAUTION_HIST (
+        		PAT_NO,
+          		HIST_NO,
+          		MODIFY_LOG,
+          		AMENDER,
+          		MODIFY_DATE
+            )
+        VALUES (
+        	#{patNo},
+        	#{histNo},
+            #{modifyLog},
+            #{amender},
+            #{modifyDate}
+        )
+    </insert>
+
+
+</mapper>

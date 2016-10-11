@@ -59,11 +59,11 @@
               <Static id="subCodeStc00" taborder="25" text="지 체 일" onclick="subCodeStc_onclick" left="2.82%" top="55" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="subCodeStc02" taborder="26" text="지체비율" onclick="subCodeStc_onclick" left="2.6%" top="97" right="83.95%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Calendar id="inptDateCal" taborder="27" autoskip="true" innerdataset="dsGdsInpt" textcolorcolumn="inptDate" left="17.35%" top="10" right="57.27%" height="30" style="padding:0 0 0 0;"/>
-              <Static id="subCodeStc03" taborder="28" text="지체기준액" onclick="subCodeStc_onclick" left="55.1%" top="35" right="30.15%" height="38" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="delayGijunPayEd" taborder="29" left="71.8%" top="35" right="4.77%" height="36"/>
-              <Edit id="delayPrzAmtEd" taborder="30" left="71.58%" top="91" right="4.99%" height="36"/>
+              <Static id="subCodeStc03" taborder="28" text="지체기준액" onclick="subCodeStc_onclick" left="55.06%" top="55" right="30.2%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="delayGijunPayEd" taborder="29" left="71.76%" top="50" right="4.8%" height="36"/>
+              <Edit id="delayPrzAmtEd" taborder="30" left="71.58%" top="92" right="4.97%" height="36"/>
               <Edit id="delayDaysEd" taborder="31" left="17.35%" top="50" right="56.83%" height="36"/>
-              <Static id="subCodeStc04" taborder="32" text="지체상금" onclick="subCodeStc_onclick" left="55.1%" top="91" right="30.15%" height="38" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="subCodeStc04" taborder="32" text="지체상금" onclick="subCodeStc_onclick" left="55.06%" top="97" right="30.2%" height="30" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="Static00" taborder="33" text="일" left="43.17%" top="52" right="53.8%" height="36" style="font:10 arial;"/>
               <Static id="Static01" taborder="34" text="%" left="43.17%" top="95" right="53.8%" height="36" style="font:10 arial;"/>
               <Edit id="delayRateEd" taborder="35" left="17.35%" top="92" right="56.83%" height="36"/>
@@ -260,6 +260,17 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="searchDiv00.delayDaysEd" propid="value" datasetid="dsGdsInpt" columnid="delayDays"/>
+      <BindItem id="item1" compid="searchDiv00.delayRateEd" propid="value" datasetid="dsGdsInpt" columnid="delayRate"/>
+      <BindItem id="item2" compid="searchDiv00.delayGijunPayEd" propid="value" datasetid="dsGdsInpt" columnid="delayGijunPay"/>
+      <BindItem id="item3" compid="searchDiv00.delayPrzAmtEd" propid="value" datasetid="dsGdsInpt" columnid="delayPrzAmt"/>
+      <BindItem id="item4" compid="searchDiv.fmNmEd" propid="value" datasetid="dsCtrtInfo" columnid="ctrtGds"/>
+      <BindItem id="item5" compid="searchDiv.ctrtRespoWorkerNmEd" propid="value" datasetid="dsCtrtInfo" columnid="ctrtDiv"/>
+      <BindItem id="item6" compid="searchDiv.ctrtRespoWorkerEd" propid="value" datasetid="dsCtrtInfo" columnid="ctrtRespoWorker"/>
+      <BindItem id="item7" compid="searchDiv.ctrtSeqEd" propid="value" datasetid="dsCtrtInfo" columnid="ctrtSeq"/>
+      <BindItem id="item8" compid="searchDiv.ctrtQntEd" propid="cssclass" datasetid="dsCtrtInfo" columnid="ctrtQnt"/>
+    </Bind>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************
 *                                                                               *
 *물품검수 관리																*
@@ -375,7 +386,7 @@ this.inptCheckBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 //프린트버튼이벤트
 this.printStateBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	alert("준비중임니당");
+	alert("다음에 하죠 뭐");
 }
 
 //그리드 셀클릭 이벤트

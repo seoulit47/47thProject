@@ -2,6 +2,7 @@ package com.seoulit.erp47.log.prcs.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,7 +61,15 @@ public class PrcsReceiptController {
     public void findPrcsReceiptList(HttpServletRequest request, HttpServletResponse response) throws Exception {
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         PlatformData inData = (PlatformData) request.getAttribute("inData");
+        
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
+        
+        System.out.println("map에 뭐가 없네 ? 어이가 없네 ?");
+        for (Entry<String, String> entry : argsMap.entrySet()) {
+        	System.out.println("key : " + entry.getKey());
+        	System.out.println("val : " + entry.getValue());
+       	}
+        
         List<PrcsReceiptBean> prcsReceiptBeanList = prcsServiceFacade.findPrcsReceiptList(argsMap);
         dataSetBeanMapper.beansToDataset(outData, prcsReceiptBeanList, PrcsReceiptBean.class);
     }
@@ -70,6 +79,15 @@ public class PrcsReceiptController {
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         List<PrcsReceiptBean> prcsReceiptBeanList = dataSetBeanMapper.datasetToBeans(inData, PrcsReceiptBean.class);
+        
+        
+        for(PrcsReceiptBean bean : prcsReceiptBeanList){
+        	System.out.println("getGdsAnspNo : " + bean.getGdsAnspNo());
+        	System.out.println("getAnspHistNo : " + bean.getAnspHistNo());
+        	System.out.println("getBuyReceiptNo : " + bean.getBuyReceiptNo());
+        }
+        
+        
         prcsServiceFacade.batchPrcsReceiptProcess(prcsReceiptBeanList);
     }
 
