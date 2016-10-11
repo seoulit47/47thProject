@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HS_SalSettingForm" classname="HS_SalSettingForm" left="0" top="0" width="1256" height="772" titletext="New Form" onload="HS_SalSettingForm_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="8" right="1.43%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="급여/근태 기준일 설정" left="4.78%" top="4" right="71.18%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="Div00" taborder="2" left="2.23%" top="72" right="2.15%" height="682" style="background:#edececff;border:0 none lightsteelblue ;"/>
+        <Grid id="salstanGrid" taborder="3" binddataset="dsSalStandard" useinputpanel="false" selecttype="cell" autofittype="col" left="3.82%" top="92" right="62.98%" height="383">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="3" text="출결마감기준"/>
+                <Cell row="1" text="직종"/>
+                <Cell row="1" col="1" text="귀속월구분"/>
+                <Cell row="1" col="2" text="시작일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:jobfm"/>
+                <Cell col="1" displaytype="combo" edittype="combo" text="bind:belongMonthSect" combodataset="dsBelongMonthSect" combocodecol="value" combodatacol="value"/>
+                <Cell col="2" displaytype="normal" edittype="normal" text="bind:startDate"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addBtn" taborder="4" onclick="addBtn_onclick" cssclass="addBtn" left="30.18%" top="480" right="67.28%" height="32" style="background:@gradation URL('img::miniPlusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="addBtn"/>
+        <Button id="delBtn" taborder="5" onclick="delBtn_onclick" cssclass="delBtn" left="33.36%" top="480" right="64.09%" height="32" style="background:@gradation URL('img::miniMinusBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="delBtn"/>
+        <Static id="Static01" taborder="6" text="-  본란에서 지정된 기간에 대한 근태실적으로 " onclick="Static00_onclick" left="4.3%" top="540" right="73.81%" height="28" style="font:10 arial;"/>
+        <Static id="Static02" taborder="7" text="   급여가 계산됩니다." onclick="Static00_onclick" left="4.3%" top="564" right="73.89%" height="28" style="font:10 arial;"/>
+        <Grid id="salStanDetailGrid" taborder="8" binddataset="dsSalStandard" useinputpanel="false" selecttype="cell" autofittype="col" left="37.74%" top="92" right="2.63%" height="484">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="140"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27" band="head"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="구분"/>
+                <Cell col="1" colspan="3" text="인사급여환경설정"/>
+                <Cell row="1" col="1" text="환경요소"/>
+                <Cell row="1" col="2" text="기준"/>
+                <Cell row="1" col="3" text="기준일(월)"/>
+              </Band>
+              <Band id="body">
+                <Cell rowspan="8" text="급여계산기준"/>
+                <Cell col="1" text="입사자 급여계산"/>
+                <Cell col="2" text="월일"/>
+                <Cell col="3" displaytype="number" edittype="mask" style="align:right;" text="bind:ibsajaSalStanDay" mask="##일"/>
+                <Cell row="1" col="1" text="수급자 지급기간"/>
+                <Cell row="1" col="2"/>
+                <Cell row="1" col="3" displaytype="number" edittype="mask" style="align:right;" text="bind:pepr" mask="#개월"/>
+                <Cell row="2" col="1" text="수급자 급여계산"/>
+                <Cell row="2" col="2" text="일"/>
+                <Cell row="2" col="3" edittype="normal" style="align:right;" text="bind:pesc"/>
+                <Cell row="3" col="1" text="수습직 지급율"/>
+                <Cell row="3" col="2"/>
+                <Cell row="3" col="3" displaytype="number" edittype="mask" style="align:right;" text="bind:pepRate" mask="###%"/>
+                <Cell row="4" col="1" text="퇴사자 급여계산"/>
+                <Cell row="4" col="2" text="일"/>
+                <Cell row="4" col="3" edittype="normal" style="align:right;" text="bind:reEmpSalCal"/>
+                <Cell row="5" col="1" text="상여세액 계산기준"/>
+                <Cell row="5" col="2" text="당해년일"/>
+                <Cell row="5" col="3" edittype="normal" style="align:right;" text="bind:bonusTaxCalStan"/>
+                <Cell row="6" col="1" text="외국인 비과세율"/>
+                <Cell row="6" col="2"/>
+                <Cell row="6" col="3" edittype="normal" style="align:right;" text="bind:frnTaxFreeRate"/>
+                <Cell row="7" col="1" text="근속기간 계산기준"/>
+                <Cell row="7" col="2" text="입사일"/>
+                <Cell row="7" col="3" edittype="normal" style="align:right;" text="bind:pcscs"/>
+                <Cell row="8" rowspan="4" text="근태기준설정"/>
+                <Cell row="8" col="1" text="한달 정상일"/>
+                <Cell row="8" col="2"/>
+                <Cell row="8" col="3" displaytype="number" edittype="mask" style="align:right;" text="bind:stanDay" mask="##일"/>
+                <Cell row="9" col="1" text="한달 정상시간"/>
+                <Cell row="9" col="2"/>
+                <Cell row="9" col="3" displaytype="number" edittype="mask" style="align:right;" text="bind:stanHour" mask="###시간"/>
+                <Cell row="10" col="1" text="하루시간"/>
+                <Cell row="10" col="2"/>
+                <Cell row="10" col="3" displaytype="number" edittype="mask" style="align:right;" text="bind:hourOfOneDay" mask="##시간"/>
+                <Cell row="11" col="1" text="월일수 산정"/>
+                <Cell row="11" col="2" text="당월일"/>
+                <Cell row="11" col="3" edittype="normal" style="align:right;" text="bind:countDayOfMonth"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="batchBtn" taborder="9" cssclass="batchBtn" left="88.85%" top="584" right="3.98%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="batchBtn"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsBelongMonthSect" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">당월</Col>
+          </Row>
+          <Row>
+            <Col id="value">전월</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSalStandard" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="jobfm" type="STRING" size="256"/>
+          <Column id="belongMonthSect" type="STRING" size="256"/>
+          <Column id="startDate" type="STRING" size="256"/>
+          <Column id="ibsajaSalStanDay" type="STRING" size="256"/>
+          <Column id="pepr" type="STRING" size="256"/>
+          <Column id="pesc" type="STRING" size="256"/>
+          <Column id="pepRate" type="STRING" size="256"/>
+          <Column id="reEmpSalCal" type="STRING" size="256"/>
+          <Column id="bonusTaxCalStan" type="STRING" size="256"/>
+          <Column id="frnTaxFreeRate" type="STRING" size="256"/>
+          <Column id="pcscs" type="STRING" size="256"/>
+          <Column id="stanDay" type="STRING" size="256"/>
+          <Column id="stanHour" type="STRING" size="256"/>
+          <Column id="hourOfOneDay" type="STRING" size="256"/>
+          <Column id="countDayOfMonth" type="STRING" size="256"/>
+          <Column id="jobfmCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findSalStandardList</Col>
+            <Col id="URL">erp47::hrs/salBase/findSalStandardList.do</Col>
+            <Col id="outData">dsSalStandard=dsSalStandard</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">batchSalStanSetProcess</Col>
+            <Col id="URL">erp47::hrs/salBase/batchSalStanSetProcess.do</Col>
+            <Col id="inData">dsSalStandard=dsSalStandard:u</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 인사 급여/근태 기준일 설정 관리                  				*
+*                                                                   *
+* @Path		    급여/근태 기준일 설정      						*
+* @Description  급여/근태 기준 일수와 시간을 설정할 수 있다.	*
+* @Author		박 영 희  					                        *
+* 								                                    *
+* Created on 2016. 10.  07.                            		        *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonScripts.xjs";
+
+this.HS_SalSettingForm_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	this.gfnService("findSalStandardList", false);
+	
+	if(this.dsSalStandard.getRowCount() != 0){
+		this.addBtn.set_enable(false);
+	}
+}
+
+//출결마감기준추가
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(this.dsSalStandard.getRowCount() == 0){
+		this.dsSalStandard.addRow();
+		this.dsSalStandard.setColumn(this.salstanGrid.currentrow,"jobfm","전체");
+		this.dsSalStandard.setColumn(this.salstanGrid.currentrow,"jobfmCd","all");
+	}
+}
+
+//출결마감기준삭제
+this.delBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("출결마감기준을 삭제하시겠습니까?")){
+		this.dsSalStandard.deleteRow(this.salstanGrid.currentrow);
+		this.addBtn.set_enable(true);
+	}
+}
+
+//환경설정저장
+this.batchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(confirm("일괄처리 하시겠습니까?")){
+		this.gfnService("batchSalStanSetProcess");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

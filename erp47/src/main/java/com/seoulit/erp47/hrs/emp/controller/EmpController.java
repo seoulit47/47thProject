@@ -50,6 +50,8 @@ public class EmpController {
 
 	@RequestMapping("hrs/emp/findEmpList.do")
 	public void findEmpList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("123");
+		
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 

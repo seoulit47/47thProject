@@ -36,8 +36,7 @@ public class HosptlzTrmtCostController {
     private DataSetBeanMapper dataSetBeanMapper;
 
     @RequestMapping("won/hosptlzTrmtCost/findHosptlzTrmtCost.do")
-    public void findHosptlzTrmtCost(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+    public void findHosptlzTrmtCost(HttpServletRequest request, HttpServletResponse response) throws Exception {
         PlatformData outData;
         outData = (PlatformData) request.getAttribute("outData");
         PlatformData inData;

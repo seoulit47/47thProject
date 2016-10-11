@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="HS_PayChangePresentForm" classname="HS_PayChangePresentForm" left="0" top="0" width="1256" height="759" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Div id="Div03" taborder="0" left="0%" top="8" right="4.46%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>
+        <Static id="Static00" taborder="1" text="급/상여 변동현황" left="4.78%" top="4" right="76.35%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+        <Div id="baseDiv" taborder="2" left="1.91%" top="77" right="1.67%" height="91" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
+        <Grid id="compareGrid" taborder="3" binddataset="dsSalChange" useinputpanel="false" autofittype="col" left="1.91%" top="185" right="1.75%" height="176">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="85"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="100"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="85"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="15" text="급/상여 변동현황"/>
+                <Cell row="1" text="인원"/>
+                <Cell row="1" col="1" text="기본급"/>
+                <Cell row="1" col="2" text="과세"/>
+                <Cell row="1" col="3" text="비과세"/>
+                <Cell row="1" col="4" text="상여"/>
+                <Cell row="1" col="5" text="사업자부담"/>
+                <Cell row="1" col="6" text="국민연금"/>
+                <Cell row="1" col="7" text="건강보험"/>
+                <Cell row="1" col="8" text="고용보험"/>
+                <Cell row="1" col="9" text="장기요양보험"/>
+                <Cell row="1" col="10" text="소득세"/>
+                <Cell row="1" col="11" text="주민세"/>
+                <Cell row="1" col="12" text="지급합계"/>
+                <Cell row="1" col="13" text="공제합계"/>
+                <Cell row="1" col="14" text="차인지급액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:cnt" expr="expr:currow+1"/>
+                <Cell col="1" displaytype="number" text="bind:basicSal"/>
+                <Cell col="2" displaytype="number" text="bind:taxSum"/>
+                <Cell col="3" displaytype="number" text="bind:freeTaxSum"/>
+                <Cell col="4" displaytype="number" text="bind:bonus"/>
+                <Cell col="5" displaytype="number" text="bind:compShare"/>
+                <Cell col="6" displaytype="number" text="bind:gookmin"/>
+                <Cell col="7" displaytype="number" text="bind:gungang"/>
+                <Cell col="8" displaytype="number" text="bind:goyong"/>
+                <Cell col="9" displaytype="number" text="bind:janggi"/>
+                <Cell col="10" displaytype="number" text="bind:sodeuk"/>
+                <Cell col="11" displaytype="number" text="bind:jumin"/>
+                <Cell col="12" displaytype="number" text="bind:chainSum"/>
+                <Cell col="13" displaytype="number" expr="expr:parseInt(gookmin)+parseInt(gungang)+parseInt(goyong)+parseInt(janggi)+parseInt(sodeuk)+parseInt(jumin)"/>
+                <Cell col="14" displaytype="number" text="bind:chainSum"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="compareStc" taborder="4" text="비교연월" left="2.63%" top="128" right="88.46%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Spin id="comYearSpin" taborder="5" value="2016" onspin="yearSpin_onspin" left="12.5%" top="128" right="80.41%" height="30" style="margin:1 0 2 0;" class="yearSpin"/>
+        <Static id="yearStc00" taborder="6" text="년" left="19.9%" top="129" right="78.34%" height="28" style="border:1 none #808080ff ;color:black;font:bold 10 arial;"/>
+        <Combo id="monCombo" taborder="7" innerdataset="dsMonth" codecolumn="value" datacolumn="value" left="21.42%" top="129" right="73.09%" height="28" style="background:transparent;"/>
+        <Static id="monStc" taborder="8" text="월" left="26.99%" top="129" right="71.26%" height="28" style="border:1 none #808080ff ;color:black;font:bold 10 arial;"/>
+        <Static id="comStc" taborder="9" text="지급일" left="29.46%" top="129" right="61.86%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Edit id="compareEd" taborder="10" left="38.69%" top="129" right="52.07%" height="28"/>
+        <Static id="gijunStc" taborder="11" text="기준연월" left="2.63%" top="88" right="88.46%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Spin id="gijunYearSpin" taborder="12" value="2016" onspin="yearSpin_onspin" left="12.5%" top="88" right="80.41%" height="30" style="margin:1 0 2 0;" class="yearSpin"/>
+        <Combo id="monthCombo" taborder="13" innerdataset="dsMonth" codecolumn="value" datacolumn="value" left="21.42%" top="89" right="73.09%" height="28" style="background:transparent;"/>
+        <Static id="monthStc" taborder="14" text="월" left="26.99%" top="89" right="71.26%" height="28" style="border:1 none #808080ff ;color:black;font:bold 10 arial;"/>
+        <Static id="yearStc" taborder="15" text="년" left="19.9%" top="89" right="78.34%" height="28" style="border:1 none #808080ff ;color:black;font:bold 10 arial;"/>
+        <Static id="payStc" taborder="16" text="지급일" left="29.46%" top="89" right="61.86%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Edit id="payDayEd" taborder="17" left="38.69%" top="89" right="52.07%" height="28"/>
+        <Edit id="deptCdEd" taborder="18" left="65.61%" top="129" right="28.34%" height="28"/>
+        <Edit id="deptNmEd" taborder="19" left="75.24%" top="129" right="15.61%" height="28"/>
+        <Button id="searchChangeSalBtn" taborder="20" onclick="searchChangeSalBtn_onclick" left="90.53%" top="126" right="3.58%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchChangeSalBtn"/>
+        <Static id="deptStc" taborder="21" text="부서" left="56.29%" top="129" right="34.95%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Grid id="empGrid" taborder="22" binddataset="dsSalEmp" useinputpanel="false" autofittype="col" oncellclick="empGrid_oncellclick" left="1.91%" top="370" right="53.66%" height="374">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="20"/>
+                <Column size="50"/>
+                <Column size="45"/>
+                <Column size="50"/>
+                <Column size="50"/>
+                <Column size="50"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="사원코드"/>
+                <Cell col="2" text="사원명"/>
+                <Cell col="3" text="부서코드"/>
+                <Cell col="4" text="부서명"/>
+                <Cell col="5" text="직종"/>
+                <Cell col="6" text="직급"/>
+                <Cell col="7" text="입사일"/>
+                <Cell col="8" text="주민번호"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:empNo"/>
+                <Cell col="2" text="bind:empNm"/>
+                <Cell col="3" text="bind:deptCd"/>
+                <Cell col="4" text="bind:deptNm"/>
+                <Cell col="5" text="bind:jobcl"/>
+                <Cell col="6" text="bind:jobrk"/>
+                <Cell col="7" displaytype="date" text="bind:hireDate"/>
+                <Cell col="8" displaytype="normal" text="bind:rrn"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="6" text="인원"/>
+                <Cell col="6" colspan="3" expr="expr:dataset.getRowCount()+&quot;명&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="deducGrid" taborder="23" binddataset="dsDeduc" useinputpanel="false" autofittype="col" left="72.69%" top="430" right="2.15%" height="314">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="공제항목"/>
+                <Cell col="2" text="기준연월"/>
+                <Cell col="3" text="비교연월"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:paymDeducNm"/>
+                <Cell col="2" displaytype="number" text="bind:basicSal"/>
+                <Cell col="3" displaytype="number" text="bind:compSal"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="지급합계"/>
+                <Cell col="2" displaytype="number" expr="expr:dataset.getSum(&quot;parseInt(basicSal)&quot;)" mask="###,###,###"/>
+                <Cell col="3" displaytype="number" expr="expr:dataset.getSum(&quot;parseInt(compSal)&quot;)" mask="###,###,###"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="comStc00" taborder="24" text="기준연월" left="47.13%" top="397" right="44.19%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Static id="comStc01" taborder="25" text="비교연월" left="66.96%" top="397" right="24.28%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Grid id="paymGrid" taborder="26" binddataset="dsPaym" useinputpanel="false" autofittype="col" left="46.74%" top="430" right="27.47%" height="314">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="지급항목"/>
+                <Cell col="2" text="기준연월"/>
+                <Cell col="3" text="비교연월"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:paymDeducNm"/>
+                <Cell col="2" displaytype="number" text="bind:basicSal"/>
+                <Cell col="3" displaytype="number" text="bind:compSal"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="지급합계"/>
+                <Cell col="2" displaytype="number" expr="expr:dataset.getSum(&quot;parseInt(basicSal)&quot;)" mask="###,###,###"/>
+                <Cell col="3" displaytype="number" expr="expr:dataset.getSum(&quot;parseInt(compSal)&quot;)" mask="###,###,###"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="comStc02" taborder="27" text="차인지급액" left="47.13%" top="365" right="44.19%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
+        <Button id="payDayBtn" taborder="28" onclick="payDayBtn_onclick" cssclass="payDayBtn" left="48.01%" top="88" right="49.44%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="payDayBtn"/>
+        <Button id="compareBtn" taborder="29" onclick="compareBtn_onclick" cssclass="compareBtn" left="48.01%" top="128" right="49.44%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="compareBtn"/>
+        <Button id="searchDeptBtn" taborder="30" onclick="searchDeptBtn_onclick" cssclass="searchDeptBtn" left="71.58%" top="128" right="25.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchDeptBtn"/>
+        <MaskEdit id="appStanMaskEd" taborder="31" left="56.37%" top="396" right="34.39%" height="30"/>
+        <MaskEdit id="appCompareMaskEd" taborder="32" left="76.27%" top="396" right="14.57%" height="30"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsSalEmp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="empNm" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="deptCd" type="STRING" size="256"/>
+          <Column id="deptNm" type="STRING" size="256"/>
+          <Column id="jobcl" type="STRING" size="256"/>
+          <Column id="jobrk" type="STRING" size="256"/>
+          <Column id="rrn" type="STRING" size="256"/>
+          <Column id="hireDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDeduc" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="paymDeducNm" type="STRING" size="256"/>
+          <Column id="paymDeducDiv" type="STRING" size="256"/>
+          <Column id="basicSal" type="STRING" size="256"/>
+          <Column id="compSal" type="STRING" size="256"/>
+          <Column id="basicAap" type="STRING" size="256"/>
+          <Column id="compAap" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findSalChangeList</Col>
+            <Col id="URL">erp47::hrs/salMng/findSalChangeList.do</Col>
+            <Col id="outData">dsSalChange=dsSalChange</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findSalEmpList</Col>
+            <Col id="URL">erp47::hrs/salMng/findSalEmpList.do</Col>
+            <Col id="outData">dsSalEmp=dsSalEmp</Col>
+            <Col id="callbackFunc">salEmpCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="callbackFunc">payDeduCallbackFunc</Col>
+            <Col id="serviceID">findPayDeduList</Col>
+            <Col id="URL">erp47::hrs/salMng/findPayDeduList.do</Col>
+            <Col id="outData">dsPayDedu=dsPayDedu</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSalChange" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="basicSal" type="STRING" size="256"/>
+          <Column id="taxSum" type="STRING" size="256"/>
+          <Column id="freeTaxSum" type="STRING" size="256"/>
+          <Column id="bonus" type="STRING" size="256"/>
+          <Column id="compShare" type="STRING" size="256"/>
+          <Column id="gookmin" type="STRING" size="256"/>
+          <Column id="gungang" type="STRING" size="256"/>
+          <Column id="goyong" type="STRING" size="256"/>
+          <Column id="janggi" type="STRING" size="256"/>
+          <Column id="sodeuk" type="STRING" size="256"/>
+          <Column id="jumin" type="STRING" size="256"/>
+          <Column id="chainSum" type="STRING" size="256"/>
+          <Column id="cnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPayDedu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="paymDeducDiv" type="STRING" size="256"/>
+          <Column id="paymDeducNm" type="STRING" size="256"/>
+          <Column id="basicSal" type="STRING" size="256"/>
+          <Column id="compSal" type="STRING" size="256"/>
+          <Column id="basicAap" type="STRING" size="256"/>
+          <Column id="compAap" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPaym" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="paymDeducNm" type="STRING" size="256"/>
+          <Column id="paymDeducDiv" type="STRING" size="256"/>
+          <Column id="basicSal" type="STRING" size="256"/>
+          <Column id="compSal" type="STRING" size="256"/>
+          <Column id="basicAap" type="STRING" size="256"/>
+          <Column id="compAap" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsMonth" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="value">01</Col>
+          </Row>
+          <Row>
+            <Col id="value">02</Col>
+          </Row>
+          <Row>
+            <Col id="value">03</Col>
+          </Row>
+          <Row>
+            <Col id="value">04</Col>
+          </Row>
+          <Row>
+            <Col id="value">05</Col>
+          </Row>
+          <Row>
+            <Col id="value">06</Col>
+          </Row>
+          <Row>
+            <Col id="value">07</Col>
+          </Row>
+          <Row>
+            <Col id="value">08</Col>
+          </Row>
+          <Row>
+            <Col id="value">09</Col>
+          </Row>
+          <Row>
+            <Col id="value">10</Col>
+          </Row>
+          <Row>
+            <Col id="value">11</Col>
+          </Row>
+          <Row>
+            <Col id="value">12</Col>
+          </Row>
+          <Row>
+            <Col id="value"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/********************************************************************
+*                                                                   *
+* 인사 급/상여 변동현황 관리                           			*
+*                                                                   *
+* @Path		    급/상여 변동현황 관리      						*
+* @Description  기준급여연월과 비교급여연월의 조회조건별 		*
+				통계내역을 통해 변동사항 표시할 수 있다.		*
+* @Author		박 영 희   					                    *
+* 								                                    *
+* Created on 2016. 10.  10.                             	        *
+*								                                    *
+********************************************************************/
+
+include "scripts::commonScripts.xjs";
+include "scripts::hrsScripts.xjs";
+
+this.btnObj = '';
+
+//기준연월 지급일검색
+this.payDayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var yearMonth = this.gijunYearSpin.text + this.monthCombo.text;
+	if(this.gijunYearSpin.text == '' || this.monthCombo.text == ''){
+		alert("귀속연월 선택 후 조회하십시오.");
+	}else if(this.gijunYearSpin.text == this.comYearSpin.text && this.monthCombo.text == this.monCombo.text){
+		alert("비교할 조건이 같습니다. 변경 후 조회하십시오.");
+	}else{
+		this.hrsOpenPaydayDialog(yearMonth);
+		this.btnObj = obj.name;
+	}
+}
+
+//비교연월 지급일검색
+this.compareBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var yearMonth = this.comYearSpin.text + this.monCombo.text;
+	if(this.comYearSpin.text == '' || this.monCombo.text == ''){
+		alert("귀속연월 선택 후 조회하십시오.");
+	}else if(this.gijunYearSpin.text == this.comYearSpin.text && this.monthCombo.text == this.monCombo.text){
+		alert("비교할 조건이 같습니다. 변경 후 조회하십시오.");
+	}else{
+		this.hrsOpenPaydayDialog(yearMonth);
+		this.btnObj = obj.name;
+	}
+}
+
+//코드셋팅
+this.setCode=function(code,arr){ 
+	if(code == "GP070"){
+		this.deptCdEd.set_value(arr[0]);
+		this.deptNmEd.set_value(arr[1]);
+	}else if(this.btnObj == 'payDayBtn'){
+		this.payDayEd.set_value(arr[0]);
+	}else{
+		this.compareEd.set_value(arr[0]);
+	}
+}
+
+//부서검색
+this.searchDeptBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.gfnCodePopup("GP070");
+}
+
+//조회
+this.searchChangeSalBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsSalEmp.clear();
+	this.dsPaym.clear();
+	this.dsDeduc.clear();
+
+	var belongYm = this.gijunYearSpin.text + this.monthCombo.text;
+	var compBelongYm = this.comYearSpin.text + this.monCombo.text;
+	var paymDate = this.payDayEd.text;
+	var compPaymDate = this.compareEd.text;
+	var deptNm = this.deptNmEd.text;
+	
+	if(paymDate == '' && compPaymDate== ''){
+		alert("지급일 선택 후 조회하십시오.");		
+	}else{		
+		this.dsService.setColumn(0,4,"belongYm="+belongYm+" compBelongYm="+compBelongYm
+								+" paymDate="+paymDate+" compPaymDate="+compPaymDate+" deptNm="+deptNm);
+		this.gfnService("findSalChangeList", false);
+		this.dsService.setColumn(1,4,"belongYm="+belongYm+" paymDate="+paymDate+" deptNm="+deptNm);
+		this.gfnService("findSalEmpList", false);
+		
+		//유효하지 않은 행 삭제한다.
+		this.gfnClearInvalidData(this.dsSalChange, "compShare");
+	}
+}
+
+this.empGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var empNo = this.dsSalEmp.getColumn(this.empGrid.currentrow,"empNo");
+	var belongYm = this.gijunYearSpin.text + this.monthCombo.text;
+	var compBelongYm = this.comYearSpin.text + this.monCombo.text;
+	var paymDate = this.payDayEd.text;
+	var compPaymDate = this.compareEd.text;
+	
+	//alert(empNo+" "+belongYm+" "+compBelongYm+" "+paymDate+" "+compPaymDate);
+	
+	this.dsService.setColumn(2,4,"belongYm="+belongYm+" compBelongYm="+compBelongYm+" empNo="+empNo
+							+" paymDate="+paymDate+" compPaymDate="+compPaymDate);
+	this.gfnService("findPayDeduList");
+}
+
+this.salEmpCallbackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 1) {
+		trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+		this.gfnErrorPopup(svcID, errorMsg);
+	} else {
+		// 트랜잭션 완료
+		trace("===== " + svcID + " 트랜잭션 성공 =====\n");
+		if(this.dsSalEmp.getRowCount() == 0){
+			alert("해당 조건에 검색된 데이터가 없습니다.");	
+		}
+	}
+}
+
+//지급공제 필터걸기
+this.payDeduCallbackFunc = function(svcID, errorCode, errorMsg){
+	if (errorCode < 1) {
+		trace("[" + svcID + "] 에러코드 : " + errorCode + "\n" + errorMsg);
+		this.gfnErrorPopup(svcID, errorMsg);
+	} else {
+        this.dsPayDedu.filter("paymDeducDiv == '지급'");
+		this.dsPaym.copyData(this.dsPayDedu,true);		
+		this.dsPayDedu.filter("paymDeducDiv == '공제'");
+		this.dsDeduc.copyData(this.dsPayDedu,true);
+		
+		//총지급액
+		var sum = 0; 
+		var comSum = 0; 
+		for(var i = 0; i < this.dsPaym.getRowCount(); i++){
+			if(i<this.dsPaym.getRowCount()){
+				var s = this.dsPaym.getColumn(i,"basicSal");
+				var ss = this.dsPaym.getColumn(i,"compSal");
+				sum += parseInt(s);
+				comSum += parseInt(ss);
+			}
+		}
+		
+		//총공제액
+		var sum1 = 0; 
+		var comSum1 = 0; 
+		for(var i = 0; i < this.dsDeduc.getRowCount(); i++){
+			if(i<this.dsDeduc.getRowCount()){
+				var s = this.dsDeduc.getColumn(i,"basicSal");
+				var ss = this.dsDeduc.getColumn(i,"compSal");
+				sum1 += parseInt(s);
+				comSum1 += parseInt(ss);
+			}
+		}
+		
+		var basicSal=sum-sum1;
+		var compSal=comSum-comSum1;
+				
+		this.appStanMaskEd.set_mask("###,###");
+		this.appStanMaskEd.set_value(basicSal);
+		this.appCompareMaskEd.set_mask("###,###");
+		this.appCompareMaskEd.set_value(compSal);		
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

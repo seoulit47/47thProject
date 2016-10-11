@@ -11,7 +11,7 @@
         <Div id="baseDiv" taborder="4" left="2.24%" top="69" right="1.68%" height="51" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>
         <Spin id="yearSpin" taborder="5" value="2016" onspin="yearSpin_onspin" left="50.88%" top="80" right="42.4%" height="30" style="margin:1 0 2 0;" class="yearSpin"/>
         <Static id="yearStatic" taborder="6" text="년" left="57.68%" top="80" right="40.56%" height="28" style="border:1 none #808080ff ;color:black;font:bold 10 arial;"/>
-        <Button id="searchPayDeduBtn" taborder="7" onclick="searchPaydayBtn_onclick" cssclass="searchPayDeduBtn" left="59.76%" top="80" right="33.04%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchPayDeduBtn"/>
+        <Button id="searchPayDeduBtn" taborder="7" cssclass="searchPayDeduBtn" left="59.76%" top="80" right="33.04%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="searchPayDeduBtn" onclick="searchPayDeduBtn_onclick"/>
         <Static id="slaStc" taborder="8" text="급여구분" left="3.28%" top="80" right="87.12%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
         <Combo id="deducCombo" taborder="9" innerdataset="dsPayDeduGubun" codecolumn="value" datacolumn="value" left="31.84%" top="80" right="60.16%" height="28" style="background:transparent;"/>
         <Static id="deducStc" taborder="10" text="지급공제구분" left="21.6%" top="80" right="68.8%" height="28" style="background:antiquewhite;align:center middle;font:bold 9 Dotum;"/>
@@ -375,7 +375,7 @@ include "scripts::commonScripts.xjs";
 /***************************************************************************************************
 *                                     조회버튼 click event                                        *
 ***************************************************************************************************/
-this.searchPaydayBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+this.searchPayDeduBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
 	var salDiv = this.salCombo.text;
 	var payDeduDiv = this.deducCombo.text;	
 	var year = this.yearSpin.text;
@@ -447,15 +447,8 @@ this.setBoolean=function(code){
 *                                     payDeduGrid click event                                      *
 ***************************************************************************************************/
 this.paymDeducGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
-	if(e.keycode!=113){	
-		if(this.dsPayDedu.getColumn(e.row, "paymDeducCd") == null){
-			if(this.deducCombo.text == "지급"){
-					this.gfnCodePopup("HS001");	
-			}else if(this.deducCombo.text == "공제"){				
-				this.gfnCodePopup("HS002");
-			}
-		}
-	}
+	var paymDeducCd = this.dsPayDedu.getColumn(this.paymDeducGrid.currentrow,"paymDeducCd");
+	this.dsPayDeduSect.filter("paymDeducCd=='"+paymDeducCd+"'");
 }
 
 

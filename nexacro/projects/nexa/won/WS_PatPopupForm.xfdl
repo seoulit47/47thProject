@@ -109,7 +109,7 @@
 * @Description 	환자등록번호 조회									   	        *
 * @Author	    김진환					                                		*
 * 									                                            *
-* Created on 2016. 9.11                             		                        *
+* Created on 2016. 9.11                             		                    *
 *									                                            *
 ********************************************************************************/
 include "scripts::commonScripts.xjs";
@@ -134,6 +134,11 @@ this.patGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 	arrRtn[i++] = this.dsPat.getColumn(e.row,"patNm"); // 환자명 1 
 	arrRtn[i++] = this.dsPat.getColumn(e.row,"rrn1"); // 주민번호 앞 생년월일
 	arrRtn[i++] = this.dsPat.getColumn(e.row,"rrn2"); // 주민번호 뒷자리
+	
+	// 2016.10.11 박영희 추가(입원진료비 계산할때 가져올꺼)
+	arrRtn[i++] = this.dsPat.getColumn(e.row,"outpaReceiptNo");  //환자외래등록번호
+	arrRtn[i++] = this.dsPat.getColumn(e.row,"hosptlzReceiptNo"); //환자입원등록번호
+	
 	this.opener.setPatInfo(arrRtn);
 	this.close();
 }
