@@ -99,5 +99,6 @@ public interface EmrServiceFacade {
 	List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap);
 
 	List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap);
+	
 
 }

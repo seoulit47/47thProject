@@ -1,5 +1,6 @@
 package com.seoulit.erp47.med.base.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -121,6 +122,40 @@ EmrServiceFacade emrServiceFacade;
 			
 			List<PatCutnHistBean>patCutnHistList = emrServiceFacade.findPatCutnHistList(argsMap);
 			
-			//datasetBeanMapper.beansToDataset(outData, beanList, classType);
+			datasetBeanMapper.beansToDataset(outData, patCutnHistList, PatCutnHistBean.class);
+		}
+		
+		@RequestMapping("med/base/batchPatCutnProcess.do")
+		public void batchPatCutnProcess(HttpServletRequest request, HttpServletResponse response)throws Exception{
+			//환자 주의사항 CRUD
+			
+			PlatformData inData = (PlatformData)request.getAttribute("inData");
+			PlatformData outData = (PlatformData)request.getAttribute("outData");
+			
+			List<PatCutnBean>patCutnList=datasetBeanMapper.datasetToBeans(inData, PatCutnBean.class);
+
+			List<PatCutnHistBean>patCutnHistList=datasetBeanMapper.datasetToBeans(inData, PatCutnHistBean.class);
+		
+			Map<String,Object> patCautionMap = new HashMap<>();
+			
+			patCautionMap.put("patCutnList", patCutnList);
+			patCautionMap.put("patCutnHistList", patCutnHistList);
+			
+			emrServiceFacade.batchPatCutnProcess(patCautionMap);
+			
+			
+		}
+		
+		@RequestMapping("med/base/findAntimicrobialList.do")
+		public void findAntimicrobialList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+			
+			System.out.println("항생제 조회");
+			
+			PlatformData inData = (PlatformData)request.getAttribute("inData");
+			PlatformData outData = (PlatformData)request.getAttribute("outData");
+			
+			Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
+			
+			emrServiceFacade.findAntimicrobialList(argsMap);
 		}
 }
