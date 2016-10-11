@@ -28,7 +28,7 @@
               <Static id="subCodeStc02" taborder="68" text="구매종류" onclick="subCodeStc_onclick" left="45.67%" top="47" right="48.46%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="subCodeStc03" taborder="69" text="구매접수 담당자" onclick="subCodeStc_onclick" left="60.4%" top="47" right="30.85%" height="30" style="background:aquamarine;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Edit id="prcsReResWorkerEd" taborder="70" left="69.85%" top="47" right="21.79%" height="30"/>
-              <Grid id="prcsReceiptGrid" taborder="71" binddataset="gdsPrcsReceipt" autoenter="select" useinputpanel="false" autofittype="col" left="29.45%" top="93" right="0.6%" height="279">
+              <Grid id="prcsReceiptGrid" taborder="71" binddataset="dsPrcsReceipt" autoenter="select" useinputpanel="false" autofittype="col" left="29.45%" top="93" right="0.6%" height="279">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -229,12 +229,12 @@
           <Row>
             <Col id="serviceID">batchPrcsReceiptProcess</Col>
             <Col id="URL">erp47::log/prcs/batchPrcsReceiptProcess.do</Col>
-            <Col id="inData">dsPrcsReceipt=gdsPrcsReceipt:u</Col>
+            <Col id="inData">dsPrcsReceipt=dsPrcsReceipt:u</Col>
           </Row>
           <Row>
             <Col id="serviceID">findPrcsReceiptList</Col>
             <Col id="URL">erp47::log/prcs/findPrcsReceiptList.do</Col>
-            <Col id="outData">gdsPrcsReceipt=dsPrcsReceipt</Col>
+            <Col id="outData">dsPrcsReceipt=dsPrcsReceipt</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -332,7 +332,7 @@ this.LP_PrcsReceiptMngntForm_onload = function(obj:Form, e:nexacro.LoadEventInfo
 ***************************************************************************************************/
 this.anspListBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	application.gdsPrcsReceipt.clear();
+	this.dsPrcsReceipt.clear();
 	this.dsAnspHist.clear();
 	var prcsStartCal = this.formDiv.prcsStartCal.value;
 	var prcsEndCal = this.formDiv.prcsEndCal.value;
@@ -349,7 +349,7 @@ this.anspListBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 
 this.anspGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 {
-	application.gdsPrcsReceipt.clear();
+	this.dsPrcsReceipt.clear();
 	var gdsAnspNo = this.dsAnsp.getColumn(this.formDiv.anspGrid.currentrow, "gdsAnspNo");
 	var setGdsAnspNo = "GDS_ANSP_NO='"+gdsAnspNo+"'";
 
@@ -380,9 +380,10 @@ this.Today = function ()
     return sToday;
 }
 
+
 this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	application.gdsPrcsReceipt.addRow();
+	this.dsPrcsReceipt.addRow();
 	
 	var receiptNo = this.formDiv.prcsReceiptGrid.currentrow+1;
 	var no = this.formDiv.prcsReceiptGrid.currentrow;
@@ -402,17 +403,18 @@ this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		
 	var setGdsCd = this.dsAnspHist.getColumn(anspHistNo, "gdsCd");
 	var setGdsNm = this.dsAnspHist.getColumn(anspHistNo, "gdsNm");
+	
 	if(receiptNo < 10){
-		application.gdsPrcsReceipt.setColumn(no, "buyReceiptNo", setDownNo);
+		this.dsPrcsReceipt.setColumn(no, "buyReceiptNo", setDownNo);
 	}else{
-		application.gdsPrcsReceipt.setColumn(no, "buyReceiptNo", setUpNo);
+		this.dsPrcsReceipt.setColumn(no, "buyReceiptNo", setUpNo);
 	}
 	
-	application.gdsPrcsReceipt.setColumn(no, "buyReceiptDate", this.Today());
-	application.gdsPrcsReceipt.setColumn(no, "gdsAnspNo", setGdsAnspNo);
-	application.gdsPrcsReceipt.setColumn(no, "anspHistNo", setGdsAnspHistNo);
-	application.gdsPrcsReceipt.setColumn(no, "gdsCd", setGdsCd);
-	application.gdsPrcsReceipt.setColumn(no, "gdsNm", setGdsNm);
+	this.dsPrcsReceipt.setColumn(no, "buyReceiptDate", this.Today());
+	this.dsPrcsReceipt.setColumn(no, "gdsAnspNo", setGdsAnspNo);
+	this.dsPrcsReceipt.setColumn(no, "anspHistNo", setGdsAnspHistNo);
+	this.dsPrcsReceipt.setColumn(no, "gdsCd", setGdsCd);
+	this.dsPrcsReceipt.setColumn(no, "gdsNm", setGdsNm);
 }
 
 this.prcsReceiptNoCal_OnChanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
@@ -427,7 +429,7 @@ this.prcsReceiptNoCal_OnChanged = function(obj:Calendar, e:nexacro.ChangeEventIn
 ***************************************************************************************************/
 this.DelBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	application.gdsPrcsReceipt.deleteRow(this.formDiv.prcsReceiptGrid.currentrow);
+	this.dsPrcsReceipt.deleteRow(this.formDiv.prcsReceiptGrid.currentrow);
 }
 
 /***************************************************************************************************
@@ -449,7 +451,7 @@ this.formDiv_anspHistGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEv
  	var anspHistNo = this.dsAnspHist.getColumn(histCount, "anspHistNo");
  	var setGdsAnsp = "gdsAnspNo='"+gdsAnspNo+"' "+"anspHistNo='"+anspHistNo+"'";
  	this.dsService.setColumn(3, "argument", setGdsAnsp);
- 	alert(this.dsService.getColumn(3, "argument"));
+ 	//alert(this.dsService.getColumn(3, "argument"));
 	this.gfnService("findPrcsReceiptList");	
 }
 

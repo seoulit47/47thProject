@@ -16,6 +16,7 @@ import com.seoulit.erp47.med.base.service.EmrServiceFacade;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
 import com.seoulit.erp47.med.base.to.PatCutnBean;
+import com.seoulit.erp47.med.base.to.PatCutnHistBean;
 import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 
 
@@ -105,7 +106,21 @@ EmrServiceFacade emrServiceFacade;
 			
 			datasetBeanMapper.beansToDataset(outData, patCutnList, PatCutnBean.class);
 			
-			// 10//11일 환자주의사항정보관리 마무리 할게요 
+			
 		}
 		
+		@RequestMapping("med/base/findPatCutnHistList.do")
+		public void findPatCutnHistList(HttpServletRequest request, HttpServletResponse response)throws Exception{
+			//환자 주의사항 수정내역 조회
+			System.out.println("med / findPatCutnHistList 매서드 입니다");
+			
+			PlatformData inData = (PlatformData)request.getAttribute("inData");
+			PlatformData outData = (PlatformData)request.getAttribute("outData");
+			
+			Map<String,String>argsMap = datasetBeanMapper.variablesToMap(inData);
+			
+			List<PatCutnHistBean>patCutnHistList = emrServiceFacade.findPatCutnHistList(argsMap);
+			
+			//datasetBeanMapper.beansToDataset(outData, beanList, classType);
+		}
 }

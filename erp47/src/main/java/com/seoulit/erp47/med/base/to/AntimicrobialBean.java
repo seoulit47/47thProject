@@ -10,17 +10,17 @@ import lombok.ToString;
 /**
  * @Package  com.seoulit.erp47.med.base.to
  * @Class    CntnArticleBean.java
- * @Create   2016. 10. 03.
- * @Author   mickey
- * @Description 환자 주의사항 항목 TO
+ * @Create   
+ * @Author   김성호
+ * @Description 항균제 TO
  *
  * @LastUpdated 
  */
 @Getter
 @Setter
 @ToString
-@Dataset(name = "dsSpeciesVirus")
-public class SpeciesVirusBean extends BaseBean {
-    private String bacgencd,	//항목코드
-    			bacgennm;		//항목명
+@Dataset(name = "dsAntimicrobial")
+public class AntimicrobialBean extends BaseBean {
+    private String anticd,	//항목코드
+    			antinm;		//항목명
 }

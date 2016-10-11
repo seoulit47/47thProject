@@ -14,26 +14,24 @@ import com.seoulit.erp47.med.base.dao.PrscDAO;
 import com.seoulit.erp47.med.base.to.BaseExamBean;
 import com.seoulit.erp47.med.base.to.DiseaseBean;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
+import com.seoulit.erp47.med.base.to.PatientPrscBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
+import com.seoulit.erp47.won.outPatMgt.dao.ReceiptInfoDAO;
 
 @Component
 public class EmrApplicationServiceImpl implements EmrApplicationService {
 
-	/*@Autowired
+	@Autowired
     private ReceiptInfoDAO receiptInfoDAO;
-   
-   
-   
-   */
     @Autowired
     private PrscDAO prscDAO;
     @Autowired
     private DiseaseDAO diseaseDAO;
     @Autowired
     private PatientDsDAO patientDsDAO;
-    /*@Autowired
-    private PatientPrscDAO patientPrscDAO;*/
+    @Autowired
+    private PatientPrscDAO patientPrscDAO;
     @Autowired
     private BaseExamDAO baseExamDAO;
     
@@ -119,6 +117,38 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
 		}
 		
 	}
+	//------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------
+	@Override
+	public List<PatientDsBean> findPatientDsList(Map<String, String> argsMap) {
+		return patientDsDAO.selectPatientDsList(argsMap);
+	}
 
+	@Override
+	public void batchDiseaseProcess(List<DiseaseBean> diseaseList) {
+		  for (DiseaseBean diseaseBean : diseaseList) {
+	            switch (diseaseBean.getStatus()) {
+	            case "inserted":
+	                diseaseDAO.insertDisease(diseaseBean);
+	                break;
+	            case "updated":
+	                diseaseDAO.updateDisease(diseaseBean);
+	                break;
+	            case "deleted":
+	                diseaseDAO.deleteDisease(diseaseBean);
+	                break;
+	            }
+	        }
+	}
 
+	@Override
+	public List<PatientPrscBean> findPatientPrscList(Map<String, String> argsMap) {
+		return patientPrscDAO.selectPatientPrscList(argsMap);
+	}
+
+	@Override
+	public List<PatientPrscBean> findDrugPrscList(Map<String, String> argsMap) {
+		return patientPrscDAO.selectDrugPrscList(argsMap);
+	}
 }

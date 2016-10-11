@@ -8,10 +8,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.med.base.to
+ * @Package  com.seoulit.erp47.med.base.to
  * @Class    PrscBean.java
  * @Create   2016. 6. 18.
- * @Author   godseop
+ * @Author   
  * @Description 진단서 TO
  *
  * @LastUpdated 

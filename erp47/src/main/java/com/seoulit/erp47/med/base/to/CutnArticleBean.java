@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @Package  com.seoul.his.med.base.to
+ * @Package  com.seoulit.erp47.med.base.to
  * @Class    CntnArticleBean.java
  * @Create   2016. 10. 05.
  * @Author   
