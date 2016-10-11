@@ -10,6 +10,8 @@ import com.seoulit.erp47.med.base.dao.TrmtSchdDAO;
 import com.seoulit.erp47.med.base.to.ApplyHistoryBean;
 import com.seoulit.erp47.med.base.to.CalendarBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdBean;
+import com.seoulit.erp47.med.base.to.TrmtSchdTypeBean;
+import com.seoulit.erp47.med.base.to.TrmtSchdTypeDetailBean;
 
 /**
  * @Package  com.seoulit.erp47.med.base.applicationService
@@ -42,5 +44,17 @@ public class TrmtSchdApplicationServiceImpl implements TrmtSchdApplicationServic
 	@Override
 	public List<ApplyHistoryBean> findApplyHistoryList(String empNo) {
 		return trmtSchdDAO.selectApplyHistoryList(empNo);
+	}
+
+	@Override
+	public void batchTrmtTypeProcess(List<TrmtSchdTypeBean> trmtSchdTypeList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void batchTrmtTypeDetailProcess(List<TrmtSchdTypeDetailBean> trmtSchdTypeDetailList) {
+		// TODO Auto-generated method stub
+		
 	}
 }

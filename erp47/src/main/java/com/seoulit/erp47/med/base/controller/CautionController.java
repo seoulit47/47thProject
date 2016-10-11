@@ -106,7 +106,7 @@ EmrServiceFacade emrServiceFacade;
 			
 			datasetBeanMapper.beansToDataset(outData, patCutnList, PatCutnBean.class);
 			
-			// 10//11일 환자주의사항정보관리 마무리 할게요 
+			
 		}
 		
 		@RequestMapping("med/base/findPatCutnHistList.do")

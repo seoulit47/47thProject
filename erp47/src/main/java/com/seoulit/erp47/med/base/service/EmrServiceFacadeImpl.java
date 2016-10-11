@@ -52,16 +52,10 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	@Autowired
 	private CautionApplicationSerevice cautionApplicationService;
     @Autowired
-    private EmrApplicationService emrApplicationService;
-    /*@Autowired
     private TrmtSchdTypeApplicationService trmtSchdTypeApplicationService;
     @Autowired
-    private TrmtSchdApplicationService trmtSchdApplicationService;*/
-    @Autowired
-    private CautionApplicationSerevice cautionApplicationService;
     private TrmtSchdApplicationService trmtSchdApplicationService;
-	
-	
+
 	@Override
 	public List<PrscBean> findPrscList(Map<String, String> argsMap) {
 		return emrApplicationService.findPrscList(argsMap);
@@ -70,28 +64,15 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	@Override
 	public List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap) {
 		return emrApplicationService.findPrscDtlList(argsMap);
+
 	}
-
-    @Override
-    public List<PrscBean> findPrscList(Map<String, String> argsMap) {
-        return emrApplicationService.findPrscList(argsMap);
-    }
-
-    @Override
-    public List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap) {
-        return emrApplicationService.findPrscDtlList(argsMap);
-    }
-
 	@Override
-	public List<OrdBean> findOrdList(Map<String, String> argsMap) {
-		
-
+	public List<OrdBean> findOrdList(Map<String, String> argsMap){
 		return cautionApplicationService.findOrdList(argsMap);
 	}
 
 	@Override
-	public List<SpeciesVirusBean> findVirusList(Map<String, String> argsMap) {
-		// TODO Auto-generated method stub
+	public List<SpeciesVirusBean> findVirusList(Map<String,String> argsMap){
 		return cautionApplicationService.findVirusList(argsMap);
 	}
 
@@ -143,7 +124,8 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	public void batchCutnArticleProcess(List<CutnArticleBean> articleList) {
 		// TODO Auto-generated method stub
 		cautionApplicationService.batchCutnArticleProcess(articleList);
-		
+	}
+	@Override
 	public List<PatientDsBean> findPatientDsList(Map<String, String> argsMap) {
 		return emrApplicationService.findPatientDsList(argsMap);
 	}
@@ -200,22 +182,18 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 		return emrApplicationService.findDrugPrscList(argsMap);
 	}
 
-	@Override // 주의사항 항목 BATCH
-	public void batchCutnArticleProcess(List<CutnArticleBean> cutnArticleList) {
-		cautionApplicationService.batchCutnArticleProcess(cutnArticleList);
-	}
 
 	@Override // 주의사항 관련검사 조회
 	public List<CutnRltnExmntBean> findCutnRltnExmntList(Map<String, String> argsMap) {
 		return cautionApplicationService.findCutnRltnExmntList(argsMap);
 	}
 
-	@Override // 주의사항 관련검사 BATCH
+	@Override 
 	public void batchCutnRltnExmntProcess(List<CutnRltnExmntBean> cutnRltnExmntList) {
 		cautionApplicationService.batchCutnRltnExmntProcess(cutnRltnExmntList);
 	}
 
-	@Override // 환자 주의사항 조회
+	@Override
 	public List<PatCutnBean> findPatCutnList(Map<String, String> argsMap) {
 		// TODO Auto-generated method stub
 		// 환자 주의사항 조회
