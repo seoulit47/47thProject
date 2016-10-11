@@ -36,8 +36,6 @@ public interface EmrApplicationService {
 
 	List<PatientPrscBean> findPatientPrscList(Map<String, String> argsMap);
 
-	PrscDtlBean findPrscDtl(Map<String, String> argsMap);
-
 	List<PatientPrscBean> findDrugPrscList(Map<String, String> argsMap);
 
 }

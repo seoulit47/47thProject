@@ -18,20 +18,16 @@ public interface CautionApplicationSerevice {
 		List<SpeciesVirusBean>findVirusList(Map<String,String>argsMap);
 		List<CutnArticleBean>findCutnArticle(Map<String,String>argsMap);
 
-
-		
-		
 		//----------------------------------------------------------------------------
 		//----------------------------------------------------------------------------
 		//----------------------------------------------------------------------------
 		
-	    List<CutnArticleBean> findCutnArticleList(Map<String, String> argsMap);		//주의사항 항목 조회
-	    void batchCutnArticleProcess(List<CutnArticleBean> cutnArticleList);		//주의사항 항목 BATCH  
-	    List<CutnRltnExmntBean> findCutnRltnExmntList(Map<String, String> argsMap);	//주의사항 관련검사 조회   
-	    void batchCutnRltnExmntProcess(List<CutnRltnExmntBean> cutnRltnExmntList);  // 주의사항 관련검사 BATCH
-	    List<PatCutnBean> findPatCutnList(Map<String, String> argsMap);				//환자 주의사항 조회
-	    List<PatCutnHistBean> findPatCutnHistList(Map<String, String> argsMap);		//환자 주의사항 수정내역 조회             
-	    void batchPatCutnProcess(Map<String, Object> patCautionMap);                // 환자 주의사항, 수정내역 BATCH  
+	    void batchCutnArticleProcess(List<CutnArticleBean> cutnArticleList);		  
+	    List<CutnRltnExmntBean> findCutnRltnExmntList(Map<String, String> argsMap);	   
+	    void batchCutnRltnExmntProcess(List<CutnRltnExmntBean> cutnRltnExmntList);  
+	    List<PatCutnBean> findPatCutnList(Map<String, String> argsMap);				
+	    List<PatCutnHistBean> findPatCutnHistList(Map<String, String> argsMap);             
+	    void batchPatCutnProcess(Map<String, Object> patCautionMap);  
 	    List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap);
 	    List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap);
 }

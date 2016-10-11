@@ -52,13 +52,8 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	@Autowired
 	private CautionApplicationSerevice cautionApplicationService;
     @Autowired
-    private EmrApplicationService emrApplicationService;
-    /*@Autowired
     private TrmtSchdTypeApplicationService trmtSchdTypeApplicationService;
     @Autowired
-    private TrmtSchdApplicationService trmtSchdApplicationService;*/
-    @Autowired
-    private CautionApplicationSerevice cautionApplicationService;
     private TrmtSchdApplicationService trmtSchdApplicationService;
 	
 	
@@ -71,16 +66,6 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	public List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap) {
 		return emrApplicationService.findPrscDtlList(argsMap);
 	}
-
-    @Override
-    public List<PrscBean> findPrscList(Map<String, String> argsMap) {
-        return emrApplicationService.findPrscList(argsMap);
-    }
-
-    @Override
-    public List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap) {
-        return emrApplicationService.findPrscDtlList(argsMap);
-    }
 
 	@Override
 	public List<OrdBean> findOrdList(Map<String, String> argsMap) {
@@ -192,18 +177,8 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	}
 
 	@Override
-	public PrscDtlBean findPrscDtl(Map<String, String> argsMap) {
-		return emrApplicationService.findPrscDtl(argsMap);
-	}
-
-	@Override
 	public List<PatientPrscBean> findDrugPrscList(Map<String, String> argsMap) {
 		return emrApplicationService.findDrugPrscList(argsMap);
-	}
-
-	@Override // 주의사항 항목 조회
-	public List<CutnArticleBean> findCutnArticleList(Map<String, String> argsMap) {
-		return cautionApplicationService.findCutnArticleList(argsMap);
 	}
 
 	@Override // 주의사항 항목 BATCH

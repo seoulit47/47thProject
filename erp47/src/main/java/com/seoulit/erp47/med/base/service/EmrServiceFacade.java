@@ -30,7 +30,6 @@ public interface EmrServiceFacade {
     List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap);
     
     List<OrdBean>findOrdList(Map<String,String>argsMap);
-	List<PrscBean> findPrscList(Map<String, String> argsMap);
 
     List<SpeciesVirusBean>findVirusList(Map<String,String>argsMap);
     
@@ -45,23 +44,7 @@ public interface EmrServiceFacade {
     public void batchEmrProcess(Map<String,Object>emrMap);
     
     List<CutnArticleBean>findCutnArticle(Map<String,String>argsMap);
-	List<PrscDtlBean> findPrscDtlList(Map<String, String> argsMap);
 
-	List<OrdBean> findOrdList(Map<String, String> argsMap);
-
-	List<SpeciesVirusBean> findVirusList(Map<String, String> argsMap);
-
-	List<DiseaseBean> findDiseaseList(Map<String, String> argsMap);
-
-	List<DiseaseBean> findDiseaseCdList();
-
-	List<PatientDsBean> findPatientDsPrscList(Map<String, String> args);
-
-	List<BaseExamBean> findBaseExamList(Map<String, String> argsMap);
-
-	public void batchEmrProcess(Map<String, Object> emrMap);
-
-	List<CutnArticleBean> findCutnArticle(Map<String, String> argsMap);
 
 	// ---------------------------------------------------------------
 	// ---------------------------------------------------------------
@@ -86,13 +69,7 @@ public interface EmrServiceFacade {
 
 	List<PatientPrscBean> findPatientPrscList(Map<String, String> argsMap);
 
-	PrscDtlBean findPrscDtl(Map<String, String> argsMap);
-
 	List<PatientPrscBean> findDrugPrscList(Map<String, String> argsMap);
-
-	List<CutnArticleBean> findCutnArticleList(Map<String, String> argsMap); // 주의사항
-																			// 항목
-																			// 조회
 
 	void batchCutnArticleProcess(List<CutnArticleBean> cutnArticleList); // 주의사항
 																			// 항목
