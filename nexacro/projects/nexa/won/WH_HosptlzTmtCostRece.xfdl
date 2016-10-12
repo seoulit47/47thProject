@@ -168,7 +168,7 @@
               <Edit id="patTypeCdEdt" taborder="93" readonly="true" left="23.78%" top="201" right="44.13%" height="28" style="align:left middle;" class="AreaEdt"/>
               <Static id="Static17" taborder="94" text="메모" left="2.29%" top="393" right="77.08%" height="28" style="align:center;" class="AreaStc"/>
               <TextArea id="noteArea" taborder="95" readonly="true" left="23.78%" top="393" right="1.72%" height="71" style="align:left;" class="AreaArea"/>
-              <Static id="titleEdt05" taborder="96" text="-" left="50.43%" top="73" right="44.13%" height="26" class="TStc"/>
+              <Static id="titleEdt05" taborder="96" text="-" left="52.72%" top="73" right="41.83%" height="26" class="TStc"/>
               <Edit id="rrn1Ed" taborder="97" readonly="true" left="23.78%" top="73" right="51%" height="28" style="align:left middle;" class="AreaEdt"/>
               <Edit id="rrn2Ed" taborder="98" password="true" readonly="true" left="57.59%" top="73" right="17.48%" height="28" style="align:center middle;" class="AreaEdt"/>
               <Static id="Static00" taborder="99" text="병동" left="2.29%" top="265" right="77.08%" height="28" style="align:center;" class="AreaStc"/>
@@ -253,7 +253,7 @@
             <Col id="serviceID">findHosptlzPatRece</Col>
             <Col id="URL">erp47::won/hosptlzTrmtCost/findHosptlzPatRece.do</Col>
             <Col id="outData">dsHosptlzPatRece=dsHosptlzPatRece</Col>
-            <Col id="callbackFunc"></Col>
+            <Col id="callbackFunc"/>
           </Row>
           <Row>
             <Col id="serviceID">callHosptlzPatRece</Col>
@@ -448,7 +448,7 @@ this.matchCdNm = function(){
 
 
 /***************************************************************************************************
-*                                 환자검색 Button click event                                     *
+*                                 환자번호 검색 Button click event                               *
 ***************************************************************************************************/
 this.Div01_patNoBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
