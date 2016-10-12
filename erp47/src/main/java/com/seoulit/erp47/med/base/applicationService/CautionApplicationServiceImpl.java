@@ -12,6 +12,7 @@ import com.seoulit.erp47.med.base.dao.CutnRltnExmntDAO;
 import com.seoulit.erp47.med.base.dao.OrdDAO;
 import com.seoulit.erp47.med.base.dao.PatCutnDAO;
 import com.seoulit.erp47.med.base.dao.PatCutnHistDAO;
+import com.seoulit.erp47.med.base.dao.SpeciesVirusDAO;
 import com.seoulit.erp47.med.base.dao.VirusDAO;
 import com.seoulit.erp47.med.base.to.AntimicrobialBean;
 import com.seoulit.erp47.med.base.to.CutnArticleBean;
@@ -19,6 +20,7 @@ import com.seoulit.erp47.med.base.to.CutnRltnExmntBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
 import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatCutnHistBean;
+import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 import com.seoulit.erp47.med.base.to.VirusBean;
 
 @Component
@@ -39,6 +41,9 @@ public class CautionApplicationServiceImpl implements CautionApplicationSerevice
     private PatCutnHistDAO patCutnHistDAO;
     @Autowired
     private AntimicrobialDAO antimicrobialDAO;
+    
+    @Autowired
+    private SpeciesVirusDAO speciesVirusDAO;
 	
 	@Override
 	public List<OrdBean> findOrdList(Map<String, String> argsMap) {
@@ -149,5 +154,12 @@ public class CautionApplicationServiceImpl implements CautionApplicationSerevice
     public List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap){
     	return antimicrobialDAO.selectAntimicrobialList(argsMap);
     }
+
+
+	@Override
+	public List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return speciesVirusDAO.selectSpeciesVirusList(argsMap);
+	}
 
 }

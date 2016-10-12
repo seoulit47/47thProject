@@ -24,6 +24,7 @@ import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PatientPrscBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
+import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdTypeBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdTypeDetailBean;
@@ -39,7 +40,6 @@ import com.seoulit.erp47.med.base.to.VirusBean;
  * @Create
  * @Author
  * @Description 진료처방 공통 EMR 서비스퍼사드
- *
  * @LastUpdated
  */
 
@@ -216,6 +216,12 @@ public class EmrServiceFacadeImpl implements EmrServiceFacade {
 	@Override
 	public List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap) {
 		return cautionApplicationService.findAntimicrobialList(argsMap);
+	}
+
+	@Override
+	public List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap) {
+		// TODO Auto-generated method stub
+		return cautionApplicationService.findSpeciesVirusList(argsMap);
 	}
 
 }
