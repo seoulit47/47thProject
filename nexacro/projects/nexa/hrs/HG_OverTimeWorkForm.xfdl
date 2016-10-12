@@ -178,7 +178,7 @@ this.HG_OverTimeWorkForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 	this.mainDiv.empNoEd.set_value(empNo);
 	this.mainDiv.empNmEd.set_value(empNm);
 	
-	if(pms == "admin" && deptNm == "인사팀"){ㅠ
+	if(pms == "admin" && deptNm == "인사팀"){
 	
 		this.mainDiv.apBtn.set_enable(true);
 		this.mainDiv.delOverTimeBtn.set_enable(true);
@@ -270,12 +270,12 @@ this.mainDiv_addOverTimeBtn_onclick = function(obj:Button,  e:nexacro.ClickEvent
 		empNm = this.mainDiv.empNmEd.value;
 	
 	}else{
-		if(this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overtimeNo") == undefined){
+		/*if(this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overtimeNo") == undefined){
 		
 			alert('신청할 시간외근무 정보가 존재하지 않습니다.');
 			return;
 		
-		}else if(this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overStatus") == "신청"){
+		}else */if(this.dsOverTimeWork.getColumn(this.dsOverTimeWork.rowposition,"overStatus") == "신청"){
 		
 			alert('승인되지 않은 시간외 근무 정보는 재신청 할 수 없습니다.');
 			return;

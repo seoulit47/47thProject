@@ -3,14 +3,20 @@
 <mapper namespace="com.seoulit.erp47.hrs.guntae.dao.GuntaeDAO">
 
 	<select id="callDayGuntae" statementType="CALLABLE" parameterType="map">
-
-		{ CALL PC_HG_DAYGUNTAE_CREATE(
+		
+		{ CALL PC_HG_DAY_MON_CALL(
+			   #{empNo, mode=IN, jdbcType=VARCHAR, javaType=string},
+			   #{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string},
+			   #{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
+			)
+		}
+		<!-- { CALL PC_HG_DAYGUNTAE_CREATE(
                #{belongDay, mode=IN, jdbcType=VARCHAR, javaType=string},
                #{empNo, mode=IN, jdbcType=VARCHAR, javaType=string},
 			   #{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string},
 			   #{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
 			)
-		}
+		} -->
 	</select>
 
 
