@@ -67,8 +67,8 @@ include "scripts::commonScripts.xjs";
 
 this.MB_VirusCdPopupForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
-	//var speciesVirusCd = "bacgencd="+this.parent.speciesVirus;
-	//this.dsService.setColumn(0, "argument", speciesVirusCd);
+	var speciesVirusCd = "bacgencd="+this.parent.speciesVirus;
+	this.dsService.setColumn(0, "argument", speciesVirusCd);
 	this.gfnService("findVirusList", false);
 }
 

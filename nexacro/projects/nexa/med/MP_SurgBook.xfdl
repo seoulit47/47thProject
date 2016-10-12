@@ -1,0 +1,1184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="MP_SurgBook" classname="MP_SurgBook" left="0" top="0" width="1250" height="768" titletext="New Form" onload="MP_SurgBook_onload">
+    <Layouts>
+      <Layout>
+        <Div id="calTitleDiv" taborder="1" left="1.92%" top="53" right="32.8%" height="26" style="background:transparent URL('img::formBar.png');border:0 none #808080ff ;color:black;">
+          <Layouts>
+            <Layout>
+              <Spin id="yearSpin" taborder="5" value="2016" onspin="calTitleDiv_yearSpin_onspin" left="38.48%" top="3" right="54.29%" height="21"/>
+              <Spin id="monthSpin" taborder="6" value="4" onspin="calTitleDiv_monthSpin_onspin" left="52.45%" top="3" right="42.03%" height="21"/>
+              <Static id="titleEdit" taborder="7" text="년" onclick="titleEdt_onclick" cssclass="TStc" left="46.57%" top="7" right="51.47%" height="13" style="color:whitesmoke;font:bold 11 돋움;" class="TStc"/>
+              <Static id="titleEdit00" taborder="8" text="월" onclick="titleEdt_onclick" cssclass="TStc" left="58.82%" top="7" right="39.22%" height="13" style="color:whitesmoke;font:bold 11 돋움;" class="TStc"/>
+              <Calendar id="todayCal" taborder="9" left="85.42%" top="2" right="0.74%" height="22"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="2" text=" WednesDay" left="30%" top="83" right="60.88%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
+        <Div id="Div01" taborder="3" text=" SunDay" left="1.92%" top="83" right="88.96%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
+        <Div id="Div02" taborder="4" text=" MonDay" left="11.28%" top="83" right="79.6%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
+        <Div id="Div03" taborder="5" text=" TuesDay" left="20.64%" top="83" right="70.24%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
+        <Div id="Div04" taborder="6" text=" ThursDay" left="39.36%" top="83" right="51.52%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
+        <Div id="Div05" taborder="7" text=" Friday" left="48.72%" top="83" right="42.16%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
+        <Div id="Div06" taborder="8" text=" SaturDay" left="58.08%" top="83" right="32.8%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
+        <Div id="cal00" taborder="9" text="Test" left="1.92%" top="119" right="88.96%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="6" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="7" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="8" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="9" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="10" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="background:@gradation;bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="11" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal01" taborder="10" text="Test" left="11.28%" top="119" right="79.6%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="12" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="13" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="14" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="15" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="16" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="17" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal02" taborder="11" text="Test" left="20.64%" top="119" right="70.24%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="18" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="19" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="20" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="21" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="22" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="23" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal03" taborder="12" text="Test" left="30%" top="119" right="60.88%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal04" taborder="13" text="Test" left="39.36%" top="119" right="51.52%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal05" taborder="14" text="Test" left="48.72%" top="119" right="42.16%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal06" taborder="15" text="Test" left="58.08%" top="119" right="32.8%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal07" taborder="16" text="Test" left="1.92%" top="221" right="88.96%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="12" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="13" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="14" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="15" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="16" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="17" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal08" taborder="17" text="Test" left="11.28%" top="221" right="79.6%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="18" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="19" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="20" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="21" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="22" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="23" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal09" taborder="18" text="Test" left="20.64%" top="221" right="70.24%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal10" taborder="19" text="Test" left="30%" top="221" right="60.88%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal11" taborder="20" text="Test" left="39.36%" top="221" right="51.52%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal12" taborder="21" text="Test" left="48.72%" top="221" right="42.16%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal13" taborder="22" text="Test" left="58.08%" top="221" right="32.8%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal14" taborder="23" text="Test" left="1.92%" top="323" right="88.96%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="12" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="13" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="14" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="15" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="16" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="17" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal15" taborder="24" text="Test" left="11.28%" top="323" right="79.6%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="18" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="19" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="20" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="21" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="22" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="23" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal16" taborder="25" text="Test" left="20.64%" top="323" right="70.24%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal17" taborder="26" text="Test" left="30%" top="323" right="60.88%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal18" taborder="27" text="Test" left="39.36%" top="323" right="51.52%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal19" taborder="28" text="Test" left="48.72%" top="323" right="42.16%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal20" taborder="29" text="Test" left="58.08%" top="323" right="32.8%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal21" taborder="30" text="Test" left="1.92%" top="424" right="88.96%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="12" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="13" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="14" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="15" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="16" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="17" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal22" taborder="31" text="Test" left="11.28%" top="424" right="79.6%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="18" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="19" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="20" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="21" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="22" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="23" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal23" taborder="32" text="Test" left="20.64%" top="424" right="70.24%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal24" taborder="33" text="Test" left="30%" top="424" right="60.88%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal25" taborder="34" text="Test" left="39.36%" top="424" right="51.52%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal26" taborder="35" text="Test" left="48.72%" top="424" right="42.16%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal27" taborder="36" text="Test" left="58.08%" top="424" right="32.8%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal28" taborder="37" text="Test" left="1.92%" top="526" right="88.96%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="12" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="13" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="14" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="15" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="16" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="17" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal29" taborder="38" text="Test" left="11.28%" top="526" right="79.6%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="18" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="19" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="20" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="21" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="22" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="23" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal30" taborder="39" text="Test" left="20.64%" top="526" right="70.24%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal31" taborder="40" text="Test" left="30%" top="526" right="60.88%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal32" taborder="41" text="Test" left="39.36%" top="526" right="51.52%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal33" taborder="42" text="Test" left="48.72%" top="526" right="42.16%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal34" taborder="43" text="Test" left="58.08%" top="526" right="32.8%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal35" taborder="44" text="Test" left="1.92%" top="627" right="88.96%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="12" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="13" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="14" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="15" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="16" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="17" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal36" taborder="45" text="Test" left="11.28%" top="627" right="79.6%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="18" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="19" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="20" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="21" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="22" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="23" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal37" taborder="46" text="Test" left="20.64%" top="627" right="70.24%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="24" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="25" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="26" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="27" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="28" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="29" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal38" taborder="47" text="Test" left="30%" top="627" right="60.88%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal39" taborder="48" text="Test" left="39.36%" top="627" right="51.52%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal40" taborder="49" text="Test" left="48.72%" top="627" right="42.16%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="cal41" taborder="50" text="Test" left="58.08%" top="627" right="32.8%" height="99" style="align:left top;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;font:8 Dotum;" onmouseleave="calDivLeav" onmouseenter="calDivEnter">
+          <Layouts>
+            <Layout>
+              <Button id="surgRoom5Btn" taborder="30" text="수술방5" onclick="surgeRoomBook" left="40.35%" top="79" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom4Btn" taborder="31" text="수술방4" onclick="surgeRoomBook" left="40.35%" top="60" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom3Btn" taborder="32" text="수술방3" onclick="surgeRoomBook" left="40.35%" top="41" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom2Btn" taborder="33" text="수술방2" onclick="surgeRoomBook" left="40.35%" top="22" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Button id="surgRoom1Btn" taborder="34" text="수술방1" onclick="surgeRoomBook" left="40.35%" top="3" right="6.14%" height="17" style="bordertype:normal 3 3 ;cursor:hand;"/>
+              <Div id="num" taborder="35" left="0.88%" top="0" right="81.58%" height="24" style="color:#616161ff;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="timeDiv" taborder="51" left="68%" top="53" right="0.88%" height="706" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;">
+          <Layouts>
+            <Layout>
+              <Div id="titleBarDiv" taborder="10" left="0%" top="0" right="0%" height="25" style="background:transparent URL('img::formBar.png');border:0 none #808080ff ;color:black;">
+                <Layouts>
+                  <Layout>
+                    <Calendar id="surgeDayCal" taborder="2" left="70.69%" top="2" right="1.8%" height="22"/>
+                    <Combo id="surgRoomCombo" taborder="3" innerdataset="dsSurgRoomDiv" codecolumn="code" datacolumn="value" left="35.99%" top="2" right="41.9%" height="20"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="surgeBookAddBtn" taborder="11" onclick="timeDiv_surgeBookAddBtn_onclick" left="79.43%" top="671" right="1.29%" height="30" style="background:@gradation URL('img::okBtn.png');cursor:hand;" class="DelBtn"/>
+              <Edit id="startTimeEd" taborder="12" left="20.31%" top="29" right="71.21%" height="26"/>
+              <Edit id="endTimeEd" taborder="13" left="50.64%" top="29" right="40.87%" height="25"/>
+              <Edit id="surgeTimeEd" taborder="14" left="87.92%" top="30" right="2.31%" height="25"/>
+              <Static id="stDiv07" taborder="15" text="시작 시간" wordwrap="char" onclick="subCodeStc_onclick" left="2.06%" top="29" right="81.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="stDiv00" taborder="16" text="종료 시간" wordwrap="char" onclick="subCodeStc_onclick" left="32.39%" top="29" right="50.9%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="stDiv01" taborder="17" text="수술 시간" wordwrap="char" onclick="subCodeStc_onclick" left="69.41%" top="29" right="13.88%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Grid id="surgeTimeGrid" taborder="18" binddataset="dsSurgeTimeDiv" useinputpanel="false" selecttype="area" oncelldblclick="timeDiv_surgeTimeGrid_oncelldblclick" onselectchanged="timeDiv_surgeTimeGrid_onselectchanged" left="1.54%" top="61" right="1.54%" height="602">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="65"/>
+                      <Column size="311"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="22"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell style="background:#f2f2f2ff;" text="시간"/>
+                      <Cell col="1" style="background:#f2f2f2ff;" text="내용"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="1"/>
+                      <Cell col="1" text="bind:Column1"/>
+                      <Cell row="1" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="2"/>
+                      <Cell row="1" col="1" text="bind:Column2"/>
+                      <Cell row="2" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="3"/>
+                      <Cell row="2" col="1" text="bind:Column3"/>
+                      <Cell row="3" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="4"/>
+                      <Cell row="3" col="1" text="bind:Column4"/>
+                      <Cell row="4" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="5"/>
+                      <Cell row="4" col="1" text="bind:Column5"/>
+                      <Cell row="5" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="6"/>
+                      <Cell row="5" col="1" text="bind:Column6"/>
+                      <Cell row="6" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="7"/>
+                      <Cell row="6" col="1" text="bind:Column7"/>
+                      <Cell row="7" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="8"/>
+                      <Cell row="7" col="1" text="bind:Column8"/>
+                      <Cell row="8" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="9"/>
+                      <Cell row="8" col="1" text="bind:Column9"/>
+                      <Cell row="9" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="10"/>
+                      <Cell row="9" col="1" text="bind:Column10"/>
+                      <Cell row="10" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="11"/>
+                      <Cell row="10" col="1" text="bind:Column11"/>
+                      <Cell row="11" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="12"/>
+                      <Cell row="11" col="1" text="bind:Column12"/>
+                      <Cell row="12" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="13"/>
+                      <Cell row="12" col="1" text="bind:Column13"/>
+                      <Cell row="13" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="14"/>
+                      <Cell row="13" col="1" text="bind:Column14"/>
+                      <Cell row="14" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="15"/>
+                      <Cell row="14" col="1" text="bind:Column15"/>
+                      <Cell row="15" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="16"/>
+                      <Cell row="15" col="1" text="bind:Column16"/>
+                      <Cell row="16" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="17"/>
+                      <Cell row="16" col="1" text="bind:Column17"/>
+                      <Cell row="17" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="18"/>
+                      <Cell row="17" col="1" text="bind:Column18"/>
+                      <Cell row="18" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="19"/>
+                      <Cell row="18" col="1" text="bind:Column19"/>
+                      <Cell row="19" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="20"/>
+                      <Cell row="19" col="1" text="bind:Column20"/>
+                      <Cell row="20" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="21"/>
+                      <Cell row="20" col="1" text="bind:Column21"/>
+                      <Cell row="21" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="22"/>
+                      <Cell row="21" col="1" text="bind:Column22"/>
+                      <Cell row="22" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="23"/>
+                      <Cell row="22" col="1" text="bind:Column23"/>
+                      <Cell row="23" style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="24"/>
+                      <Cell row="23" col="1" text="bind:Column24"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div07" taborder="52" left="0%" top="0" right="-62%" height="41" style="background:transparent URL('img::titleBar2.jpg');"/>
+        <Static id="Static00" taborder="53" text="수술예약" left="4.4%" top="8" right="82.24%" height="41" onclick="Static00_onclick" style="font:bold 20 arial;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsSearchCondition" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="tableName" type="STRING" size="256"/>
+          <Column id="columnName" type="STRING" size="256"/>
+          <Column id="columnValue" type="STRING" size="256"/>
+          <Column id="operator" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ServiceID" type="STRING" size="100"/>
+          <Column id="URL" type="STRING" size="100"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ServiceID">batchMpSurgBookProcess</Col>
+            <Col id="inData">dsMpSurgBook=dsMpSurgBook:U</Col>
+            <Col id="URL">erp45::med/mp/batchMpSurgBookProcess.do</Col>
+            <Col id="outData"/>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="ServiceID">findMpSurgBookList</Col>
+            <Col id="URL">erp45::med/mp/findMpSurgBookList.do</Col>
+            <Col id="outData">dsMpSurgBook=dsMpSurgBook</Col>
+            <Col id="callbackFunc">mpSurgBookCallBack</Col>
+            <Col id="inData">dsSearchCondition=dsSearchCondition</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMpSurgBook" keystring="S:+bookTime">
+        <ColumnInfo>
+          <Column id="bookDate" type="undefined" size="100"/>
+          <Column id="surgDoc1" type="undefined" size="100"/>
+          <Column id="surgNo" type="undefined" size="100"/>
+          <Column id="surgType" type="undefined" size="100"/>
+          <Column id="surgHour" type="undefined" size="100"/>
+          <Column id="patNm" type="undefined" size="100"/>
+          <Column id="subSurgNm" type="undefined" size="100"/>
+          <Column id="surgDoc2" type="undefined" size="100"/>
+          <Column id="apprvYn" type="undefined" size="100"/>
+          <Column id="surgPrep" type="undefined" size="100"/>
+          <Column id="surgDoc3" type="undefined" size="100"/>
+          <Column id="bookTime" type="undefined" size="100"/>
+          <Column id="beforeSurgDiagn1" type="undefined" size="100"/>
+          <Column id="mainSurgNm" type="undefined" size="100"/>
+          <Column id="surgRoomNo" type="undefined" size="100"/>
+          <Column id="beforeSurgDiagn2" type="undefined" size="100"/>
+          <Column id="ansthsType" type="undefined" size="100"/>
+          <Column id="surgBodyPosi" type="undefined" size="100"/>
+          <Column id="patNo" type="undefined" size="100"/>
+          <Column id="patType" type="undefined" size="100"/>
+          <Column id="remark" type="undefined" size="100"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSurgRoomDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">surgRoom1</Col>
+            <Col id="value">수술방1</Col>
+          </Row>
+          <Row>
+            <Col id="code">surgRoom2</Col>
+            <Col id="value">수술방2</Col>
+          </Row>
+          <Row>
+            <Col id="code">surgRoom3</Col>
+            <Col id="value">수술방3</Col>
+          </Row>
+          <Row>
+            <Col id="code">surgRoom4</Col>
+            <Col id="value">수술방4</Col>
+          </Row>
+          <Row>
+            <Col id="code">surgRoom5</Col>
+            <Col id="value">수술방5</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSurgeTimeDiv" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="time" type="STRING" size="256"/>
+          <Column id="text" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+          <Column id="Column7" type="STRING" size="256"/>
+          <Column id="Column8" type="STRING" size="256"/>
+          <Column id="Column9" type="STRING" size="256"/>
+          <Column id="Column10" type="STRING" size="256"/>
+          <Column id="Column11" type="STRING" size="256"/>
+          <Column id="Column12" type="STRING" size="256"/>
+          <Column id="Column13" type="STRING" size="256"/>
+          <Column id="Column14" type="STRING" size="256"/>
+          <Column id="Column15" type="STRING" size="256"/>
+          <Column id="Column16" type="STRING" size="256"/>
+          <Column id="Column17" type="STRING" size="256"/>
+          <Column id="Column18" type="STRING" size="256"/>
+          <Column id="Column19" type="STRING" size="256"/>
+          <Column id="Column20" type="STRING" size="256"/>
+          <Column id="Column21" type="STRING" size="256"/>
+          <Column id="Column22" type="STRING" size="256"/>
+          <Column id="Column23" type="STRING" size="256"/>
+          <Column id="Column24" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="time"/>
+            <Col id="Column1"/>
+            <Col id="Column6"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSub" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="time" type="STRING" size="256"/>
+          <Column id="cellIndex" type="STRING" size="256"/>
+          <Column id="hour" type="STRING" size="256"/>
+          <Column id="no" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="time">1</Col>
+            <Col id="cellIndex">1</Col>
+            <Col id="hour">1</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">3</Col>
+            <Col id="time">2</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">5</Col>
+            <Col id="time">3</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">7</Col>
+            <Col id="time">4</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">9</Col>
+            <Col id="time">5</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">11</Col>
+            <Col id="time">6</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">13</Col>
+            <Col id="time">7</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">15</Col>
+            <Col id="time">8</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">17</Col>
+            <Col id="time">9</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">19</Col>
+            <Col id="time">10</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">21</Col>
+            <Col id="time">11</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">23</Col>
+            <Col id="time">12</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">25</Col>
+            <Col id="time">13</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">27</Col>
+            <Col id="time">14</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">29</Col>
+            <Col id="time">15</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">31</Col>
+            <Col id="time">16</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">33</Col>
+            <Col id="time">17</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">35</Col>
+            <Col id="time">18</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="cellIndex">37</Col>
+            <Col id="time">19</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="time">20</Col>
+            <Col id="cellIndex">39</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="time">21</Col>
+            <Col id="cellIndex">41</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="time">22</Col>
+            <Col id="cellIndex">43</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="time">23</Col>
+            <Col id="cellIndex">45</Col>
+          </Row>
+          <Row>
+            <Col id="hour">1</Col>
+            <Col id="time">24</Col>
+            <Col id="cellIndex">47</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[ /********************************************************************************
+*                                                                               *
+* 				            												    *
+*                                                                               *
+* @Path		    상병 코드 조회   							                 	*
+* @Description  상병 코드 조회							 	                *
+* 																				*
+*																				*
+* @Author	     					                             		*
+* 									                                            *
+* Created on 2016. .                              		                    *
+*									                                            *
+********************************************************************************/
+/********************************************************************************
+ 공통스크립트 include
+********************************************************************************/
+include "scripts::commonTran.xjs";  
+include "scripts::commonBind.xjs";
+/********************************************************************************
+  로드 함수
+********************************************************************************/
+
+this.MP_SurgBook_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.makeCal();
+	this.calTitleDiv.todayCal.set_value(this.Today());
+}
+
+/********************************************************************************
+  클릭 함수
+********************************************************************************/
+this.surgeRoomBook = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.timeDiv.surgeTimeGrid.clearSelect();
+	this.dsSubInit();
+	var year = this.calTitleDiv.yearSpin.value;
+	var month = this.calTitleDiv.monthSpin.value;
+	var date = obj.parent.num.text;
+	var fullDate = this.getFullDate(year, month, date, 31);
+	var surgRoom = obj.id.substring(0, 9);
+	this.timeDiv.titleBarDiv.surgeDayCal.set_value(fullDate);
+	this.timeDiv.titleBarDiv.surgRoomCombo.set_value(surgRoom);
+	
+	this.dsMpSurgBook.filter("bookDate == '"+fullDate+"' && surgRoomNo == '"+surgRoom+"'");
+	
+	for(var i=0; i<this.dsSurgeTimeDiv.rowcount; i++)
+		this.dsSurgeTimeDiv.setColumn(i,"background","white");
+	
+	this.timeDiv.surgeTimeGrid.splitContentsCell("body",0,0,23,1,true);
+	var lastCellIndex = 0;
+	for(var i=0; i<this.dsMpSurgBook.rowcount; i++){
+		var surgNo = this.dsMpSurgBook.getColumn(i,"surgNo");
+		var startTime = parseInt(this.dsMpSurgBook.getColumn(i,"bookTime"));
+		var surgHour = parseInt(this.dsMpSurgBook.getColumn(i,"surgHour"));
+		var cellIndex = (startTime*2+1) - lastCellIndex;
+		var text = this.dsMpSurgBook.getColumn(i,"surgNo")+" || "+this.dsMpSurgBook.getColumn(i,"surgDoc1")+" : "+this.dsMpSurgBook.getColumn(i,"patNm");
+		lastCellIndex = this.timeDiv.surgeTimeGrid.mergeContentsCell("body", startTime, 1, startTime+surgHour-1, 1, cellIndex, true);
+		this.timeDiv.surgeTimeGrid.setCellProperty( "Body", lastCellIndex, "text", "test");
+		this.timeDiv.surgeTimeGrid.setCellProperty( "Body", lastCellIndex, "background", "#E3C9C8");
+		for(var ii=0; ii<24; ii++){
+			if(startTime+surgHour > ii && startTime <= ii ){
+				this.dsSub.setColumn(ii,"cellIndex",lastCellIndex);
+				this.dsSub.setColumn(ii,"hour",surgHour);
+				this.dsSub.setColumn(ii,"no",surgNo);
+			}
+			if(startTime+surgHour <= ii){
+				var cell = this.dsSub.getColumn(ii-1,"cellIndex");
+				var time = this.dsSub.getColumn(ii-1,"hour");
+				this.dsSub.setColumn(ii,"cellIndex", parseInt(cell)+parseInt(time)+1);
+			}
+		}
+	}
+}
+
+/********************************************************************************
+  달력
+********************************************************************************/
+
+this.calDivLeav = function(obj:Div, e:nexacro.MouseEventInfo)
+{
+	if(obj.style.background == "transparent"){
+		obj.style.set_background("transparent");
+	}else{
+		obj.style.set_background("#f2f2f2ff");
+	}
+}
+
+this.calDivEnter = function(obj:Div, e:nexacro.MouseEventInfo)
+{
+	if(obj.style.background == "transparent"){
+		obj.style.set_background("transparent");
+	}else{
+		obj.style.set_background("#E0E0E0");
+	}
+}
+this.calTitleDiv_monthSpin_onspin = function(obj:Spin, e:nexacro.SpinEventInfo)
+{
+	this.makeCal();
+}
+this.calTitleDiv_yearSpin_onspin = function(obj:Spin, e:nexacro.SpinEventInfo)
+{
+	this.makeCal();
+}
+
+this.makeCal = function(){
+	var year = this.calTitleDiv.yearSpin.value;
+	var month = this.calTitleDiv.monthSpin.value;
+	var startDayWeek = new Date(year+"/"+(month)+"/1").getDay();
+	var endDate = (new Date( year, month, 0)).getDate();
+	var startFullDate = this.getFullDate(year,month,1,endDate);
+	var endFullDate = this.getFullDate(year,month,endDate,endDate);
+	
+	for(var i=0; i<42; i++){
+		var divId = i; divId = this.add0(divId);
+		var date = i+1-startDayWeek;
+		var fullDate = this.getFullDate(year,month,date,endDate);
+		eval("this.cal"+divId+".set_visible(true)");
+		eval("this.cal"+divId+".set_text("+fullDate+")");
+		if(startFullDate<=fullDate && endFullDate>=fullDate){
+			eval("this.cal"+divId+".num.set_text("+date+")");
+		}else{
+			eval("this.cal"+divId+".set_visible(false)");
+		}
+		//오늘 이전 수술방 버튼 #E0E0E0색
+		if(this.Today() > fullDate){
+			eval("this.cal"+divId+".style.set_background('#f2f2f2ff')");
+			for(var ii=1; ii<6; ii++)
+				eval("this.cal"+divId+".surgRoom"+ii+"Btn.style.set_background('#E0E0E0')");
+		}else{
+			eval("this.cal"+divId+".style.set_background('#f2f2f2ff')");
+			for(var ii=1; ii<6; ii++)
+				eval("this.cal"+divId+".surgRoom"+ii+"Btn.style.set_background('@gradation')");
+		}
+		//오늘 날짜 배경 흰색
+		if(this.Today() == fullDate){
+			eval("this.cal"+divId+".style.set_background('transparent')");
+		}
+	}
+	this.dsSearchCondition.deleteAll();
+	
+	var row1 = this.dsSearchCondition.addRow();
+	this.dsSearchCondition.setColumn(row1,"tableName","MP_SURG_BOOK");
+	this.dsSearchCondition.setColumn(row1,"columnName","BOOK_DATE");
+	this.dsSearchCondition.setColumn(row1,"columnValue", startFullDate);
+	this.dsSearchCondition.setColumn(row1,"operator",">=");
+
+	var row2 = this.dsSearchCondition.addRow();
+	this.dsSearchCondition.setColumn(row2,"tableName","MP_SURG_BOOK");
+	this.dsSearchCondition.setColumn(row2,"columnName","BOOK_DATE");
+	this.dsSearchCondition.setColumn(row2,"columnValue", endFullDate);
+	this.dsSearchCondition.setColumn(row2,"operator","<=");
+	alert(startFullDate +" ~ "+endFullDate);
+	this.gfnService("findMpSurgBookList");
+}
+
+this.getFullDate = function(year, month, date, endDate){
+	year = parseInt(year);
+	month = parseInt(month);
+	date = parseInt(date);
+	endDate = parseInt(endDate);
+	
+	if(date <= 0){
+		date = (new Date( year, month-1, 0)).getDate() + date;
+		month = month -1;
+	}else if(date > endDate){
+		date = (new Date( year, month+1, date-endDate)).getDate();
+		month = month +1;
+	}
+	month = this.add0(month);
+	date = this.add0(date);
+	return year+""+month+""+date;
+}
+
+this.add0 = function(num){
+	if(num.toString().length == 1){
+		num = "0" + num;
+    }
+    return num;
+}
+
+this.Today = function ()
+{
+	var sToday = "";
+    var objDate = new Date();
+    var sToday  = objDate.getFullYear() + "";
+    var sMonth = objDate.getMonth()+1;
+    var sDate = objDate.getDate();
+    var sHours = objDate.getHours();
+    var sMinutes = objDate.getMinutes();
+    var sSeconds = objDate.getSeconds();
+    if(sMonth.toString().length == 1){
+		sMonth = "0" + sMonth;
+    }
+	if(sDate.toString().length == 1){
+		sDate = "0" + sDate;
+    }
+    sToday = sToday+sMonth+sDate;
+    return sToday;
+}
+
+/********************************************************************************
+  타임 테이블
+********************************************************************************/
+
+//타임 테이블 선택
+this.timeDiv_surgeTimeGrid_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	var selectedCellCount = 0;
+	for(var i=0;i<48; i++){
+		if(obj.isSelectedCell(i)){
+			selectedCellCount++;
+		}
+	}
+	var cellIndex = obj.getCellPos();
+	var row = this.dsSub.findRow("cellIndex",cellIndex);
+	var endTime = parseInt(this.dsSub.getColumn(row,"time"));
+	var startTime = endTime - selectedCellCount;
+	
+	if(parseInt(this.dsSub.getColumn(row,"hour")) != 1){
+		startTime = parseInt(this.dsSub.getColumn(row,"time"))-1;
+		endTime = parseInt(this.dsSub.getColumn(row,"hour"))+parseInt(this.dsSub.getColumn(row,"time"))-1;
+		selectedCellCount = parseInt(this.dsSub.getColumn(row,"hour"));
+	}
+	
+	this.timeDiv.startTimeEd.set_value(this.add0(startTime));
+	this.timeDiv.endTimeEd.set_value(this.add0(endTime));
+	this.timeDiv.surgeTimeEd.set_value(selectedCellCount);
+}
+
+//기존 수술 정보 불러오기
+this.insertOrUpdate = "test";
+this.surgNo = "";
+this.timeDiv_surgeTimeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var cellIndex = obj.getCellPos();
+	var row = this.dsSub.findRow("cellIndex",cellIndex);
+	this.surgNo = this.dsSub.getColumn(row,"no");
+	if(this.surgNo != null){
+		this.insertOrUpdate = "update";
+		application.open("MPsurgBookInsertForm","med::MPsurgBookInsertForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false", 0, 0, 800, 443, this);
+	}
+}
+
+//수술예약 등록
+this.timeDiv_surgeBookAddBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.insertOrUpdate = "insert";
+	application.open("MPsurgBookInsertForm","med::MPsurgBookInsertForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false", 0, 0, 800, 443, this);
+}
+
+/********************************************************************************
+  콜백 함수
+********************************************************************************/
+this.mpSurgBookCallBack = function(strSvcID, nErrorCode, strErrorMag){	
+	if(strSvcID == "findMpSurgBookList"){
+		for(var i=0; i<this.dsMpSurgBook.rowcount; i++){
+			var fullDate = this.dsMpSurgBook.getColumn(i,"bookDate");
+			var surgRoom = this.dsMpSurgBook.getColumn(i,"surgRoomNo");
+			this.dsMpSurgBook.filter("bookDate == '"+fullDate+"' && surgRoomNo == '"+surgRoom+"'");
+			var time = this.dsMpSurgBook.getCaseSum("true","surgHour");
+			if(time >= 24){
+				for(var ii=0; ii<42; ii++){
+					var divId = ii; divId = this.add0(divId);
+					if(eval("this.cal"+divId+".text") == fullDate){
+						eval("this.cal"+divId+"."+surgRoom+"Btn.style.set_background('#E0E0E0')")
+					}
+				}
+			}
+			this.dsMpSurgBook.filter("");
+		}
+	}
+}
+
+this.dsSubInit = function(){
+	for(var i=0; i<24; i++){
+		this.dsSub.setColumn(i,"cellIndex",i*2+1);
+		this.dsSub.setColumn(i,"hour",1);
+		this.dsSub.setColumn(i,"no",null);
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>

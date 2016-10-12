@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.med.base.dao.SpeciesVirusDAO">
+    <cache flushInterval="86400000" eviction="LRU" />
+
+    <!-- 균속 조회 -->
+    <select id="selectSpeciesVirusList" flushCache="false" useCache="true" resultType="SpeciesVirusBean">
+        SELECT 
+        	BACGENCD,
+         	BACGENNM
+        FROM
+            MB_SPECIES_VIRUS_CD
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="bacgencd != '' and bacgencd != null">
+                AND BACGENCD = #{bacgencd}
+            </if>
+            <if test="bacgennm != '' and bacgennm != null">
+                AND BACGENNM LIKE '%' || #{bacgennm} || '%'
+            </if>
+        </trim>
+    </select>
+
+</mapper>

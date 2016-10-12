@@ -6,7 +6,6 @@ import java.util.Map;
 import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PatientPrscBean;
 
-
 public interface PatientDsDAO {
 	List<PatientDsBean>findPatientDsPrscList(Map<String, String>argsMap);
 	public void insertPatientDsList(PatientDsBean patientDsBean);
