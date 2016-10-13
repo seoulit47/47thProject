@@ -15,7 +15,7 @@
         <Combo id="rangeCombo" taborder="2" innerdataset="dsSurgRangDiv" codecolumn="value" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="14.88%" top="71" right="66.38%" height="25" class="AreaCombo"/>
         <Static id="stDiv4" taborder="3" text="수술 명" left="36.88%" top="70" right="53.13%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="surgName" taborder="4" left="48.25%" top="69" right="33%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-        <Grid id="surgGrid" taborder="5" binddataset="dsMpSurgCd" useinputpanel="false" autofittype="col" oncelldblclick="setColumn" left="3%" top="113" right="3.13%" height="383">
+        <Grid id="surgGrid" taborder="5" binddataset="dsMpSurgCd" useinputpanel="false" autofittype="col" left="3%" top="113" right="3.13%" height="383" oncelldblclick="surgGrid_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -113,7 +113,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">findMpSurgCdList</Col>
-            <Col id="inData"></Col>
+            <Col id="inData"/>
             <Col id="URL">erp47::med/recipe/findMpSurgCdList.do</Col>
             <Col id="outData">dsMpSurgCd=dsMpSurgCd</Col>
             <Col id="callbackFunc"/>
@@ -124,7 +124,7 @@
     <Script type="xscript5.0"><![CDATA[ /*******************************************************************************
 * @Path		    수술 코드 조회   							                 	
 * @Description  수술 코드 조회							 	                
-* @Author	     mickey					                             		
+* @Author	     				                             		
 * Created on 2016. 10. 01                             		                   
 ********************************************************************************/
 
@@ -166,7 +166,14 @@ this.surgGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
 	arrRtn[i++] = this.dsMpSurgBook.getColumn(e.row,"surgNm"); //수술코드
 
 	this.opener.setSurgInfo(arrRtn);
+	this.close();
+	
+	var arrRtn = new Array();
+	arrRtn[0]=this.dsMpSurgCd.getColumn(this.dsMpSurgCd.rowposition,"surgNm");
+	this.opener.setSurgInfo(arrRtn);
 	this.close();*/
+	
+	
 }
 ]]></Script>
   </Form>
