@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seoulit.erp47.med.recipe.dao.SurgBookDAO">
+	<select id="selectMpSurgBookList" parameterType="java.util.HashMap"
+		resultType="SurgBookBean">
+		SELECT
+		SURG_NO
+		,PAT_NO
+		,PAT_NM
+		,PAT_TYPE
+		,SURG_TYPE
+		,BOOK_DATE
+		,SURG_HOUR
+		,BEFORE_SURG_DIAGN1
+		,BEFORE_SURG_DIAGN2
+		,MAIN_SURG_NM
+		,SUB_SURG_NM
+		,ANSTHS_TYPE
+		,SURG_DOC1
+		,SURG_DOC2
+		,SURG_DOC3
+		,SURG_BODY_POSI
+		,SURG_PREP
+		,REMARK
+		,SURG_ROOM_NO
+		,APPRV_YN
+		,BOOK_TIME
+		FROM MP_SURG_BOOK
+		<where>
+			<if test="searchConditionBeanList != null">
+				<foreach collection="searchConditionBeanList" item="searchConditionBean"
+					separator="and">
+					<if test="searchConditionBean.tableName.equals('MP_SURG_BOOK')">
+						${searchConditionBean.columnName} ${searchConditionBean.operator}
+						#{searchConditionBean.columnValue}
+					</if>
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<insert id="insertMpSurgBook" parameterType="SurgBookBean">
+		INSERT INTO
+		MP_SURG_BOOK
+		VALUES(
+		#{surgNo}
+		,#{patNo}
+		,#{patNm}
+		,#{patType}
+		,#{surgType}
+		,#{bookDate}
+		,#{surgHour}
+		,#{beforeSurgDiagn1}
+		,#{beforeSurgDiagn2}
+		,#{mainSurgNm}
+		,#{subSurgNm}
+		,#{ansthsType}
+		,#{surgDoc1}
+		,#{surgDoc2}
+		,#{surgDoc3}
+		,#{surgBodyPosi}
+		,#{surgPrep}
+		,#{remark}
+		,#{surgRoomNo}
+		,#{apprvYn}
+		,#{bookTime}
+		)
+	</insert>
+	<update id="updateMpSurgBook" parameterType="SurgBookBean">
+		UPDATE MP_SURG_BOOK
+		SET
+		PAT_NO=#{patNo}
+		,PAT_NM=#{patNm}
+		,PAT_TYPE=#{patType}
+		,SURG_TYPE=#{surgType}
+		,BOOK_DATE=#{bookDate}
+		,SURG_HOUR=#{surgHour}
+		,BEFORE_SURG_DIAGN1=#{beforeSurgDiagn1}
+		,BEFORE_SURG_DIAGN2=#{beforeSurgDiagn2}
+		,MAIN_SURG_NM=#{mainSurgNm}
+		,SUB_SURG_NM=#{subSurgNm}
+		,ANSTHS_TYPE=#{ansthsType}
+		,SURG_DOC1=#{surgDoc1}
+		,SURG_DOC2=#{surgDoc2}
+		,SURG_DOC3=#{surgDoc3}
+		,SURG_BODY_POSI=#{surgBodyPosi}
+		,SURG_PREP=#{surgPrep}
+		,REMARK=#{remark}
+		,SURG_ROOM_NO=#{surgRoomNo}
+		,APPRV_YN=#{apprvYn}
+		,BOOK_TIME=#{bookTime}
+		WHERE SURG_NO=#{surgNo}
+	</update>
+	<delete id="deleteMpSurgBook" parameterType="SurgBookBean">
+		DELETE FROM
+		MP_SURG_BOOK
+		WHERE SURG_NO=#{surgNo}
+	</delete>
+</mapper>

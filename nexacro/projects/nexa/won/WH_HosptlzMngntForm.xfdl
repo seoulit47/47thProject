@@ -471,13 +471,15 @@ this.findPatCallbackFunc = function(svcID, errorCode, errorMsg) {
 
 this.findHosptlzYBCallbackFunc = function(svcID, errorCode, errorMsg)
 {
-	
+	//alert(errorCode);
 	if(errorCode=="1") {	
 		
 		var hosptlzYb=this.dsOutpaReceipt.getColumn(0,"hosptlzYb");
 		var hosptlzRsvtYb=this.dsOutpaReceipt.getColumn(0,"hosptlzRsvtYb");
 		
-		if(hosptlzYb=='Y' && hosptlzRsvtYb=='N'){
+		alert("hosptlzYb : " + hosptlzYb);
+		alert("hosptlzRsvtYb : " + hosptlzRsvtYb);
+		if(hosptlzYb=='Y'){// && hosptlzRsvtYb=='N'){
 			alert("입원승인 확인 했습니다.");			
 			this.dsService.setColumn(2,"argument",'patNo='+patNo);
 			this.gfnService("findReceipt","false"); 	//	입원접수 확인하기

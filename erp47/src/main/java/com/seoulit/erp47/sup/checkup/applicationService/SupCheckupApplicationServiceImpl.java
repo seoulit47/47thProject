@@ -81,8 +81,7 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
         
         List<RsvtBean> rsvtList = (List<RsvtBean>) map.get("rsvtList");
         List<ChoInspBean> choInspList = (List<ChoInspBean>) map.get("choInspList");
-        System.out.println(rsvtList);
-        System.out.println(choInspList.size()+"!!!");
+
         if(rsvtList!=null){
             for(RsvtBean rsvtBean: rsvtList){
     
@@ -290,7 +289,7 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
 	public Map<String, Object> findRsvtReceiptList(Map<String, String> argsMap) {
 	    List<RsvtBean> rsvtList = receiptDAO.selectRsvtList(argsMap);
 	    List<ReceiptBean> receiptList = receiptDAO.selectReceiptList(argsMap);
-	    System.out.println("!!!!!!!!!!!!!!!!!"+argsMap);
+	    
 	        
 	    Map<String, Object> map = new HashMap<>();
 	    map.put("rsvtList", rsvtList);
@@ -315,12 +314,11 @@ public class SupCheckupApplicationServiceImpl implements SupCheckupApplicationSe
             if(status.equals("inserted")){
                 int retVal = receiptDAO.insertReceipt(receiptBean);
 
-                if(retVal==0){
 
                     receiptBean.setCancelYn("N");
                     receiptDAO.updateCancelYN(receiptBean);               
                     rsltDAO.insertBaseRsltList(receiptBean.getRsvtNo());
-                }
+
             }
         }
     }

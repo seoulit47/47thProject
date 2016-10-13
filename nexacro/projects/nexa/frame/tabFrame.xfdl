@@ -4,13 +4,19 @@
   <Form id="tabFrame" classname="tabFrame" left="0" top="0" width="1024" height="50" onload="tabFrame_onload">
     <Layouts>
       <Layout>
-        <Tab id="topTab" taborder="0" left="0.68%" top="5" right="3.71%" height="33" onchanged="topTab_onchanged" onextrabuttonclick="topTab_onextrabuttonclick" tabindex="0" scrollbars="autoboth" style="buttonbackground:#4682b466;buttongradation:linear 0,0 #feffffff 0,100 blue [60% #f2f2efff][70% #ecece9ff];buttonborder:2 solid transparent ;buttonbordertype:round 35 35  lefttop;buttonpadding:8 16 8 16;background:transparent;border:0 double transparent ;bordertype:round 3 3 ;font:12 antialias 맑은 고딕;">
+        <Button id="allCloseBtn" taborder="1" text="X" onclick="allCloseBtn_onclick" left="97.17%" top="5" right="0.68%" height="29" style="background:gainsboro;color:orangered;font:bold 13 antialias 맑은 고딕;"/>
+        <Tab id="topTab1" taborder="2" left="0.68%" top="77" right="3.71%" height="33" onchanged="topTab_onchanged" onextrabuttonclick="topTab_onextrabuttonclick" tabindex="0" scrollbars="autoboth" style="buttonbackground:#4682b466;buttongradation:linear 0,0 #feffffff 0,100 blue [60% #f2f2efff][70% #ecece9ff];buttonborder:2 solid transparent ;buttonbordertype:round 35 35  lefttop;buttonpadding:8 16 8 16;background:transparent;border:0 double transparent ;color:white;bordertype:round 3 3 ;font:12 antialias 맑은 고딕;gradation:liner 0,0 #f6f6f5b3 0,100 #e6e6e5b3;">
           <Tabpages>
             <Tabpage id="tabpage" text="tabpage1" style="background:whitesmoke;" dragscrolltype="none"/>
             <Tabpage id="tabpage2" text="tabpage2"/>
           </Tabpages>
         </Tab>
-        <Button id="allCloseBtn" taborder="1" text="X" onclick="allCloseBtn_onclick" left="97.17%" top="5" right="0.68%" height="29" style="background:gainsboro;color:orangered;font:bold 13 antialias 맑은 고딕;"/>
+        <Tab id="topTab" taborder="3" left="0.68%" top="9" right="3.71%" height="33" tabindex="0" scrollbars="autoboth" style="buttonbackground:#4682b466;buttongradation:liner 0,0 #feffffff 0,100 #e1e1dfff [60% #f2f2efff][70% #ecece9ff];buttonborder:2 solid transparent ;buttonbordertype:round 35 35  lefttop;buttonpadding:8 16 8 16;border:0 double transparent ;bordertype:round 3 3 ;font:12 antialias 맑은 고딕;" onchanged="topTab_onchanged" onextrabuttonclick="topTab_onextrabuttonclick">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="tabpage1"/>
+            <Tabpage id="tabpage2" text="tabpage2"/>
+          </Tabpages>
+        </Tab>
       </Layout>
     </Layouts>
     <Script type="xscript5.0"><![CDATA[/********************************************************************************                                                                            

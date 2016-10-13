@@ -18,6 +18,7 @@ import com.seoulit.erp47.med.base.to.PatientPrscBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
 import com.seoulit.erp47.won.outPatMgt.dao.ReceiptInfoDAO;
+import com.seoulit.erp47.won.outPatMgt.to.ReceiptInfoBean;
 
 @Component
 public class EmrApplicationServiceImpl implements EmrApplicationService {
@@ -115,6 +116,64 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
 			
 			
 		}
+		
+		// 환자 접수정보
+        List<ReceiptInfoBean> receiptInfoList = (List<ReceiptInfoBean>) emrMap.get("receiptList"); 
+        if (receiptInfoList.size() != 0) { 
+            for (ReceiptInfoBean receiptBean : receiptInfoList) { 
+                switch (receiptBean.getStatus()) { 
+                    case "updated" : receiptInfoDAO.updateReceipt(receiptBean); break;      // 진료여부 수술여부 업데이트
+                }
+            }
+        }
+        
+     
+        
+     // 환자 처방정보
+        List<PatientPrscBean> patientPrscList = (List<PatientPrscBean>) emrMap.get("patientPrscList");
+        
+        for (PatientDsBean patientDsBean : patientList) {
+        	
+            switch (patientDsBean.getStatus()) {
+            case "inserted":
+                patientDsDAO.insertPatientDsList(patientDsBean);
+                break;
+            case "updated":
+                patientDsDAO.updatePatientDsList(patientDsBean);
+                break;
+            }
+   
+            // 환자구분에 따라 입원환자, 외래환자 구분
+            System.out.println("환자구분 : " + patientDsBean.getGubun());
+            if ("Y".equalsIgnoreCase(patientDsBean.getGubun())) {
+                for (PatientPrscBean patientPrscBean : patientPrscList) {
+                    if (patientDsBean.getCode().equals(patientPrscBean.getDiseaseCd())) {
+                        switch (patientPrscBean.getStatus()) {
+                        case "inserted":
+                            patientDsDAO.insertInpatientPrsc(patientPrscBean);
+                            break;
+                        case "updated":
+                            patientDsDAO.updateInpatientPrsc(patientPrscBean);
+                            break;
+                        }
+                    }
+                }
+            } else {
+                for (PatientPrscBean patientPrscBean : patientPrscList) {
+                	System.out.println(patientPrscBean.getStatus()+"!!!!!!!!!!");
+                    if (patientDsBean.getCode().equals(patientPrscBean.getDiseaseCd())) {
+                        switch (patientPrscBean.getStatus()) {
+                        case "inserted":
+                            patientDsDAO.insertOutpatientPrsc(patientPrscBean);
+                            break;
+                        case "updated":
+                            patientDsDAO.updateOutpatientPrsc(patientPrscBean);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 		
 	}
 	//------------------------------------------------------------------------------------

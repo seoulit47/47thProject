@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MR_SurgBookInsertForm" classname="MR_SurgBookInsertForm" left="0" top="0" width="1250" height="768" titletext="수술예약등록">
+  <Form id="MR_SurgBookInsertForm" classname="MR_SurgBookInsertForm" left="0" top="0" width="1250" height="768" titletext="수술예약등록" onload="MR_SurgBookInsertForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="0.72%" top="2" right="63.36%" height="60" style="background:transparent URL('img::miniTitleBar1.jpg');">
@@ -11,63 +11,51 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="taxinvDiv" taborder="1" left="0.72%" top="73" right="1.92%" height="683" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
+        <Div id="taxinvDiv" taborder="1" left="0.72%" top="57" right="1.92%" height="683" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
             <Layout width="1228" height="45">
-              <Static id="stDiv01" taborder="52" text="수술 예약일" wordwrap="char" left="14.4%" top="23" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Calendar id="bookDateEd" taborder="53" readonly="true" left="27.08%" top="22" right="59.51%" height="30"/>
+              <Static id="stDiv01" taborder="52" text="수술 예약일" wordwrap="char" left="14.4%" top="23" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Calendar id="bookDateEd" taborder="53" readonly="true" left="25.43%" top="22" right="59.51%" height="30"/>
               <Static id="subCodeStc00" taborder="54" text="수술실" onclick="subCodeStc_onclick" left="46.26%" top="24" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Combo id="surgRoomCombo" taborder="55" innerdataset="dsSurgRoomDiv" codecolumn="code" datacolumn="value" left="57.04%" top="22" right="27.65%" height="28"/>
-              <Static id="stDiv02" taborder="56" text="수술 번호" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="102" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="surgNoEd" taborder="57" readonly="true" left="57.04%" top="102" right="27.74%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Static id="stDiv21" taborder="58" text="예약시간(시)" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="58" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="stDiv02" taborder="56" text="수술 번호" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="102" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="surgNoEd" taborder="57" readonly="true" left="25.43%" top="102" right="59.26%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Static id="stDiv21" taborder="58" text="예약시간(시)" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="58" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Static id="stDiv07" taborder="59" text="수술 시간" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="59" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
               <Edit id="surgHour" taborder="60" readonly="true" left="57.04%" top="57" right="35.06%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Static id="stDiv05" taborder="61" text="담당의 성명" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="107" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Static id="stDiv14" taborder="63" text="수술의1" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="141" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Static id="stDiv15" taborder="65" text="수술의2" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="141" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="surgDoc3Ed" taborder="66" readonly="true" left="57.04%" top="140" right="27.65%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Static id="stDiv08" taborder="67" text="수술전 진단명" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="177" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Static id="stDiv10" taborder="69" text="수술전 진단명2" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="177" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="beforeSurgDiagn2Ed" taborder="70" readonly="true" left="57.04%" top="176" right="27.65%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Static id="stDiv9" taborder="71" text="환자등록번호" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="227" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="patNoEd" taborder="72" readonly="false" left="27.16%" top="225" right="59.51%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Static id="stDiv04" taborder="73" text="환자 종류" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="227" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Static id="stDiv03" taborder="75" text="환자 성명" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="278" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="patNmEd" taborder="76" readonly="true" left="57.04%" top="277" right="27.65%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Static id="stDiv06" taborder="77" text="수술 종류" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="279" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Combo id="surgTypeCombo" taborder="78" innerdataset="dsSurgTypeDiv" codecolumn="value" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="27.08%" top="280" right="59.51%" height="25" class="AreaCombo"/>
-              <Static id="stDiv11" taborder="79" text="수술명" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="316" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Static id="stDiv12" taborder="81" text="부 수술명" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="316" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Edit id="subSurgNmEd" taborder="82" readonly="true" left="57.04%" top="315" right="27.49%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Static id="stDiv13" taborder="83" text="마취 종류" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="353" right="73.99%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Combo id="ansthsTypeCombo" taborder="84" innerdataset="dsAnsthsTypeDiv" codecolumn="value" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="27.16%" top="354" right="59.51%" height="25" class="AreaCombo"/>
-              <Static id="stDiv17" taborder="85" text="수술체위" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="355" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Combo id="surgBodyPosiCombo" taborder="86" innerdataset="dsSurgBodyPosiDiv" codecolumn="value" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="57.04%" top="356" right="27.49%" height="25" class="AreaCombo"/>
-              <Static id="stDiv19" taborder="87" text="수술준비 사항" wordwrap="char" onclick="subCodeStc_onclick" left="1.23%" top="408" right="87.16%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <TextArea id="surgPrepTa" taborder="88" left="14.24%" top="408" right="5.19%" height="70"/>
-              <Static id="stDiv20" taborder="89" text="적요" wordwrap="char" onclick="subCodeStc_onclick" left="1.23%" top="485" right="87.16%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <TextArea id="remarkTa" taborder="90" left="14.24%" top="485" right="5.19%" height="70"/>
-              <Static id="stDiv00" taborder="91" text="수술여부" wordwrap="char" onclick="subCodeStc_onclick" left="1.23%" top="579" right="87.16%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-              <Combo id="apprvYnCombo" taborder="92" value="N" text="N" innerdataset="dsYN" codecolumn="value" datacolumn="value" index="1" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="14.24%" top="580" right="70.7%" height="25" class="AreaCombo"/>
-              <Button id="searchMainSurgNmBtn" taborder="93" onclick="taxinvDiv_searchMainSurgNmBtn_onclick" left="41.32%" top="316" right="55.56%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="searchSurgDoc1Btn" taborder="94" onclick="taxinvDiv_searchSurgDocBtn_onclick" left="41.32%" top="107" right="55.56%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="searchSurgDoc2Btn" taborder="95" onclick="taxinvDiv_searchSurgDocBtn_onclick" left="41.32%" top="142" right="55.56%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="searchBeforeSurgDiagn1Btn" taborder="96" onclick="taxinvDiv_searchBeforeSurgDiagn1Btn_onclick" left="41.32%" top="174" right="55.56%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="searchSurgDoc3Btn" taborder="97" onclick="taxinvDiv_searchSurgDocBtn_onclick" left="72.76%" top="141" right="23.87%" height="29" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="searchBeforeSurgDiagn2Btn" taborder="98" onclick="taxinvDiv_searchBeforeSurgDiagn2Btn_onclick" left="72.76%" top="178" right="23.87%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="searchPatBtn" taborder="99" onclick="taxinvDiv_searchPatBtn_onclick" left="72.76%" top="277" right="23.87%" height="30" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Button id="searchSubSurgNmBtn" taborder="100" onclick="taxinvDiv_searchSubSurgNmBtn_onclick" left="72.76%" top="315" right="23.87%" height="30" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
-              <Edit id="bookTimeEd" taborder="101" readonly="true" left="27.08%" top="57" right="65.19%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Edit id="surgDoc2Ed" taborder="102" left="27.08%" top="142" right="59.51%" height="27"/>
-              <Edit id="surgDoc1Ed" taborder="103" left="27.08%" top="110" right="59.51%" height="27"/>
-              <Edit id="beforeSurgDiagn1Ed" taborder="104" left="27.08%" top="174" right="59.51%" height="27"/>
-              <Edit id="mainSurgNmEd" taborder="105" readonly="false" left="27.16%" top="313" right="59.51%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-              <Combo id="patTypeCombo" taborder="106" innerdataset="dsPatTypeDiv" codecolumn="code" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="57.04%" top="228" right="27.65%" height="25" class="AreaCombo"/>
+              <Static id="stDiv15" taborder="65" text="집도의사" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="197" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="surgDoc3Ed" taborder="66" readonly="true" left="25.43%" top="196" right="59.26%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Static id="stDiv10" taborder="69" text="수술 전 진단명" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="241" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="beforeSurgDiagn2Ed" taborder="70" readonly="true" left="25.43%" top="240" right="59.26%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Static id="stDiv9" taborder="71" text="환자등록번호" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="283" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="patNoEd" taborder="72" readonly="true" left="25.43%" top="281" right="60.82%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Static id="stDiv04" taborder="73" text="환자 종류" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="107" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Static id="stDiv03" taborder="75" text="환자 성명" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="158" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="patNmEd" taborder="76" readonly="true" left="57.04%" top="157" right="27.65%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Static id="stDiv06" taborder="77" text="수술 종류" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="327" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="surgTypeCombo" taborder="78" innerdataset="dsSurgTypeDiv" codecolumn="value" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="25.43%" top="328" right="60.82%" height="25" class="AreaCombo"/>
+              <Static id="stDiv13" taborder="83" text="마취 종류" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="265" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="ansthsTypeCombo" taborder="84" innerdataset="dsAnsthsTypeDiv" codecolumn="value" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="57.04%" top="266" right="27.49%" height="25" class="AreaCombo"/>
+              <Static id="stDiv17" taborder="85" text="수술체위" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="211" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="surgBodyPosiCombo" taborder="86" innerdataset="dsSurgBodyPosiDiv" codecolumn="value" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="57.04%" top="212" right="27.49%" height="25" class="AreaCombo"/>
+              <Static id="stDiv19" taborder="87" text="수술준비 사항" wordwrap="char" onclick="subCodeStc_onclick" left="1.23%" top="424" right="87.16%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <TextArea id="surgPrepTa" taborder="88" left="14.24%" top="424" right="5.19%" height="70"/>
+              <Static id="stDiv20" taborder="89" text="기타" wordwrap="char" onclick="subCodeStc_onclick" left="1.23%" top="501" right="87.16%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <TextArea id="remarkTa" taborder="90" left="14.24%" top="501" right="5.19%" height="70"/>
+              <Static id="stDiv00" taborder="91" text="수술여부" wordwrap="char" onclick="subCodeStc_onclick" left="46.26%" top="315" right="43.62%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Combo id="apprvYnCombo" taborder="92" value="N" text="N" innerdataset="dsYN" codecolumn="value" datacolumn="value" index="1" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="57.04%" top="316" right="29.22%" height="25" class="AreaCombo"/>
+              <Button id="searchSurgDoc3Btn" taborder="97" onclick="taxinvDiv_searchSurgDocBtn_onclick" left="41.15%" top="197" right="55.47%" height="29" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="searchBeforeSurgDiagn2Btn" taborder="98" onclick="taxinvDiv_searchBeforeSurgDiagn2Btn_onclick" left="41.15%" top="242" right="55.47%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Button id="searchPatBtn" taborder="99" onclick="taxinvDiv_searchPatBtn_onclick" left="72.76%" top="157" right="23.87%" height="30" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+              <Edit id="bookTimeEd" taborder="101" readonly="true" left="25.43%" top="57" right="66.5%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+              <Combo id="patTypeCombo" taborder="106" innerdataset="dsPatTypeDiv" codecolumn="code" datacolumn="value" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="57.04%" top="108" right="27.65%" height="25" class="AreaCombo"/>
+              <Static id="stDiv05" taborder="107" text="담당의사" wordwrap="char" onclick="subCodeStc_onclick" left="14.4%" top="149" right="75.23%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+              <Edit id="surgDoc1Ed" taborder="108" left="25.43%" top="150" right="59.26%" height="31" readonly="true" style="border:1 solid #a6a6a9ff ;"/>
+              <Button id="searchSurgDoc1Btn" taborder="109" onclick="taxinvDiv_searchSurgDocBtn_onclick" left="41.15%" top="150" right="55.47%" height="31" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
             </Layout>
           </Layouts>
         </Div>
-        <Button id="allBtn" taborder="2" onclick="allBtn_onclick" left="82.48%" top="648" right="7.04%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
+        <Button id="allBtn" taborder="2" onclick="allBtn_onclick" left="47.28%" top="656" right="42.24%" height="32" style="background:@gradation URL('img::batchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class=""/>
       </Layout>
     </Layouts>
     <Objects>
@@ -202,7 +190,7 @@
         <Rows>
           <Row>
             <Col id="serviceID">batchMpSurgBookProcess</Col>
-            <Col id="inData">dsMpSurgBook=dsMpSurgBook:U</Col>
+            <Col id="inData">dsMpSurgBook=dsMpSurgBook:u</Col>
             <Col id="URL">erp47::med/recipe/batchMpSurgBookProcess.do</Col>
             <Col id="outData"/>
             <Col id="callbackFunc"/>
@@ -280,29 +268,29 @@
       <BindItem id="item10" compid="taxinvDiv.patNoEd" propid="value" datasetid="dsMpSurgBook" columnid="patNo"/>
       <BindItem id="item12" compid="taxinvDiv.patNmEd" propid="value" datasetid="dsMpSurgBook" columnid="patNm"/>
       <BindItem id="item13" compid="taxinvDiv.surgTypeCombo" propid="value" datasetid="dsMpSurgBook" columnid="surgType"/>
-      <BindItem id="item15" compid="taxinvDiv.subSurgNmEd" propid="value" datasetid="dsMpSurgBook" columnid="subSurgNm"/>
-      <BindItem id="item16" compid="taxinvDiv.ansthsTypeCombo" propid="value" datasetid="dsPatTypeDiv" columnid="ansthsType"/>
+      <BindItem id="item16" compid="taxinvDiv.ansthsTypeCombo" propid="value" datasetid="dsMpSurgBook" columnid="ansthsType"/>
       <BindItem id="item17" compid="taxinvDiv.surgBodyPosiCombo" propid="value" datasetid="dsMpSurgBook" columnid="surgBodyPosi"/>
       <BindItem id="item18" compid="taxinvDiv.surgPrepTa" propid="value" datasetid="dsMpSurgBook" columnid="surgPrep"/>
       <BindItem id="item19" compid="taxinvDiv.remarkTa" propid="value" datasetid="dsMpSurgBook" columnid="remark"/>
       <BindItem id="item20" compid="taxinvDiv.apprvYnCombo" propid="value" datasetid="dsMpSurgBook" columnid="apprvYn"/>
-      <BindItem id="item5" compid="taxinvDiv.mainSurgNmEd" propid="value" datasetid="dsMpSurgBook" columnid="patNo"/>
+      <BindItem id="item5" compid="taxinvDiv.patTypeCombo" propid="value" datasetid="dsMpSurgBook" columnid="patType"/>
+      <BindItem id="item6" compid="taxinvDiv.surgDoc1Ed" propid="value" datasetid="dsMpSurgBook" columnid="surgDoc1"/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[ /*******************************************************************************
 * @Path		    수술 예약 관리 팝업   							             
 * @Description  수술 예약 관리 팝업							 	            
-* @Author	 류재춘    					                             									                                            
-* Created on 2016. 06. 13                             		                    									                                            
+* @Author	    					                             									                                            
+* Created on 2016. 10. 13                             		                    									                                            
 ********************************************************************************/
 
 /********************************************************************************
  공통스크립트 include
 ********************************************************************************/
-include "scripts::commonTransaction.xjs"; 
+include "scripts::commonScripts.xjs"; 
 include "scripts::commonBind.xjs";
 include "scripts::wonScripts.xjs";
 include "scripts::commonPopup.xjs";
-include "scripts::supScript.xjs";
+include "scripts::supScripts.xjs";
 
 /********************************************************************************
   로드 함수
@@ -330,8 +318,9 @@ this.No = function ()
 
 
 
-this.MP_SurgBookInsertForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+this.MR_SurgBookInsertForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
+
 var objDate = new Date();
     //var sDate = this.toFormatString(objDate,"%Y%m%d");//원래는 이렇게있었다 이렇게 위에다가 선언안하고 여기 적으면 아래서 사용못다고 여기함수부분 다른 실행부분도  다 실행안된다 	                                                                                                                                               
      /*   sDate = this.toFormatString(objDate,"Ymd"); //"Y"+"m"+"d"이렇게 적어도되고 앞처럼적어도되고  현재 또는 지정한 로케일, 지정한 형식의 문자열로 변환된 날짜를 반환합니다
@@ -463,7 +452,7 @@ this.taxinvDiv_searchMainSurgNmBtn_onclick = function(obj:Button,  e:nexacro.Cli
 {
 	this.gfnPopup("MR_SurgPopupForm","med","");
 	this.setSurgInfo = function(arrRtn){ 
-	this.dsMpSurgBook.setColumn(this.dsMpSurgBook.rowposition,"mainSurgNm",arr[0]);
+	this.dsMpSurgBook.setColumn(this.dsMpSurgBook.rowposition,"mainSurgNm",arrRtn[0]);
 		}
 }
 
@@ -477,7 +466,7 @@ this.taxinvDiv_searchSubSurgNmBtn_onclick = function(obj:Button,  e:nexacro.Clic
 this.taxinvDiv_searchBeforeSurgDiagn1Btn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	
-	this.gfnPopup("MB_OrdCdPopupForm","med","");
+	this.gfnPopup("MB_OrdPopForm","med","");
 		
 		this.setDsCode = function(arr, divCode){
    		this.taxinvDiv.beforeSurgDiagn1Ed.set_value(arr[1]);
@@ -489,7 +478,7 @@ this.taxinvDiv_searchBeforeSurgDiagn2Btn_onclick = function(obj:Button,  e:nexac
 {
 		
 
-		this.gfnPopup("MB_OrdCdPopupForm", "med","");
+		this.gfnPopup("MB_OrdPopForm", "med","");
 		this.setDsCode = function(arr, divCode){
 			this.taxinvDiv.beforeSurgDiagn2Ed.set_value(arr[1]);
 		}
