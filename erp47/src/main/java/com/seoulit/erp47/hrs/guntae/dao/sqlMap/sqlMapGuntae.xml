@@ -5,7 +5,6 @@
 	<select id="callDayGuntae" statementType="CALLABLE" parameterType="map">
 		
 		{ CALL PC_HG_DAY_MON_CALL(
-			   #{empNo, mode=IN, jdbcType=VARCHAR, javaType=string},
 			   #{errorCode, mode=OUT, jdbcType=VARCHAR, javaType=string},
 			   #{errorMsg, mode=OUT, jdbcType=VARCHAR, javaType=string}
 			)

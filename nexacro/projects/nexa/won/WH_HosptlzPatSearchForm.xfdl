@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="WH_HosptlzPatSearchForm" classname="WH_HosptlzPatSearchForm" left="0" top="0" width="571" height="392" titletext="New Form">
+  <Form id="WH_HosptlzPatSearchForm" classname="WH_HosptlzPatSearchForm" left="0" top="0" width="571" height="392" titletext="New Form" onload="WH_HosptlzPatSearchForm_onload">
     <Layouts>
       <Layout>
         <Static id="subCodeStc07" taborder="0" text="환자등록번호" onclick="subCodeStc_onclick" left="1.99%" top="72" right="77.55%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -283,6 +283,7 @@ this.WH_HosptlzPatSearchForm_onload = function(obj:Form, e:nexacro.LoadEventInfo
 	this.gfnBind();  
 	this.gfnService("empInfo","false");
 }
+
 ]]></Script>
   </Form>
 </FDL>

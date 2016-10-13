@@ -20,4 +20,16 @@ this.gfnPatPopup = function() {
 			this
 	);
 }
+
+
+//병실조회 팝업
+this.openHroomDialog = function(){		
+	return application.open(
+			"WBhosptlzHroomMngntPopupForm"
+			,"won::WB_HosptlzHroomMngntPopupForm.xfdl"
+			,this.parent
+			,null
+			,"showtitlebar=true showstatusbar=false"
+			,250,300,this);
+}
 ]]></Script>
