@@ -20,10 +20,7 @@
 		<package name="com.seoulit.erp47.com.base.to" />
 		<package name="com.seoulit.erp47.com.util.to" />
 
-    <!-- 원무 -->
-    <package name="com.seoulit.erp47.won.outPatMgt.to" />	
-    <package name="com.seoulit.erp47.won.baseInfo.to"/>
-    <package name="com.seoulit.erp47.won.hosptlzPat.to"/>  
+  
       
       
     <!-- 진료지원 -->
@@ -49,11 +46,7 @@
     <package name="com.seoulit.erp47.med.adr.to"/>
     <package name="com.seoulit.erp47.med.recipe.to"/>
   
-    <!-- 원무 -->
-    <package name="com.seoulit.erp47.won.outPatMgt.to" />	
-    <package name="com.seoulit.erp47.won.base.to"/>
-    <package name="com.seoulit.erp47.won.hosptlzPat.to"/>  
-      
+
       
     <!-- 진료지원 -->
     <package name="com.seoulit.erp47.sup.checkup.to"/>  
@@ -98,7 +91,7 @@
 
 		<!-- 원무 -->
 		<package name="com.seoulit.erp47.won.outPatMgt.to" />
-		<package name="com.seoulit.erp47.won.baseInfo.to"/>
+		<package name="com.seoulit.erp47.won.base.to"/>
 		<package name="com.seoulit.erp47.won.hosptlzPat.to"/>
 
 		<!-- 진료지원 -->

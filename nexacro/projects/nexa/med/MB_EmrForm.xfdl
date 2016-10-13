@@ -539,14 +539,14 @@
         <Rows>
           <Row>
             <Col id="serviceID">findFeeCdList</Col>
-            <Col id="URL">erp47::won/baseInfo/findFeeListEMR.do</Col>
+            <Col id="URL">erp47::won/base/findFeeListEMR.do</Col>
             <Col id="outData">dsFeeCd=dsFee</Col>
             <Col id="argument"/>
             <Col id="callbackFunc">emrCallback</Col>
           </Row>
           <Row>
             <Col id="serviceID">findReceiptList</Col>
-            <Col id="URL">erp47::won/outPatMgt/findReceiptList.do</Col>
+            <Col id="URL">erp47::won/outPatMngnt/findReceiptList.do</Col>
             <Col id="outData">dsOutpaReceipt=dsOutpaReceipt</Col>
             <Col id="argument"/>
             <Col id="callbackFunc">emrCallback</Col>
