@@ -465,6 +465,16 @@ this.batchProcessHosptlzRsvtCallbackFunc=function(svcID, errorCode, errorMsg){
 			alert("입원예약 삭제 중 오류 발생");
 		}	
 	}	
+}
+
+this.findHosptlzPrdstorListCallbackFunc=function(svcID, errorCode, errorMsg){
+	if(errorCode=="0"){
+		if(this.dsHosptlzPrdstor.rowcount==0){
+			alert("검색 조건에 해당하는 정보가 없습니다.");
+		}
+	}else{
+		alert("입원예정자 검색 중 오류 발생");
+	}	
 }]]></Script>
   </Form>
 </FDL>

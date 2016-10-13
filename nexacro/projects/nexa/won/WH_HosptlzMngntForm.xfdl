@@ -20,7 +20,7 @@
         <Static id="outpaReceiptNo" taborder="8" text="외래접수번호" onclick="subCodeStc_onclick" visible="false" left="53.58%" top="59" right="38.46%" height="27" style="color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="outpaReceiptNoEdt" taborder="9" enable="false" visible="false" left="62.1%" top="59" right="32.72%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Button id="hosptlzRegisterBtn" taborder="11" onclick="calculationSalBtn_onclick" left="81.93%" top="61" right="11.07%" height="30" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;color:black;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn"/>
-        <Button id="hosptlzCancelBtn" taborder="12" onclick="hosptlzCancelBtn_onclick" left="89.49%" top="61" right="3.42%" height="30" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;color:black;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn"/>
+        <Button id="hosptlzCancelBtn" taborder="12" onclick="hosptlzCancelBtn_onclick" left="89.49%" top="61" right="3.42%" height="30" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;color:black;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn" enable="true"/>
         <Div id="Div01" taborder="13" left="37.02%" top="100" right="2.63%" height="443" style="border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
             <Layout/>
@@ -108,10 +108,10 @@
         <Edit id="respDoctCdEdt" taborder="48" enable="false" left="50.56%" top="246" right="42.75%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Button id="respDoctPBtn" taborder="49" onclick="respDoctPBtn_onclick" enable="false" left="57.56%" top="246" right="39.97%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
         <Edit id="respDoctNmEdt" taborder="50" enable="false" left="60.83%" top="246" right="29.7%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Edit id="hroomNmEdt" taborder="51" onchar="hroomNmEdt_onchar" enable="false" left="65.92%" top="287" right="25.72%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="hroomBtn" taborder="52" onclick="hroomBtn_onclick" enable="false" left="74.84%" top="287" right="22.69%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
-        <Edit id="hroomEdt" taborder="53" enable="false" left="58.68%" top="287" right="35.27%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Edit id="wardEdt" taborder="54" enable="false" left="50.56%" top="287" right="46.74%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Edit id="hroomNmEdt" taborder="51" onchar="hroomNmEdt_onchar" enable="false" left="63.61%" top="287" right="28.03%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Button id="hroomBtn" taborder="52" onclick="hroomBtn_onclick" enable="false" left="72.53%" top="287" right="25%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
+        <Edit id="hroomEdt" taborder="53" enable="false" left="56.53%" top="287" right="37.42%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Edit id="wardEdt" taborder="54" enable="false" left="50.56%" top="287" right="44.59%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Static id="ctrtDateSelStc05" taborder="55" text="병동병실" onclick="subCodeStc_onclick" left="39.97%" top="287" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Static id="ctrtDateSelStc07" taborder="56" text="환자유형" onclick="subCodeStc_onclick" left="39.97%" top="331" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="patTypeCdEdt" taborder="57" enable="false" left="50.56%" top="331" right="42.75%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
@@ -204,6 +204,7 @@
             <Col id="serviceID">findPat</Col>
             <Col id="URL">erp47::won/outPatMngnt/findPat.do</Col>
             <Col id="outData">dsPat=dsPat</Col>
+            <Col id="callbackFunc">findPatCallbackFunc</Col>
           </Row>
           <Row>
             <Col id="serviceID">findReceipt</Col>
@@ -244,7 +245,7 @@
             <Col id="URL">erp47::won/hosptlzPat/findHosptlzRsvt.do</Col>
             <Col id="outData">dsHosptlzRsvt=dsHosptlzRsvt</Col>
             <Col id="callbackFunc">findHosptlzRsvtCallbackFunc</Col>
-            <Col id="inData"/>
+            <Col id="inData"></Col>
           </Row>
           <Row>
             <Col id="serviceID">changeHosptlzRsvtYb</Col>
@@ -463,6 +464,11 @@ this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 /***************************************************************************************************
 *                                     callback function                                            *
 ***************************************************************************************************/
+this.findPatCallbackFunc = function(svcID, errorCode, errorMsg) {
+	this.dsService.setColumn(7,"argument",'patNo='+this.patNoEd.value);
+	this.gfnService("findHosptlzRsvt");
+}
+
 this.findHosptlzYBCallbackFunc = function(svcID, errorCode, errorMsg)
 {
 	//alert(errorCode);
@@ -479,8 +485,10 @@ this.findHosptlzYBCallbackFunc = function(svcID, errorCode, errorMsg)
 			this.gfnService("findReceipt","false"); 	//	입원접수 확인하기
 		}else if(hosptlzYb=='N'){
 			alert("입원승인 되지 않았습니다.");
+			return;
 		}else if(hosptlzRsvtYb=='Y'){
 			alert("입원 예약 등록된 환자입니다.");
+			return;
 		}
 	}else{
 		alert("입원 승인 여부 검색 중 오류발생");
@@ -491,9 +499,7 @@ this.findReceiptCallbackFunc=function(svcID, errorCode, errorMsg){
 
 	if(svcID=="findReceipt"){
 	
-			if(errorCode=="1"){	
-		
-			
+			if(errorCode=="1"){		
 				if(this.dsHosptlzReceipt.rowcount==0){
 					if(this.confirm( "입원등록을 하시겠습니까?", "서울병원 - 입원등록")){
 						this.hosptlzRsvtBtn.set_visible(true);  //입원예약Btn 생성					
@@ -530,9 +536,6 @@ this.batchProcessHosptlzReceiptCallbackFunc=function(svcID, errorCode, errorMsg)
 			if(this.dsHosptlzReceipt.rowcount==0){
 				alert("입원등록 된 내역이 없습니다.");
 			}
-			this.dsService.setColumn(7,"argument",'patNo='+this.patNoEd.value);
-			this.gfnService("findHosptlzRsvt");
-			
 		}else{
 			alert("입원조회  중 오류발생");
 		}	
@@ -572,15 +575,17 @@ this.resetBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 ***************************************************************************************************/
 this.hosptlzSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.hosptlzDateCal.set_enable(true);
-	this.dscgDateCal.set_enable(true);
-	this.hroomBtn.set_enable(true);
-	this.HosptlzReceiptNo.set_visible(true);
-	this.hosptlzReceiptNoEdt.set_visible(true);
-	this.saveBtn.set_visible(true);
-	
 	this.dsService.setColumn(5,"argument",'patNo='+patNo);
 	this.gfnService("findHosptlzReceipt","false"); 	//	입원접수 확인하기
+	
+	if(this.dsHosptlzReceipt.rowcount != 0) {
+		this.hosptlzDateCal.set_enable(true);
+		this.dscgDateCal.set_enable(true);
+		this.hroomBtn.set_enable(true);
+		this.HosptlzReceiptNo.set_visible(true);
+		this.hosptlzReceiptNoEdt.set_visible(true);
+		this.saveBtn.set_visible(true);
+	}
 	
 }
 	
@@ -597,12 +602,18 @@ this.calculationSalBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		this.dsService.setColumn(0,"argument",'patNo='+patNo);
 		this.gfnService("findHosptlzYB","false");  //외래접수번호와 입원여부 확인하기. 입원예약 여부 확인
 		
-		this.outpaReceiptNo.set_visible(true);
-		this.outpaReceiptNoEdt.set_visible(true);	
-		this.saveBtn.set_visible(true);
-		this.HosptlzReceiptNo.set_visible(true);
-		this.hosptlzReceiptNoEdt.set_visible(true);
-		this.resetBtn.set_visible(true);
+		patNo=this.patNoEd.value;
+		var hosptlzYb=this.dsOutpaReceipt.getColumn(0,"hosptlzYb");
+		alert(hosptlzYb);
+		
+		if(hosptlzYb == 'Y') {	
+			this.outpaReceiptNo.set_visible(true);
+			this.outpaReceiptNoEdt.set_visible(true);	
+			this.saveBtn.set_visible(true);
+			this.HosptlzReceiptNo.set_visible(true);
+			this.hosptlzReceiptNoEdt.set_visible(true);
+			this.resetBtn.set_visible(true);
+		}
 	}	
 }
 
@@ -730,8 +741,8 @@ this.respDoctPBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 }
 
 this.setHroomInfo= function(arr){
-	this.wardEdt.set_value(arr[1]);
 	this.hroomEdt.set_value(arr[0]);
+	this.wardEdt.set_value(arr[1]);
 	this.hroomNmEdt.set_value(arr[2]);
 }
 
