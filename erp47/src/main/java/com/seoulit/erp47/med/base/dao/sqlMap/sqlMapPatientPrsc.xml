@@ -4,7 +4,7 @@
 <mapper namespace="com.seoulit.erp47.med.base.dao.PatientPrscDAO">
 
     <!-- 외래/입원환자 약물처방 조회 -->
- <!--    <select id="selectDrugPrscList" resultType="PatientPrscBean">
+     <select id="selectDrugPrscList" resultType="PatientPrscBean">
         SELECT
             a.PAT_NO
           , a.PRESC_DATE
@@ -68,7 +68,7 @@
             <if test="doctNm != null">
                 AND a.DOCT_NM = #{doctNm}
             </if>
-    </select> -->
+    </select> 
 
 
 

@@ -58,21 +58,16 @@
      
      
     <!-- 입원중 환자 처방내역조회 -->
-<!--     <select id="selectInpatientPrscList" resultType="PatientPrscBean">
+     <select id="selectInpatientPrscList" resultType="PatientPrscBean">
         SELECT
             *
         FROM
             MC_IN_PAIENT
         WHERE
             DSCG_GUBUN = 0
-    </select> -->
-<!--     
-    
+    </select> 
     
 
-
-
-    
    
     <insert id="insertInpatientPrsc">
         INSERT INTO
@@ -206,6 +201,6 @@
         WHERE  
             PAT_NO           = #{patNo}
         AND PRESC_NO         = #{prescNo}
-    </update> -->
+    </update> 
 
 </mapper>

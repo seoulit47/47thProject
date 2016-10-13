@@ -261,7 +261,7 @@
       <BindItem id="item16" compid="compBox.inspDateCal" propid="value" datasetid="dsTempR" columnid="inspPlnDate"/>
       <BindItem id="item17" compid="compBox.inspTimeMask" propid="value" datasetid="dsTempR" columnid="inspPlnTime"/>
       <BindItem id="item18" compid="compBox.pckCdEd" propid="value" datasetid="dsTempR" columnid="pckCd"/>
-      <BindItem id="item19" compid="compBox.pckNmEd" propid="value" datasetid="dsTempR" columnid="patNm"/>
+      <BindItem id="item19" compid="compBox.pckNmEd" propid="value" datasetid="dsTempR" columnid="pckNm"/>
       <BindItem id="item20" compid="compBox.reducCdEd" propid="value" datasetid="dsTempR" columnid="reducCd"/>
       <BindItem id="item21" compid="compBox.reducNmEd" propid="value" datasetid="dsTempR" columnid="reducNm"/>
       <BindItem id="item22" compid="compBox.basicInspAmtEd" propid="value" datasetid="dsReceipt" columnid="basicInspAmt"/>
@@ -606,7 +606,7 @@ this.findRsvtInspList=function(rsvtNo)
 {
 	if(rsvtNo!=null)		
 	{
-		alert(123);
+		
 		var argument = 'rsvtNo='+rsvtNo;
 		var row = this.dsService.findRow('serviceID' , "findRsvtInspList");
 		this.dsService.setColumn(row, "argument", argument);
