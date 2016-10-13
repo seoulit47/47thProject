@@ -4,17 +4,6 @@
   <Form id="MP_SurgBook" classname="MP_SurgBook" left="0" top="0" width="1250" height="768" titletext="New Form" onload="MP_SurgBook_onload">
     <Layouts>
       <Layout>
-        <Div id="calTitleDiv" taborder="1" left="1.92%" top="53" right="32.8%" height="26" style="background:transparent URL('img::formBar.png');border:0 none #808080ff ;color:black;">
-          <Layouts>
-            <Layout>
-              <Spin id="yearSpin" taborder="5" value="2016" onspin="calTitleDiv_yearSpin_onspin" left="38.48%" top="3" right="54.29%" height="21"/>
-              <Spin id="monthSpin" taborder="6" value="4" onspin="calTitleDiv_monthSpin_onspin" left="52.45%" top="3" right="42.03%" height="21"/>
-              <Static id="titleEdit" taborder="7" text="년" onclick="titleEdt_onclick" cssclass="TStc" left="46.57%" top="7" right="51.47%" height="13" style="color:whitesmoke;font:bold 11 돋움;" class="TStc"/>
-              <Static id="titleEdit00" taborder="8" text="월" onclick="titleEdt_onclick" cssclass="TStc" left="58.82%" top="7" right="39.22%" height="13" style="color:whitesmoke;font:bold 11 돋움;" class="TStc"/>
-              <Calendar id="todayCal" taborder="9" left="85.42%" top="2" right="0.74%" height="22"/>
-            </Layout>
-          </Layouts>
-        </Div>
         <Div id="Div00" taborder="2" text=" WednesDay" left="30%" top="83" right="60.88%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
         <Div id="Div01" taborder="3" text=" SunDay" left="1.92%" top="83" right="88.96%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
         <Div id="Div02" taborder="4" text=" MonDay" left="11.28%" top="83" right="79.6%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>
@@ -537,7 +526,6 @@
                   </Layout>
                 </Layouts>
               </Div>
-              <Button id="surgeBookAddBtn" taborder="11" onclick="timeDiv_surgeBookAddBtn_onclick" left="79.43%" top="671" right="1.29%" height="30" style="background:@gradation URL('img::okBtn.png');cursor:hand;" class="DelBtn"/>
               <Edit id="startTimeEd" taborder="12" left="20.31%" top="29" right="71.21%" height="26"/>
               <Edit id="endTimeEd" taborder="13" left="50.64%" top="29" right="40.87%" height="25"/>
               <Edit id="surgeTimeEd" taborder="14" left="87.92%" top="30" right="2.31%" height="25"/>
@@ -580,7 +568,7 @@
                     </Rows>
                     <Band id="head">
                       <Cell style="background:#f2f2f2ff;" text="시간"/>
-                      <Cell col="1" style="background:#f2f2f2ff;" text="내용"/>
+                      <Cell col="1" style="background:#f2f2f2ff;" text="구분"/>
                     </Band>
                     <Band id="body">
                       <Cell style="background:#f2f2f2ff;background2:#f2f2f2ff;" text="1"/>
@@ -635,11 +623,23 @@
                   </Format>
                 </Formats>
               </Grid>
+              <Button id="surgeBookAddBtn" taborder="19" text="등록" left="31.11%" top="668" right="28.02%" height="26" onclick="timeDiv_surgeBookAddBtn_onclick"/>
             </Layout>
           </Layouts>
         </Div>
         <Div id="Div07" taborder="52" left="0%" top="0" right="-62%" height="41" style="background:transparent URL('img::titleBar2.jpg');"/>
         <Static id="Static00" taborder="53" text="수술예약" left="4.4%" top="8" right="82.24%" height="41" onclick="Static00_onclick" style="font:bold 20 arial;"/>
+        <Div id="calTitleDiv" taborder="54" left="1.92%" top="53" right="32.8%" height="26" style="background:transparent URL('img::formBar.png');border:0 none #808080ff ;color:black;">
+          <Layouts>
+            <Layout>
+              <Spin id="yearSpin" taborder="10" value="2016" onspin="calTitleDiv_yearSpin_onspin" left="38.48%" top="3" right="54.29%" height="21"/>
+              <Spin id="monthSpin" taborder="11" value="4" onspin="calTitleDiv_monthSpin_onspin" left="52.45%" top="3" right="42.03%" height="21"/>
+              <Static id="titleEdit" taborder="12" text="년" onclick="titleEdt_onclick" cssclass="TStc" left="46.58%" top="7" right="51.43%" height="13" style="color:whitesmoke;font:bold 11 돋움;" class="TStc"/>
+              <Static id="titleEdit00" taborder="13" text="월" onclick="titleEdt_onclick" cssclass="TStc" left="58.78%" top="7" right="39.23%" height="13" style="color:whitesmoke;font:bold 11 돋움;" class="TStc"/>
+              <Calendar id="todayCal" taborder="14" left="85.42%" top="2" right="0.74%" height="22"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Objects>
@@ -653,7 +653,7 @@
       </Dataset>
       <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
-          <Column id="ServiceID" type="STRING" size="100"/>
+          <Column id="serviceID" type="STRING" size="100"/>
           <Column id="URL" type="STRING" size="100"/>
           <Column id="inData" type="STRING" size="256"/>
           <Column id="outData" type="STRING" size="256"/>
@@ -662,15 +662,15 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="ServiceID">batchMpSurgBookProcess</Col>
+            <Col id="serviceID">batchMpSurgBookProcess</Col>
             <Col id="inData">dsMpSurgBook=dsMpSurgBook:U</Col>
-            <Col id="URL">erp45::med/mp/batchMpSurgBookProcess.do</Col>
+            <Col id="URL">erp47::med/recipe/batchMpSurgBookProcess.do</Col>
             <Col id="outData"/>
             <Col id="callbackFunc"/>
           </Row>
           <Row>
-            <Col id="ServiceID">findMpSurgBookList</Col>
-            <Col id="URL">erp45::med/mp/findMpSurgBookList.do</Col>
+            <Col id="serviceID">findMpSurgBookList</Col>
+            <Col id="URL">erp47::med/recipe/findMpSurgBookList.do</Col>
             <Col id="outData">dsMpSurgBook=dsMpSurgBook</Col>
             <Col id="callbackFunc">mpSurgBookCallBack</Col>
             <Col id="inData">dsSearchCondition=dsSearchCondition</Col>
@@ -914,14 +914,18 @@
 /********************************************************************************
  공통스크립트 include
 ********************************************************************************/
-include "scripts::commonTran.xjs";  
+include "scripts::commonScripts.xjs"; 
 include "scripts::commonBind.xjs";
+include "scripts::wonScripts.xjs";
+include "scripts::commonPopup.xjs";
+include "scripts::supScripts.xjs";
 /********************************************************************************
   로드 함수
 ********************************************************************************/
 
 this.MP_SurgBook_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
+	alert(123);
 	this.makeCal();
 	this.calTitleDiv.todayCal.set_value(this.Today());
 }
@@ -1049,7 +1053,7 @@ this.makeCal = function(){
 	this.dsSearchCondition.setColumn(row2,"columnName","BOOK_DATE");
 	this.dsSearchCondition.setColumn(row2,"columnValue", endFullDate);
 	this.dsSearchCondition.setColumn(row2,"operator","<=");
-	alert(startFullDate +" ~ "+endFullDate);
+	//alert(startFullDate +" ~ "+endFullDate);
 	this.gfnService("findMpSurgBookList");
 }
 
@@ -1137,15 +1141,16 @@ this.timeDiv_surgeTimeGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridCli
 	this.surgNo = this.dsSub.getColumn(row,"no");
 	if(this.surgNo != null){
 		this.insertOrUpdate = "update";
-		application.open("MPsurgBookInsertForm","med::MPsurgBookInsertForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false", 0, 0, 800, 443, this);
+		application.open("MPsurgBookInsertForm","med::MR_SurgBookInsertForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false", 0, 0, 800, 443, this);
 	}
 }
 
 //수술예약 등록
 this.timeDiv_surgeBookAddBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
+	
 	this.insertOrUpdate = "insert";
-	application.open("MPsurgBookInsertForm","med::MPsurgBookInsertForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false", 0, 0, 800, 443, this);
+	application.open("MPsurgBookInsertForm","med::MR_SurgBookInsertForm.xfdl",this.parent,{},"showtitlebar=true showstatusbar=false", 0, 0, 800, 443, this);
 }
 
 /********************************************************************************
