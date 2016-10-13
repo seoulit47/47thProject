@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.erp47.com.base.dao.ServiceDAO">
+	<!-- mapper의 namespace는 Interface인 실제 DAO의 경로로 설정한다. -->
+	<cache flushInterval="86400000" eviction="LRU" />
+
+	
+	<select resultType="ServiceBean" useCache="true" flushCache="false" id="selectService">
+		SELECT EMP_NAME as empName, EMP_NO as empNo, IMGFILE as imgfile,
+		IN_DATA as inData , PROCESSYN as processyn, RECEIVE_DATE as
+		receiveDate, RECEIVE_NO as receiveNo, SERVICE_GUBUN as serviceGubun
+		FROM CM_SERVICE
+
+		
+		<where>
+
+			<if test="empEd != null"> EMP_NAME = #{empEd} </if>
+
+
+			
+			<if test="sDate != null">
+				AND RECEIVE_DATE
+				<![CDATA[>]]>#{sDate}
+			</if>
+
+
+			
+			<if test="eDate != null">
+				AND RECEIVE_DATE
+				<![CDATA[<]]>#{eDate}
+			</if>
+
+		</where>
+		ORDER BY RECEIVE_NO, EMP_NO
+	</select>
+
+	<insert id="insertError" parameterType="ServiceBean"> 
+	INSERT INTO CM_SERVICE (
+		RECEIVE_NO, EMP_NO, SERVICE_GUBUN, PROCESSYN, RECEIVE_DATE, IMGFILE,
+		IN_DATA, IMG_DATA ) VALUES ( SERVICE_NO_SEQ.NEXTVAL, #{empNo},
+		#{serviceGubun}, #{processyn}, #{receiveDate}, #{imgfile}, #{inData},
+		#{imgData} ) 
+	</insert>
+</mapper>

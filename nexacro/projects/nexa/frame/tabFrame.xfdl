@@ -90,7 +90,7 @@ this.topTab_onextrabuttonclick = function(obj:Tab, e:nexacro.TabMouseEventInfo)
 {	
 	if (confirm(obj.tabpages[e.index].text + " 탭을 닫으시겠습니까?")) {
 		var childName = obj.tabpages[e.index].url;
-		
+		 
 		var objChild = application.mainframe.frameSet.mainFrame.frames[childName];
 		application.mainframe.frameSet.mainFrame.removeChild(childName);
 		

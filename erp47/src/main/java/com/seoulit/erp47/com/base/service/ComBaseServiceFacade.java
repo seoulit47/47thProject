@@ -9,6 +9,7 @@ import com.seoulit.erp47.com.base.to.AuthBean;
 import com.seoulit.erp47.com.base.to.CodeBean;
 import com.seoulit.erp47.com.base.to.CodeNmBean;
 import com.seoulit.erp47.com.base.to.MenuBean;
+import com.seoulit.erp47.com.base.to.ServiceBean;
 
 public interface ComBaseServiceFacade {
 
@@ -46,4 +47,9 @@ public interface ComBaseServiceFacade {
 	// public List<MenuBean> findMenuList();
 	//메뉴&권한 일괄처리
 	public void BatchAuthAndMenu(Map<String, List> map);
+	
+	// 전산서비스접수
+    public List<ServiceBean> findService(Map<String, String> argsMap);
+
+    public void batchErrorProcess(List<ServiceBean> service);
 }

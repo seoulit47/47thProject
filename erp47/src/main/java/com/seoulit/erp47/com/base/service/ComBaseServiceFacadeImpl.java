@@ -10,12 +10,14 @@ import com.seoulit.erp47.com.base.applicationService.AuthApplicationService;
 import com.seoulit.erp47.com.base.applicationService.CodeApplicationService;
 import com.seoulit.erp47.com.base.applicationService.LoginApplicationService;
 import com.seoulit.erp47.com.base.applicationService.MenuApplicationService;
+import com.seoulit.erp47.com.base.applicationService.ServiceApplicationService;
 import com.seoulit.erp47.com.base.exception.IdNotFoundException;
 import com.seoulit.erp47.com.base.exception.PwMissMatchException;
 import com.seoulit.erp47.com.base.to.AuthBean;
 import com.seoulit.erp47.com.base.to.CodeBean;
 import com.seoulit.erp47.com.base.to.CodeNmBean;
 import com.seoulit.erp47.com.base.to.MenuBean;
+import com.seoulit.erp47.com.base.to.ServiceBean;
 
 /**
  * @Package  	com.seoulit.erp47.com.base.service
@@ -37,6 +39,8 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
     private AuthApplicationService authApplicationService;
     @Autowired
     private MenuApplicationService menuApplicationService;
+    @Autowired
+    private ServiceApplicationService serviceApplicationService;
     
     // 로그인
     @Override
@@ -106,4 +110,17 @@ public class ComBaseServiceFacadeImpl implements ComBaseServiceFacade {
 	@Override
     public List<MenuBean> findMenuList() {
         return menuApplicationService.findMenuList();
-    }}
+    }
+	
+	// 시스템에러 전산요청
+    @Override
+    public List<ServiceBean> findService(Map<String, String> argsMap) {
+        return serviceApplicationService.findService(argsMap);
+    }
+
+    @Override
+    public void batchErrorProcess(List<ServiceBean> service) {
+        serviceApplicationService.batchErrorProcess(service);
+    }
+}
+
