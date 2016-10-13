@@ -17,6 +17,7 @@ import com.seoulit.erp47.med.base.to.PatientDsBean;
 import com.seoulit.erp47.med.base.to.PatientPrscBean;
 import com.seoulit.erp47.med.base.to.PrscBean;
 import com.seoulit.erp47.med.base.to.PrscDtlBean;
+import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdTypeBean;
 import com.seoulit.erp47.med.base.to.TrmtSchdTypeDetailBean;
@@ -96,6 +97,8 @@ public interface EmrServiceFacade {
 																	// BATCH
 
 	List<AntimicrobialBean> findAntimicrobialList(Map<String, String> argsMap);
+
+	List<SpeciesVirusBean> findSpeciesVirusList(Map<String, String> argsMap); //균속조회
 	
 
 }

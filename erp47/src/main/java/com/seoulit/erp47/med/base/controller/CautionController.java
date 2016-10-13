@@ -21,6 +21,7 @@ import com.seoulit.erp47.med.base.to.CutnRltnExmntBean;
 import com.seoulit.erp47.med.base.to.OrdBean;
 import com.seoulit.erp47.med.base.to.PatCutnBean;
 import com.seoulit.erp47.med.base.to.PatCutnHistBean;
+import com.seoulit.erp47.med.base.to.SpeciesVirusBean;
 import com.seoulit.erp47.med.base.to.VirusBean;
 
 @Controller
@@ -117,16 +118,18 @@ public class CautionController {
     }
 	@RequestMapping("med/base/findSpeciesVirusList.do")
     public void findSpeciesVirusList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        PlatformData inData = (PlatformData) request.getAttribute("inData");
+        System.out.println("med/base/findSpeciesVirusList.do 매서드 입니다");
+		PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
         
-        List<VirusBean> VirusList = emrServiceFacade.findVirusList(argsMap);
-        dataSetBeanMapper.beansToDataset(outData, VirusList, VirusBean.class);
+        List<SpeciesVirusBean> VirusList = emrServiceFacade.findSpeciesVirusList(argsMap);
+        dataSetBeanMapper.beansToDataset(outData, VirusList, SpeciesVirusBean.class);
         NexacroLogger.debug(outData.getDataSetList());
     }
 	@RequestMapping("med/base/findVirusList.do")
     public void findVirusList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("findVirusList.do 매서드 입니");
         PlatformData inData = (PlatformData) request.getAttribute("inData");
         PlatformData outData = (PlatformData) request.getAttribute("outData");
         Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);

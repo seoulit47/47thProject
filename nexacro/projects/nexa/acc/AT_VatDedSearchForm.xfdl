@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AT_VatDedSearchForm" classname="AT_VatDedSearchForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="AT_VatDedSearchForm" classname="AT_VatDedSearchForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AT_VatDedSearchForm_onload">
     <Layouts>
       <Layout>
         <Div id="aTVATDeclDiv" taborder="0" left="1.52%" top="69" right="1.28%" height="691" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
@@ -259,7 +259,7 @@
           <Row>
             <Col id="serviceID">findVATDeclList</Col>
             <Col id="inData"/>
-            <Col id="URL">his::acc/VAT/findVATDeclList.do</Col>
+            <Col id="URL">erp47::acc/VAT/findVATDeclList.do</Col>
             <Col id="callbackFunc">vatCallBack</Col>
             <Col id="outData">dsVATDecl=dsVATDecl</Col>
           </Row>
@@ -322,5 +322,36 @@
         </Rows>
       </Dataset>
     </Objects>
+    <Script type="xscript5.0"><![CDATA[include "scripts::commonScripts.xjs";
+
+
+
+this.AT_VatDedSearchForm_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	//this.gfnBind();
+}
+
+
+//조회 기간 & 회계기수에 따른 조회
+this.aTVATDeclDiv_searchATVATDeclBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var declYear = this.aTVATDeclDiv.declYearSpin.value;
+	var argument = "";
+	if(declYear != null){
+		argument = "DECL_YEAR='"+declYear+"'";
+	}
+	var declPrid = this.aTVATDeclDiv.declPridCombo.value;
+	if(declPrid != null){
+		argument = argument+" DECL_PRID='"+declPrid+"'";
+	}		
+	if(argument != ""){
+		this.dsService.setColumn(0,"argument",argument);
+	}
+	this.gfnService("findVATDeclList");
+}
+
+// 세금 계산서 조회에 따른 부가가치세 계산
+
+]]></Script>
   </Form>
 </FDL>

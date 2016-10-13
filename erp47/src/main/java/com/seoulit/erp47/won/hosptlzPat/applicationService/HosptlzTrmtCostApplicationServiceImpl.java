@@ -58,10 +58,10 @@ public class HosptlzTrmtCostApplicationServiceImpl implements HosptlzTrmtCostApp
 	}
 
 	@Override
-	public HosptlzPatReceBean findHosptlzPatRece(
-			Map<String, String> argsMap) {
+	public HosptlzPatReceBean findHosptlzPatRece(Map<String, String> argsMap) {
 		// TODO Auto-generated method stub
 		HosptlzPatReceBean hosptlzPatReceBean;
+		
 		hosptlzPatReceBean = hosptlzPatReceDAO.selectHosptlzPatRece(argsMap);
 		return hosptlzPatReceBean;
 	}
