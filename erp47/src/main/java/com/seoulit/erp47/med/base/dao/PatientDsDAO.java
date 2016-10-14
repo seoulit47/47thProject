@@ -13,13 +13,6 @@ public interface PatientDsDAO {
 	
 	List<PatientDsBean> selectPatientDsList(Map<String, String> argsMap);
 
-    void insertInpatientPrsc(PatientPrscBean patientPrscBean);
-
-    void updateInpatientPrsc(PatientPrscBean patientPrscBean);
-
-    void insertOutpatientPrsc(PatientPrscBean patientPrscBean);
-
-    void updateOutpatientPrsc(PatientPrscBean patientPrscBean);
     
     void insertPatientDs(PatientDsBean patientDsBean);
     
