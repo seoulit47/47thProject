@@ -70,10 +70,16 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
 		// TODO Auto-generated method stub
 		return baseExamDAO.findBaseExamList(argsMap);
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public void batchEmrProcess(Map<String, Object> emrMap) {
-		
+		/*
+		 * dsOutpaReceipt=dsOutpaReceipt:u 환자별 접수 정보 TO ReceiptInfoBean
+		 * dsBaseExam=dsBaseExam:u 환자기초검사TO BaseExamBean
+		 * dsPatientDs=dsPatientDs:u 환자상병TO PatientDsBean
+		 * dsPatientPrsc=dsPatientPrsc:u 환자처방TO PatientPrscBean
+		 * 
+		 */
 		
 		//환자 기초검사 정보 등록,수정
 		List<BaseExamBean>baseExamList = (List<BaseExamBean>)emrMap.get("baseExamList");
@@ -136,6 +142,7 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
         	
             switch (patientDsBean.getStatus()) {
             case "inserted":
+            	System.out.println("처방정보 insert 되나??");
                 patientDsDAO.insertPatientDsList(patientDsBean);
                 break;
             case "updated":
@@ -150,10 +157,10 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
                     if (patientDsBean.getCode().equals(patientPrscBean.getDiseaseCd())) {
                         switch (patientPrscBean.getStatus()) {
                         case "inserted":
-                            patientDsDAO.insertInpatientPrsc(patientPrscBean);
+                        	patientPrscDAO.insertInpatientPrsc(patientPrscBean);
                             break;
                         case "updated":
-                            patientDsDAO.updateInpatientPrsc(patientPrscBean);
+                        	patientPrscDAO.updateInpatientPrsc(patientPrscBean);
                             break;
                         }
                     }
@@ -161,15 +168,15 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
             } else {
                 for (PatientPrscBean patientPrscBean : patientPrscList) {
                 	System.out.println(patientPrscBean.getStatus()+"!!!!!!!!!!");
-                    if (patientDsBean.getCode().equals(patientPrscBean.getDiseaseCd())) {
+                  
                         switch (patientPrscBean.getStatus()) {
                         case "inserted":
-                            patientDsDAO.insertOutpatientPrsc(patientPrscBean);
+                        	patientPrscDAO.insertOutpatientPrsc(patientPrscBean);
                             break;
                         case "updated":
-                            patientDsDAO.updateOutpatientPrsc(patientPrscBean);
+                        	patientPrscDAO.updateOutpatientPrsc(patientPrscBean);
                             break;
-                        }
+                        
                     }
                 }
             }
