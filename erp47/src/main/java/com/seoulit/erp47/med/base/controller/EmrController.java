@@ -162,7 +162,7 @@ public class EmrController {
 		dataSetBeanMapper.beansToDataset(outData, patientPrscList, PatientPrscBean.class);
 	}
 	
-	@RequestMapping("med/base/findPrescDtl.do")
+	@RequestMapping("med/base/findPrscDtlList.do")
 	public void findPrescDtl(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");

@@ -246,6 +246,7 @@
             <Col id="outData">dsHosptlzRsvt=dsHosptlzRsvt</Col>
             <Col id="callbackFunc">findHosptlzRsvtCallbackFunc</Col>
             <Col id="inData"></Col>
+            <Col id="inData"/>
           </Row>
           <Row>
             <Col id="serviceID">changeHosptlzRsvtYb</Col>

@@ -10,7 +10,7 @@
           , PRESC_DATE
           , PRESC_DOC
         FROM 
-            MP_PRESC
+            MP_PRESC 
 
         	
     </select>

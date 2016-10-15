@@ -12,13 +12,13 @@
         <Static id="Static05" taborder="11" text="나이" left="0.64%" top="241" right="93.71%" height="28" style="align:center;" class="AreaStc"/>
         <Edit id="ageEd" taborder="12" readonly="true" left="6.29%" top="241" right="84.95%" height="28" style="align:center middle;" class="AreaEdt"/>
         <Static id="Static07" taborder="13" text="진료과" left="0.64%" top="273" right="93.71%" height="28" style="align:center;" class="AreaStc"/>
-        <Edit id="trmtDeptCdEdt" taborder="14" readonly="true" left="6.29%" top="273" right="84.95%" height="28" style="align:center middle;" class="AreaEdt"/>
+        <Edit id="trmtDeptCdEd" taborder="14" readonly="true" left="6.29%" top="273" right="84.95%" height="28" style="align:center middle;" class="AreaEdt"/>
         <Edit id="trmtDeptNmEd" taborder="15" readonly="true" left="15.61%" top="273" right="75.8%" height="28" style="align:center middle;" class="AreaEdt"/>
         <Static id="Static08" taborder="16" text="병동" left="0.64%" top="305" right="93.71%" height="28" style="align:center;" class="AreaStc"/>
-        <Edit id="wardEdt" taborder="17" readonly="true" left="6.29%" top="305" right="84.95%" height="28" style="align:center middle;" class="AreaEdt"/>
+        <Edit id="wardEd" taborder="17" readonly="true" left="6.29%" top="305" right="84.95%" height="28" style="align:center middle;" class="AreaEdt"/>
         <Edit id="wardNmEd" taborder="18" readonly="true" left="15.61%" top="305" right="75.8%" height="28" style="align:center middle;" class="AreaEdt"/>
         <Static id="Static09" taborder="19" text="입원경로" left="0.64%" top="369" right="93.71%" height="28" style="align:center;" class="AreaStc"/>
-        <Edit id="hosptlzRouteCdEdt" taborder="20" readonly="true" left="6.29%" top="369" right="84.95%" height="28" style="align:center middle;" class="AreaEdt"/>
+        <Edit id="hosptlzRouteCdEd" taborder="20" readonly="true" left="6.29%" top="369" right="84.95%" height="28" style="align:center middle;" class="AreaEdt"/>
         <Edit id="hosptlzRouteNmEd" taborder="21" readonly="true" left="15.61%" top="369" right="75.8%" height="28" style="align:center middle;" class="AreaEdt"/>
         <Static id="Static10" taborder="22" text="퇴원일자" left="0.64%" top="401" right="93.71%" height="28" style="align:center;" class="AreaStc"/>
         <Grid id="trmtCostHistGrid" taborder="24" binddataset="dsHosptlzTrmtCost" scrollbars="autohorz" useinputpanel="false" useselcolor="false" left="0.56%" top="480" right="70.78%" height="267" class="AreaGrid">
@@ -150,9 +150,9 @@
       <BindItem id="item9" compid="patNmEd" propid="value" datasetid="dshosptlzPat" columnid="patNm"/>
       <BindItem id="item2" compid="genderEd" propid="value" datasetid="dshosptlzPat" columnid="gender"/>
       <BindItem id="item3" compid="ageEd" propid="value" datasetid="dshosptlzPat" columnid="age"/>
-      <BindItem id="item4" compid="trmtDeptCdEdt" propid="value" datasetid="dshosptlzPat" columnid="trmtDept"/>
-      <BindItem id="item5" compid="wardEdt" propid="value" datasetid="dshosptlzPat" columnid="ward"/>
-      <BindItem id="item7" compid="hosptlzRouteCdEdt" propid="value" datasetid="dshosptlzPat" columnid="hosptlzRoute"/>
+      <BindItem id="item4" compid="trmtDeptCdEd" propid="value" datasetid="dshosptlzPat" columnid="trmtDept"/>
+      <BindItem id="item5" compid="wardEd" propid="value" datasetid="dshosptlzPat" columnid="ward"/>
+      <BindItem id="item7" compid="hosptlzRouteCdEd" propid="value" datasetid="dshosptlzPat" columnid="hosptlzRoute"/>
       <BindItem id="item8" compid="dscgDayCal" propid="value" datasetid="dshosptlzPat" columnid="dscgDate"/>
       <BindItem id="item0" compid="rrn1Ed" propid="value" datasetid="dshosptlzPat" columnid="rrn1"/>
       <BindItem id="item1" compid="rrn2Ed" propid="value" datasetid="dshosptlzPat" columnid="rrn2"/>
