@@ -39,7 +39,7 @@
 						'채혈')
 					</when>
 					<when test="smCd!=null and smCd == 3">
-						AND MID_GRP = '수혈'
+						AND MID_GRP = 'CT 및 MRI'
 					</when>
 					<when test="smCd!=null and smCd == 4">
 						AND MID_GRP IN ('처치 및 수술료','치과처치 및 수술료')

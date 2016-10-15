@@ -139,7 +139,7 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
         List<PatientPrscBean> patientPrscList = (List<PatientPrscBean>) emrMap.get("patientPrscList");
         
         for (PatientDsBean patientDsBean : patientList) {
-        	
+        	System.out.println(patientDsBean.getStatus()+"@@@@@@@@@@@");
             switch (patientDsBean.getStatus()) {
             case "inserted":
             	System.out.println("처방정보 insert 되나??");

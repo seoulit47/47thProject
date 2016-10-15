@@ -145,6 +145,8 @@ public class EmrController {
 		emrMap.put("patientDsList", patientDsList);
 		emrMap.put("patientPrscList", patientPrscList);
 
+		System.out.println(inData.saveXml());
+		
 		emrServiceFacade.batchEmrProcess(emrMap);
 	}
 	

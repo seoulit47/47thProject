@@ -276,7 +276,7 @@
                       <Layout>
                         <Button id="Button00" taborder="36" text="투약" onclick="medTab_prscTp_prscTypeDiv_prscBtn_onclick" left="4.34%" top="3" right="81.21%" height="23" class="AreaBtn"/>
                         <Button id="Button01" taborder="37" text="검사" onclick="medTab_prscTp_prscTypeDiv_prscBtn_onclick" left="19.65%" top="3" right="65.9%" height="23" class="AreaBtn"/>
-                        <Button id="Button02" taborder="38" text="수혈" onclick="medTab_prscTp_prscTypeDiv_prscBtn_onclick" left="34.97%" top="3" right="50.58%" height="23" class="AreaBtn"/>
+                        <Button id="Button02" taborder="38" text="CT" onclick="medTab_prscTp_prscTypeDiv_prscBtn_onclick" left="34.97%" top="3" right="50.58%" height="23" class="AreaBtn"/>
                         <Button id="Button03" taborder="39" text="처치" onclick="medTab_prscTp_prscTypeDiv_prscBtn_onclick" left="50.29%" top="3" right="35.26%" height="23" class="AreaBtn"/>
                         <Button id="Button04" taborder="40" text="재료" onclick="medTab_prscTp_prscTypeDiv_prscBtn_onclick" left="65.61%" top="3" right="19.94%" height="23" class="AreaBtn"/>
                         <Button id="Button05" taborder="41" text="재활" onclick="medTab_prscTp_prscTypeDiv_prscBtn_onclick" left="81.21%" top="3" right="4.34%" height="23" class="AreaBtn"/>
@@ -895,7 +895,7 @@ this.patGrid_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
     this.dsService.setColumn(2,"argument","patNo="+patNo);
     this.gfnService("findPatientDsPrscList"); 
     
-	this.medTab.chartTp.chartDiv.patNoEd.set_value(patNo); //pdf파일칸에 미리 선택한 환자번호 넣어두기
+	//this.medTab.chartTp.chartDiv.patNoEd.set_value(patNo); //pdf파일칸에 미리 선택한 환자번호 넣어두기
 }
 
 // 입원/외래 라디오버튼 클릭시 
@@ -1013,9 +1013,9 @@ this.medTab_prscTp_prscTypeDiv_prscBtn_onclick = function(obj:Button,  e:nexacro
 			this.dsService.setColumn(0, "argument", "smCd=2");
 			this.gfnService("findFeeCdList");
 			break;
-		case "수혈" :
+		case "CT" :
 			smCd = 3;
-			this.medTab.prscTp.presGrid.setCellProperty("head", "0", "text", "수혈항목");
+			this.medTab.prscTp.presGrid.setCellProperty("head", "0", "text", "CT 및 MRI");
 			this.dsService.setColumn(0, "argument", "smCd=3");
 			this.gfnService("findFeeCdList");
 			break;
@@ -1083,18 +1083,18 @@ this.medTab_prscTp_presGrid_oncelldblclick = function(obj:Grid, e:GridClickEvent
 /***** 차트탭 *****/
 
 // 차트탭 조회 클릭시
-this.medTab_chartTp_chartDiv_reportBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+/*this.medTab_chartTp_chartDiv_reportBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	if(this.gfnIsNull(this.medTab.chartTp.chartDiv.patNoEd.value)) { 
 		alert("환자번호를 선택해주세요");
 		return;
 	}
-	this.medTab.chartTp.emrBrowser.set_url("http://localhost:8282/his/med/base/reportEmr.do?format=pdf&patNo=" + this.medTab.chartTp.chartDiv.patNoEd.value);
-	this.medTab.chartTp.emrBrowser.reload();
+	//this.medTab.chartTp.emrBrowser.set_url("http://localhost:8282/his/med/base/reportEmr.do?format=pdf&patNo=" + this.medTab.chartTp.chartDiv.patNoEd.value);
+	//this.medTab.chartTp.emrBrowser.reload();
 	//this.medTab.chartTp.emrBrowser.set_url("http://localhost/erp45/med/mc/findEmrReport.do?patCode="+this.medTab.tabpage4.Div00.emrReport.value);//값에 담긴 환자번호 보낸다
 	//this.medTab.chartTp.emrBrowser.url = "http://localhost/ERP44/med/mc/findEmrReport.do?format=pdf";
 	//gfnService("reportEmr");
-}
+}*/
   
 /***** 여기까지 차트탭 *****/  
   
@@ -1110,8 +1110,8 @@ this.closeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 // 등록버튼 클릭시
 this.registerBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 { 
-  	var hosYn = this.patientDiv.hosCombo.value;
-	var diseaseNm = this.dsPatientDs.getColumn(0, "codeNm");
+  	var hosYn = this.patientDiv.hosCombo.value; //입원여부
+	var diseaseNm = this.dsPatientDs.getColumn(0, "codeNm"); //상병명
 	var trmtDept = this.trmtDiv.trmtDeptEd.value;
 	for (var i = 0; i < this.dsPatientDs.getRowCount(); i++) {
 	   this.dsPatientDs.setColumn(i, "gubun", hosYn);  
