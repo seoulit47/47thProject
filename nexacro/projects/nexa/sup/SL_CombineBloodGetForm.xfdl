@@ -53,12 +53,12 @@
                 <Cell edittype="text" text="bind:clinspeNo"/>
                 <Cell col="1" edittype="text" text="bind:prescNo"/>
                 <Cell col="2" edittype="text" text="bind:respDoct"/>
-                <Cell col="3" displaytype="combo" edittype="text" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
-                <Cell col="4" displaytype="combo" edittype="text" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
                 <Cell col="5" displaytype="normal" edittype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
                 <Cell col="6" edittype="none" text="bind:bloodgetEmp"/>
                 <Cell col="7" edittype="text" text="bind:patNo"/>
-                <Cell col="8" edittype="none" text="bind:bloodgetEmp"/>
+                <Cell col="8" displaytype="combo" edittype="none" text="bind:clinspeStatus" combodataset="dsStatus" combocodecol="code" combodatacol="data"/>
               </Band>
             </Format>
           </Formats>
@@ -132,7 +132,7 @@
           <Column id="ward" type="STRING" size="256"/>
           <Column id="hroom" type="STRING" size="256"/>
           <Column id="receiptCd" type="STRING" size="256"/>
-          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="clinspeStatus" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsExmntCd">
@@ -241,6 +241,10 @@
             <Col id="code">4</Col>
             <Col id="data">검사완료</Col>
           </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">미전달</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>
@@ -325,6 +329,7 @@ this.addClinspeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	     this.dsClinspe.setColumn(nRow,"prescNo",arrRtn[0]);
 	     this.dsClinspe.setColumn(nRow,"patNo",arrRtn[1]);
 	     this.dsClinspe.setColumn(nRow,"respDoct",arrRtn[2]);
+	     this.dsClinspe.setColumn(nRow,"clinspeStatus",arrRtn[3]);
 	}
 }
 

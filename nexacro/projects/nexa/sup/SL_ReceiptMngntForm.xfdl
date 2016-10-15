@@ -73,6 +73,7 @@
                 <Column size="80"/>
                 <Column size="120"/>
                 <Column size="100"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -89,6 +90,7 @@
                 <Cell col="7" text="접수구분"/>
                 <Cell col="8" text="접수 취소사유"/>
                 <Cell col="9" text="접수 취소일"/>
+                <Cell col="10" text="검체 상태"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:clinspeNo"/>
@@ -101,6 +103,7 @@
                 <Cell col="7" displaytype="combo" edittype="none" text="bind:receiptCd" combodataset="dsReceiptCd" combocodecol="code" combodatacol="data"/>
                 <Cell col="8" edittype="none" text="bind:receiptCancelCau"/>
                 <Cell col="9" displaytype="date" edittype="none" text="bind:receiptCancelDate" calendardisplaynulltype="none"/>
+                <Cell col="10" displaytype="combo" edittype="none" text="bind:clinspeStatus" combodataset="dsClinspeStatus" combocodecol="code" combodatacol="data" calendardisplaynulltype="none"/>
               </Band>
             </Format>
             <Format id="cancel">
