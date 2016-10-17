@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -167,18 +166,9 @@ public class EmrController {
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 		
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
-		
+
 		List<PrscDtlBean> PrscDtlList = emrServiceFacade.findPrscDtlList(argsMap);
 
-		for (PrscDtlBean bean : PrscDtlList) {
-			System.out.println("size : " + PrscDtlList.size());
-			System.out.println("PrescNo : " + bean.getPrescNo());
-			System.out.println("EmgYn : " + bean.getEmgYn());
-			System.out.println("PrnYn : " + bean.getPrnYn());
-			System.out.println("MtrlNm : " + bean.getMtrlNm());
-			System.out.println();
-		}
-														   //dsPrscDtl
 		dataSetBeanMapper.beansToDataset(outData, PrscDtlList, PrscDtlBean.class);
 	}
 }

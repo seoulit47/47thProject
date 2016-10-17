@@ -16,14 +16,14 @@
     </select>
 
     <!-- 처방상세 선택조회, 진단서에서 조회 -->
-    <select id="selectPrscDtl" parameterType="map" resultType="PrscDtlBean">
+    <!-- <select id="selectPrscDtl" resultType="PrscDtlBean">
         SELECT
             *
         FROM
             MP_PRESC_DTL
         WHERE
             PRESC_NO = #{prescNo}
-    </select>
+    </select> -->
     
     <select id="selectPrscDtlList" parameterType="map" resultType="PrscDtlBean">
         SELECT
@@ -58,15 +58,9 @@
         FROM
             MP_PRESC_DTL
         <trim prefix="WHERE" prefixOverrides="AND">
-            <!-- 
             <if test="prscType != null">
                 AND PRESC_TYPE = #{prscType}
             </if>
-            -->
-            <if test="prescNo != null">
-                AND PRESC_NO = #{prescNo}
-            </if>
-             
         </trim>
     </select>
     

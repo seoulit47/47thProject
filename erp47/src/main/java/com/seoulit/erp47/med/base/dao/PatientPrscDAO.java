@@ -12,4 +12,11 @@ public interface PatientPrscDAO {
 
     List<PatientPrscBean> selectDrugPrscList(Map<String, String> argsMap);
     
+    void insertInpatientPrsc(PatientPrscBean patientPrscBean);
+
+    void updateInpatientPrsc(PatientPrscBean patientPrscBean);
+
+    void insertOutpatientPrsc(PatientPrscBean patientPrscBean);
+
+    void updateOutpatientPrsc(PatientPrscBean patientPrscBean);
 }

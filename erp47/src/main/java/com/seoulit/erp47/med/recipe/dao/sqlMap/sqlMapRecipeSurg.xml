@@ -5,24 +5,24 @@
 
 
 
-	<select id="findSurgList" parameterType="map" resultType="SurgCdBean">
+<select id="findSurgList" parameterType="map" resultType="SurgCdBean">
 
-		SELECT CODE ,CODE_DETAIL ,CODE_RANGE ,SURG_NM ,SURG_NAME
-		FROM MP_SURG_CD
-		<trim prefix="WHERE" prefixOverrides="AND">
+SELECT CODE ,CODE_DETAIL ,CODE_RANGE ,SURG_NM ,SURG_NAME 
+FROM MP_SURG_CD
+<trim prefix="WHERE" prefixOverrides="AND">
 
-			<if test="rage != null">
+		<if test="rage != null">
+		
+			AND CODE_RANGE =#{rage}
+		</if>
+		<if test="surgName != null">
+		
+			AND SURG_NAME =#{surgName}
+		</if>
 
-				AND CODE_RANGE =#{rage}
-			</if>
-			<if test="surgName != null">
+</trim>
 
-				AND SURG_NAME =#{surgName}
-			</if>
-
-		</trim>
-
-	</select>
+</select>
 
 
 </mapper>
