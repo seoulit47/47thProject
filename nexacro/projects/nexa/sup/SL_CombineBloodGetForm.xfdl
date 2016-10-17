@@ -20,7 +20,20 @@
         <Calendar id="bloodGetEndDateCal" taborder="13" left="72.32%" top="129" right="16.96%" height="28"/>
         <Static id="Static02" taborder="14" text="~" left="70.4%" top="130" right="27.44%" height="31" style="border:1 none #808080ff ;color:black;font:bold 15 Dotum;"/>
         <Button id="comboResetBtn" taborder="15" text="조건초기화" left="83.68%" top="129" right="10.56%" height="28" onclick="comboResetBtn_onclick"/>
-        <Grid id="clinspeGrid" taborder="16" binddataset="dsClinspe" useinputpanel="false" autofittype="col" oncelldblclick="clinspeGrid_oncelldblclick" left="1.76%" top="185" right="1.76%" height="524">
+        <Button id="deleteClinspeBtn" taborder="17" left="82.16%" top="723" right="10.64%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="deleteClinspeBtn_onclick"/>
+        <Button id="batchClinspeBtn" taborder="18" left="91.04%" top="723" right="1.76%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="batchClinspeBtn_onclick"/>
+        <Button id="searchClinspeBtn" taborder="19" left="89.84%" top="127" right="2.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchClinspeBtn_onclick"/>
+        <Button id="addClinspeBtn" taborder="20" left="73.44%" top="723" right="19.36%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addClinspeBtn_onclick"/>
+        <Button id="searchPatBtn" taborder="21" left="24.56%" top="86" right="72.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchPatBtn_onclick"/>
+        <Button id="searchDoctBtn" taborder="22" left="62.64%" top="86" right="34.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDoctBtn_onclick"/>
+        <Div id="Div01" taborder="23" left="0.48%" top="8" right="0.16%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="검체채취관리" left="3.83%" top="-4" right="82.63%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="clinspeGrid" taborder="24" binddataset="dsClinspe" useinputpanel="false" autofittype="col" oncelldblclick="clinspeGrid_oncelldblclick" left="1.76%" top="185" right="1.76%" height="524">
           <Formats>
             <Format id="default">
               <Columns>
@@ -53,29 +66,16 @@
                 <Cell edittype="text" text="bind:clinspeNo"/>
                 <Cell col="1" edittype="text" text="bind:prescNo"/>
                 <Cell col="2" edittype="text" text="bind:respDoct"/>
-                <Cell col="3" displaytype="combo" edittype="text" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
-                <Cell col="4" displaytype="combo" edittype="text" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:exmntCd" combodataset="dsExmntCd" combocodecol="code" combodatacol="data"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:clinspeNm" combodataset="dsClinspeNm" combocodecol="code" combodatacol="data"/>
                 <Cell col="5" displaytype="normal" edittype="date" text="bind:bloodgetDate" calendardisplaynulltype="none"/>
                 <Cell col="6" edittype="none" text="bind:bloodgetEmp"/>
                 <Cell col="7" edittype="text" text="bind:patNo"/>
-                <Cell col="8" edittype="none" text="bind:bloodgetEmp"/>
+                <Cell col="8" displaytype="combo" edittype="none" text="bind:clinspeStatus" combodataset="dsStatus" combocodecol="code" combodatacol="data"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="deleteClinspeBtn" taborder="17" left="82.16%" top="723" right="10.64%" height="32" style="background:@gradation URL('img::deleteBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="deleteClinspeBtn_onclick"/>
-        <Button id="batchClinspeBtn" taborder="18" left="91.04%" top="723" right="1.76%" height="32" style="background:@gradation URL('img::saveBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="batchClinspeBtn_onclick"/>
-        <Button id="searchClinspeBtn" taborder="19" left="89.84%" top="127" right="2.96%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchClinspeBtn_onclick"/>
-        <Button id="addClinspeBtn" taborder="20" left="73.44%" top="723" right="19.36%" height="32" style="background:@gradation URL('img::addBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="addClinspeBtn_onclick"/>
-        <Button id="searchPatBtn" taborder="21" left="24.56%" top="86" right="72.88%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchPatBtn_onclick"/>
-        <Button id="searchDoctBtn" taborder="22" left="62.64%" top="86" right="34.8%" height="32" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDoctBtn_onclick"/>
-        <Div id="Div01" taborder="23" left="0.48%" top="8" right="0.16%" height="60" style="background:transparent URL('img::titleBar1.jpg');">
-          <Layouts>
-            <Layout>
-              <Static id="Static00" taborder="0" text="검체채취관리" left="3.83%" top="-4" right="82.63%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
-            </Layout>
-          </Layouts>
-        </Div>
       </Layout>
     </Layouts>
     <Objects>
@@ -132,7 +132,7 @@
           <Column id="ward" type="STRING" size="256"/>
           <Column id="hroom" type="STRING" size="256"/>
           <Column id="receiptCd" type="STRING" size="256"/>
-          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="clinspeStatus" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsExmntCd">
@@ -241,6 +241,10 @@
             <Col id="code">4</Col>
             <Col id="data">검사완료</Col>
           </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="data">미전달</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>
@@ -325,6 +329,7 @@ this.addClinspeBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	     this.dsClinspe.setColumn(nRow,"prescNo",arrRtn[0]);
 	     this.dsClinspe.setColumn(nRow,"patNo",arrRtn[1]);
 	     this.dsClinspe.setColumn(nRow,"respDoct",arrRtn[2]);
+	     this.dsClinspe.setColumn(nRow,"clinspeStatus",arrRtn[3]);
 	}
 }
 

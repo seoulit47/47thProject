@@ -17,7 +17,6 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="69"/>
                 <Column size="101"/>
                 <Column size="68"/>
                 <Column size="66"/>
@@ -28,18 +27,16 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="처방전 구분"/>
-                <Cell col="1" text="처방전 번호"/>
-                <Cell col="2" text="환자번호"/>
-                <Cell col="3" text="의사번호"/>
-                <Cell col="4" text="비고"/>
+                <Cell text="처방전 번호"/>
+                <Cell col="1" text="환자번호"/>
+                <Cell col="2" text="의사번호"/>
+                <Cell col="3" text="비고"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="combo" text="bind:prescType" combodataset="idsPrscType" combocodecol="code" combodatacol="value"/>
-                <Cell col="1" text="bind:prescNo"/>
-                <Cell col="2" displaytype="combo" text="bind:prescNo" combodataset="dsPrsc" combocodecol="prescNo" combodatacol="patNo"/>
-                <Cell col="3" displaytype="combo" text="bind:prescNo" combodataset="dsPrsc" combocodecol="prescNo" combodatacol="prescDoc"/>
-                <Cell col="4" text="bind:remark"/>
+                <Cell text="bind:prescNo"/>
+                <Cell col="1" displaytype="combo" text="bind:prescNo" combodataset="dsPrsc" combocodecol="prescNo" combodatacol="patNo"/>
+                <Cell col="2" displaytype="combo" text="bind:prescNo" combodataset="dsPrsc" combocodecol="prescNo" combodatacol="prescDoc"/>
+                <Cell col="3" text="bind:remark"/>
               </Band>
             </Format>
           </Formats>
@@ -102,9 +99,14 @@
         </ColumnInfo>
         <Rows>
           <Row>
+            <Col id="serviceID">findPrscDtlList</Col>
+            <Col id="URL">erp47::med/base/findPrscDtlList.do</Col>
+            <Col id="outData">dsPrscDtl=dsPrscDtl</Col>
+          </Row>
+          <Row>
             <Col id="serviceID">findPrscList</Col>
             <Col id="URL">erp47::med/base/findPrscList.do</Col>
-            <Col id="outData">dsPrsc=dsPrsc dsPrscDtl=dsPrscDtl</Col>
+            <Col id="outData">dsPrsc=dsPrsc</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -147,13 +149,15 @@ include "scripts::commonScripts.xjs";
 // 처방상세 조회
 this.searchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-    var prscType = this.prscTypeCombo.text;
-	alert(prscType);
+    var prscType = this.prscTypeCombo.value;
+	//alert(prscType);
     if(prscType != null){
 		this.dsService.setColumn(0, "argument", "prscType=" + prscType);
     }
-   
+    
     this.gfnService("findPrscList");
+    this.gfnService("findPrscDtlList",false);
+    
 }
 
 this.prscDtlGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
@@ -162,7 +166,8 @@ this.prscDtlGrid_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInf
     arrRtn[0] = this.dsPrscDtl.getColumn(e.row, "prescNo"); 
     arrRtn[1] = this.dsPrsc.lookup("prescNo", this.dsPrscDtl.getColumn(e.row, "prescNo"), "patNo"); 
     arrRtn[2] = this.dsPrsc.lookup("prescNo", this.dsPrscDtl.getColumn(e.row, "prescNo"), "prescDoc"); 
-
+	arrRtn[3] = 5;
+	
     this.opener.setPrscInfo(arrRtn);
     this.close();
 }

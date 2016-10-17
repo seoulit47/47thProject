@@ -27,7 +27,8 @@
                C.GENDER ,
                C.WARD ,
                C.HROOM ,
-               R.RECEIPT_CD 
+               R.RECEIPT_CD,
+               R.CLINSPE_STATUS 
           FROM SL_CLINSPE C
                LEFT OUTER JOIN
                SL_CLINSPE_RECEIPT R

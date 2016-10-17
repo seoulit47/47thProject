@@ -39,5 +39,6 @@ public class ClinspeBean extends BaseBean{
     	               gender,         // 성별
     	               ward,           // 병동
     	               hroom,          // 병실
-    	               clinspeBlokCode; // 검체블록코드
+    	               clinspeBlokCode, // 검체블록코드
+    	               clinspeStatus;	//검체상태
 }
