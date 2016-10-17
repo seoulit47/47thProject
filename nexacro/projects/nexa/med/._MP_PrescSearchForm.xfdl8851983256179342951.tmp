@@ -7,7 +7,7 @@
         <Div id="Div03" taborder="0" left="0%" top="1" right="0.08%" height="60" style="background:transparent URL('img::titleBar4.jpg');">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="진단서 조회 출력" left="4.8%" top="-4" right="71.82%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
+              <Static id="Static00" taborder="0" text="환자 진단서 조회 출력" left="4.8%" top="-4" right="71.82%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -18,7 +18,7 @@
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="110"/>
+                      <Column size="99"/>
                       <Column size="48"/>
                       <Column size="100"/>
                       <Column size="49"/>
@@ -84,22 +84,22 @@
                                   <Static id="stDiv03" taborder="148" text="보험" onclick="subCodeStc_onclick" left="20.65%" top="10" right="68.79%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                                   <Static id="subCodeStc05" taborder="149" text="환자유형" onclick="subCodeStc_onclick" left="1.68%" top="43" right="87.76%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                                   <Static id="stDiv05" taborder="150" text="임상연구 여부" onclick="subCodeStc_onclick" left="50.06%" top="10" right="39.14%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+                                  <Combo id="insuranceCombo" taborder="151" innerdataset="dsInsuranceDiv" codecolumn="code" datacolumn="value" left="31.93%" top="11" right="50.54%" height="25"/>
+                                  <Combo id="emgYnCombo" taborder="152" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="13.09%" top="11" right="80.19%" height="25"/>
+                                  <Combo id="prnYnCombo" taborder="153" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="13.09%" top="77" right="79.83%" height="25"/>
+                                  <Combo id="antiYnCombo" taborder="154" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="32.05%" top="77" right="60.86%" height="25"/>
+                                  <Combo id="prnYnCombo00" taborder="155" innerdataset="dsPatTypeDiv" codecolumn="code" datacolumn="value" left="13.09%" top="44" right="69.51%" height="25"/>
+                                  <Combo id="selectCareYnCombo" taborder="156" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="80.19%" top="11" right="12.97%" height="25"/>
                                   <Calendar id="examWishDateCal" taborder="157" onchanged="mpPrescDtlDiv_MPprescTab_prescDtl1_examWishDateCal_onchanged" left="13.21%" top="123" right="69.51%" height="25"/>
+                                  <Combo id="holdigYnCombo" taborder="158" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="42.62%" top="44" right="50.66%" height="25"/>
+                                  <Combo id="clncStudyYn" taborder="159" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="61.58%" top="11" right="31.57%" height="25"/>
                                   <Spin id="timesSpin" taborder="160" value="0" left="70.71%" top="121" right="22.45%" height="30"/>
                                   <Static id="subCodeStc06" taborder="161" text="검체보관 여부" onclick="subCodeStc_onclick" left="60.14%" top="76" right="29.29%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+                                  <Combo id="mtrlYnCombo" taborder="162" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="71.31%" top="77" right="21.85%" height="25"/>
                                   <Static id="subCodeStc07" taborder="163" text="검체 명" onclick="subCodeStc_onclick" left="31.57%" top="122" right="57.74%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                                   <Static id="subCodeStc08" taborder="164" text="방사선조사 여부" onclick="subCodeStc_onclick" left="39.86%" top="76" right="48.14%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+                                  <Combo id="irradiYn" taborder="165" innerdataset="dsYN" codecolumn="code" datacolumn="value" left="52.58%" top="77" right="40.7%" height="25"/>
                                   <Combo id="clinspeNmCombo" taborder="166" innerdataset="dsClinspeNm" codecolumn="code" datacolumn="data" left="42.98%" top="123" right="41.42%" height="25" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
-                                  <Edit id="emgYnEd" taborder="167" readonly="true" left="12.97%" top="11" right="79.83%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="patTypeEd" taborder="168" readonly="true" left="12.97%" top="45" right="69.51%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="prnYnEd" taborder="169" readonly="true" left="12.97%" top="77" right="79.83%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="antiYnEd" taborder="170" readonly="true" left="32.17%" top="77" right="60.86%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="irradiYn" taborder="171" readonly="true" left="52.46%" top="77" right="40.58%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="mtrlYnEd" taborder="172" readonly="true" left="71.67%" top="77" right="21.37%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="holdigYnEd" taborder="173" readonly="true" left="42.74%" top="45" right="50.3%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="insuranceEd" taborder="174" readonly="true" left="32.17%" top="9" right="51.14%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="clncStudyYn" taborder="175" readonly="true" left="61.34%" top="9" right="31.69%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                                  <Edit id="selectCareYnEd" taborder="176" readonly="true" left="80.43%" top="9" right="12.61%" height="27" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                                 </Layout>
                               </Layouts>
                             </Tabpage>
@@ -152,15 +152,15 @@
                           </Tabpages>
                         </Tab>
                         <Static id="stDiv01" taborder="189" text="상병 명" onclick="subCodeStc_onclick" left="27.91%" top="49" right="63.67%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-                        <Edit id="diseaseNmEd" taborder="190" readonly="true" left="37.02%" top="48" right="30.91%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+                        <Edit id="diseaseNmEd" taborder="190" readonly="true" left="37.02%" top="48" right="40.14%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc04" taborder="191" text="접수 번호" onclick="subCodeStc_onclick" left="73.93%" top="85" right="16.72%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Edit id="peceiptNoEd" taborder="192" readonly="true" left="84.31%" top="84" right="1.85%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc05" taborder="193" text="수가 명" onclick="subCodeStc_onclick" left="27.91%" top="86" right="63.67%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-                        <Edit id="feeNmEd" taborder="194" readonly="true" left="37.02%" top="85" right="30.91%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+                        <Edit id="feeNmEd" taborder="194" readonly="true" left="37.02%" top="85" right="40.14%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc06" taborder="195" text="수가 코드" onclick="subCodeStc_onclick" left="1.96%" top="86" right="87.43%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-                        <Edit id="feeCdEd" taborder="196" readonly="true" left="13.38%" top="85" right="72.9%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+                        <Edit id="feeCdEd" taborder="196" readonly="true" left="13.38%" top="85" right="73.01%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc07" taborder="197" text="비용" onclick="subCodeStc_onclick" left="1.96%" top="123" right="87.31%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-                        <Edit id="costEd" taborder="198" readonly="true" left="13.38%" top="122" right="72.9%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+                        <Edit id="costEd" taborder="198" readonly="true" left="13.38%" top="122" right="72.66%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="stDiv4" taborder="199" text="상병코드" left="1.96%" top="49" right="87.31%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Edit id="diseaseCdEd" taborder="200" readonly="true" left="13.38%" top="48" right="72.9%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc02" taborder="201" text="조제여부" onclick="subCodeStc_onclick" left="1.96%" top="160" right="87.31%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -172,7 +172,9 @@
                         <Static id="subCodeStc00" taborder="208" text="담당의" onclick="subCodeStc_onclick" left="49.25%" top="13" right="42.45%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Edit id="doctNmEd" taborder="209" readonly="true" left="58.36%" top="12" right="30.91%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="stDiv08" taborder="210" text="과" onclick="subCodeStc_onclick" left="27.91%" top="13" right="67.13%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-                        <Combo id="deptCombo" taborder="213" innerdataset="@dsInPatient" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="33.68%" top="14" right="51.56%" height="25" class="AreaCombo" datacolumn="dept"/>
+                        <Combo id="medicationYnCombo" taborder="211" innerdataset="@dsInPatient" codecolumn="medicationYn" datacolumn="medicationYn" onitemchanged="mpPrescDtlDiv_medicationYnCombo_onitemchanged" left="13.38%" top="161" right="74.86%" height="25" class="AreaCombo"/>
+                        <Combo id="prescGubunCombo" taborder="212" innerdataset="dsPrescGubunDiv" codecolumn="code" datacolumn="value" onitemchanged="mpPrescDtlDiv_prescGubunCombo_onitemchanged" left="13.73%" top="315" right="74.39%" height="25" class="AreaCombo"/>
+                        <Combo id="deptCombo" taborder="213" innerdataset="@dsInPatient" onitemchanged="taxinvDiv_purchSalesComb_onitemchanged" left="33.68%" top="14" right="51.56%" height="25" class="AreaCombo" datacolumn="dept" codecolumn="dept"/>
                         <Static id="stDiv02" taborder="214" text="대분류" onclick="subCodeStc_onclick" left="27.91%" top="123" right="66.09%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Static id="stDiv05" taborder="215" text="중분류" onclick="subCodeStc_onclick" left="50.75%" top="123" right="43.37%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Static id="stDiv09" taborder="216" text="소분류" onclick="subCodeStc_onclick" left="73.59%" top="122" right="20.65%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -182,11 +184,12 @@
                         <Static id="subCodeStc01" taborder="220" text="처방 코드" onclick="subCodeStc_onclick" left="2.08%" top="348" right="87.2%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Edit id="prescCdEd" taborder="221" readonly="true" left="13.73%" top="347" right="72.78%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc03" taborder="222" text="처방명" onclick="subCodeStc_onclick" left="28.03%" top="348" right="61.25%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-                        <Edit id="prescDtlNmEd" taborder="223" readonly="true" left="39.56%" top="347" right="37.6%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+                        <Edit id="prescDtlNmEd" taborder="223" readonly="true" left="39.56%" top="347" right="46.71%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc08" taborder="224" text="처방 번호" onclick="subCodeStc_onclick" left="73.93%" top="14" right="16.72%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Edit id="prescNoEd" taborder="225" readonly="true" left="84.31%" top="12" right="1.85%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc09" taborder="226" text="조제 번호" onclick="subCodeStc_onclick" left="27.8%" top="160" right="62.63%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Edit id="medicationNo" taborder="227" readonly="true" left="38.41%" top="158" right="47.75%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
+                        <Combo id="dscgGubun" taborder="228" onitemchanged="mpPrescDtlDiv_medicationYnCombo_onitemchanged" left="63.09%" top="160" right="27.1%" height="25" class="AreaCombo"/>
                         <Static id="subCodeStc10" taborder="229" text="퇴원구분" onclick="subCodeStc_onclick" left="53.4%" top="159" right="37.49%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Static id="stDiv10" taborder="230" text="퇴원일자" wordwrap="char" left="73.93%" top="158" right="16.72%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Calendar id="dscgDateCal" taborder="231" left="84.31%" top="156" right="2.19%" height="30" innerdataset="@dsInPatient" value="null" dateformat="yyyy-MM-dd ddd" datecolumn="dscgDate" textcolorcolumn="dscgDate"/>
@@ -228,9 +231,6 @@
                             </Format>
                           </Formats>
                         </Grid>
-                        <Edit id="medicationYnEd" taborder="234" readonly="true" left="13.38%" top="157" right="72.9%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                        <Edit id="dscgGubunEd" taborder="235" readonly="true" left="62.98%" top="158" right="26.99%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
-                        <Edit id="prescGubunEd" taborder="236" readonly="true" left="13.73%" top="313" right="72.78%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                       </Layout>
                     </Layouts>
                   </Div>
@@ -240,7 +240,7 @@
             <Tabpage id="outTab" text="외래 환자 처방">
               <Layouts>
                 <Layout>
-                  <Div id="mpPrescDtlDiv" taborder="0" left="-2.99%" top="0" right="2.99%" height="674" style="background:#edececff;">
+                  <Div id="mpPrescDtlDiv" taborder="0" left="0%" top="0" right="0%" height="674" style="background:#edececff;">
                     <Layouts>
                       <Layout>
                         <Static id="stDiv00" taborder="177" text="처방일" wordwrap="char" left="73.99%" top="50" right="16.69%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
@@ -259,7 +259,7 @@
                         <Edit id="diseaseCdEd" taborder="190" readonly="true" left="13.35%" top="48" right="72.84%" height="30" style="border:1 solid #a6a6a9ff ;font:9 Dotum;"/>
                         <Static id="subCodeStc02" taborder="191" text="조제여부" onclick="subCodeStc_onclick" left="1.96%" top="160" right="87.46%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
                         <Static id="stDiv03" taborder="192" text="처방구분" onclick="subCodeStc_onclick" left="2.07%" top="316" right="87%" height="27" style="background:#c4d2daff;color:#000000ff;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-                        <Grid id="sdMedicationGrid" taborder="193" binddataset="dsOutMedication" useinputpanel="false" autofittype="col" left="1.96%" top="193" right="1.61%" height="118">
+                        <Grid id="sdMedicationGrid" taborder="193" binddataset="dsOutMedication" useinputpanel="false" autofittype="col" oncellclick="mpPrescDtlDiv_Grid00_oncellclick" left="1.96%" top="193" right="1.61%" height="118">
                           <Formats>
                             <Format id="default">
                               <Columns>
@@ -827,6 +827,38 @@
           <Column id="doctNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsPrescDtl" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="prescNo" type="STRING" size="256"/>
+          <Column id="prescCd" type="STRING" size="256"/>
+          <Column id="emgYn" type="STRING" size="256"/>
+          <Column id="prnYn" type="STRING" size="256"/>
+          <Column id="antiYn" type="STRING" size="256"/>
+          <Column id="holdingYn" type="STRING" size="256"/>
+          <Column id="mtrlYn" type="STRING" size="256"/>
+          <Column id="mtrlNm" type="STRING" size="256"/>
+          <Column id="MtrlBodyPart" type="STRING" size="256"/>
+          <Column id="examWishDate" type="STRING" size="256"/>
+          <Column id="times" type="STRING" size="256"/>
+          <Column id="insurance" type="STRING" size="256"/>
+          <Column id="selectCareYn" type="STRING" size="256"/>
+          <Column id="clncStudyYn" type="STRING" size="256"/>
+          <Column id="patType" type="STRING" size="256"/>
+          <Column id="remark" type="STRING" size="256"/>
+          <Column id="irradiYn" type="STRING" size="256"/>
+          <Column id="amount" type="STRING" size="256"/>
+          <Column id="purpose" type="STRING" size="256"/>
+          <Column id="trfuLoc" type="STRING" size="256"/>
+          <Column id="ast" type="STRING" size="256"/>
+          <Column id="bloodDonor" type="STRING" size="256"/>
+          <Column id="volume" type="STRING" size="256"/>
+          <Column id="unit" type="STRING" size="256"/>
+          <Column id="takeWay" type="STRING" size="256"/>
+          <Column id="days" type="STRING" size="256"/>
+          <Column id="prescDtlNm" type="STRING" size="256"/>
+          <Column id="prescType" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
       <Dataset id="dsOutPrescDtl" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
           <Column id="prescNo" type="STRING" size="256"/>
@@ -967,7 +999,7 @@
           <Row>
             <Col id="serviceID">findPrescDtl</Col>
             <Col id="URL">erp47::med/base/findPrescDtl.do</Col>
-            <Col id="outData">dsPrscDtl=dsPrscDtl</Col>
+            <Col id="outData">dsPrescDtl=dsPrescDtl</Col>
           </Row>
           <Row>
             <Col id="serviceID">findSearchOutPatientList</Col>
@@ -980,38 +1012,6 @@
             <Col id="outData">dsPatientPrsc=dsInPatient</Col>
           </Row>
         </Rows>
-      </Dataset>
-      <Dataset id="dsPrscDtl" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="prescNo" type="STRING" size="256"/>
-          <Column id="prescCd" type="STRING" size="256"/>
-          <Column id="emgYn" type="STRING" size="256"/>
-          <Column id="prnYn" type="STRING" size="256"/>
-          <Column id="antiYn" type="STRING" size="256"/>
-          <Column id="holdingYn" type="STRING" size="256"/>
-          <Column id="mtrlYn" type="STRING" size="256"/>
-          <Column id="mtrlNm" type="STRING" size="256"/>
-          <Column id="MtrlBodyPart" type="STRING" size="256"/>
-          <Column id="examWishDate" type="STRING" size="256"/>
-          <Column id="times" type="STRING" size="256"/>
-          <Column id="insurance" type="STRING" size="256"/>
-          <Column id="selectCareYn" type="STRING" size="256"/>
-          <Column id="clncStudyYn" type="STRING" size="256"/>
-          <Column id="patType" type="STRING" size="256"/>
-          <Column id="remark" type="STRING" size="256"/>
-          <Column id="irradiYn" type="STRING" size="256"/>
-          <Column id="amount" type="STRING" size="256"/>
-          <Column id="purpose" type="STRING" size="256"/>
-          <Column id="trfuLoc" type="STRING" size="256"/>
-          <Column id="ast" type="STRING" size="256"/>
-          <Column id="bloodDonor" type="STRING" size="256"/>
-          <Column id="volume" type="STRING" size="256"/>
-          <Column id="unit" type="STRING" size="256"/>
-          <Column id="takeWay" type="STRING" size="256"/>
-          <Column id="days" type="STRING" size="256"/>
-          <Column id="prescDtlNm" type="STRING" size="256"/>
-          <Column id="prescType" type="STRING" size="256"/>
-        </ColumnInfo>
       </Dataset>
     </Objects>
     <Bind>
@@ -1026,22 +1026,7 @@
       <BindItem id="item8" compid="prescTab.inTab.mpPrescDtlDiv.midGrpEd" propid="value" datasetid="dsInPatient" columnid="midGrp"/>
       <BindItem id="item9" compid="prescTab.inTab.mpPrescDtlDiv.smGrpEd" propid="value" datasetid="dsInPatient" columnid="smGrp"/>
       <BindItem id="item10" compid="prescTab.inTab.mpPrescDtlDiv.medicationNo" propid="value" datasetid="dsInPatient" columnid="medicationNo"/>
-      <BindItem id="item13" compid="prescTab.inTab.mpPrescDtlDiv.deptCombo" propid="text" datasetid="dsInPatient" columnid="dept"/>
-      <BindItem id="item11" compid="prescTab.inTab.mpPrescDtlDiv.medicationYnEd" propid="value" datasetid="dsInPatient" columnid="medicationYn"/>
-      <BindItem id="item12" compid="prescTab.inTab.mpPrescDtlDiv.dscgGubunEd" propid="value" datasetid="dsInPatient" columnid="dscgGubun"/>
-      <BindItem id="item14" compid="prescTab.inTab.mpPrescDtlDiv.prescCdEd" propid="value" datasetid="dsPrscDtl" columnid="prescCd"/>
-      <BindItem id="item15" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.emgYnEd" propid="value" datasetid="dsPrscDtl" columnid="emgYn"/>
-      <BindItem id="item16" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.patTypeEd" propid="value" datasetid="dsPrscDtl" columnid="patType"/>
-      <BindItem id="item17" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.prnYnEd" propid="value" datasetid="dsPrscDtl" columnid="prnYn"/>
-      <BindItem id="item18" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.antiYnEd" propid="value" datasetid="dsPrscDtl" columnid="antiYn"/>
-      <BindItem id="item19" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.irradiYn" propid="value" datasetid="dsPrscDtl" columnid="irradiYn"/>
-      <BindItem id="item20" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.mtrlYnEd" propid="value" datasetid="dsPrscDtl" columnid="mtrlYn"/>
-      <BindItem id="item21" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.holdigYnEd" propid="value" datasetid="dsPrscDtl" columnid="holdingYn"/>
-      <BindItem id="item22" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd" propid="value" datasetid="dsPrscDtl" columnid="insurance"/>
-      <BindItem id="item23" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.clncStudyYn" propid="value" datasetid="dsPrscDtl" columnid="clncStudyYn"/>
-      <BindItem id="item24" compid="prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.selectCareYnEd" propid="value" datasetid="dsPrscDtl" columnid="selectCareYn"/>
-      <BindItem id="item26" compid="prescTab.inTab.mpPrescDtlDiv.prescDtlNmEd" propid="value" datasetid="dsPrscDtl" columnid="prescDtlNm"/>
-      <BindItem id="item25" compid="prescTab.inTab.mpPrescDtlDiv.prescDateCal" propid="value" datasetid="dsInPatient" columnid="dscgDate"/>
+      <BindItem id="item11" compid="prescTab.inTab.mpPrescDtlDiv.dscgGubun" propid="text" datasetid="dsInPatient" columnid="dscgGubun"/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[ /*******************************************************************************
 *                                                                               *
@@ -1205,12 +1190,14 @@ this.wsInpaReceiptDiv_whHosptlzReceiptGrid_oncellclick = function(obj:Grid, e:ne
 		prescNo = this.dsOutPatient.getColumn(0,"prescNo");
 		medicationNo = this.dsOutPatient.getColumn(0,"medicationNo");
 	}
-		
+	
 	var setPrescNo = "prescNo='"+prescNo+"'";
-	var setMedicationNo = "medicationNo='"+medicationNo+"'"; 
+	var setMedicationNo = "medicationNo='"+medicationNo+"'";
 	this.dsService.setColumn(5, "argument", setPrescNo);
 	this.dsService.setColumn(4, "argument", setMedicationNo);
-		
+	
+	alert("setMedicationNo : " + setMedicationNo);
+	
 	this.gfnService("findPrescDtl", false);
 	this.gfnService("findSdMedicationList", false);
 	
@@ -1223,87 +1210,10 @@ this.wsInpaReceiptDiv_whHosptlzReceiptGrid_oncellclick = function(obj:Grid, e:ne
 		this.dsOutMedication.copyData(this.dsMedication);
 	}
 	
-	//strXml = this.dsMedication.saveXML("dsMedication");
-	//trace(strXml);
+	strXml = this.dsMedication.saveXML("dsMedication");
+	trace(strXml);
 	
 	//this.prescTab.set_enable(true);
-	
-	
-	//퇴원구분 text세팅
-	var dscgText = this.prescTab.inTab.mpPrescDtlDiv.dscgGubunEd.text;
-	if(dscgText == 0)
-	{
-		this.prescTab.inTab.mpPrescDtlDiv.dscgGubunEd.set_value("미정");
-	}
-	else if(dscgText == 1){
-		this.prescTab.inTab.mpPrescDtlDiv.dscgGubunEd.set_value("미퇴원");
-	}
-	else{
-		this.prescTab.inTab.mpPrescDtlDiv.dscgGubunEd.set_value("퇴원");
-	}
-	
-	//퇴원구분
-	var mYNText = this.prescTab.inTab.mpPrescDtlDiv.medicationYnEd.text;
-	if(mYNText == "N"){
-		this.prescTab.inTab.mpPrescDtlDiv.medicationYnEd.set_value("비처방");
-	}
-	else{
-		this.prescTab.inTab.mpPrescDtlDiv.medicationYnEd.set_value("처방");
-	}
-	
-	//처방 구분
-	var prescGubunText = this.wsInpaReceiptDiv.prescGubunCombo.text;
-	this.prescTab.inTab.mpPrescDtlDiv.prescGubunEd.set_value(prescGubunText);
-	
-	//처방 상세
-	//보험
-	var insuranceText = this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.text;
-	if(insuranceText == 01){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("고용보험");
-	}
-	else if(insuranceText == 02){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("산재보험");
-	}
-	else if(insuranceText == 03){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("화재보험");
-	}
-	else if(insuranceText == 04){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("가스사고배상책임보험");
-	}
-	else if(insuranceText == 05){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("보증보험");
-	}
-	else if(insuranceText == 06){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("건강보험");
-	}
-	else if(insuranceText == 07){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("단체보험");
-	}
-	else if(insuranceText == 08){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("국민연금");
-	}
-	else if(insuranceText == 09){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("자동차보험");
-	}else{
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.insuranceEd.set_value("미보험");
-	}
-	
-	//환자 유형
-	var prnYnText = this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.patTypeEd.text;
-	if(prnYnText == "N"){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.patTypeEd.set_value("시각장애");
-	}
-	else if(prnYnText == "N"){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.patTypeEd.set_value("청각장애");
-	}
-	else if(prnYnText == "N"){
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.patTypeEd.set_value("정신장애");
-	}
-	else{
-		this.prescTab.inTab.mpPrescDtlDiv.MPprescTab.prescDtl1.patTypeEd.set_value("기타장애");
-	}
-	
-	//노가다하지마시고 있는거 쓰세요 ㅋㅋ
 }
 
 /********************************************************************************
