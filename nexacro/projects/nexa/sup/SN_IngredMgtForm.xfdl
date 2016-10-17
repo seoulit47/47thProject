@@ -149,6 +149,7 @@
             </Layout>
           </Layouts>
         </Div>
+        <Button id="addBtn" taborder="12" left="74.96%" top="712" right="17.84%" height="32" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" onclick="addBtn_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -333,6 +334,11 @@ this.saveBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.gfnService("batchIngredProcess");
 	alert("저장 되었습니다.");
 	this.searchBtn_onclick(null, null);
+}
+
+this.addBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert("준비중입니다.");
 }
 ]]></Script>
   </Form>

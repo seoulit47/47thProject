@@ -966,7 +966,7 @@
           </Row>
           <Row>
             <Col id="serviceID">findPrescDtl</Col>
-            <Col id="URL">erp47::med/base/findPrescDtl.do</Col>
+            <Col id="URL">erp47::med/base/findPrscDtlList.do</Col>
             <Col id="outData">dsPrscDtl=dsPrscDtl</Col>
           </Row>
           <Row>
