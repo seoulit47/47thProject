@@ -81,31 +81,90 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
 		 * 
 		 */
 		
+		// 환자 접수정보
+        List<ReceiptInfoBean> receiptInfoList = (List<ReceiptInfoBean>) emrMap.get("receiptList"); 
+        if (receiptInfoList.size() != 0) { 
+            for (ReceiptInfoBean receiptBean : receiptInfoList) { 
+                switch (receiptBean.getStatus()) { 
+                    case "updated" : receiptInfoDAO.updateReceipt(receiptBean); break;      // 진료여부 수술여부 업데이트
+                }
+            }
+        }
+    	
 		//환자 기초검사 정보 등록,수정
-		List<BaseExamBean>baseExamList = (List<BaseExamBean>)emrMap.get("baseExamList");
-		
-		for(BaseExamBean baseExamBean : baseExamList){
-			
-			switch(baseExamBean.getStatus()){
-			
-					case "inserted" : 
-							
+		List<BaseExamBean>baseExamList = (List<BaseExamBean>)emrMap.get("baseExamList");	
+		for(BaseExamBean baseExamBean : baseExamList){		
+				switch(baseExamBean.getStatus()){
+					case "inserted" : 		
 						baseExamDAO.insertBaseExamList(baseExamBean);
 						break;
-					
 					case "updated" :
-						
 						baseExamDAO.updateBaseExamList(baseExamBean);
 						break;
-			
+
 			}
 			
 		}
-		
+
 		//환자상병 등록,수정
-		List<PatientDsBean>patientList = (List<PatientDsBean>)emrMap.get("patientDsList");
+		List<PatientDsBean> patientList = (List<PatientDsBean>)emrMap.get("patientDsList");
+		// 환자 처방정보
+        List<PatientPrscBean> patientPrscList = (List<PatientPrscBean>) emrMap.get("patientPrscList");
 		
-		for(PatientDsBean patientDsBean : patientList){
+        
+        for (PatientDsBean patientDsBean : patientList) {
+        	
+            switch (patientDsBean.getStatus()) {
+            case "inserted":
+            	System.out.println("상병내역  insert 되나??");
+                patientDsDAO.insertPatientDsList(patientDsBean);
+                break;
+            case "updated":
+                patientDsDAO.updatePatientDsList(patientDsBean);
+                break;
+            }
+
+            // 환자구분에 따라 입원환자, 외래환자 구분
+            System.out.println("환자구분 : " + patientDsBean.getGubun());
+            if ("Y".equalsIgnoreCase(patientDsBean.getGubun())) {
+            	System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                for (PatientPrscBean patientPrscBean : patientPrscList) {
+                	System.out.println(patientDsBean.getCode()+" //// "+patientPrscBean.getDiseaseCd() );
+                    if (true) {//patientDsBean.getCode().equals(patientPrscBean.getDiseaseCd())
+                    	System.out.println(patientPrscBean.getStatus());
+                        switch (patientPrscBean.getStatus()) {
+                        case "inserted":
+                        	patientPrscDAO.insertInpatientPrsc(patientPrscBean);
+                            break;
+                        case "updated":
+                        	patientPrscDAO.updateInpatientPrsc(patientPrscBean);
+                            break;
+                        }
+                    }
+                }
+            } else {
+                for (PatientPrscBean patientPrscBean : patientPrscList) {
+           
+                	System.out.println(patientPrscBean.getStatus()+"!!!!!!!!!!");
+                  
+                        switch (patientPrscBean.getStatus()) {
+                        case "inserted":
+                        	patientPrscDAO.insertOutpatientPrsc(patientPrscBean);
+                            break;
+                        case "updated":
+                        	patientPrscDAO.updateOutpatientPrsc(patientPrscBean);
+                            break;
+                        }
+                    }
+                }
+            }
+        }	
+	
+	
+		
+        
+        
+/*		for(PatientDsBean patientDsBean : patientList){
 			
 				switch(patientDsBean.getStatus()){
 				
@@ -119,70 +178,10 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
 						break;
 				
 				}
-			
-			
-		}
 		
-		// 환자 접수정보
-        List<ReceiptInfoBean> receiptInfoList = (List<ReceiptInfoBean>) emrMap.get("receiptList"); 
-        if (receiptInfoList.size() != 0) { 
-            for (ReceiptInfoBean receiptBean : receiptInfoList) { 
-                switch (receiptBean.getStatus()) { 
-                    case "updated" : receiptInfoDAO.updateReceipt(receiptBean); break;      // 진료여부 수술여부 업데이트
-                }
-            }
-        }
-        
-     
-        
-     // 환자 처방정보
-        List<PatientPrscBean> patientPrscList = (List<PatientPrscBean>) emrMap.get("patientPrscList");
-        
-        for (PatientDsBean patientDsBean : patientList) {
-        	
-            switch (patientDsBean.getStatus()) {
-            case "inserted":
-            	System.out.println("처방정보 insert 되나??");
-                patientDsDAO.insertPatientDsList(patientDsBean);
-                break;
-            case "updated":
-                patientDsDAO.updatePatientDsList(patientDsBean);
-                break;
-            }
-   
-            // 환자구분에 따라 입원환자, 외래환자 구분
-            System.out.println("환자구분 : " + patientDsBean.getGubun());
-            if ("Y".equalsIgnoreCase(patientDsBean.getGubun())) {
-                for (PatientPrscBean patientPrscBean : patientPrscList) {
-                    if (patientDsBean.getCode().equals(patientPrscBean.getDiseaseCd())) {
-                        switch (patientPrscBean.getStatus()) {
-                        case "inserted":
-                        	patientPrscDAO.insertInpatientPrsc(patientPrscBean);
-                            break;
-                        case "updated":
-                        	patientPrscDAO.updateInpatientPrsc(patientPrscBean);
-                            break;
-                        }
-                    }
-                }
-            } else {
-                for (PatientPrscBean patientPrscBean : patientPrscList) {
-                	System.out.println(patientPrscBean.getStatus()+"!!!!!!!!!!");
-                  
-                        switch (patientPrscBean.getStatus()) {
-                        case "inserted":
-                        	patientPrscDAO.insertOutpatientPrsc(patientPrscBean);
-                            break;
-                        case "updated":
-                        	patientPrscDAO.updateOutpatientPrsc(patientPrscBean);
-                            break;
-                        
-                    }
-                }
-            }
-        }
-		
-	}
+		}*/
+
+
 	//------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------
@@ -208,6 +207,8 @@ public class EmrApplicationServiceImpl implements EmrApplicationService {
 	        }
 	}
 
+	
+	
 	@Override
 	public List<PatientPrscBean> findPatientPrscList(Map<String, String> argsMap) {
 		return patientPrscDAO.selectPatientPrscList(argsMap);

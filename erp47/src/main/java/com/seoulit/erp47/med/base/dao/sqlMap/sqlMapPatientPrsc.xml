@@ -103,7 +103,7 @@
             <if test="startDay != null and endDay != null">
                 AND PRESC_DATE BETWEEN #{startDay} AND #{endDay}
             </if>
-        </trim>
+        </trim> 
     </select>
 <insert id="insertInpatientPrsc">
         INSERT INTO
