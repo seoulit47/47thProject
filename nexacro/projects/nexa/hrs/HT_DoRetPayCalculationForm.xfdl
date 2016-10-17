@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HT_DoRetPayCalculationForm" classname="HT_DoRetPayCalculationForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="HT_DoRetPayCalculationForm" classname="HT_DoRetPayCalculationForm" left="0" top="0" width="1250" height="768" titletext="퇴직금 계산">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="606" right="1.6%" height="148" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LD_GdsReturnMngntForm" classname="LD_GdsReturnMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="LD_GdsReturnMngntForm" classname="LD_GdsReturnMngntForm" left="0" top="0" width="1250" height="768" titletext="반품관리">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.08%" top="4" right="-42%" height="60" style="background:transparent URL('img::titleBar1.jpg');">

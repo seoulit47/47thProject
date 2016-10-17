@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AE_AccAssiSubPopupForm" classname="AE_AccAssiSubPopupForm" left="0" top="0" width="400" height="596" titletext="New Form">
+  <Form id="AE_AccAssiSubPopupForm" classname="AE_AccAssiSubPopupForm" left="0" top="0" width="400" height="596" titletext="보조과목 조회">
     <Layouts>
       <Layout>
         <Div id="Div01" taborder="1" text="Div01" left="1.75%" top="51" right="2.75%" height="525" style="background:lavender;bordertype:round 5 5 ;"/>

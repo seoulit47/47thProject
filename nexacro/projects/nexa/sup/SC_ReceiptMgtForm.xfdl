@@ -268,7 +268,7 @@
       <BindItem id="item23" compid="compBox.payManEd" propid="value" datasetid="dsTempR" columnid="payMan"/>
       <BindItem id="item24" compid="compBox.reducAmtEd" propid="value" datasetid="dsTempR" columnid="reducAmt"/>
       <BindItem id="item25" compid="compBox.rsvtAmtEd" propid="value" datasetid="dsTempR" columnid="rsvtAmt"/>
-      <BindItem id="item26" compid="compBox.basicInspSumAmtEd" propid="value" datasetid="dsTempR" columnid=" "/>
+      <BindItem id="item26" compid="compBox.basicInspSumAmtEd" propid="value" datasetid="dsTempR" columnid="basicInspSumAmt"/>
     </Bind>
     <Objects>
       <Dataset id="dsRece" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HG_HolidayForm" classname="HG_HolidayForm" left="0" top="0" width="1256" height="759" titletext="New Form" onload="HG_HolidayForm_onload">
+  <Form id="HG_HolidayForm" classname="HG_HolidayForm" left="0" top="0" width="1256" height="759" titletext="휴가신청" onload="HG_HolidayForm_onload">
     <Layouts>
       <Layout>
         <Div id="titleDiv" taborder="0" left="0%" top="0" right="0%" height="60" style="background:transparent URL('img::titleBar1.jpg');">

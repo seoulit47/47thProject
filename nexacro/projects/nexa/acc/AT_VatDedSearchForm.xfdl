@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AT_VatDedSearchForm" classname="AT_VatDedSearchForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AT_VatDedSearchForm_onload">
+  <Form id="AT_VatDedSearchForm" classname="AT_VatDedSearchForm" left="0" top="0" width="1250" height="768" titletext="부가가치세 조회" onload="AT_VatDedSearchForm_onload">
     <Layouts>
       <Layout>
         <Div id="aTVATDeclDiv" taborder="0" left="1.52%" top="69" right="1.28%" height="691" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;">

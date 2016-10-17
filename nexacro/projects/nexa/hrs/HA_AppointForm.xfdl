@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HA_AppointForm" classname="HA_AppointForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="HA_AppointForm" classname="HA_AppointForm" left="0" top="0" width="1250" height="768" titletext="발령상세조회">
     <Layouts>
       <Layout>
         <Div id="Div02" taborder="0" text="Div01" left="0.72%" top="40" right="0.88%" height="657" style="background:whitesmoke;border:1 solid #808080ff ;bordertype:round 5 5 ;"/>

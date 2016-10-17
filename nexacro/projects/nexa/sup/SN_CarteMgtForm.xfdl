@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SN_CarteMgtForm" classname="SN_CarteMgtForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SN_CarteMgtForm_onload">
+  <Form id="SN_CarteMgtForm" classname="SN_CarteMgtForm" left="0" top="0" width="1250" height="768" titletext="식단관리" onload="SN_CarteMgtForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" left="2.16%" top="407" right="2.32%" height="311" style="background:white;border:1 solid gainsboro ;"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BimokPopupForm" classname="AB_BimokPopupForm" left="0" top="0" width="400" height="170" titletext="New Form" onload="AB_BimokPopupForm_onload">
+  <Form id="AB_BimokPopupForm" classname="AB_BimokPopupForm" left="0" top="0" width="400" height="170" titletext="비목팝업" onload="AB_BimokPopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="1.5%" top="6" right="1.75%" height="137" style="background:powderblue;color:powderblue;bordertype:round 5 5 ;"/>

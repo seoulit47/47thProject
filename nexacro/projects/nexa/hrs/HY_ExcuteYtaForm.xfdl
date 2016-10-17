@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HY_ExcuteYtaForm" classname="HY_ExcuteYtaForm" left="0" top="0" width="483" height="160" titletext="New Form">
+  <Form id="HY_ExcuteYtaForm" classname="HY_ExcuteYtaForm" left="0" top="0" width="483" height="160" titletext="연말정산 실행">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" text="            연말정산 실행" left="0%" top="0" right="1.04%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');"/>

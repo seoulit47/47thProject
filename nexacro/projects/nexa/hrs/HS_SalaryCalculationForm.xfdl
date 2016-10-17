@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HS_SalaryCalculationForm" classname="HS_SalaryCalculationForm" left="0" top="0" width="1256" height="759" titletext="New Form" onload="HS_SalaryCalculationForm_onload">
+  <Form id="HS_SalaryCalculationForm" classname="HS_SalaryCalculationForm" left="0" top="0" width="1256" height="759" titletext="급여입력 및 계산" onload="HS_SalaryCalculationForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="8" right="1.35%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>

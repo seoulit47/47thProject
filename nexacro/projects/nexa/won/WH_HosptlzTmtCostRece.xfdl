@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="WD_HosptlzTmtCostRece" classname="WD_HosptlzTmtCostRece" left="0" top="0" width="1256" height="795" titletext="New Form" onload="WD_HosptlzTmtCostRece_onload">
+  <Form id="WD_HosptlzTmtCostRece" classname="WD_HosptlzTmtCostRece" left="0" top="0" width="1256" height="795" titletext="입원진료비 수납" onload="WD_HosptlzTmtCostRece_onload">
     <Layouts>
       <Layout>
         <Grid id="trmtCostHistGrid" taborder="0" binddataset="dsHosptlzTrmtCost" scrollbars="none" useinputpanel="false" autofittype="col" useselcolor="false" left="29.3%" top="396" right="36.07%" height="332" class="AreaGrid">

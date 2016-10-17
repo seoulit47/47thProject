@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AT_TaxinvForm" classname="AT_TaxinvForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AT_TaxinvForm_onload">
+  <Form id="AT_TaxinvForm" classname="AT_TaxinvForm" left="0" top="0" width="1250" height="768" titletext="세금계산서 등록" onload="AT_TaxinvForm_onload">
     <Layouts>
       <Layout>
         <Div id="titleBarDiv" taborder="0" text="       세금계산서 등록" left="0%" top="4" right="2.08%" height="60" style="align:left middle;background:transparent URL('img::titleBar6.jpg');font:bold 15 Dotum;" cssclass="TStc"/>

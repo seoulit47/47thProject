@@ -149,10 +149,10 @@
         <Combo id="clinspeStatusCombo" taborder="9" innerdataset="@dsClinspeStatus" codecolumn="code" datacolumn="data" left="66.16%" top="72" right="25.84%" height="30" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#46463dff;font:9 Dotum;"/>
         <Button id="comboResetBtn" taborder="10" text="조건초기화" onclick="comboResetBtn_onclick" left="75.52%" top="73" right="18.4%" height="26" style="background:#848484ff;color:white;font:bold 9 돋움;" class="ProcessBtn"/>
         <Button id="searchDeliveredClinspeListBtn" taborder="11" cssclass="DelBtn" left="91.36%" top="72" right="1.44%" height="32" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;bordertype:normal 3 3 ;cursor:hand;gradation:none 0,0 white 100,100 black;" class="DelBtn" onclick="searchDeliveredClinspeListBtn_onclick"/>
-        <Button id="takeoverBtn" taborder="12" text="인수확인" left="82.96%" top="422" right="0.96%" height="88" onclick="takeoverBtn_onclick"/>
-        <Button id="refuseBtn" taborder="13" text="반려" left="64.56%" top="423" right="18.08%" height="87" onclick="refuseBtn_onclick"/>
-        <Edit id="takeoverCancelCauEdit" taborder="14" left="30.48%" top="424" right="36.16%" height="89"/>
-        <Calendar id="takeoverCancelDateCal" taborder="15" left="2.08%" top="424" right="81.44%" height="90"/>
+        <Button id="takeoverBtn" taborder="12" text="인수확인" left="92.32%" top="391" right="1.12%" height="35" onclick="takeoverBtn_onclick" style="background:#848484ff;color:white;font:bold 9 돋움;"/>
+        <Button id="refuseBtn" taborder="13" text="반려" left="84.16%" top="391" right="8%" height="35" onclick="refuseBtn_onclick" style="background:#848484ff;color:white;font:bold 9 돋움;"/>
+        <Edit id="takeoverCancelCauEdit" taborder="14" left="50.16%" top="392" right="16.48%" height="35"/>
+        <Calendar id="takeoverCancelDateCal" taborder="15" left="39.04%" top="392" right="50.24%" height="35" style="align:center middle;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -204,7 +204,7 @@
             <Col id="serviceID">refuseDeliveredClinspe</Col>
             <Col id="URL">erp47::sup/pathology/refuseDeliveredClinspe.do</Col>
             <Col id="outData">dsClinspeDelivery=dsClinspeDelivery</Col>
-            <Col id="inData"></Col>
+            <Col id="inData"/>
             <Col id="callbackFunc">callBackFunc</Col>
           </Row>
         </Rows>

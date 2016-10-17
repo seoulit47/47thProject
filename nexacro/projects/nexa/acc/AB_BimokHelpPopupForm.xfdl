@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BimokHelpPopupForm" classname="AB_BimokHelpPopupForm" left="0" top="0" width="791" height="775" titletext="New Form">
+  <Form id="AB_BimokHelpPopupForm" classname="AB_BimokHelpPopupForm" left="0" top="0" width="791" height="775" titletext="비목코드조회">
     <Layouts>
       <Layout>
         <Div id="Div05" taborder="0" left="0%" top="4" right="0.13%" height="60" style="background:transparent URL('img::titleBar6.jpg');"/>

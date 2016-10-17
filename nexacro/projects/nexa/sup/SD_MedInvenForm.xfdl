@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SD_MedInvenForm" classname="SD_MedInvenForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="SD_MedInvenForm" classname="SD_MedInvenForm" left="0" top="0" width="1250" height="768" titletext="약 재고 관리">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="0" right="-21.97%" height="60" style="background:transparent URL('img::titleBar1.jpg');"/>

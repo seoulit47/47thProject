@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AC_ClosedDataForm" classname="AC_ClosedDataForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AC_ClosedDataForm_onload">
+  <Form id="AC_ClosedDataForm" classname="AC_ClosedDataForm" left="0" top="0" width="1250" height="768" titletext="결산자료 조회" onload="AC_ClosedDataForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div05" taborder="0" left="0%" top="0" right="0.96%" height="60" style="background:transparent URL('img::titleBar6.jpg');"/>

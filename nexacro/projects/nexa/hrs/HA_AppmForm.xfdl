@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HA_AppmForm" classname="HA_AppmForm" left="0" top="0" width="1250" height="768" titletext="New Form" oninit="HA_AppmForm_oninit" onload="HA_AppmForm_onload">
+  <Form id="HA_AppmForm" classname="HA_AppmForm" left="0" top="0" width="1250" height="768" titletext="발령" oninit="HA_AppmForm_oninit" onload="HA_AppmForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div07" taborder="0" text="Div01" left="24.32%" top="520" right="0.4%" height="178" style="background:whitesmoke;border:1 solid #808080ff ;bordertype:round 5 5 ;"/>

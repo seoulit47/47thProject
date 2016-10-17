@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SD_WorkingJournalForm" classname="SD_WorkingJournalForm" left="0" top="0" width="1250" height="768" onload="SD_WorkingJournalForm_onload">
+  <Form id="SD_WorkingJournalForm" classname="SD_WorkingJournalForm" left="0" top="0" width="1250" height="768" onload="SD_WorkingJournalForm_onload" titletext="약국 근무일지 관리">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0%" top="0" right="0.08%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>

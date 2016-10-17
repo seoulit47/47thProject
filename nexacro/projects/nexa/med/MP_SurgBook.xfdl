@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="MP_SurgBook" classname="MP_SurgBook" left="0" top="0" width="1250" height="768" titletext="New Form" onload="MP_SurgBook_onload">
+  <Form id="MP_SurgBook" classname="MP_SurgBook" left="0" top="0" width="1250" height="768" titletext="수술예약" onload="MP_SurgBook_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="2" text=" WednesDay" left="30%" top="83" right="60.88%" height="33" style="align:left bottom;background:#f2f2f2ff;border:0 none #808080ff ;color:#616161ff;padding:0 0 3 0;"/>

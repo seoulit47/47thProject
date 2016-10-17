@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AE_accCodePopupForm" classname="AE_accCodePopupForm" left="0" top="0" width="400" height="129" titletext="New Form" onload="AE_accCodePopupForm_onload">
+  <Form id="AE_accCodePopupForm" classname="AE_accCodePopupForm" left="0" top="0" width="400" height="129" titletext="코드팝업" onload="AE_accCodePopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" text="Div00" left="1.5%" top="4" right="1.75%" height="124" style="background:#bbffbbff;color:azure;bordertype:round 5 5 ;"/>

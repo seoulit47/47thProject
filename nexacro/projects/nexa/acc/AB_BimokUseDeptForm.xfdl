@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BimokUseDeptForm" classname="AB_BimokUseDeptForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="AB_BimokUseDeptForm" classname="AB_BimokUseDeptForm" left="0" top="0" width="1250" height="768" titletext="예산사용부서등록">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.48%" top="2" right="0.08%" height="63" style="background:#35363bff URL('img::titleBar6.jpg') stretch;"/>

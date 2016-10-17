@@ -85,10 +85,12 @@ public class EmrController {
 	public void findPatientDsPrscList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 환자처방, 상병조회
 		System.out.println("med / findPatientDsPrscList 매서드입니다.");
-
+		
+		
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
+		System.out.println(inData.saveXml());
 		Map<String, String> argsMap = dataSetBeanMapper.variablesToMap(inData);
 
 		List<PatientDsBean> patientDsList = emrServiceFacade.findPatientDsPrscList(argsMap);
@@ -98,6 +100,7 @@ public class EmrController {
 			patientPrscList.addAll(patientDsBean.getPatientPrscList());
 		}
 
+		
 		dataSetBeanMapper.beansToDataset(outData, patientDsList, PatientDsBean.class);
 		dataSetBeanMapper.beansToDataset(outData, patientPrscList, PatientPrscBean.class);
 	}
@@ -133,6 +136,8 @@ public class EmrController {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");
 
+		System.out.println(inData.saveXml());
+		
 		List<ReceiptInfoBean> receiptList = dataSetBeanMapper.datasetToBeans(inData, ReceiptInfoBean.class);
 		List<BaseExamBean> baseExamList = dataSetBeanMapper.datasetToBeans(inData, BaseExamBean.class);
 		List<PatientDsBean> patientDsList = dataSetBeanMapper.datasetToBeans(inData, PatientDsBean.class);
@@ -160,7 +165,7 @@ public class EmrController {
 		dataSetBeanMapper.beansToDataset(outData, patientPrscList, PatientPrscBean.class);
 	}
 	
-	@RequestMapping("med/base/findPrescDtl.do")
+	@RequestMapping("med/base/findPrscDtlList.do")
 	public void findPrescDtl(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PlatformData inData = (PlatformData) request.getAttribute("inData");
 		PlatformData outData = (PlatformData) request.getAttribute("outData");

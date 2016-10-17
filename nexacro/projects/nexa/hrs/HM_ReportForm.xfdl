@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HM_ReportForm" classname="HM_ReportForm" left="0" top="0" width="552" height="768" titletext="New Form">
+  <Form id="HM_ReportForm" classname="HM_ReportForm" left="0" top="0" width="552" height="768" titletext="인사기록카드">
     <Layouts>
       <Layout>
         <Div id="main" taborder="0" left="1.09%" top="57" right="1.63%" height="699" style="background:whitesmoke;border:1 solid indigo ;bordertype:round 5 5 ;" cssclass="AreaShp">

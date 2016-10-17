@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_PostpopupForm" classname="CM_PostpopupForm" left="0" top="0" width="700" height="519" titletext="New Form" onload="CM_PostpopupForm_onload">
+  <Form id="CM_PostpopupForm" classname="CM_PostpopupForm" left="0" top="0" width="700" height="519" titletext="주소 검색" onload="CM_PostpopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div04" taborder="0" left="0.14%" top="0" right="0.43%" height="60" style="background:transparent URL('img::titleBar5.jpg');"/>
