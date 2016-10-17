@@ -15,15 +15,19 @@
         <Static id="subCodeStc00" taborder="2" text="환자등록번호" onclick="subCodeStc_onclick" left="2.95%" top="61" right="88.46%" height="27" style="color:black;bordertype:round 5 5 ;align:center middle;font:bold 9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="patNoEd" taborder="3" left="12.18%" top="61" right="81.13%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Button id="searchBtn" taborder="5" onclick="searchBtn_onclick" left="29.86%" top="60" right="64.41%" height="31" class="SearchBtn" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ; :disabled {cursor:hand;}"/>
-        <Static id="HosptlzReceiptNo" taborder="6" text="입원등록번호" onclick="subCodeStc_onclick" visible="false" left="38.3%" top="59" right="53.74%" height="27" style="color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Edit id="hosptlzReceiptNoEdt" taborder="7" enable="false" visible="false" left="46.82%" top="59" right="47.77%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Static id="outpaReceiptNo" taborder="8" text="외래접수번호" onclick="subCodeStc_onclick" visible="false" left="53.58%" top="59" right="38.46%" height="27" style="color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
-        <Edit id="outpaReceiptNoEdt" taborder="9" enable="false" visible="false" left="62.1%" top="59" right="32.72%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="HosptlzReceiptNo" taborder="6" text="입원등록번호" onclick="subCodeStc_onclick" visible="true" left="38.3%" top="59" right="53.74%" height="27" style="color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="hosptlzReceiptNoEdt" taborder="7" enable="false" visible="true" left="46.82%" top="59" right="47.77%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
+        <Static id="outpaReceiptNo" taborder="8" text="외래접수번호" onclick="subCodeStc_onclick" visible="true" left="53.58%" top="59" right="38.46%" height="27" style="color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
+        <Edit id="outpaReceiptNoEdt" taborder="9" enable="false" visible="true" left="62.1%" top="59" right="32.72%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Button id="hosptlzRegisterBtn" taborder="11" onclick="calculationSalBtn_onclick" left="81.93%" top="61" right="11.07%" height="30" style="background:@gradation URL('img::registerBtn.png') stretch;border:1 none #999999ff ;color:black;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn"/>
         <Button id="hosptlzCancelBtn" taborder="12" onclick="hosptlzCancelBtn_onclick" left="89.49%" top="61" right="3.42%" height="30" style="background:@gradation URL('img::cancelBtn.png') stretch;border:1 none #999999ff ;color:black;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn" enable="true"/>
         <Div id="Div01" taborder="13" left="37.02%" top="100" right="2.63%" height="443" style="border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
           <Layouts>
-            <Layout/>
+            <Layout>
+              <Button id="hosptlzRoutePBtn" taborder="0" left="76.72%" top="60" right="19.18%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn" enable="false" onclick="Div01_hosptlzRoutePBtn_onclick"/>
+              <Button id="hroomBtn" taborder="1" enable="false" left="58.99%" top="186" right="37.17%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn" onclick="Div01_hroomBtn_onclick"/>
+              <Button id="patTypePBtn" taborder="2" enable="false" left="34.39%" top="230" right="61.11%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn" onclick="Div01_patTypePBtn_onclick"/>
+            </Layout>
           </Layouts>
         </Div>
         <Div id="Div02" taborder="14" left="1.99%" top="101" right="63.77%" height="442" style="border:1 solid lightsteelblue ;bordertype:round 5 5 ;">
@@ -96,26 +100,21 @@
         <Static id="subCodeStc11" taborder="36" text="퇴원일시" onclick="subCodeStc_onclick" left="39.97%" top="163" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Static id="subCodeStc02" taborder="37" text="입원경로" onclick="subCodeStc_onclick" left="68.07%" top="161" right="24.84%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="hosptlzRouteCdEdt" taborder="38" enable="false" left="76.27%" top="161" right="17.04%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="hosptlzRoutePBtn" taborder="39" onclick="hosptlzRoutePBtn_onclick" enable="false" left="83.2%" top="161" right="14.41%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
         <Edit id="hosptlzRouteNmEdt" taborder="40" enable="false" left="85.99%" top="161" right="4.46%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="resetBtn" taborder="41" text="Reset" onclick="resetBtn_onclick" visible="false" left="83.84%" top="112" right="11.07%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn"/>
-        <Button id="saveBtn" taborder="42" onclick="saveBtn_onclick" visible="false" left="89.33%" top="110" right="4.38%" height="32" class="DelBtn" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ; :disabled {cursor:hand;}"/>
+        <Button id="resetBtn" taborder="41" text="Reset" onclick="resetBtn_onclick" visible="true" left="83.84%" top="112" right="11.07%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn" enable="false"/>
+        <Button id="saveBtn" taborder="42" onclick="saveBtn_onclick" visible="true" left="89.33%" top="110" right="4.38%" height="32" class="DelBtn" style="background:@gradation URL('img::okBtn.png') stretch;border:1 none #999999ff ; :disabled {cursor:hand;}" enable="false"/>
         <Edit id="trmtDeptNmEdt" taborder="43" enable="false" left="60.83%" top="205" right="29.7%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="trmtDeptPBtn" taborder="44" onclick="trmtDeptPBtn_onclick" enable="false" left="57.56%" top="205" right="39.97%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
         <Edit id="trmtDeptCdEdt" taborder="45" enable="false" left="50.56%" top="205" right="42.75%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Static id="ctrtDateSelStc00" taborder="46" text="진료과" onclick="subCodeStc_onclick" left="39.97%" top="205" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Static id="ctrtDateSelStc01" taborder="47" text="담당의사" onclick="subCodeStc_onclick" left="39.89%" top="246" right="52.39%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="respDoctCdEdt" taborder="48" enable="false" left="50.56%" top="246" right="42.75%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="respDoctPBtn" taborder="49" onclick="respDoctPBtn_onclick" enable="false" left="57.56%" top="246" right="39.97%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
         <Edit id="respDoctNmEdt" taborder="50" enable="false" left="60.83%" top="246" right="29.7%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Edit id="hroomNmEdt" taborder="51" onchar="hroomNmEdt_onchar" enable="false" left="63.61%" top="287" right="28.03%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="hroomBtn" taborder="52" onclick="hroomBtn_onclick" enable="false" left="72.53%" top="287" right="25%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
         <Edit id="hroomEdt" taborder="53" enable="false" left="56.53%" top="287" right="37.42%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Edit id="wardEdt" taborder="54" enable="false" left="50.56%" top="287" right="44.59%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Static id="ctrtDateSelStc05" taborder="55" text="병동병실" onclick="subCodeStc_onclick" left="39.97%" top="287" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Static id="ctrtDateSelStc07" taborder="56" text="환자유형" onclick="subCodeStc_onclick" left="39.97%" top="331" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="patTypeCdEdt" taborder="57" enable="false" left="50.56%" top="331" right="42.75%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="patTypePBtn" taborder="58" onclick="patTypePBtn_onclick" enable="false" left="57.72%" top="331" right="39.81%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
         <Edit id="patTypeNmEdt" taborder="59" enable="false" left="60.99%" top="331" right="29.54%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
         <Static id="ctrtDateSelStc08" taborder="60" text="보증인성명" onclick="subCodeStc_onclick" left="39.97%" top="373" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="grtorNmEdt" taborder="61" enable="false" left="50.56%" top="373" right="39.89%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
@@ -127,10 +126,12 @@
         <MaskEdit id="grtorTelEdt" taborder="67" type="string" mask=" ### - #### - ####" enable="false" left="50.56%" top="456" right="33.84%" height="28" style=":disabled {align:left middle;}"/>
         <Static id="ctrtDateSelStc10" taborder="68" text="보증인주소" onclick="subCodeStc_onclick" left="39.97%" top="499" right="52.95%" height="27" style="background:#c4d2daff;color:black;bordertype:round 5 5 ;align:center middle;font:9 돋움;blur:0 ;glow:0 transparent;" class="AreaStc"/>
         <Edit id="grtorAddrEdt" taborder="69" enable="false" left="50.56%" top="499" right="18.63%" height="27" style="font:돋움,9,antialias;" class="AreaEdt"/>
-        <Button id="grtorAddrBtn" taborder="70" onclick="grtorAddrBtn_onclick" enable="false" left="82.09%" top="499" right="15.53%" height="26" style="background:@gradation URL('img::miniSearch.png'); :disabled {background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;}" class="AddBtn"/>
-        <Button id="hosptlzRsvtBtn" taborder="71" text="입원예약" onclick="hosptlzRsvtBtn_onclick" visible="false" left="89.33%" top="690" right="3.58%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn"/>
+        <Button id="hosptlzRsvtBtn" taborder="71" text="입원예약" onclick="hosptlzRsvtBtn_onclick" visible="true" left="89.33%" top="690" right="3.58%" height="30" style="background:#848484ff;color:white;font:bold 10 돋움;" class="ProcessBtn" enable="false"/>
         <Button id="patNoBtn" taborder="72" onclick="patNoBtn_onclick" left="19.27%" top="61" right="78.34%" height="26" class="AddBtn" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;"/>
         <Button id="hosptlzSearchBtn" taborder="73" onclick="hosptlzSearchBtn_onclick" left="74.28%" top="61" right="18.71%" height="30" style="background:@gradation URL('img::searchBtn.png') stretch;border:1 none #999999ff ;color:black;font:bold 10 돋움; :disabled {cursor:hand;}" class="ProcessBtn"/>
+        <Button id="trmtDeptPBtn" taborder="75" enable="false" left="57.72%" top="205" right="39.81%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn" onclick="trmtDeptPBtn_onclick"/>
+        <Button id="respDoctPBtn" taborder="76" enable="false" left="57.72%" top="245" right="39.81%" height="27" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn" onclick="respDoctPBtn_onclick"/>
+        <Button id="grtorAddrBtn" taborder="77" enable="false" left="82.17%" top="498" right="15.21%" height="28" style="background:@gradation URL('img::miniSearchBtn.png') stretch;border:1 none #999999ff ;cursor:hand;" class="AddBtn" onclick="grtorAddrBtn_onclick"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -433,12 +434,7 @@ this.patNoBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.dsPat.clear();
 	this.dsOutpaReceipt.clear();
 	this.dsHosptlzRsvt.clear();
-	this.outpaReceiptNo.set_visible(false);
-	this.outpaReceiptNoEdt.set_visible(false);	
-	this.saveBtn.set_visible(false);
-	this.HosptlzReceiptNo.set_visible(false);
-	this.hosptlzReceiptNoEdt.set_visible(false);
-	
+
 	this.gfnPopup("WS_PatPopupForm","won","");
 }
 
@@ -502,7 +498,9 @@ this.findReceiptCallbackFunc=function(svcID, errorCode, errorMsg){
 			if(errorCode=="1"){		
 				if(this.dsHosptlzReceipt.rowcount==0){
 					if(this.confirm( "입원등록을 하시겠습니까?", "서울병원 - 입원등록")){
-						this.hosptlzRsvtBtn.set_visible(true);  //입원예약Btn 생성					
+						this.hosptlzRsvtBtn.set_enable(true);  //입원예약Btn 생성
+						this.resetBtn.set_enable(true);
+						this.saveBtn.set_enable(true);
 						this.fn_register();   //입원등록 
 					}
 				}else if(this.dsHosptlzReceipt.rowcount==1){
@@ -578,15 +576,6 @@ this.hosptlzSearchBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	this.dsService.setColumn(5,"argument",'patNo='+patNo);
 	this.gfnService("findHosptlzReceipt","false"); 	//	입원접수 확인하기
 	
-	if(this.dsHosptlzReceipt.rowcount != 0) {
-		this.hosptlzDateCal.set_enable(true);
-		this.dscgDateCal.set_enable(true);
-		this.hroomBtn.set_enable(true);
-		this.HosptlzReceiptNo.set_visible(true);
-		this.hosptlzReceiptNoEdt.set_visible(true);
-		this.saveBtn.set_visible(true);
-	}
-	
 }
 	
 
@@ -605,14 +594,6 @@ this.calculationSalBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 		patNo=this.patNoEd.value;
 		var hosptlzYb=this.dsOutpaReceipt.getColumn(0,"hosptlzYb");
 		
-		if(hosptlzYb == 'Y') {	
-			this.outpaReceiptNo.set_visible(true);
-			this.outpaReceiptNoEdt.set_visible(true);	
-			this.saveBtn.set_visible(true);
-			this.HosptlzReceiptNo.set_visible(true);
-			this.hosptlzReceiptNoEdt.set_visible(true);
-			this.resetBtn.set_visible(true);
-		}
 	}	
 }
 
@@ -678,9 +659,9 @@ this.fn_register=function(){
 this.fn_enable = function(){
 	this.hosptlzDateCal.set_enable(true);
 	this.dscgDateCal.set_enable(true);
-	this.wardEdt.set_enable(true);
-	this.hroomEdt.set_enable(true);
-	this.hroomNmEdt.set_enable(true);	
+	//this.wardEdt.set_enable(true);
+	//this.hroomEdt.set_enable(true);
+	//this.hroomNmEdt.set_enable(true);	
 
 	this.grtorNmEdt.set_enable(true);			
 	this.grtorRrnEdt.set_enable(true);
@@ -691,11 +672,11 @@ this.fn_enable = function(){
 	this.hosptlzCancelBtn.set_enable(true);
 	this.respDoctPBtn.set_enable(true);
 	this.trmtDeptPBtn.set_enable(true);	
-	this.hroomBtn.set_enable(true);
-	this.patTypePBtn.set_enable(true);
+	this.Div01.hroomBtn.set_enable(true);
+	this.Div01.patTypePBtn.set_enable(true);
 	
 	this.grtorAddrBtn.set_enable(true);
-	this.hosptlzRoutePBtn.set_enable(true);
+	this.Div01.hosptlzRoutePBtn.set_enable(true);
 
 }
 this.setDoct=function(arr){
@@ -704,13 +685,13 @@ this.setDoct=function(arr){
 }
 
 //병실조회 Popup
-this.hroomBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+this.Div01_hroomBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.openHroomDialog();
 }
 
 //입원경로 Popup
-this.hosptlzRoutePBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+this.Div01_hosptlzRoutePBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	 this.gfnCodePopup("MD020");	
 }
@@ -722,7 +703,7 @@ this.trmtDeptPBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 }
 
 //환자 유형 Popup
-this.patTypePBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+this.Div01_patTypePBtn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	this.gfnCodePopup("GA043");
 }
@@ -793,6 +774,7 @@ this.setPost = function(arrRtn){
 	this.grtorAddrEdt.set_value(arrRtn[2]+" "+arrRtn[0]+" "+arrRtn[1]); 
 	
 }
+
 
 ]]></Script>
   </Form>
