@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SL_CombineBloodGetForm" classname="SL_CombineBloodGetForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="SL_CombineBloodGetForm_onload">
+  <Form id="SL_CombineBloodGetForm" classname="SL_CombineBloodGetForm" left="0" top="0" width="1250" height="768" titletext="검채채취관리" onload="SL_CombineBloodGetForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="1.76%" top="77" right="1.68%" height="91" style="background:#edececff;border:1 solid lightsteelblue ;bordertype:round 5 5 ;"/>

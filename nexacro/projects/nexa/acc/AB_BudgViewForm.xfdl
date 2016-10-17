@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BudgViewForm" classname="AB_BudgViewForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="AB_BudgViewForm" classname="AB_BudgViewForm" left="0" top="0" width="1250" height="768" titletext="예산현황조회">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.1%" top="4" right="0.49%" height="60" style="background:transparent URL('img::titleBar6.jpg');" cssclass="TStc">

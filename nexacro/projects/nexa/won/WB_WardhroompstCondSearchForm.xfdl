@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="WB_WardhroompstCondSearchForm" classname="WB_WardhroompstCondSearchForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="WB_WardhroompstCondSearchForm_onload">
+  <Form id="WB_WardhroompstCondSearchForm" classname="WB_WardhroompstCondSearchForm" left="0" top="0" width="1250" height="768" titletext="병동병실조회" onload="WB_WardhroompstCondSearchForm_onload">
     <Layouts>
       <Layout>
         <Static id="Static00" taborder="0" text="병실 관리" left="4.8%" top="-4" right="81.68%" height="60" style="color:#6c6c6cff;font:bold 20 다음_Regular;"/>

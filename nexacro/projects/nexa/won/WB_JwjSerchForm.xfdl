@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="WB_JwjSerchForm" classname="WB_JwjSerchForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="WB_JwjSerchForm" classname="WB_JwjSerchForm" left="0" top="0" width="1250" height="768" titletext="재원환자 조회">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="0" right="4%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>

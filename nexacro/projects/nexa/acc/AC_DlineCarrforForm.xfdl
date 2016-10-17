@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AC_DlineCarrforForm" classname="AC_DlineCarrforForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AC_DlineCarrforForm_onload">
+  <Form id="AC_DlineCarrforForm" classname="AC_DlineCarrforForm" left="0" top="0" width="1250" height="768" titletext="마감 및 이월" onload="AC_DlineCarrforForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div05" taborder="0" left="0.08%" top="0" right="0.08%" height="60" style="background:transparent URL('img::titleBar6.jpg');">

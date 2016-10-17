@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HS_IncomeTaxSettingForm" classname="HS_IncomeTexSettingForm" left="0" top="0" width="1256" height="759" titletext="New Form" name="HS_IncomeTaxSettingForm">
+  <Form id="HS_IncomeTaxSettingForm" classname="HS_IncomeTexSettingForm" left="0" top="0" width="1256" height="759" titletext="소득/세액 공제설정" name="HS_IncomeTaxSettingForm">
     <Layouts>
       <Layout>
         <Div id="Div03" taborder="0" left="0%" top="8" right="1.27%" height="60" style="background:transparent URL('img::titleBar4.jpg');"/>

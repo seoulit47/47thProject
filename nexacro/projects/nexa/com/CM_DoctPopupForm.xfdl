@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="CM_DoctPopupForm" classname="CM_DoctPopupForm" left="0" top="0" width="400" height="500" titletext="New Form" onload="CM_DoctPopupForm_onload">
+  <Form id="CM_DoctPopupForm" classname="CM_DoctPopupForm" left="0" top="0" width="400" height="500" titletext="의사검색" onload="CM_DoctPopupForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" text="      의사검색" left="0%" top="0" right="1%" height="60" style="align:left middle;background:transparent URL('img::titleBar1.jpg');font:antialias 20 맑은 고딕;"/>

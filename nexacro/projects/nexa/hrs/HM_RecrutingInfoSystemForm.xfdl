@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HM_RecrutingInfoSystemForm" classname="HM_RecrutingInfoSystemForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="HM_RecrutingInfoSystemForm" classname="HM_RecrutingInfoSystemForm" left="0" top="0" width="1250" height="768" titletext="채용정보 관리">
     <Layouts>
       <Layout>
         <Div id="Div01" taborder="0" left="0.32%" top="8" right="-2.08%" height="60" style="background:transparent URL('img::titleBar2.jpg');"/>

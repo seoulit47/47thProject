@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="SL_CombineBloodGetPopupForm" classname="SL_CombineBloodGetPopupForm" left="0" top="0" width="725" height="768" titletext="New Form">
+  <Form id="SL_CombineBloodGetPopupForm" classname="SL_CombineBloodGetPopupForm" left="0" top="0" width="725" height="768" titletext="미접수 검체 검색">
     <Layouts>
       <Layout>
         <Div id="Div00" taborder="0" left="0.55%" top="8" right="1.38%" height="60" style="background:transparent URL('img::titleBar1.jpg');">

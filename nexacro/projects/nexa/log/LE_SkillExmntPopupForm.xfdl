@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LE_SkillExmntPopupForm" classname="LE_SkillExmntPopupForm" left="0" top="0" width="740" height="484" titletext="New Form">
+  <Form id="LE_SkillExmntPopupForm" classname="LE_SkillExmntPopupForm" left="0" top="0" width="740" height="484" titletext="검사대상물품목록">
     <Layouts>
       <Layout>
         <Div id="Div05" taborder="0" left="0.14%" top="8" right="0%" height="60" style="background:transparent URL('img::titleBar6.jpg');">
@@ -94,7 +94,7 @@
             <Col id="inData"/>
             <Col id="outData">dsCtrtInfo=dsCtrtInfo</Col>
             <Col id="argument"/>
-            <Col id="callbackFunc"></Col>
+            <Col id="callbackFunc"/>
           </Row>
         </Rows>
       </Dataset>

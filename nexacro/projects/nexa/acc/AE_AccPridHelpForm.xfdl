@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AE_AccPridHelpForm" classname="AE_AccPridHelpForm" left="0" top="0" width="347" height="501" titletext="New Form" onload="AE_AccPridHelpForm_onload">
+  <Form id="AE_AccPridHelpForm" classname="AE_AccPridHelpForm" left="0" top="0" width="347" height="501" titletext="회계기수 도움" onload="AE_AccPridHelpForm_onload">
     <Layouts>
       <Layout>
         <Div id="Div04" taborder="0" left="0%" top="0" right="0.29%" height="60" style="background:transparent URL('img::miniTitleBar6.jpg');"/>

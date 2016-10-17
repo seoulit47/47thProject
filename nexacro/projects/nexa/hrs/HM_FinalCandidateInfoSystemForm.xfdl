@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HM_FinalCandidateInfoSystemForm" classname="HM_FinalCandidateInfoSystemForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="HM_FinalCandidateInfoSystemForm" classname="HM_FinalCandidateInfoSystemForm" left="0" top="0" width="1250" height="768" titletext="최종합격자관리">
     <Layouts>
       <Layout>
         <Div id="Div04" taborder="0" left="0.72%" top="717" right="0.88%" height="38" style="border:1 solid black ;bordertype:round 5 5 ;font:9 Dotum;"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HM_ApplyInfoSystemForm" classname="HM_ApplyInfoSystemForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="HM_ApplyInfoSystemForm" classname="HM_ApplyInfoSystemForm" left="0" top="0" width="1250" height="768" titletext="입사지원자 관리">
     <Layouts>
       <Layout>
         <Div id="Div01" taborder="0" left="0.72%" top="719" right="0.8%" height="40" style="border:1 solid black ;bordertype:round 5 5 ;" cssclass="TStc"/>

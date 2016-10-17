@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AB_BudgExcutionViewForm" classname="AB_BudgExcutionViewForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="AB_BudgExcutionViewForm" classname="AB_BudgExcutionViewForm" left="0" top="0" width="1250" height="768" titletext="예산집행현황조회">
     <Layouts>
       <Layout>
         <Static id="titleEdt02" taborder="0" text="예산사용부서등록" cssclass="TStc" left="4.4%" top="10" right="77.76%" height="44" style="font:bold 15 Dotum;"/>

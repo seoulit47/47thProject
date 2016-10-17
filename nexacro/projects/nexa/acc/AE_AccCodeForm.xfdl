@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AE_AccCodeForm" classname="AE_AccCodeForm" left="0" top="0" width="1250" height="768" titletext="New Form" onload="AE_AccCodeForm_onload">
+  <Form id="AE_AccCodeForm" classname="AE_AccCodeForm" left="0" top="0" width="1250" height="768" titletext="계정과목 코드 관리" onload="AE_AccCodeForm_onload">
     <Layouts>
       <Layout>
         <Div id="titleBarDiv" taborder="0" left="0.16%" top="0" right="0.8%" height="60" style="background:transparent URL('img::titleBar5.jpg');">

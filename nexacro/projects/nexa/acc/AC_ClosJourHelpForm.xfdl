@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="AC_ClosJourHelpForm" classname="AC_ClosJourHelpForm" left="0" top="0" width="700" height="420" titletext="New Form" onload="AC_ClosJourHelpForm_onload">
+  <Form id="AC_ClosJourHelpForm" classname="AC_ClosJourHelpForm" left="0" top="0" width="700" height="420" titletext="결산분개" onload="AC_ClosJourHelpForm_onload">
     <Layouts>
       <Layout>
         <Grid id="closJourGrid" taborder="0" binddataset="dlJour" useinputpanel="false" cellsizingtype="col" autofittype="col" left="2.14%" top="62" right="1.71%" height="300" class="AreaGrid">

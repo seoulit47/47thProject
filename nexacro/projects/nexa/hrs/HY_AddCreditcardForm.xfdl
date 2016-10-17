@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HY_AddCreditcardForm" classname="HY_AddCreditcardForm" left="0" top="0" width="852" height="316" titletext="New Form">
+  <Form id="HY_AddCreditcardForm" classname="HY_AddCreditcardForm" left="0" top="0" width="852" height="316" titletext="신용카드 사용내역 등록">
     <Layouts>
       <Layout>
         <Div id="Div06" taborder="0" text="            신용카드 사용내역 등록" left="0%" top="0" right="1.41%" height="60" style="align:left middle;background:transparent URL('img::titleBar7.jpg');"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="HT_PopupRetAppForm" classname="HT_PopupRetAppForm" left="0" top="0" width="810" height="330" titletext="New Form">
+  <Form id="HT_PopupRetAppForm" classname="HT_PopupRetAppForm" left="0" top="0" width="810" height="330" titletext="퇴직발령">
     <Layouts>
       <Layout>
         <Div id="Div02" taborder="0" left="0.74%" top="24" right="97.78%" height="38" style="background:transparent URL('img::formBar.png');border:0 none #808080ff ;color:black;bordertype:round 10 10 ;" cssclass="TStc"/>

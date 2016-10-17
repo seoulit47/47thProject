@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="LB_WhMngntForm" classname="LB_WhMngntForm" left="0" top="0" width="1250" height="768" titletext="New Form">
+  <Form id="LB_WhMngntForm" classname="LB_WhMngntForm" left="0" top="0" width="1250" height="768" titletext="창고 관리">
     <Layouts>
       <Layout>
         <Div id="Div01" taborder="0" left="0.08%" top="8" right="-62%" height="60" style="background:transparent URL('img::titleBar2.jpg');">
